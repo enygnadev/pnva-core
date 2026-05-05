@@ -215,6 +215,12 @@ jobs:
             --write /tmp/pnva-r3-runtime-instrumentation-plan.json \
             >/dev/null
           python3 -m json.tool /tmp/pnva-r3-runtime-instrumentation-plan.json >/dev/null
+      - name: Run R3 runtime contract validation
+        run: |
+          python3 tools/pnva_r3_runtime_contract_validator.py \
+            --write /tmp/pnva-r3-runtime-contract-validation.json \
+            >/dev/null
+          python3 -m json.tool /tmp/pnva-r3-runtime-contract-validation.json >/dev/null
       - name: Run evidence attestor
         run: |
           python3 tools/pnva_evidence_attestor.py \

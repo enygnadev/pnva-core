@@ -136,6 +136,7 @@ docs/
   PNVA_R3_RUNTIME_CAPTURE_MATRIX.md
   PNVA_R3_RUNTIME_EVIDENCE_GUARD.md
   PNVA_R3_RUNTIME_INSTRUMENTATION_PLAN.md
+  PNVA_R3_RUNTIME_CONTRACT_VALIDATION.md
   PNVA_SOVEREIGN_EVIDENCE_ATTESTATION.md
   PNVA_ADVERSARIAL_VALIDATION.md
   PNVA_ENTITY_HEURISTIC_MATURITY.md
@@ -198,6 +199,7 @@ reports/
   pnva-r3-runtime-capture-matrix-2026-05-05.json
   pnva-r3-runtime-evidence-guard-2026-05-05.json
   pnva-r3-runtime-instrumentation-plan-2026-05-05.json
+  pnva-r3-runtime-contract-validation-2026-05-05.json
   pnva-sovereign-evidence-attestation-2026-05-05.json
   pnva-adversarial-validation-2026-05-05.json
   pnva-entity-heuristic-maturity-2026-05-05.json
@@ -233,6 +235,7 @@ tools/
   pnva_r3_runtime_capture_matrix.py
   pnva_r3_runtime_evidence_guard.py
   pnva_r3_runtime_instrumentation_plan.py
+  pnva_r3_runtime_contract_validator.py
   pnva_evidence_attestor.py
   pnva_adversarial_validator.py
   pnva_entity_heuristic_maturity.py
@@ -319,6 +322,7 @@ python3 tools/pnva_heuristic_influence_map.py --write /tmp/pnva-heuristic-influe
 python3 tools/pnva_entity_no_tick_matrix.py --write /tmp/pnva-entity-no-tick-matrix.json
 python3 tools/pnva_suppression_ledger.py --write /tmp/pnva-suppression-ledger.json
 python3 tools/pnva_r3_runtime_instrumentation_plan.py --write /tmp/pnva-r3-runtime-instrumentation-plan.json
+python3 tools/pnva_r3_runtime_contract_validator.py --write /tmp/pnva-r3-runtime-contract-validation.json
 python3 tools/pnva_evidence_attestor.py --write /tmp/pnva-evidence-attestation.json
 python3 tools/pnva_semantic_consistency_guard.py --write /tmp/pnva-semantic-consistency.json
 python3 tools/pnva_reproducibility_guard.py --write /tmp/pnva-reproducibility.json
@@ -380,15 +384,17 @@ The R3 runtime evidence guard protects the intake boundary for those future runt
 
 The R3 runtime instrumentation plan converts the `35` pending capture slots into concrete native emitter contracts. The current package is `R3_RUNTIME_INSTRUMENTATION_PLAN_READY` with `3` action contracts, `6` event templates, `70` required runtime events, `21` mandatory event fields, `1` target entity, required R3 slot identity, required native proof/source markers and no final runtime approval claim.
 
+The R3 runtime contract validator checks that the capture matrix, evidence guard and instrumentation plan agree before final capture. The current package is `R3_RUNTIME_CONTRACT_VALIDATED_READY` with `100` contract checks, `0` failures, `35` slots, `3` action contracts, `70` required runtime events and no final runtime approval claim.
+
 The adversarial validator runs negative controls against the public validators. The current package is `ADVERSARIAL_VALIDATION_PASS` with `7` detections over `7` controlled mutations.
 
 The entity and heuristic maturity auditor scores actor/rule readiness across entity coverage, proof coverage, no-tick suppression, authority and causal relations. The current package is `ENTITY_HEURISTIC_MATURITY_READY_WITH_LEGACY_WARNINGS` with score `94.59`, `0` errors and `35` preserved legacy warnings.
 
-The semantic consistency guard checks cross-report agreement across Manifest, replay, no-tick, policy, proof-chain, graph, schema contract, causal chronology, tension-decision calibration, decision trace index, heuristic influence map, entity no-tick matrix, suppression ledger, robustness gate, R3 migration plan, authority migration ledger, R3 authority projection, R3 cutover gate, R3 runtime capture matrix, R3 runtime evidence guard, R3 runtime instrumentation plan, maturity, adversarial validation, attestation and audit. The current package is `SEMANTIC_CONSISTENCY_READY` with `274` checks, `0` errors and `0` warnings.
+The semantic consistency guard checks cross-report agreement across Manifest, replay, no-tick, policy, proof-chain, graph, schema contract, causal chronology, tension-decision calibration, decision trace index, heuristic influence map, entity no-tick matrix, suppression ledger, robustness gate, R3 migration plan, authority migration ledger, R3 authority projection, R3 cutover gate, R3 runtime capture matrix, R3 runtime evidence guard, R3 runtime instrumentation plan, R3 runtime contract validation, maturity, adversarial validation, attestation and audit. The current package is `SEMANTIC_CONSISTENCY_READY` with `288` checks, `0` errors and `0` warnings.
 
-The reproducibility guard reruns the current evidence commands and compares stable fields against the published reports. The current package is `REPRODUCIBILITY_READY` with `33` commands, `346` stable-field comparisons and `0` failures.
+The reproducibility guard reruns the current evidence commands and compares stable fields against the published reports. The current package is `REPRODUCIBILITY_READY` with `34` commands, `365` stable-field comparisons and `0` failures.
 
-The sovereign evidence attestor binds the public evidence base into one machine-readable attestation. The current package is `PNVA_SOVEREIGN_EVIDENCE_ATTESTED` with `39` tracked artifacts and `0` failures; the sovereign audit consumes this attestation without being included in its hash seed.
+The sovereign evidence attestor binds the public evidence base into one machine-readable attestation. The current package is `PNVA_SOVEREIGN_EVIDENCE_ATTESTED` with `40` tracked artifacts and `0` failures; the sovereign audit consumes this attestation without being included in its hash seed.
 
 ## Citation
 

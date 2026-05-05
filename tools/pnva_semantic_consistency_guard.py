@@ -40,6 +40,7 @@ REPORTS = {
     "r3_runtime_capture_matrix": "reports/pnva-r3-runtime-capture-matrix-2026-05-05.json",
     "r3_runtime_evidence_guard": "reports/pnva-r3-runtime-evidence-guard-2026-05-05.json",
     "r3_runtime_instrumentation_plan": "reports/pnva-r3-runtime-instrumentation-plan-2026-05-05.json",
+    "r3_runtime_contract_validation": "reports/pnva-r3-runtime-contract-validation-2026-05-05.json",
     "adversarial": "reports/pnva-adversarial-validation-2026-05-05.json",
     "maturity": "reports/pnva-entity-heuristic-maturity-2026-05-05.json",
     "attestation": "reports/pnva-sovereign-evidence-attestation-2026-05-05.json",
@@ -75,6 +76,7 @@ EXPECTED_CLASSIFICATIONS = {
     "r3_runtime_capture_matrix": "R3_RUNTIME_CAPTURE_MATRIX_READY_PENDING_RUNTIME",
     "r3_runtime_evidence_guard": "R3_RUNTIME_EVIDENCE_GUARD_READY_AWAITING_CAPTURE",
     "r3_runtime_instrumentation_plan": "R3_RUNTIME_INSTRUMENTATION_PLAN_READY",
+    "r3_runtime_contract_validation": "R3_RUNTIME_CONTRACT_VALIDATED_READY",
     "adversarial": "ADVERSARIAL_VALIDATION_PASS",
     "maturity": "ENTITY_HEURISTIC_MATURITY_READY_WITH_LEGACY_WARNINGS",
     "attestation": "PNVA_SOVEREIGN_EVIDENCE_ATTESTED",
@@ -254,6 +256,9 @@ def build_report(repo: Path) -> dict[str, Any]:
     check_error(group="manifest", name="manifest_r3_instrumentation_action_contract_count", left_ref="MANIFEST:r3_runtime_instrumentation_plan.action_contract_count", left=_dig(manifest_summary, ["r3_runtime_instrumentation_plan", "action_contract_count"]), right_ref="r3_runtime_instrumentation_plan:action_contract_count", right=data["r3_runtime_instrumentation_plan"].get("action_contract_count"))
     check_error(group="manifest", name="manifest_r3_instrumentation_required_runtime_event_count", left_ref="MANIFEST:r3_runtime_instrumentation_plan.required_runtime_event_count", left=_dig(manifest_summary, ["r3_runtime_instrumentation_plan", "required_runtime_event_count"]), right_ref="r3_runtime_instrumentation_plan:required_runtime_event_count", right=data["r3_runtime_instrumentation_plan"].get("required_runtime_event_count"))
     check_error(group="manifest", name="manifest_r3_instrumentation_template_count", left_ref="MANIFEST:r3_runtime_instrumentation_plan.event_template_count", left=_dig(manifest_summary, ["r3_runtime_instrumentation_plan", "event_template_count"]), right_ref="r3_runtime_instrumentation_plan:event_template_count", right=data["r3_runtime_instrumentation_plan"].get("event_template_count"))
+    check_error(group="manifest", name="manifest_r3_contract_validation_ready", left_ref="MANIFEST:r3_runtime_contract_validation.contract_validation_ready", left=_dig(manifest_summary, ["r3_runtime_contract_validation", "contract_validation_ready"]), right_ref="r3_runtime_contract_validation:contract_validation_ready", right=data["r3_runtime_contract_validation"].get("contract_validation_ready"))
+    check_error(group="manifest", name="manifest_r3_contract_validation_check_count", left_ref="MANIFEST:r3_runtime_contract_validation.contract_check_count", left=_dig(manifest_summary, ["r3_runtime_contract_validation", "contract_check_count"]), right_ref="r3_runtime_contract_validation:contract_check_count", right=data["r3_runtime_contract_validation"].get("contract_check_count"))
+    check_error(group="manifest", name="manifest_r3_contract_validation_failure_count", left_ref="MANIFEST:r3_runtime_contract_validation.failure_count", left=_dig(manifest_summary, ["r3_runtime_contract_validation", "failure_count"]), right_ref="r3_runtime_contract_validation:failure_count", right=data["r3_runtime_contract_validation"].get("failure_count"))
 
     # Canonical report agreement.
     for key, report_name in (
@@ -362,6 +367,13 @@ def build_report(repo: Path) -> dict[str, Any]:
     check_error(group="r3_runtime_instrumentation_plan", name="instrumentation_action_contracts_match_matrix_actions", left_ref="r3_runtime_instrumentation_plan:action_contract_count", left=data["r3_runtime_instrumentation_plan"].get("action_contract_count"), right_ref="r3_runtime_capture_matrix:action_target_count", right=data["r3_runtime_capture_matrix"].get("action_target_count"))
     check_error(group="r3_runtime_instrumentation_plan", name="instrumentation_templates_are_pairs", left_ref="r3_runtime_instrumentation_plan:event_template_count", left=data["r3_runtime_instrumentation_plan"].get("event_template_count"), right_ref="action_contract_count*2", right=int(data["r3_runtime_instrumentation_plan"].get("action_contract_count", 0)) * 2)
     check_error(group="r3_runtime_instrumentation_plan", name="instrumentation_not_runtime_evidence", left_ref="r3_runtime_instrumentation_plan:runtime_evidence_approved", left=data["r3_runtime_instrumentation_plan"].get("runtime_evidence_approved"), right_ref="expected", right=False)
+    check_error(group="r3_runtime_contract_validation", name="contract_validation_matches_matrix_slots", left_ref="r3_runtime_contract_validation:capture_slot_count", left=data["r3_runtime_contract_validation"].get("capture_slot_count"), right_ref="r3_runtime_capture_matrix:capture_slot_count", right=data["r3_runtime_capture_matrix"].get("capture_slot_count"))
+    check_error(group="r3_runtime_contract_validation", name="contract_validation_matches_instrumentation_contracts", left_ref="r3_runtime_contract_validation:action_contract_count", left=data["r3_runtime_contract_validation"].get("action_contract_count"), right_ref="r3_runtime_instrumentation_plan:action_contract_count", right=data["r3_runtime_instrumentation_plan"].get("action_contract_count"))
+    check_error(group="r3_runtime_contract_validation", name="contract_validation_matches_required_events", left_ref="r3_runtime_contract_validation:required_runtime_event_count", left=data["r3_runtime_contract_validation"].get("required_runtime_event_count"), right_ref="r3_runtime_instrumentation_plan:required_runtime_event_count", right=data["r3_runtime_instrumentation_plan"].get("required_runtime_event_count"))
+    check_error(group="r3_runtime_contract_validation", name="contract_validation_matches_mandatory_fields", left_ref="r3_runtime_contract_validation:mandatory_field_count", left=data["r3_runtime_contract_validation"].get("mandatory_field_count"), right_ref="r3_runtime_instrumentation_plan:mandatory_field_count", right=data["r3_runtime_instrumentation_plan"].get("mandatory_field_count"))
+    check_error(group="r3_runtime_contract_validation", name="contract_validation_negative_controls_match_guard", left_ref="r3_runtime_contract_validation:negative_control_detected_count", left=data["r3_runtime_contract_validation"].get("negative_control_detected_count"), right_ref="r3_runtime_evidence_guard:negative_control_detected_count", right=data["r3_runtime_evidence_guard"].get("negative_control_detected_count"))
+    check_error(group="r3_runtime_contract_validation", name="contract_validation_failure_count_zero", left_ref="r3_runtime_contract_validation:failure_count", left=data["r3_runtime_contract_validation"].get("failure_count"), right_ref="expected", right=0)
+    check_error(group="r3_runtime_contract_validation", name="contract_validation_not_runtime_evidence", left_ref="r3_runtime_contract_validation:runtime_evidence_approved", left=data["r3_runtime_contract_validation"].get("runtime_evidence_approved"), right_ref="expected", right=False)
 
     # Maturity aggregate math.
     maturity_summary = data["maturity"].get("summary", {})
@@ -377,7 +389,7 @@ def build_report(repo: Path) -> dict[str, Any]:
     artifact_ids = [str(item.get("id")) for item in artifacts if isinstance(item, dict)]
     check_error(group="attestation", name="artifact_count_matches_list", left_ref="attestation:artifact_count", left=data["attestation"].get("artifact_count"), right_ref="len(attestation.artifacts)", right=len(artifacts))
     check_error(group="attestation", name="failure_count_zero", left_ref="attestation:failure_count", left=data["attestation"].get("failure_count"), right_ref="expected", right=0)
-    for required_id in ("schema_contract_validation", "causal_chronology", "tension_decision_calibration", "decision_trace_index", "heuristic_influence_map", "entity_no_tick_matrix", "suppression_ledger", "sovereign_robustness_gate", "r3_migration_plan", "authority_migration_ledger", "r3_authority_projection_summary", "r3_authority_projection_events", "r3_authority_projection_entities", "r3_authority_projection_replay", "r3_authority_projection_policy", "r3_authority_projection_no_tick", "r3_cutover_gate", "r3_runtime_capture_matrix", "r3_runtime_evidence_guard", "r3_runtime_instrumentation_plan", "adversarial_validation", "entity_heuristic_maturity"):
+    for required_id in ("schema_contract_validation", "causal_chronology", "tension_decision_calibration", "decision_trace_index", "heuristic_influence_map", "entity_no_tick_matrix", "suppression_ledger", "sovereign_robustness_gate", "r3_migration_plan", "authority_migration_ledger", "r3_authority_projection_summary", "r3_authority_projection_events", "r3_authority_projection_entities", "r3_authority_projection_replay", "r3_authority_projection_policy", "r3_authority_projection_no_tick", "r3_cutover_gate", "r3_runtime_capture_matrix", "r3_runtime_evidence_guard", "r3_runtime_instrumentation_plan", "r3_runtime_contract_validation", "adversarial_validation", "entity_heuristic_maturity"):
         check_error(group="attestation", name=f"attestation_contains_{required_id}", left_ref="attestation:artifact_ids", left=required_id in artifact_ids, right_ref="expected", right=True)
     check_error(group="audit", name="audit_score_ready", left_ref="audit:score.classification", left=_dig(data["audit"], ["score", "classification"]), right_ref="expected", right="SOVEREIGN_READY")
     check_error(group="audit", name="audit_attestation_hash_matches", left_ref="audit:evidence_attestation.evidence_hash", left=_dig(data["audit"], ["evidence_attestation", "evidence_hash"]), right_ref="attestation:evidence_hash", right=data["attestation"].get("evidence_hash"))
@@ -397,6 +409,7 @@ def build_report(repo: Path) -> dict[str, Any]:
     check_error(group="audit", name="audit_r3_runtime_capture_matrix_matches", left_ref="audit:r3_runtime_capture_matrix.classification", left=_dig(data["audit"], ["r3_runtime_capture_matrix", "classification"]), right_ref="r3_runtime_capture_matrix:classification", right=data["r3_runtime_capture_matrix"].get("classification"))
     check_error(group="audit", name="audit_r3_runtime_evidence_guard_matches", left_ref="audit:r3_runtime_evidence_guard.classification", left=_dig(data["audit"], ["r3_runtime_evidence_guard", "classification"]), right_ref="r3_runtime_evidence_guard:classification", right=data["r3_runtime_evidence_guard"].get("classification"))
     check_error(group="audit", name="audit_r3_runtime_instrumentation_plan_matches", left_ref="audit:r3_runtime_instrumentation_plan.classification", left=_dig(data["audit"], ["r3_runtime_instrumentation_plan", "classification"]), right_ref="r3_runtime_instrumentation_plan:classification", right=data["r3_runtime_instrumentation_plan"].get("classification"))
+    check_error(group="audit", name="audit_r3_runtime_contract_validation_matches", left_ref="audit:r3_runtime_contract_validation.classification", left=_dig(data["audit"], ["r3_runtime_contract_validation", "classification"]), right_ref="r3_runtime_contract_validation:classification", right=data["r3_runtime_contract_validation"].get("classification"))
 
     manifest_files = data["manifest"].get("files", []) if isinstance(data["manifest"], dict) else []
     duplicate_files = sorted({item for item in manifest_files if manifest_files.count(item) > 1})
@@ -477,6 +490,9 @@ def build_report(repo: Path) -> dict[str, Any]:
             "r3_runtime_instrumentation_action_contract_count": data["r3_runtime_instrumentation_plan"].get("action_contract_count"),
             "r3_runtime_instrumentation_required_event_count": data["r3_runtime_instrumentation_plan"].get("required_runtime_event_count"),
             "r3_runtime_instrumentation_template_count": data["r3_runtime_instrumentation_plan"].get("event_template_count"),
+            "r3_runtime_contract_validation_ready": data["r3_runtime_contract_validation"].get("contract_validation_ready"),
+            "r3_runtime_contract_validation_check_count": data["r3_runtime_contract_validation"].get("contract_check_count"),
+            "r3_runtime_contract_validation_failure_count": data["r3_runtime_contract_validation"].get("failure_count"),
             "attestation_artifact_count": data["attestation"].get("artifact_count"),
             "audit_score": _dig(data["audit"], ["score", "total"]),
         },

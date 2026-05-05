@@ -66,6 +66,7 @@ Gustavo de Aguiar Martins. PNVA-Core: A Post-Temporal Causal Architecture for St
 - docs/PNVA_R3_RUNTIME_CAPTURE_MATRIX.md
 - docs/PNVA_R3_RUNTIME_EVIDENCE_GUARD.md
 - docs/PNVA_R3_RUNTIME_INSTRUMENTATION_PLAN.md
+- docs/PNVA_R3_RUNTIME_CONTRACT_VALIDATION.md
 - docs/PNVA_SOVEREIGN_EVIDENCE_ATTESTATION.md
 - docs/PNVA_ADVERSARIAL_VALIDATION.md
 - docs/PNVA_ENTITY_HEURISTIC_MATURITY.md
@@ -101,6 +102,7 @@ Gustavo de Aguiar Martins. PNVA-Core: A Post-Temporal Causal Architecture for St
 - tools/pnva_r3_runtime_capture_matrix.py
 - tools/pnva_r3_runtime_evidence_guard.py
 - tools/pnva_r3_runtime_instrumentation_plan.py
+- tools/pnva_r3_runtime_contract_validator.py
 - tools/pnva_evidence_attestor.py
 - tools/pnva_adversarial_validator.py
 - tools/pnva_entity_heuristic_maturity.py
@@ -143,6 +145,7 @@ Gustavo de Aguiar Martins. PNVA-Core: A Post-Temporal Causal Architecture for St
 - reports/pnva-r3-runtime-capture-matrix-2026-05-05.json
 - reports/pnva-r3-runtime-evidence-guard-2026-05-05.json
 - reports/pnva-r3-runtime-instrumentation-plan-2026-05-05.json
+- reports/pnva-r3-runtime-contract-validation-2026-05-05.json
 - reports/pnva-sovereign-evidence-attestation-2026-05-05.json
 - reports/pnva-adversarial-validation-2026-05-05.json
 - reports/pnva-entity-heuristic-maturity-2026-05-05.json
@@ -197,15 +200,17 @@ The R3 runtime evidence guard protects the intake boundary for future runtime lo
 
 The R3 runtime instrumentation plan converts the 35 pending capture slots into concrete native emitter contracts. The current public classification is R3_RUNTIME_INSTRUMENTATION_PLAN_READY, with 3 action contracts, 6 event templates, 70 required runtime events, 21 mandatory event fields, one target entity, required R3 slot identity, required native proof/source markers and no final runtime approval claim.
 
+The R3 runtime contract validator checks that the capture matrix, evidence guard and instrumentation plan agree before final capture. The current public classification is R3_RUNTIME_CONTRACT_VALIDATED_READY, with 100 contract checks, zero failures, 35 slots, 3 action contracts, 70 required runtime events and no final runtime approval claim.
+
 The adversarial validator runs negative controls against proof, policy, graph, proof-chain and JSON parsing validators. The current public classification is ADVERSARIAL_VALIDATION_PASS.
 
 The entity and heuristic maturity auditor scores actor/rule readiness across entity coverage, authority, proof coverage, no-tick suppression and causal relations. The current public classification is ENTITY_HEURISTIC_MATURITY_READY_WITH_LEGACY_WARNINGS.
 
-The semantic consistency guard checks cross-report agreement across Manifest, replay, no-tick, policy, proof-chain, graph, schema contract, causal chronology, tension-decision calibration, decision trace index, heuristic influence map, entity no-tick matrix, suppression ledger, robustness gate, R3 migration plan, authority migration ledger, R3 authority projection, R3 cutover gate, R3 runtime capture matrix, R3 runtime evidence guard, R3 runtime instrumentation plan, maturity, adversarial validation, attestation and audit. The current public classification is SEMANTIC_CONSISTENCY_READY with 274 checks and zero errors/warnings.
+The semantic consistency guard checks cross-report agreement across Manifest, replay, no-tick, policy, proof-chain, graph, schema contract, causal chronology, tension-decision calibration, decision trace index, heuristic influence map, entity no-tick matrix, suppression ledger, robustness gate, R3 migration plan, authority migration ledger, R3 authority projection, R3 cutover gate, R3 runtime capture matrix, R3 runtime evidence guard, R3 runtime instrumentation plan, R3 runtime contract validation, maturity, adversarial validation, attestation and audit. The current public classification is SEMANTIC_CONSISTENCY_READY with 288 checks and zero errors/warnings.
 
-The reproducibility guard reruns the public evidence commands and compares stable fields against the published reports. The current public classification is REPRODUCIBILITY_READY with 33 commands, 346 stable-field comparisons and zero failures.
+The reproducibility guard reruns the public evidence commands and compares stable fields against the published reports. The current public classification is REPRODUCIBILITY_READY with 34 commands, 365 stable-field comparisons and zero failures.
 
-The sovereign evidence attestor aggregates the public evidence package into one hashable attestation. The current classification is PNVA_SOVEREIGN_EVIDENCE_ATTESTED with 39 tracked artifacts.
+The sovereign evidence attestor aggregates the public evidence package into one hashable attestation. The current classification is PNVA_SOVEREIGN_EVIDENCE_ATTESTED with 40 tracked artifacts.
 
 ## Boundaries
 

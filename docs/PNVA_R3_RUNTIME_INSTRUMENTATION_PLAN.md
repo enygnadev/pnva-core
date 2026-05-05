@@ -115,6 +115,25 @@ source.format
 
 The cutover phase must not run before the runtime evidence guard accepts the fresh sample.
 
+## Contract Validation
+
+The instrumentation plan is validated by:
+
+```text
+docs/PNVA_R3_RUNTIME_CONTRACT_VALIDATION.md
+reports/pnva-r3-runtime-contract-validation-2026-05-05.json
+```
+
+Current result:
+
+```text
+R3_RUNTIME_CONTRACT_VALIDATED_READY
+100 contract checks
+0 failures
+```
+
+This proves the matrix, evidence guard and instrumentation templates agree before final runtime capture begins.
+
 ## Validation Commands
 
 ```bash

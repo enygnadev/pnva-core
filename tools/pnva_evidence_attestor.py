@@ -208,6 +208,13 @@ EXPECTED_ARTIFACTS = [
         "required": True,
     },
     {
+        "id": "r3_runtime_contract_validation",
+        "path": "reports/pnva-r3-runtime-contract-validation-2026-05-05.json",
+        "kind": "json_classification",
+        "expected": "R3_RUNTIME_CONTRACT_VALIDATED_READY",
+        "required": True,
+    },
+    {
         "id": "native_emitter",
         "path": "reports/pnva-native-emitter-summary-2026-05-05.json",
         "kind": "json_classification",
@@ -423,6 +430,7 @@ def build_attestation(repo: Path) -> dict[str, Any]:
             "R3 runtime capture matrix",
             "R3 runtime evidence guard",
             "R3 runtime instrumentation plan",
+            "R3 runtime contract validation",
             "adversarial negative controls",
             "entity and heuristic maturity",
             "sovereign audit consumes this attestation without being part of its hash seed",
@@ -453,6 +461,7 @@ def build_attestation(repo: Path) -> dict[str, Any]:
             "Run R3 runtime capture matrix before attestation so every pending runtime replacement has an entity/action/no-tick acceptance slot.",
             "Run R3 runtime evidence guard before attestation so projected or weak runtime evidence is rejected before cutover.",
             "Run R3 runtime instrumentation plan before attestation so each remaining slot has an emitter contract and validation command.",
+            "Run R3 runtime contract validation before attestation so matrix, guard and instrumentation cannot drift apart.",
         ],
     }
 

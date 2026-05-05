@@ -1,7 +1,7 @@
 {
   "author": "Gustavo de Aguiar Martins",
   "classification": "REPRODUCIBILITY_READY",
-  "command_count": 33,
+  "command_count": 34,
   "command_failure_count": 0,
   "command_failures": [],
   "commands": {
@@ -180,6 +180,13 @@
       "parse_error": "",
       "pass": true
     },
+    "r3_runtime_contract_validation": {
+      "classification": "R3_RUNTIME_CONTRACT_VALIDATED_READY",
+      "command": "tools/pnva_r3_runtime_contract_validator.py --write <TEMP>/r3-runtime-contract-validation.json",
+      "exit_code": 0,
+      "parse_error": "",
+      "pass": true
+    },
     "r3_runtime_evidence_guard": {
       "classification": "R3_RUNTIME_EVIDENCE_GUARD_READY_AWAITING_CAPTURE",
       "command": "tools/pnva_r3_runtime_evidence_guard.py --write <TEMP>/r3-runtime-evidence-guard.json",
@@ -237,7 +244,7 @@
       "pass": true
     }
   },
-  "comparison_count": 346,
+  "comparison_count": 365,
   "comparison_failure_count": 0,
   "comparison_failures": [],
   "comparisons": [
@@ -2470,6 +2477,139 @@
     {
       "field": "classification",
       "pass": true,
+      "published": "R3_RUNTIME_CONTRACT_VALIDATED_READY",
+      "report": "r3_runtime_contract_validation",
+      "reproduced": "R3_RUNTIME_CONTRACT_VALIDATED_READY"
+    },
+    {
+      "field": "pass",
+      "pass": true,
+      "published": true,
+      "report": "r3_runtime_contract_validation",
+      "reproduced": true
+    },
+    {
+      "field": "contract_validation_ready",
+      "pass": true,
+      "published": true,
+      "report": "r3_runtime_contract_validation",
+      "reproduced": true
+    },
+    {
+      "field": "runtime_evidence_present",
+      "pass": true,
+      "published": false,
+      "report": "r3_runtime_contract_validation",
+      "reproduced": false
+    },
+    {
+      "field": "runtime_evidence_approved",
+      "pass": true,
+      "published": false,
+      "report": "r3_runtime_contract_validation",
+      "reproduced": false
+    },
+    {
+      "field": "source_matrix_classification",
+      "pass": true,
+      "published": "R3_RUNTIME_CAPTURE_MATRIX_READY_PENDING_RUNTIME",
+      "report": "r3_runtime_contract_validation",
+      "reproduced": "R3_RUNTIME_CAPTURE_MATRIX_READY_PENDING_RUNTIME"
+    },
+    {
+      "field": "source_guard_classification",
+      "pass": true,
+      "published": "R3_RUNTIME_EVIDENCE_GUARD_READY_AWAITING_CAPTURE",
+      "report": "r3_runtime_contract_validation",
+      "reproduced": "R3_RUNTIME_EVIDENCE_GUARD_READY_AWAITING_CAPTURE"
+    },
+    {
+      "field": "source_plan_classification",
+      "pass": true,
+      "published": "R3_RUNTIME_INSTRUMENTATION_PLAN_READY",
+      "report": "r3_runtime_contract_validation",
+      "reproduced": "R3_RUNTIME_INSTRUMENTATION_PLAN_READY"
+    },
+    {
+      "field": "capture_slot_count",
+      "pass": true,
+      "published": 35,
+      "report": "r3_runtime_contract_validation",
+      "reproduced": 35
+    },
+    {
+      "field": "action_contract_count",
+      "pass": true,
+      "published": 3,
+      "report": "r3_runtime_contract_validation",
+      "reproduced": 3
+    },
+    {
+      "field": "required_runtime_event_count",
+      "pass": true,
+      "published": 70,
+      "report": "r3_runtime_contract_validation",
+      "reproduced": 70
+    },
+    {
+      "field": "event_template_count",
+      "pass": true,
+      "published": 6,
+      "report": "r3_runtime_contract_validation",
+      "reproduced": 6
+    },
+    {
+      "field": "mandatory_field_count",
+      "pass": true,
+      "published": 21,
+      "report": "r3_runtime_contract_validation",
+      "reproduced": 21
+    },
+    {
+      "field": "required_component_count",
+      "pass": true,
+      "published": 2,
+      "report": "r3_runtime_contract_validation",
+      "reproduced": 2
+    },
+    {
+      "field": "enforced_control_count",
+      "pass": true,
+      "published": 12,
+      "report": "r3_runtime_contract_validation",
+      "reproduced": 12
+    },
+    {
+      "field": "negative_control_count",
+      "pass": true,
+      "published": 10,
+      "report": "r3_runtime_contract_validation",
+      "reproduced": 10
+    },
+    {
+      "field": "negative_control_detected_count",
+      "pass": true,
+      "published": 10,
+      "report": "r3_runtime_contract_validation",
+      "reproduced": 10
+    },
+    {
+      "field": "contract_check_count",
+      "pass": true,
+      "published": 100,
+      "report": "r3_runtime_contract_validation",
+      "reproduced": 100
+    },
+    {
+      "field": "failure_count",
+      "pass": true,
+      "published": 0,
+      "report": "r3_runtime_contract_validation",
+      "reproduced": 0
+    },
+    {
+      "field": "classification",
+      "pass": true,
       "published": "ADVERSARIAL_VALIDATION_PASS",
       "report": "adversarial",
       "reproduced": "ADVERSARIAL_VALIDATION_PASS"
@@ -2596,9 +2736,9 @@
     {
       "field": "artifact_count",
       "pass": true,
-      "published": 39,
+      "published": 40,
       "report": "attestation",
-      "reproduced": 39
+      "reproduced": 40
     },
     {
       "field": "failure_count",
@@ -2610,9 +2750,9 @@
     {
       "field": "evidence_hash",
       "pass": true,
-      "published": "sha256:db31c5a7a1d133de5efee6850e90bb863689a1871f1747f21a6a34d5e0a3b3a4",
+      "published": "sha256:d74b58f79840fe3b09d448b87c75daa3326b42bce24f1318aff483f6e1e5d1ee",
       "report": "attestation",
-      "reproduced": "sha256:db31c5a7a1d133de5efee6850e90bb863689a1871f1747f21a6a34d5e0a3b3a4"
+      "reproduced": "sha256:d74b58f79840fe3b09d448b87c75daa3326b42bce24f1318aff483f6e1e5d1ee"
     },
     {
       "field": "classification",
@@ -2631,9 +2771,9 @@
     {
       "field": "check_count",
       "pass": true,
-      "published": 274,
+      "published": 288,
       "report": "semantic",
-      "reproduced": 274
+      "reproduced": 288
     },
     {
       "field": "error_count",
@@ -2665,7 +2805,7 @@
     }
   ],
   "failure_count": 0,
-  "generated_at": "2026-05-05T10:13:34Z",
+  "generated_at": "2026-05-05T10:27:35Z",
   "interpretation": {
     "boundary": "Generated timestamps, temporary paths and non-semantic ordering are intentionally excluded from comparison.",
     "purpose": "Regenerate PNVA evidence reports with current tools and compare stable fields against the published evidence package.",
@@ -2680,7 +2820,7 @@
   ],
   "schema_version": "pnva.reproducibility_guard.v1",
   "summary": {
-    "published_attestation_hash": "sha256:db31c5a7a1d133de5efee6850e90bb863689a1871f1747f21a6a34d5e0a3b3a4",
+    "published_attestation_hash": "sha256:d74b58f79840fe3b09d448b87c75daa3326b42bce24f1318aff483f6e1e5d1ee",
     "reports_reproduced": [
       "adversarial",
       "attestation",
@@ -2707,6 +2847,7 @@
       "r3_cutover_gate",
       "r3_migration_plan",
       "r3_runtime_capture_matrix",
+      "r3_runtime_contract_validation",
       "r3_runtime_evidence_guard",
       "r3_runtime_instrumentation_plan",
       "replay",
@@ -2716,7 +2857,7 @@
       "suppression_ledger",
       "tension_decision"
     ],
-    "reproduced_attestation_hash": "sha256:db31c5a7a1d133de5efee6850e90bb863689a1871f1747f21a6a34d5e0a3b3a4",
-    "stable_fields_compared": 346
+    "reproduced_attestation_hash": "sha256:d74b58f79840fe3b09d448b87c75daa3326b42bce24f1318aff483f6e1e5d1ee",
+    "stable_fields_compared": 365
   }
 }

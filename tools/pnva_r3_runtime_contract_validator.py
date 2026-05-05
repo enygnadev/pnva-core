@@ -1,0 +1,258 @@
+#!/usr/bin/env python3
+from __future__ import annotations
+
+import argparse
+import json
+import time
+from pathlib import Path
+from typing import Any
+
+
+AUTHOR = "Gustavo de Aguiar Martins"
+PROJECT = "PNVA-Core"
+
+R3_RUNTIME_CAPTURE_MATRIX = "reports/pnva-r3-runtime-capture-matrix-2026-05-05.json"
+R3_RUNTIME_EVIDENCE_GUARD = "reports/pnva-r3-runtime-evidence-guard-2026-05-05.json"
+R3_RUNTIME_INSTRUMENTATION_PLAN = "reports/pnva-r3-runtime-instrumentation-plan-2026-05-05.json"
+
+REQUIRED_MANDATORY_FIELDS = [
+    "schema_version",
+    "event_id",
+    "timestamp",
+    "entity_id",
+    "entity_type",
+    "causal_chain_id",
+    "event_type",
+    "decision.kind",
+    "decision.action",
+    "decision.reason",
+    "heuristics.rules",
+    "tension.score",
+    "tension.threshold",
+    "tension.components.original_event_id",
+    "tension.components.r3_runtime_slot_id",
+    "proof.valid",
+    "proof.projection",
+    "proof.native",
+    "proof.proof_hash",
+    "proof.proof_ref",
+    "source.format",
+]
+
+REQUIRED_COMPONENTS = [
+    "tension.components.original_event_id",
+    "tension.components.r3_runtime_slot_id",
+]
+
+REQUIRED_ENFORCED_CONTROLS = {
+    "schema_version_required": "pnva.event.v1",
+    "entity_id_required": True,
+    "causal_chain_id_required": True,
+    "proof_hash_required": True,
+    "proof_native_required": True,
+    "proof_projection_forbidden": True,
+    "source_format_required": "native_pnva_event_v1",
+    "r3_runtime_slot_id_required": True,
+    "commit_min_authority": "H2",
+    "precheck_must_be_no_tick": True,
+    "commit_must_match_slot_action": True,
+    "target_rules_required_on_commit": True,
+}
+
+
+def _read_json(path: Path) -> Any:
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def _dig(data: Any, path: list[str], default: Any = None) -> Any:
+    current = data
+    for key in path:
+        if not isinstance(current, dict):
+            return default
+        current = current.get(key)
+    return current if current is not None else default
+
+
+def _slot_rows(matrix: dict[str, Any]) -> list[dict[str, Any]]:
+    rows = matrix.get("capture_slots")
+    return [row for row in rows if isinstance(row, dict)] if isinstance(rows, list) else []
+
+
+def _failures(checks: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    return [item for item in checks if not item["pass"]]
+
+
+def _add_check(checks: list[dict[str, Any]], group: str, name: str, left: Any, right: Any, *, left_ref: str = "", right_ref: str = "expected") -> None:
+    checks.append(
+        {
+            "group": group,
+            "name": name,
+            "pass": left == right,
+            "left": left,
+            "right": right,
+            "left_ref": left_ref or name,
+            "right_ref": right_ref,
+        }
+    )
+
+
+def _template_checks(checks: list[dict[str, Any]], contract: dict[str, Any]) -> None:
+    contract_id = str(contract.get("contract_id") or "unknown_contract")
+    action = str(contract.get("decision_action") or "")
+    slot_count = int(contract.get("slot_count", 0))
+    precheck = contract.get("precheck_template") if isinstance(contract.get("precheck_template"), dict) else {}
+    commit = contract.get("commit_template") if isinstance(contract.get("commit_template"), dict) else {}
+    slot_ids = contract.get("slot_ids") if isinstance(contract.get("slot_ids"), list) else []
+    original_ids = contract.get("original_event_ids") if isinstance(contract.get("original_event_ids"), list) else []
+
+    _add_check(checks, "contract", f"{contract_id}_precheck_count", int(contract.get("required_precheck_count", 0)), slot_count)
+    _add_check(checks, "contract", f"{contract_id}_commit_count", int(contract.get("required_commit_count", 0)), slot_count)
+    _add_check(checks, "contract", f"{contract_id}_runtime_event_count", int(contract.get("required_runtime_event_count", 0)), slot_count * 2)
+    _add_check(checks, "contract", f"{contract_id}_slot_ids_count", len(slot_ids), slot_count)
+    _add_check(checks, "contract", f"{contract_id}_original_ids_count", len(original_ids), slot_count)
+
+    for template_name, template in (("precheck", precheck), ("commit", commit)):
+        _add_check(checks, "template", f"{contract_id}_{template_name}_schema", template.get("schema_version"), "pnva.event.v1")
+        _add_check(checks, "template", f"{contract_id}_{template_name}_proof_projection", _dig(template, ["proof", "projection"]), False)
+        _add_check(checks, "template", f"{contract_id}_{template_name}_proof_native", _dig(template, ["proof", "native"]), True)
+        _add_check(checks, "template", f"{contract_id}_{template_name}_proof_valid", _dig(template, ["proof", "valid"]), True)
+        _add_check(checks, "template", f"{contract_id}_{template_name}_source_format", _dig(template, ["source", "format"]), "native_pnva_event_v1")
+        _add_check(checks, "template", f"{contract_id}_{template_name}_components", sorted(template.get("required_components", [])), sorted(REQUIRED_COMPONENTS))
+
+    _add_check(checks, "template", f"{contract_id}_precheck_kind", _dig(precheck, ["decision", "kind"]), "observe")
+    _add_check(checks, "template", f"{contract_id}_precheck_action", _dig(precheck, ["decision", "action"]), "NO_ACTION")
+    _add_check(checks, "template", f"{contract_id}_commit_action", _dig(commit, ["decision", "action"]), action)
+    _add_check(checks, "template", f"{contract_id}_commit_min_authority", commit.get("min_authority"), "H2")
+    _add_check(checks, "template", f"{contract_id}_precheck_native_rule", "native_event_emitter" in set(precheck.get("required_rules", [])), True)
+    _add_check(checks, "template", f"{contract_id}_commit_rules_nonempty", bool(commit.get("required_rules")), True)
+
+
+def build_report(repo: Path) -> dict[str, Any]:
+    repo = repo.resolve()
+    matrix = _read_json(repo / R3_RUNTIME_CAPTURE_MATRIX)
+    guard = _read_json(repo / R3_RUNTIME_EVIDENCE_GUARD)
+    plan = _read_json(repo / R3_RUNTIME_INSTRUMENTATION_PLAN)
+    slots = _slot_rows(matrix)
+    contracts = plan.get("action_contracts") if isinstance(plan.get("action_contracts"), list) else []
+    checks: list[dict[str, Any]] = []
+
+    _add_check(checks, "source", "matrix_classification", matrix.get("classification"), "R3_RUNTIME_CAPTURE_MATRIX_READY_PENDING_RUNTIME")
+    _add_check(checks, "source", "guard_classification", guard.get("classification"), "R3_RUNTIME_EVIDENCE_GUARD_READY_AWAITING_CAPTURE")
+    _add_check(checks, "source", "plan_classification", plan.get("classification"), "R3_RUNTIME_INSTRUMENTATION_PLAN_READY")
+    _add_check(checks, "boundary", "guard_not_runtime_approved", guard.get("runtime_evidence_approved"), False)
+    _add_check(checks, "boundary", "plan_not_runtime_approved", plan.get("runtime_evidence_approved"), False)
+    _add_check(checks, "counts", "capture_slot_count_matches_matrix", int(plan.get("capture_slot_count", 0)), int(matrix.get("capture_slot_count", 0)))
+    _add_check(checks, "counts", "capture_slots_match_rows", int(matrix.get("capture_slot_count", 0)), len(slots))
+    _add_check(checks, "counts", "required_runtime_events_match", int(plan.get("required_runtime_event_count", 0)), int(matrix.get("required_runtime_event_count", 0)))
+    _add_check(checks, "counts", "runtime_events_are_pairs", int(plan.get("required_runtime_event_count", 0)), int(plan.get("capture_slot_count", 0)) * 2)
+    _add_check(checks, "counts", "event_templates_are_pairs", int(plan.get("event_template_count", 0)), int(plan.get("action_contract_count", 0)) * 2)
+    _add_check(checks, "controls", "negative_controls_complete", int(guard.get("negative_control_detected_count", 0)), int(guard.get("negative_control_count", -1)))
+    _add_check(checks, "controls", "negative_controls_strong_enough", int(guard.get("negative_control_count", 0)) >= 10, True)
+    _add_check(checks, "fields", "mandatory_field_count", int(plan.get("mandatory_field_count", 0)), len(REQUIRED_MANDATORY_FIELDS))
+    _add_check(checks, "fields", "mandatory_fields_complete", sorted(plan.get("mandatory_event_fields", [])), sorted(REQUIRED_MANDATORY_FIELDS))
+
+    enforced_controls = guard.get("enforced_controls") if isinstance(guard.get("enforced_controls"), dict) else {}
+    for key, expected in REQUIRED_ENFORCED_CONTROLS.items():
+        _add_check(checks, "enforced_controls", f"enforced_{key}", enforced_controls.get(key), expected)
+
+    contract_slot_sum = 0
+    contract_runtime_sum = 0
+    contract_original_ids: set[str] = set()
+    contract_slot_ids: set[str] = set()
+    for contract in contracts:
+        if not isinstance(contract, dict):
+            continue
+        contract_slot_sum += int(contract.get("slot_count", 0))
+        contract_runtime_sum += int(contract.get("required_runtime_event_count", 0))
+        contract_original_ids.update(str(item) for item in contract.get("original_event_ids", []) if str(item))
+        contract_slot_ids.update(str(item) for item in contract.get("slot_ids", []) if str(item))
+        _template_checks(checks, contract)
+
+    matrix_original_ids = {str(slot.get("original_event_id") or "") for slot in slots if slot.get("original_event_id")}
+    matrix_slot_ids = {str(slot.get("slot_id") or "") for slot in slots if slot.get("slot_id")}
+    _add_check(checks, "contract", "contract_count", len(contracts), int(plan.get("action_contract_count", 0)))
+    _add_check(checks, "contract", "contract_slot_sum", contract_slot_sum, len(slots))
+    _add_check(checks, "contract", "contract_runtime_event_sum", contract_runtime_sum, int(plan.get("required_runtime_event_count", 0)))
+    _add_check(checks, "contract", "contract_original_ids_cover_matrix", sorted(contract_original_ids), sorted(matrix_original_ids))
+    _add_check(checks, "contract", "contract_slot_ids_cover_matrix", sorted(contract_slot_ids), sorted(matrix_slot_ids))
+
+    failures = _failures(checks)
+    ready = not failures
+    classification = "R3_RUNTIME_CONTRACT_VALIDATED_READY" if ready else "R3_RUNTIME_CONTRACT_VALIDATION_FAIL"
+
+    return {
+        "schema_version": "pnva.r3_runtime_contract_validation.v1",
+        "generated_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+        "author": AUTHOR,
+        "project": PROJECT,
+        "classification": classification,
+        "pass": ready,
+        "contract_validation_ready": ready,
+        "runtime_evidence_present": False,
+        "runtime_evidence_approved": False,
+        "source_matrix_classification": matrix.get("classification"),
+        "source_guard_classification": guard.get("classification"),
+        "source_plan_classification": plan.get("classification"),
+        "capture_slot_count": len(slots),
+        "action_contract_count": len(contracts),
+        "required_runtime_event_count": int(plan.get("required_runtime_event_count", 0)),
+        "event_template_count": int(plan.get("event_template_count", 0)),
+        "mandatory_field_count": int(plan.get("mandatory_field_count", 0)),
+        "required_component_count": len(REQUIRED_COMPONENTS),
+        "enforced_control_count": len(REQUIRED_ENFORCED_CONTROLS),
+        "negative_control_count": int(guard.get("negative_control_count", 0)),
+        "negative_control_detected_count": int(guard.get("negative_control_detected_count", 0)),
+        "contract_check_count": len(checks),
+        "failure_count": len(failures),
+        "checks": checks,
+        "failures": failures,
+        "reports_checked": {
+            "r3_runtime_capture_matrix": R3_RUNTIME_CAPTURE_MATRIX,
+            "r3_runtime_evidence_guard": R3_RUNTIME_EVIDENCE_GUARD,
+            "r3_runtime_instrumentation_plan": R3_RUNTIME_INSTRUMENTATION_PLAN,
+        },
+        "summary": {
+            "contract_validation_ready": ready,
+            "capture_slot_count": len(slots),
+            "action_contract_count": len(contracts),
+            "required_runtime_event_count": int(plan.get("required_runtime_event_count", 0)),
+            "mandatory_field_count": int(plan.get("mandatory_field_count", 0)),
+            "negative_control_detected_count": int(guard.get("negative_control_detected_count", 0)),
+            "contract_check_count": len(checks),
+            "failure_count": len(failures),
+        },
+        "interpretation": {
+            "purpose": "Validate that the R3 runtime capture matrix, evidence guard and instrumentation plan form one coherent runtime contract.",
+            "sovereignty": "The final runtime path becomes harder to mislabel because the contract itself is checked before fresh runtime evidence is accepted.",
+            "boundary": "This is a contract validator, not runtime evidence and not final R3 cutover approval.",
+        },
+        "recommendations": [
+            "Run this contract validator after changing any R3 capture, guard or instrumentation logic.",
+            "Do not accept final runtime JSONL unless this contract validation remains ready.",
+            "Keep R3 runtime events slot-bound through tension.components.r3_runtime_slot_id.",
+            "Keep final runtime events native through proof.native=true and source.format=native_pnva_event_v1.",
+        ],
+    }
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description="Validate the PNVA R3 runtime contract before fresh evidence capture.")
+    parser.add_argument("--repo", default=str(Path(__file__).resolve().parents[1]))
+    parser.add_argument("--write", default="")
+    args = parser.parse_args()
+
+    repo = Path(args.repo).resolve()
+    report = build_report(repo)
+    raw = json.dumps(report, indent=2, ensure_ascii=True, sort_keys=True) + "\n"
+    if args.write:
+        out = Path(args.write)
+        if not out.is_absolute():
+            out = repo / out
+        out.parent.mkdir(parents=True, exist_ok=True)
+        out.write_text(raw, encoding="utf-8")
+    print(raw, end="")
+    return 0 if report["pass"] else 1
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
