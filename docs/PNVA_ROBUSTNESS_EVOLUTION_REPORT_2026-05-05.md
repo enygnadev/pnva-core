@@ -38,11 +38,13 @@ docs/PNVA_CANONICAL_EVENT_BRIDGE.md
 docs/PNVA_REPLAY_VALIDATION.md
 docs/PNVA_NO_TICK_INVARIANTS.md
 docs/PNVA_NATIVE_EVENT_EMITTER.md
+docs/PNVA_SOVEREIGN_POLICY_VALIDATION.md
 tools/pnva_sovereign_audit.py
 tools/pnva_canonical_bridge.py
 tools/pnva_replay_validator.py
 tools/pnva_no_tick_invariant_analyzer.py
 tools/pnva_native_event_emitter.py
+tools/pnva_sovereign_policy_validator.py
 reports/pnva-sovereign-audit-2026-05-05.json
 reports/pnva-canonical-events-sample-2026-05-05.jsonl
 reports/pnva-entity-catalog-2026-05-05.json
@@ -54,6 +56,8 @@ reports/pnva-native-entity-catalog-demo-2026-05-05.json
 reports/pnva-native-emitter-summary-2026-05-05.json
 reports/pnva-native-replay-validation-2026-05-05.json
 reports/pnva-native-no-tick-invariants-2026-05-05.json
+reports/pnva-sovereign-policy-2026-05-05.json
+reports/pnva-native-sovereign-policy-2026-05-05.json
 ```
 
 ## Technical Diagnosis
@@ -221,6 +225,34 @@ proof_integrity_ratio: 1.0
 
 This closes the next architecture gap: legacy logs remain useful through the bridge, but new runtimes can now be designed to emit `pnva.event.v1` from birth.
 
+### 8. Sovereign policy validation
+
+The sovereign policy validator checks whether strong decisions have enough heuristic authority.
+
+Current canonical result:
+
+```text
+classification: SOVEREIGN_POLICY_READY_WITH_LEGACY_WARNINGS
+event_count: 512
+strong_decision_count: 299
+low_authority_legacy_count: 35
+errors: 0
+warnings: 35
+```
+
+Current native result:
+
+```text
+classification: SOVEREIGN_POLICY_READY
+event_count: 7
+strong_decision_count: 5
+low_authority_legacy_count: 0
+errors: 0
+warnings: 0
+```
+
+This is intentionally honest. The old sample remains valid but carries legacy warnings. The native emitter is the clean path forward.
+
 ## Next Engineering Recommendations
 
 1. Add schema version to every new JSONL event.
@@ -235,6 +267,7 @@ This closes the next architecture gap: legacy logs remain useful through the bri
 10. Use `tools/pnva_replay_validator.py` to validate every canonical event sample before release.
 11. Use `tools/pnva_no_tick_invariant_analyzer.py` to prove causal suppression, entity coverage and heuristic visibility after replay.
 12. Use `tools/pnva_native_event_emitter.py` as the reference pattern for new runtime emitters.
+13. Use `tools/pnva_sovereign_policy_validator.py` to enforce H2/H3 authority for future strong decisions.
 
 ## Sovereign Rule
 

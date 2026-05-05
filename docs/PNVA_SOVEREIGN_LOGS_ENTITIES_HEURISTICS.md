@@ -291,6 +291,45 @@ Production interpretation:
 
 New PNVA runtimes should not wait for post-processing to become auditable. They should emit canonical events at the moment of observation, collapse, block, proof or suppression.
 
+## 11. Sovereign Policy Validation
+
+The policy layer checks whether the decision had enough authority to act.
+
+Strong decisions:
+
+```text
+collapse
+block
+prove
+reclassify
+```
+
+Required policy for strong decisions:
+
+```text
+valid proof
+entity in catalog
+H2/H3/H4 authority
+```
+
+Legacy exception:
+
+Old converted logs may contain strong decisions with only `legacy_observer`. These are not hidden and not silently promoted. They are preserved as warnings:
+
+```text
+SOVEREIGN_POLICY_READY_WITH_LEGACY_WARNINGS
+```
+
+Native expectation:
+
+New events must be clean:
+
+```text
+SOVEREIGN_POLICY_READY
+```
+
+This creates a migration path: preserve old evidence honestly, but demand stronger authority from every new runtime event.
+
 ## 9. Public Safety
 
 Public repositories should expose:

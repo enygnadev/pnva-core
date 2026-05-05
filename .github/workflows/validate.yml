@@ -60,5 +60,17 @@ jobs:
           python3 -m json.tool /tmp/pnva-native-entities.json >/dev/null
           python3 -m json.tool /tmp/pnva-native-replay.json >/dev/null
           python3 -m json.tool /tmp/pnva-native-invariants.json >/dev/null
+      - name: Run sovereign policy validator
+        run: |
+          python3 tools/pnva_sovereign_policy_validator.py \
+            --events reports/pnva-canonical-events-sample-2026-05-05.jsonl \
+            --entity-catalog reports/pnva-entity-catalog-2026-05-05.json \
+            >/tmp/pnva-sovereign-policy.json
+          python3 tools/pnva_sovereign_policy_validator.py \
+            --events reports/pnva-native-events-demo-2026-05-05.jsonl \
+            --entity-catalog reports/pnva-native-entity-catalog-demo-2026-05-05.json \
+            >/tmp/pnva-native-sovereign-policy.json
+          python3 -m json.tool /tmp/pnva-sovereign-policy.json >/dev/null
+          python3 -m json.tool /tmp/pnva-native-sovereign-policy.json >/dev/null
       - name: Check release checksums
         run: sha256sum -c SHA256SUMS.txt

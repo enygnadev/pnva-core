@@ -131,6 +131,22 @@
       "no_tick_suppression_ratio": 0.5714,
       "guard_consistency_ratio": 1.0,
       "proof_integrity_ratio": 1.0
+    },
+    "sovereign_policy_validation": {
+      "status": "ADDED",
+      "tool": "tools/pnva_sovereign_policy_validator.py",
+      "doc": "docs/PNVA_SOVEREIGN_POLICY_VALIDATION.md",
+      "canonical_report": "reports/pnva-sovereign-policy-2026-05-05.json",
+      "native_report": "reports/pnva-native-sovereign-policy-2026-05-05.json",
+      "canonical_classification": "SOVEREIGN_POLICY_READY_WITH_LEGACY_WARNINGS",
+      "native_classification": "SOVEREIGN_POLICY_READY",
+      "canonical_event_count": 512,
+      "canonical_strong_decision_count": 299,
+      "canonical_low_authority_legacy_count": 35,
+      "native_event_count": 7,
+      "native_strong_decision_count": 5,
+      "native_low_authority_legacy_count": 0,
+      "errors": 0
     }
   },
   "files": [
@@ -165,6 +181,7 @@
     "docs/PNVA_ROBUSTNESS_EVOLUTION_REPORT_2026-05-05.md",
     "docs/PNVA_SOVEREIGNTY_PUBLICATION_SCALE.md",
     "docs/PNVA_SOVEREIGN_LOGS_ENTITIES_HEURISTICS.md",
+    "docs/PNVA_SOVEREIGN_POLICY_VALIDATION.md",
     "docs/PROOF_MATRIX.md",
     "docs/PUBLIC_POSITIONING.md",
     "docs/REPOSITORY_PUBLISHING_CHECKLIST.md",
@@ -196,9 +213,11 @@
     "reports/pnva-native-events-demo-2026-05-05.jsonl",
     "reports/pnva-native-no-tick-invariants-2026-05-05.json",
     "reports/pnva-native-replay-validation-2026-05-05.json",
+    "reports/pnva-native-sovereign-policy-2026-05-05.json",
     "reports/pnva-no-tick-invariants-2026-05-05.json",
     "reports/pnva-replay-validation-2026-05-05.json",
     "reports/pnva-sovereign-audit-2026-05-05.json",
+    "reports/pnva-sovereign-policy-2026-05-05.json",
     "robots.txt",
     "schemas/pnva-entity.schema.json",
     "schemas/pnva-event.schema.json",
@@ -209,6 +228,7 @@
     "tools/pnva_no_tick_invariant_analyzer.py",
     "tools/pnva_replay_validator.py",
     "tools/pnva_sovereign_audit.py",
+    "tools/pnva_sovereign_policy_validator.py",
     "tools/sanitize_proofs.py",
     "veonic-model.html"
   ],
