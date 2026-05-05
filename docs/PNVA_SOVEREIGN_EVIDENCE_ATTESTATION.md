@@ -33,6 +33,7 @@ R3 runtime capture matrix
 R3 runtime evidence guard
 R3 runtime instrumentation plan
 R3 runtime contract validation
+sovereign evolution ledger
 adversarial validation
 entity and heuristic maturity
 sovereign audit
@@ -74,7 +75,7 @@ Current result:
 ```text
 classification: PNVA_SOVEREIGN_EVIDENCE_ATTESTED
 pass: true
-artifact_count: 40
+artifact_count: 41
 failure_count: 0
 ```
 

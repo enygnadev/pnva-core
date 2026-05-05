@@ -44,6 +44,7 @@ R3 runtime capture matrix
 R3 runtime evidence guard
 R3 runtime instrumentation plan
 R3 runtime contract validation
+sovereign evolution ledger
 adversarial validation
 entity and heuristic maturity
 evidence attestation
@@ -69,7 +70,7 @@ SEMANTIC_CONSISTENCY_READY
 Current result:
 
 ```text
-check_count: 288
+check_count: 303
 error_count: 0
 warning_count: 0
 ```
@@ -98,6 +99,7 @@ R3 runtime capture matrix vs Manifest, authority migration ledger, R3 cutover ga
 R3 runtime evidence guard vs Manifest, R3 runtime capture matrix, attestation and audit
 R3 runtime instrumentation plan vs Manifest, R3 runtime capture matrix, R3 runtime evidence guard, attestation and audit
 R3 runtime contract validation vs Manifest, R3 runtime capture matrix, R3 runtime evidence guard, R3 runtime instrumentation plan, attestation and audit
+sovereign evolution ledger vs Manifest, no-tick maturity, R3 runtime capture matrix, R3 runtime contract validation, attestation and audit
 maturity aggregate math vs canonical + native reports
 attestation artifact count vs artifact list
 audit summary vs attestation and maturity report
@@ -124,6 +126,7 @@ R3 runtime capture must keep 35 pending slots explicit and require 70 fresh runt
 R3 runtime evidence guard must keep intake_guard_ready=true, runtime_evidence_approved=false and 10/10 negative controls detected until fresh runtime JSONL is supplied.
 R3 runtime instrumentation must keep 35 capture slots mapped into 3 action contracts, 6 event templates and 70 required runtime events without claiming runtime approval.
 R3 runtime contract validation must keep 100 contract checks, zero failures and no runtime approval claim while matrix, guard and instrumentation remain aligned.
+Sovereign evolution ledger must keep no-tick/log/entity/heuristic evidence ready, 35 pending runtime slots explicit, 70 required runtime events, 100 contract checks and final R3 approval blocked until fresh native runtime JSONL exists.
 ```
 
 ## Attestation Boundary

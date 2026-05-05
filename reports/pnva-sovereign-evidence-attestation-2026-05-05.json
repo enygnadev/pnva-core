@@ -1,5 +1,5 @@
 {
-  "artifact_count": 40,
+  "artifact_count": 41,
   "artifacts": [
     {
       "entry_count": 9,
@@ -385,6 +385,19 @@
       "size_bytes": 39185
     },
     {
+      "classification": "PNVA_SOVEREIGN_EVOLUTION_LEDGER_READY_R3_RUNTIME_REQUIRED",
+      "expected": "PNVA_SOVEREIGN_EVOLUTION_LEDGER_READY_R3_RUNTIME_REQUIRED",
+      "id": "sovereign_evolution_ledger",
+      "kind": "json_classification",
+      "pass": true,
+      "path": "reports/pnva-sovereign-evolution-ledger-2026-05-05.json",
+      "present": true,
+      "reported_pass": true,
+      "required": true,
+      "sha256": "40cafc313f22143db493d8c10356b893c42d7f75cd99201dc1a943cff4b12afd",
+      "size_bytes": 9388
+    },
+    {
       "classification": "NATIVE_EMITTER_READY",
       "expected": "NATIVE_EMITTER_READY",
       "id": "native_emitter",
@@ -540,13 +553,14 @@
     "R3 runtime evidence guard",
     "R3 runtime instrumentation plan",
     "R3 runtime contract validation",
+    "sovereign evolution ledger",
     "adversarial negative controls",
     "entity and heuristic maturity",
     "sovereign audit consumes this attestation without being part of its hash seed"
   ],
-  "evidence_hash": "sha256:d74b58f79840fe3b09d448b87c75daa3326b42bce24f1318aff483f6e1e5d1ee",
+  "evidence_hash": "sha256:cce27e8a5bb3591ff392d7dbc812b9bc43fe82e2b7b2ce57c4bfdf9e5ffb65c8",
   "failure_count": 0,
-  "generated_at": "2026-05-05T10:26:41Z",
+  "generated_at": "2026-05-05T10:51:24Z",
   "interpretation": {
     "boundary": "This attests repository evidence integrity; it is not a universal proof of all possible PNVA deployments.",
     "hash_policy": "The evidence_hash changes when any tracked artifact hash, classification or pass flag changes.",
@@ -575,7 +589,8 @@
     "Run R3 runtime capture matrix before attestation so every pending runtime replacement has an entity/action/no-tick acceptance slot.",
     "Run R3 runtime evidence guard before attestation so projected or weak runtime evidence is rejected before cutover.",
     "Run R3 runtime instrumentation plan before attestation so each remaining slot has an emitter contract and validation command.",
-    "Run R3 runtime contract validation before attestation so matrix, guard and instrumentation cannot drift apart."
+    "Run R3 runtime contract validation before attestation so matrix, guard and instrumentation cannot drift apart.",
+    "Run sovereign evolution ledger before attestation so no-tick, entity, heuristic and R3 runtime debt collapse into one release dashboard."
   ],
   "schema_version": "pnva.evidence_attestation.v1"
 }

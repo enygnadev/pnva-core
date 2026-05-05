@@ -49,6 +49,7 @@ PUBLISHED_REPORTS = {
     "r3_runtime_evidence_guard": "reports/pnva-r3-runtime-evidence-guard-2026-05-05.json",
     "r3_runtime_instrumentation_plan": "reports/pnva-r3-runtime-instrumentation-plan-2026-05-05.json",
     "r3_runtime_contract_validation": "reports/pnva-r3-runtime-contract-validation-2026-05-05.json",
+    "sovereign_evolution_ledger": "reports/pnva-sovereign-evolution-ledger-2026-05-05.json",
     "adversarial": "reports/pnva-adversarial-validation-2026-05-05.json",
     "maturity": "reports/pnva-entity-heuristic-maturity-2026-05-05.json",
     "attestation": "reports/pnva-sovereign-evidence-attestation-2026-05-05.json",
@@ -454,6 +455,34 @@ STABLE_PATHS = {
         ["contract_check_count"],
         ["failure_count"],
     ],
+    "sovereign_evolution_ledger": [
+        ["classification"],
+        ["pass"],
+        ["current_readiness_level"],
+        ["target_readiness_level"],
+        ["evidence_integrity_ready"],
+        ["no_tick_ready"],
+        ["native_clean_path"],
+        ["r3_preparation_ready"],
+        ["r3_runtime_evidence_present"],
+        ["r3_runtime_evidence_approved"],
+        ["r3_cutover_approved"],
+        ["r3_runtime_capture_coverage_percent"],
+        ["runtime_pending_slot_count"],
+        ["runtime_required_event_count"],
+        ["runtime_contract_check_count"],
+        ["runtime_contract_failure_count"],
+        ["legacy_debt_count"],
+        ["low_authority_legacy_count"],
+        ["low_authority_influence_edge_count"],
+        ["above_threshold_suppression_count"],
+        ["controlled_warning_count"],
+        ["maturity_score"],
+        ["robustness_score"],
+        ["sovereign_evolution_score"],
+        ["priority_action_count"],
+        ["blocker_count"],
+    ],
     "adversarial": [
         ["classification"],
         ["pass"],
@@ -608,6 +637,7 @@ def build_report(repo: Path) -> dict[str, Any]:
             "r3_runtime_evidence_guard": tmp / "r3-runtime-evidence-guard.json",
             "r3_runtime_instrumentation_plan": tmp / "r3-runtime-instrumentation-plan.json",
             "r3_runtime_contract_validation": tmp / "r3-runtime-contract-validation.json",
+            "sovereign_evolution_ledger": tmp / "sovereign-evolution-ledger.json",
             "adversarial": tmp / "adversarial.json",
             "maturity": tmp / "maturity.json",
             "attestation": tmp / "attestation.json",
@@ -702,6 +732,7 @@ def build_report(repo: Path) -> dict[str, Any]:
         commands["r3_runtime_evidence_guard"] = _run(repo, ["tools/pnva_r3_runtime_evidence_guard.py"], outputs["r3_runtime_evidence_guard"])
         commands["r3_runtime_instrumentation_plan"] = _run(repo, ["tools/pnva_r3_runtime_instrumentation_plan.py"], outputs["r3_runtime_instrumentation_plan"])
         commands["r3_runtime_contract_validation"] = _run(repo, ["tools/pnva_r3_runtime_contract_validator.py"], outputs["r3_runtime_contract_validation"])
+        commands["sovereign_evolution_ledger"] = _run(repo, ["tools/pnva_sovereign_evolution_ledger.py"], outputs["sovereign_evolution_ledger"])
         commands["adversarial"] = _run(repo, ["tools/pnva_adversarial_validator.py"], outputs["adversarial"])
         commands["maturity"] = _run(repo, ["tools/pnva_entity_heuristic_maturity.py"], outputs["maturity"])
         commands["attestation"] = _run(repo, ["tools/pnva_evidence_attestor.py"], outputs["attestation"])

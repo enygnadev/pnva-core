@@ -202,15 +202,17 @@ The R3 runtime instrumentation plan converts the 35 pending capture slots into c
 
 The R3 runtime contract validator checks that the capture matrix, evidence guard and instrumentation plan agree before final capture. The current public classification is R3_RUNTIME_CONTRACT_VALIDATED_READY, with 100 contract checks, zero failures, 35 slots, 3 action contracts, 70 required runtime events and no final runtime approval claim.
 
+The sovereign evolution ledger consolidates no-tick evidence, proof-log integrity, heuristic authority, entity attribution, controlled legacy warnings and R3 runtime readiness into one release dashboard. The current public classification is PNVA_SOVEREIGN_EVOLUTION_LEDGER_READY_R3_RUNTIME_REQUIRED, with sovereign evolution score 88.37, 35 pending runtime slots, 70 required runtime events, R3 preparation ready, runtime evidence not approved and final R3 cutover blocked until fresh native runtime JSONL exists.
+
 The adversarial validator runs negative controls against proof, policy, graph, proof-chain and JSON parsing validators. The current public classification is ADVERSARIAL_VALIDATION_PASS.
 
 The entity and heuristic maturity auditor scores actor/rule readiness across entity coverage, authority, proof coverage, no-tick suppression and causal relations. The current public classification is ENTITY_HEURISTIC_MATURITY_READY_WITH_LEGACY_WARNINGS.
 
-The semantic consistency guard checks cross-report agreement across Manifest, replay, no-tick, policy, proof-chain, graph, schema contract, causal chronology, tension-decision calibration, decision trace index, heuristic influence map, entity no-tick matrix, suppression ledger, robustness gate, R3 migration plan, authority migration ledger, R3 authority projection, R3 cutover gate, R3 runtime capture matrix, R3 runtime evidence guard, R3 runtime instrumentation plan, R3 runtime contract validation, maturity, adversarial validation, attestation and audit. The current public classification is SEMANTIC_CONSISTENCY_READY with 288 checks and zero errors/warnings.
+The semantic consistency guard checks cross-report agreement across Manifest, replay, no-tick, policy, proof-chain, graph, schema contract, causal chronology, tension-decision calibration, decision trace index, heuristic influence map, entity no-tick matrix, suppression ledger, robustness gate, R3 migration plan, authority migration ledger, R3 authority projection, R3 cutover gate, R3 runtime capture matrix, R3 runtime evidence guard, R3 runtime instrumentation plan, R3 runtime contract validation, sovereign evolution ledger, maturity, adversarial validation, attestation and audit. The current public classification is SEMANTIC_CONSISTENCY_READY with 303 checks and zero errors/warnings.
 
-The reproducibility guard reruns the public evidence commands and compares stable fields against the published reports. The current public classification is REPRODUCIBILITY_READY with 34 commands, 365 stable-field comparisons and zero failures.
+The reproducibility guard reruns the public evidence commands and compares stable fields against the published reports. The current public classification is REPRODUCIBILITY_READY with 35 commands, 391 stable-field comparisons and zero failures.
 
-The sovereign evidence attestor aggregates the public evidence package into one hashable attestation. The current classification is PNVA_SOVEREIGN_EVIDENCE_ATTESTED with 40 tracked artifacts.
+The sovereign evidence attestor aggregates the public evidence package into one hashable attestation. The current classification is PNVA_SOVEREIGN_EVIDENCE_ATTESTED with 41 tracked artifacts.
 
 ## Boundaries
 

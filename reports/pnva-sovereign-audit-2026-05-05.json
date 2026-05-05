@@ -120,7 +120,7 @@
     "robots_missing_tokens": [],
     "robots_ok": true,
     "sitemap_ok": true,
-    "sitemap_url_count": 81,
+    "sitemap_url_count": 83,
     "sitemap_urls": [
       "https://enygnadev.github.io/pnva-core/",
       "https://enygnadev.github.io/pnva-core/author.html",
@@ -152,6 +152,7 @@
       "https://enygnadev.github.io/pnva-core/docs/PNVA_R3_RUNTIME_EVIDENCE_GUARD.md",
       "https://enygnadev.github.io/pnva-core/docs/PNVA_R3_RUNTIME_INSTRUMENTATION_PLAN.md",
       "https://enygnadev.github.io/pnva-core/docs/PNVA_R3_RUNTIME_CONTRACT_VALIDATION.md",
+      "https://enygnadev.github.io/pnva-core/docs/PNVA_SOVEREIGN_EVOLUTION_LEDGER.md",
       "https://enygnadev.github.io/pnva-core/docs/PNVA_SOVEREIGN_EVIDENCE_ATTESTATION.md",
       "https://enygnadev.github.io/pnva-core/docs/PNVA_ADVERSARIAL_VALIDATION.md",
       "https://enygnadev.github.io/pnva-core/docs/PNVA_ENTITY_HEURISTIC_MATURITY.md",
@@ -200,6 +201,7 @@
       "https://enygnadev.github.io/pnva-core/reports/pnva-r3-runtime-evidence-guard-2026-05-05.json",
       "https://enygnadev.github.io/pnva-core/reports/pnva-r3-runtime-instrumentation-plan-2026-05-05.json",
       "https://enygnadev.github.io/pnva-core/reports/pnva-r3-runtime-contract-validation-2026-05-05.json",
+      "https://enygnadev.github.io/pnva-core/reports/pnva-sovereign-evolution-ledger-2026-05-05.json",
       "https://enygnadev.github.io/pnva-core/reports/pnva-semantic-consistency-2026-05-05.json",
       "https://enygnadev.github.io/pnva-core/reports/pnva-reproducibility-2026-05-05.json",
       "https://enygnadev.github.io/pnva-core/reports/pnva-sovereign-evidence-attestation-2026-05-05.json"
@@ -236,16 +238,16 @@
     "warning_count": 35
   },
   "evidence_attestation": {
-    "artifact_count": 40,
+    "artifact_count": 41,
     "attestation_ok": true,
     "classification": "PNVA_SOVEREIGN_EVIDENCE_ATTESTED",
     "errors": [],
-    "evidence_hash": "sha256:d74b58f79840fe3b09d448b87c75daa3326b42bce24f1318aff483f6e1e5d1ee",
+    "evidence_hash": "sha256:cce27e8a5bb3591ff392d7dbc812b9bc43fe82e2b7b2ce57c4bfdf9e5ffb65c8",
     "failure_count": 0,
     "missing": [],
-    "tracked_artifacts": 40
+    "tracked_artifacts": 41
   },
-  "generated_at": "2026-05-05T10:27:36Z",
+  "generated_at": "2026-05-05T10:52:13Z",
   "heuristic_influence_map": {
     "classification": "HEURISTIC_INFLUENCE_MAP_READY_WITH_LEGACY_WARNINGS",
     "error_count": 0,
@@ -1181,6 +1183,7 @@
     "Run R3 runtime evidence guard so projected or weak runtime logs are rejected before final cutover.",
     "Run R3 runtime instrumentation plan so emitter contracts and validation commands are explicit before capture.",
     "Run R3 runtime contract validation so matrix, guard and instrumentation cannot drift apart before capture.",
+    "Run sovereign evolution ledger so no-tick, entity, heuristic and R3 runtime debt collapse into one release dashboard.",
     "Publish one sovereign evidence attestation hash with every evidence release.",
     "Run adversarial validation so validators prove tamper detection, not only green-path acceptance.",
     "Track entity and heuristic maturity so no-tick suppression stays attributable to actors and authority.",
@@ -1206,9 +1209,9 @@
   "repo_path": "<REPO>",
   "reproducibility": {
     "classification": "REPRODUCIBILITY_READY",
-    "command_count": 34,
+    "command_count": 35,
     "command_failure_count": 0,
-    "comparison_count": 365,
+    "comparison_count": 391,
     "comparison_failure_count": 0,
     "errors": [],
     "failure_count": 0,
@@ -1242,13 +1245,35 @@
     "total": 100
   },
   "semantic_consistency": {
-    "check_count": 288,
+    "check_count": 303,
     "classification": "SEMANTIC_CONSISTENCY_READY",
     "consistency_ok": true,
     "error_count": 0,
     "errors": [],
     "missing": [],
     "warning_count": 0
+  },
+  "sovereign_evolution_ledger": {
+    "blocker_count": 2,
+    "classification": "PNVA_SOVEREIGN_EVOLUTION_LEDGER_READY_R3_RUNTIME_REQUIRED",
+    "controlled_warning_count": 1232,
+    "current_readiness_level": "R2_NATIVE_CLEAN_LEGACY_QUARANTINED",
+    "errors": [],
+    "evidence_integrity_ready": true,
+    "missing": [],
+    "native_clean_path": true,
+    "no_tick_ready": true,
+    "priority_action_count": 4,
+    "r3_preparation_ready": true,
+    "r3_runtime_capture_coverage_percent": 0.0,
+    "r3_runtime_evidence_approved": false,
+    "runtime_contract_check_count": 100,
+    "runtime_contract_failure_count": 0,
+    "runtime_pending_slot_count": 35,
+    "runtime_required_event_count": 70,
+    "sovereign_evolution_ledger_ok": true,
+    "sovereign_evolution_score": 88.37,
+    "target_readiness_level": "R3_NATIVE_CLEAN_LEGACY_FREE"
   },
   "sovereign_policy": {
     "canonical_event_count": 512,

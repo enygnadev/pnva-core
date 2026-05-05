@@ -63,6 +63,7 @@ PUBLIC_DOCS = [
     "docs/PNVA_R3_RUNTIME_EVIDENCE_GUARD.md",
     "docs/PNVA_R3_RUNTIME_INSTRUMENTATION_PLAN.md",
     "docs/PNVA_R3_RUNTIME_CONTRACT_VALIDATION.md",
+    "docs/PNVA_SOVEREIGN_EVOLUTION_LEDGER.md",
     "docs/PNVA_SOVEREIGN_EVIDENCE_ATTESTATION.md",
     "docs/PNVA_ADVERSARIAL_VALIDATION.md",
     "docs/PNVA_ENTITY_HEURISTIC_MATURITY.md",
@@ -225,6 +226,12 @@ R3_RUNTIME_CONTRACT_VALIDATION_FILES = [
     "tools/pnva_r3_runtime_contract_validator.py",
     "docs/PNVA_R3_RUNTIME_CONTRACT_VALIDATION.md",
     "reports/pnva-r3-runtime-contract-validation-2026-05-05.json",
+]
+
+SOVEREIGN_EVOLUTION_LEDGER_FILES = [
+    "tools/pnva_sovereign_evolution_ledger.py",
+    "docs/PNVA_SOVEREIGN_EVOLUTION_LEDGER.md",
+    "reports/pnva-sovereign-evolution-ledger-2026-05-05.json",
 ]
 
 EVIDENCE_ATTESTATION_FILES = [
@@ -1414,6 +1421,56 @@ def audit_r3_runtime_contract_validation(repo: Path) -> dict[str, Any]:
     }
 
 
+def audit_sovereign_evolution_ledger(repo: Path) -> dict[str, Any]:
+    missing = [rel for rel in SOVEREIGN_EVOLUTION_LEDGER_FILES if not (repo / rel).exists()]
+    report_path = repo / "reports" / "pnva-sovereign-evolution-ledger-2026-05-05.json"
+    if not report_path.exists():
+        return {
+            "sovereign_evolution_ledger_ok": False,
+            "missing": missing,
+            "classification": "SOVEREIGN_EVOLUTION_LEDGER_MISSING",
+            "errors": ["missing sovereign evolution ledger report"],
+        }
+    data = _read_json(report_path)
+    ok = (
+        not missing
+        and data.get("pass") is True
+        and data.get("classification") == "PNVA_SOVEREIGN_EVOLUTION_LEDGER_READY_R3_RUNTIME_REQUIRED"
+        and data.get("evidence_integrity_ready") is True
+        and data.get("no_tick_ready") is True
+        and data.get("native_clean_path") is True
+        and data.get("r3_preparation_ready") is True
+        and data.get("r3_runtime_evidence_approved") is False
+        and int(data.get("runtime_pending_slot_count", 0)) == 35
+        and int(data.get("runtime_required_event_count", 0)) == 70
+        and int(data.get("runtime_contract_check_count", 0)) >= 100
+        and int(data.get("runtime_contract_failure_count", -1)) == 0
+        and float(data.get("r3_runtime_capture_coverage_percent", -1.0)) == 0.0
+    )
+    return {
+        "sovereign_evolution_ledger_ok": ok,
+        "missing": missing,
+        "classification": data.get("classification"),
+        "current_readiness_level": data.get("current_readiness_level"),
+        "target_readiness_level": data.get("target_readiness_level"),
+        "sovereign_evolution_score": float(data.get("sovereign_evolution_score", 0.0)),
+        "evidence_integrity_ready": bool(data.get("evidence_integrity_ready", False)),
+        "no_tick_ready": bool(data.get("no_tick_ready", False)),
+        "native_clean_path": bool(data.get("native_clean_path", False)),
+        "r3_preparation_ready": bool(data.get("r3_preparation_ready", False)),
+        "r3_runtime_evidence_approved": bool(data.get("r3_runtime_evidence_approved", False)),
+        "r3_runtime_capture_coverage_percent": float(data.get("r3_runtime_capture_coverage_percent", 0.0)),
+        "runtime_pending_slot_count": int(data.get("runtime_pending_slot_count", 0)),
+        "runtime_required_event_count": int(data.get("runtime_required_event_count", 0)),
+        "runtime_contract_check_count": int(data.get("runtime_contract_check_count", 0)),
+        "runtime_contract_failure_count": int(data.get("runtime_contract_failure_count", 0)),
+        "controlled_warning_count": int(data.get("controlled_warning_count", 0)),
+        "blocker_count": int(data.get("blocker_count", 0)),
+        "priority_action_count": int(data.get("priority_action_count", 0)),
+        "errors": [] if ok else ["sovereign evolution ledger failed"],
+    }
+
+
 def audit_reproducibility(repo: Path) -> dict[str, Any]:
     missing = [rel for rel in REPRODUCIBILITY_FILES if not (repo / rel).exists()]
     report_path = repo / "reports" / "pnva-reproducibility-2026-05-05.json"
@@ -1740,6 +1797,7 @@ def build_report(repo: Path, *, strict_public: bool = False) -> dict[str, Any]:
         "r3_runtime_evidence_guard": audit_r3_runtime_evidence_guard(repo),
         "r3_runtime_instrumentation_plan": audit_r3_runtime_instrumentation_plan(repo),
         "r3_runtime_contract_validation": audit_r3_runtime_contract_validation(repo),
+        "sovereign_evolution_ledger": audit_sovereign_evolution_ledger(repo),
         "evidence_attestation": audit_evidence_attestation(repo),
         "adversarial_validation": audit_adversarial_validation(repo),
         "entity_heuristic_maturity": audit_entity_heuristic_maturity(repo),
@@ -1771,6 +1829,7 @@ def build_report(repo: Path, *, strict_public: bool = False) -> dict[str, Any]:
             "Run R3 runtime evidence guard so projected or weak runtime logs are rejected before final cutover.",
             "Run R3 runtime instrumentation plan so emitter contracts and validation commands are explicit before capture.",
             "Run R3 runtime contract validation so matrix, guard and instrumentation cannot drift apart before capture.",
+            "Run sovereign evolution ledger so no-tick, entity, heuristic and R3 runtime debt collapse into one release dashboard.",
             "Publish one sovereign evidence attestation hash with every evidence release.",
             "Run adversarial validation so validators prove tamper detection, not only green-path acceptance.",
             "Track entity and heuristic maturity so no-tick suppression stays attributable to actors and authority.",

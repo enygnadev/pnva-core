@@ -1,7 +1,7 @@
 {
   "author": "Gustavo de Aguiar Martins",
   "classification": "REPRODUCIBILITY_READY",
-  "command_count": 34,
+  "command_count": 35,
   "command_failure_count": 0,
   "command_failures": [],
   "commands": {
@@ -222,6 +222,13 @@
       "parse_error": "",
       "pass": true
     },
+    "sovereign_evolution_ledger": {
+      "classification": "PNVA_SOVEREIGN_EVOLUTION_LEDGER_READY_R3_RUNTIME_REQUIRED",
+      "command": "tools/pnva_sovereign_evolution_ledger.py --write <TEMP>/sovereign-evolution-ledger.json",
+      "exit_code": 0,
+      "parse_error": "",
+      "pass": true
+    },
     "sovereign_robustness_gate": {
       "classification": "SOVEREIGN_ROBUSTNESS_GATE_READY_WITH_LEGACY_WARNINGS",
       "command": "tools/pnva_sovereign_robustness_gate.py --write <TEMP>/sovereign-robustness-gate.json",
@@ -244,7 +251,7 @@
       "pass": true
     }
   },
-  "comparison_count": 365,
+  "comparison_count": 391,
   "comparison_failure_count": 0,
   "comparison_failures": [],
   "comparisons": [
@@ -2610,6 +2617,188 @@
     {
       "field": "classification",
       "pass": true,
+      "published": "PNVA_SOVEREIGN_EVOLUTION_LEDGER_READY_R3_RUNTIME_REQUIRED",
+      "report": "sovereign_evolution_ledger",
+      "reproduced": "PNVA_SOVEREIGN_EVOLUTION_LEDGER_READY_R3_RUNTIME_REQUIRED"
+    },
+    {
+      "field": "pass",
+      "pass": true,
+      "published": true,
+      "report": "sovereign_evolution_ledger",
+      "reproduced": true
+    },
+    {
+      "field": "current_readiness_level",
+      "pass": true,
+      "published": "R2_NATIVE_CLEAN_LEGACY_QUARANTINED",
+      "report": "sovereign_evolution_ledger",
+      "reproduced": "R2_NATIVE_CLEAN_LEGACY_QUARANTINED"
+    },
+    {
+      "field": "target_readiness_level",
+      "pass": true,
+      "published": "R3_NATIVE_CLEAN_LEGACY_FREE",
+      "report": "sovereign_evolution_ledger",
+      "reproduced": "R3_NATIVE_CLEAN_LEGACY_FREE"
+    },
+    {
+      "field": "evidence_integrity_ready",
+      "pass": true,
+      "published": true,
+      "report": "sovereign_evolution_ledger",
+      "reproduced": true
+    },
+    {
+      "field": "no_tick_ready",
+      "pass": true,
+      "published": true,
+      "report": "sovereign_evolution_ledger",
+      "reproduced": true
+    },
+    {
+      "field": "native_clean_path",
+      "pass": true,
+      "published": true,
+      "report": "sovereign_evolution_ledger",
+      "reproduced": true
+    },
+    {
+      "field": "r3_preparation_ready",
+      "pass": true,
+      "published": true,
+      "report": "sovereign_evolution_ledger",
+      "reproduced": true
+    },
+    {
+      "field": "r3_runtime_evidence_present",
+      "pass": true,
+      "published": false,
+      "report": "sovereign_evolution_ledger",
+      "reproduced": false
+    },
+    {
+      "field": "r3_runtime_evidence_approved",
+      "pass": true,
+      "published": false,
+      "report": "sovereign_evolution_ledger",
+      "reproduced": false
+    },
+    {
+      "field": "r3_cutover_approved",
+      "pass": true,
+      "published": false,
+      "report": "sovereign_evolution_ledger",
+      "reproduced": false
+    },
+    {
+      "field": "r3_runtime_capture_coverage_percent",
+      "pass": true,
+      "published": 0.0,
+      "report": "sovereign_evolution_ledger",
+      "reproduced": 0.0
+    },
+    {
+      "field": "runtime_pending_slot_count",
+      "pass": true,
+      "published": 35,
+      "report": "sovereign_evolution_ledger",
+      "reproduced": 35
+    },
+    {
+      "field": "runtime_required_event_count",
+      "pass": true,
+      "published": 70,
+      "report": "sovereign_evolution_ledger",
+      "reproduced": 70
+    },
+    {
+      "field": "runtime_contract_check_count",
+      "pass": true,
+      "published": 100,
+      "report": "sovereign_evolution_ledger",
+      "reproduced": 100
+    },
+    {
+      "field": "runtime_contract_failure_count",
+      "pass": true,
+      "published": 0,
+      "report": "sovereign_evolution_ledger",
+      "reproduced": 0
+    },
+    {
+      "field": "legacy_debt_count",
+      "pass": true,
+      "published": 35,
+      "report": "sovereign_evolution_ledger",
+      "reproduced": 35
+    },
+    {
+      "field": "low_authority_legacy_count",
+      "pass": true,
+      "published": 35,
+      "report": "sovereign_evolution_ledger",
+      "reproduced": 35
+    },
+    {
+      "field": "low_authority_influence_edge_count",
+      "pass": true,
+      "published": 164,
+      "report": "sovereign_evolution_ledger",
+      "reproduced": 164
+    },
+    {
+      "field": "above_threshold_suppression_count",
+      "pass": true,
+      "published": 176,
+      "report": "sovereign_evolution_ledger",
+      "reproduced": 176
+    },
+    {
+      "field": "controlled_warning_count",
+      "pass": true,
+      "published": 1232,
+      "report": "sovereign_evolution_ledger",
+      "reproduced": 1232
+    },
+    {
+      "field": "maturity_score",
+      "pass": true,
+      "published": 94.59,
+      "report": "sovereign_evolution_ledger",
+      "reproduced": 94.59
+    },
+    {
+      "field": "robustness_score",
+      "pass": true,
+      "published": 97.0,
+      "report": "sovereign_evolution_ledger",
+      "reproduced": 97.0
+    },
+    {
+      "field": "sovereign_evolution_score",
+      "pass": true,
+      "published": 88.37,
+      "report": "sovereign_evolution_ledger",
+      "reproduced": 88.37
+    },
+    {
+      "field": "priority_action_count",
+      "pass": true,
+      "published": 4,
+      "report": "sovereign_evolution_ledger",
+      "reproduced": 4
+    },
+    {
+      "field": "blocker_count",
+      "pass": true,
+      "published": 2,
+      "report": "sovereign_evolution_ledger",
+      "reproduced": 2
+    },
+    {
+      "field": "classification",
+      "pass": true,
       "published": "ADVERSARIAL_VALIDATION_PASS",
       "report": "adversarial",
       "reproduced": "ADVERSARIAL_VALIDATION_PASS"
@@ -2736,9 +2925,9 @@
     {
       "field": "artifact_count",
       "pass": true,
-      "published": 40,
+      "published": 41,
       "report": "attestation",
-      "reproduced": 40
+      "reproduced": 41
     },
     {
       "field": "failure_count",
@@ -2750,9 +2939,9 @@
     {
       "field": "evidence_hash",
       "pass": true,
-      "published": "sha256:d74b58f79840fe3b09d448b87c75daa3326b42bce24f1318aff483f6e1e5d1ee",
+      "published": "sha256:cce27e8a5bb3591ff392d7dbc812b9bc43fe82e2b7b2ce57c4bfdf9e5ffb65c8",
       "report": "attestation",
-      "reproduced": "sha256:d74b58f79840fe3b09d448b87c75daa3326b42bce24f1318aff483f6e1e5d1ee"
+      "reproduced": "sha256:cce27e8a5bb3591ff392d7dbc812b9bc43fe82e2b7b2ce57c4bfdf9e5ffb65c8"
     },
     {
       "field": "classification",
@@ -2771,9 +2960,9 @@
     {
       "field": "check_count",
       "pass": true,
-      "published": 288,
+      "published": 303,
       "report": "semantic",
-      "reproduced": 288
+      "reproduced": 303
     },
     {
       "field": "error_count",
@@ -2805,7 +2994,7 @@
     }
   ],
   "failure_count": 0,
-  "generated_at": "2026-05-05T10:27:35Z",
+  "generated_at": "2026-05-05T10:52:07Z",
   "interpretation": {
     "boundary": "Generated timestamps, temporary paths and non-semantic ordering are intentionally excluded from comparison.",
     "purpose": "Regenerate PNVA evidence reports with current tools and compare stable fields against the published evidence package.",
@@ -2820,7 +3009,7 @@
   ],
   "schema_version": "pnva.reproducibility_guard.v1",
   "summary": {
-    "published_attestation_hash": "sha256:d74b58f79840fe3b09d448b87c75daa3326b42bce24f1318aff483f6e1e5d1ee",
+    "published_attestation_hash": "sha256:cce27e8a5bb3591ff392d7dbc812b9bc43fe82e2b7b2ce57c4bfdf9e5ffb65c8",
     "reports_reproduced": [
       "adversarial",
       "attestation",
@@ -2853,11 +3042,12 @@
       "replay",
       "schema_contract",
       "semantic",
+      "sovereign_evolution_ledger",
       "sovereign_robustness_gate",
       "suppression_ledger",
       "tension_decision"
     ],
-    "reproduced_attestation_hash": "sha256:d74b58f79840fe3b09d448b87c75daa3326b42bce24f1318aff483f6e1e5d1ee",
-    "stable_fields_compared": 365
+    "reproduced_attestation_hash": "sha256:cce27e8a5bb3591ff392d7dbc812b9bc43fe82e2b7b2ce57c4bfdf9e5ffb65c8",
+    "stable_fields_compared": 391
   }
 }

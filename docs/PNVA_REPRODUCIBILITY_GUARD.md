@@ -31,8 +31,8 @@ REPRODUCIBILITY_READY
 Current result:
 
 ```text
-command_count: 34
-comparison_count: 365
+command_count: 35
+comparison_count: 391
 failure_count: 0
 command_failure_count: 0
 comparison_failure_count: 0
@@ -70,6 +70,7 @@ R3 runtime capture matrix
 R3 runtime evidence guard
 R3 runtime instrumentation plan
 R3 runtime contract validation
+sovereign evolution ledger
 adversarial validation
 entity and heuristic maturity
 evidence attestation
@@ -111,6 +112,7 @@ R3 runtime capture slot count, pending count, required runtime event count, proj
 R3 runtime evidence guard readiness, pending slot count, required runtime event count and negative-control detections
 R3 runtime instrumentation plan readiness, action contract count, template count, mandatory field count and required runtime event count
 R3 runtime contract validation readiness, contract check count, failure count, mandatory field count and enforced control count
+sovereign evolution score, evidence integrity, no-tick readiness, native clean path, R3 preparation, runtime pending count and runtime approval boundary
 ```
 
 The guard intentionally ignores:

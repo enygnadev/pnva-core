@@ -1,0 +1,202 @@
+{
+  "above_threshold_suppression_count": 176,
+  "aggregate_no_tick_suppression_percent": 48.17,
+  "aggregate_no_tick_suppression_ratio": 0.481696,
+  "author": "Gustavo de Aguiar Martins",
+  "blocker_count": 2,
+  "blockers": [
+    {
+      "detail": "35 runtime slots remain pending; 70 native events are required.",
+      "id": "R3_RUNTIME_EVIDENCE_MISSING",
+      "next_command": "python3 tools/pnva_r3_runtime_evidence_guard.py --runtime-events <fresh-runtime.jsonl> --write reports/pnva-r3-runtime-evidence-guard-2026-05-05.json",
+      "severity": "P0"
+    },
+    {
+      "detail": "R3 cutover intentionally remains blocked until fresh native runtime evidence replaces projection evidence.",
+      "id": "R3_CUTOVER_BLOCKED_BY_RUNTIME",
+      "next_command": "python3 tools/pnva_r3_cutover_gate.py --write reports/pnva-r3-cutover-gate-2026-05-05.json",
+      "severity": "P0"
+    }
+  ],
+  "canonical_no_tick_event_count": 512,
+  "chronology_warning_count": 2,
+  "classification": "PNVA_SOVEREIGN_EVOLUTION_LEDGER_READY_R3_RUNTIME_REQUIRED",
+  "controlled_warning_count": 1232,
+  "controlled_warning_domains": [
+    {
+      "count": 341,
+      "id": "SCHEMA_CONTRACT_LEGACY_WARNINGS",
+      "meaning": "Bridge-normalized canonical events still carry schema warnings; native scope must remain clean.",
+      "next_action": "Keep future runtime events emitted directly as pnva.event.v1."
+    },
+    {
+      "count": 384,
+      "id": "TENSION_DECISION_LEGACY_WARNINGS",
+      "meaning": "Legacy threshold/decision drift remains visible instead of hidden.",
+      "next_action": "Re-emit future suppressions and commits through native calibrated thresholds."
+    },
+    {
+      "count": 152,
+      "id": "DECISION_TRACE_LOW_AUTHORITY_WARNINGS",
+      "meaning": "Historical decisions with weak authority remain traceable.",
+      "next_action": "Require H2/H3 rules for every future collapse/block/prove decision."
+    },
+    {
+      "count": 70,
+      "id": "HEURISTIC_INFLUENCE_LOW_AUTHORITY_WARNINGS",
+      "meaning": "Legacy heuristic edges are mapped and bounded.",
+      "next_action": "Use native_event_emitter, adaptive_threshold and field_scheduler on every R3 commit."
+    },
+    {
+      "count": 35,
+      "id": "ENTITY_NO_TICK_LEGACY_WARNINGS",
+      "meaning": "Entity-level low-authority legacy debt is isolated.",
+      "next_action": "Capture one native no-tick precheck and one native commit per pending slot."
+    },
+    {
+      "count": 176,
+      "id": "SUPPRESSION_LEDGER_LEGACY_WARNINGS",
+      "meaning": "Above-threshold suppressions are preserved as migration evidence.",
+      "next_action": "Use native threshold policy so future suppressions are below-threshold or explicitly blocked."
+    }
+  ],
+  "current_readiness_level": "R2_NATIVE_CLEAN_LEGACY_QUARANTINED",
+  "decision_trace_warning_count": 152,
+  "entity_warning_count": 35,
+  "evidence_integrity_ready": true,
+  "generated_at": "2026-05-05T10:51:19Z",
+  "heuristic_warning_count": 70,
+  "interpretation": {
+    "boundary": "This ledger does not approve R3. It proves the preparation layer is coherent and names the missing runtime evidence explicitly.",
+    "purpose": "Unify PNVA no-tick, log integrity, heuristic influence, entity coverage and R3 runtime readiness into one evolution ledger.",
+    "sovereignty": "The system becomes more robust when every remaining warning is classified as controlled legacy evidence or a runtime blocker with a next command."
+  },
+  "legacy_debt_count": 35,
+  "low_authority_influence_edge_count": 164,
+  "low_authority_legacy_count": 35,
+  "maturity_score": 94.59,
+  "native_clean_path": true,
+  "no_tick_ready": true,
+  "pass": true,
+  "priority_action_count": 4,
+  "priority_actions": [
+    {
+      "acceptance": [
+        "schema_version=pnva.event.v1",
+        "proof.native=true",
+        "proof.projection=false",
+        "source.format=native_pnva_event_v1",
+        "tension.components.original_event_id present",
+        "tension.components.r3_runtime_slot_id present",
+        "commit max authority >= H2"
+      ],
+      "id": "CAPTURE_R3_RUNTIME_JSONL",
+      "order": 1,
+      "status": "pending",
+      "target": {
+        "required_commits": 35,
+        "required_events": 70,
+        "required_prechecks": 35,
+        "slot_count": 35
+      }
+    },
+    {
+      "command": "python3 tools/pnva_r3_runtime_evidence_guard.py --runtime-events <fresh-runtime.jsonl> --write reports/pnva-r3-runtime-evidence-guard-2026-05-05.json",
+      "id": "RUN_RUNTIME_EVIDENCE_GUARD",
+      "order": 2,
+      "status": "blocked_until_capture"
+    },
+    {
+      "command": "python3 tools/pnva_r3_cutover_gate.py --write reports/pnva-r3-cutover-gate-2026-05-05.json && python3 tools/pnva_semantic_consistency_guard.py --write reports/pnva-semantic-consistency-2026-05-05.json",
+      "id": "REGENERATE_DOWNSTREAM_EVIDENCE",
+      "order": 3,
+      "status": "blocked_until_guard_accepts"
+    },
+    {
+      "command": "python3 tools/pnva_evidence_attestor.py --write reports/pnva-sovereign-evidence-attestation-2026-05-05.json && python3 tools/pnva_reproducibility_guard.py --write reports/pnva-reproducibility-2026-05-05.json",
+      "id": "PUBLISH_NEW_ATTESTATION",
+      "order": 4,
+      "status": "blocked_until_downstream_passes"
+    }
+  ],
+  "project": "PNVA-Core",
+  "proof_backed_suppression_count": 250,
+  "publication_integrity_score": 100.0,
+  "r3_cutover_approved": false,
+  "r3_preparation_ready": true,
+  "r3_preparation_score": 100.0,
+  "r3_runtime_capture_coverage_percent": 0.0,
+  "r3_runtime_capture_coverage_ratio": 0.0,
+  "r3_runtime_completion_score": 0.0,
+  "r3_runtime_evidence_approved": false,
+  "r3_runtime_evidence_present": false,
+  "recommendations": [
+    "Treat R3 runtime capture as the next P0 production task.",
+    "Do not reduce legacy warning counts by deletion; replace them with fresh native evidence.",
+    "Keep no-tick prechecks paired with commits so non-execution remains auditable.",
+    "Use this ledger as the release dashboard before public claims about R3 readiness."
+  ],
+  "reports_checked": {
+    "attestation": "reports/pnva-sovereign-evidence-attestation-2026-05-05.json",
+    "audit": "reports/pnva-sovereign-audit-2026-05-05.json",
+    "authority_migration_ledger": "reports/pnva-authority-migration-ledger-2026-05-05.json",
+    "causal_chronology": "reports/pnva-causal-chronology-2026-05-05.json",
+    "decision_trace_index": "reports/pnva-decision-trace-index-2026-05-05.json",
+    "entity_no_tick_matrix": "reports/pnva-entity-no-tick-matrix-2026-05-05.json",
+    "heuristic_influence_map": "reports/pnva-heuristic-influence-map-2026-05-05.json",
+    "maturity": "reports/pnva-entity-heuristic-maturity-2026-05-05.json",
+    "native_no_tick": "reports/pnva-native-no-tick-invariants-2026-05-05.json",
+    "no_tick": "reports/pnva-no-tick-invariants-2026-05-05.json",
+    "policy": "reports/pnva-sovereign-policy-2026-05-05.json",
+    "r3_authority_projection": "reports/pnva-r3-authority-projection-summary-2026-05-05.json",
+    "r3_cutover_gate": "reports/pnva-r3-cutover-gate-2026-05-05.json",
+    "r3_migration_plan": "reports/pnva-r3-migration-plan-2026-05-05.json",
+    "r3_runtime_capture_matrix": "reports/pnva-r3-runtime-capture-matrix-2026-05-05.json",
+    "r3_runtime_contract_validation": "reports/pnva-r3-runtime-contract-validation-2026-05-05.json",
+    "r3_runtime_evidence_guard": "reports/pnva-r3-runtime-evidence-guard-2026-05-05.json",
+    "r3_runtime_instrumentation_plan": "reports/pnva-r3-runtime-instrumentation-plan-2026-05-05.json",
+    "reproducibility": "reports/pnva-reproducibility-2026-05-05.json",
+    "schema_contract": "reports/pnva-schema-contract-validation-2026-05-05.json",
+    "semantic": "reports/pnva-semantic-consistency-2026-05-05.json",
+    "sovereign_robustness_gate": "reports/pnva-sovereign-robustness-gate-2026-05-05.json",
+    "suppression_ledger": "reports/pnva-suppression-ledger-2026-05-05.json",
+    "tension_decision": "reports/pnva-tension-decision-calibration-2026-05-05.json"
+  },
+  "robustness_score": 97.0,
+  "runtime_contract_check_count": 100,
+  "runtime_contract_failure_count": 0,
+  "runtime_pending_slot_count": 35,
+  "runtime_required_commit_count": 35,
+  "runtime_required_event_count": 70,
+  "runtime_required_precheck_count": 35,
+  "runtime_required_slot_count": 35,
+  "runtime_verified_slot_count": 0,
+  "schema_version": "pnva.sovereign_evolution_ledger.v1",
+  "schema_warning_count": 341,
+  "score_components": {
+    "maturity": 94.59,
+    "publication_integrity": 100.0,
+    "r3_preparation": 100.0,
+    "r3_runtime_completion": 0.0,
+    "robustness": 97.0,
+    "semantic_reproducibility": 100.0
+  },
+  "semantic_reproducibility_score": 100.0,
+  "sovereign_evolution_score": 88.37,
+  "summary": {
+    "blocker_count": 2,
+    "classification": "PNVA_SOVEREIGN_EVOLUTION_LEDGER_READY_R3_RUNTIME_REQUIRED",
+    "controlled_warning_count": 1232,
+    "current_readiness_level": "R2_NATIVE_CLEAN_LEGACY_QUARANTINED",
+    "priority_action_count": 4,
+    "r3_preparation_ready": true,
+    "r3_runtime_capture_coverage_percent": 0.0,
+    "runtime_pending_slot_count": 35,
+    "runtime_required_event_count": 70,
+    "sovereign_evolution_score": 88.37,
+    "target_readiness_level": "R3_NATIVE_CLEAN_LEGACY_FREE"
+  },
+  "suppression_warning_count": 176,
+  "target_readiness_level": "R3_NATIVE_CLEAN_LEGACY_FREE",
+  "tension_warning_count": 384
+}
