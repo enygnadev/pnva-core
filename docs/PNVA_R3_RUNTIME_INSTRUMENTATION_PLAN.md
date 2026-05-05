@@ -6,13 +6,13 @@ Edition: Open Research / Production Evidence Edition, 2026
 
 ## Objective
 
-The R3 runtime instrumentation plan converts pending R3 runtime slots into concrete emitter contracts.
+The R3 runtime instrumentation plan converts R3 runtime slots into concrete emitter contracts.
 
 The capture matrix says what must be captured.
 
 The evidence guard says what must be rejected.
 
-The instrumentation plan says how the runtime should emit the final evidence.
+The instrumentation plan says how the runtime should emit and preserve the final evidence.
 
 ```text
 capture slots -> action contracts -> event templates -> mandatory fields -> validation commands
@@ -36,8 +36,8 @@ Current result:
 
 ```text
 instrumentation_plan_ready: true
-runtime_evidence_present: false
-runtime_evidence_approved: false
+runtime_evidence_present: true
+runtime_evidence_approved: true
 capture_slot_count: 35
 entity_target_count: 1
 action_contract_count: 3
@@ -195,13 +195,15 @@ python3 tools/pnva_proof_chain_sealer.py \
 
 ## Boundary
 
-This plan does not claim final R3 runtime completion.
+This plan now records that final R3 runtime evidence is present and approved by the intake guard.
 
-It deliberately keeps:
+It deliberately keeps the contract explicit:
 
 ```text
-runtime_evidence_present: false
-runtime_evidence_approved: false
+runtime_evidence_present: true
+runtime_evidence_approved: true
+capture_slot_count: 35
+required_runtime_event_count: 70
 ```
 
-The value of this layer is operational clarity: the next runtime capture now has exact emitter contracts and cannot depend on informal interpretation.
+The value of this layer is operational clarity: future runtime captures must keep the same exact emitter contracts and cannot depend on informal interpretation.

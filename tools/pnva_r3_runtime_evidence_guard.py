@@ -48,6 +48,16 @@ def _read_json(path: Path) -> Any:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def _public_path(repo: Path, path: Path | None) -> str:
+    if path is None:
+        return ""
+    resolved = path.resolve()
+    try:
+        return str(resolved.relative_to(repo))
+    except ValueError:
+        return resolved.name
+
+
 def _load_jsonl(path: Path) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
     events: list[dict[str, Any]] = []
     bad_lines: list[dict[str, Any]] = []
@@ -1087,7 +1097,7 @@ def build_report(repo: Path, runtime_events_path: Path | None = None) -> dict[st
     positive = _positive_controls(matrix)
     guard_ready = (
         matrix.get("pass") is True
-        and matrix.get("classification") == "R3_RUNTIME_CAPTURE_MATRIX_READY_PENDING_RUNTIME"
+        and matrix.get("classification") in {"R3_RUNTIME_CAPTURE_MATRIX_READY_PENDING_RUNTIME", "R3_RUNTIME_CAPTURE_MATRIX_COMPLETE"}
         and matrix.get("capture_contract_ready") is True
         and int(matrix.get("capture_slot_count", 0)) == len(slots)
         and int(matrix.get("required_runtime_event_count", 0)) == len(slots) * 2
@@ -1223,7 +1233,7 @@ def build_report(repo: Path, runtime_events_path: Path | None = None) -> dict[st
         "positive_controls": positive["controls"],
         "reports_checked": {
             "r3_runtime_capture_matrix": R3_RUNTIME_CAPTURE_MATRIX,
-            "runtime_events": str(runtime_events_path) if runtime_events_path else "",
+            "runtime_events": _public_path(repo, runtime_events_path),
         },
         "summary": {
             "intake_guard_ready": guard_ready,

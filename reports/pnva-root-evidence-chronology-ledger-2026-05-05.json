@@ -1,0 +1,544 @@
+{
+  "author": "Gustavo de Aguiar Martins",
+  "check_count": 11,
+  "checks": [
+    {
+      "evidence": {
+        "reports": [
+          {
+            "classification": "PNVA_ROOT_TRACEABILITY_MATRIX_READY",
+            "expected": "PNVA_ROOT_TRACEABILITY_MATRIX_READY",
+            "name": "traceability",
+            "pass": true
+          },
+          {
+            "classification": "PNVA_ROOT_SOVEREIGNTY_GUARD_READY",
+            "expected": "PNVA_ROOT_SOVEREIGNTY_GUARD_READY",
+            "name": "sovereignty",
+            "pass": true
+          },
+          {
+            "classification": "PNVA_ROOT_CAUSAL_INTELLIGENCE_READY",
+            "expected": "PNVA_ROOT_CAUSAL_INTELLIGENCE_READY",
+            "name": "causal_intelligence",
+            "pass": true
+          },
+          {
+            "classification": "PNVA_ROOT_ADVERSARIAL_SENTRY_PASS",
+            "expected": "PNVA_ROOT_ADVERSARIAL_SENTRY_PASS",
+            "name": "adversarial_sentry",
+            "pass": true
+          },
+          {
+            "classification": "PNVA_ROOT_RELEASE_SEALED",
+            "expected": "PNVA_ROOT_RELEASE_SEALED",
+            "name": "release_seal",
+            "pass": true
+          },
+          {
+            "classification": "PNVA_ROOT_RELEASE_VERIFIED",
+            "expected": "PNVA_ROOT_RELEASE_VERIFIED",
+            "name": "release_verifier",
+            "pass": true
+          },
+          {
+            "classification": "PNVA_ROOT_OBSERVABILITY_INDEX_READY",
+            "expected": "PNVA_ROOT_OBSERVABILITY_INDEX_READY",
+            "name": "observability",
+            "pass": true
+          },
+          {
+            "classification": "PNVA_ROOT_INVARIANT_FIREWALL_READY",
+            "expected": "PNVA_ROOT_INVARIANT_FIREWALL_READY",
+            "name": "invariant_firewall",
+            "pass": true
+          },
+          {
+            "classification": "PNVA_ROOT_REGRESSION_SENTINEL_READY",
+            "expected": "PNVA_ROOT_REGRESSION_SENTINEL_READY",
+            "name": "regression_sentinel",
+            "pass": true
+          },
+          {
+            "classification": "PNVA_ROOT_PROOF_THEOREM_LEDGER_READY",
+            "expected": "PNVA_ROOT_PROOF_THEOREM_LEDGER_READY",
+            "name": "proof_theorem",
+            "pass": true
+          },
+          {
+            "classification": "PNVA_ROOT_EVOLUTION_GOVERNOR_READY",
+            "expected": "PNVA_ROOT_EVOLUTION_GOVERNOR_READY",
+            "name": "evolution_governor",
+            "pass": true
+          },
+          {
+            "classification": "PNVA_ROOT_HEURISTIC_WEIGHT_LEDGER_READY",
+            "expected": "PNVA_ROOT_HEURISTIC_WEIGHT_LEDGER_READY",
+            "name": "heuristic_weight",
+            "pass": true
+          },
+          {
+            "classification": "PNVA_ROOT_ENTITY_CAPABILITY_LEDGER_READY",
+            "expected": "PNVA_ROOT_ENTITY_CAPABILITY_LEDGER_READY",
+            "name": "entity_capability",
+            "pass": true
+          },
+          {
+            "classification": "PNVA_ROOT_DEPENDENCY_GRAPH_READY",
+            "expected": "PNVA_ROOT_DEPENDENCY_GRAPH_READY",
+            "name": "dependency_graph",
+            "pass": true
+          },
+          {
+            "classification": "PNVA_ROOT_FIELD_TOPOLOGY_LEDGER_READY",
+            "expected": "PNVA_ROOT_FIELD_TOPOLOGY_LEDGER_READY",
+            "name": "field_topology",
+            "pass": true
+          },
+          {
+            "classification": "PNVA_ROOT_NO_TICK_CAUSAL_CONTRACT_READY",
+            "expected": "PNVA_ROOT_NO_TICK_CAUSAL_CONTRACT_READY",
+            "name": "no_tick_contract",
+            "pass": true
+          },
+          {
+            "classification": "PNVA_ROOT_RUNTIME_ADMISSION_READY",
+            "expected": "PNVA_ROOT_RUNTIME_ADMISSION_READY",
+            "name": "runtime_admission",
+            "pass": true
+          },
+          {
+            "classification": "PNVA_ROOT_ENTITY_HEURISTIC_ADMISSION_MATRIX_READY",
+            "expected": "PNVA_ROOT_ENTITY_HEURISTIC_ADMISSION_MATRIX_READY",
+            "name": "admission_matrix",
+            "pass": true
+          },
+          {
+            "classification": "PNVA_ROOT_ADMISSION_NEGATIVE_CONTROLS_PASS",
+            "expected": "PNVA_ROOT_ADMISSION_NEGATIVE_CONTROLS_PASS",
+            "name": "negative_controls",
+            "pass": true
+          },
+          {
+            "classification": "PNVA_ROOT_EVENT_IDENTITY_LEDGER_READY",
+            "expected": "PNVA_ROOT_EVENT_IDENTITY_LEDGER_READY",
+            "name": "event_identity",
+            "pass": true
+          },
+          {
+            "classification": "PNVA_ROOT_CLAIM_BOUNDARY_GUARD_READY",
+            "expected": "PNVA_ROOT_CLAIM_BOUNDARY_GUARD_READY",
+            "name": "claim_boundary",
+            "pass": true
+          },
+          {
+            "classification": "PNVA_ROOT_PUBLICATION_GATE_READY",
+            "expected": "PNVA_ROOT_PUBLICATION_GATE_READY",
+            "name": "publication_gate",
+            "pass": true
+          },
+          {
+            "classification": "PNVA_ROOT_RUNTIME_GROWTH_BUDGET_READY",
+            "expected": "PNVA_ROOT_RUNTIME_GROWTH_BUDGET_READY",
+            "name": "runtime_growth_budget",
+            "pass": true
+          },
+          {
+            "classification": "PNVA_ROOT_CAUSAL_MESH_LEDGER_READY",
+            "expected": "PNVA_ROOT_CAUSAL_MESH_LEDGER_READY",
+            "name": "causal_mesh",
+            "pass": true
+          },
+          {
+            "classification": "PNVA_ROOT_EFFICIENCY_PROOF_LEDGER_READY",
+            "expected": "PNVA_ROOT_EFFICIENCY_PROOF_LEDGER_READY",
+            "name": "efficiency_proof",
+            "pass": true
+          },
+          {
+            "classification": "PNVA_ROOT_EQUATION_CONSISTENCY_LEDGER_READY",
+            "expected": "PNVA_ROOT_EQUATION_CONSISTENCY_LEDGER_READY",
+            "name": "equation_consistency",
+            "pass": true
+          },
+          {
+            "classification": "PNVA_ROOT_LEGACY_QUARANTINE_LEDGER_READY",
+            "expected": "PNVA_ROOT_LEGACY_QUARANTINE_LEDGER_READY",
+            "name": "legacy_quarantine",
+            "pass": true
+          }
+        ]
+      },
+      "name": "source_reports_ready",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "missing_generated_at": []
+      },
+      "name": "generated_at_present",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "seal_time": "2026-05-05T17:31:09Z",
+        "violations": []
+      },
+      "name": "sealed_core_order_valid",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "release_seal": "2026-05-05T17:31:09Z",
+        "release_verifier": "2026-05-05T17:31:10Z"
+      },
+      "name": "release_verifier_after_seal",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "release_verifier": "2026-05-05T17:31:10Z",
+        "violations": []
+      },
+      "name": "post_seal_reports_are_after_verifier",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "causal_mesh": "2026-05-05T20:35:01Z",
+        "claim_boundary": "2026-05-05T20:35:01Z",
+        "runtime_growth_budget": "2026-05-05T19:51:05Z"
+      },
+      "name": "causal_mesh_after_growth_and_claim",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "causal_mesh": "2026-05-05T20:35:01Z",
+        "claim_boundary": "2026-05-05T20:35:01Z",
+        "efficiency_proof": "2026-05-05T20:35:01Z",
+        "runtime_growth_budget": "2026-05-05T19:51:05Z"
+      },
+      "name": "efficiency_after_mesh_growth_and_claim",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "causal_mesh": "2026-05-05T20:35:01Z",
+        "efficiency_proof": "2026-05-05T20:35:01Z",
+        "equation_consistency": "2026-05-05T20:35:01Z"
+      },
+      "name": "equation_after_efficiency_and_mesh",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "efficiency_proof": "2026-05-05T20:35:01Z",
+        "equation_consistency": "2026-05-05T20:35:01Z",
+        "legacy_quarantine": "2026-05-05T20:35:01Z"
+      },
+      "name": "legacy_after_equation_and_efficiency",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "claim_scanned_file_count": 90,
+        "growth_event_count": 589,
+        "mesh_checksum_count": 257,
+        "mesh_event_count": 589,
+        "mesh_manifest_file_count": 258,
+        "publication_checksum_count": 257,
+        "publication_manifest_file_count": 258
+      },
+      "name": "public_counts_current",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "expected": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+        "root_hashes": {
+          "admission_matrix": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+          "causal_mesh": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+          "claim_boundary": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+          "dependency_graph": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+          "efficiency_proof": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+          "entity_capability": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+          "equation_consistency": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+          "event_identity": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+          "evolution_governor": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+          "field_topology": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+          "heuristic_weight": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+          "invariant_firewall": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+          "legacy_quarantine": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+          "negative_controls": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+          "no_tick_contract": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+          "proof_theorem": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+          "publication_gate": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+          "regression_sentinel": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+          "release_seal": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+          "release_verifier": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+          "release_verifier_recomputed": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+          "runtime_admission": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+          "runtime_growth_budget": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc"
+        }
+      },
+      "name": "root_hash_chronology_aligned",
+      "pass": true
+    }
+  ],
+  "checksum_count": 257,
+  "chronological_edges": [
+    {
+      "edge": "sealed_inputs_before_or_equal_release_seal",
+      "pass": true,
+      "violations": []
+    },
+    {
+      "edge": "release_verifier_after_release_seal",
+      "pass": true,
+      "release_seal": "2026-05-05T17:31:09Z",
+      "release_verifier": "2026-05-05T17:31:10Z"
+    },
+    {
+      "edge": "post_seal_reports_after_release_verifier",
+      "pass": true,
+      "violations": []
+    },
+    {
+      "causal_mesh": "2026-05-05T20:35:01Z",
+      "claim_boundary": "2026-05-05T20:35:01Z",
+      "edge": "causal_mesh_after_growth_and_claim",
+      "pass": true,
+      "runtime_growth_budget": "2026-05-05T19:51:05Z"
+    },
+    {
+      "causal_mesh": "2026-05-05T20:35:01Z",
+      "claim_boundary": "2026-05-05T20:35:01Z",
+      "edge": "efficiency_after_mesh_growth_and_claim",
+      "efficiency_proof": "2026-05-05T20:35:01Z",
+      "pass": true,
+      "runtime_growth_budget": "2026-05-05T19:51:05Z"
+    },
+    {
+      "causal_mesh": "2026-05-05T20:35:01Z",
+      "edge": "equation_after_efficiency_and_mesh",
+      "efficiency_proof": "2026-05-05T20:35:01Z",
+      "equation_consistency": "2026-05-05T20:35:01Z",
+      "pass": true
+    },
+    {
+      "edge": "legacy_after_equation_and_efficiency",
+      "efficiency_proof": "2026-05-05T20:35:01Z",
+      "equation_consistency": "2026-05-05T20:35:01Z",
+      "legacy_quarantine": "2026-05-05T20:35:01Z",
+      "pass": true
+    }
+  ],
+  "chronology_score": 100.0,
+  "claim_scanned_file_count": 90,
+  "classification": "PNVA_ROOT_EVIDENCE_CHRONOLOGY_LEDGER_READY",
+  "evidence_chronology_ledger_hash": "sha256:97c78c6e3071e3a991f8b3bb5339cf675f9d2bca9a3e46c470fa1d2da30342de",
+  "failure_count": 0,
+  "generated_at": "2026-05-05T20:35:01Z",
+  "interpretation": {
+    "boundary": "This ledger audits public report chronology only. It does not execute actions, change live gates or alter runtime workloads.",
+    "purpose": "Prove that root evidence reports have a coherent sealed-core, post-seal and publication chronology.",
+    "sovereignty": "A root proof system is stronger when evidence order is explicit and post-seal reports cite the sealed root hash without rewriting it."
+  },
+  "manifest_file_count": 258,
+  "mesh_entity_count": 13,
+  "mesh_event_count": 589,
+  "mesh_rule_count": 9,
+  "mesh_suppressed_count": 285,
+  "pass": true,
+  "path_leak_count": 0,
+  "phase_windows": {
+    "post_seal_root_ledgers": {
+      "end": "2026-05-05T20:02:08Z",
+      "report_count": 14,
+      "start": "2026-05-05T18:48:05Z",
+      "with_generated_at": 14
+    },
+    "publication_and_growth": {
+      "end": "2026-05-05T20:35:01Z",
+      "report_count": 7,
+      "start": "2026-05-05T19:51:05Z",
+      "with_generated_at": 7
+    },
+    "sealed_core": {
+      "end": "2026-05-05T17:31:10Z",
+      "report_count": 6,
+      "start": "2026-05-05T17:31:08Z",
+      "with_generated_at": 6
+    }
+  },
+  "project": "PNVA-Core",
+  "report_count": 27,
+  "root_release_hash": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+  "schema_version": "pnva.root_evidence_chronology_ledger.v1",
+  "source_classification_checks": [
+    {
+      "classification": "PNVA_ROOT_TRACEABILITY_MATRIX_READY",
+      "expected": "PNVA_ROOT_TRACEABILITY_MATRIX_READY",
+      "name": "traceability",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_SOVEREIGNTY_GUARD_READY",
+      "expected": "PNVA_ROOT_SOVEREIGNTY_GUARD_READY",
+      "name": "sovereignty",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_CAUSAL_INTELLIGENCE_READY",
+      "expected": "PNVA_ROOT_CAUSAL_INTELLIGENCE_READY",
+      "name": "causal_intelligence",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_ADVERSARIAL_SENTRY_PASS",
+      "expected": "PNVA_ROOT_ADVERSARIAL_SENTRY_PASS",
+      "name": "adversarial_sentry",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_RELEASE_SEALED",
+      "expected": "PNVA_ROOT_RELEASE_SEALED",
+      "name": "release_seal",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_RELEASE_VERIFIED",
+      "expected": "PNVA_ROOT_RELEASE_VERIFIED",
+      "name": "release_verifier",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_OBSERVABILITY_INDEX_READY",
+      "expected": "PNVA_ROOT_OBSERVABILITY_INDEX_READY",
+      "name": "observability",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_INVARIANT_FIREWALL_READY",
+      "expected": "PNVA_ROOT_INVARIANT_FIREWALL_READY",
+      "name": "invariant_firewall",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_REGRESSION_SENTINEL_READY",
+      "expected": "PNVA_ROOT_REGRESSION_SENTINEL_READY",
+      "name": "regression_sentinel",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_PROOF_THEOREM_LEDGER_READY",
+      "expected": "PNVA_ROOT_PROOF_THEOREM_LEDGER_READY",
+      "name": "proof_theorem",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_EVOLUTION_GOVERNOR_READY",
+      "expected": "PNVA_ROOT_EVOLUTION_GOVERNOR_READY",
+      "name": "evolution_governor",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_HEURISTIC_WEIGHT_LEDGER_READY",
+      "expected": "PNVA_ROOT_HEURISTIC_WEIGHT_LEDGER_READY",
+      "name": "heuristic_weight",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_ENTITY_CAPABILITY_LEDGER_READY",
+      "expected": "PNVA_ROOT_ENTITY_CAPABILITY_LEDGER_READY",
+      "name": "entity_capability",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_DEPENDENCY_GRAPH_READY",
+      "expected": "PNVA_ROOT_DEPENDENCY_GRAPH_READY",
+      "name": "dependency_graph",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_FIELD_TOPOLOGY_LEDGER_READY",
+      "expected": "PNVA_ROOT_FIELD_TOPOLOGY_LEDGER_READY",
+      "name": "field_topology",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_NO_TICK_CAUSAL_CONTRACT_READY",
+      "expected": "PNVA_ROOT_NO_TICK_CAUSAL_CONTRACT_READY",
+      "name": "no_tick_contract",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_RUNTIME_ADMISSION_READY",
+      "expected": "PNVA_ROOT_RUNTIME_ADMISSION_READY",
+      "name": "runtime_admission",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_ENTITY_HEURISTIC_ADMISSION_MATRIX_READY",
+      "expected": "PNVA_ROOT_ENTITY_HEURISTIC_ADMISSION_MATRIX_READY",
+      "name": "admission_matrix",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_ADMISSION_NEGATIVE_CONTROLS_PASS",
+      "expected": "PNVA_ROOT_ADMISSION_NEGATIVE_CONTROLS_PASS",
+      "name": "negative_controls",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_EVENT_IDENTITY_LEDGER_READY",
+      "expected": "PNVA_ROOT_EVENT_IDENTITY_LEDGER_READY",
+      "name": "event_identity",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_CLAIM_BOUNDARY_GUARD_READY",
+      "expected": "PNVA_ROOT_CLAIM_BOUNDARY_GUARD_READY",
+      "name": "claim_boundary",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_PUBLICATION_GATE_READY",
+      "expected": "PNVA_ROOT_PUBLICATION_GATE_READY",
+      "name": "publication_gate",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_RUNTIME_GROWTH_BUDGET_READY",
+      "expected": "PNVA_ROOT_RUNTIME_GROWTH_BUDGET_READY",
+      "name": "runtime_growth_budget",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_CAUSAL_MESH_LEDGER_READY",
+      "expected": "PNVA_ROOT_CAUSAL_MESH_LEDGER_READY",
+      "name": "causal_mesh",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_EFFICIENCY_PROOF_LEDGER_READY",
+      "expected": "PNVA_ROOT_EFFICIENCY_PROOF_LEDGER_READY",
+      "name": "efficiency_proof",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_EQUATION_CONSISTENCY_LEDGER_READY",
+      "expected": "PNVA_ROOT_EQUATION_CONSISTENCY_LEDGER_READY",
+      "name": "equation_consistency",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_LEGACY_QUARANTINE_LEDGER_READY",
+      "expected": "PNVA_ROOT_LEGACY_QUARANTINE_LEDGER_READY",
+      "name": "legacy_quarantine",
+      "pass": true
+    }
+  ],
+  "unbounded_high_risk_occurrence_count": 0
+}

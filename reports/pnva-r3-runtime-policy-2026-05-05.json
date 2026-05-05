@@ -1,0 +1,102 @@
+{
+  "author": "Gustavo de Aguiar Martins",
+  "classification": "SOVEREIGN_POLICY_READY",
+  "entity_catalog_ref": "reports/pnva-r3-runtime-entity-catalog-2026-05-05.json",
+  "errors": [],
+  "events_ref": "reports/pnva-r3-runtime-events-2026-05-05.jsonl",
+  "generated_at": "2026-05-05T16:08:49Z",
+  "interpretation": {
+    "legacy_rule": "Legacy weak-authority strong decisions are preserved as warnings so historical evidence is not rewritten.",
+    "native_rule": "Native events must carry H2/H3 authority for collapse, block, prove or reclassify decisions.",
+    "sovereignty": "Authority, entity, proof and relation policies are checked before an event is treated as production-grade evidence."
+  },
+  "legacy_tolerant": true,
+  "pass": true,
+  "policy": {
+    "H0": "Observation only; strong decisions are warnings only for legacy evidence when legacy_tolerant is true.",
+    "H1": "Advisory signal or memory; not enough alone for new strong actions.",
+    "H2": "Guarded threshold, routing, native emission or runtime action.",
+    "H3": "Sovereign guard authority.",
+    "strong_decisions": [
+      "block",
+      "collapse",
+      "prove",
+      "reclassify"
+    ]
+  },
+  "project": "PNVA-Core",
+  "recommendations": [
+    "Move new runtime strong decisions to native pnva.event.v1 emission with H2/H3 authority.",
+    "Keep legacy low-authority strong decisions visible as warnings until the source runtime is upgraded.",
+    "Require etev_guard on every ETEV_GUARD_PASS and ETEV_GUARD_BLOCK event.",
+    "Require valid proof_hash and proof_ref for every collapse, block, prove or reclassify decision."
+  ],
+  "schema_version": "pnva.sovereign_policy.v1",
+  "summary": {
+    "authority_mix": [
+      [
+        "H2",
+        70
+      ]
+    ],
+    "decision_mix": [
+      [
+        "observe",
+        35
+      ],
+      [
+        "collapse",
+        35
+      ]
+    ],
+    "decisions_by_authority": {
+      "H2": [
+        [
+          "observe",
+          35
+        ],
+        [
+          "collapse",
+          35
+        ]
+      ]
+    },
+    "entity_missing_count": 0,
+    "entity_policy_ok": 70,
+    "event_count": 70,
+    "guard_policy_bad": 0,
+    "guard_policy_ok": 0,
+    "low_authority_legacy_count": 0,
+    "native_event_count": 70,
+    "proof_policy_bad": 0,
+    "proof_policy_ok": 35,
+    "relation_policy_bad": 0,
+    "relation_policy_ok": 0,
+    "rules": [
+      [
+        "native_event_emitter",
+        70
+      ],
+      [
+        "adaptive_threshold",
+        70
+      ],
+      [
+        "field_scheduler",
+        70
+      ],
+      [
+        "power_orchestrator",
+        4
+      ]
+    ],
+    "source_formats": [
+      [
+        "native_pnva_event_v1",
+        70
+      ]
+    ],
+    "strong_decision_count": 35
+  },
+  "warnings": []
+}

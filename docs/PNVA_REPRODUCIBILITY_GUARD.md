@@ -31,8 +31,8 @@ REPRODUCIBILITY_READY
 Current result:
 
 ```text
-command_count: 35
-comparison_count: 406
+command_count: 40
+comparison_count: 445
 failure_count: 0
 command_failure_count: 0
 comparison_failure_count: 0
@@ -66,8 +66,13 @@ R3 migration plan
 authority migration ledger
 R3 authority projection
 R3 cutover gate
+R3 runtime event emitter
 R3 runtime capture matrix
 R3 runtime evidence guard
+R3 runtime replay
+R3 runtime policy
+R3 runtime no-tick
+R3 runtime proof-chain
 R3 runtime instrumentation plan
 R3 runtime contract validation
 sovereign evolution ledger

@@ -1,0 +1,420 @@
+{
+  "author": "Gustavo de Aguiar Martins",
+  "causal_mesh_ledger_hash": "sha256:5671980226c8ebc445e22a611084751140a6158f4a59e459325a106e32b9bd62",
+  "causal_mesh_score": 100.0,
+  "check_count": 10,
+  "checks": [
+    {
+      "evidence": {
+        "reports": [
+          {
+            "classification": "PNVA_ROOT_NO_TICK_CAUSAL_CONTRACT_READY",
+            "expected": "PNVA_ROOT_NO_TICK_CAUSAL_CONTRACT_READY",
+            "name": "no_tick_contract",
+            "pass": true
+          },
+          {
+            "classification": "PNVA_ROOT_FIELD_TOPOLOGY_LEDGER_READY",
+            "expected": "PNVA_ROOT_FIELD_TOPOLOGY_LEDGER_READY",
+            "name": "field_topology",
+            "pass": true
+          },
+          {
+            "classification": "PNVA_ROOT_ENTITY_CAPABILITY_LEDGER_READY",
+            "expected": "PNVA_ROOT_ENTITY_CAPABILITY_LEDGER_READY",
+            "name": "entity_capability",
+            "pass": true
+          },
+          {
+            "classification": "PNVA_ROOT_HEURISTIC_WEIGHT_LEDGER_READY",
+            "expected": "PNVA_ROOT_HEURISTIC_WEIGHT_LEDGER_READY",
+            "name": "heuristic_weight",
+            "pass": true
+          },
+          {
+            "classification": "PNVA_ROOT_ENTITY_HEURISTIC_ADMISSION_MATRIX_READY",
+            "expected": "PNVA_ROOT_ENTITY_HEURISTIC_ADMISSION_MATRIX_READY",
+            "name": "admission_matrix",
+            "pass": true
+          },
+          {
+            "classification": "PNVA_ROOT_RUNTIME_ADMISSION_READY",
+            "expected": "PNVA_ROOT_RUNTIME_ADMISSION_READY",
+            "name": "runtime_admission",
+            "pass": true
+          },
+          {
+            "classification": "PNVA_ROOT_OBSERVABILITY_INDEX_READY",
+            "expected": "PNVA_ROOT_OBSERVABILITY_INDEX_READY",
+            "name": "observability",
+            "pass": true
+          },
+          {
+            "classification": "PNVA_ROOT_CAUSAL_INTELLIGENCE_READY",
+            "expected": "PNVA_ROOT_CAUSAL_INTELLIGENCE_READY",
+            "name": "causal_intelligence",
+            "pass": true
+          },
+          {
+            "classification": "PNVA_ROOT_RUNTIME_GROWTH_BUDGET_READY",
+            "expected": "PNVA_ROOT_RUNTIME_GROWTH_BUDGET_READY",
+            "name": "growth_budget",
+            "pass": true
+          },
+          {
+            "classification": "PNVA_ROOT_ADMISSION_NEGATIVE_CONTROLS_PASS",
+            "expected": "PNVA_ROOT_ADMISSION_NEGATIVE_CONTROLS_PASS",
+            "name": "negative_controls",
+            "pass": true
+          },
+          {
+            "classification": "PNVA_ROOT_PUBLICATION_GATE_READY",
+            "expected": "PNVA_ROOT_PUBLICATION_GATE_READY",
+            "name": "publication_gate",
+            "pass": true
+          },
+          {
+            "classification": "PNVA_ROOT_CLAIM_BOUNDARY_GUARD_READY",
+            "expected": "PNVA_ROOT_CLAIM_BOUNDARY_GUARD_READY",
+            "name": "claim_boundary",
+            "pass": true
+          },
+          {
+            "classification": "PNVA_ROOT_RELEASE_VERIFIED",
+            "expected": "PNVA_ROOT_RELEASE_VERIFIED",
+            "name": "release_verifier",
+            "pass": true
+          }
+        ]
+      },
+      "name": "source_reports_ready",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "decision_counts": {
+          "block": {
+            "causal_intelligence": 35,
+            "no_tick_contract": 35,
+            "observability": 35
+          },
+          "collapse": {
+            "causal_intelligence": 303,
+            "no_tick_contract": 303,
+            "observability": 303
+          },
+          "observe": {
+            "causal_intelligence": 250,
+            "no_tick_contract": 250,
+            "observability": 250
+          }
+        },
+        "event_counts": {
+          "admission_matrix": 589,
+          "causal_intelligence": 589,
+          "field_topology": 589,
+          "growth_budget": 589,
+          "no_tick_contract": 589,
+          "observability": 589,
+          "runtime_admission": 589
+        },
+        "suppressed_counts": {
+          "causal_intelligence": 285,
+          "growth_budget": 285,
+          "no_tick_contract": 285,
+          "observability": 285,
+          "runtime_admission": 285
+        },
+        "suppression_ratios": {
+          "causal_intelligence": 0.483871,
+          "growth_budget": 0.483871,
+          "no_tick_contract": 0.483871,
+          "observability": 0.483871,
+          "runtime_admission": 0.483871
+        }
+      },
+      "name": "no_tick_counts_mesh_agree",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "entity_counts": {
+          "entity_capability": 13,
+          "field_topology": 13,
+          "observability": 13,
+          "runtime_admission": 13
+        },
+        "unknown_entity_counts": {
+          "admission_matrix": 0,
+          "field_topology": 0,
+          "no_tick_contract": 0
+        }
+      },
+      "name": "entity_counts_mesh_agree",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "heuristic_coverage_ratio": 1.0,
+        "projection_clean": true,
+        "proof_complete": true,
+        "proof_event_coverage_ratio": 1.0,
+        "rule_counts": {
+          "field_topology": 9,
+          "heuristic_weight": 9,
+          "observability": 9,
+          "runtime_admission": 9
+        },
+        "rule_event_edges": {
+          "admission_matrix": 1350,
+          "field_topology": 1350,
+          "heuristic_weight": 1350
+        },
+        "unknown_rule_counts": {
+          "admission_matrix": 0,
+          "no_tick_contract": 0
+        }
+      },
+      "name": "heuristic_counts_mesh_agree",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "admission_classes": {
+          "admitted_native_edge_count": 12,
+          "admitted_r3_edge_count": 4,
+          "bounded_legacy_edge_count": 5,
+          "controlled_canonical_edge_count": 17,
+          "denied_edge_count": 0
+        },
+        "blocked_edge_counts": {
+          "field_topology": 0,
+          "runtime_admission": 0
+        },
+        "entity_rule_edges": {
+          "admission_matrix": 38,
+          "field_topology": 38,
+          "growth_budget": 38,
+          "runtime_admission": 38
+        }
+      },
+      "name": "entity_rule_admission_mesh_agree",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "r3_counts": {
+          "growth_budget": 35,
+          "no_tick_contract": 35,
+          "observability_accepted_slots": 35,
+          "runtime_admission": 35
+        },
+        "r3_pair_failure_count": 0,
+        "runtime_observability": {
+          "accepted_slot_count": 35,
+          "contract_check_count": 315,
+          "contract_failure_count": 0,
+          "negative_control_count": 63,
+          "negative_control_detected_count": 63,
+          "no_tick_pair_failure_count": 0,
+          "no_tick_pair_integrity_count": 35,
+          "pending_slot_count": 0,
+          "rejected_event_count": 0
+        },
+        "strict_threshold_violation_count": 0
+      },
+      "name": "runtime_r3_mesh_agree",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "entity_projection_clean": true,
+        "entity_proof_complete": true,
+        "event_count": 589,
+        "negative_controls": {
+          "control_count": 8,
+          "detected_count": 8,
+          "undetected_count": 0
+        },
+        "projection_event_count": 0,
+        "proof_valid_count": 589
+      },
+      "name": "proof_projection_and_negative_controls_clean",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "checksum_count": 257,
+        "high_risk_occurrence_count": 48,
+        "manifest_file_count": 258,
+        "path_leak_count": 0,
+        "scanned_file_count": 90,
+        "unbounded_high_risk_occurrence_count": 0
+      },
+      "name": "public_boundary_mesh_closed",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "allowed_growth_modes": [
+          "restricted_native_event_ingest",
+          "restricted_r3_precheck_commit",
+          "planning_only_evolution"
+        ],
+        "blocked_growth_modes": [
+          "unpaired_r3_runtime_events",
+          "projected_runtime_evidence",
+          "unknown_entity_or_rule_runtime",
+          "unsanitized_log_ingest",
+          "private_threshold_publication",
+          "hardware_energy_claim_without_counter_benchmark"
+        ],
+        "growth_mode": "SMALL_BATCH_RESTRICTED",
+        "max_bounded_legacy_edges": 5,
+        "max_denied_edges": 0,
+        "max_new_entity_rule_edges_per_batch": 8,
+        "max_new_events_per_batch": 118,
+        "max_new_r3_chains_per_batch": 7,
+        "max_projected_events": 0,
+        "max_r3_pair_failures": 0,
+        "max_strict_threshold_violations": 0,
+        "max_suppression_ratio": 0.7,
+        "max_unknown_entities": 0,
+        "max_unknown_rules": 0,
+        "min_negative_controls_detected": 8,
+        "min_suppression_ratio": 0.45
+      },
+      "name": "growth_budget_mesh_applied",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "expected": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+        "root_hashes": {
+          "admission_matrix": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+          "claim_boundary": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+          "entity_capability": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+          "field_topology": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+          "growth_budget": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+          "heuristic_weight": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+          "negative_controls": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+          "no_tick_contract": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+          "publication_gate": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+          "release_verifier": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+          "release_verifier_recomputed": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+          "runtime_admission": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc"
+        }
+      },
+      "name": "root_release_hash_mesh_aligned",
+      "pass": true
+    }
+  ],
+  "checksum_count": 257,
+  "classification": "PNVA_ROOT_CAUSAL_MESH_LEDGER_READY",
+  "denied_edge_count": 0,
+  "entity_count": 13,
+  "entity_rule_edge_count": 38,
+  "event_count": 589,
+  "failure_count": 0,
+  "generated_at": "2026-05-05T20:35:01Z",
+  "interpretation": {
+    "boundary": "This ledger audits public evidence only. It does not execute actions, change live gates or alter runtime workloads.",
+    "purpose": "Prove that root no-tick logs, entities, heuristics, admission, observability, growth and publication reports agree as one causal mesh.",
+    "sovereignty": "A root system is stronger when every PASS is cross-counted against the other PASS reports, not trusted in isolation."
+  },
+  "manifest_file_count": 258,
+  "pass": true,
+  "path_leak_count": 0,
+  "project": "PNVA-Core",
+  "proof_valid_count": 589,
+  "r3_chain_count": 35,
+  "root_release_hash": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+  "rule_count": 9,
+  "rule_event_edge_count": 1350,
+  "schema_version": "pnva.root_causal_mesh_ledger.v1",
+  "source_classification_checks": [
+    {
+      "classification": "PNVA_ROOT_NO_TICK_CAUSAL_CONTRACT_READY",
+      "expected": "PNVA_ROOT_NO_TICK_CAUSAL_CONTRACT_READY",
+      "name": "no_tick_contract",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_FIELD_TOPOLOGY_LEDGER_READY",
+      "expected": "PNVA_ROOT_FIELD_TOPOLOGY_LEDGER_READY",
+      "name": "field_topology",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_ENTITY_CAPABILITY_LEDGER_READY",
+      "expected": "PNVA_ROOT_ENTITY_CAPABILITY_LEDGER_READY",
+      "name": "entity_capability",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_HEURISTIC_WEIGHT_LEDGER_READY",
+      "expected": "PNVA_ROOT_HEURISTIC_WEIGHT_LEDGER_READY",
+      "name": "heuristic_weight",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_ENTITY_HEURISTIC_ADMISSION_MATRIX_READY",
+      "expected": "PNVA_ROOT_ENTITY_HEURISTIC_ADMISSION_MATRIX_READY",
+      "name": "admission_matrix",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_RUNTIME_ADMISSION_READY",
+      "expected": "PNVA_ROOT_RUNTIME_ADMISSION_READY",
+      "name": "runtime_admission",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_OBSERVABILITY_INDEX_READY",
+      "expected": "PNVA_ROOT_OBSERVABILITY_INDEX_READY",
+      "name": "observability",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_CAUSAL_INTELLIGENCE_READY",
+      "expected": "PNVA_ROOT_CAUSAL_INTELLIGENCE_READY",
+      "name": "causal_intelligence",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_RUNTIME_GROWTH_BUDGET_READY",
+      "expected": "PNVA_ROOT_RUNTIME_GROWTH_BUDGET_READY",
+      "name": "growth_budget",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_ADMISSION_NEGATIVE_CONTROLS_PASS",
+      "expected": "PNVA_ROOT_ADMISSION_NEGATIVE_CONTROLS_PASS",
+      "name": "negative_controls",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_PUBLICATION_GATE_READY",
+      "expected": "PNVA_ROOT_PUBLICATION_GATE_READY",
+      "name": "publication_gate",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_CLAIM_BOUNDARY_GUARD_READY",
+      "expected": "PNVA_ROOT_CLAIM_BOUNDARY_GUARD_READY",
+      "name": "claim_boundary",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_RELEASE_VERIFIED",
+      "expected": "PNVA_ROOT_RELEASE_VERIFIED",
+      "name": "release_verifier",
+      "pass": true
+    }
+  ],
+  "suppressed_count": 285,
+  "suppression_ratio": 0.483871,
+  "unbounded_high_risk_occurrence_count": 0,
+  "unknown_entity_count": 0,
+  "unknown_rule_count": 0
+}

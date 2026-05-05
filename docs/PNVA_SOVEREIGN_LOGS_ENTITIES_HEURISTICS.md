@@ -753,7 +753,7 @@ blocker_count: 0
 
 Production interpretation:
 
-The package is not claiming R3 yet. It is stronger because it names exactly what remains: replace 35 H0 strong legacy decisions, remove 164 low-authority strong influence edges, re-emit 176 above-threshold suppressions through calibrated native thresholds and remove 341 bridge-normalized schema warnings from future native evidence.
+The migration planner stays conservative: it preserves the historical R2 legacy-quarantined baseline and names the original debt. The downstream R3 runtime layers then close the mapped slot-bound replacement sample with native evidence, while the historical warnings remain visible instead of being deleted.
 
 ## 23. Authority Migration Ledger
 
@@ -880,29 +880,29 @@ reports/pnva-r3-cutover-gate-2026-05-05.json
 Current classification:
 
 ```text
-R3_CUTOVER_GATE_READY_RUNTIME_REQUIRED
+R3_CUTOVER_APPROVED
 ```
 
 Current result:
 
 ```text
 contract_ready: true
-cutover_approved: false
-legacy_free_claim_allowed: false
-fresh_runtime_evidence_present: false
+cutover_approved: true
+legacy_free_claim_allowed: true
+fresh_runtime_evidence_present: true
 authority_candidate_count: 35
 projected_event_count: 70
 projected_precheck_count: 35
 projected_commit_count: 35
 projected_low_authority_strong_count: 0
-remaining_runtime_replacement_count: 35
-runtime_blocker_count: 3
+remaining_runtime_replacement_count: 0
+runtime_blocker_count: 0
 contract_score: 100
 ```
 
 Production interpretation:
 
-The cutover gate prevents a false R3 claim. The native replacement contract is ready, but final legacy-free production status remains blocked until fresh runtime events replace the projected evidence and pass replay, policy, no-tick, robustness, semantic and reproducibility validation.
+The cutover gate now approves the slot-bound native runtime sample. The contract is ready, runtime evidence is present, downstream replay/policy/no-tick/proof-chain checks pass, and no runtime replacement remains pending.
 
 ## 26. R3 Runtime Capture Matrix
 
@@ -921,18 +921,18 @@ reports/pnva-r3-runtime-capture-matrix-2026-05-05.json
 Current classification:
 
 ```text
-R3_RUNTIME_CAPTURE_MATRIX_READY_PENDING_RUNTIME
+R3_RUNTIME_CAPTURE_MATRIX_COMPLETE
 ```
 
 Current result:
 
 ```text
 capture_contract_ready: true
-runtime_capture_complete: false
-runtime_capture_approved: false
+runtime_capture_complete: true
+runtime_capture_approved: true
 capture_slot_count: 35
-verified_runtime_slot_count: 0
-pending_slot_count: 35
+verified_runtime_slot_count: 35
+pending_slot_count: 0
 required_runtime_event_count: 70
 required_no_tick_precheck_count: 35
 required_collapse_commit_count: 35
@@ -945,7 +945,7 @@ target_rule_count: 4
 
 Production interpretation:
 
-The matrix makes the next runtime step precise. Each remaining R3 replacement now has an entity, action, target heuristic set, required no-tick precheck, required commit and proof rule. It improves no-tick without claiming final runtime completion.
+The matrix verifies the runtime capture shape. Each R3 replacement has an entity, action, target heuristic set, native no-tick precheck, native commit and proof rule, with all 35 slots covered by the accepted runtime sample.
 
 ## 27. R3 Runtime Evidence Guard
 
@@ -964,29 +964,29 @@ reports/pnva-r3-runtime-evidence-guard-2026-05-05.json
 Current classification:
 
 ```text
-R3_RUNTIME_EVIDENCE_GUARD_READY_AWAITING_CAPTURE
+R3_RUNTIME_EVIDENCE_ACCEPTED
 ```
 
 Current result:
 
 ```text
 intake_guard_ready: true
-runtime_evidence_present: false
-runtime_evidence_approved: false
-runtime_acceptance_complete: false
+runtime_evidence_present: true
+runtime_evidence_approved: true
+runtime_acceptance_complete: true
 capture_slot_count: 35
 required_runtime_event_count: 70
-accepted_slot_count: 0
-pending_slot_count: 35
+accepted_slot_count: 35
+pending_slot_count: 0
 rejected_event_count: 0
 duplicate_event_rejection_count: 0
 duplicate_proof_hash_rejection_count: 0
 duplicate_proof_ref_rejection_count: 0
 source_line_monotonicity_rejection_count: 0
-no_tick_pair_integrity_count: 0
+no_tick_pair_integrity_count: 35
 no_tick_pair_failure_count: 0
-same_source_file_no_tick_pair_count: 0
-state_continuity_no_tick_pair_count: 0
+same_source_file_no_tick_pair_count: 35
+state_continuity_no_tick_pair_count: 35
 negative_control_detected_count: 63
 negative_control_count: 63
 positive_control_passed_count: 6
@@ -1000,7 +1000,7 @@ The guard makes the future R3 runtime harder to fake. It rejects projected proof
 
 ## 28. R3 Runtime Instrumentation Plan
 
-After the evidence guard protects intake, convert the pending slots into emitter work:
+After the evidence guard protects intake, keep the accepted slots bound to explicit emitter work:
 
 ```text
 capture slots + guard rules -> action contracts + event templates + validation commands
@@ -1022,8 +1022,8 @@ Current result:
 
 ```text
 instrumentation_plan_ready: true
-runtime_evidence_present: false
-runtime_evidence_approved: false
+runtime_evidence_present: true
+runtime_evidence_approved: true
 capture_slot_count: 35
 entity_target_count: 1
 action_contract_count: 3
@@ -1064,8 +1064,8 @@ Current result:
 
 ```text
 contract_validation_ready: true
-runtime_evidence_present: false
-runtime_evidence_approved: false
+runtime_evidence_present: true
+runtime_evidence_approved: true
 capture_slot_count: 35
 action_contract_count: 3
 required_runtime_event_count: 70
@@ -1080,7 +1080,7 @@ failure_count: 0
 
 Production interpretation:
 
-The validator prevents contract drift before final runtime capture. It proves the matrix slot IDs, original event IDs, causal-chain uniqueness per slot, guard enforced controls, instrumentation templates, no-tick prechecks, commit actions, exact event types, exact pair cardinality, exact runtime event count, native proof markers, proof-ref role binding, proof-hash identity and source-location binding, tension gate-delta policy, source file public-basename policy, same-source no-tick pair policy, precheck-to-commit state continuity, source location uniqueness, JSONL-line order, source-line order, per-file source-line monotonicity and source sanitization still agree as one system. This is not final runtime evidence; it is the gate that keeps the final capture contract coherent.
+The validator prevents contract drift after runtime capture. It proves the matrix slot IDs, original event IDs, causal-chain uniqueness per slot, guard enforced controls, instrumentation templates, no-tick prechecks, commit actions, exact event types, exact pair cardinality, exact runtime event count, native proof markers, proof-ref role binding, proof-hash identity and source-location binding, tension gate-delta policy, source file public-basename policy, same-source no-tick pair policy, precheck-to-commit state continuity, source location uniqueness, JSONL-line order, source-line order, per-file source-line monotonicity and source sanitization still agree as one system.
 
 ## 30. Sovereign Evolution Ledger
 
@@ -1099,24 +1099,24 @@ reports/pnva-sovereign-evolution-ledger-2026-05-05.json
 Current classification:
 
 ```text
-PNVA_SOVEREIGN_EVOLUTION_LEDGER_READY_R3_RUNTIME_REQUIRED
+PNVA_SOVEREIGN_EVOLUTION_LEDGER_R3_READY
 ```
 
 Current result:
 
 ```text
-sovereign_evolution_score: 88.37
+sovereign_evolution_score: 98.37
 current_readiness_level: R2_NATIVE_CLEAN_LEGACY_QUARANTINED
 target_readiness_level: R3_NATIVE_CLEAN_LEGACY_FREE
 evidence_integrity_ready: true
 no_tick_ready: true
 native_clean_path: true
 r3_preparation_ready: true
-r3_runtime_evidence_present: false
-r3_runtime_evidence_approved: false
-r3_cutover_approved: false
-r3_runtime_capture_coverage_percent: 0.0
-runtime_pending_slot_count: 35
+r3_runtime_evidence_present: true
+r3_runtime_evidence_approved: true
+r3_cutover_approved: true
+r3_runtime_capture_coverage_percent: 100.0
+runtime_pending_slot_count: 0
 runtime_required_event_count: 70
 runtime_contract_check_count: 315
 runtime_contract_failure_count: 0
@@ -1124,13 +1124,13 @@ runtime_positive_control_passed_count: 6
 runtime_mandatory_field_count: 28
 runtime_enforced_control_count: 59
 controlled_warning_count: 1232
-blocker_count: 2
+blocker_count: 0
 priority_action_count: 4
 ```
 
 Production interpretation:
 
-The ledger turns the PNVA evolution into a single operational dashboard. It says what is strong now, what is still controlled legacy, and exactly what blocks the final R3 claim. This is intentionally conservative: no-tick, logs, heuristics and entities are ready as evidence, but final runtime approval stays blocked until fresh native runtime JSONL covers all 35 pending slots with 70 required events.
+The ledger turns the PNVA evolution into a single operational dashboard. It says what is strong now, what is still controlled legacy, and why the slot-bound native runtime sample is accepted for R3: 70 required events, 35 verified slots, zero pending slots, zero runtime blockers and accepted cutover.
 
 ## 31. Sovereign Evidence Attestation
 
@@ -1159,7 +1159,7 @@ PNVA_SOVEREIGN_EVIDENCE_ATTESTED
 Current package:
 
 ```text
-41 tracked artifacts
+48 tracked artifacts
 0 failures
 ```
 
@@ -1302,8 +1302,8 @@ REPRODUCIBILITY_READY
 Current result:
 
 ```text
-command_count: 35
-comparison_count: 406
+command_count: 40
+comparison_count: 445
 failure_count: 0
 command_failure_count: 0
 comparison_failure_count: 0
@@ -1315,7 +1315,1323 @@ PNVA evidence becomes stronger when reports are not only internally consistent, 
 
 The reproducibility report is not included in the attestation hash seed because it consumes the attestation. This keeps the evidence graph acyclic.
 
-## 36. Public Safety
+## 36. Root Sovereignty Guard
+
+After reproducibility, collapse runtime evidence, entities, heuristics, no-tick pairs, traceability, proof integrity and publication hygiene into one root-level guard:
+
+```text
+runtime events + entity catalog + no-tick pairs + traceability matrix + cutover + ledger + attestation + semantic + reproducibility + audit -> root readiness
+```
+
+Current report:
+
+```text
+reports/pnva-root-sovereignty-guard-2026-05-05.json
+```
+
+Current classification:
+
+```text
+PNVA_ROOT_SOVEREIGNTY_GUARD_READY
+```
+
+Current result:
+
+```text
+root_score: 100.0
+check_count: 27
+failure_count: 0
+event_count: 70
+slot_count: 35
+entity_count: 1
+```
+
+Production interpretation:
+
+The root guard is the final coherence check for the public package. It verifies that each R3 slot has one no-tick precheck and one native commit, the events are entity-bound, source-sanitized, non-projected, proof-hash bound, H2+ by policy, traceable by slot matrix and accepted by replay, policy, no-tick, proof-chain, cutover, ledger, attestation, semantic consistency, reproducibility and sovereign audit.
+
+The root guard is intentionally outside the attestation hash seed because it consumes attestation, audit and reproducibility.
+
+## 37. Root Causal Intelligence
+
+After the root guard, turn no-tick logs, heuristic authority, entity coverage and proof integrity into a deterministic intelligence score:
+
+```text
+canonical no-tick + native no-tick + R3 runtime no-tick + entities + heuristics + root guard -> causal intelligence
+```
+
+Current report:
+
+```text
+reports/pnva-root-causal-intelligence-2026-05-05.json
+```
+
+Current classification:
+
+```text
+PNVA_ROOT_CAUSAL_INTELLIGENCE_READY
+```
+
+Current result:
+
+```text
+root_causal_intelligence_score: 100.0
+failure_count: 0
+aggregate_no_tick_event_count: 589
+aggregate_no_tick_suppressed_count: 285
+aggregate_no_tick_suppression_ratio: 0.483871
+runtime_verified_slot_count: 35
+runtime_pending_slot_count: 0
+runtime_projected_proof_count: 0
+```
+
+Production interpretation:
+
+This layer makes PNVA smarter without making it vague. It measures causal suppression, runtime pair closure, entity binding, heuristic authority, native proof quality and public hygiene. Historical canonical warnings remain visible as migration context; the R3 runtime path is measured separately as native-clean.
+
+## 38. Root Traceability Matrix
+
+After causal intelligence, expose the root laboratory table for no-tick, entities, heuristics and proofs:
+
+```text
+runtime slots + no-tick prechecks + collapse commits + entity catalog + heuristics + proof refs -> traceability matrix
+```
+
+Current report:
+
+```text
+reports/pnva-root-traceability-matrix-2026-05-05.json
+```
+
+Current classification:
+
+```text
+PNVA_ROOT_TRACEABILITY_MATRIX_READY
+```
+
+Current result:
+
+```text
+root_traceability_score: 100.0
+check_count: 8
+failure_count: 0
+slot_count: 35
+valid_slot_count: 35
+invalid_slot_count: 0
+proof_hash_unique_count: 70
+proof_ref_unique_count: 70
+no_tick_suppression_ratio: 0.5
+runtime_guard_negative_controls: 63/63
+root_traceability_hash: sha256:f6bd17b7e2103e6a3f224b3be267cbd835ad548cfa5b5aa04245817ef91feb7d
+```
+
+Production interpretation:
+
+The matrix makes the PNVA root evidence directly inspectable. Every accepted runtime slot has one no-tick precheck, one collapse commit, one entity identity, known heuristic rules, native non-projected proof refs and proof hashes. Any invalid slot row becomes a root blocker.
+
+## 39. Root Adversarial Sentry
+
+After traceability, prove that root evidence corruption does not pass silently:
+
+```text
+clean root evidence -> root PASS
+mutated runtime evidence -> root FAIL
+```
+
+Current report:
+
+```text
+reports/pnva-root-adversarial-sentry-2026-05-05.json
+```
+
+Current classification:
+
+```text
+PNVA_ROOT_ADVERSARIAL_SENTRY_PASS
+```
+
+Current result:
+
+```text
+clean_control_pass: true
+test_count: 8
+detected_count: 8
+failure_count: 0
+```
+
+Controlled mutations:
+
+```text
+proof.projection=true
+missing entity_id
+broken no-tick state continuity
+weak runtime authority
+unsafe source path
+duplicate event_id
+positive gate_delta on no-tick precheck
+legacy_observer heuristic injection
+```
+
+Production interpretation:
+
+This layer makes the root package harder to fake. It mutates only temporary copies of the runtime evidence, then requires both `PNVA_ROOT_SOVEREIGNTY_GUARD_FAIL` and `PNVA_ROOT_CAUSAL_INTELLIGENCE_NEEDS_HARDENING` on corrupted input.
+
+## 40. Root Release Seal
+
+After green-path validation, causal intelligence, traceability and adversarial rejection, seal the final public root package:
+
+```text
+root guard + causal intelligence + traceability matrix + adversarial sentry + ledger + cutover + runtime guard + semantic + reproducibility + attestation + audit -> root release hash
+```
+
+Current report:
+
+```text
+reports/pnva-root-release-seal-2026-05-05.json
+```
+
+Current classification:
+
+```text
+PNVA_ROOT_RELEASE_SEALED
+```
+
+Current result:
+
+```text
+sealed_artifact_count: 11
+failure_count: 0
+root_score: 100.0
+root_causal_intelligence_score: 100.0
+root_adversarial_detection_ratio: 8/8
+runtime_accepted_slots: 35
+runtime_pending_slots: 0
+root_release_hash: sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc
+```
+
+Production interpretation:
+
+The root release seal is the final citation anchor. It is separate from the evidence attestation hash and intentionally outside the attestation seed. If any root report, audit, reproducibility, semantic consistency, cutover or runtime guard artifact changes, this hash changes.
+
+## 41. Root Release Verifier
+
+After sealing the final root package, verify the seal from outside the seal itself:
+
+```text
+root release seal + sealed artifacts + SHA256SUMS + claim boundaries -> verified release
+```
+
+Current report:
+
+```text
+reports/pnva-root-release-verifier-2026-05-05.json
+```
+
+Current classification:
+
+```text
+PNVA_ROOT_RELEASE_VERIFIED
+```
+
+Current result:
+
+```text
+verification_count: 9
+failure_count: 0
+sealed_artifact_count: 11
+checksum_missing_count: 0
+checksum_mismatch_count: 0
+stable_hash_mismatch_count: 0
+classification_mismatch_count: 0
+root_release_hash: sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc
+```
+
+Production interpretation:
+
+The verifier makes the final seal challengeable. It recomputes the root release hash, confirms artifact classifications, checks checksum coverage and proves that the public claim boundary still rejects unsupported claims such as universal performance, private deployment validation, hardware energy proof without counters or physical-particle proof.
+
+## 42. Root Claim Boundary Guard
+
+After verifying the release seal, scan the public language before posting, publishing or indexing:
+
+```text
+root seal + root verifier + public docs + limits + llms.txt -> claim boundary guard
+```
+
+Current report:
+
+```text
+reports/pnva-root-claim-boundary-guard-2026-05-05.json
+```
+
+Current classification:
+
+```text
+PNVA_ROOT_CLAIM_BOUNDARY_GUARD_READY
+```
+
+Current result:
+
+```text
+claim_boundary_score: 100.0
+check_count: 7
+failure_count: 0
+scanned_file_count: 90
+high_risk_occurrence_count: 48
+unbounded_high_risk_occurrence_count: 0
+root_release_hash: sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc
+```
+
+Production interpretation:
+
+The claim boundary guard makes public recognition safer. It checks that phrases about universal proof, physical particles, private deployment, hardware energy and medical/legal scope appear only inside explicit limitation language. This keeps PNVA ambitious but academically defensible.
+
+## 43. Root Publication Gate
+
+After claim boundary validation, close the public release package for repository publication and indexing:
+
+```text
+root reports + Manifest + SHA256SUMS + robots + sitemap + llms + public pages -> publication gate
+```
+
+Current report:
+
+```text
+reports/pnva-root-publication-gate-2026-05-05.json
+```
+
+Current classification:
+
+```text
+PNVA_ROOT_PUBLICATION_GATE_READY
+```
+
+Current result:
+
+```text
+publication_score: 100.0
+check_count: 9
+failure_count: 0
+manifest_file_count: 258
+checksum_count: 257
+sitemap_url_count: 83
+path_leak_count: 0
+root_release_hash: sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc
+```
+
+Production interpretation:
+
+The publication gate is the last public-readiness check. It requires root reports, checksum closure, discovery metadata, llms boundaries, canonical public files and zero local path leaks before public posting.
+
+## 44. Root Dependency Graph
+
+After publication readiness, expose the evidence package as a directed proof graph:
+
+```text
+public contract + proof gates + event validators + entity ledgers + R3 runtime + root guards + seal + verifier + claim boundary + publication gate -> dependency graph
+```
+
+Current report:
+
+```text
+reports/pnva-root-dependency-graph-2026-05-05.json
+```
+
+Current classification:
+
+```text
+PNVA_ROOT_DEPENDENCY_GRAPH_READY
+```
+
+Current result:
+
+```text
+dependency_score: 100.0
+check_count: 8
+failure_count: 0
+node_count: 49
+edge_count: 104
+phase_count: 11
+missing_artifact_count: 0
+readiness_failure_count: 0
+cycle_count: 0
+phase_violation_count: 0
+unreachable_node_count: 0
+root_release_hash: sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc
+```
+
+Production interpretation:
+
+The dependency graph makes the PNVA evidence chain easier to audit. It proves that the public package is not only a set of PASS reports; it is an ordered acyclic proof chain where every node reaches the final publication gate.
+
+## 45. Root Observability Index
+
+After dependency closure, generate one laboratory dashboard for no-tick, logs, entities, heuristics and root gates:
+
+```text
+no-tick metrics + event streams + entity catalogs + heuristic influence + runtime slots + root gates -> observability index
+```
+
+Current report:
+
+```text
+reports/pnva-root-observability-index-2026-05-05.json
+```
+
+Current classification:
+
+```text
+PNVA_ROOT_OBSERVABILITY_INDEX_READY
+```
+
+Current result:
+
+```text
+observability_score: 100.0
+check_count: 8
+failure_count: 0
+aggregate_event_count: 589
+aggregate_suppressed_count: 285
+aggregate_suppression_ratio: 0.483871
+entity_catalog_rows: 13
+runtime_accepted_slots: 35
+runtime_pending_slots: 0
+runtime_rejected_events: 0
+heuristic_rule_count: 9
+influence_edge_count: 1136
+root_release_hash: sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc
+```
+
+Production interpretation:
+
+The observability index is the root laboratory view. It proves that PASS status can be read through event counts, suppression counts, proof hashes, entity catalogs, heuristic influence, runtime slots and public boundary checks.
+
+## 46. Root Invariant Firewall
+
+After observability is visible, lock the root invariants so future changes cannot silently regress the proof package:
+
+```text
+observability + dependency graph + publication boundary + runtime contract + adversarial controls -> invariant firewall
+```
+
+Current report:
+
+```text
+reports/pnva-root-invariant-firewall-2026-05-05.json
+```
+
+Current classification:
+
+```text
+PNVA_ROOT_INVARIANT_FIREWALL_READY
+```
+
+Current result:
+
+```text
+firewall_score: 100.0
+check_count: 12
+failure_count: 0
+event_stream_count: 3
+entity_catalog_count: 3
+entity_catalog_rows: 13
+aggregate_event_count: 589
+aggregate_suppressed_count: 285
+runtime_accepted_slots: 35
+runtime_pending_slots: 0
+runtime_rejected_events: 0
+runtime_no_tick_pair_failures: 0
+root_dependency_cycles: 0
+publication_path_leaks: 0
+unbounded_high_risk_claims: 0
+root_release_hash: sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc
+```
+
+Production interpretation:
+
+The invariant firewall turns PASS into a guarded contract. Logs, entities, heuristics, runtime slots, proof identity and publication boundaries must remain coherent for future changes to pass.
+
+## 47. Root Regression Sentinel
+
+After the invariant firewall passes, watch for metric drift:
+
+```text
+firewall + observability + root baseline + publication hygiene -> regression sentinel
+```
+
+Current report:
+
+```text
+reports/pnva-root-regression-sentinel-2026-05-05.json
+```
+
+Current classification:
+
+```text
+PNVA_ROOT_REGRESSION_SENTINEL_READY
+```
+
+Current result:
+
+```text
+regression_score: 100.0
+check_count: 5
+failure_count: 0
+monitored_metric_count: 36
+stable_metric_count: 36
+regressed_metric_count: 0
+aggregate_event_count_min: 589
+aggregate_suppressed_count_min: 285
+aggregate_suppression_ratio_range: 0.45..0.70
+runtime_r3_projected_count_max: 0
+entity_catalog_rows_min: 13
+heuristic_rule_count_min: 9
+runtime_accepted_slot_count_min: 35
+publication_path_leak_count_max: 0
+unbounded_high_risk_occurrence_count_max: 0
+root_release_hash: sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc
+```
+
+Production interpretation:
+
+The sentinel turns the current baseline into a future-watch contract. A future improvement should not reduce no-tick proof, event identity, entity coverage, heuristic coverage, runtime acceptance or public hygiene.
+
+## 48. Root Proof Theorem Ledger
+
+After PASS reports exist, convert them into explicit proof cards:
+
+```text
+claim + criteria + evidence + boundary + dependencies -> theorem ledger
+```
+
+Current report:
+
+```text
+reports/pnva-root-proof-theorem-ledger-2026-05-05.json
+```
+
+Current classification:
+
+```text
+PNVA_ROOT_PROOF_THEOREM_LEDGER_READY
+```
+
+Current result:
+
+```text
+theorem_score: 100.0
+check_count: 4
+failure_count: 0
+theorem_count: 12
+proven_theorem_count: 12
+failed_theorem_count: 0
+root_release_hash: sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc
+```
+
+Production interpretation:
+
+The theorem ledger is the public academic bridge. It turns logs and gates into citable technical statements without expanding the root seal or claiming more than the evidence supports.
+
+## 49. Root Evolution Governor
+
+After theorem cards exist, govern future improvements through invariant-locked evolution cards:
+
+```text
+locked invariants + controlled debts + safe evolution cards -> evolution governor
+```
+
+Current report:
+
+```text
+reports/pnva-root-evolution-governor-2026-05-05.json
+```
+
+Current classification:
+
+```text
+PNVA_ROOT_EVOLUTION_GOVERNOR_READY
+```
+
+Current result:
+
+```text
+governor_score: 100.0
+check_count: 6
+failure_count: 0
+invariant_count: 22
+invariant_failure_count: 0
+controlled_debt_count: 5
+evolution_card_count: 8
+safe_to_plan_count: 8
+blocked_card_count: 0
+root_release_hash: sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc
+```
+
+Production interpretation:
+
+The governor is the safety layer for future PNVA growth. It allows expansion only when no-tick budget, runtime native proof, entity coverage, heuristic coverage, negative controls, theorem cards, claim boundary and path hygiene remain intact.
+
+## 50. Root Heuristic Weight Ledger
+
+After evolution is governed, expose public heuristic weights:
+
+```text
+rule authority + proof coverage + suppression behavior + entity links -> public audit weight
+```
+
+Current report:
+
+```text
+reports/pnva-root-heuristic-weight-ledger-2026-05-05.json
+```
+
+Current classification:
+
+```text
+PNVA_ROOT_HEURISTIC_WEIGHT_LEDGER_READY
+```
+
+Current result:
+
+```text
+weight_ledger_score: 100.0
+check_count: 9
+failure_count: 0
+rule_count: 9
+ready_rule_count: 8
+controlled_legacy_rule_count: 1
+blocked_rule_count: 0
+total_rule_edge_count: 1350
+proof_complete: true
+projection_clean: true
+root_release_hash: sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc
+```
+
+Production interpretation:
+
+The heuristic weight ledger makes rule intelligence visible without exposing private tuning. A PNVA rule becomes public-ready when it has proof coverage, projection-free evidence, authority classification, no-tick behavior and entity links.
+
+## 51. Root Entity Capability Ledger
+
+After heuristic weights are visible, bind entities to capability and readiness:
+
+```text
+catalog + event coverage + proof coverage + no-tick behavior + heuristic links -> entity capability ledger
+```
+
+Current report:
+
+```text
+reports/pnva-root-entity-capability-ledger-2026-05-05.json
+```
+
+Current classification:
+
+```text
+PNVA_ROOT_ENTITY_CAPABILITY_LEDGER_READY
+```
+
+Current result:
+
+```text
+entity_capability_score: 100.0
+check_count: 12
+failure_count: 0
+entity_row_count: 13
+scope_count: 3
+profile_event_count: 589
+capability_edge_count: 25
+r3_runtime_ready_count: 1
+native_ready_count: 6
+controlled_canonical_count: 6
+blocked_entity_count: 0
+proof_complete: true
+projection_clean: true
+root_release_hash: sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc
+```
+
+Production interpretation:
+
+The entity capability ledger makes the field governable. It shows which entities are R3 runtime-ready, native-ready or controlled canonical evidence, and blocks future expansion unless every entity has catalog, proof coverage and projection-free behavior.
+
+## 52. Root Field Topology Ledger
+
+After entity capability is visible, expose the graph between entities, rules and no-tick decisions:
+
+```text
+entities + heuristic rules + decisions + proof coverage -> root field topology
+```
+
+Current report:
+
+```text
+reports/pnva-root-field-topology-ledger-2026-05-05.json
+```
+
+Current classification:
+
+```text
+PNVA_ROOT_FIELD_TOPOLOGY_LEDGER_READY
+```
+
+Current result:
+
+```text
+field_topology_score: 100.0
+check_count: 13
+failure_count: 0
+entity_node_count: 13
+rule_node_count: 9
+event_count: 589
+rule_event_edge_count: 1350
+entity_rule_edge_count: 38
+entity_decision_edge_count: 17
+rule_decision_edge_count: 20
+topology_density: 0.324786
+r3_edge_count: 4
+legacy_edge_count: 5
+blocked_edge_count: 0
+orphan_entity_count: 0
+orphan_rule_count: 0
+unruled_event_count: 0
+unknown_entity_event_count: 0
+root_release_hash: sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc
+```
+
+Production interpretation:
+
+The field topology ledger makes the PNVA root graph governable. It shows how entities connect to heuristic rules, how rules connect to decisions, and where R3-ready, native-ready, controlled canonical and controlled legacy edges live. Future expansion should not enter runtime unless this graph remains proof-covered, projection-free and free of orphan or blocked edges.
+
+## 53. Root No-Tick Causal Contract
+
+After topology is visible, bind logs, entities, heuristic rules and threshold behavior into one no-tick contract:
+
+```text
+events + proof hashes + entities + rules + suppression + threshold behavior -> no-tick causal contract
+```
+
+Current report:
+
+```text
+reports/pnva-root-no-tick-causal-contract-2026-05-05.json
+```
+
+Current classification:
+
+```text
+PNVA_ROOT_NO_TICK_CAUSAL_CONTRACT_READY
+```
+
+Current result:
+
+```text
+causal_contract_score: 100.0
+check_count: 15
+failure_count: 0
+event_count: 589
+collapse_count: 303
+observe_count: 250
+block_count: 35
+prove_count: 1
+suppressed_count: 285
+suppression_ratio: 0.483871
+proof_valid_count: 589
+projection_event_count: 0
+strict_native_r3_event_count: 77
+strict_threshold_violation_count: 0
+canonical_legacy_threshold_exception_count: 294
+r3_chain_count: 35
+r3_pair_failure_count: 0
+guard_contract_failure_count: 0
+unknown_entity_count: 0
+unknown_rule_count: 0
+root_release_hash: sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc
+```
+
+Production interpretation:
+
+The no-tick causal contract makes the runtime discipline explicit. Native and R3 evidence must obey strict threshold behavior, while canonical legacy threshold exceptions remain accepted only as bounded historical evidence. This keeps the system honest: no-tick is proven by suppression, proof coverage, entity/rule closure and R3 precheck/commit pairs, not by vague claims.
+
+## 54. Root Runtime Admission Controller
+
+After the no-tick causal contract passes, convert root evidence into an explicit admission decision:
+
+```text
+contract + topology + entities + heuristics + invariants + regression + public boundary -> runtime admission
+```
+
+Current report:
+
+```text
+reports/pnva-root-runtime-admission-controller-2026-05-05.json
+```
+
+Current classification:
+
+```text
+PNVA_ROOT_RUNTIME_ADMISSION_READY
+```
+
+Current result:
+
+```text
+runtime_admission_score: 100.0
+check_count: 10
+failure_count: 0
+admission_decision: ADMIT_RESTRICTED_ROOT_RUNTIME_PLANNING
+event_count: 589
+suppressed_count: 285
+suppression_ratio: 0.483871
+strict_threshold_violation_count: 0
+r3_chain_count: 35
+r3_pair_failure_count: 0
+entity_row_count: 13
+blocked_entity_count: 0
+rule_count: 9
+blocked_rule_count: 0
+entity_rule_edge_count: 38
+blocked_edge_count: 0
+controlled_debt_count: 5
+safe_to_plan_count: 8
+regressed_metric_count: 0
+path_leak_count: 0
+unbounded_high_risk_occurrence_count: 0
+root_release_hash: sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc
+```
+
+Allowed modes:
+
+```text
+audit_only
+observe
+simulate
+restricted_native_event_ingest
+restricted_r3_precheck_commit
+planning_only_evolution
+```
+
+Denied modes:
+
+```text
+unbounded_public_claims
+unsanitized_log_ingest
+private_threshold_publication
+unpaired_r3_runtime_events
+projected_runtime_evidence
+unknown_entity_or_rule_runtime
+hardware_energy_claim_without_counter_benchmark
+```
+
+Production interpretation:
+
+The admission controller makes future PNVA expansion explicit. New runtime evidence is allowed only when no-tick, topology, entity capability, heuristic weight, invariant firewall, regression sentinel, claim boundary and root hash stability remain clean.
+
+## 55. Root Entity-Heuristic Admission Matrix
+
+After runtime admission passes, classify every entity-rule edge:
+
+```text
+entity readiness + rule weight + proof coverage + topology + runtime admission -> edge admission status
+```
+
+Current report:
+
+```text
+reports/pnva-root-entity-heuristic-admission-matrix-2026-05-05.json
+```
+
+Current classification:
+
+```text
+PNVA_ROOT_ENTITY_HEURISTIC_ADMISSION_MATRIX_READY
+```
+
+Current result:
+
+```text
+admission_matrix_score: 100.0
+check_count: 11
+failure_count: 0
+event_count: 589
+rule_event_edge_count: 1350
+entity_rule_edge_count: 38
+admitted_r3_edge_count: 4
+admitted_native_edge_count: 12
+controlled_canonical_edge_count: 17
+bounded_legacy_edge_count: 5
+denied_edge_count: 0
+unknown_entity_count: 0
+unknown_rule_count: 0
+root_release_hash: sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc
+```
+
+Production interpretation:
+
+The entity-heuristic admission matrix prevents invisible runtime growth. Every entity-rule edge must be R3-restricted, native-restricted, controlled canonical evidence, bounded legacy or denied. The current root has zero denied edges and zero unknown entities or rules.
+
+## 56. Root Admission Negative Controls
+
+After the admission matrix passes, corrupt temporary evidence and require the admission chain to fail:
+
+```text
+bad event -> contract fail -> admission blocked -> matrix fail
+```
+
+Current report:
+
+```text
+reports/pnva-root-admission-negative-controls-2026-05-05.json
+```
+
+Current classification:
+
+```text
+PNVA_ROOT_ADMISSION_NEGATIVE_CONTROLS_PASS
+```
+
+Current result:
+
+```text
+clean_control_pass: true
+control_count: 8
+detected_count: 8
+undetected_count: 0
+failure_count: 0
+root_release_hash: sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc
+```
+
+Mutations detected:
+
+```text
+r3_gate_delta_inversion
+r3_unpaired_chain
+r3_unknown_entity
+r3_projected_proof
+r3_unknown_rule
+r3_duplicate_event_id
+r3_invalid_proof_hash
+native_source_path_leak
+```
+
+Production interpretation:
+
+The negative controls prove that the latest no-tick, admission and entity-heuristic layers are not accepting bad evidence silently. Clean evidence stays PASS. Corrupted evidence is blocked before it can become runtime growth.
+
+## 57. Root Event Identity Ledger
+
+After negative controls pass, prove that public event streams have unique event and proof identity.
+
+Current report:
+
+```text
+reports/pnva-root-event-identity-ledger-2026-05-05.json
+```
+
+Current classification:
+
+```text
+PNVA_ROOT_EVENT_IDENTITY_LEDGER_READY
+```
+
+Current result:
+
+```text
+event_identity_score: 100.0
+check_count: 10
+failure_count: 0
+event_count: 589
+event_id_count: 589
+unique_event_id_count: 589
+proof_hash_count: 589
+unique_proof_hash_count: 589
+entity_binding_count: 13
+rule_count: 9
+rule_event_edge_count: 1350
+r3_chain_count: 35
+r3_pair_failure_count: 0
+native_count: 77
+projected_event_count: 0
+path_leak_count: 0
+unbounded_high_risk_occurrence_count: 0
+root_release_hash: sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc
+```
+
+Production interpretation:
+
+The event identity ledger protects the lowest public evidence layer. Every event has a unique event ID, unique proof hash, catalog-bound entity, bounded heuristic rules, valid tension fields and clean R3 precheck/commit pair shape.
+
+## 58. Root Runtime Growth Budget
+
+After negative controls pass, future root evidence must grow by explicit budget instead of open-ended accumulation.
+
+Current report:
+
+```text
+reports/pnva-root-runtime-growth-budget-2026-05-05.json
+```
+
+Current classification:
+
+```text
+PNVA_ROOT_RUNTIME_GROWTH_BUDGET_READY
+```
+
+Current result:
+
+```text
+growth_budget_score: 100.0
+check_count: 10
+failure_count: 0
+event_count: 589
+suppressed_count: 285
+suppression_ratio: 0.483871
+r3_chain_count: 35
+entity_rule_edge_count: 38
+denied_edge_count: 0
+negative_control_count: 8
+negative_detected_count: 8
+regressed_metric_count: 0
+root_release_hash: sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc
+```
+
+Growth policy:
+
+```text
+growth_mode: SMALL_BATCH_RESTRICTED
+max_new_events_per_batch: 118
+max_new_r3_chains_per_batch: 7
+max_new_entity_rule_edges_per_batch: 8
+min_suppression_ratio: 0.45
+max_suppression_ratio: 0.70
+max_denied_edges: 0
+max_unknown_entities: 0
+max_unknown_rules: 0
+max_projected_events: 0
+```
+
+Production interpretation:
+
+The growth budget prevents the root PNVA system from becoming noisy as more evidence is added. The next batch must preserve no-tick suppression, R3 pair integrity, classified entity-rule edges, clean public boundaries, zero denied unknown projected events and negative-control detection.
+
+## 59. Root Causal Mesh Ledger
+
+After the growth budget passes, the root evidence package must prove that each PASS report agrees with the others.
+
+Current report:
+
+```text
+reports/pnva-root-causal-mesh-ledger-2026-05-05.json
+```
+
+Current classification:
+
+```text
+PNVA_ROOT_CAUSAL_MESH_LEDGER_READY
+```
+
+Current result:
+
+```text
+causal_mesh_score: 100.0
+check_count: 10
+failure_count: 0
+event_count: 589
+suppressed_count: 285
+suppression_ratio: 0.483871
+entity_count: 13
+rule_count: 9
+rule_event_edge_count: 1350
+entity_rule_edge_count: 38
+r3_chain_count: 35
+proof_valid_count: 589
+denied_edge_count: 0
+unknown_entity_count: 0
+unknown_rule_count: 0
+manifest_file_count: 258
+checksum_count: 257
+path_leak_count: 0
+unbounded_high_risk_occurrence_count: 0
+root_release_hash: sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc
+```
+
+Production interpretation:
+
+The causal mesh ledger prevents isolated PASS reports from hiding drift. No-tick counts, entity counts, heuristic counts, entity-rule admission, R3 integrity, proof validity, growth budget and public boundary metrics must all agree before the root package is treated as coherent.
+
+## 60. Root Efficiency Proof Ledger
+
+After the causal mesh passes, quantify the no-tick gain as proof-backed causal non-execution against a public event baseline.
+
+Current report:
+
+```text
+reports/pnva-root-efficiency-proof-ledger-2026-05-05.json
+```
+
+Current classification:
+
+```text
+PNVA_ROOT_EFFICIENCY_PROOF_LEDGER_READY
+```
+
+Current result:
+
+```text
+efficiency_score: 100.0
+check_count: 9
+failure_count: 0
+event_count: 589
+baseline_event_action_count: 589
+collapse_count: 303
+suppressed_count: 285
+prove_count: 1
+observed_required_action_count: 304
+avoided_action_count: 285
+avoided_action_ratio: 0.483871
+causal_execution_ratio: 0.514431
+entity_row_count: 13
+rule_row_count: 9
+rule_event_edge_count: 1350
+native_count: 77
+projected_event_count: 0
+strict_threshold_violation_count: 0
+suppressed_proof_failure_count: 0
+path_leak_count: 0
+unbounded_high_risk_occurrence_count: 0
+root_release_hash: sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc
+```
+
+Production interpretation:
+
+The efficiency proof ledger turns the no-tick claim into a quantitative audit. PNVA avoids work only when the non-execution is attached to an event, proof hash, entity, heuristic rule and public boundary.
+
+## 61. Root Equation Consistency Ledger
+
+After the efficiency proof passes, validate the operational equation behind tension and threshold decisions.
+
+Current report:
+
+```text
+reports/pnva-root-equation-consistency-ledger-2026-05-05.json
+```
+
+Current classification:
+
+```text
+PNVA_ROOT_EQUATION_CONSISTENCY_LEDGER_READY
+```
+
+Current result:
+
+```text
+equation_consistency_score: 100.0
+check_count: 9
+failure_count: 0
+event_count: 589
+suppressed_count: 285
+collapse_count: 303
+prove_count: 1
+avoided_action_ratio: 0.483871
+formula_mismatch_count: 0
+missing_equation_field_count: 0
+strict_native_r3_violation_count: 0
+canonical_legacy_warning_count: 384
+canonical_legacy_threshold_exception_count: 294
+entity_binding_count: 13
+rule_count: 9
+rule_event_edge_count: 1350
+path_leak_count: 0
+unbounded_high_risk_occurrence_count: 0
+root_release_hash: sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc
+```
+
+Production interpretation:
+
+The equation consistency ledger makes the math auditable. It proves that gate deltas are derived from score, threshold and margin; that native/R3 threshold semantics are strict; and that canonical legacy warnings remain visible instead of being promoted to native-clean evidence.
+
+## 62. Root Legacy Quarantine Ledger
+
+After equation consistency passes, quarantine canonical legacy warnings so they remain visible, attributed and bounded before any final readiness claim.
+
+Current report:
+
+```text
+reports/pnva-root-legacy-quarantine-ledger-2026-05-05.json
+```
+
+Current classification:
+
+```text
+PNVA_ROOT_LEGACY_QUARANTINE_LEDGER_READY
+```
+
+Current result:
+
+```text
+legacy_quarantine_score: 100.0
+check_count: 9
+failure_count: 0
+event_count: 589
+legacy_warning_count: 384
+canonical_legacy_warning_count: 384
+native_legacy_warning_count: 0
+runtime_r3_legacy_warning_count: 0
+canonical_legacy_threshold_exception_count: 294
+legacy_decision_counts: collapse=208, observe=176
+legacy_entity_count: 4
+legacy_rule_count: 7
+bounded_legacy_edge_count: 5
+controlled_legacy_rule_count: 1
+denied_edge_count: 0
+unknown_entity_count: 0
+unknown_rule_count: 0
+strict_native_r3_violation_count: 0
+projected_event_count: 0
+path_leak_count: 0
+unbounded_high_risk_occurrence_count: 0
+root_release_hash: sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc
+```
+
+Production interpretation:
+
+The legacy quarantine ledger makes the remaining debt honest. Canonical legacy events can still be studied, but they are not allowed to contaminate strict native/R3 runtime claims, unknown entities, denied edges or unbounded public claims.
+
+## 63. Root Evidence Chronology Ledger
+
+After the legacy quarantine ledger passes, prove report order across the sealed core, post-seal ledgers and publication/growth checks.
+
+Current report:
+
+```text
+reports/pnva-root-evidence-chronology-ledger-2026-05-05.json
+```
+
+Current classification:
+
+```text
+PNVA_ROOT_EVIDENCE_CHRONOLOGY_LEDGER_READY
+```
+
+Current result:
+
+```text
+chronology_score: 100.0
+check_count: 11
+failure_count: 0
+report_count: 27
+claim_scanned_file_count: 90
+manifest_file_count: 258
+checksum_count: 257
+mesh_event_count: 589
+mesh_suppressed_count: 285
+mesh_entity_count: 13
+mesh_rule_count: 9
+path_leak_count: 0
+unbounded_high_risk_occurrence_count: 0
+root_release_hash: sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc
+```
+
+Production interpretation:
+
+The chronology ledger prevents valid reports from becoming an unordered pile of evidence. It proves that the sealed core is stable, post-seal reports cite the same root hash, and publication/growth checks extend the package without rewriting the sealed base.
+
+## 64. Root Sovereign Readiness Gate
+
+After chronology passes, collapse the root system into one final readiness decision across no-tick logs, event identity, proof identity, entities, heuristics, efficiency, equation consistency, legacy quarantine, admission, growth, negative controls and publication hygiene.
+
+Current report:
+
+```text
+reports/pnva-root-sovereign-readiness-gate-2026-05-05.json
+```
+
+Current classification:
+
+```text
+PNVA_ROOT_SOVEREIGN_READINESS_GATE_PASS
+```
+
+Current result:
+
+```text
+readiness_score: 100.0
+check_count: 11
+failure_count: 0
+event_count: 589
+suppressed_count: 285
+suppression_ratio: 0.483871
+avoided_action_count: 285
+avoided_action_ratio: 0.483871
+efficiency_score: 100.0
+equation_consistency_score: 100.0
+legacy_quarantine_score: 100.0
+legacy_warning_count: 384
+native_legacy_warning_count: 0
+runtime_r3_legacy_warning_count: 0
+bounded_legacy_edge_count: 5
+controlled_legacy_rule_count: 1
+formula_mismatch_count: 0
+strict_native_r3_violation_count: 0
+collapse_count: 303
+observe_count: 250
+block_count: 35
+prove_count: 1
+entity_count: 13
+rule_count: 9
+rule_event_edge_count: 1350
+entity_rule_edge_count: 38
+r3_chain_count: 35
+proof_valid_count: 589
+native_count: 77
+projected_event_count: 0
+admission_decision: ADMIT_RESTRICTED_ROOT_RUNTIME_PLANNING
+growth_mode: SMALL_BATCH_RESTRICTED
+negative_detected_count: 8
+path_leak_count: 0
+unbounded_high_risk_occurrence_count: 0
+root_release_hash: sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc
+```
+
+Production interpretation:
+
+The readiness gate is the compact final answer for root sovereignty: public evidence is coherent only when event identity, no-tick suppression, equation consistency, legacy quarantine, entity/rule mesh, proof coverage, growth policy, negative controls and publication boundaries pass together.
+
+## 65. Root Validator Registry
+
+After the readiness gate passes, register every root validator across tool, report, document, Manifest, checksum, CI and public documentation.
+
+Current report:
+
+```text
+reports/pnva-root-validator-registry-2026-05-05.json
+```
+
+Current classification:
+
+```text
+PNVA_ROOT_VALIDATOR_REGISTRY_READY
+```
+
+Current result:
+
+```text
+registry_score: 100.0
+check_count: 8
+failure_count: 0
+registry_count: 30
+manifest_file_count: 258
+checksum_count: 257
+workflow_registered_count: 30
+public_doc_registered_count: 30
+report_pass_count: 30
+root_release_hash: sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc
+```
+
+Production interpretation:
+
+The validator registry prevents silent disappearance of proof layers. A root validator must be visible in source, report, documentation, Manifest, checksum and CI before it counts as part of the sovereign package.
+
+## 66. Public Safety
 
 Public repositories should expose:
 
@@ -1342,7 +2658,7 @@ wallets
 host-specific automation
 ```
 
-## 37. Principle
+## 67. Principle
 
 PNVA becomes sovereign when every action can answer:
 

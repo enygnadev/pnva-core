@@ -1,0 +1,253 @@
+{
+  "author": "Gustavo de Aguiar Martins",
+  "classification": "PNVA_ROOT_CAUSAL_INTELLIGENCE_READY",
+  "classification_checks": {
+    "canonical_no_tick": true,
+    "decision_trace_index": true,
+    "entity_no_tick_matrix": true,
+    "heuristic_influence_map": true,
+    "native_no_tick": true,
+    "root_sovereignty_guard": true,
+    "runtime_capture_matrix": true,
+    "runtime_evidence_guard": true,
+    "runtime_no_tick": true,
+    "runtime_policy": true,
+    "sovereign_evolution_ledger": true,
+    "suppression_ledger": true
+  },
+  "controlled_legacy_context": {
+    "above_threshold_suppression_count": 176,
+    "boundary": "Historical canonical warnings remain visible as migration context; the R3 runtime path is measured separately and is native-clean.",
+    "historical_controlled_warning_count": 1232,
+    "legacy_debt_count": 35,
+    "low_authority_influence_edge_count": 164,
+    "low_authority_legacy_count": 35
+  },
+  "evidence_refs": {
+    "canonical_no_tick": "reports/pnva-no-tick-invariants-2026-05-05.json",
+    "decision_trace_index": "reports/pnva-decision-trace-index-2026-05-05.json",
+    "entity_no_tick_matrix": "reports/pnva-entity-no-tick-matrix-2026-05-05.json",
+    "heuristic_influence_map": "reports/pnva-heuristic-influence-map-2026-05-05.json",
+    "native_no_tick": "reports/pnva-native-no-tick-invariants-2026-05-05.json",
+    "root_sovereignty_guard": "reports/pnva-root-sovereignty-guard-2026-05-05.json",
+    "runtime_capture_matrix": "reports/pnva-r3-runtime-capture-matrix-2026-05-05.json",
+    "runtime_entities": "reports/pnva-r3-runtime-entity-catalog-2026-05-05.json",
+    "runtime_events": "reports/pnva-r3-runtime-events-2026-05-05.jsonl",
+    "runtime_evidence_guard": "reports/pnva-r3-runtime-evidence-guard-2026-05-05.json",
+    "runtime_no_tick": "reports/pnva-r3-runtime-no-tick-2026-05-05.json",
+    "runtime_policy": "reports/pnva-r3-runtime-policy-2026-05-05.json",
+    "sovereign_audit": "reports/pnva-sovereign-audit-2026-05-05.json",
+    "sovereign_evolution_ledger": "reports/pnva-sovereign-evolution-ledger-2026-05-05.json",
+    "suppression_ledger": "reports/pnva-suppression-ledger-2026-05-05.json"
+  },
+  "failure_count": 0,
+  "failures": [],
+  "generated_at": "2026-05-05T17:31:09Z",
+  "interpretation": {
+    "boundary": "This is a deterministic evidence analyzer, not an autonomous AI claim and not a measurement of private deployments outside the public artifacts.",
+    "purpose": "Turn PNVA no-tick logs, heuristic authority and entity coverage into one deterministic root intelligence score.",
+    "sovereignty": "The package is more robust when root readiness includes causal efficiency, entity binding, heuristic authority, proof integrity and publication hygiene."
+  },
+  "no_tick_aggregate": {
+    "block_count": 35,
+    "causal_execution_ratio": 0.514431,
+    "collapse_count": 303,
+    "event_count": 589,
+    "layers": {
+      "canonical": {
+        "block_count": 33,
+        "causal_execution_ratio": 0.5195,
+        "collapse_count": 266,
+        "event_count": 512,
+        "guard_consistency_ratio": 1.0,
+        "no_tick_suppression_ratio": 0.4805,
+        "observe_count": 213,
+        "proof_integrity_ratio": 1.0,
+        "suppressed_count": 246
+      },
+      "native_demo": {
+        "block_count": 2,
+        "causal_execution_ratio": 0.2857,
+        "collapse_count": 2,
+        "event_count": 7,
+        "guard_consistency_ratio": 1.0,
+        "no_tick_suppression_ratio": 0.5714,
+        "observe_count": 2,
+        "proof_integrity_ratio": 1.0,
+        "suppressed_count": 4
+      },
+      "r3_runtime": {
+        "block_count": 0,
+        "causal_execution_ratio": 0.5,
+        "collapse_count": 35,
+        "event_count": 70,
+        "guard_consistency_ratio": 0.0,
+        "no_tick_suppression_ratio": 0.5,
+        "observe_count": 35,
+        "proof_integrity_ratio": 1.0,
+        "suppressed_count": 35
+      }
+    },
+    "observe_count": 250,
+    "suppressed_count": 285,
+    "suppression_ratio": 0.483871
+  },
+  "pass": true,
+  "project": "PNVA-Core",
+  "root_causal_intelligence_score": 100.0,
+  "root_next_actions": [
+    "Keep R3 runtime events emitted as one native no-tick precheck plus one native commit per slot.",
+    "Keep source.file_name sanitized as a public basename and keep proof.projection=false for runtime evidence.",
+    "For future live deployments, add CPU, wakeup and latency counters before claiming hardware-level efficiency gains.",
+    "Do not delete historical legacy warnings; replace future weak-authority decisions with native H2/H3 evidence."
+  ],
+  "runtime_entity_intelligence": {
+    "catalog_entity_count": 1,
+    "entity_catalog_state": [
+      {
+        "capabilities": [
+          "emit_native_pnva_event",
+          "emit_r3_runtime_event",
+          "emit_no_tick_precheck",
+          "emit_hard_authority_commit"
+        ],
+        "decision_mix": [
+          [
+            "observe",
+            35
+          ],
+          [
+            "collapse",
+            35
+          ]
+        ],
+        "entity_id": "entity_4c3ade60ea78",
+        "entity_type": "event_source",
+        "event_count": 70,
+        "state": "r3_runtime_verified",
+        "top_actions": [
+          [
+            "NO_ACTION",
+            35
+          ],
+          [
+            "RESIZE_BATCH",
+            32
+          ],
+          [
+            "COOLDOWN_GPU",
+            2
+          ],
+          [
+            "EXECUTE",
+            1
+          ]
+        ],
+        "top_rules": [
+          [
+            "native_event_emitter",
+            70
+          ],
+          [
+            "adaptive_threshold",
+            70
+          ],
+          [
+            "field_scheduler",
+            70
+          ],
+          [
+            "power_orchestrator",
+            4
+          ]
+        ]
+      }
+    ],
+    "entity_event_mix": [
+      [
+        "entity_4c3ade60ea78",
+        70
+      ]
+    ],
+    "observed_entity_count": 1
+  },
+  "runtime_heuristic_intelligence": {
+    "action_mix": [
+      [
+        "COOLDOWN_GPU",
+        2
+      ],
+      [
+        "EXECUTE",
+        1
+      ],
+      [
+        "NO_ACTION",
+        35
+      ],
+      [
+        "RESIZE_BATCH",
+        32
+      ]
+    ],
+    "decision_mix": [
+      [
+        "collapse",
+        35
+      ],
+      [
+        "observe",
+        35
+      ]
+    ],
+    "low_authority_legacy_count": 0,
+    "negative_gate_delta_count": 35,
+    "positive_gate_delta_count": 35,
+    "proof_policy_bad": 0,
+    "risk_flag_mix": [
+      [
+        "RESIZE_BATCH_PRESSURE",
+        64
+      ]
+    ],
+    "rule_mix": [
+      [
+        "adaptive_threshold",
+        70
+      ],
+      [
+        "field_scheduler",
+        70
+      ],
+      [
+        "native_event_emitter",
+        70
+      ],
+      [
+        "power_orchestrator",
+        4
+      ]
+    ],
+    "strong_decision_count": 35
+  },
+  "schema_version": "pnva.root_causal_intelligence.v1",
+  "score_parts": {
+    "classification_agreement": 15.0,
+    "entity_coverage": 10.0,
+    "heuristic_authority": 15.0,
+    "native_non_projected_proof": 15.0,
+    "no_tick_runtime_pairs": 20.0,
+    "publication_hygiene": 10.0,
+    "root_guard": 15.0
+  },
+  "signals": {
+    "audit_hygiene_clean": true,
+    "classifications_ok": true,
+    "root_guard_ready": true,
+    "runtime_entity_coverage_clean": true,
+    "runtime_events_native_non_projected": true,
+    "runtime_gate_shape_clean": true,
+    "runtime_policy_hard_authority_clean": true,
+    "runtime_slots_closed": true
+  }
+}

@@ -5,20 +5,20 @@
   "checks": [
     {
       "group": "source",
-      "left": "R3_RUNTIME_CAPTURE_MATRIX_READY_PENDING_RUNTIME",
+      "left": true,
       "left_ref": "matrix_classification",
       "name": "matrix_classification",
       "pass": true,
-      "right": "R3_RUNTIME_CAPTURE_MATRIX_READY_PENDING_RUNTIME",
+      "right": true,
       "right_ref": "expected"
     },
     {
       "group": "source",
-      "left": "R3_RUNTIME_EVIDENCE_GUARD_READY_AWAITING_CAPTURE",
+      "left": true,
       "left_ref": "guard_classification",
       "name": "guard_classification",
       "pass": true,
-      "right": "R3_RUNTIME_EVIDENCE_GUARD_READY_AWAITING_CAPTURE",
+      "right": true,
       "right_ref": "expected"
     },
     {
@@ -32,20 +32,20 @@
     },
     {
       "group": "boundary",
-      "left": false,
-      "left_ref": "guard_not_runtime_approved",
-      "name": "guard_not_runtime_approved",
+      "left": true,
+      "left_ref": "guard_runtime_approval_matches_presence",
+      "name": "guard_runtime_approval_matches_presence",
       "pass": true,
-      "right": false,
+      "right": true,
       "right_ref": "expected"
     },
     {
       "group": "boundary",
-      "left": false,
-      "left_ref": "plan_not_runtime_approved",
-      "name": "plan_not_runtime_approved",
+      "left": true,
+      "left_ref": "plan_runtime_approval_matches_guard",
+      "name": "plan_runtime_approval_matches_guard",
       "pass": true,
-      "right": false,
+      "right": true,
       "right_ref": "expected"
     },
     {
@@ -3092,9 +3092,9 @@
   "event_template_count": 6,
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-05-05T15:43:01Z",
+  "generated_at": "2026-05-05T16:16:40Z",
   "interpretation": {
-    "boundary": "This is a contract validator, not runtime evidence and not final R3 cutover approval.",
+    "boundary": "This is a contract validator. Runtime approval is accepted only when the guard has accepted slot-bound native events.",
     "purpose": "Validate that the R3 runtime capture matrix, evidence guard and instrumentation plan form one coherent runtime contract.",
     "sovereignty": "The final runtime path becomes harder to mislabel because the contract itself is checked before fresh runtime evidence is accepted."
   },
@@ -3119,11 +3119,11 @@
   },
   "required_component_count": 2,
   "required_runtime_event_count": 70,
-  "runtime_evidence_approved": false,
-  "runtime_evidence_present": false,
+  "runtime_evidence_approved": true,
+  "runtime_evidence_present": true,
   "schema_version": "pnva.r3_runtime_contract_validation.v1",
-  "source_guard_classification": "R3_RUNTIME_EVIDENCE_GUARD_READY_AWAITING_CAPTURE",
-  "source_matrix_classification": "R3_RUNTIME_CAPTURE_MATRIX_READY_PENDING_RUNTIME",
+  "source_guard_classification": "R3_RUNTIME_EVIDENCE_ACCEPTED",
+  "source_matrix_classification": "R3_RUNTIME_CAPTURE_MATRIX_COMPLETE",
   "source_plan_classification": "R3_RUNTIME_INSTRUMENTATION_PLAN_READY",
   "summary": {
     "action_contract_count": 3,

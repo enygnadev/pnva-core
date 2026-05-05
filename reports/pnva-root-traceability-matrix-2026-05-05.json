@@ -1,0 +1,3000 @@
+{
+  "author": "Gustavo de Aguiar Martins",
+  "check_count": 8,
+  "checks": [
+    {
+      "evidence": {
+        "commit_count": 35,
+        "event_count": 70,
+        "parse_error_count": 0,
+        "precheck_count": 35,
+        "slot_count": 35
+      },
+      "name": "runtime_event_stream_closed",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "invalid_slot_count": 0,
+        "invalid_slots": [],
+        "slot_row_count": 35
+      },
+      "name": "slot_rows_all_valid",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "catalog_entity_count": 1,
+        "entity_mix": [
+          [
+            "entity_4c3ade60ea78",
+            70
+          ]
+        ],
+        "observed_entity_count": 1
+      },
+      "name": "entity_binding_closed",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "authority_mix": [
+          [
+            "H2",
+            70
+          ]
+        ],
+        "low_authority_legacy_count": 0,
+        "policy_classification": "SOVEREIGN_POLICY_READY",
+        "proof_policy_bad": 0,
+        "strong_decision_count": 35
+      },
+      "name": "heuristic_authority_closed",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "no_tick_classification": "SOVEREIGN_NO_TICK_READY",
+        "no_tick_efficiency": {
+          "block_count": 0,
+          "causal_execution_ratio": 0.5,
+          "collapse_count": 35,
+          "event_count": 70,
+          "guard_consistency_ratio": 0.0,
+          "no_tick_suppression_ratio": 0.5,
+          "observe_count": 35,
+          "proof_integrity_ratio": 1.0,
+          "suppressed_count": 35
+        }
+      },
+      "name": "no_tick_efficiency_aligned",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "accepted_slot_count": 35,
+        "guard_classification": "R3_RUNTIME_EVIDENCE_ACCEPTED",
+        "negative_control_count": 63,
+        "negative_control_detected_count": 63,
+        "no_tick_pair_failure_count": 0,
+        "no_tick_pair_integrity_count": 35,
+        "pending_slot_count": 0
+      },
+      "name": "runtime_guard_aligned",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "event_count": 70,
+        "final_chain_hash": "39919aa40a3fc3cb3ea3983517aedf14db1a3d02857ef5013c346294b445ce63",
+        "proof_bad": 0,
+        "proof_chain_classification": "PROOF_CHAIN_SEALED",
+        "proof_ok": 70,
+        "unique_event_ids": 70
+      },
+      "name": "proof_chain_aligned",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "native_proof_count": 70,
+        "projected_proof_count": 0,
+        "proof_hash_count": 70,
+        "proof_ref_count": 70,
+        "unique_proof_hash_count": 70,
+        "unique_proof_ref_count": 70
+      },
+      "name": "proof_identity_closed",
+      "pass": true
+    }
+  ],
+  "classification": "PNVA_ROOT_TRACEABILITY_MATRIX_READY",
+  "failure_count": 0,
+  "failures": [],
+  "generated_at": "2026-05-05T17:31:08Z",
+  "interpretation": {
+    "boundary": "This matrix validates the public deterministic R3 runtime evidence sample; it does not claim private deployment coverage.",
+    "purpose": "Expose one root matrix that ties PNVA no-tick runtime evidence to entity identity, heuristic authority, proof identity and slot causality.",
+    "sovereignty": "The package is stronger when every no-tick suppression and collapse can be traced to a slot, entity, heuristic set, proof ref and downstream validator."
+  },
+  "pass": true,
+  "project": "PNVA-Core",
+  "recommendations": [
+    "Run this matrix after runtime evidence guard, no-tick, policy and proof-chain reports are available.",
+    "Treat any invalid slot row as a root blocker before sealing a release.",
+    "Use slot_rows as the public laboratory map for reviewers who need to audit no-tick, entity and heuristic behavior."
+  ],
+  "root_traceability_hash": "sha256:f6bd17b7e2103e6a3f224b3be267cbd835ad548cfa5b5aa04245817ef91feb7d",
+  "root_traceability_score": 100.0,
+  "runtime_mix": {
+    "actions": [
+      [
+        "NO_ACTION",
+        35
+      ],
+      [
+        "RESIZE_BATCH",
+        32
+      ],
+      [
+        "COOLDOWN_GPU",
+        2
+      ],
+      [
+        "EXECUTE",
+        1
+      ]
+    ],
+    "decisions": [
+      [
+        "collapse",
+        35
+      ],
+      [
+        "observe",
+        35
+      ]
+    ],
+    "entities": [
+      [
+        "entity_4c3ade60ea78",
+        70
+      ]
+    ],
+    "heuristic_rules": [
+      [
+        "adaptive_threshold",
+        70
+      ],
+      [
+        "field_scheduler",
+        70
+      ],
+      [
+        "native_event_emitter",
+        70
+      ],
+      [
+        "power_orchestrator",
+        4
+      ]
+    ],
+    "risk_flags": [
+      [
+        "RESIZE_BATCH_PRESSURE",
+        64
+      ]
+    ]
+  },
+  "schema_version": "pnva.root_traceability_matrix.v1",
+  "slot_rows": [
+    {
+      "actions": [
+        [
+          "NO_ACTION",
+          1
+        ],
+        [
+          "RESIZE_BATCH",
+          1
+        ]
+      ],
+      "causal_chain_id": "chain_r3_runtime_r3_runtime_slot_001",
+      "commit_count": 1,
+      "commit_event_id": "evt_r3_runtime_r3_runtime_slot_001_commit",
+      "commit_gate_delta": 0.253,
+      "commit_score": 0.753,
+      "decisions": [
+        [
+          "collapse",
+          1
+        ],
+        [
+          "observe",
+          1
+        ]
+      ],
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_count": 2,
+      "failure_codes": [],
+      "heuristic_rules": [
+        [
+          "adaptive_threshold",
+          2
+        ],
+        [
+          "field_scheduler",
+          2
+        ],
+        [
+          "native_event_emitter",
+          2
+        ]
+      ],
+      "jsonl_lines": [
+        1,
+        2
+      ],
+      "precheck_count": 1,
+      "precheck_event_id": "evt_r3_runtime_r3_runtime_slot_001_precheck",
+      "precheck_gate_delta": -0.129,
+      "precheck_score": 0.371,
+      "proof_hashes": [
+        "sha256:3942fa48a5a1dab669946d7d0173832f53a89adc79fd7a5f7c655fab0e6e99a0",
+        "sha256:78fa9763a1233db40e38ea025fc04e716de51fea7fbf81579d3133c78e412006"
+      ],
+      "proof_refs": [
+        "runtime:r3-runtime-slot-001:precheck",
+        "runtime:r3-runtime-slot-001:commit"
+      ],
+      "risk_flags": [
+        [
+          "RESIZE_BATCH_PRESSURE",
+          2
+        ]
+      ],
+      "slot_id": "r3-runtime-slot-001",
+      "source_file": "pnva-r3-runtime-emitter",
+      "source_lines": [
+        1,
+        2
+      ],
+      "state_path": [
+        "observed",
+        "suppressed",
+        "committed"
+      ],
+      "threshold": 0.5,
+      "valid": true
+    },
+    {
+      "actions": [
+        [
+          "NO_ACTION",
+          1
+        ],
+        [
+          "RESIZE_BATCH",
+          1
+        ]
+      ],
+      "causal_chain_id": "chain_r3_runtime_r3_runtime_slot_002",
+      "commit_count": 1,
+      "commit_event_id": "evt_r3_runtime_r3_runtime_slot_002_commit",
+      "commit_gate_delta": 0.266,
+      "commit_score": 0.766,
+      "decisions": [
+        [
+          "collapse",
+          1
+        ],
+        [
+          "observe",
+          1
+        ]
+      ],
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_count": 2,
+      "failure_codes": [],
+      "heuristic_rules": [
+        [
+          "adaptive_threshold",
+          2
+        ],
+        [
+          "field_scheduler",
+          2
+        ],
+        [
+          "native_event_emitter",
+          2
+        ]
+      ],
+      "jsonl_lines": [
+        3,
+        4
+      ],
+      "precheck_count": 1,
+      "precheck_event_id": "evt_r3_runtime_r3_runtime_slot_002_precheck",
+      "precheck_gate_delta": -0.118,
+      "precheck_score": 0.382,
+      "proof_hashes": [
+        "sha256:f0ee7d42aac31168beae019cce3d4b650f33173d591ca0ed6d17c99dddd99305",
+        "sha256:ace2616b0e0ccd53fe2c503902e6d815607724bfc4ad0a9faebbc98178b0872a"
+      ],
+      "proof_refs": [
+        "runtime:r3-runtime-slot-002:precheck",
+        "runtime:r3-runtime-slot-002:commit"
+      ],
+      "risk_flags": [
+        [
+          "RESIZE_BATCH_PRESSURE",
+          2
+        ]
+      ],
+      "slot_id": "r3-runtime-slot-002",
+      "source_file": "pnva-r3-runtime-emitter",
+      "source_lines": [
+        3,
+        4
+      ],
+      "state_path": [
+        "observed",
+        "suppressed",
+        "committed"
+      ],
+      "threshold": 0.5,
+      "valid": true
+    },
+    {
+      "actions": [
+        [
+          "NO_ACTION",
+          1
+        ],
+        [
+          "RESIZE_BATCH",
+          1
+        ]
+      ],
+      "causal_chain_id": "chain_r3_runtime_r3_runtime_slot_003",
+      "commit_count": 1,
+      "commit_event_id": "evt_r3_runtime_r3_runtime_slot_003_commit",
+      "commit_gate_delta": 0.279,
+      "commit_score": 0.779,
+      "decisions": [
+        [
+          "collapse",
+          1
+        ],
+        [
+          "observe",
+          1
+        ]
+      ],
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_count": 2,
+      "failure_codes": [],
+      "heuristic_rules": [
+        [
+          "adaptive_threshold",
+          2
+        ],
+        [
+          "field_scheduler",
+          2
+        ],
+        [
+          "native_event_emitter",
+          2
+        ]
+      ],
+      "jsonl_lines": [
+        5,
+        6
+      ],
+      "precheck_count": 1,
+      "precheck_event_id": "evt_r3_runtime_r3_runtime_slot_003_precheck",
+      "precheck_gate_delta": -0.107,
+      "precheck_score": 0.393,
+      "proof_hashes": [
+        "sha256:2440aa4a0418d68a3123b32a958e74c31b7b4ff51c1310dc00bb44ac5c8b7987",
+        "sha256:6360ca84491c222024e7ff0be88086ee90d0f180d987fc88dd3d5dff9baf3231"
+      ],
+      "proof_refs": [
+        "runtime:r3-runtime-slot-003:precheck",
+        "runtime:r3-runtime-slot-003:commit"
+      ],
+      "risk_flags": [
+        [
+          "RESIZE_BATCH_PRESSURE",
+          2
+        ]
+      ],
+      "slot_id": "r3-runtime-slot-003",
+      "source_file": "pnva-r3-runtime-emitter",
+      "source_lines": [
+        5,
+        6
+      ],
+      "state_path": [
+        "observed",
+        "suppressed",
+        "committed"
+      ],
+      "threshold": 0.5,
+      "valid": true
+    },
+    {
+      "actions": [
+        [
+          "NO_ACTION",
+          1
+        ],
+        [
+          "RESIZE_BATCH",
+          1
+        ]
+      ],
+      "causal_chain_id": "chain_r3_runtime_r3_runtime_slot_004",
+      "commit_count": 1,
+      "commit_event_id": "evt_r3_runtime_r3_runtime_slot_004_commit",
+      "commit_gate_delta": 0.292,
+      "commit_score": 0.792,
+      "decisions": [
+        [
+          "collapse",
+          1
+        ],
+        [
+          "observe",
+          1
+        ]
+      ],
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_count": 2,
+      "failure_codes": [],
+      "heuristic_rules": [
+        [
+          "adaptive_threshold",
+          2
+        ],
+        [
+          "field_scheduler",
+          2
+        ],
+        [
+          "native_event_emitter",
+          2
+        ]
+      ],
+      "jsonl_lines": [
+        7,
+        8
+      ],
+      "precheck_count": 1,
+      "precheck_event_id": "evt_r3_runtime_r3_runtime_slot_004_precheck",
+      "precheck_gate_delta": -0.096,
+      "precheck_score": 0.404,
+      "proof_hashes": [
+        "sha256:e17a08a5526043b1253f18d2e2774cd65b738b7f356a1c834c6e19557b39f733",
+        "sha256:8c40530ce6d5a64572230d176656b94e96c4b7fdf6924851d92ce293ecff08e1"
+      ],
+      "proof_refs": [
+        "runtime:r3-runtime-slot-004:precheck",
+        "runtime:r3-runtime-slot-004:commit"
+      ],
+      "risk_flags": [
+        [
+          "RESIZE_BATCH_PRESSURE",
+          2
+        ]
+      ],
+      "slot_id": "r3-runtime-slot-004",
+      "source_file": "pnva-r3-runtime-emitter",
+      "source_lines": [
+        7,
+        8
+      ],
+      "state_path": [
+        "observed",
+        "suppressed",
+        "committed"
+      ],
+      "threshold": 0.5,
+      "valid": true
+    },
+    {
+      "actions": [
+        [
+          "NO_ACTION",
+          1
+        ],
+        [
+          "RESIZE_BATCH",
+          1
+        ]
+      ],
+      "causal_chain_id": "chain_r3_runtime_r3_runtime_slot_005",
+      "commit_count": 1,
+      "commit_event_id": "evt_r3_runtime_r3_runtime_slot_005_commit",
+      "commit_gate_delta": 0.305,
+      "commit_score": 0.805,
+      "decisions": [
+        [
+          "collapse",
+          1
+        ],
+        [
+          "observe",
+          1
+        ]
+      ],
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_count": 2,
+      "failure_codes": [],
+      "heuristic_rules": [
+        [
+          "adaptive_threshold",
+          2
+        ],
+        [
+          "field_scheduler",
+          2
+        ],
+        [
+          "native_event_emitter",
+          2
+        ]
+      ],
+      "jsonl_lines": [
+        9,
+        10
+      ],
+      "precheck_count": 1,
+      "precheck_event_id": "evt_r3_runtime_r3_runtime_slot_005_precheck",
+      "precheck_gate_delta": -0.085,
+      "precheck_score": 0.415,
+      "proof_hashes": [
+        "sha256:45acb384a234f0ebbd834122112ad561b5f3b15975d235ae2da767041580cdf2",
+        "sha256:4e32c8c43ef31aa0ec658283c63e0b54bd016e0f50d7c81845138460f2cd4715"
+      ],
+      "proof_refs": [
+        "runtime:r3-runtime-slot-005:precheck",
+        "runtime:r3-runtime-slot-005:commit"
+      ],
+      "risk_flags": [
+        [
+          "RESIZE_BATCH_PRESSURE",
+          2
+        ]
+      ],
+      "slot_id": "r3-runtime-slot-005",
+      "source_file": "pnva-r3-runtime-emitter",
+      "source_lines": [
+        9,
+        10
+      ],
+      "state_path": [
+        "observed",
+        "suppressed",
+        "committed"
+      ],
+      "threshold": 0.5,
+      "valid": true
+    },
+    {
+      "actions": [
+        [
+          "NO_ACTION",
+          1
+        ],
+        [
+          "RESIZE_BATCH",
+          1
+        ]
+      ],
+      "causal_chain_id": "chain_r3_runtime_r3_runtime_slot_006",
+      "commit_count": 1,
+      "commit_event_id": "evt_r3_runtime_r3_runtime_slot_006_commit",
+      "commit_gate_delta": 0.318,
+      "commit_score": 0.818,
+      "decisions": [
+        [
+          "collapse",
+          1
+        ],
+        [
+          "observe",
+          1
+        ]
+      ],
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_count": 2,
+      "failure_codes": [],
+      "heuristic_rules": [
+        [
+          "adaptive_threshold",
+          2
+        ],
+        [
+          "field_scheduler",
+          2
+        ],
+        [
+          "native_event_emitter",
+          2
+        ]
+      ],
+      "jsonl_lines": [
+        11,
+        12
+      ],
+      "precheck_count": 1,
+      "precheck_event_id": "evt_r3_runtime_r3_runtime_slot_006_precheck",
+      "precheck_gate_delta": -0.074,
+      "precheck_score": 0.426,
+      "proof_hashes": [
+        "sha256:1f998e2761ef7b4d33159459b88c41cfefab32151b5cae9f873aee878fb8d72c",
+        "sha256:bdcb1112d2b9f6241fa317f9ac77bb2907fe1bbbe36c518954ede3fe59b4cb12"
+      ],
+      "proof_refs": [
+        "runtime:r3-runtime-slot-006:precheck",
+        "runtime:r3-runtime-slot-006:commit"
+      ],
+      "risk_flags": [
+        [
+          "RESIZE_BATCH_PRESSURE",
+          2
+        ]
+      ],
+      "slot_id": "r3-runtime-slot-006",
+      "source_file": "pnva-r3-runtime-emitter",
+      "source_lines": [
+        11,
+        12
+      ],
+      "state_path": [
+        "observed",
+        "suppressed",
+        "committed"
+      ],
+      "threshold": 0.5,
+      "valid": true
+    },
+    {
+      "actions": [
+        [
+          "NO_ACTION",
+          1
+        ],
+        [
+          "RESIZE_BATCH",
+          1
+        ]
+      ],
+      "causal_chain_id": "chain_r3_runtime_r3_runtime_slot_007",
+      "commit_count": 1,
+      "commit_event_id": "evt_r3_runtime_r3_runtime_slot_007_commit",
+      "commit_gate_delta": 0.331,
+      "commit_score": 0.831,
+      "decisions": [
+        [
+          "collapse",
+          1
+        ],
+        [
+          "observe",
+          1
+        ]
+      ],
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_count": 2,
+      "failure_codes": [],
+      "heuristic_rules": [
+        [
+          "adaptive_threshold",
+          2
+        ],
+        [
+          "field_scheduler",
+          2
+        ],
+        [
+          "native_event_emitter",
+          2
+        ]
+      ],
+      "jsonl_lines": [
+        13,
+        14
+      ],
+      "precheck_count": 1,
+      "precheck_event_id": "evt_r3_runtime_r3_runtime_slot_007_precheck",
+      "precheck_gate_delta": -0.14,
+      "precheck_score": 0.36,
+      "proof_hashes": [
+        "sha256:1b157ea6bd9112d6ee149274a13ea437642c52b530fd3bc6ff968701712491ae",
+        "sha256:4a9139cbbd0427b50c803f55cc7273fc1024984e0420e3e9c4e8cc16355ce73d"
+      ],
+      "proof_refs": [
+        "runtime:r3-runtime-slot-007:precheck",
+        "runtime:r3-runtime-slot-007:commit"
+      ],
+      "risk_flags": [
+        [
+          "RESIZE_BATCH_PRESSURE",
+          2
+        ]
+      ],
+      "slot_id": "r3-runtime-slot-007",
+      "source_file": "pnva-r3-runtime-emitter",
+      "source_lines": [
+        13,
+        14
+      ],
+      "state_path": [
+        "observed",
+        "suppressed",
+        "committed"
+      ],
+      "threshold": 0.5,
+      "valid": true
+    },
+    {
+      "actions": [
+        [
+          "NO_ACTION",
+          1
+        ],
+        [
+          "RESIZE_BATCH",
+          1
+        ]
+      ],
+      "causal_chain_id": "chain_r3_runtime_r3_runtime_slot_008",
+      "commit_count": 1,
+      "commit_event_id": "evt_r3_runtime_r3_runtime_slot_008_commit",
+      "commit_gate_delta": 0.344,
+      "commit_score": 0.844,
+      "decisions": [
+        [
+          "collapse",
+          1
+        ],
+        [
+          "observe",
+          1
+        ]
+      ],
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_count": 2,
+      "failure_codes": [],
+      "heuristic_rules": [
+        [
+          "adaptive_threshold",
+          2
+        ],
+        [
+          "field_scheduler",
+          2
+        ],
+        [
+          "native_event_emitter",
+          2
+        ]
+      ],
+      "jsonl_lines": [
+        15,
+        16
+      ],
+      "precheck_count": 1,
+      "precheck_event_id": "evt_r3_runtime_r3_runtime_slot_008_precheck",
+      "precheck_gate_delta": -0.129,
+      "precheck_score": 0.371,
+      "proof_hashes": [
+        "sha256:5aae08dce4f87f014c1eddae238881edc0edfd2f5a8a48095930451baddbd5ed",
+        "sha256:b5f3e9cdf049002c2d5eb6dfbd4ac476a81d723c313c4f5725d0f7184a86c993"
+      ],
+      "proof_refs": [
+        "runtime:r3-runtime-slot-008:precheck",
+        "runtime:r3-runtime-slot-008:commit"
+      ],
+      "risk_flags": [
+        [
+          "RESIZE_BATCH_PRESSURE",
+          2
+        ]
+      ],
+      "slot_id": "r3-runtime-slot-008",
+      "source_file": "pnva-r3-runtime-emitter",
+      "source_lines": [
+        15,
+        16
+      ],
+      "state_path": [
+        "observed",
+        "suppressed",
+        "committed"
+      ],
+      "threshold": 0.5,
+      "valid": true
+    },
+    {
+      "actions": [
+        [
+          "NO_ACTION",
+          1
+        ],
+        [
+          "RESIZE_BATCH",
+          1
+        ]
+      ],
+      "causal_chain_id": "chain_r3_runtime_r3_runtime_slot_009",
+      "commit_count": 1,
+      "commit_event_id": "evt_r3_runtime_r3_runtime_slot_009_commit",
+      "commit_gate_delta": 0.357,
+      "commit_score": 0.857,
+      "decisions": [
+        [
+          "collapse",
+          1
+        ],
+        [
+          "observe",
+          1
+        ]
+      ],
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_count": 2,
+      "failure_codes": [],
+      "heuristic_rules": [
+        [
+          "adaptive_threshold",
+          2
+        ],
+        [
+          "field_scheduler",
+          2
+        ],
+        [
+          "native_event_emitter",
+          2
+        ]
+      ],
+      "jsonl_lines": [
+        17,
+        18
+      ],
+      "precheck_count": 1,
+      "precheck_event_id": "evt_r3_runtime_r3_runtime_slot_009_precheck",
+      "precheck_gate_delta": -0.118,
+      "precheck_score": 0.382,
+      "proof_hashes": [
+        "sha256:1e42f4fa0614159988b9ef0871cd44dfd2174aacade23aff7a466f7287cd94fd",
+        "sha256:4920b8a8b1dd42671469e71dbb65501d23b90d03774d3ed0599a2f16787542bb"
+      ],
+      "proof_refs": [
+        "runtime:r3-runtime-slot-009:precheck",
+        "runtime:r3-runtime-slot-009:commit"
+      ],
+      "risk_flags": [
+        [
+          "RESIZE_BATCH_PRESSURE",
+          2
+        ]
+      ],
+      "slot_id": "r3-runtime-slot-009",
+      "source_file": "pnva-r3-runtime-emitter",
+      "source_lines": [
+        17,
+        18
+      ],
+      "state_path": [
+        "observed",
+        "suppressed",
+        "committed"
+      ],
+      "threshold": 0.5,
+      "valid": true
+    },
+    {
+      "actions": [
+        [
+          "NO_ACTION",
+          1
+        ],
+        [
+          "RESIZE_BATCH",
+          1
+        ]
+      ],
+      "causal_chain_id": "chain_r3_runtime_r3_runtime_slot_010",
+      "commit_count": 1,
+      "commit_event_id": "evt_r3_runtime_r3_runtime_slot_010_commit",
+      "commit_gate_delta": 0.37,
+      "commit_score": 0.87,
+      "decisions": [
+        [
+          "collapse",
+          1
+        ],
+        [
+          "observe",
+          1
+        ]
+      ],
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_count": 2,
+      "failure_codes": [],
+      "heuristic_rules": [
+        [
+          "adaptive_threshold",
+          2
+        ],
+        [
+          "field_scheduler",
+          2
+        ],
+        [
+          "native_event_emitter",
+          2
+        ]
+      ],
+      "jsonl_lines": [
+        19,
+        20
+      ],
+      "precheck_count": 1,
+      "precheck_event_id": "evt_r3_runtime_r3_runtime_slot_010_precheck",
+      "precheck_gate_delta": -0.107,
+      "precheck_score": 0.393,
+      "proof_hashes": [
+        "sha256:8616bb23573f0312da16e7c8012bceccd18f64677815b1e047ef35a9e4b994d8",
+        "sha256:5031aa7fd92f2137b77de33ce7ff5af5dae9368abdf81c9159d9a5062f1996b2"
+      ],
+      "proof_refs": [
+        "runtime:r3-runtime-slot-010:precheck",
+        "runtime:r3-runtime-slot-010:commit"
+      ],
+      "risk_flags": [
+        [
+          "RESIZE_BATCH_PRESSURE",
+          2
+        ]
+      ],
+      "slot_id": "r3-runtime-slot-010",
+      "source_file": "pnva-r3-runtime-emitter",
+      "source_lines": [
+        19,
+        20
+      ],
+      "state_path": [
+        "observed",
+        "suppressed",
+        "committed"
+      ],
+      "threshold": 0.5,
+      "valid": true
+    },
+    {
+      "actions": [
+        [
+          "NO_ACTION",
+          1
+        ],
+        [
+          "RESIZE_BATCH",
+          1
+        ]
+      ],
+      "causal_chain_id": "chain_r3_runtime_r3_runtime_slot_011",
+      "commit_count": 1,
+      "commit_event_id": "evt_r3_runtime_r3_runtime_slot_011_commit",
+      "commit_gate_delta": 0.24,
+      "commit_score": 0.74,
+      "decisions": [
+        [
+          "collapse",
+          1
+        ],
+        [
+          "observe",
+          1
+        ]
+      ],
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_count": 2,
+      "failure_codes": [],
+      "heuristic_rules": [
+        [
+          "adaptive_threshold",
+          2
+        ],
+        [
+          "field_scheduler",
+          2
+        ],
+        [
+          "native_event_emitter",
+          2
+        ]
+      ],
+      "jsonl_lines": [
+        21,
+        22
+      ],
+      "precheck_count": 1,
+      "precheck_event_id": "evt_r3_runtime_r3_runtime_slot_011_precheck",
+      "precheck_gate_delta": -0.096,
+      "precheck_score": 0.404,
+      "proof_hashes": [
+        "sha256:5989bfc29f0d23d2ae35710c63a0be686eb8fee17aea82b0877118d4de5e2a25",
+        "sha256:8aed6ad8dc400ae090574062dcb5f2aa8f8b50fe507e1a50eaca470997ecf5d0"
+      ],
+      "proof_refs": [
+        "runtime:r3-runtime-slot-011:precheck",
+        "runtime:r3-runtime-slot-011:commit"
+      ],
+      "risk_flags": [
+        [
+          "RESIZE_BATCH_PRESSURE",
+          2
+        ]
+      ],
+      "slot_id": "r3-runtime-slot-011",
+      "source_file": "pnva-r3-runtime-emitter",
+      "source_lines": [
+        21,
+        22
+      ],
+      "state_path": [
+        "observed",
+        "suppressed",
+        "committed"
+      ],
+      "threshold": 0.5,
+      "valid": true
+    },
+    {
+      "actions": [
+        [
+          "NO_ACTION",
+          1
+        ],
+        [
+          "RESIZE_BATCH",
+          1
+        ]
+      ],
+      "causal_chain_id": "chain_r3_runtime_r3_runtime_slot_012",
+      "commit_count": 1,
+      "commit_event_id": "evt_r3_runtime_r3_runtime_slot_012_commit",
+      "commit_gate_delta": 0.253,
+      "commit_score": 0.753,
+      "decisions": [
+        [
+          "collapse",
+          1
+        ],
+        [
+          "observe",
+          1
+        ]
+      ],
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_count": 2,
+      "failure_codes": [],
+      "heuristic_rules": [
+        [
+          "adaptive_threshold",
+          2
+        ],
+        [
+          "field_scheduler",
+          2
+        ],
+        [
+          "native_event_emitter",
+          2
+        ]
+      ],
+      "jsonl_lines": [
+        23,
+        24
+      ],
+      "precheck_count": 1,
+      "precheck_event_id": "evt_r3_runtime_r3_runtime_slot_012_precheck",
+      "precheck_gate_delta": -0.085,
+      "precheck_score": 0.415,
+      "proof_hashes": [
+        "sha256:03047d34642e89328a7cdd521acf667afc8610f9a1ef3dfb170919fa0187bf8a",
+        "sha256:e9d94f529bfc20dd1146da5aff270b0d8b5c1d68a3e5eff37f519dbc4555073e"
+      ],
+      "proof_refs": [
+        "runtime:r3-runtime-slot-012:precheck",
+        "runtime:r3-runtime-slot-012:commit"
+      ],
+      "risk_flags": [
+        [
+          "RESIZE_BATCH_PRESSURE",
+          2
+        ]
+      ],
+      "slot_id": "r3-runtime-slot-012",
+      "source_file": "pnva-r3-runtime-emitter",
+      "source_lines": [
+        23,
+        24
+      ],
+      "state_path": [
+        "observed",
+        "suppressed",
+        "committed"
+      ],
+      "threshold": 0.5,
+      "valid": true
+    },
+    {
+      "actions": [
+        [
+          "NO_ACTION",
+          1
+        ],
+        [
+          "RESIZE_BATCH",
+          1
+        ]
+      ],
+      "causal_chain_id": "chain_r3_runtime_r3_runtime_slot_013",
+      "commit_count": 1,
+      "commit_event_id": "evt_r3_runtime_r3_runtime_slot_013_commit",
+      "commit_gate_delta": 0.266,
+      "commit_score": 0.766,
+      "decisions": [
+        [
+          "collapse",
+          1
+        ],
+        [
+          "observe",
+          1
+        ]
+      ],
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_count": 2,
+      "failure_codes": [],
+      "heuristic_rules": [
+        [
+          "adaptive_threshold",
+          2
+        ],
+        [
+          "field_scheduler",
+          2
+        ],
+        [
+          "native_event_emitter",
+          2
+        ]
+      ],
+      "jsonl_lines": [
+        25,
+        26
+      ],
+      "precheck_count": 1,
+      "precheck_event_id": "evt_r3_runtime_r3_runtime_slot_013_precheck",
+      "precheck_gate_delta": -0.074,
+      "precheck_score": 0.426,
+      "proof_hashes": [
+        "sha256:217b9262f1855e180893d434bd716f0620423334d0dd0e3e0b0a9bf93465f05f",
+        "sha256:b178099feedeff1ab2a96a614b2bf135765434139eb7e77539a373e9271b55c3"
+      ],
+      "proof_refs": [
+        "runtime:r3-runtime-slot-013:precheck",
+        "runtime:r3-runtime-slot-013:commit"
+      ],
+      "risk_flags": [
+        [
+          "RESIZE_BATCH_PRESSURE",
+          2
+        ]
+      ],
+      "slot_id": "r3-runtime-slot-013",
+      "source_file": "pnva-r3-runtime-emitter",
+      "source_lines": [
+        25,
+        26
+      ],
+      "state_path": [
+        "observed",
+        "suppressed",
+        "committed"
+      ],
+      "threshold": 0.5,
+      "valid": true
+    },
+    {
+      "actions": [
+        [
+          "NO_ACTION",
+          1
+        ],
+        [
+          "RESIZE_BATCH",
+          1
+        ]
+      ],
+      "causal_chain_id": "chain_r3_runtime_r3_runtime_slot_014",
+      "commit_count": 1,
+      "commit_event_id": "evt_r3_runtime_r3_runtime_slot_014_commit",
+      "commit_gate_delta": 0.279,
+      "commit_score": 0.779,
+      "decisions": [
+        [
+          "collapse",
+          1
+        ],
+        [
+          "observe",
+          1
+        ]
+      ],
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_count": 2,
+      "failure_codes": [],
+      "heuristic_rules": [
+        [
+          "adaptive_threshold",
+          2
+        ],
+        [
+          "field_scheduler",
+          2
+        ],
+        [
+          "native_event_emitter",
+          2
+        ]
+      ],
+      "jsonl_lines": [
+        27,
+        28
+      ],
+      "precheck_count": 1,
+      "precheck_event_id": "evt_r3_runtime_r3_runtime_slot_014_precheck",
+      "precheck_gate_delta": -0.14,
+      "precheck_score": 0.36,
+      "proof_hashes": [
+        "sha256:782a40ebb39b1f11f71e9d3be7d095d96e5a6c0e81a2fb360db189c126162f58",
+        "sha256:38c9b4f8690befb9156b6096bc676c2058bedf5cfcca49e0122ab9317023abed"
+      ],
+      "proof_refs": [
+        "runtime:r3-runtime-slot-014:precheck",
+        "runtime:r3-runtime-slot-014:commit"
+      ],
+      "risk_flags": [
+        [
+          "RESIZE_BATCH_PRESSURE",
+          2
+        ]
+      ],
+      "slot_id": "r3-runtime-slot-014",
+      "source_file": "pnva-r3-runtime-emitter",
+      "source_lines": [
+        27,
+        28
+      ],
+      "state_path": [
+        "observed",
+        "suppressed",
+        "committed"
+      ],
+      "threshold": 0.5,
+      "valid": true
+    },
+    {
+      "actions": [
+        [
+          "NO_ACTION",
+          1
+        ],
+        [
+          "RESIZE_BATCH",
+          1
+        ]
+      ],
+      "causal_chain_id": "chain_r3_runtime_r3_runtime_slot_015",
+      "commit_count": 1,
+      "commit_event_id": "evt_r3_runtime_r3_runtime_slot_015_commit",
+      "commit_gate_delta": 0.292,
+      "commit_score": 0.792,
+      "decisions": [
+        [
+          "collapse",
+          1
+        ],
+        [
+          "observe",
+          1
+        ]
+      ],
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_count": 2,
+      "failure_codes": [],
+      "heuristic_rules": [
+        [
+          "adaptive_threshold",
+          2
+        ],
+        [
+          "field_scheduler",
+          2
+        ],
+        [
+          "native_event_emitter",
+          2
+        ]
+      ],
+      "jsonl_lines": [
+        29,
+        30
+      ],
+      "precheck_count": 1,
+      "precheck_event_id": "evt_r3_runtime_r3_runtime_slot_015_precheck",
+      "precheck_gate_delta": -0.129,
+      "precheck_score": 0.371,
+      "proof_hashes": [
+        "sha256:a097e3cce5221c391655d45accf9634bce2f96f9499791e893c2ad7f46e98486",
+        "sha256:75e86301d8ac13d79e8030a44096df4bf07e61359a1eb36e6df0f440e09dad8b"
+      ],
+      "proof_refs": [
+        "runtime:r3-runtime-slot-015:precheck",
+        "runtime:r3-runtime-slot-015:commit"
+      ],
+      "risk_flags": [
+        [
+          "RESIZE_BATCH_PRESSURE",
+          2
+        ]
+      ],
+      "slot_id": "r3-runtime-slot-015",
+      "source_file": "pnva-r3-runtime-emitter",
+      "source_lines": [
+        29,
+        30
+      ],
+      "state_path": [
+        "observed",
+        "suppressed",
+        "committed"
+      ],
+      "threshold": 0.5,
+      "valid": true
+    },
+    {
+      "actions": [
+        [
+          "NO_ACTION",
+          1
+        ],
+        [
+          "RESIZE_BATCH",
+          1
+        ]
+      ],
+      "causal_chain_id": "chain_r3_runtime_r3_runtime_slot_016",
+      "commit_count": 1,
+      "commit_event_id": "evt_r3_runtime_r3_runtime_slot_016_commit",
+      "commit_gate_delta": 0.305,
+      "commit_score": 0.805,
+      "decisions": [
+        [
+          "collapse",
+          1
+        ],
+        [
+          "observe",
+          1
+        ]
+      ],
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_count": 2,
+      "failure_codes": [],
+      "heuristic_rules": [
+        [
+          "adaptive_threshold",
+          2
+        ],
+        [
+          "field_scheduler",
+          2
+        ],
+        [
+          "native_event_emitter",
+          2
+        ]
+      ],
+      "jsonl_lines": [
+        31,
+        32
+      ],
+      "precheck_count": 1,
+      "precheck_event_id": "evt_r3_runtime_r3_runtime_slot_016_precheck",
+      "precheck_gate_delta": -0.118,
+      "precheck_score": 0.382,
+      "proof_hashes": [
+        "sha256:125d8a2aefaccd6138c4d1d9979d966d84c887a076fb968071e985d6f28662fb",
+        "sha256:c58eb95dd27c6beca582a9418c7976d1fd3d47dcb5a540aac96332b1eb550c67"
+      ],
+      "proof_refs": [
+        "runtime:r3-runtime-slot-016:precheck",
+        "runtime:r3-runtime-slot-016:commit"
+      ],
+      "risk_flags": [
+        [
+          "RESIZE_BATCH_PRESSURE",
+          2
+        ]
+      ],
+      "slot_id": "r3-runtime-slot-016",
+      "source_file": "pnva-r3-runtime-emitter",
+      "source_lines": [
+        31,
+        32
+      ],
+      "state_path": [
+        "observed",
+        "suppressed",
+        "committed"
+      ],
+      "threshold": 0.5,
+      "valid": true
+    },
+    {
+      "actions": [
+        [
+          "NO_ACTION",
+          1
+        ],
+        [
+          "RESIZE_BATCH",
+          1
+        ]
+      ],
+      "causal_chain_id": "chain_r3_runtime_r3_runtime_slot_017",
+      "commit_count": 1,
+      "commit_event_id": "evt_r3_runtime_r3_runtime_slot_017_commit",
+      "commit_gate_delta": 0.318,
+      "commit_score": 0.818,
+      "decisions": [
+        [
+          "collapse",
+          1
+        ],
+        [
+          "observe",
+          1
+        ]
+      ],
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_count": 2,
+      "failure_codes": [],
+      "heuristic_rules": [
+        [
+          "adaptive_threshold",
+          2
+        ],
+        [
+          "field_scheduler",
+          2
+        ],
+        [
+          "native_event_emitter",
+          2
+        ]
+      ],
+      "jsonl_lines": [
+        33,
+        34
+      ],
+      "precheck_count": 1,
+      "precheck_event_id": "evt_r3_runtime_r3_runtime_slot_017_precheck",
+      "precheck_gate_delta": -0.107,
+      "precheck_score": 0.393,
+      "proof_hashes": [
+        "sha256:f50adc842e6ee05852ab8ae7f66511db419167ac8a243ca9fbb2e4f98c2317af",
+        "sha256:dced531691d290da65e8e09622cd43a9df461651b26a57426126246c36bed9ee"
+      ],
+      "proof_refs": [
+        "runtime:r3-runtime-slot-017:precheck",
+        "runtime:r3-runtime-slot-017:commit"
+      ],
+      "risk_flags": [
+        [
+          "RESIZE_BATCH_PRESSURE",
+          2
+        ]
+      ],
+      "slot_id": "r3-runtime-slot-017",
+      "source_file": "pnva-r3-runtime-emitter",
+      "source_lines": [
+        33,
+        34
+      ],
+      "state_path": [
+        "observed",
+        "suppressed",
+        "committed"
+      ],
+      "threshold": 0.5,
+      "valid": true
+    },
+    {
+      "actions": [
+        [
+          "NO_ACTION",
+          1
+        ],
+        [
+          "RESIZE_BATCH",
+          1
+        ]
+      ],
+      "causal_chain_id": "chain_r3_runtime_r3_runtime_slot_018",
+      "commit_count": 1,
+      "commit_event_id": "evt_r3_runtime_r3_runtime_slot_018_commit",
+      "commit_gate_delta": 0.331,
+      "commit_score": 0.831,
+      "decisions": [
+        [
+          "collapse",
+          1
+        ],
+        [
+          "observe",
+          1
+        ]
+      ],
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_count": 2,
+      "failure_codes": [],
+      "heuristic_rules": [
+        [
+          "adaptive_threshold",
+          2
+        ],
+        [
+          "field_scheduler",
+          2
+        ],
+        [
+          "native_event_emitter",
+          2
+        ]
+      ],
+      "jsonl_lines": [
+        35,
+        36
+      ],
+      "precheck_count": 1,
+      "precheck_event_id": "evt_r3_runtime_r3_runtime_slot_018_precheck",
+      "precheck_gate_delta": -0.096,
+      "precheck_score": 0.404,
+      "proof_hashes": [
+        "sha256:65313af77dc757b51da8007f742a01c6277faf6f99da285214df1d5408254790",
+        "sha256:6002f702c864a637905ad671f706e95ccf11ead46bd70a57d30b00020b07c4b3"
+      ],
+      "proof_refs": [
+        "runtime:r3-runtime-slot-018:precheck",
+        "runtime:r3-runtime-slot-018:commit"
+      ],
+      "risk_flags": [
+        [
+          "RESIZE_BATCH_PRESSURE",
+          2
+        ]
+      ],
+      "slot_id": "r3-runtime-slot-018",
+      "source_file": "pnva-r3-runtime-emitter",
+      "source_lines": [
+        35,
+        36
+      ],
+      "state_path": [
+        "observed",
+        "suppressed",
+        "committed"
+      ],
+      "threshold": 0.5,
+      "valid": true
+    },
+    {
+      "actions": [
+        [
+          "COOLDOWN_GPU",
+          1
+        ],
+        [
+          "NO_ACTION",
+          1
+        ]
+      ],
+      "causal_chain_id": "chain_r3_runtime_r3_runtime_slot_019",
+      "commit_count": 1,
+      "commit_event_id": "evt_r3_runtime_r3_runtime_slot_019_commit",
+      "commit_gate_delta": 0.344,
+      "commit_score": 0.844,
+      "decisions": [
+        [
+          "collapse",
+          1
+        ],
+        [
+          "observe",
+          1
+        ]
+      ],
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_count": 2,
+      "failure_codes": [],
+      "heuristic_rules": [
+        [
+          "adaptive_threshold",
+          2
+        ],
+        [
+          "field_scheduler",
+          2
+        ],
+        [
+          "native_event_emitter",
+          2
+        ],
+        [
+          "power_orchestrator",
+          2
+        ]
+      ],
+      "jsonl_lines": [
+        37,
+        38
+      ],
+      "precheck_count": 1,
+      "precheck_event_id": "evt_r3_runtime_r3_runtime_slot_019_precheck",
+      "precheck_gate_delta": -0.085,
+      "precheck_score": 0.415,
+      "proof_hashes": [
+        "sha256:e73e16fa79b8cd99c09070b7b2a2b44e5f0eaf0ec8b181968415fb42ae9f237c",
+        "sha256:6d2d9ac6140ade9001f850843aaf5f50ed4a608f4f9ceda5b4af85e5ef07399e"
+      ],
+      "proof_refs": [
+        "runtime:r3-runtime-slot-019:precheck",
+        "runtime:r3-runtime-slot-019:commit"
+      ],
+      "risk_flags": [],
+      "slot_id": "r3-runtime-slot-019",
+      "source_file": "pnva-r3-runtime-emitter",
+      "source_lines": [
+        37,
+        38
+      ],
+      "state_path": [
+        "observed",
+        "suppressed",
+        "committed"
+      ],
+      "threshold": 0.5,
+      "valid": true
+    },
+    {
+      "actions": [
+        [
+          "EXECUTE",
+          1
+        ],
+        [
+          "NO_ACTION",
+          1
+        ]
+      ],
+      "causal_chain_id": "chain_r3_runtime_r3_runtime_slot_020",
+      "commit_count": 1,
+      "commit_event_id": "evt_r3_runtime_r3_runtime_slot_020_commit",
+      "commit_gate_delta": 0.357,
+      "commit_score": 0.857,
+      "decisions": [
+        [
+          "collapse",
+          1
+        ],
+        [
+          "observe",
+          1
+        ]
+      ],
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_count": 2,
+      "failure_codes": [],
+      "heuristic_rules": [
+        [
+          "adaptive_threshold",
+          2
+        ],
+        [
+          "field_scheduler",
+          2
+        ],
+        [
+          "native_event_emitter",
+          2
+        ]
+      ],
+      "jsonl_lines": [
+        39,
+        40
+      ],
+      "precheck_count": 1,
+      "precheck_event_id": "evt_r3_runtime_r3_runtime_slot_020_precheck",
+      "precheck_gate_delta": -0.074,
+      "precheck_score": 0.426,
+      "proof_hashes": [
+        "sha256:5c5978c68b4007656dd60cbcb94b6e46fdfe7b5638eae9385c52ae543a6948a3",
+        "sha256:0419e814c78d910cce893300cf4ec8a1dab0884e3f369f38a3e73ba55a9a062b"
+      ],
+      "proof_refs": [
+        "runtime:r3-runtime-slot-020:precheck",
+        "runtime:r3-runtime-slot-020:commit"
+      ],
+      "risk_flags": [],
+      "slot_id": "r3-runtime-slot-020",
+      "source_file": "pnva-r3-runtime-emitter",
+      "source_lines": [
+        39,
+        40
+      ],
+      "state_path": [
+        "observed",
+        "suppressed",
+        "committed"
+      ],
+      "threshold": 0.5,
+      "valid": true
+    },
+    {
+      "actions": [
+        [
+          "COOLDOWN_GPU",
+          1
+        ],
+        [
+          "NO_ACTION",
+          1
+        ]
+      ],
+      "causal_chain_id": "chain_r3_runtime_r3_runtime_slot_021",
+      "commit_count": 1,
+      "commit_event_id": "evt_r3_runtime_r3_runtime_slot_021_commit",
+      "commit_gate_delta": 0.37,
+      "commit_score": 0.87,
+      "decisions": [
+        [
+          "collapse",
+          1
+        ],
+        [
+          "observe",
+          1
+        ]
+      ],
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_count": 2,
+      "failure_codes": [],
+      "heuristic_rules": [
+        [
+          "adaptive_threshold",
+          2
+        ],
+        [
+          "field_scheduler",
+          2
+        ],
+        [
+          "native_event_emitter",
+          2
+        ],
+        [
+          "power_orchestrator",
+          2
+        ]
+      ],
+      "jsonl_lines": [
+        41,
+        42
+      ],
+      "precheck_count": 1,
+      "precheck_event_id": "evt_r3_runtime_r3_runtime_slot_021_precheck",
+      "precheck_gate_delta": -0.14,
+      "precheck_score": 0.36,
+      "proof_hashes": [
+        "sha256:71ea34fdc904d68825775faef64137ed185f6205530120ef5b407f40b09d9e4f",
+        "sha256:1184db133ac5eb0068030cc6878533d313f8da5358572a51f178f7a8ab293670"
+      ],
+      "proof_refs": [
+        "runtime:r3-runtime-slot-021:precheck",
+        "runtime:r3-runtime-slot-021:commit"
+      ],
+      "risk_flags": [],
+      "slot_id": "r3-runtime-slot-021",
+      "source_file": "pnva-r3-runtime-emitter",
+      "source_lines": [
+        41,
+        42
+      ],
+      "state_path": [
+        "observed",
+        "suppressed",
+        "committed"
+      ],
+      "threshold": 0.5,
+      "valid": true
+    },
+    {
+      "actions": [
+        [
+          "NO_ACTION",
+          1
+        ],
+        [
+          "RESIZE_BATCH",
+          1
+        ]
+      ],
+      "causal_chain_id": "chain_r3_runtime_r3_runtime_slot_022",
+      "commit_count": 1,
+      "commit_event_id": "evt_r3_runtime_r3_runtime_slot_022_commit",
+      "commit_gate_delta": 0.24,
+      "commit_score": 0.74,
+      "decisions": [
+        [
+          "collapse",
+          1
+        ],
+        [
+          "observe",
+          1
+        ]
+      ],
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_count": 2,
+      "failure_codes": [],
+      "heuristic_rules": [
+        [
+          "adaptive_threshold",
+          2
+        ],
+        [
+          "field_scheduler",
+          2
+        ],
+        [
+          "native_event_emitter",
+          2
+        ]
+      ],
+      "jsonl_lines": [
+        43,
+        44
+      ],
+      "precheck_count": 1,
+      "precheck_event_id": "evt_r3_runtime_r3_runtime_slot_022_precheck",
+      "precheck_gate_delta": -0.129,
+      "precheck_score": 0.371,
+      "proof_hashes": [
+        "sha256:6bc03ba5e0246ced995c0f5340d205df0dbfb3a7e51ede36fea5f6c6d2efe639",
+        "sha256:ba477945fec5fa71d66b551f02dad5bbf427fbe719eee30a15253641e89e7715"
+      ],
+      "proof_refs": [
+        "runtime:r3-runtime-slot-022:precheck",
+        "runtime:r3-runtime-slot-022:commit"
+      ],
+      "risk_flags": [
+        [
+          "RESIZE_BATCH_PRESSURE",
+          2
+        ]
+      ],
+      "slot_id": "r3-runtime-slot-022",
+      "source_file": "pnva-r3-runtime-emitter",
+      "source_lines": [
+        43,
+        44
+      ],
+      "state_path": [
+        "observed",
+        "suppressed",
+        "committed"
+      ],
+      "threshold": 0.5,
+      "valid": true
+    },
+    {
+      "actions": [
+        [
+          "NO_ACTION",
+          1
+        ],
+        [
+          "RESIZE_BATCH",
+          1
+        ]
+      ],
+      "causal_chain_id": "chain_r3_runtime_r3_runtime_slot_023",
+      "commit_count": 1,
+      "commit_event_id": "evt_r3_runtime_r3_runtime_slot_023_commit",
+      "commit_gate_delta": 0.253,
+      "commit_score": 0.753,
+      "decisions": [
+        [
+          "collapse",
+          1
+        ],
+        [
+          "observe",
+          1
+        ]
+      ],
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_count": 2,
+      "failure_codes": [],
+      "heuristic_rules": [
+        [
+          "adaptive_threshold",
+          2
+        ],
+        [
+          "field_scheduler",
+          2
+        ],
+        [
+          "native_event_emitter",
+          2
+        ]
+      ],
+      "jsonl_lines": [
+        45,
+        46
+      ],
+      "precheck_count": 1,
+      "precheck_event_id": "evt_r3_runtime_r3_runtime_slot_023_precheck",
+      "precheck_gate_delta": -0.118,
+      "precheck_score": 0.382,
+      "proof_hashes": [
+        "sha256:f4b812c4f33b6c0e2ff61c25711f8a821055f224d3a055b874fb92e774c225a5",
+        "sha256:c5b26f50d6dcbb4a5fe0147913af899c41f650160476c869ba7b74e9cf4a86c2"
+      ],
+      "proof_refs": [
+        "runtime:r3-runtime-slot-023:precheck",
+        "runtime:r3-runtime-slot-023:commit"
+      ],
+      "risk_flags": [
+        [
+          "RESIZE_BATCH_PRESSURE",
+          2
+        ]
+      ],
+      "slot_id": "r3-runtime-slot-023",
+      "source_file": "pnva-r3-runtime-emitter",
+      "source_lines": [
+        45,
+        46
+      ],
+      "state_path": [
+        "observed",
+        "suppressed",
+        "committed"
+      ],
+      "threshold": 0.5,
+      "valid": true
+    },
+    {
+      "actions": [
+        [
+          "NO_ACTION",
+          1
+        ],
+        [
+          "RESIZE_BATCH",
+          1
+        ]
+      ],
+      "causal_chain_id": "chain_r3_runtime_r3_runtime_slot_024",
+      "commit_count": 1,
+      "commit_event_id": "evt_r3_runtime_r3_runtime_slot_024_commit",
+      "commit_gate_delta": 0.266,
+      "commit_score": 0.766,
+      "decisions": [
+        [
+          "collapse",
+          1
+        ],
+        [
+          "observe",
+          1
+        ]
+      ],
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_count": 2,
+      "failure_codes": [],
+      "heuristic_rules": [
+        [
+          "adaptive_threshold",
+          2
+        ],
+        [
+          "field_scheduler",
+          2
+        ],
+        [
+          "native_event_emitter",
+          2
+        ]
+      ],
+      "jsonl_lines": [
+        47,
+        48
+      ],
+      "precheck_count": 1,
+      "precheck_event_id": "evt_r3_runtime_r3_runtime_slot_024_precheck",
+      "precheck_gate_delta": -0.107,
+      "precheck_score": 0.393,
+      "proof_hashes": [
+        "sha256:12bea19bf15e74a6b90a93545e5840e469ba9aa9812d4cd8b584c4efdf597d66",
+        "sha256:ac9ea3dcd46552b2fdbc8e2558b638cc7f8da88c391b8471623893f3953c391c"
+      ],
+      "proof_refs": [
+        "runtime:r3-runtime-slot-024:precheck",
+        "runtime:r3-runtime-slot-024:commit"
+      ],
+      "risk_flags": [
+        [
+          "RESIZE_BATCH_PRESSURE",
+          2
+        ]
+      ],
+      "slot_id": "r3-runtime-slot-024",
+      "source_file": "pnva-r3-runtime-emitter",
+      "source_lines": [
+        47,
+        48
+      ],
+      "state_path": [
+        "observed",
+        "suppressed",
+        "committed"
+      ],
+      "threshold": 0.5,
+      "valid": true
+    },
+    {
+      "actions": [
+        [
+          "NO_ACTION",
+          1
+        ],
+        [
+          "RESIZE_BATCH",
+          1
+        ]
+      ],
+      "causal_chain_id": "chain_r3_runtime_r3_runtime_slot_025",
+      "commit_count": 1,
+      "commit_event_id": "evt_r3_runtime_r3_runtime_slot_025_commit",
+      "commit_gate_delta": 0.279,
+      "commit_score": 0.779,
+      "decisions": [
+        [
+          "collapse",
+          1
+        ],
+        [
+          "observe",
+          1
+        ]
+      ],
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_count": 2,
+      "failure_codes": [],
+      "heuristic_rules": [
+        [
+          "adaptive_threshold",
+          2
+        ],
+        [
+          "field_scheduler",
+          2
+        ],
+        [
+          "native_event_emitter",
+          2
+        ]
+      ],
+      "jsonl_lines": [
+        49,
+        50
+      ],
+      "precheck_count": 1,
+      "precheck_event_id": "evt_r3_runtime_r3_runtime_slot_025_precheck",
+      "precheck_gate_delta": -0.096,
+      "precheck_score": 0.404,
+      "proof_hashes": [
+        "sha256:2015a3ba1e8c65029fb42e4c6ae87679f70b35a58a3e421a105ad46d9b4c4f56",
+        "sha256:82e495550a77a4bf4081a45991ae14815f94960857e99dbbe1b6df54cd6ee72e"
+      ],
+      "proof_refs": [
+        "runtime:r3-runtime-slot-025:precheck",
+        "runtime:r3-runtime-slot-025:commit"
+      ],
+      "risk_flags": [
+        [
+          "RESIZE_BATCH_PRESSURE",
+          2
+        ]
+      ],
+      "slot_id": "r3-runtime-slot-025",
+      "source_file": "pnva-r3-runtime-emitter",
+      "source_lines": [
+        49,
+        50
+      ],
+      "state_path": [
+        "observed",
+        "suppressed",
+        "committed"
+      ],
+      "threshold": 0.5,
+      "valid": true
+    },
+    {
+      "actions": [
+        [
+          "NO_ACTION",
+          1
+        ],
+        [
+          "RESIZE_BATCH",
+          1
+        ]
+      ],
+      "causal_chain_id": "chain_r3_runtime_r3_runtime_slot_026",
+      "commit_count": 1,
+      "commit_event_id": "evt_r3_runtime_r3_runtime_slot_026_commit",
+      "commit_gate_delta": 0.292,
+      "commit_score": 0.792,
+      "decisions": [
+        [
+          "collapse",
+          1
+        ],
+        [
+          "observe",
+          1
+        ]
+      ],
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_count": 2,
+      "failure_codes": [],
+      "heuristic_rules": [
+        [
+          "adaptive_threshold",
+          2
+        ],
+        [
+          "field_scheduler",
+          2
+        ],
+        [
+          "native_event_emitter",
+          2
+        ]
+      ],
+      "jsonl_lines": [
+        51,
+        52
+      ],
+      "precheck_count": 1,
+      "precheck_event_id": "evt_r3_runtime_r3_runtime_slot_026_precheck",
+      "precheck_gate_delta": -0.085,
+      "precheck_score": 0.415,
+      "proof_hashes": [
+        "sha256:02f8b291e8a5487cdfe2bce66f3dfe832d2b9c21b991e27ec239921095c0b14b",
+        "sha256:5697079fc71075c6171d25f92d9f1cb36886110d37a9c12173e024c0888b710a"
+      ],
+      "proof_refs": [
+        "runtime:r3-runtime-slot-026:precheck",
+        "runtime:r3-runtime-slot-026:commit"
+      ],
+      "risk_flags": [
+        [
+          "RESIZE_BATCH_PRESSURE",
+          2
+        ]
+      ],
+      "slot_id": "r3-runtime-slot-026",
+      "source_file": "pnva-r3-runtime-emitter",
+      "source_lines": [
+        51,
+        52
+      ],
+      "state_path": [
+        "observed",
+        "suppressed",
+        "committed"
+      ],
+      "threshold": 0.5,
+      "valid": true
+    },
+    {
+      "actions": [
+        [
+          "NO_ACTION",
+          1
+        ],
+        [
+          "RESIZE_BATCH",
+          1
+        ]
+      ],
+      "causal_chain_id": "chain_r3_runtime_r3_runtime_slot_027",
+      "commit_count": 1,
+      "commit_event_id": "evt_r3_runtime_r3_runtime_slot_027_commit",
+      "commit_gate_delta": 0.305,
+      "commit_score": 0.805,
+      "decisions": [
+        [
+          "collapse",
+          1
+        ],
+        [
+          "observe",
+          1
+        ]
+      ],
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_count": 2,
+      "failure_codes": [],
+      "heuristic_rules": [
+        [
+          "adaptive_threshold",
+          2
+        ],
+        [
+          "field_scheduler",
+          2
+        ],
+        [
+          "native_event_emitter",
+          2
+        ]
+      ],
+      "jsonl_lines": [
+        53,
+        54
+      ],
+      "precheck_count": 1,
+      "precheck_event_id": "evt_r3_runtime_r3_runtime_slot_027_precheck",
+      "precheck_gate_delta": -0.074,
+      "precheck_score": 0.426,
+      "proof_hashes": [
+        "sha256:5e53805104a22ce10028e0d2e0af9a86a9a50f5c074c8156107ec9558fdbdc5a",
+        "sha256:7dcb49e5606151d4a5c630f90d6ff96ca5ea88ee18d277c6f1c3edb699de3fc6"
+      ],
+      "proof_refs": [
+        "runtime:r3-runtime-slot-027:precheck",
+        "runtime:r3-runtime-slot-027:commit"
+      ],
+      "risk_flags": [
+        [
+          "RESIZE_BATCH_PRESSURE",
+          2
+        ]
+      ],
+      "slot_id": "r3-runtime-slot-027",
+      "source_file": "pnva-r3-runtime-emitter",
+      "source_lines": [
+        53,
+        54
+      ],
+      "state_path": [
+        "observed",
+        "suppressed",
+        "committed"
+      ],
+      "threshold": 0.5,
+      "valid": true
+    },
+    {
+      "actions": [
+        [
+          "NO_ACTION",
+          1
+        ],
+        [
+          "RESIZE_BATCH",
+          1
+        ]
+      ],
+      "causal_chain_id": "chain_r3_runtime_r3_runtime_slot_028",
+      "commit_count": 1,
+      "commit_event_id": "evt_r3_runtime_r3_runtime_slot_028_commit",
+      "commit_gate_delta": 0.318,
+      "commit_score": 0.818,
+      "decisions": [
+        [
+          "collapse",
+          1
+        ],
+        [
+          "observe",
+          1
+        ]
+      ],
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_count": 2,
+      "failure_codes": [],
+      "heuristic_rules": [
+        [
+          "adaptive_threshold",
+          2
+        ],
+        [
+          "field_scheduler",
+          2
+        ],
+        [
+          "native_event_emitter",
+          2
+        ]
+      ],
+      "jsonl_lines": [
+        55,
+        56
+      ],
+      "precheck_count": 1,
+      "precheck_event_id": "evt_r3_runtime_r3_runtime_slot_028_precheck",
+      "precheck_gate_delta": -0.14,
+      "precheck_score": 0.36,
+      "proof_hashes": [
+        "sha256:d1bfc0775b4f7d6cf59539bec216c26d6d087751283289722e0f97081a155552",
+        "sha256:51409f8b1b28e157a9573a0f4a7cf413d28c24795fbb707b6998c1193df961ab"
+      ],
+      "proof_refs": [
+        "runtime:r3-runtime-slot-028:precheck",
+        "runtime:r3-runtime-slot-028:commit"
+      ],
+      "risk_flags": [
+        [
+          "RESIZE_BATCH_PRESSURE",
+          2
+        ]
+      ],
+      "slot_id": "r3-runtime-slot-028",
+      "source_file": "pnva-r3-runtime-emitter",
+      "source_lines": [
+        55,
+        56
+      ],
+      "state_path": [
+        "observed",
+        "suppressed",
+        "committed"
+      ],
+      "threshold": 0.5,
+      "valid": true
+    },
+    {
+      "actions": [
+        [
+          "NO_ACTION",
+          1
+        ],
+        [
+          "RESIZE_BATCH",
+          1
+        ]
+      ],
+      "causal_chain_id": "chain_r3_runtime_r3_runtime_slot_029",
+      "commit_count": 1,
+      "commit_event_id": "evt_r3_runtime_r3_runtime_slot_029_commit",
+      "commit_gate_delta": 0.331,
+      "commit_score": 0.831,
+      "decisions": [
+        [
+          "collapse",
+          1
+        ],
+        [
+          "observe",
+          1
+        ]
+      ],
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_count": 2,
+      "failure_codes": [],
+      "heuristic_rules": [
+        [
+          "adaptive_threshold",
+          2
+        ],
+        [
+          "field_scheduler",
+          2
+        ],
+        [
+          "native_event_emitter",
+          2
+        ]
+      ],
+      "jsonl_lines": [
+        57,
+        58
+      ],
+      "precheck_count": 1,
+      "precheck_event_id": "evt_r3_runtime_r3_runtime_slot_029_precheck",
+      "precheck_gate_delta": -0.129,
+      "precheck_score": 0.371,
+      "proof_hashes": [
+        "sha256:10999d87c87803bd1d45a75f579fc2bd8bae54f8090095eddde7c4a47546965a",
+        "sha256:c5528894952cfe76129831c42bc755c01963507154af0c58f03826a520740e69"
+      ],
+      "proof_refs": [
+        "runtime:r3-runtime-slot-029:precheck",
+        "runtime:r3-runtime-slot-029:commit"
+      ],
+      "risk_flags": [
+        [
+          "RESIZE_BATCH_PRESSURE",
+          2
+        ]
+      ],
+      "slot_id": "r3-runtime-slot-029",
+      "source_file": "pnva-r3-runtime-emitter",
+      "source_lines": [
+        57,
+        58
+      ],
+      "state_path": [
+        "observed",
+        "suppressed",
+        "committed"
+      ],
+      "threshold": 0.5,
+      "valid": true
+    },
+    {
+      "actions": [
+        [
+          "NO_ACTION",
+          1
+        ],
+        [
+          "RESIZE_BATCH",
+          1
+        ]
+      ],
+      "causal_chain_id": "chain_r3_runtime_r3_runtime_slot_030",
+      "commit_count": 1,
+      "commit_event_id": "evt_r3_runtime_r3_runtime_slot_030_commit",
+      "commit_gate_delta": 0.344,
+      "commit_score": 0.844,
+      "decisions": [
+        [
+          "collapse",
+          1
+        ],
+        [
+          "observe",
+          1
+        ]
+      ],
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_count": 2,
+      "failure_codes": [],
+      "heuristic_rules": [
+        [
+          "adaptive_threshold",
+          2
+        ],
+        [
+          "field_scheduler",
+          2
+        ],
+        [
+          "native_event_emitter",
+          2
+        ]
+      ],
+      "jsonl_lines": [
+        59,
+        60
+      ],
+      "precheck_count": 1,
+      "precheck_event_id": "evt_r3_runtime_r3_runtime_slot_030_precheck",
+      "precheck_gate_delta": -0.118,
+      "precheck_score": 0.382,
+      "proof_hashes": [
+        "sha256:d6014dac6a7a6ff6613d589eb76dc9e6109d3576d6f6fc24ffe144aeac3673c3",
+        "sha256:bab5bff064903fca5c960ea31074294b6281b5623859d7818cf89b6c95a5f55d"
+      ],
+      "proof_refs": [
+        "runtime:r3-runtime-slot-030:precheck",
+        "runtime:r3-runtime-slot-030:commit"
+      ],
+      "risk_flags": [
+        [
+          "RESIZE_BATCH_PRESSURE",
+          2
+        ]
+      ],
+      "slot_id": "r3-runtime-slot-030",
+      "source_file": "pnva-r3-runtime-emitter",
+      "source_lines": [
+        59,
+        60
+      ],
+      "state_path": [
+        "observed",
+        "suppressed",
+        "committed"
+      ],
+      "threshold": 0.5,
+      "valid": true
+    },
+    {
+      "actions": [
+        [
+          "NO_ACTION",
+          1
+        ],
+        [
+          "RESIZE_BATCH",
+          1
+        ]
+      ],
+      "causal_chain_id": "chain_r3_runtime_r3_runtime_slot_031",
+      "commit_count": 1,
+      "commit_event_id": "evt_r3_runtime_r3_runtime_slot_031_commit",
+      "commit_gate_delta": 0.357,
+      "commit_score": 0.857,
+      "decisions": [
+        [
+          "collapse",
+          1
+        ],
+        [
+          "observe",
+          1
+        ]
+      ],
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_count": 2,
+      "failure_codes": [],
+      "heuristic_rules": [
+        [
+          "adaptive_threshold",
+          2
+        ],
+        [
+          "field_scheduler",
+          2
+        ],
+        [
+          "native_event_emitter",
+          2
+        ]
+      ],
+      "jsonl_lines": [
+        61,
+        62
+      ],
+      "precheck_count": 1,
+      "precheck_event_id": "evt_r3_runtime_r3_runtime_slot_031_precheck",
+      "precheck_gate_delta": -0.107,
+      "precheck_score": 0.393,
+      "proof_hashes": [
+        "sha256:554501d0f0f1ac64d63d638f214843bcb72aa530350e58cdd57477a871147259",
+        "sha256:9690b54a3bf68948476f0a9ce06cdc6e8578a81448d2946948821908f113267d"
+      ],
+      "proof_refs": [
+        "runtime:r3-runtime-slot-031:precheck",
+        "runtime:r3-runtime-slot-031:commit"
+      ],
+      "risk_flags": [
+        [
+          "RESIZE_BATCH_PRESSURE",
+          2
+        ]
+      ],
+      "slot_id": "r3-runtime-slot-031",
+      "source_file": "pnva-r3-runtime-emitter",
+      "source_lines": [
+        61,
+        62
+      ],
+      "state_path": [
+        "observed",
+        "suppressed",
+        "committed"
+      ],
+      "threshold": 0.5,
+      "valid": true
+    },
+    {
+      "actions": [
+        [
+          "NO_ACTION",
+          1
+        ],
+        [
+          "RESIZE_BATCH",
+          1
+        ]
+      ],
+      "causal_chain_id": "chain_r3_runtime_r3_runtime_slot_032",
+      "commit_count": 1,
+      "commit_event_id": "evt_r3_runtime_r3_runtime_slot_032_commit",
+      "commit_gate_delta": 0.37,
+      "commit_score": 0.87,
+      "decisions": [
+        [
+          "collapse",
+          1
+        ],
+        [
+          "observe",
+          1
+        ]
+      ],
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_count": 2,
+      "failure_codes": [],
+      "heuristic_rules": [
+        [
+          "adaptive_threshold",
+          2
+        ],
+        [
+          "field_scheduler",
+          2
+        ],
+        [
+          "native_event_emitter",
+          2
+        ]
+      ],
+      "jsonl_lines": [
+        63,
+        64
+      ],
+      "precheck_count": 1,
+      "precheck_event_id": "evt_r3_runtime_r3_runtime_slot_032_precheck",
+      "precheck_gate_delta": -0.096,
+      "precheck_score": 0.404,
+      "proof_hashes": [
+        "sha256:b4322a98bfcfc3280c89159c10d1ddae2cea29b3f19fbeffa215cbd385aef2c4",
+        "sha256:0d5ae643aeb8c33b9d0a98861f34e39754420003ceb94b20eb98ff803baaaabb"
+      ],
+      "proof_refs": [
+        "runtime:r3-runtime-slot-032:precheck",
+        "runtime:r3-runtime-slot-032:commit"
+      ],
+      "risk_flags": [
+        [
+          "RESIZE_BATCH_PRESSURE",
+          2
+        ]
+      ],
+      "slot_id": "r3-runtime-slot-032",
+      "source_file": "pnva-r3-runtime-emitter",
+      "source_lines": [
+        63,
+        64
+      ],
+      "state_path": [
+        "observed",
+        "suppressed",
+        "committed"
+      ],
+      "threshold": 0.5,
+      "valid": true
+    },
+    {
+      "actions": [
+        [
+          "NO_ACTION",
+          1
+        ],
+        [
+          "RESIZE_BATCH",
+          1
+        ]
+      ],
+      "causal_chain_id": "chain_r3_runtime_r3_runtime_slot_033",
+      "commit_count": 1,
+      "commit_event_id": "evt_r3_runtime_r3_runtime_slot_033_commit",
+      "commit_gate_delta": 0.24,
+      "commit_score": 0.74,
+      "decisions": [
+        [
+          "collapse",
+          1
+        ],
+        [
+          "observe",
+          1
+        ]
+      ],
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_count": 2,
+      "failure_codes": [],
+      "heuristic_rules": [
+        [
+          "adaptive_threshold",
+          2
+        ],
+        [
+          "field_scheduler",
+          2
+        ],
+        [
+          "native_event_emitter",
+          2
+        ]
+      ],
+      "jsonl_lines": [
+        65,
+        66
+      ],
+      "precheck_count": 1,
+      "precheck_event_id": "evt_r3_runtime_r3_runtime_slot_033_precheck",
+      "precheck_gate_delta": -0.085,
+      "precheck_score": 0.415,
+      "proof_hashes": [
+        "sha256:0a8a072d6031b736c5ff8862e9a20964ba1426022d25ae236c7c9318d112b5d9",
+        "sha256:cd4139c6e365f48f400f37ce4fb4a7d9eb7aa6d19d3aff416e04c27a84031c09"
+      ],
+      "proof_refs": [
+        "runtime:r3-runtime-slot-033:precheck",
+        "runtime:r3-runtime-slot-033:commit"
+      ],
+      "risk_flags": [
+        [
+          "RESIZE_BATCH_PRESSURE",
+          2
+        ]
+      ],
+      "slot_id": "r3-runtime-slot-033",
+      "source_file": "pnva-r3-runtime-emitter",
+      "source_lines": [
+        65,
+        66
+      ],
+      "state_path": [
+        "observed",
+        "suppressed",
+        "committed"
+      ],
+      "threshold": 0.5,
+      "valid": true
+    },
+    {
+      "actions": [
+        [
+          "NO_ACTION",
+          1
+        ],
+        [
+          "RESIZE_BATCH",
+          1
+        ]
+      ],
+      "causal_chain_id": "chain_r3_runtime_r3_runtime_slot_034",
+      "commit_count": 1,
+      "commit_event_id": "evt_r3_runtime_r3_runtime_slot_034_commit",
+      "commit_gate_delta": 0.253,
+      "commit_score": 0.753,
+      "decisions": [
+        [
+          "collapse",
+          1
+        ],
+        [
+          "observe",
+          1
+        ]
+      ],
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_count": 2,
+      "failure_codes": [],
+      "heuristic_rules": [
+        [
+          "adaptive_threshold",
+          2
+        ],
+        [
+          "field_scheduler",
+          2
+        ],
+        [
+          "native_event_emitter",
+          2
+        ]
+      ],
+      "jsonl_lines": [
+        67,
+        68
+      ],
+      "precheck_count": 1,
+      "precheck_event_id": "evt_r3_runtime_r3_runtime_slot_034_precheck",
+      "precheck_gate_delta": -0.074,
+      "precheck_score": 0.426,
+      "proof_hashes": [
+        "sha256:d41e0701a022c0735e9a838d627d0545b34ac3999bf4301df5e656c3fe01fbf8",
+        "sha256:42eb2480d24924b63067aaa4f715a9fa6ce0297c5e7904142e6c32e76425a9b6"
+      ],
+      "proof_refs": [
+        "runtime:r3-runtime-slot-034:precheck",
+        "runtime:r3-runtime-slot-034:commit"
+      ],
+      "risk_flags": [
+        [
+          "RESIZE_BATCH_PRESSURE",
+          2
+        ]
+      ],
+      "slot_id": "r3-runtime-slot-034",
+      "source_file": "pnva-r3-runtime-emitter",
+      "source_lines": [
+        67,
+        68
+      ],
+      "state_path": [
+        "observed",
+        "suppressed",
+        "committed"
+      ],
+      "threshold": 0.5,
+      "valid": true
+    },
+    {
+      "actions": [
+        [
+          "NO_ACTION",
+          1
+        ],
+        [
+          "RESIZE_BATCH",
+          1
+        ]
+      ],
+      "causal_chain_id": "chain_r3_runtime_r3_runtime_slot_035",
+      "commit_count": 1,
+      "commit_event_id": "evt_r3_runtime_r3_runtime_slot_035_commit",
+      "commit_gate_delta": 0.266,
+      "commit_score": 0.766,
+      "decisions": [
+        [
+          "collapse",
+          1
+        ],
+        [
+          "observe",
+          1
+        ]
+      ],
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_count": 2,
+      "failure_codes": [],
+      "heuristic_rules": [
+        [
+          "adaptive_threshold",
+          2
+        ],
+        [
+          "field_scheduler",
+          2
+        ],
+        [
+          "native_event_emitter",
+          2
+        ]
+      ],
+      "jsonl_lines": [
+        69,
+        70
+      ],
+      "precheck_count": 1,
+      "precheck_event_id": "evt_r3_runtime_r3_runtime_slot_035_precheck",
+      "precheck_gate_delta": -0.14,
+      "precheck_score": 0.36,
+      "proof_hashes": [
+        "sha256:a6f87326e893c6c0011c36829781e43355830e400ef63715029bfe95d1a6dbd1",
+        "sha256:f58a63dfc5dfbd1d380f582876ede97a06d2d26255580f5976b933a5c26abdcd"
+      ],
+      "proof_refs": [
+        "runtime:r3-runtime-slot-035:precheck",
+        "runtime:r3-runtime-slot-035:commit"
+      ],
+      "risk_flags": [
+        [
+          "RESIZE_BATCH_PRESSURE",
+          2
+        ]
+      ],
+      "slot_id": "r3-runtime-slot-035",
+      "source_file": "pnva-r3-runtime-emitter",
+      "source_lines": [
+        69,
+        70
+      ],
+      "state_path": [
+        "observed",
+        "suppressed",
+        "committed"
+      ],
+      "threshold": 0.5,
+      "valid": true
+    }
+  ],
+  "summary": {
+    "commit_count": 35,
+    "entity_count": 1,
+    "event_count": 70,
+    "heuristic_rule_count": 4,
+    "invalid_slot_count": 0,
+    "no_tick_suppression_ratio": 0.5,
+    "precheck_count": 35,
+    "proof_hash_unique_count": 70,
+    "proof_ref_unique_count": 70,
+    "risk_flag_count": 1,
+    "runtime_guard_negative_controls": "63/63",
+    "slot_count": 35,
+    "valid_slot_count": 35
+  }
+}

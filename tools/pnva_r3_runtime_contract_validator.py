@@ -255,12 +255,14 @@ def build_report(repo: Path) -> dict[str, Any]:
     slots = _slot_rows(matrix)
     contracts = plan.get("action_contracts") if isinstance(plan.get("action_contracts"), list) else []
     checks: list[dict[str, Any]] = []
+    runtime_present = guard.get("runtime_evidence_present") is True
+    runtime_approved = guard.get("runtime_evidence_approved") is True
 
-    _add_check(checks, "source", "matrix_classification", matrix.get("classification"), "R3_RUNTIME_CAPTURE_MATRIX_READY_PENDING_RUNTIME")
-    _add_check(checks, "source", "guard_classification", guard.get("classification"), "R3_RUNTIME_EVIDENCE_GUARD_READY_AWAITING_CAPTURE")
+    _add_check(checks, "source", "matrix_classification", matrix.get("classification") in {"R3_RUNTIME_CAPTURE_MATRIX_READY_PENDING_RUNTIME", "R3_RUNTIME_CAPTURE_MATRIX_COMPLETE"}, True)
+    _add_check(checks, "source", "guard_classification", guard.get("classification") in {"R3_RUNTIME_EVIDENCE_GUARD_READY_AWAITING_CAPTURE", "R3_RUNTIME_EVIDENCE_ACCEPTED"}, True)
     _add_check(checks, "source", "plan_classification", plan.get("classification"), "R3_RUNTIME_INSTRUMENTATION_PLAN_READY")
-    _add_check(checks, "boundary", "guard_not_runtime_approved", guard.get("runtime_evidence_approved"), False)
-    _add_check(checks, "boundary", "plan_not_runtime_approved", plan.get("runtime_evidence_approved"), False)
+    _add_check(checks, "boundary", "guard_runtime_approval_matches_presence", guard.get("runtime_evidence_approved"), runtime_present)
+    _add_check(checks, "boundary", "plan_runtime_approval_matches_guard", plan.get("runtime_evidence_approved"), runtime_approved)
     _add_check(checks, "counts", "capture_slot_count_matches_matrix", int(plan.get("capture_slot_count", 0)), int(matrix.get("capture_slot_count", 0)))
     _add_check(checks, "counts", "capture_slots_match_rows", int(matrix.get("capture_slot_count", 0)), len(slots))
     _add_check(checks, "counts", "required_runtime_events_match", int(plan.get("required_runtime_event_count", 0)), int(matrix.get("required_runtime_event_count", 0)))
@@ -311,8 +313,8 @@ def build_report(repo: Path) -> dict[str, Any]:
         "classification": classification,
         "pass": ready,
         "contract_validation_ready": ready,
-        "runtime_evidence_present": False,
-        "runtime_evidence_approved": False,
+        "runtime_evidence_present": runtime_present,
+        "runtime_evidence_approved": runtime_approved,
         "source_matrix_classification": matrix.get("classification"),
         "source_guard_classification": guard.get("classification"),
         "source_plan_classification": plan.get("classification"),
@@ -351,7 +353,7 @@ def build_report(repo: Path) -> dict[str, Any]:
         "interpretation": {
             "purpose": "Validate that the R3 runtime capture matrix, evidence guard and instrumentation plan form one coherent runtime contract.",
             "sovereignty": "The final runtime path becomes harder to mislabel because the contract itself is checked before fresh runtime evidence is accepted.",
-            "boundary": "This is a contract validator, not runtime evidence and not final R3 cutover approval.",
+            "boundary": "This is a contract validator. Runtime approval is accepted only when the guard has accepted slot-bound native events.",
         },
         "recommendations": [
             "Run this contract validator after changing any R3 capture, guard or instrumentation logic.",

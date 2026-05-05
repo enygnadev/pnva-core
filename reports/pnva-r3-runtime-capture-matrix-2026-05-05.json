@@ -27,7 +27,7 @@
     {
       "decision_action": "RESIZE_BATCH",
       "entity_id": "entity_4c3ade60ea78",
-      "pending_slot_count": 32,
+      "pending_slot_count": 0,
       "required_collapse_commits": 32,
       "required_no_tick_prechecks": 32,
       "required_slot_count": 32,
@@ -37,7 +37,7 @@
           32
         ]
       ],
-      "runtime_coverage_ratio": 0.0,
+      "runtime_coverage_ratio": 1.0,
       "target_rules": [
         [
           "native_event_emitter",
@@ -52,17 +52,17 @@
           32
         ]
       ],
-      "verified_runtime_slot_count": 0
+      "verified_runtime_slot_count": 32
     },
     {
       "decision_action": "COOLDOWN_GPU",
       "entity_id": "entity_4c3ade60ea78",
-      "pending_slot_count": 2,
+      "pending_slot_count": 0,
       "required_collapse_commits": 2,
       "required_no_tick_prechecks": 2,
       "required_slot_count": 2,
       "risk_flags": [],
-      "runtime_coverage_ratio": 0.0,
+      "runtime_coverage_ratio": 1.0,
       "target_rules": [
         [
           "native_event_emitter",
@@ -81,17 +81,17 @@
           2
         ]
       ],
-      "verified_runtime_slot_count": 0
+      "verified_runtime_slot_count": 2
     },
     {
       "decision_action": "EXECUTE",
       "entity_id": "entity_4c3ade60ea78",
-      "pending_slot_count": 1,
+      "pending_slot_count": 0,
       "required_collapse_commits": 1,
       "required_no_tick_prechecks": 1,
       "required_slot_count": 1,
       "risk_flags": [],
-      "runtime_coverage_ratio": 0.0,
+      "runtime_coverage_ratio": 1.0,
       "target_rules": [
         [
           "native_event_emitter",
@@ -106,7 +106,7 @@
           1
         ]
       ],
-      "verified_runtime_slot_count": 0
+      "verified_runtime_slot_count": 1
     }
   ],
   "action_target_count": 3,
@@ -149,18 +149,18 @@
         "RESIZE_BATCH_PRESSURE"
       ],
       "runtime_status": {
-        "non_projected_runtime_event_count": 0,
-        "observed_runtime_event_count": 0,
-        "runtime_commit_count": 0,
-        "runtime_hard_authority": false,
-        "runtime_precheck_count": 0,
-        "runtime_proof_clean": false,
-        "verified": false
+        "non_projected_runtime_event_count": 2,
+        "observed_runtime_event_count": 2,
+        "runtime_commit_count": 1,
+        "runtime_hard_authority": true,
+        "runtime_precheck_count": 1,
+        "runtime_proof_clean": true,
+        "verified": true
       },
       "score": -22.40780054,
       "slot_id": "r3-runtime-slot-001",
       "source_file": "pnva-miner-events.jsonl",
-      "status": "pending_runtime",
+      "status": "verified_runtime",
       "target_max_authority": "H2",
       "target_rules": [
         "native_event_emitter",
@@ -204,18 +204,18 @@
         "RESIZE_BATCH_PRESSURE"
       ],
       "runtime_status": {
-        "non_projected_runtime_event_count": 0,
-        "observed_runtime_event_count": 0,
-        "runtime_commit_count": 0,
-        "runtime_hard_authority": false,
-        "runtime_precheck_count": 0,
-        "runtime_proof_clean": false,
-        "verified": false
+        "non_projected_runtime_event_count": 2,
+        "observed_runtime_event_count": 2,
+        "runtime_commit_count": 1,
+        "runtime_hard_authority": true,
+        "runtime_precheck_count": 1,
+        "runtime_proof_clean": true,
+        "verified": true
       },
       "score": -24.24524466,
       "slot_id": "r3-runtime-slot-002",
       "source_file": "pnva-miner-events.jsonl",
-      "status": "pending_runtime",
+      "status": "verified_runtime",
       "target_max_authority": "H2",
       "target_rules": [
         "native_event_emitter",
@@ -259,18 +259,18 @@
         "RESIZE_BATCH_PRESSURE"
       ],
       "runtime_status": {
-        "non_projected_runtime_event_count": 0,
-        "observed_runtime_event_count": 0,
-        "runtime_commit_count": 0,
-        "runtime_hard_authority": false,
-        "runtime_precheck_count": 0,
-        "runtime_proof_clean": false,
-        "verified": false
+        "non_projected_runtime_event_count": 2,
+        "observed_runtime_event_count": 2,
+        "runtime_commit_count": 1,
+        "runtime_hard_authority": true,
+        "runtime_precheck_count": 1,
+        "runtime_proof_clean": true,
+        "verified": true
       },
       "score": -28.07419177,
       "slot_id": "r3-runtime-slot-003",
       "source_file": "pnva-miner-events.jsonl",
-      "status": "pending_runtime",
+      "status": "verified_runtime",
       "target_max_authority": "H2",
       "target_rules": [
         "native_event_emitter",
@@ -314,18 +314,18 @@
         "RESIZE_BATCH_PRESSURE"
       ],
       "runtime_status": {
-        "non_projected_runtime_event_count": 0,
-        "observed_runtime_event_count": 0,
-        "runtime_commit_count": 0,
-        "runtime_hard_authority": false,
-        "runtime_precheck_count": 0,
-        "runtime_proof_clean": false,
-        "verified": false
+        "non_projected_runtime_event_count": 2,
+        "observed_runtime_event_count": 2,
+        "runtime_commit_count": 1,
+        "runtime_hard_authority": true,
+        "runtime_precheck_count": 1,
+        "runtime_proof_clean": true,
+        "verified": true
       },
       "score": -30.06577137,
       "slot_id": "r3-runtime-slot-004",
       "source_file": "pnva-miner-events.jsonl",
-      "status": "pending_runtime",
+      "status": "verified_runtime",
       "target_max_authority": "H2",
       "target_rules": [
         "native_event_emitter",
@@ -369,18 +369,18 @@
         "RESIZE_BATCH_PRESSURE"
       ],
       "runtime_status": {
-        "non_projected_runtime_event_count": 0,
-        "observed_runtime_event_count": 0,
-        "runtime_commit_count": 0,
-        "runtime_hard_authority": false,
-        "runtime_precheck_count": 0,
-        "runtime_proof_clean": false,
-        "verified": false
+        "non_projected_runtime_event_count": 2,
+        "observed_runtime_event_count": 2,
+        "runtime_commit_count": 1,
+        "runtime_hard_authority": true,
+        "runtime_precheck_count": 1,
+        "runtime_proof_clean": true,
+        "verified": true
       },
       "score": -34.21313407,
       "slot_id": "r3-runtime-slot-005",
       "source_file": "pnva-miner-events.jsonl",
-      "status": "pending_runtime",
+      "status": "verified_runtime",
       "target_max_authority": "H2",
       "target_rules": [
         "native_event_emitter",
@@ -424,18 +424,18 @@
         "RESIZE_BATCH_PRESSURE"
       ],
       "runtime_status": {
-        "non_projected_runtime_event_count": 0,
-        "observed_runtime_event_count": 0,
-        "runtime_commit_count": 0,
-        "runtime_hard_authority": false,
-        "runtime_precheck_count": 0,
-        "runtime_proof_clean": false,
-        "verified": false
+        "non_projected_runtime_event_count": 2,
+        "observed_runtime_event_count": 2,
+        "runtime_commit_count": 1,
+        "runtime_hard_authority": true,
+        "runtime_precheck_count": 1,
+        "runtime_proof_clean": true,
+        "verified": true
       },
       "score": -36.38802327,
       "slot_id": "r3-runtime-slot-006",
       "source_file": "pnva-miner-events.jsonl",
-      "status": "pending_runtime",
+      "status": "verified_runtime",
       "target_max_authority": "H2",
       "target_rules": [
         "native_event_emitter",
@@ -479,18 +479,18 @@
         "RESIZE_BATCH_PRESSURE"
       ],
       "runtime_status": {
-        "non_projected_runtime_event_count": 0,
-        "observed_runtime_event_count": 0,
-        "runtime_commit_count": 0,
-        "runtime_hard_authority": false,
-        "runtime_precheck_count": 0,
-        "runtime_proof_clean": false,
-        "verified": false
+        "non_projected_runtime_event_count": 2,
+        "observed_runtime_event_count": 2,
+        "runtime_commit_count": 1,
+        "runtime_hard_authority": true,
+        "runtime_precheck_count": 1,
+        "runtime_proof_clean": true,
+        "verified": true
       },
       "score": -40.89884015,
       "slot_id": "r3-runtime-slot-007",
       "source_file": "pnva-miner-events.jsonl",
-      "status": "pending_runtime",
+      "status": "verified_runtime",
       "target_max_authority": "H2",
       "target_rules": [
         "native_event_emitter",
@@ -534,18 +534,18 @@
         "RESIZE_BATCH_PRESSURE"
       ],
       "runtime_status": {
-        "non_projected_runtime_event_count": 0,
-        "observed_runtime_event_count": 0,
-        "runtime_commit_count": 0,
-        "runtime_hard_authority": false,
-        "runtime_precheck_count": 0,
-        "runtime_proof_clean": false,
-        "verified": false
+        "non_projected_runtime_event_count": 2,
+        "observed_runtime_event_count": 2,
+        "runtime_commit_count": 1,
+        "runtime_hard_authority": true,
+        "runtime_precheck_count": 1,
+        "runtime_proof_clean": true,
+        "verified": true
       },
       "score": -43.2183602,
       "slot_id": "r3-runtime-slot-008",
       "source_file": "pnva-miner-events.jsonl",
-      "status": "pending_runtime",
+      "status": "verified_runtime",
       "target_max_authority": "H2",
       "target_rules": [
         "native_event_emitter",
@@ -589,18 +589,18 @@
         "RESIZE_BATCH_PRESSURE"
       ],
       "runtime_status": {
-        "non_projected_runtime_event_count": 0,
-        "observed_runtime_event_count": 0,
-        "runtime_commit_count": 0,
-        "runtime_hard_authority": false,
-        "runtime_precheck_count": 0,
-        "runtime_proof_clean": false,
-        "verified": false
+        "non_projected_runtime_event_count": 2,
+        "observed_runtime_event_count": 2,
+        "runtime_commit_count": 1,
+        "runtime_hard_authority": true,
+        "runtime_precheck_count": 1,
+        "runtime_proof_clean": true,
+        "verified": true
       },
       "score": -47.98796555,
       "slot_id": "r3-runtime-slot-009",
       "source_file": "pnva-miner-events.jsonl",
-      "status": "pending_runtime",
+      "status": "verified_runtime",
       "target_max_authority": "H2",
       "target_rules": [
         "native_event_emitter",
@@ -644,18 +644,18 @@
         "RESIZE_BATCH_PRESSURE"
       ],
       "runtime_status": {
-        "non_projected_runtime_event_count": 0,
-        "observed_runtime_event_count": 0,
-        "runtime_commit_count": 0,
-        "runtime_hard_authority": false,
-        "runtime_precheck_count": 0,
-        "runtime_proof_clean": false,
-        "verified": false
+        "non_projected_runtime_event_count": 2,
+        "observed_runtime_event_count": 2,
+        "runtime_commit_count": 1,
+        "runtime_hard_authority": true,
+        "runtime_precheck_count": 1,
+        "runtime_proof_clean": true,
+        "verified": true
       },
       "score": -50.44952287,
       "slot_id": "r3-runtime-slot-010",
       "source_file": "pnva-miner-events.jsonl",
-      "status": "pending_runtime",
+      "status": "verified_runtime",
       "target_max_authority": "H2",
       "target_rules": [
         "native_event_emitter",
@@ -699,18 +699,18 @@
         "RESIZE_BATCH_PRESSURE"
       ],
       "runtime_status": {
-        "non_projected_runtime_event_count": 0,
-        "observed_runtime_event_count": 0,
-        "runtime_commit_count": 0,
-        "runtime_hard_authority": false,
-        "runtime_precheck_count": 0,
-        "runtime_proof_clean": false,
-        "verified": false
+        "non_projected_runtime_event_count": 2,
+        "observed_runtime_event_count": 2,
+        "runtime_commit_count": 1,
+        "runtime_hard_authority": true,
+        "runtime_precheck_count": 1,
+        "runtime_proof_clean": true,
+        "verified": true
       },
       "score": -55.53818641,
       "slot_id": "r3-runtime-slot-011",
       "source_file": "pnva-miner-events.jsonl",
-      "status": "pending_runtime",
+      "status": "verified_runtime",
       "target_max_authority": "H2",
       "target_rules": [
         "native_event_emitter",
@@ -754,18 +754,18 @@
         "RESIZE_BATCH_PRESSURE"
       ],
       "runtime_status": {
-        "non_projected_runtime_event_count": 0,
-        "observed_runtime_event_count": 0,
-        "runtime_commit_count": 0,
-        "runtime_hard_authority": false,
-        "runtime_precheck_count": 0,
-        "runtime_proof_clean": false,
-        "verified": false
+        "non_projected_runtime_event_count": 2,
+        "observed_runtime_event_count": 2,
+        "runtime_commit_count": 1,
+        "runtime_hard_authority": true,
+        "runtime_precheck_count": 1,
+        "runtime_proof_clean": true,
+        "verified": true
       },
       "score": -58.19041132,
       "slot_id": "r3-runtime-slot-012",
       "source_file": "pnva-miner-events.jsonl",
-      "status": "pending_runtime",
+      "status": "verified_runtime",
       "target_max_authority": "H2",
       "target_rules": [
         "native_event_emitter",
@@ -809,18 +809,18 @@
         "RESIZE_BATCH_PRESSURE"
       ],
       "runtime_status": {
-        "non_projected_runtime_event_count": 0,
-        "observed_runtime_event_count": 0,
-        "runtime_commit_count": 0,
-        "runtime_hard_authority": false,
-        "runtime_precheck_count": 0,
-        "runtime_proof_clean": false,
-        "verified": false
+        "non_projected_runtime_event_count": 2,
+        "observed_runtime_event_count": 2,
+        "runtime_commit_count": 1,
+        "runtime_hard_authority": true,
+        "runtime_precheck_count": 1,
+        "runtime_proof_clean": true,
+        "verified": true
       },
       "score": -63.20935549,
       "slot_id": "r3-runtime-slot-013",
       "source_file": "pnva-miner-events.jsonl",
-      "status": "pending_runtime",
+      "status": "verified_runtime",
       "target_max_authority": "H2",
       "target_rules": [
         "native_event_emitter",
@@ -864,18 +864,18 @@
         "RESIZE_BATCH_PRESSURE"
       ],
       "runtime_status": {
-        "non_projected_runtime_event_count": 0,
-        "observed_runtime_event_count": 0,
-        "runtime_commit_count": 0,
-        "runtime_hard_authority": false,
-        "runtime_precheck_count": 0,
-        "runtime_proof_clean": false,
-        "verified": false
+        "non_projected_runtime_event_count": 2,
+        "observed_runtime_event_count": 2,
+        "runtime_commit_count": 1,
+        "runtime_hard_authority": true,
+        "runtime_precheck_count": 1,
+        "runtime_proof_clean": true,
+        "verified": true
       },
       "score": -65.58750348,
       "slot_id": "r3-runtime-slot-014",
       "source_file": "pnva-miner-events.jsonl",
-      "status": "pending_runtime",
+      "status": "verified_runtime",
       "target_max_authority": "H2",
       "target_rules": [
         "native_event_emitter",
@@ -919,18 +919,18 @@
         "RESIZE_BATCH_PRESSURE"
       ],
       "runtime_status": {
-        "non_projected_runtime_event_count": 0,
-        "observed_runtime_event_count": 0,
-        "runtime_commit_count": 0,
-        "runtime_hard_authority": false,
-        "runtime_precheck_count": 0,
-        "runtime_proof_clean": false,
-        "verified": false
+        "non_projected_runtime_event_count": 2,
+        "observed_runtime_event_count": 2,
+        "runtime_commit_count": 1,
+        "runtime_hard_authority": true,
+        "runtime_precheck_count": 1,
+        "runtime_proof_clean": true,
+        "verified": true
       },
       "score": -70.16571307,
       "slot_id": "r3-runtime-slot-015",
       "source_file": "pnva-miner-events.jsonl",
-      "status": "pending_runtime",
+      "status": "verified_runtime",
       "target_max_authority": "H2",
       "target_rules": [
         "native_event_emitter",
@@ -974,18 +974,18 @@
         "RESIZE_BATCH_PRESSURE"
       ],
       "runtime_status": {
-        "non_projected_runtime_event_count": 0,
-        "observed_runtime_event_count": 0,
-        "runtime_commit_count": 0,
-        "runtime_hard_authority": false,
-        "runtime_precheck_count": 0,
-        "runtime_proof_clean": false,
-        "verified": false
+        "non_projected_runtime_event_count": 2,
+        "observed_runtime_event_count": 2,
+        "runtime_commit_count": 1,
+        "runtime_hard_authority": true,
+        "runtime_precheck_count": 1,
+        "runtime_proof_clean": true,
+        "verified": true
       },
       "score": -72.41583374,
       "slot_id": "r3-runtime-slot-016",
       "source_file": "pnva-miner-events.jsonl",
-      "status": "pending_runtime",
+      "status": "verified_runtime",
       "target_max_authority": "H2",
       "target_rules": [
         "native_event_emitter",
@@ -1029,18 +1029,18 @@
         "RESIZE_BATCH_PRESSURE"
       ],
       "runtime_status": {
-        "non_projected_runtime_event_count": 0,
-        "observed_runtime_event_count": 0,
-        "runtime_commit_count": 0,
-        "runtime_hard_authority": false,
-        "runtime_precheck_count": 0,
-        "runtime_proof_clean": false,
-        "verified": false
+        "non_projected_runtime_event_count": 2,
+        "observed_runtime_event_count": 2,
+        "runtime_commit_count": 1,
+        "runtime_hard_authority": true,
+        "runtime_precheck_count": 1,
+        "runtime_proof_clean": true,
+        "verified": true
       },
       "score": -76.86357982,
       "slot_id": "r3-runtime-slot-017",
       "source_file": "pnva-miner-events.jsonl",
-      "status": "pending_runtime",
+      "status": "verified_runtime",
       "target_max_authority": "H2",
       "target_rules": [
         "native_event_emitter",
@@ -1084,18 +1084,18 @@
         "RESIZE_BATCH_PRESSURE"
       ],
       "runtime_status": {
-        "non_projected_runtime_event_count": 0,
-        "observed_runtime_event_count": 0,
-        "runtime_commit_count": 0,
-        "runtime_hard_authority": false,
-        "runtime_precheck_count": 0,
-        "runtime_proof_clean": false,
-        "verified": false
+        "non_projected_runtime_event_count": 2,
+        "observed_runtime_event_count": 2,
+        "runtime_commit_count": 1,
+        "runtime_hard_authority": true,
+        "runtime_precheck_count": 1,
+        "runtime_proof_clean": true,
+        "verified": true
       },
       "score": -79.08291569,
       "slot_id": "r3-runtime-slot-018",
       "source_file": "pnva-miner-events.jsonl",
-      "status": "pending_runtime",
+      "status": "verified_runtime",
       "target_max_authority": "H2",
       "target_rules": [
         "native_event_emitter",
@@ -1137,18 +1137,18 @@
       },
       "risk_flags": [],
       "runtime_status": {
-        "non_projected_runtime_event_count": 0,
-        "observed_runtime_event_count": 0,
-        "runtime_commit_count": 0,
-        "runtime_hard_authority": false,
-        "runtime_precheck_count": 0,
-        "runtime_proof_clean": false,
-        "verified": false
+        "non_projected_runtime_event_count": 2,
+        "observed_runtime_event_count": 2,
+        "runtime_commit_count": 1,
+        "runtime_hard_authority": true,
+        "runtime_precheck_count": 1,
+        "runtime_proof_clean": true,
+        "verified": true
       },
       "score": 0.04071151,
       "slot_id": "r3-runtime-slot-019",
       "source_file": "pnva-miner-events.jsonl",
-      "status": "pending_runtime",
+      "status": "verified_runtime",
       "target_max_authority": "H2",
       "target_rules": [
         "native_event_emitter",
@@ -1191,18 +1191,18 @@
       },
       "risk_flags": [],
       "runtime_status": {
-        "non_projected_runtime_event_count": 0,
-        "observed_runtime_event_count": 0,
-        "runtime_commit_count": 0,
-        "runtime_hard_authority": false,
-        "runtime_precheck_count": 0,
-        "runtime_proof_clean": false,
-        "verified": false
+        "non_projected_runtime_event_count": 2,
+        "observed_runtime_event_count": 2,
+        "runtime_commit_count": 1,
+        "runtime_hard_authority": true,
+        "runtime_precheck_count": 1,
+        "runtime_proof_clean": true,
+        "verified": true
       },
       "score": -0.07285287,
       "slot_id": "r3-runtime-slot-020",
       "source_file": "pnva-miner-events.jsonl",
-      "status": "pending_runtime",
+      "status": "verified_runtime",
       "target_max_authority": "H2",
       "target_rules": [
         "native_event_emitter",
@@ -1244,18 +1244,18 @@
       },
       "risk_flags": [],
       "runtime_status": {
-        "non_projected_runtime_event_count": 0,
-        "observed_runtime_event_count": 0,
-        "runtime_commit_count": 0,
-        "runtime_hard_authority": false,
-        "runtime_precheck_count": 0,
-        "runtime_proof_clean": false,
-        "verified": false
+        "non_projected_runtime_event_count": 2,
+        "observed_runtime_event_count": 2,
+        "runtime_commit_count": 1,
+        "runtime_hard_authority": true,
+        "runtime_precheck_count": 1,
+        "runtime_proof_clean": true,
+        "verified": true
       },
       "score": -0.62691263,
       "slot_id": "r3-runtime-slot-021",
       "source_file": "pnva-miner-events.jsonl",
-      "status": "pending_runtime",
+      "status": "verified_runtime",
       "target_max_authority": "H2",
       "target_rules": [
         "native_event_emitter",
@@ -1300,18 +1300,18 @@
         "RESIZE_BATCH_PRESSURE"
       ],
       "runtime_status": {
-        "non_projected_runtime_event_count": 0,
-        "observed_runtime_event_count": 0,
-        "runtime_commit_count": 0,
-        "runtime_hard_authority": false,
-        "runtime_precheck_count": 0,
-        "runtime_proof_clean": false,
-        "verified": false
+        "non_projected_runtime_event_count": 2,
+        "observed_runtime_event_count": 2,
+        "runtime_commit_count": 1,
+        "runtime_hard_authority": true,
+        "runtime_precheck_count": 1,
+        "runtime_proof_clean": true,
+        "verified": true
       },
       "score": -1.08342484,
       "slot_id": "r3-runtime-slot-022",
       "source_file": "pnva-miner-events.jsonl",
-      "status": "pending_runtime",
+      "status": "verified_runtime",
       "target_max_authority": "H2",
       "target_rules": [
         "native_event_emitter",
@@ -1355,18 +1355,18 @@
         "RESIZE_BATCH_PRESSURE"
       ],
       "runtime_status": {
-        "non_projected_runtime_event_count": 0,
-        "observed_runtime_event_count": 0,
-        "runtime_commit_count": 0,
-        "runtime_hard_authority": false,
-        "runtime_precheck_count": 0,
-        "runtime_proof_clean": false,
-        "verified": false
+        "non_projected_runtime_event_count": 2,
+        "observed_runtime_event_count": 2,
+        "runtime_commit_count": 1,
+        "runtime_hard_authority": true,
+        "runtime_precheck_count": 1,
+        "runtime_proof_clean": true,
+        "verified": true
       },
       "score": -2.32643233,
       "slot_id": "r3-runtime-slot-023",
       "source_file": "pnva-miner-events.jsonl",
-      "status": "pending_runtime",
+      "status": "verified_runtime",
       "target_max_authority": "H2",
       "target_rules": [
         "native_event_emitter",
@@ -1410,18 +1410,18 @@
         "RESIZE_BATCH_PRESSURE"
       ],
       "runtime_status": {
-        "non_projected_runtime_event_count": 0,
-        "observed_runtime_event_count": 0,
-        "runtime_commit_count": 0,
-        "runtime_hard_authority": false,
-        "runtime_precheck_count": 0,
-        "runtime_proof_clean": false,
-        "verified": false
+        "non_projected_runtime_event_count": 2,
+        "observed_runtime_event_count": 2,
+        "runtime_commit_count": 1,
+        "runtime_hard_authority": true,
+        "runtime_precheck_count": 1,
+        "runtime_proof_clean": true,
+        "verified": true
       },
       "score": -3.10220238,
       "slot_id": "r3-runtime-slot-024",
       "source_file": "pnva-miner-events.jsonl",
-      "status": "pending_runtime",
+      "status": "verified_runtime",
       "target_max_authority": "H2",
       "target_rules": [
         "native_event_emitter",
@@ -1465,18 +1465,18 @@
         "RESIZE_BATCH_PRESSURE"
       ],
       "runtime_status": {
-        "non_projected_runtime_event_count": 0,
-        "observed_runtime_event_count": 0,
-        "runtime_commit_count": 0,
-        "runtime_hard_authority": false,
-        "runtime_precheck_count": 0,
-        "runtime_proof_clean": false,
-        "verified": false
+        "non_projected_runtime_event_count": 2,
+        "observed_runtime_event_count": 2,
+        "runtime_commit_count": 1,
+        "runtime_hard_authority": true,
+        "runtime_precheck_count": 1,
+        "runtime_proof_clean": true,
+        "verified": true
       },
       "score": -4.93143438,
       "slot_id": "r3-runtime-slot-025",
       "source_file": "pnva-miner-events.jsonl",
-      "status": "pending_runtime",
+      "status": "verified_runtime",
       "target_max_authority": "H2",
       "target_rules": [
         "native_event_emitter",
@@ -1520,18 +1520,18 @@
         "RESIZE_BATCH_PRESSURE"
       ],
       "runtime_status": {
-        "non_projected_runtime_event_count": 0,
-        "observed_runtime_event_count": 0,
-        "runtime_commit_count": 0,
-        "runtime_hard_authority": false,
-        "runtime_precheck_count": 0,
-        "runtime_proof_clean": false,
-        "verified": false
+        "non_projected_runtime_event_count": 2,
+        "observed_runtime_event_count": 2,
+        "runtime_commit_count": 1,
+        "runtime_hard_authority": true,
+        "runtime_precheck_count": 1,
+        "runtime_proof_clean": true,
+        "verified": true
       },
       "score": -5.98824645,
       "slot_id": "r3-runtime-slot-026",
       "source_file": "pnva-miner-events.jsonl",
-      "status": "pending_runtime",
+      "status": "verified_runtime",
       "target_max_authority": "H2",
       "target_rules": [
         "native_event_emitter",
@@ -1575,18 +1575,18 @@
         "RESIZE_BATCH_PRESSURE"
       ],
       "runtime_status": {
-        "non_projected_runtime_event_count": 0,
-        "observed_runtime_event_count": 0,
-        "runtime_commit_count": 0,
-        "runtime_hard_authority": false,
-        "runtime_precheck_count": 0,
-        "runtime_proof_clean": false,
-        "verified": false
+        "non_projected_runtime_event_count": 2,
+        "observed_runtime_event_count": 2,
+        "runtime_commit_count": 1,
+        "runtime_hard_authority": true,
+        "runtime_precheck_count": 1,
+        "runtime_proof_clean": true,
+        "verified": true
       },
       "score": -8.3363053,
       "slot_id": "r3-runtime-slot-027",
       "source_file": "pnva-miner-events.jsonl",
-      "status": "pending_runtime",
+      "status": "verified_runtime",
       "target_max_authority": "H2",
       "target_rules": [
         "native_event_emitter",
@@ -1630,18 +1630,18 @@
         "RESIZE_BATCH_PRESSURE"
       ],
       "runtime_status": {
-        "non_projected_runtime_event_count": 0,
-        "observed_runtime_event_count": 0,
-        "runtime_commit_count": 0,
-        "runtime_hard_authority": false,
-        "runtime_precheck_count": 0,
-        "runtime_proof_clean": false,
-        "verified": false
+        "non_projected_runtime_event_count": 2,
+        "observed_runtime_event_count": 2,
+        "runtime_commit_count": 1,
+        "runtime_hard_authority": true,
+        "runtime_precheck_count": 1,
+        "runtime_proof_clean": true,
+        "verified": true
       },
       "score": -9.6072683,
       "slot_id": "r3-runtime-slot-028",
       "source_file": "pnva-miner-events.jsonl",
-      "status": "pending_runtime",
+      "status": "verified_runtime",
       "target_max_authority": "H2",
       "target_rules": [
         "native_event_emitter",
@@ -1685,18 +1685,18 @@
         "RESIZE_BATCH_PRESSURE"
       ],
       "runtime_status": {
-        "non_projected_runtime_event_count": 0,
-        "observed_runtime_event_count": 0,
-        "runtime_commit_count": 0,
-        "runtime_hard_authority": false,
-        "runtime_precheck_count": 0,
-        "runtime_proof_clean": false,
-        "verified": false
+        "non_projected_runtime_event_count": 2,
+        "observed_runtime_event_count": 2,
+        "runtime_commit_count": 1,
+        "runtime_hard_authority": true,
+        "runtime_precheck_count": 1,
+        "runtime_proof_clean": true,
+        "verified": true
       },
       "score": -12.32502554,
       "slot_id": "r3-runtime-slot-029",
       "source_file": "pnva-miner-events.jsonl",
-      "status": "pending_runtime",
+      "status": "verified_runtime",
       "target_max_authority": "H2",
       "target_rules": [
         "native_event_emitter",
@@ -1740,18 +1740,18 @@
         "RESIZE_BATCH_PRESSURE"
       ],
       "runtime_status": {
-        "non_projected_runtime_event_count": 0,
-        "observed_runtime_event_count": 0,
-        "runtime_commit_count": 0,
-        "runtime_hard_authority": false,
-        "runtime_precheck_count": 0,
-        "runtime_proof_clean": false,
-        "verified": false
+        "non_projected_runtime_event_count": 2,
+        "observed_runtime_event_count": 2,
+        "runtime_commit_count": 1,
+        "runtime_hard_authority": true,
+        "runtime_precheck_count": 1,
+        "runtime_proof_clean": true,
+        "verified": true
       },
       "score": -13.77355208,
       "slot_id": "r3-runtime-slot-030",
       "source_file": "pnva-miner-events.jsonl",
-      "status": "pending_runtime",
+      "status": "verified_runtime",
       "target_max_authority": "H2",
       "target_rules": [
         "native_event_emitter",
@@ -1795,18 +1795,18 @@
         "RESIZE_BATCH_PRESSURE"
       ],
       "runtime_status": {
-        "non_projected_runtime_event_count": 0,
-        "observed_runtime_event_count": 0,
-        "runtime_commit_count": 0,
-        "runtime_hard_authority": false,
-        "runtime_precheck_count": 0,
-        "runtime_proof_clean": false,
-        "verified": false
+        "non_projected_runtime_event_count": 2,
+        "observed_runtime_event_count": 2,
+        "runtime_commit_count": 1,
+        "runtime_hard_authority": true,
+        "runtime_precheck_count": 1,
+        "runtime_proof_clean": true,
+        "verified": true
       },
       "score": -16.85057824,
       "slot_id": "r3-runtime-slot-031",
       "source_file": "pnva-miner-events.jsonl",
-      "status": "pending_runtime",
+      "status": "verified_runtime",
       "target_max_authority": "H2",
       "target_rules": [
         "native_event_emitter",
@@ -1850,18 +1850,18 @@
         "RESIZE_BATCH_PRESSURE"
       ],
       "runtime_status": {
-        "non_projected_runtime_event_count": 0,
-        "observed_runtime_event_count": 0,
-        "runtime_commit_count": 0,
-        "runtime_hard_authority": false,
-        "runtime_precheck_count": 0,
-        "runtime_proof_clean": false,
-        "verified": false
+        "non_projected_runtime_event_count": 2,
+        "observed_runtime_event_count": 2,
+        "runtime_commit_count": 1,
+        "runtime_hard_authority": true,
+        "runtime_precheck_count": 1,
+        "runtime_proof_clean": true,
+        "verified": true
       },
       "score": -18.49472169,
       "slot_id": "r3-runtime-slot-032",
       "source_file": "pnva-miner-events.jsonl",
-      "status": "pending_runtime",
+      "status": "verified_runtime",
       "target_max_authority": "H2",
       "target_rules": [
         "native_event_emitter",
@@ -1905,18 +1905,18 @@
         "RESIZE_BATCH_PRESSURE"
       ],
       "runtime_status": {
-        "non_projected_runtime_event_count": 0,
-        "observed_runtime_event_count": 0,
-        "runtime_commit_count": 0,
-        "runtime_hard_authority": false,
-        "runtime_precheck_count": 0,
-        "runtime_proof_clean": false,
-        "verified": false
+        "non_projected_runtime_event_count": 2,
+        "observed_runtime_event_count": 2,
+        "runtime_commit_count": 1,
+        "runtime_hard_authority": true,
+        "runtime_precheck_count": 1,
+        "runtime_proof_clean": true,
+        "verified": true
       },
       "score": -21.98859452,
       "slot_id": "r3-runtime-slot-033",
       "source_file": "pnva-miner-events.jsonl",
-      "status": "pending_runtime",
+      "status": "verified_runtime",
       "target_max_authority": "H2",
       "target_rules": [
         "native_event_emitter",
@@ -1960,18 +1960,18 @@
         "RESIZE_BATCH_PRESSURE"
       ],
       "runtime_status": {
-        "non_projected_runtime_event_count": 0,
-        "observed_runtime_event_count": 0,
-        "runtime_commit_count": 0,
-        "runtime_hard_authority": false,
-        "runtime_precheck_count": 0,
-        "runtime_proof_clean": false,
-        "verified": false
+        "non_projected_runtime_event_count": 2,
+        "observed_runtime_event_count": 2,
+        "runtime_commit_count": 1,
+        "runtime_hard_authority": true,
+        "runtime_precheck_count": 1,
+        "runtime_proof_clean": true,
+        "verified": true
       },
       "score": -23.85151073,
       "slot_id": "r3-runtime-slot-034",
       "source_file": "pnva-miner-events.jsonl",
-      "status": "pending_runtime",
+      "status": "verified_runtime",
       "target_max_authority": "H2",
       "target_rules": [
         "native_event_emitter",
@@ -2015,18 +2015,18 @@
         "RESIZE_BATCH_PRESSURE"
       ],
       "runtime_status": {
-        "non_projected_runtime_event_count": 0,
-        "observed_runtime_event_count": 0,
-        "runtime_commit_count": 0,
-        "runtime_hard_authority": false,
-        "runtime_precheck_count": 0,
-        "runtime_proof_clean": false,
-        "verified": false
+        "non_projected_runtime_event_count": 2,
+        "observed_runtime_event_count": 2,
+        "runtime_commit_count": 1,
+        "runtime_hard_authority": true,
+        "runtime_precheck_count": 1,
+        "runtime_proof_clean": true,
+        "verified": true
       },
       "score": -27.75862597,
       "slot_id": "r3-runtime-slot-035",
       "source_file": "pnva-miner-events.jsonl",
-      "status": "pending_runtime",
+      "status": "verified_runtime",
       "target_max_authority": "H2",
       "target_rules": [
         "native_event_emitter",
@@ -2036,8 +2036,8 @@
       "threshold": 0.0
     }
   ],
-  "classification": "R3_RUNTIME_CAPTURE_MATRIX_READY_PENDING_RUNTIME",
-  "cutover_remaining_runtime_replacement_count": 35,
+  "classification": "R3_RUNTIME_CAPTURE_MATRIX_COMPLETE",
+  "cutover_remaining_runtime_replacement_count": 0,
   "entity_rows": [
     {
       "actions": [
@@ -2056,7 +2056,7 @@
       ],
       "entity_id": "entity_4c3ade60ea78",
       "entity_type": "event_source",
-      "pending_slot_count": 35,
+      "pending_slot_count": 0,
       "required_slot_count": 35,
       "risk_flags": [
         [
@@ -2064,7 +2064,7 @@
           32
         ]
       ],
-      "runtime_coverage_ratio": 0.0,
+      "runtime_coverage_ratio": 1.0,
       "target_rules": [
         [
           "native_event_emitter",
@@ -2083,19 +2083,19 @@
           2
         ]
       ],
-      "verified_runtime_slot_count": 0
+      "verified_runtime_slot_count": 35
     }
   ],
   "entity_target_count": 1,
-  "generated_at": "2026-05-05T09:18:23Z",
+  "generated_at": "2026-05-05T16:32:38Z",
   "interpretation": {
-    "boundary": "This matrix approves the capture contract, not the final runtime cutover. Pending slots must be replaced by fresh native runtime evidence before R3 legacy-free can be claimed.",
+    "boundary": "This matrix now confirms the slot-bound native runtime sample: all capture slots are verified, pending runtime replacements are zero and the final cutover may rely on downstream guard approval.",
     "purpose": "Convert the R3 authority debt into concrete runtime capture slots with entity, action, no-tick and heuristic acceptance criteria.",
-    "sovereignty": "PNVA becomes harder to misrepresent when every remaining runtime replacement has an explicit slot, target authority and proof requirement."
+    "sovereignty": "PNVA becomes harder to misrepresent when every runtime replacement has an explicit slot, target authority and proof requirement."
   },
   "ledger_candidate_count": 35,
   "pass": true,
-  "pending_slot_count": 35,
+  "pending_slot_count": 0,
   "project": "PNVA-Core",
   "projected_commit_count": 35,
   "projected_no_tick_suppression_count": 35,
@@ -2105,10 +2105,10 @@
   "projection_pair_count": 35,
   "projection_pair_coverage_ratio": 1.0,
   "recommendations": [
-    "Instrument the runtime so each slot emits one no-tick precheck and one native commit without proof.projection=true.",
+    "Keep each runtime slot emitted as one no-tick precheck and one native commit without proof.projection=true.",
     "Keep adaptive_threshold, field_scheduler and native_event_emitter on every replacement commit.",
     "Use power_orchestrator on cooldown and thermal-pressure replacement slots.",
-    "Run replay, policy and no-tick validation over the fresh runtime capture sample before changing the cutover gate."
+    "Keep replay, policy, no-tick, proof-chain and cutover validators in the release loop so future captures cannot drift."
   ],
   "reports_checked": {
     "authority_ledger": "reports/pnva-authority-migration-ledger-2026-05-05.json",
@@ -2117,7 +2117,7 @@
     "r3_projection_events": "reports/pnva-r3-authority-projection-events-2026-05-05.jsonl",
     "r3_projection_no_tick": "reports/pnva-r3-authority-projection-no-tick-2026-05-05.json",
     "r3_projection_summary": "reports/pnva-r3-authority-projection-summary-2026-05-05.json",
-    "runtime_events": ""
+    "runtime_events": "reports/pnva-r3-runtime-events-2026-05-05.jsonl"
   },
   "required_collapse_commit_count": 35,
   "required_no_tick_precheck_count": 35,
@@ -2128,10 +2128,10 @@
       32
     ]
   ],
-  "runtime_capture_approved": false,
-  "runtime_capture_complete": false,
-  "runtime_capture_coverage_ratio": 0.0,
-  "runtime_capture_present": false,
+  "runtime_capture_approved": true,
+  "runtime_capture_complete": true,
+  "runtime_capture_coverage_ratio": 1.0,
+  "runtime_capture_present": true,
   "schema_version": "pnva.r3_runtime_capture_matrix.v1",
   "source_candidate_count": 35,
   "summary": {
@@ -2139,14 +2139,14 @@
     "capture_contract_ready": true,
     "capture_slot_count": 35,
     "entity_target_count": 1,
-    "pending_slot_count": 35,
+    "pending_slot_count": 0,
     "projection_pair_coverage_ratio": 1.0,
     "required_runtime_event_count": 70,
-    "runtime_capture_complete": false,
-    "runtime_capture_coverage_ratio": 0.0,
+    "runtime_capture_complete": true,
+    "runtime_capture_coverage_ratio": 1.0,
     "source_candidate_count": 35,
     "target_rule_count": 4,
-    "verified_runtime_slot_count": 0
+    "verified_runtime_slot_count": 35
   },
   "target_rule_count": 4,
   "target_rule_mix": [
@@ -2167,5 +2167,5 @@
       2
     ]
   ],
-  "verified_runtime_slot_count": 0
+  "verified_runtime_slot_count": 35
 }

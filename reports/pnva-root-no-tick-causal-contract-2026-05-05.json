@@ -1,0 +1,323 @@
+{
+  "author": "Gustavo de Aguiar Martins",
+  "block_count": 35,
+  "canonical_legacy_threshold_exception_count": 294,
+  "causal_contract_score": 100.0,
+  "check_count": 15,
+  "checks": [
+    {
+      "evidence": {
+        "layers": [
+          {
+            "classification": "SOVEREIGN_NO_TICK_READY",
+            "event_count": 512,
+            "name": "canonical",
+            "pass": true
+          },
+          {
+            "classification": "SOVEREIGN_NO_TICK_READY",
+            "event_count": 7,
+            "name": "native",
+            "pass": true
+          },
+          {
+            "classification": "SOVEREIGN_NO_TICK_READY",
+            "event_count": 70,
+            "name": "runtime_r3",
+            "pass": true
+          }
+        ]
+      },
+      "name": "no_tick_layers_ready",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "reports": [
+          {
+            "classification": "PNVA_ROOT_ENTITY_CAPABILITY_LEDGER_READY",
+            "expected": "PNVA_ROOT_ENTITY_CAPABILITY_LEDGER_READY",
+            "name": "entity_capability",
+            "pass": true
+          },
+          {
+            "classification": "PNVA_ROOT_HEURISTIC_WEIGHT_LEDGER_READY",
+            "expected": "PNVA_ROOT_HEURISTIC_WEIGHT_LEDGER_READY",
+            "name": "heuristic_weight",
+            "pass": true
+          },
+          {
+            "classification": "PNVA_ROOT_FIELD_TOPOLOGY_LEDGER_READY",
+            "expected": "PNVA_ROOT_FIELD_TOPOLOGY_LEDGER_READY",
+            "name": "field_topology",
+            "pass": true
+          },
+          {
+            "classification": "PNVA_ROOT_OBSERVABILITY_INDEX_READY",
+            "expected": "PNVA_ROOT_OBSERVABILITY_INDEX_READY",
+            "name": "observability",
+            "pass": true
+          },
+          {
+            "classification": "PNVA_ROOT_INVARIANT_FIREWALL_READY",
+            "expected": "PNVA_ROOT_INVARIANT_FIREWALL_READY",
+            "name": "invariant_firewall",
+            "pass": true
+          },
+          {
+            "classification": "PNVA_ROOT_CLAIM_BOUNDARY_GUARD_READY",
+            "expected": "PNVA_ROOT_CLAIM_BOUNDARY_GUARD_READY",
+            "name": "claim_boundary",
+            "pass": true
+          },
+          {
+            "classification": "PNVA_ROOT_PUBLICATION_GATE_READY",
+            "expected": "PNVA_ROOT_PUBLICATION_GATE_READY",
+            "name": "publication_gate",
+            "pass": true
+          },
+          {
+            "classification": "PNVA_ROOT_RELEASE_VERIFIED",
+            "expected": "PNVA_ROOT_RELEASE_VERIFIED",
+            "name": "release_verifier",
+            "pass": true
+          }
+        ]
+      },
+      "name": "root_ledgers_ready",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "parse_error_count": 0,
+        "parse_errors": []
+      },
+      "name": "parse_clean",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "duplicates": [],
+        "event_count": 589,
+        "unique_event_id_count": 589
+      },
+      "name": "event_identity_unique",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "schema_failure_count": 0,
+        "source_path_leak_count": 0,
+        "source_path_leaks": []
+      },
+      "name": "schema_and_public_sources_clean",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "duplicate_proof_hash_count": 0,
+        "projection_event_count": 0,
+        "proof_failure_count": 0,
+        "proof_valid_count": 589
+      },
+      "name": "proof_contract_complete",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "unknown_entities": [],
+        "unknown_entity_count": 0,
+        "unknown_rule_count": 0,
+        "unknown_rules": []
+      },
+      "name": "entity_and_rule_closure_complete",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "collapse_count": 303,
+        "event_count": 589,
+        "observed_collapse_count": 303,
+        "observed_event_count": 589,
+        "observed_suppressed_count": 285,
+        "suppressed_count": 285
+      },
+      "name": "suppression_matches_observability",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "strict_event_count": 77,
+        "strict_violation_count": 0,
+        "violations": []
+      },
+      "name": "native_and_r3_threshold_contract_strict",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "failures": [],
+        "r3_chain_count": 35,
+        "r3_pair_failure_count": 0
+      },
+      "name": "r3_precheck_commit_pairs_complete",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "failures": [],
+        "guard_event_count": 70,
+        "guard_failure_count": 0
+      },
+      "name": "guard_event_contract_consistent",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "blocked_edge_count": 0,
+        "canonical_exception_count": 294,
+        "legacy_edge_count": 5,
+        "orphan_entity_count": 0,
+        "orphan_rule_count": 0,
+        "policy": "canonical threshold sign exceptions are accepted only as bounded legacy/canonical evidence, never in native or R3 runtime"
+      },
+      "name": "canonical_legacy_threshold_exceptions_bounded",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "blocked_edge_count": 0,
+        "field_topology_score": 100.0,
+        "unknown_entity_event_count": 0,
+        "unruled_event_count": 0
+      },
+      "name": "topology_projection_and_blocking_clean",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "path_leak_count": 0,
+        "unbounded_high_risk_occurrence_count": 0
+      },
+      "name": "public_boundary_clean",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "recomputed_root_release_hash": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+        "root_release_hash": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc"
+      },
+      "name": "root_hash_stable",
+      "pass": true
+    }
+  ],
+  "classification": "PNVA_ROOT_NO_TICK_CAUSAL_CONTRACT_READY",
+  "collapse_count": 303,
+  "decision_counts": {
+    "block": 35,
+    "collapse": 303,
+    "observe": 250,
+    "prove": 1
+  },
+  "event_count": 589,
+  "failure_count": 0,
+  "generated_at": "2026-05-05T18:55:23Z",
+  "guard_contract_failure_count": 0,
+  "interpretation": {
+    "boundary": "This report audits public evidence only. It does not execute system actions, alter live gates or claim universal deployment behavior.",
+    "purpose": "Bind no-tick events, proof logs, entities, heuristic rules and threshold behavior into one root causal contract.",
+    "sovereignty": "A no-tick system is governable when suppression and collapse can be traced to proof-backed entities and rules."
+  },
+  "no_tick_causal_contract_hash": "sha256:b2b339746a993bc6f356e24c75112acba9078fec625da3d372d4120c0537ef77",
+  "no_tick_layer_checks": [
+    {
+      "classification": "SOVEREIGN_NO_TICK_READY",
+      "event_count": 512,
+      "name": "canonical",
+      "pass": true
+    },
+    {
+      "classification": "SOVEREIGN_NO_TICK_READY",
+      "event_count": 7,
+      "name": "native",
+      "pass": true
+    },
+    {
+      "classification": "SOVEREIGN_NO_TICK_READY",
+      "event_count": 70,
+      "name": "runtime_r3",
+      "pass": true
+    }
+  ],
+  "observe_count": 250,
+  "pass": true,
+  "project": "PNVA-Core",
+  "projection_event_count": 0,
+  "proof_valid_count": 589,
+  "prove_count": 1,
+  "r3_chain_count": 35,
+  "r3_pair_failure_count": 0,
+  "root_classification_checks": [
+    {
+      "classification": "PNVA_ROOT_ENTITY_CAPABILITY_LEDGER_READY",
+      "expected": "PNVA_ROOT_ENTITY_CAPABILITY_LEDGER_READY",
+      "name": "entity_capability",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_HEURISTIC_WEIGHT_LEDGER_READY",
+      "expected": "PNVA_ROOT_HEURISTIC_WEIGHT_LEDGER_READY",
+      "name": "heuristic_weight",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_FIELD_TOPOLOGY_LEDGER_READY",
+      "expected": "PNVA_ROOT_FIELD_TOPOLOGY_LEDGER_READY",
+      "name": "field_topology",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_OBSERVABILITY_INDEX_READY",
+      "expected": "PNVA_ROOT_OBSERVABILITY_INDEX_READY",
+      "name": "observability",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_INVARIANT_FIREWALL_READY",
+      "expected": "PNVA_ROOT_INVARIANT_FIREWALL_READY",
+      "name": "invariant_firewall",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_CLAIM_BOUNDARY_GUARD_READY",
+      "expected": "PNVA_ROOT_CLAIM_BOUNDARY_GUARD_READY",
+      "name": "claim_boundary",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_PUBLICATION_GATE_READY",
+      "expected": "PNVA_ROOT_PUBLICATION_GATE_READY",
+      "name": "publication_gate",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_RELEASE_VERIFIED",
+      "expected": "PNVA_ROOT_RELEASE_VERIFIED",
+      "name": "release_verifier",
+      "pass": true
+    }
+  ],
+  "root_release_hash": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+  "schema_version": "pnva.root_no_tick_causal_contract.v1",
+  "scope_event_counts": {
+    "canonical": 512,
+    "native": 7,
+    "runtime_r3": 70
+  },
+  "strict_native_r3_event_count": 77,
+  "strict_threshold_violation_count": 0,
+  "suppressed_count": 285,
+  "suppression_ratio": 0.483871,
+  "unknown_entity_count": 0,
+  "unknown_rule_count": 0
+}

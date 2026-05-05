@@ -1,0 +1,83 @@
+{
+  "action_mix": [
+    [
+      "NO_ACTION",
+      35
+    ],
+    [
+      "RESIZE_BATCH",
+      32
+    ],
+    [
+      "COOLDOWN_GPU",
+      2
+    ],
+    [
+      "EXECUTE",
+      1
+    ]
+  ],
+  "author": "Gustavo de Aguiar Martins",
+  "boundary": "This is a deterministic repo-native runtime capture sample for public R3 validation; it is not a private production miner log.",
+  "capture_slot_count": 35,
+  "classification": "R3_RUNTIME_EVENT_EMITTER_READY",
+  "commit_count": 35,
+  "decision_mix": [
+    [
+      "observe",
+      35
+    ],
+    [
+      "collapse",
+      35
+    ]
+  ],
+  "entity_count": 1,
+  "event_count": 70,
+  "event_type_mix": [
+    [
+      "cuda_slot_scan_authority_precheck",
+      35
+    ],
+    [
+      "cuda_slot_scan",
+      35
+    ]
+  ],
+  "generated_at": "2026-05-05T16:08:49Z",
+  "heuristic_rule_mix": [
+    [
+      "native_event_emitter",
+      70
+    ],
+    [
+      "adaptive_threshold",
+      70
+    ],
+    [
+      "field_scheduler",
+      70
+    ],
+    [
+      "power_orchestrator",
+      4
+    ]
+  ],
+  "native_count": 70,
+  "pass": true,
+  "precheck_count": 35,
+  "project": "PNVA-Core",
+  "projection_count": 0,
+  "proof_hash_count": 70,
+  "required_runtime_event_count": 70,
+  "risk_flag_mix": [
+    [
+      "RESIZE_BATCH_PRESSURE",
+      64
+    ]
+  ],
+  "schema_version": "pnva.r3_runtime_event_emitter_summary.v1",
+  "source_file_name": "pnva-r3-runtime-emitter",
+  "source_format": "native_pnva_event_v1",
+  "source_matrix": "reports/pnva-r3-runtime-capture-matrix-2026-05-05.json"
+}

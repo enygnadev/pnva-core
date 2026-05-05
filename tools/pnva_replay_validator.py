@@ -10,6 +10,11 @@ from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Any
 
+try:
+    from pnva_r3_runtime_evidence_guard import _expected_proof_hash as _expected_r3_runtime_proof_hash
+except Exception:  # pragma: no cover - replay must still work without R3 tooling.
+    _expected_r3_runtime_proof_hash = None
+
 
 REQUIRED_EVENT_KEYS = {
     "schema_version",
@@ -69,6 +74,15 @@ def _proof_seed(event: dict[str, Any]) -> str:
 
 def _expected_proof_hash(event: dict[str, Any]) -> str:
     return "sha256:" + _sha(_proof_seed(event))
+
+
+def _expected_proof_hashes(event: dict[str, Any]) -> list[str]:
+    hashes = [_expected_proof_hash(event)]
+    proof = event.get("proof", {}) if isinstance(event.get("proof"), dict) else {}
+    proof_ref = str(proof.get("proof_ref") or "")
+    if proof_ref.startswith("runtime:") and _expected_r3_runtime_proof_hash is not None:
+        hashes.append(_expected_r3_runtime_proof_hash(event))
+    return hashes
 
 
 def _load_events(path: Path) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
@@ -163,8 +177,8 @@ def validate_events(events: list[dict[str, Any]], *, entity_ids: set[str], stric
             risk_flags[str(flag)] += 1
 
         proof = event.get("proof", {}) if isinstance(event.get("proof"), dict) else {}
-        expected_hash = _expected_proof_hash(event)
-        if proof.get("proof_hash") == expected_hash and proof.get("valid") is True:
+        expected_hashes = _expected_proof_hashes(event)
+        if proof.get("proof_hash") in expected_hashes and proof.get("valid") is True:
             proof_hash_ok += 1
         else:
             proof_hash_bad += 1
@@ -173,7 +187,8 @@ def validate_events(events: list[dict[str, Any]], *, entity_ids: set[str], stric
                     "line": line,
                     "code": "PROOF_HASH_MISMATCH",
                     "event_id": event_id,
-                    "expected": expected_hash,
+                    "expected": expected_hashes[0],
+                    "accepted_hash_policy_count": len(expected_hashes),
                     "observed": proof.get("proof_hash"),
                 }
             )

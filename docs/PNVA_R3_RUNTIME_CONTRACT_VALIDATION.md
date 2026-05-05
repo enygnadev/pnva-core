@@ -11,10 +11,10 @@ The R3 runtime contract validator checks whether the capture matrix, evidence gu
 It answers one question:
 
 ```text
-is the next R3 runtime capture contract internally valid before fresh JSONL is accepted?
+is the R3 runtime capture contract internally valid after native JSONL is accepted?
 ```
 
-This layer does not claim final runtime evidence. It validates the contract that future runtime evidence must obey.
+This layer validates the contract that accepted and future runtime evidence must obey.
 
 ## Current Public Result
 
@@ -34,8 +34,8 @@ Current result:
 
 ```text
 contract_validation_ready: true
-runtime_evidence_present: false
-runtime_evidence_approved: false
+runtime_evidence_present: true
+runtime_evidence_approved: true
 capture_slot_count: 35
 action_contract_count: 3
 required_runtime_event_count: 70
@@ -56,7 +56,7 @@ The validator checks:
 matrix classification
 guard classification
 instrumentation plan classification
-runtime approval remains false
+runtime approval remains true after guard acceptance
 35 capture slots remain explicit
 70 required runtime events remain paired
 6 templates remain two per action contract
@@ -123,16 +123,16 @@ The contract validator proves those three documents agree before final runtime c
 
 ## Boundary
 
-This validator does not approve R3 cutover.
+This validator does not replace R3 cutover.
 
-It deliberately keeps:
+It deliberately records:
 
 ```text
-runtime_evidence_present: false
-runtime_evidence_approved: false
+runtime_evidence_present: true
+runtime_evidence_approved: true
 ```
 
-Final R3 evidence still requires fresh native runtime JSONL accepted by the runtime evidence guard and then validated by replay, policy, no-tick and proof-chain checks.
+Final R3 evidence remains valid only while the native runtime JSONL stays accepted by the runtime evidence guard and validated by replay, policy, no-tick and proof-chain checks.
 
 ## Command
 

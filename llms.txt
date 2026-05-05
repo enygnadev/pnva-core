@@ -72,6 +72,36 @@ Gustavo de Aguiar Martins. PNVA-Core: A Post-Temporal Causal Architecture for St
 - docs/PNVA_ENTITY_HEURISTIC_MATURITY.md
 - docs/PNVA_SEMANTIC_CONSISTENCY_GUARD.md
 - docs/PNVA_REPRODUCIBILITY_GUARD.md
+- docs/PNVA_ROOT_SOVEREIGNTY_GUARD.md
+- docs/PNVA_ROOT_CAUSAL_INTELLIGENCE.md
+- docs/PNVA_ROOT_TRACEABILITY_MATRIX.md
+- docs/PNVA_ROOT_ADVERSARIAL_SENTRY.md
+- docs/PNVA_ROOT_RELEASE_SEAL.md
+- docs/PNVA_ROOT_RELEASE_VERIFIER.md
+- docs/PNVA_ROOT_CLAIM_BOUNDARY_GUARD.md
+- docs/PNVA_ROOT_PUBLICATION_GATE.md
+- docs/PNVA_ROOT_DEPENDENCY_GRAPH.md
+- docs/PNVA_ROOT_OBSERVABILITY_INDEX.md
+- docs/PNVA_ROOT_INVARIANT_FIREWALL.md
+- docs/PNVA_ROOT_REGRESSION_SENTINEL.md
+- docs/PNVA_ROOT_PROOF_THEOREM_LEDGER.md
+- docs/PNVA_ROOT_EVOLUTION_GOVERNOR.md
+- docs/PNVA_ROOT_HEURISTIC_WEIGHT_LEDGER.md
+- docs/PNVA_ROOT_ENTITY_CAPABILITY_LEDGER.md
+- docs/PNVA_ROOT_FIELD_TOPOLOGY_LEDGER.md
+- docs/PNVA_ROOT_NO_TICK_CAUSAL_CONTRACT.md
+- docs/PNVA_ROOT_RUNTIME_ADMISSION_CONTROLLER.md
+- docs/PNVA_ROOT_ENTITY_HEURISTIC_ADMISSION_MATRIX.md
+- docs/PNVA_ROOT_ADMISSION_NEGATIVE_CONTROLS.md
+- docs/PNVA_ROOT_EVENT_IDENTITY_LEDGER.md
+- docs/PNVA_ROOT_RUNTIME_GROWTH_BUDGET.md
+- docs/PNVA_ROOT_CAUSAL_MESH_LEDGER.md
+- docs/PNVA_ROOT_EFFICIENCY_PROOF_LEDGER.md
+- docs/PNVA_ROOT_EQUATION_CONSISTENCY_LEDGER.md
+- docs/PNVA_ROOT_LEGACY_QUARANTINE_LEDGER.md
+- docs/PNVA_ROOT_EVIDENCE_CHRONOLOGY_LEDGER.md
+- docs/PNVA_ROOT_SOVEREIGN_READINESS_GATE.md
+- docs/PNVA_ROOT_VALIDATOR_REGISTRY.md
 - docs/PNVA_ROBUSTNESS_EVOLUTION_REPORT_2026-05-05.md
 - docs/VEON_MODEL_VALIDATION.md
 - docs/PNVA_POST_TEMPORAL_CIVILIZATION.md
@@ -108,6 +138,18 @@ Gustavo de Aguiar Martins. PNVA-Core: A Post-Temporal Causal Architecture for St
 - tools/pnva_entity_heuristic_maturity.py
 - tools/pnva_semantic_consistency_guard.py
 - tools/pnva_reproducibility_guard.py
+- tools/pnva_root_sovereignty_guard.py
+- tools/pnva_root_causal_intelligence.py
+- tools/pnva_root_traceability_matrix.py
+- tools/pnva_root_adversarial_sentry.py
+- tools/pnva_root_release_seal.py
+- tools/pnva_root_release_verifier.py
+- tools/pnva_root_claim_boundary_guard.py
+- tools/pnva_root_publication_gate.py
+- tools/pnva_root_dependency_graph.py
+- tools/pnva_root_observability_index.py
+- tools/pnva_root_invariant_firewall.py
+- tools/pnva_root_regression_sentinel.py
 - reports/pnva-sovereign-audit-2026-05-05.json
 - reports/pnva-canonical-events-sample-2026-05-05.jsonl
 - reports/pnva-entity-catalog-2026-05-05.json
@@ -151,6 +193,18 @@ Gustavo de Aguiar Martins. PNVA-Core: A Post-Temporal Causal Architecture for St
 - reports/pnva-entity-heuristic-maturity-2026-05-05.json
 - reports/pnva-semantic-consistency-2026-05-05.json
 - reports/pnva-reproducibility-2026-05-05.json
+- reports/pnva-root-sovereignty-guard-2026-05-05.json
+- reports/pnva-root-causal-intelligence-2026-05-05.json
+- reports/pnva-root-traceability-matrix-2026-05-05.json
+- reports/pnva-root-adversarial-sentry-2026-05-05.json
+- reports/pnva-root-release-seal-2026-05-05.json
+- reports/pnva-root-release-verifier-2026-05-05.json
+- reports/pnva-root-claim-boundary-guard-2026-05-05.json
+- reports/pnva-root-publication-gate-2026-05-05.json
+- reports/pnva-root-dependency-graph-2026-05-05.json
+- reports/pnva-root-observability-index-2026-05-05.json
+- reports/pnva-root-invariant-firewall-2026-05-05.json
+- reports/pnva-root-regression-sentinel-2026-05-05.json
 
 ## Sovereign Robustness
 
@@ -192,17 +246,17 @@ The authority migration ledger maps the primary R3 authority debt to concrete en
 
 The R3 authority projection converts the 35 mapped H0 candidates into a native hard-authority candidate sample. The current public classification is R3_AUTHORITY_PROJECTION_READY, with 70 projected native events, 35 no-tick prechecks, 35 collapse commits, replay valid, policy ready and no-tick ready.
 
-The R3 cutover gate separates native contract readiness from final runtime approval. The current public classification is R3_CUTOVER_GATE_READY_RUNTIME_REQUIRED, with contract ready, final cutover not approved, legacy-free claim blocked and 35 runtime replacements still required.
+The R3 cutover gate separates native contract readiness from final runtime approval. The current public classification is R3_CUTOVER_APPROVED, with contract ready, final cutover approved, legacy-free claim allowed for the slot-bound runtime sample and 0 runtime replacements still required.
 
-The R3 runtime capture matrix converts the 35 remaining replacements into explicit entity/action/no-tick runtime slots. The current public classification is R3_RUNTIME_CAPTURE_MATRIX_READY_PENDING_RUNTIME, with 35 capture slots, 35 pending runtime slots, 70 required fresh runtime events, one target entity, three target actions and no final R3 completion claim.
+The R3 runtime capture matrix converts the mapped replacements into explicit entity/action/no-tick runtime slots. The current public classification is R3_RUNTIME_CAPTURE_MATRIX_COMPLETE, with 35 capture slots, 35 verified runtime slots, 0 pending runtime slots, 70 required runtime events, one target entity and three target actions.
 
-The R3 runtime evidence guard protects the intake boundary for future runtime logs. The current public classification is R3_RUNTIME_EVIDENCE_GUARD_READY_AWAITING_CAPTURE, with 35 slots, 70 required runtime events, 35 pending slots, no final runtime approval, 63 of 63 negative controls detected and 6 of 6 fixture-only positive controls accepted against parseable timestamps, equal/reversed no-tick pair timestamps, duplicate event/proof identifiers, duplicate source locations, causal-chain reuse across different slots, unsafe source filenames with local paths or traversal markers, mismatched source files inside a no-tick pair, broken precheck-to-commit state continuity, source-line regression, strict sha256 proof hashes, proof-hash identity and source-location binding, proof-ref slot/role binding, event-type binding, exact pair cardinality, exact runtime event count, field-state, gate-delta consistency, finite tension values, no-tick/commit reasons, state transitions, JSONL/source-line order and gate signs, proof, authority, entity ID/type identity, slot identity, original-event identity, source location and sanitization, known, non-legacy unique heuristic rules, known unique risk flags, precheck/commit target heuristic rules, precheck/commit target risk flags and same-chain strictly ordered no-tick pair rules.
+The R3 runtime evidence guard protects the intake boundary for runtime logs. The current public classification is R3_RUNTIME_EVIDENCE_ACCEPTED, with 35 slots, 70 required runtime events, 35 accepted slots, 0 pending slots, 0 rejected events, 35 intact no-tick pairs, 63 of 63 negative controls detected and 6 of 6 fixture-only positive controls accepted against parseable timestamps, equal/reversed no-tick pair timestamps, duplicate event/proof identifiers, duplicate source locations, causal-chain reuse across different slots, unsafe source filenames with local paths or traversal markers, mismatched source files inside a no-tick pair, broken precheck-to-commit state continuity, source-line regression, strict sha256 proof hashes, proof-hash identity and source-location binding, proof-ref slot/role binding, event-type binding, exact pair cardinality, exact runtime event count, field-state, gate-delta consistency, finite tension values, no-tick/commit reasons, state transitions, JSONL/source-line order and gate signs, proof, authority, entity ID/type identity, slot identity, original-event identity, source location and sanitization, known non-legacy heuristic rules, known risk flags, target heuristic rules and same-chain strictly ordered no-tick pair rules.
 
-The R3 runtime instrumentation plan converts the 35 pending capture slots into concrete native emitter contracts. The current public classification is R3_RUNTIME_INSTRUMENTATION_PLAN_READY, with 3 action contracts, 6 event templates, 70 required runtime events, 28 mandatory event fields, one target entity, required timestamp/field/gate-delta evidence, required R3 slot identity, required native proof/source, public-basename source filenames, decision-reason and field-state markers, required unique causal chain per slot, required unique source location, same-source no-tick pairs, explicit field-state continuity, monotonic JSONL/source-line ordering and sanitization, required heuristic risk flags on prechecks and commits and no final runtime approval claim.
+The R3 runtime instrumentation plan converts the capture slots into concrete native emitter contracts. The current public classification is R3_RUNTIME_INSTRUMENTATION_PLAN_READY, with 3 action contracts, 6 event templates, 70 required runtime events, 28 mandatory event fields, one target entity, required timestamp/field/gate-delta evidence, required R3 slot identity, required native proof/source, public-basename source filenames, decision-reason and field-state markers, required unique causal chain per slot, required unique source location, same-source no-tick pairs, explicit field-state continuity, monotonic JSONL/source-line ordering and sanitization and required heuristic risk flags on prechecks and commits.
 
-The R3 runtime contract validator checks that the capture matrix, evidence guard and instrumentation plan agree before final capture. The current public classification is R3_RUNTIME_CONTRACT_VALIDATED_READY, with 315 contract checks, zero failures, 35 slots, 3 action contracts, 70 required runtime events, 28 mandatory fields, 59 enforced controls and no final runtime approval claim.
+The R3 runtime contract validator checks that the capture matrix, evidence guard and instrumentation plan agree. The current public classification is R3_RUNTIME_CONTRACT_VALIDATED_READY, with 315 contract checks, zero failures, 35 slots, 3 action contracts, 70 required runtime events, 28 mandatory fields, 59 enforced controls and accepted runtime approval.
 
-The sovereign evolution ledger consolidates no-tick evidence, proof-log integrity, heuristic authority, entity attribution, controlled legacy warnings and R3 runtime readiness into one release dashboard. The current public classification is PNVA_SOVEREIGN_EVOLUTION_LEDGER_READY_R3_RUNTIME_REQUIRED, with sovereign evolution score 88.37, 35 pending runtime slots, 70 required runtime events, 315 R3 contract checks, R3 preparation ready, runtime evidence not approved and final R3 cutover blocked until fresh native runtime JSONL exists.
+The sovereign evolution ledger consolidates no-tick evidence, proof-log integrity, heuristic authority, entity attribution, controlled legacy warnings and R3 runtime readiness into one release dashboard. The current public classification is PNVA_SOVEREIGN_EVOLUTION_LEDGER_R3_READY, with sovereign evolution score 98.37, 0 pending runtime slots, 70 required runtime events, 315 R3 contract checks, R3 preparation ready, runtime evidence approved and final R3 cutover approved for the slot-bound native runtime sample.
 
 The adversarial validator runs negative controls against proof, policy, graph, proof-chain and JSON parsing validators. The current public classification is ADVERSARIAL_VALIDATION_PASS.
 
@@ -210,9 +264,69 @@ The entity and heuristic maturity auditor scores actor/rule readiness across ent
 
 The semantic consistency guard checks cross-report agreement across Manifest, replay, no-tick, policy, proof-chain, graph, schema contract, causal chronology, tension-decision calibration, decision trace index, heuristic influence map, entity no-tick matrix, suppression ledger, robustness gate, R3 migration plan, authority migration ledger, R3 authority projection, R3 cutover gate, R3 runtime capture matrix, R3 runtime evidence guard, R3 runtime instrumentation plan, R3 runtime contract validation, sovereign evolution ledger, maturity, adversarial validation, attestation and audit. The current public classification is SEMANTIC_CONSISTENCY_READY with 331 checks and zero errors/warnings.
 
-The reproducibility guard reruns the public evidence commands and compares stable fields against the published reports. The current public classification is REPRODUCIBILITY_READY with 35 commands, 406 stable-field comparisons and zero failures.
+The reproducibility guard reruns the public evidence commands and compares stable fields against the published reports. The current public classification is REPRODUCIBILITY_READY with 40 commands, 445 stable-field comparisons and zero failures.
 
-The sovereign evidence attestor aggregates the public evidence package into one hashable attestation. The current classification is PNVA_SOVEREIGN_EVIDENCE_ATTESTED with 41 tracked artifacts.
+The root sovereignty guard collapses runtime events, entities, no-tick pairs, heuristic authority, proof integrity, traceability matrix, cutover, ledger, attestation, semantic consistency, reproducibility and audit into one repository-level decision. The current public classification is PNVA_ROOT_SOVEREIGNTY_GUARD_READY with root score 100.0, 27 checks, zero failures, 70 runtime events, 35 verified slots and one runtime entity.
+
+The root causal intelligence analyzer turns no-tick logs, heuristic authority, entity coverage and proof integrity into one deterministic root score. The current public classification is PNVA_ROOT_CAUSAL_INTELLIGENCE_READY with score 100.0, 589 aggregate no-tick events, 285 proof-backed suppressions, suppression ratio 0.483871, 35 verified runtime slots, zero pending runtime slots and zero runtime projected proofs.
+
+The root traceability matrix maps every R3 runtime slot to its no-tick precheck, collapse commit, entity, heuristic rules, proof refs, proof hashes and downstream validator alignment. The current public classification is PNVA_ROOT_TRACEABILITY_MATRIX_READY with score 100.0, 35 valid slots, zero invalid slots, 70 unique proof hashes and no-tick suppression ratio 0.5.
+
+The root adversarial sentry mutates temporary runtime evidence copies and requires root validators to fail. The current public classification is PNVA_ROOT_ADVERSARIAL_SENTRY_PASS with clean control PASS, 8 controlled mutations, 8 detections and zero undetected failures across projection, entity identity, no-tick continuity, authority, source path, event identity, gate delta and legacy heuristic injection.
+
+The root release seal binds final root reports into one public citation hash. The current public classification is PNVA_ROOT_RELEASE_SEALED with 11 sealed artifacts, zero failures, root score 100.0, causal intelligence score 100.0, adversarial detection 8/8, 35 accepted runtime slots and root release hash sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc.
+
+The root release verifier independently recomputes the final root release hash and checks sealed artifact classifications, stable hashes, checksum coverage, release-vector closure and claim boundaries. The current public classification is PNVA_ROOT_RELEASE_VERIFIED with 9 verifications, zero failures, 11 sealed artifacts and zero checksum, stable-hash or classification mismatches.
+
+The root claim boundary guard scans public language after the seal and verifier. The current public classification is PNVA_ROOT_CLAIM_BOUNDARY_GUARD_READY with score 100.0, 7 checks, zero failures, 90 scanned public text files, 48 bounded high-risk claim occurrences and zero unbounded high-risk claims.
+
+The root publication gate validates final public readiness for repository publication and AI/search discovery. The current public classification is PNVA_ROOT_PUBLICATION_GATE_READY with score 100.0, 9 checks, zero failures, 258 Manifest files, 257 checksum entries, valid discovery metadata and zero local path leaks.
+
+The root dependency graph maps public contract, sanitized proof gates, canonical/native event validators, heuristic/entity ledgers, R3 runtime proof, root guards, release seal, verifier, claim boundary and publication gate into one acyclic proof graph. The current public classification is PNVA_ROOT_DEPENDENCY_GRAPH_READY with score 100.0, 49 nodes, 104 edges, 11 phases, zero missing artifacts, zero readiness failures, zero cycles and zero unreachable nodes.
+
+The root observability index consolidates no-tick logs, proof hashes, entity catalogs, heuristic influence, runtime slots and root gates into one laboratory view. The current public classification is PNVA_ROOT_OBSERVABILITY_INDEX_READY with score 100.0, 589 aggregate events, 285 proof-backed suppressions, suppression ratio 0.483871, 13 entity catalog rows, 9 heuristic rules, 35 accepted runtime slots and zero rejected runtime events.
+
+The root invariant firewall blocks regressions across logs, entities, heuristics, runtime R3, dependency graph, publication hygiene and claim boundaries. The current public classification is PNVA_ROOT_INVARIANT_FIREWALL_READY with score 100.0, 12 checks, zero failures, 3 event streams, 3 entity catalogs, 35 accepted runtime slots, zero no-tick pair failures, zero dependency cycles, zero path leaks and zero unbounded high-risk claims.
+
+The root regression sentinel watches future metric drift after the firewall passes. The current public classification is PNVA_ROOT_REGRESSION_SENTINEL_READY with score 100.0, 5 checks, zero failures, 36 monitored metrics, 36 stable metrics, zero regressed metrics, no-tick suppression ratio range 0.45..0.70 and the root release hash stable.
+
+The root proof theorem ledger converts PASS reports into theorem cards with claim, criteria, evidence, boundary and dependencies. The current public classification is PNVA_ROOT_PROOF_THEOREM_LEDGER_READY with score 100.0, 4 checks, zero failures, 12 theorem cards, 12 proven theorem cards and zero failed theorem cards.
+
+The root evolution governor defines safe future improvement paths after root proof passes. The current public classification is PNVA_ROOT_EVOLUTION_GOVERNOR_READY with score 100.0, 6 checks, zero failures, 22 locked invariants, zero invariant failures, 5 controlled debts, 8 safe evolution cards and zero blocked cards.
+
+The root heuristic weight ledger exposes public audit weights for PNVA heuristic rules. The current public classification is PNVA_ROOT_HEURISTIC_WEIGHT_LEDGER_READY with score 100.0, 9 checks, zero failures, 9 rules, 8 public-weight-ready rules, 1 controlled legacy rule, zero blocked rules, 1350 rule-event edges, complete proof coverage and clean projection status.
+
+The root entity capability ledger exposes entity readiness across canonical, native and R3 runtime evidence. The current public classification is PNVA_ROOT_ENTITY_CAPABILITY_LEDGER_READY with score 100.0, 12 checks, zero failures, 13 entity rows, 3 scopes, 589 profiled events, 25 capability edges, 1 R3 runtime-ready entity, 6 native-ready entities, 6 controlled canonical entities and zero blocked entities.
+
+The root field topology ledger exposes the entity-rule-decision no-tick graph. The current public classification is PNVA_ROOT_FIELD_TOPOLOGY_LEDGER_READY with score 100.0, 13 checks, zero failures, 13 entity nodes, 9 rule nodes, 589 events, 1350 rule-event edges, 38 entity-rule edges, 17 entity-decision edges, 20 rule-decision edges, 4 R3-ready edges, 5 legacy edges, zero blocked edges, zero orphan nodes, zero unruled events and zero unknown entity events.
+
+The root no-tick causal contract binds logs, proof hashes, entities, rules, suppression and threshold behavior into one audit. The current public classification is PNVA_ROOT_NO_TICK_CAUSAL_CONTRACT_READY with score 100.0, 15 checks, zero failures, 589 events, 285 suppressed decisions, suppression ratio 0.483871, 589 valid proof hashes, 77 strict native/R3 threshold events, zero strict threshold violations, 35 R3 precheck/commit pairs, zero pair failures, zero guard contract failures, zero unknown entities and zero unknown rules.
+
+The root runtime admission controller turns the current proof state into an explicit admission decision. The current public classification is PNVA_ROOT_RUNTIME_ADMISSION_READY with score 100.0, 10 checks, zero failures and decision ADMIT_RESTRICTED_ROOT_RUNTIME_PLANNING. It allows audit, observe, simulate, restricted native event ingest, restricted R3 precheck/commit and planning-only evolution; it denies unbounded public claims, unsanitized logs, private threshold publication, unpaired R3 events, projected runtime evidence, unknown entities/rules and hardware-energy claims without a separate counter benchmark.
+
+The root entity-heuristic admission matrix maps every observed entity-rule edge into an explicit admission class. The current public classification is PNVA_ROOT_ENTITY_HEURISTIC_ADMISSION_MATRIX_READY with score 100.0, 11 checks, zero failures, 589 events, 1350 rule-event edges, 38 entity-rule edges, 4 R3-restricted edges, 12 native-restricted edges, 17 controlled canonical evidence edges, 5 bounded legacy edges, zero denied edges, zero unknown entities and zero unknown rules.
+
+The root admission negative controls prove that corrupted no-tick, entity and heuristic evidence is rejected. The current public classification is PNVA_ROOT_ADMISSION_NEGATIVE_CONTROLS_PASS with clean control PASS, 8 controlled mutations, 8 detections, zero undetected mutations and zero failures across R3 gate inversion, unpaired R3 chain, unknown entity, projected proof, unknown rule, duplicate event ID, invalid proof hash and native source path leak.
+
+The root event identity ledger proves public event identity at the log level. The current public classification is PNVA_ROOT_EVENT_IDENTITY_LEDGER_READY with score 100.0, 10 checks, zero failures, 589 events, 589 unique event IDs, 589 unique proof hashes, 13 entity bindings, 9 rules, 1350 rule-event edges, 35 R3 chains, zero R3 pair failures, 77 native events and zero projected events.
+
+The root runtime growth budget defines how runtime evidence may grow without breaking no-tick, proof, entity or heuristic guarantees. The current public classification is PNVA_ROOT_RUNTIME_GROWTH_BUDGET_READY with score 100.0, 10 checks, zero failures, growth mode SMALL_BATCH_RESTRICTED, max 118 new events, 7 new R3 chains, 8 new entity-rule edges per batch, zero denied, unknown or projected events, suppression range 0.45..0.70 and negative controls preserved at 8/8.
+
+The root causal mesh ledger proves that root PASS reports agree with each other instead of standing alone. The current public classification is PNVA_ROOT_CAUSAL_MESH_LEDGER_READY with score 100.0, 10 checks, zero failures, 589 events, 285 suppressions, 13 entities, 9 rules, 1350 rule-event edges, 38 entity-rule edges, 35 R3 chains, 589 valid proofs, zero denied edges, zero unknown entities/rules, zero projected events and zero public path leaks.
+
+The root efficiency proof ledger quantifies PNVA/no-tick gain as proof-backed causal non-execution against a public event baseline. The current public classification is PNVA_ROOT_EFFICIENCY_PROOF_LEDGER_READY with score 100.0, 9 checks, zero failures, 589 baseline event actions, 285 avoided actions, avoided-action ratio 0.483871, 304 observed required actions, 13 entity rows, 9 heuristic rule rows, 1350 rule-event edges, zero projected events and zero suppressed proof failures.
+
+The root equation consistency ledger proves that public tension logs preserve gate_delta = score - max(0, threshold - margin) and that native/R3 decisions obey strict threshold semantics. The current public classification is PNVA_ROOT_EQUATION_CONSISTENCY_LEDGER_READY with score 100.0, 9 checks, zero failures, 589 events, 285 suppressions, avoided-action ratio 0.483871, zero formula mismatches, zero missing equation fields, zero strict native/R3 violations, 384 bounded canonical legacy warnings, 13 entity bindings and 9 heuristic rules.
+
+The root legacy quarantine ledger proves that canonical legacy threshold warnings remain visible, attributed and bounded instead of being promoted into clean native/R3 runtime evidence. The current public classification is PNVA_ROOT_LEGACY_QUARANTINE_LEDGER_READY with score 100.0, 9 checks, zero failures, 384 canonical legacy warnings, zero native/R3 legacy warnings, 5 bounded legacy edges, 1 controlled legacy rule, zero denied edges, zero unknown entities/rules and zero strict native/R3 threshold violations.
+
+The root evidence chronology ledger proves report order across sealed core, post-seal ledgers and publication/growth checks. The current public classification is PNVA_ROOT_EVIDENCE_CHRONOLOGY_LEDGER_READY with score 100.0, 11 checks, zero failures, 27 root reports ordered, 90 scanned public text files, 258 Manifest files, 257 checksum entries, stable root release hash and zero public path leaks.
+
+The root sovereign readiness gate collapses no-tick metrics, event identity, proof identity, entity/rule mesh, efficiency proof, equation consistency, legacy quarantine, runtime admission, growth budget, negative controls and publication hygiene into one final root decision. The current public classification is PNVA_ROOT_SOVEREIGN_READINESS_GATE_PASS with score 100.0, 11 checks, zero failures, 589 events, 285 suppressions, avoided-action ratio 0.483871, equation consistency score 100.0, legacy quarantine score 100.0, zero native/R3 legacy warnings, 13 entities, 9 rules, 35 R3 chains, 589 valid proofs, 77 native events, zero projected events and restricted runtime admission.
+
+The root validator registry proves every root validator is discoverable across tool, report, document, Manifest, checksum, CI, README, llms.txt and the sovereign documentation. The current public classification is PNVA_ROOT_VALIDATOR_REGISTRY_READY with score 100.0, 8 checks, zero failures, 30 validators, 30 CI registrations, 30 public documentation registrations and 30 PASS reports.
+
+The sovereign evidence attestor aggregates the public evidence package into one hashable attestation. The current classification is PNVA_SOVEREIGN_EVIDENCE_ATTESTED with 48 tracked artifacts.
 
 ## Boundaries
 

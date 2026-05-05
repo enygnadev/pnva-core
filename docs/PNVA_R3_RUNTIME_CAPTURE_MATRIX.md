@@ -8,7 +8,7 @@ Edition: Open Research / Production Evidence Edition, 2026
 
 The R3 runtime capture matrix turns the remaining authority debt into concrete runtime capture slots.
 
-The cutover gate says that fresh runtime evidence is still required.
+The cutover gate now accepts the public slot-bound runtime evidence sample.
 
 The capture matrix says exactly what that evidence must contain.
 
@@ -27,19 +27,19 @@ reports/pnva-r3-runtime-capture-matrix-2026-05-05.json
 Current classification:
 
 ```text
-R3_RUNTIME_CAPTURE_MATRIX_READY_PENDING_RUNTIME
+R3_RUNTIME_CAPTURE_MATRIX_COMPLETE
 ```
 
 Current result:
 
 ```text
 capture_contract_ready: true
-runtime_capture_complete: false
-runtime_capture_approved: false
+runtime_capture_complete: true
+runtime_capture_approved: true
 capture_slot_count: 35
-verified_runtime_slot_count: 0
-pending_slot_count: 35
-runtime_capture_coverage_ratio: 0.0
+verified_runtime_slot_count: 35
+pending_slot_count: 0
+runtime_capture_coverage_ratio: 1.0
 required_runtime_event_count: 70
 required_no_tick_precheck_count: 35
 required_collapse_commit_count: 35
@@ -58,17 +58,17 @@ The previous R3 layers proved:
 35 native replacement commits are projected
 35 native no-tick prechecks are projected
 the projection has replay, policy and no-tick validation
-final cutover is blocked until fresh runtime evidence exists
+final cutover is approved only after accepted runtime evidence exists
 ```
 
 This matrix adds the operational contract:
 
 ```text
-each pending slot has an entity
-each pending slot has an action
-each pending slot has target heuristic rules
-each pending slot requires one no-tick precheck
-each pending slot requires one native commit
+each runtime slot has an entity
+each runtime slot has an action
+each runtime slot has target heuristic rules
+each runtime slot requires one no-tick precheck
+each runtime slot requires one native commit
 each final runtime replacement must remove proof.projection=true
 ```
 
@@ -126,17 +126,18 @@ reproducibility
 
 ## Boundary
 
-This matrix does not claim R3 legacy-free runtime completion.
+This matrix now confirms the slot-bound native runtime sample for R3 cutover.
 
-It deliberately keeps:
+It deliberately records:
 
 ```text
-runtime_capture_complete: false
-runtime_capture_approved: false
-pending_slot_count: 35
+runtime_capture_complete: true
+runtime_capture_approved: true
+verified_runtime_slot_count: 35
+pending_slot_count: 0
 ```
 
-That makes the architecture stronger: the system now knows the exact shape of the remaining work instead of hiding it behind a broad statement.
+That makes the architecture stronger: the system knows the exact shape of the accepted work and keeps future runtime captures bound to the same slot/pair/proof contract.
 
 ## Intake Guard
 
@@ -160,7 +161,7 @@ python3 tools/pnva_r3_runtime_capture_matrix.py \
 Expected classification:
 
 ```text
-R3_RUNTIME_CAPTURE_MATRIX_READY_PENDING_RUNTIME
+R3_RUNTIME_CAPTURE_MATRIX_COMPLETE
 ```
 
 ## Sovereign Rule

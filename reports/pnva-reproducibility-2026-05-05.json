@@ -1,7 +1,7 @@
 {
   "author": "Gustavo de Aguiar Martins",
   "classification": "REPRODUCIBILITY_READY",
-  "command_count": 35,
+  "command_count": 40,
   "command_failure_count": 0,
   "command_failures": [],
   "commands": {
@@ -160,7 +160,7 @@
       "pass": true
     },
     "r3_cutover_gate": {
-      "classification": "R3_CUTOVER_GATE_READY_RUNTIME_REQUIRED",
+      "classification": "R3_CUTOVER_APPROVED",
       "command": "tools/pnva_r3_cutover_gate.py --write <TEMP>/r3-cutover-gate.json",
       "exit_code": 0,
       "parse_error": "",
@@ -174,8 +174,8 @@
       "pass": true
     },
     "r3_runtime_capture_matrix": {
-      "classification": "R3_RUNTIME_CAPTURE_MATRIX_READY_PENDING_RUNTIME",
-      "command": "tools/pnva_r3_runtime_capture_matrix.py --write <TEMP>/r3-runtime-capture-matrix.json",
+      "classification": "R3_RUNTIME_CAPTURE_MATRIX_COMPLETE",
+      "command": "tools/pnva_r3_runtime_capture_matrix.py --runtime-events <TEMP>/r3-runtime-events.jsonl --write <TEMP>/r3-runtime-capture-matrix.json",
       "exit_code": 0,
       "parse_error": "",
       "pass": true
@@ -187,9 +187,16 @@
       "parse_error": "",
       "pass": true
     },
+    "r3_runtime_event_emitter": {
+      "classification": "R3_RUNTIME_EVENT_EMITTER_READY",
+      "command": "tools/pnva_r3_runtime_event_emitter.py --events <TEMP>/r3-runtime-events.jsonl --entity-catalog <TEMP>/r3-runtime-entities.json --summary <TEMP>/r3-runtime-emitter-summary.json",
+      "exit_code": 0,
+      "parse_error": "",
+      "pass": true
+    },
     "r3_runtime_evidence_guard": {
-      "classification": "R3_RUNTIME_EVIDENCE_GUARD_READY_AWAITING_CAPTURE",
-      "command": "tools/pnva_r3_runtime_evidence_guard.py --write <TEMP>/r3-runtime-evidence-guard.json",
+      "classification": "R3_RUNTIME_EVIDENCE_ACCEPTED",
+      "command": "tools/pnva_r3_runtime_evidence_guard.py --runtime-events <TEMP>/r3-runtime-events.jsonl --write <TEMP>/r3-runtime-evidence-guard.json",
       "exit_code": 0,
       "parse_error": "",
       "pass": true
@@ -197,6 +204,34 @@
     "r3_runtime_instrumentation_plan": {
       "classification": "R3_RUNTIME_INSTRUMENTATION_PLAN_READY",
       "command": "tools/pnva_r3_runtime_instrumentation_plan.py --write <TEMP>/r3-runtime-instrumentation-plan.json",
+      "exit_code": 0,
+      "parse_error": "",
+      "pass": true
+    },
+    "r3_runtime_no_tick": {
+      "classification": "SOVEREIGN_NO_TICK_READY",
+      "command": "tools/pnva_no_tick_invariant_analyzer.py --events <TEMP>/r3-runtime-events.jsonl --entity-catalog <TEMP>/r3-runtime-entities.json --replay-report <TEMP>/r3-runtime-replay.json --write <TEMP>/r3-runtime-no-tick.json",
+      "exit_code": 0,
+      "parse_error": "",
+      "pass": true
+    },
+    "r3_runtime_policy": {
+      "classification": "SOVEREIGN_POLICY_READY",
+      "command": "tools/pnva_sovereign_policy_validator.py --events <TEMP>/r3-runtime-events.jsonl --entity-catalog <TEMP>/r3-runtime-entities.json --write <TEMP>/r3-runtime-policy.json",
+      "exit_code": 0,
+      "parse_error": "",
+      "pass": true
+    },
+    "r3_runtime_proof_chain": {
+      "classification": "PROOF_CHAIN_SEALED",
+      "command": "tools/pnva_proof_chain_sealer.py --events <TEMP>/r3-runtime-events.jsonl --write <TEMP>/r3-runtime-proof-chain.json",
+      "exit_code": 0,
+      "parse_error": "",
+      "pass": true
+    },
+    "r3_runtime_replay": {
+      "classification": "REPLAY_VALID",
+      "command": "tools/pnva_replay_validator.py --events <TEMP>/r3-runtime-events.jsonl --entity-catalog <TEMP>/r3-runtime-entities.json --write <TEMP>/r3-runtime-replay.json",
       "exit_code": 0,
       "parse_error": "",
       "pass": true
@@ -223,7 +258,7 @@
       "pass": true
     },
     "sovereign_evolution_ledger": {
-      "classification": "PNVA_SOVEREIGN_EVOLUTION_LEDGER_READY_R3_RUNTIME_REQUIRED",
+      "classification": "PNVA_SOVEREIGN_EVOLUTION_LEDGER_R3_READY",
       "command": "tools/pnva_sovereign_evolution_ledger.py --write <TEMP>/sovereign-evolution-ledger.json",
       "exit_code": 0,
       "parse_error": "",
@@ -251,7 +286,7 @@
       "pass": true
     }
   },
-  "comparison_count": 406,
+  "comparison_count": 445,
   "comparison_failure_count": 0,
   "comparison_failures": [],
   "comparisons": [
@@ -1987,128 +2022,86 @@
     {
       "field": "classification",
       "pass": true,
-      "published": "R3_CUTOVER_GATE_READY_RUNTIME_REQUIRED",
-      "report": "r3_cutover_gate",
-      "reproduced": "R3_CUTOVER_GATE_READY_RUNTIME_REQUIRED"
+      "published": "R3_RUNTIME_EVENT_EMITTER_READY",
+      "report": "r3_runtime_event_emitter",
+      "reproduced": "R3_RUNTIME_EVENT_EMITTER_READY"
     },
     {
       "field": "pass",
       "pass": true,
       "published": true,
-      "report": "r3_cutover_gate",
+      "report": "r3_runtime_event_emitter",
       "reproduced": true
     },
     {
-      "field": "contract_ready",
-      "pass": true,
-      "published": true,
-      "report": "r3_cutover_gate",
-      "reproduced": true
-    },
-    {
-      "field": "cutover_approved",
-      "pass": true,
-      "published": false,
-      "report": "r3_cutover_gate",
-      "reproduced": false
-    },
-    {
-      "field": "legacy_free_claim_allowed",
-      "pass": true,
-      "published": false,
-      "report": "r3_cutover_gate",
-      "reproduced": false
-    },
-    {
-      "field": "fresh_runtime_evidence_present",
-      "pass": true,
-      "published": false,
-      "report": "r3_cutover_gate",
-      "reproduced": false
-    },
-    {
-      "field": "authority_candidate_count",
-      "pass": true,
-      "published": 35,
-      "report": "r3_cutover_gate",
-      "reproduced": 35
-    },
-    {
-      "field": "projected_event_count",
+      "field": "event_count",
       "pass": true,
       "published": 70,
-      "report": "r3_cutover_gate",
+      "report": "r3_runtime_event_emitter",
       "reproduced": 70
     },
     {
-      "field": "projected_precheck_count",
+      "field": "entity_count",
+      "pass": true,
+      "published": 1,
+      "report": "r3_runtime_event_emitter",
+      "reproduced": 1
+    },
+    {
+      "field": "capture_slot_count",
       "pass": true,
       "published": 35,
-      "report": "r3_cutover_gate",
+      "report": "r3_runtime_event_emitter",
       "reproduced": 35
     },
     {
-      "field": "projected_commit_count",
+      "field": "required_runtime_event_count",
+      "pass": true,
+      "published": 70,
+      "report": "r3_runtime_event_emitter",
+      "reproduced": 70
+    },
+    {
+      "field": "precheck_count",
       "pass": true,
       "published": 35,
-      "report": "r3_cutover_gate",
+      "report": "r3_runtime_event_emitter",
       "reproduced": 35
     },
     {
-      "field": "projected_low_authority_strong_count",
+      "field": "commit_count",
+      "pass": true,
+      "published": 35,
+      "report": "r3_runtime_event_emitter",
+      "reproduced": 35
+    },
+    {
+      "field": "projection_count",
       "pass": true,
       "published": 0,
-      "report": "r3_cutover_gate",
+      "report": "r3_runtime_event_emitter",
       "reproduced": 0
     },
     {
-      "field": "remaining_runtime_replacement_count",
+      "field": "native_count",
       "pass": true,
-      "published": 35,
-      "report": "r3_cutover_gate",
-      "reproduced": 35
+      "published": 70,
+      "report": "r3_runtime_event_emitter",
+      "reproduced": 70
     },
     {
-      "field": "runtime_replacement_coverage_ratio",
+      "field": "proof_hash_count",
       "pass": true,
-      "published": 0.0,
-      "report": "r3_cutover_gate",
-      "reproduced": 0.0
-    },
-    {
-      "field": "runtime_requirement_count",
-      "pass": true,
-      "published": 3,
-      "report": "r3_cutover_gate",
-      "reproduced": 3
-    },
-    {
-      "field": "runtime_blocker_count",
-      "pass": true,
-      "published": 3,
-      "report": "r3_cutover_gate",
-      "reproduced": 3
-    },
-    {
-      "field": "precondition_failure_count",
-      "pass": true,
-      "published": 0,
-      "report": "r3_cutover_gate",
-      "reproduced": 0
-    },
-    {
-      "field": "contract_score",
-      "pass": true,
-      "published": 100,
-      "report": "r3_cutover_gate",
-      "reproduced": 100
+      "published": 70,
+      "report": "r3_runtime_event_emitter",
+      "reproduced": 70
     },
     {
       "field": "classification",
       "pass": true,
-      "published": "R3_RUNTIME_CAPTURE_MATRIX_READY_PENDING_RUNTIME",
+      "published": "R3_RUNTIME_CAPTURE_MATRIX_COMPLETE",
       "report": "r3_runtime_capture_matrix",
-      "reproduced": "R3_RUNTIME_CAPTURE_MATRIX_READY_PENDING_RUNTIME"
+      "reproduced": "R3_RUNTIME_CAPTURE_MATRIX_COMPLETE"
     },
     {
       "field": "pass",
@@ -2127,16 +2120,16 @@
     {
       "field": "runtime_capture_complete",
       "pass": true,
-      "published": false,
+      "published": true,
       "report": "r3_runtime_capture_matrix",
-      "reproduced": false
+      "reproduced": true
     },
     {
       "field": "runtime_capture_approved",
       "pass": true,
-      "published": false,
+      "published": true,
       "report": "r3_runtime_capture_matrix",
-      "reproduced": false
+      "reproduced": true
     },
     {
       "field": "source_candidate_count",
@@ -2155,23 +2148,23 @@
     {
       "field": "verified_runtime_slot_count",
       "pass": true,
-      "published": 0,
-      "report": "r3_runtime_capture_matrix",
-      "reproduced": 0
-    },
-    {
-      "field": "pending_slot_count",
-      "pass": true,
       "published": 35,
       "report": "r3_runtime_capture_matrix",
       "reproduced": 35
     },
     {
+      "field": "pending_slot_count",
+      "pass": true,
+      "published": 0,
+      "report": "r3_runtime_capture_matrix",
+      "reproduced": 0
+    },
+    {
       "field": "runtime_capture_coverage_ratio",
       "pass": true,
-      "published": 0.0,
+      "published": 1.0,
       "report": "r3_runtime_capture_matrix",
-      "reproduced": 0.0
+      "reproduced": 1.0
     },
     {
       "field": "required_runtime_event_count",
@@ -2232,9 +2225,9 @@
     {
       "field": "classification",
       "pass": true,
-      "published": "R3_RUNTIME_EVIDENCE_GUARD_READY_AWAITING_CAPTURE",
+      "published": "R3_RUNTIME_EVIDENCE_ACCEPTED",
       "report": "r3_runtime_evidence_guard",
-      "reproduced": "R3_RUNTIME_EVIDENCE_GUARD_READY_AWAITING_CAPTURE"
+      "reproduced": "R3_RUNTIME_EVIDENCE_ACCEPTED"
     },
     {
       "field": "pass",
@@ -2253,30 +2246,30 @@
     {
       "field": "runtime_evidence_present",
       "pass": true,
-      "published": false,
+      "published": true,
       "report": "r3_runtime_evidence_guard",
-      "reproduced": false
+      "reproduced": true
     },
     {
       "field": "runtime_evidence_approved",
       "pass": true,
-      "published": false,
+      "published": true,
       "report": "r3_runtime_evidence_guard",
-      "reproduced": false
+      "reproduced": true
     },
     {
       "field": "runtime_acceptance_complete",
       "pass": true,
-      "published": false,
+      "published": true,
       "report": "r3_runtime_evidence_guard",
-      "reproduced": false
+      "reproduced": true
     },
     {
       "field": "matrix_classification",
       "pass": true,
-      "published": "R3_RUNTIME_CAPTURE_MATRIX_READY_PENDING_RUNTIME",
+      "published": "R3_RUNTIME_CAPTURE_MATRIX_COMPLETE",
       "report": "r3_runtime_evidence_guard",
-      "reproduced": "R3_RUNTIME_CAPTURE_MATRIX_READY_PENDING_RUNTIME"
+      "reproduced": "R3_RUNTIME_CAPTURE_MATRIX_COMPLETE"
     },
     {
       "field": "capture_slot_count",
@@ -2309,23 +2302,23 @@
     {
       "field": "runtime_event_count",
       "pass": true,
-      "published": 0,
+      "published": 70,
       "report": "r3_runtime_evidence_guard",
-      "reproduced": 0
+      "reproduced": 70
     },
     {
       "field": "accepted_slot_count",
       "pass": true,
-      "published": 0,
+      "published": 35,
       "report": "r3_runtime_evidence_guard",
-      "reproduced": 0
+      "reproduced": 35
     },
     {
       "field": "pending_slot_count",
       "pass": true,
-      "published": 35,
+      "published": 0,
       "report": "r3_runtime_evidence_guard",
-      "reproduced": 35
+      "reproduced": 0
     },
     {
       "field": "rejected_event_count",
@@ -2386,6 +2379,321 @@
     {
       "field": "classification",
       "pass": true,
+      "published": "REPLAY_VALID",
+      "report": "r3_runtime_replay",
+      "reproduced": "REPLAY_VALID"
+    },
+    {
+      "field": "pass",
+      "pass": true,
+      "published": true,
+      "report": "r3_runtime_replay",
+      "reproduced": true
+    },
+    {
+      "field": "summary.event_count",
+      "pass": true,
+      "published": 70,
+      "report": "r3_runtime_replay",
+      "reproduced": 70
+    },
+    {
+      "field": "summary.unique_event_ids",
+      "pass": true,
+      "published": 70,
+      "report": "r3_runtime_replay",
+      "reproduced": 70
+    },
+    {
+      "field": "summary.proof_hash_ok",
+      "pass": true,
+      "published": 70,
+      "report": "r3_runtime_replay",
+      "reproduced": 70
+    },
+    {
+      "field": "summary.proof_hash_bad",
+      "pass": true,
+      "published": 0,
+      "report": "r3_runtime_replay",
+      "reproduced": 0
+    },
+    {
+      "field": "classification",
+      "pass": true,
+      "published": "SOVEREIGN_POLICY_READY",
+      "report": "r3_runtime_policy",
+      "reproduced": "SOVEREIGN_POLICY_READY"
+    },
+    {
+      "field": "pass",
+      "pass": true,
+      "published": true,
+      "report": "r3_runtime_policy",
+      "reproduced": true
+    },
+    {
+      "field": "summary.event_count",
+      "pass": true,
+      "published": 70,
+      "report": "r3_runtime_policy",
+      "reproduced": 70
+    },
+    {
+      "field": "summary.native_event_count",
+      "pass": true,
+      "published": 70,
+      "report": "r3_runtime_policy",
+      "reproduced": 70
+    },
+    {
+      "field": "summary.strong_decision_count",
+      "pass": true,
+      "published": 35,
+      "report": "r3_runtime_policy",
+      "reproduced": 35
+    },
+    {
+      "field": "summary.low_authority_legacy_count",
+      "pass": true,
+      "published": 0,
+      "report": "r3_runtime_policy",
+      "reproduced": 0
+    },
+    {
+      "field": "summary.proof_policy_bad",
+      "pass": true,
+      "published": 0,
+      "report": "r3_runtime_policy",
+      "reproduced": 0
+    },
+    {
+      "field": "summary.entity_missing_count",
+      "pass": true,
+      "published": 0,
+      "report": "r3_runtime_policy",
+      "reproduced": 0
+    },
+    {
+      "field": "classification",
+      "pass": true,
+      "published": "SOVEREIGN_NO_TICK_READY",
+      "report": "r3_runtime_no_tick",
+      "reproduced": "SOVEREIGN_NO_TICK_READY"
+    },
+    {
+      "field": "pass",
+      "pass": true,
+      "published": true,
+      "report": "r3_runtime_no_tick",
+      "reproduced": true
+    },
+    {
+      "field": "no_tick_efficiency.event_count",
+      "pass": true,
+      "published": 70,
+      "report": "r3_runtime_no_tick",
+      "reproduced": 70
+    },
+    {
+      "field": "no_tick_efficiency.collapse_count",
+      "pass": true,
+      "published": 35,
+      "report": "r3_runtime_no_tick",
+      "reproduced": 35
+    },
+    {
+      "field": "no_tick_efficiency.observe_count",
+      "pass": true,
+      "published": 35,
+      "report": "r3_runtime_no_tick",
+      "reproduced": 35
+    },
+    {
+      "field": "no_tick_efficiency.suppressed_count",
+      "pass": true,
+      "published": 35,
+      "report": "r3_runtime_no_tick",
+      "reproduced": 35
+    },
+    {
+      "field": "no_tick_efficiency.no_tick_suppression_ratio",
+      "pass": true,
+      "published": 0.5,
+      "report": "r3_runtime_no_tick",
+      "reproduced": 0.5
+    },
+    {
+      "field": "no_tick_efficiency.proof_integrity_ratio",
+      "pass": true,
+      "published": 1.0,
+      "report": "r3_runtime_no_tick",
+      "reproduced": 1.0
+    },
+    {
+      "field": "classification",
+      "pass": true,
+      "published": "PROOF_CHAIN_SEALED",
+      "report": "r3_runtime_proof_chain",
+      "reproduced": "PROOF_CHAIN_SEALED"
+    },
+    {
+      "field": "pass",
+      "pass": true,
+      "published": true,
+      "report": "r3_runtime_proof_chain",
+      "reproduced": true
+    },
+    {
+      "field": "seal.event_count",
+      "pass": true,
+      "published": 70,
+      "report": "r3_runtime_proof_chain",
+      "reproduced": 70
+    },
+    {
+      "field": "seal.unique_event_ids",
+      "pass": true,
+      "published": 70,
+      "report": "r3_runtime_proof_chain",
+      "reproduced": 70
+    },
+    {
+      "field": "seal.proof_bad",
+      "pass": true,
+      "published": 0,
+      "report": "r3_runtime_proof_chain",
+      "reproduced": 0
+    },
+    {
+      "field": "seal.final_chain_hash",
+      "pass": true,
+      "published": "39919aa40a3fc3cb3ea3983517aedf14db1a3d02857ef5013c346294b445ce63",
+      "report": "r3_runtime_proof_chain",
+      "reproduced": "39919aa40a3fc3cb3ea3983517aedf14db1a3d02857ef5013c346294b445ce63"
+    },
+    {
+      "field": "classification",
+      "pass": true,
+      "published": "R3_CUTOVER_APPROVED",
+      "report": "r3_cutover_gate",
+      "reproduced": "R3_CUTOVER_APPROVED"
+    },
+    {
+      "field": "pass",
+      "pass": true,
+      "published": true,
+      "report": "r3_cutover_gate",
+      "reproduced": true
+    },
+    {
+      "field": "contract_ready",
+      "pass": true,
+      "published": true,
+      "report": "r3_cutover_gate",
+      "reproduced": true
+    },
+    {
+      "field": "cutover_approved",
+      "pass": true,
+      "published": true,
+      "report": "r3_cutover_gate",
+      "reproduced": true
+    },
+    {
+      "field": "legacy_free_claim_allowed",
+      "pass": true,
+      "published": true,
+      "report": "r3_cutover_gate",
+      "reproduced": true
+    },
+    {
+      "field": "fresh_runtime_evidence_present",
+      "pass": true,
+      "published": true,
+      "report": "r3_cutover_gate",
+      "reproduced": true
+    },
+    {
+      "field": "authority_candidate_count",
+      "pass": true,
+      "published": 35,
+      "report": "r3_cutover_gate",
+      "reproduced": 35
+    },
+    {
+      "field": "projected_event_count",
+      "pass": true,
+      "published": 70,
+      "report": "r3_cutover_gate",
+      "reproduced": 70
+    },
+    {
+      "field": "projected_precheck_count",
+      "pass": true,
+      "published": 35,
+      "report": "r3_cutover_gate",
+      "reproduced": 35
+    },
+    {
+      "field": "projected_commit_count",
+      "pass": true,
+      "published": 35,
+      "report": "r3_cutover_gate",
+      "reproduced": 35
+    },
+    {
+      "field": "projected_low_authority_strong_count",
+      "pass": true,
+      "published": 0,
+      "report": "r3_cutover_gate",
+      "reproduced": 0
+    },
+    {
+      "field": "remaining_runtime_replacement_count",
+      "pass": true,
+      "published": 0,
+      "report": "r3_cutover_gate",
+      "reproduced": 0
+    },
+    {
+      "field": "runtime_replacement_coverage_ratio",
+      "pass": true,
+      "published": 1.0,
+      "report": "r3_cutover_gate",
+      "reproduced": 1.0
+    },
+    {
+      "field": "runtime_requirement_count",
+      "pass": true,
+      "published": 3,
+      "report": "r3_cutover_gate",
+      "reproduced": 3
+    },
+    {
+      "field": "runtime_blocker_count",
+      "pass": true,
+      "published": 0,
+      "report": "r3_cutover_gate",
+      "reproduced": 0
+    },
+    {
+      "field": "precondition_failure_count",
+      "pass": true,
+      "published": 0,
+      "report": "r3_cutover_gate",
+      "reproduced": 0
+    },
+    {
+      "field": "contract_score",
+      "pass": true,
+      "published": 100,
+      "report": "r3_cutover_gate",
+      "reproduced": 100
+    },
+    {
+      "field": "classification",
+      "pass": true,
       "published": "R3_RUNTIME_INSTRUMENTATION_PLAN_READY",
       "report": "r3_runtime_instrumentation_plan",
       "reproduced": "R3_RUNTIME_INSTRUMENTATION_PLAN_READY"
@@ -2407,30 +2715,30 @@
     {
       "field": "runtime_evidence_present",
       "pass": true,
-      "published": false,
+      "published": true,
       "report": "r3_runtime_instrumentation_plan",
-      "reproduced": false
+      "reproduced": true
     },
     {
       "field": "runtime_evidence_approved",
       "pass": true,
-      "published": false,
+      "published": true,
       "report": "r3_runtime_instrumentation_plan",
-      "reproduced": false
+      "reproduced": true
     },
     {
       "field": "source_matrix_classification",
       "pass": true,
-      "published": "R3_RUNTIME_CAPTURE_MATRIX_READY_PENDING_RUNTIME",
+      "published": "R3_RUNTIME_CAPTURE_MATRIX_COMPLETE",
       "report": "r3_runtime_instrumentation_plan",
-      "reproduced": "R3_RUNTIME_CAPTURE_MATRIX_READY_PENDING_RUNTIME"
+      "reproduced": "R3_RUNTIME_CAPTURE_MATRIX_COMPLETE"
     },
     {
       "field": "source_guard_classification",
       "pass": true,
-      "published": "R3_RUNTIME_EVIDENCE_GUARD_READY_AWAITING_CAPTURE",
+      "published": "R3_RUNTIME_EVIDENCE_ACCEPTED",
       "report": "r3_runtime_instrumentation_plan",
-      "reproduced": "R3_RUNTIME_EVIDENCE_GUARD_READY_AWAITING_CAPTURE"
+      "reproduced": "R3_RUNTIME_EVIDENCE_ACCEPTED"
     },
     {
       "field": "capture_slot_count",
@@ -2547,30 +2855,30 @@
     {
       "field": "runtime_evidence_present",
       "pass": true,
-      "published": false,
+      "published": true,
       "report": "r3_runtime_contract_validation",
-      "reproduced": false
+      "reproduced": true
     },
     {
       "field": "runtime_evidence_approved",
       "pass": true,
-      "published": false,
+      "published": true,
       "report": "r3_runtime_contract_validation",
-      "reproduced": false
+      "reproduced": true
     },
     {
       "field": "source_matrix_classification",
       "pass": true,
-      "published": "R3_RUNTIME_CAPTURE_MATRIX_READY_PENDING_RUNTIME",
+      "published": "R3_RUNTIME_CAPTURE_MATRIX_COMPLETE",
       "report": "r3_runtime_contract_validation",
-      "reproduced": "R3_RUNTIME_CAPTURE_MATRIX_READY_PENDING_RUNTIME"
+      "reproduced": "R3_RUNTIME_CAPTURE_MATRIX_COMPLETE"
     },
     {
       "field": "source_guard_classification",
       "pass": true,
-      "published": "R3_RUNTIME_EVIDENCE_GUARD_READY_AWAITING_CAPTURE",
+      "published": "R3_RUNTIME_EVIDENCE_ACCEPTED",
       "report": "r3_runtime_contract_validation",
-      "reproduced": "R3_RUNTIME_EVIDENCE_GUARD_READY_AWAITING_CAPTURE"
+      "reproduced": "R3_RUNTIME_EVIDENCE_ACCEPTED"
     },
     {
       "field": "source_plan_classification",
@@ -2680,9 +2988,9 @@
     {
       "field": "classification",
       "pass": true,
-      "published": "PNVA_SOVEREIGN_EVOLUTION_LEDGER_READY_R3_RUNTIME_REQUIRED",
+      "published": "PNVA_SOVEREIGN_EVOLUTION_LEDGER_R3_READY",
       "report": "sovereign_evolution_ledger",
-      "reproduced": "PNVA_SOVEREIGN_EVOLUTION_LEDGER_READY_R3_RUNTIME_REQUIRED"
+      "reproduced": "PNVA_SOVEREIGN_EVOLUTION_LEDGER_R3_READY"
     },
     {
       "field": "pass",
@@ -2736,37 +3044,37 @@
     {
       "field": "r3_runtime_evidence_present",
       "pass": true,
-      "published": false,
+      "published": true,
       "report": "sovereign_evolution_ledger",
-      "reproduced": false
+      "reproduced": true
     },
     {
       "field": "r3_runtime_evidence_approved",
       "pass": true,
-      "published": false,
+      "published": true,
       "report": "sovereign_evolution_ledger",
-      "reproduced": false
+      "reproduced": true
     },
     {
       "field": "r3_cutover_approved",
       "pass": true,
-      "published": false,
+      "published": true,
       "report": "sovereign_evolution_ledger",
-      "reproduced": false
+      "reproduced": true
     },
     {
       "field": "r3_runtime_capture_coverage_percent",
       "pass": true,
-      "published": 0.0,
+      "published": 100.0,
       "report": "sovereign_evolution_ledger",
-      "reproduced": 0.0
+      "reproduced": 100.0
     },
     {
       "field": "runtime_pending_slot_count",
       "pass": true,
-      "published": 35,
+      "published": 0,
       "report": "sovereign_evolution_ledger",
-      "reproduced": 35
+      "reproduced": 0
     },
     {
       "field": "runtime_required_event_count",
@@ -2883,9 +3191,9 @@
     {
       "field": "sovereign_evolution_score",
       "pass": true,
-      "published": 88.37,
+      "published": 98.37,
       "report": "sovereign_evolution_ledger",
-      "reproduced": 88.37
+      "reproduced": 98.37
     },
     {
       "field": "priority_action_count",
@@ -2897,9 +3205,9 @@
     {
       "field": "blocker_count",
       "pass": true,
-      "published": 2,
+      "published": 0,
       "report": "sovereign_evolution_ledger",
-      "reproduced": 2
+      "reproduced": 0
     },
     {
       "field": "classification",
@@ -3030,9 +3338,9 @@
     {
       "field": "artifact_count",
       "pass": true,
-      "published": 41,
+      "published": 48,
       "report": "attestation",
-      "reproduced": 41
+      "reproduced": 48
     },
     {
       "field": "failure_count",
@@ -3044,9 +3352,9 @@
     {
       "field": "evidence_hash",
       "pass": true,
-      "published": "sha256:4118eb25c457642fce4e8f0f03dc66c492d59a9f5dea31a91e2ec7e8d953b490",
+      "published": "sha256:9f38e4089290b13df2093b0bc190dbb5970b5827eee92caf20af591534f34400",
       "report": "attestation",
-      "reproduced": "sha256:4118eb25c457642fce4e8f0f03dc66c492d59a9f5dea31a91e2ec7e8d953b490"
+      "reproduced": "sha256:9f38e4089290b13df2093b0bc190dbb5970b5827eee92caf20af591534f34400"
     },
     {
       "field": "classification",
@@ -3099,7 +3407,7 @@
     }
   ],
   "failure_count": 0,
-  "generated_at": "2026-05-05T15:46:50Z",
+  "generated_at": "2026-05-05T17:31:08Z",
   "interpretation": {
     "boundary": "Generated timestamps, temporary paths and non-semantic ordering are intentionally excluded from comparison.",
     "purpose": "Regenerate PNVA evidence reports with current tools and compare stable fields against the published evidence package.",
@@ -3114,7 +3422,7 @@
   ],
   "schema_version": "pnva.reproducibility_guard.v1",
   "summary": {
-    "published_attestation_hash": "sha256:4118eb25c457642fce4e8f0f03dc66c492d59a9f5dea31a91e2ec7e8d953b490",
+    "published_attestation_hash": "sha256:9f38e4089290b13df2093b0bc190dbb5970b5827eee92caf20af591534f34400",
     "reports_reproduced": [
       "adversarial",
       "attestation",
@@ -3142,8 +3450,13 @@
       "r3_migration_plan",
       "r3_runtime_capture_matrix",
       "r3_runtime_contract_validation",
+      "r3_runtime_event_emitter",
       "r3_runtime_evidence_guard",
       "r3_runtime_instrumentation_plan",
+      "r3_runtime_no_tick",
+      "r3_runtime_policy",
+      "r3_runtime_proof_chain",
+      "r3_runtime_replay",
       "replay",
       "schema_contract",
       "semantic",
@@ -3152,7 +3465,7 @@
       "suppression_ledger",
       "tension_decision"
     ],
-    "reproduced_attestation_hash": "sha256:4118eb25c457642fce4e8f0f03dc66c492d59a9f5dea31a91e2ec7e8d953b490",
-    "stable_fields_compared": 406
+    "reproduced_attestation_hash": "sha256:9f38e4089290b13df2093b0bc190dbb5970b5827eee92caf20af591534f34400",
+    "stable_fields_compared": 445
   }
 }

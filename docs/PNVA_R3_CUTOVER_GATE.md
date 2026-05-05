@@ -9,7 +9,7 @@ Edition: Open Research / Production Evidence Edition, 2026
 The R3 cutover gate separates two claims that must not be confused:
 
 ```text
-contract ready != runtime cutover approved
+contract ready + accepted runtime evidence = cutover approved
 ```
 
 The R3 authority projection proves that the mapped H0 authority debt has a native replacement contract.
@@ -27,23 +27,23 @@ reports/pnva-r3-cutover-gate-2026-05-05.json
 Current classification:
 
 ```text
-R3_CUTOVER_GATE_READY_RUNTIME_REQUIRED
+R3_CUTOVER_APPROVED
 ```
 
 Current result:
 
 ```text
 contract_ready: true
-cutover_approved: false
-legacy_free_claim_allowed: false
-fresh_runtime_evidence_present: false
+cutover_approved: true
+legacy_free_claim_allowed: true
+fresh_runtime_evidence_present: true
 authority_candidate_count: 35
 projected_event_count: 70
 projected_precheck_count: 35
 projected_commit_count: 35
 projected_low_authority_strong_count: 0
-remaining_runtime_replacement_count: 35
-runtime_blocker_count: 3
+remaining_runtime_replacement_count: 0
+runtime_blocker_count: 0
 contract_score: 100
 ```
 
@@ -57,20 +57,20 @@ The gate says:
 
 ```text
 the native replacement contract is valid
-the final R3 claim is still blocked
-fresh runtime evidence is required
+the public R3 runtime sample was accepted
+the legacy-free claim is allowed for the slot-bound runtime replacement sample
 ```
 
 ## Runtime Requirements
 
-Before `R3_NATIVE_CLEAN_LEGACY_FREE` can be claimed, PNVA must publish:
+The approved public runtime package includes:
 
 ```text
-fresh native runtime events for the mapped authority debt
-replay validation over the fresh sample
-sovereign policy validation over the fresh sample
-no-tick invariant validation over the fresh sample
-new robustness, maturity, semantic and reproducibility reports
+70 native runtime events for the mapped authority debt
+35 no-tick prechecks
+35 hard-authority commits
+replay, policy, no-tick and proof-chain validation over the sample
+semantic consistency and reproducibility over the final package
 ```
 
 The final runtime sample must not depend on:
@@ -98,7 +98,7 @@ python3 tools/pnva_r3_cutover_gate.py \
 Expected classification:
 
 ```text
-R3_CUTOVER_GATE_READY_RUNTIME_REQUIRED
+R3_CUTOVER_APPROVED
 ```
 
 ## Sovereign Rule

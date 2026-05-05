@@ -1,0 +1,108 @@
+{
+  "author": "Gustavo de Aguiar Martins",
+  "classification": "REPLAY_VALID",
+  "entity_catalog_ref": "reports/pnva-r3-runtime-entity-catalog-2026-05-05.json",
+  "errors": [],
+  "events_ref": "reports/pnva-r3-runtime-events-2026-05-05.jsonl",
+  "generated_at": "2026-05-05T16:08:49Z",
+  "interpretation": {
+    "no_tick_meaning": "The canonical sequence can be replay-validated without rewriting runtime history.",
+    "proof_meaning": "Each event proof hash is deterministic over sanitized canonical content.",
+    "warning_policy": "Timestamp disorder is a warning in sampled multi-source logs unless strict ordering is requested."
+  },
+  "pass": true,
+  "project": "PNVA-Core",
+  "schema_version": "pnva.replay_validation.v1",
+  "strict_order": false,
+  "summary": {
+    "chain_count": 35,
+    "chain_timestamp_disorder": 0,
+    "event_count": 70,
+    "global_timestamp_disorder": 0,
+    "guard_block_ok": 0,
+    "guard_pass_ok": 0,
+    "largest_chains": [
+      [
+        "chain_r3_runtime_r3_runtime_slot_001",
+        2
+      ],
+      [
+        "chain_r3_runtime_r3_runtime_slot_002",
+        2
+      ],
+      [
+        "chain_r3_runtime_r3_runtime_slot_003",
+        2
+      ],
+      [
+        "chain_r3_runtime_r3_runtime_slot_004",
+        2
+      ],
+      [
+        "chain_r3_runtime_r3_runtime_slot_005",
+        2
+      ],
+      [
+        "chain_r3_runtime_r3_runtime_slot_006",
+        2
+      ],
+      [
+        "chain_r3_runtime_r3_runtime_slot_007",
+        2
+      ],
+      [
+        "chain_r3_runtime_r3_runtime_slot_008",
+        2
+      ]
+    ],
+    "proof_hash_bad": 0,
+    "proof_hash_ok": 70,
+    "relation_count": 0,
+    "risk_flags": [
+      [
+        "RESIZE_BATCH_PRESSURE",
+        64
+      ]
+    ],
+    "top_actions": [
+      [
+        "NO_ACTION",
+        35
+      ],
+      [
+        "RESIZE_BATCH",
+        32
+      ],
+      [
+        "COOLDOWN_GPU",
+        2
+      ],
+      [
+        "EXECUTE",
+        1
+      ]
+    ],
+    "top_decision_kinds": [
+      [
+        "observe",
+        35
+      ],
+      [
+        "collapse",
+        35
+      ]
+    ],
+    "top_event_types": [
+      [
+        "cuda_slot_scan_authority_precheck",
+        35
+      ],
+      [
+        "cuda_slot_scan",
+        35
+      ]
+    ],
+    "unique_event_ids": 70
+  },
+  "warnings": []
+}

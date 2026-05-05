@@ -1,0 +1,289 @@
+{
+  "author": "Gustavo de Aguiar Martins",
+  "check_count": 10,
+  "checks": [
+    {
+      "evidence": {
+        "reports": [
+          {
+            "classification": "PNVA_ROOT_NO_TICK_CAUSAL_CONTRACT_READY",
+            "expected": "PNVA_ROOT_NO_TICK_CAUSAL_CONTRACT_READY",
+            "name": "no_tick_contract",
+            "pass": true
+          },
+          {
+            "classification": "PNVA_ROOT_FIELD_TOPOLOGY_LEDGER_READY",
+            "expected": "PNVA_ROOT_FIELD_TOPOLOGY_LEDGER_READY",
+            "name": "field_topology",
+            "pass": true
+          },
+          {
+            "classification": "PNVA_ROOT_HEURISTIC_WEIGHT_LEDGER_READY",
+            "expected": "PNVA_ROOT_HEURISTIC_WEIGHT_LEDGER_READY",
+            "name": "heuristic_weight",
+            "pass": true
+          },
+          {
+            "classification": "PNVA_ROOT_ENTITY_CAPABILITY_LEDGER_READY",
+            "expected": "PNVA_ROOT_ENTITY_CAPABILITY_LEDGER_READY",
+            "name": "entity_capability",
+            "pass": true
+          },
+          {
+            "classification": "PNVA_ROOT_CAUSAL_MESH_LEDGER_READY",
+            "expected": "PNVA_ROOT_CAUSAL_MESH_LEDGER_READY",
+            "name": "causal_mesh",
+            "pass": true
+          },
+          {
+            "classification": "PNVA_ROOT_PUBLICATION_GATE_READY",
+            "expected": "PNVA_ROOT_PUBLICATION_GATE_READY",
+            "name": "publication_gate",
+            "pass": true
+          },
+          {
+            "classification": "PNVA_ROOT_CLAIM_BOUNDARY_GUARD_READY",
+            "expected": "PNVA_ROOT_CLAIM_BOUNDARY_GUARD_READY",
+            "name": "claim_boundary",
+            "pass": true
+          },
+          {
+            "classification": "PNVA_ROOT_RELEASE_VERIFIED",
+            "expected": "PNVA_ROOT_RELEASE_VERIFIED",
+            "name": "release_verifier",
+            "pass": true
+          }
+        ]
+      },
+      "name": "source_reports_ready",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "parse_errors": [],
+        "root_event_count": 589,
+        "scope_counts": {
+          "canonical": 512,
+          "native": 7,
+          "runtime_r3": 70
+        }
+      },
+      "name": "event_streams_parse_and_count",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "event_id_count": 589,
+        "event_id_duplicate_count": 0,
+        "missing_core_count": 0,
+        "missing_core_sample": [],
+        "proof_hash_count": 589,
+        "proof_hash_duplicate_count": 0,
+        "unique_event_id_count": 589,
+        "unique_proof_hash_count": 589
+      },
+      "name": "event_and_proof_identity_unique",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "catalog_scope_counts": {
+          "canonical": 6,
+          "native": 6,
+          "runtime_r3": 1
+        },
+        "entity_event_binding_count": 13,
+        "missing_catalog_entities": []
+      },
+      "name": "entity_binding_complete",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "rule_count": 9,
+        "rule_counts": [
+          [
+            "adaptive_threshold",
+            346
+          ],
+          [
+            "field_scheduler",
+            336
+          ],
+          [
+            "legacy_observer",
+            153
+          ],
+          [
+            "veonic_layer",
+            128
+          ],
+          [
+            "power_orchestrator",
+            83
+          ],
+          [
+            "memory4d",
+            79
+          ],
+          [
+            "affinity_router",
+            78
+          ],
+          [
+            "native_event_emitter",
+            77
+          ],
+          [
+            "etev_guard",
+            70
+          ]
+        ],
+        "rule_event_edge_count": 1350
+      },
+      "name": "heuristic_rule_identity_bound",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "decision_counts": {
+          "block": 35,
+          "collapse": 303,
+          "observe": 250,
+          "prove": 1
+        },
+        "invalid_tension_count": 0,
+        "invalid_tension_sample": []
+      },
+      "name": "decision_and_tension_contract",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "invalid_proof_count": 0,
+        "native_count": 77,
+        "projected_event_count": 0,
+        "proof_valid_count": 589
+      },
+      "name": "proof_policy_clean",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "chain_unique_count": 50,
+        "r3_chain_count": 35,
+        "r3_pair_failure_count": 0,
+        "r3_pair_failures": []
+      },
+      "name": "r3_chain_shape_clean",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "checksum_count": 248,
+        "manifest_file_count": 249,
+        "path_leak_count": 0,
+        "unbounded_high_risk_occurrence_count": 0
+      },
+      "name": "public_surface_current",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "recomputed_root_release_hash": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+        "root_release_hash": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc"
+      },
+      "name": "root_hash_aligned",
+      "pass": true
+    }
+  ],
+  "classification": "PNVA_ROOT_EVENT_IDENTITY_LEDGER_READY",
+  "decision_counts": {
+    "block": 35,
+    "collapse": 303,
+    "observe": 250,
+    "prove": 1
+  },
+  "entity_binding_count": 13,
+  "event_count": 589,
+  "event_id_count": 589,
+  "event_identity_ledger_hash": "sha256:25d8c30afde90a505895a072cc7974f0ca0d63efaf2f7d1729f2a42a73584464",
+  "event_identity_score": 100.0,
+  "failure_count": 0,
+  "generated_at": "2026-05-05T20:02:08Z",
+  "interpretation": {
+    "boundary": "This ledger audits public event identity only. It does not execute actions, change live gates or alter runtime workloads.",
+    "purpose": "Prove that PNVA root event streams have unique event IDs, unique proof hashes, catalog-bound entities, bounded heuristic rules and clean R3 precheck/commit identity.",
+    "sovereignty": "A root no-tick system is stronger when every event can be identified, replayed, linked to an entity and checked against proof identity."
+  },
+  "native_count": 77,
+  "pass": true,
+  "path_leak_count": 0,
+  "project": "PNVA-Core",
+  "projected_event_count": 0,
+  "proof_hash_count": 589,
+  "r3_chain_count": 35,
+  "r3_pair_failure_count": 0,
+  "root_release_hash": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+  "rule_count": 9,
+  "rule_event_edge_count": 1350,
+  "schema_version": "pnva.root_event_identity_ledger.v1",
+  "scope_counts": {
+    "canonical": 512,
+    "native": 7,
+    "runtime_r3": 70
+  },
+  "source_classification_checks": [
+    {
+      "classification": "PNVA_ROOT_NO_TICK_CAUSAL_CONTRACT_READY",
+      "expected": "PNVA_ROOT_NO_TICK_CAUSAL_CONTRACT_READY",
+      "name": "no_tick_contract",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_FIELD_TOPOLOGY_LEDGER_READY",
+      "expected": "PNVA_ROOT_FIELD_TOPOLOGY_LEDGER_READY",
+      "name": "field_topology",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_HEURISTIC_WEIGHT_LEDGER_READY",
+      "expected": "PNVA_ROOT_HEURISTIC_WEIGHT_LEDGER_READY",
+      "name": "heuristic_weight",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_ENTITY_CAPABILITY_LEDGER_READY",
+      "expected": "PNVA_ROOT_ENTITY_CAPABILITY_LEDGER_READY",
+      "name": "entity_capability",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_CAUSAL_MESH_LEDGER_READY",
+      "expected": "PNVA_ROOT_CAUSAL_MESH_LEDGER_READY",
+      "name": "causal_mesh",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_PUBLICATION_GATE_READY",
+      "expected": "PNVA_ROOT_PUBLICATION_GATE_READY",
+      "name": "publication_gate",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_CLAIM_BOUNDARY_GUARD_READY",
+      "expected": "PNVA_ROOT_CLAIM_BOUNDARY_GUARD_READY",
+      "name": "claim_boundary",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_RELEASE_VERIFIED",
+      "expected": "PNVA_ROOT_RELEASE_VERIFIED",
+      "name": "release_verifier",
+      "pass": true
+    }
+  ],
+  "unbounded_high_risk_occurrence_count": 0,
+  "unique_event_id_count": 589,
+  "unique_proof_hash_count": 589
+}

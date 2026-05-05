@@ -40,6 +40,16 @@ def _read_json(path: Path) -> Any:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def _public_path(repo: Path, path: Path | None) -> str:
+    if path is None:
+        return ""
+    resolved = path.resolve()
+    try:
+        return str(resolved.relative_to(repo))
+    except ValueError:
+        return resolved.name
+
+
 def _load_jsonl(path: Path, scope: str) -> list[dict[str, Any]]:
     events: list[dict[str, Any]] = []
     with path.open(encoding="utf-8", errors="replace") as handle:
@@ -375,6 +385,20 @@ def build_report(repo: Path, runtime_events_path: Path | None = None) -> dict[st
         classification = "R3_RUNTIME_CAPTURE_MATRIX_COMPLETE"
     elif contract_ready:
         classification = "R3_RUNTIME_CAPTURE_MATRIX_READY_PENDING_RUNTIME"
+    boundary = (
+        "This matrix now confirms the slot-bound native runtime sample: all capture slots are verified, pending runtime replacements are zero and the final cutover may rely on downstream guard approval."
+        if runtime_complete
+        else "This matrix approves the capture contract, not the final runtime cutover. Pending slots must be replaced by fresh native runtime evidence before R3 legacy-free can be claimed."
+    )
+    recommendations = [
+        "Keep each runtime slot emitted as one no-tick precheck and one native commit without proof.projection=true.",
+        "Keep adaptive_threshold, field_scheduler and native_event_emitter on every replacement commit.",
+        "Use power_orchestrator on cooldown and thermal-pressure replacement slots.",
+    ]
+    if runtime_complete:
+        recommendations.append("Keep replay, policy, no-tick, proof-chain and cutover validators in the release loop so future captures cannot drift.")
+    else:
+        recommendations.append("Run replay, policy and no-tick validation over the fresh runtime capture sample before changing the cutover gate.")
 
     entity_row_output = []
     for row in entity_rows.values():
@@ -460,7 +484,7 @@ def build_report(repo: Path, runtime_events_path: Path | None = None) -> dict[st
             "r3_projection_events": R3_PROJECTION_EVENTS,
             "r3_projection_no_tick": R3_PROJECTION_NO_TICK,
             "r3_cutover_gate": R3_CUTOVER_GATE,
-            "runtime_events": str(runtime_events_path) if runtime_events_path else "",
+            "runtime_events": _public_path(repo, runtime_events_path),
         },
         "summary": {
             "capture_contract_ready": contract_ready,
@@ -478,15 +502,10 @@ def build_report(repo: Path, runtime_events_path: Path | None = None) -> dict[st
         },
         "interpretation": {
             "purpose": "Convert the R3 authority debt into concrete runtime capture slots with entity, action, no-tick and heuristic acceptance criteria.",
-            "sovereignty": "PNVA becomes harder to misrepresent when every remaining runtime replacement has an explicit slot, target authority and proof requirement.",
-            "boundary": "This matrix approves the capture contract, not the final runtime cutover. Pending slots must be replaced by fresh native runtime evidence before R3 legacy-free can be claimed.",
+            "sovereignty": "PNVA becomes harder to misrepresent when every runtime replacement has an explicit slot, target authority and proof requirement.",
+            "boundary": boundary,
         },
-        "recommendations": [
-            "Instrument the runtime so each slot emits one no-tick precheck and one native commit without proof.projection=true.",
-            "Keep adaptive_threshold, field_scheduler and native_event_emitter on every replacement commit.",
-            "Use power_orchestrator on cooldown and thermal-pressure replacement slots.",
-            "Run replay, policy and no-tick validation over the fresh runtime capture sample before changing the cutover gate.",
-        ],
+        "recommendations": recommendations,
     }
 
 
