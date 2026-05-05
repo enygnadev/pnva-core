@@ -91,6 +91,16 @@
       "event_count": 512,
       "entity_count": 6,
       "public_safety": "raw_ids_and_paths_not_published"
+    },
+    "replay_validation": {
+      "status": "ADDED",
+      "tool": "tools/pnva_replay_validator.py",
+      "report": "reports/pnva-replay-validation-2026-05-05.json",
+      "classification": "REPLAY_VALID",
+      "event_count": 512,
+      "proof_hash_ok": 512,
+      "proof_hash_bad": 0,
+      "errors": 0
     }
   },
   "files": [
@@ -119,6 +129,7 @@
     "docs/PNVA_ARCHITECTURE.md",
     "docs/PNVA_CANONICAL_EVENT_BRIDGE.md",
     "docs/PNVA_POST_TEMPORAL_CIVILIZATION.md",
+    "docs/PNVA_REPLAY_VALIDATION.md",
     "docs/PNVA_ROBUSTNESS_EVOLUTION_REPORT_2026-05-05.md",
     "docs/PNVA_SOVEREIGNTY_PUBLICATION_SCALE.md",
     "docs/PNVA_SOVEREIGN_LOGS_ENTITIES_HEURISTICS.md",
@@ -148,6 +159,7 @@
     "reports/pnva-canonical-bridge-summary-2026-05-05.json",
     "reports/pnva-canonical-events-sample-2026-05-05.jsonl",
     "reports/pnva-entity-catalog-2026-05-05.json",
+    "reports/pnva-replay-validation-2026-05-05.json",
     "reports/pnva-sovereign-audit-2026-05-05.json",
     "robots.txt",
     "schemas/pnva-entity.schema.json",
@@ -155,6 +167,7 @@
     "sitemap.xml",
     "styles.css",
     "tools/pnva_canonical_bridge.py",
+    "tools/pnva_replay_validator.py",
     "tools/pnva_sovereign_audit.py",
     "tools/sanitize_proofs.py",
     "veonic-model.html"

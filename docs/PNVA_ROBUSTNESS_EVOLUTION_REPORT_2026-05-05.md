@@ -35,12 +35,15 @@ schemas/pnva-event.schema.json
 schemas/pnva-entity.schema.json
 docs/PNVA_SOVEREIGN_LOGS_ENTITIES_HEURISTICS.md
 docs/PNVA_CANONICAL_EVENT_BRIDGE.md
+docs/PNVA_REPLAY_VALIDATION.md
 tools/pnva_sovereign_audit.py
 tools/pnva_canonical_bridge.py
+tools/pnva_replay_validator.py
 reports/pnva-sovereign-audit-2026-05-05.json
 reports/pnva-canonical-events-sample-2026-05-05.jsonl
 reports/pnva-entity-catalog-2026-05-05.json
 reports/pnva-canonical-bridge-summary-2026-05-05.json
+reports/pnva-replay-validation-2026-05-05.json
 ```
 
 ## Technical Diagnosis
@@ -148,6 +151,26 @@ dominant risk flags: RESIZE_BATCH_PRESSURE, THERMAL_PRESSURE, VEONIC_TRACE
 
 This converts old lab evidence into a stable event contract without publishing raw local logs.
 
+### 5. Replay validation
+
+The canonical sequence can now be replay-validated.
+
+Current replay result:
+
+```text
+classification: REPLAY_VALID
+event_count: 512
+unique_event_ids: 512
+chain_count: 14
+proof_hash_ok: 512
+proof_hash_bad: 0
+guard_pass_ok: 35
+guard_block_ok: 33
+errors: 0
+```
+
+This means the public sample is not only formatted. It is internally checkable.
+
 ## Next Engineering Recommendations
 
 1. Add schema version to every new JSONL event.
@@ -159,6 +182,7 @@ This converts old lab evidence into a stable event contract without publishing r
 7. Add rollback reference to every H3/H4 heuristic action.
 8. Use `tools/pnva_canonical_bridge.py` before publishing any future event sample.
 9. Compare future runtimes against `pnva.event.v1`, not against ad hoc log keys.
+10. Use `tools/pnva_replay_validator.py` to validate every canonical event sample before release.
 
 ## Sovereign Rule
 

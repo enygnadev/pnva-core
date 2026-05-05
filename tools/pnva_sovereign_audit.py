@@ -57,6 +57,12 @@ BRIDGE_FILES = [
     "reports/pnva-canonical-bridge-summary-2026-05-05.json",
 ]
 
+REPLAY_FILES = [
+    "tools/pnva_replay_validator.py",
+    "reports/pnva-replay-validation-2026-05-05.json",
+    "docs/PNVA_REPLAY_VALIDATION.md",
+]
+
 LOCAL_LOG_CANDIDATES = [
     Path.home() / ".local" / "state" / "miniggpueny" / "pnva_decisions.jsonl",
     Path.home() / ".local" / "state" / "miniggpueny" / "pnva_causal_events.jsonl",
@@ -253,6 +259,36 @@ def audit_canonical_bridge(repo: Path) -> dict[str, Any]:
     }
 
 
+def audit_replay_validation(repo: Path) -> dict[str, Any]:
+    missing = [rel for rel in REPLAY_FILES if not (repo / rel).exists()]
+    report_path = repo / "reports" / "pnva-replay-validation-2026-05-05.json"
+    if not report_path.exists():
+        return {
+            "replay_ok": False,
+            "missing": missing,
+            "event_count": 0,
+            "proof_hash_ok": 0,
+            "proof_hash_bad": 0,
+            "errors": ["missing replay report"],
+        }
+    data = _read_json(report_path)
+    summary = data.get("summary", {}) if isinstance(data, dict) else {}
+    errors = data.get("errors", []) if isinstance(data, dict) else ["invalid replay report"]
+    return {
+        "replay_ok": not missing and data.get("pass") is True and not errors,
+        "missing": missing,
+        "classification": data.get("classification"),
+        "event_count": int(summary.get("event_count", 0)),
+        "chain_count": int(summary.get("chain_count", 0)),
+        "proof_hash_ok": int(summary.get("proof_hash_ok", 0)),
+        "proof_hash_bad": int(summary.get("proof_hash_bad", 0)),
+        "guard_pass_ok": int(summary.get("guard_pass_ok", 0)),
+        "guard_block_ok": int(summary.get("guard_block_ok", 0)),
+        "warning_count": len(data.get("warnings", [])) if isinstance(data, dict) else 0,
+        "errors": errors,
+    }
+
+
 def sample_jsonl(path: Path, *, max_lines: int = 50000) -> dict[str, Any]:
     events: Counter[str] = Counter()
     decisions: Counter[str] = Counter()
@@ -438,7 +474,9 @@ def score_report(report: dict[str, Any]) -> dict[str, Any]:
     if report["sovereignty"].get("docs_ok"):
         scores["log_contract"] += 5
     if report.get("canonical_bridge", {}).get("bridge_ok"):
-        scores["actionability"] += 10
+        scores["actionability"] += 5
+    if report.get("replay_validation", {}).get("replay_ok"):
+        scores["actionability"] += 5
 
     local = report["local_logs"]
     if local.get("mode") == "strict_public":
@@ -490,6 +528,7 @@ def build_report(repo: Path, *, strict_public: bool = False) -> dict[str, Any]:
         "discovery": audit_discovery(repo),
         "contract": audit_contract(repo),
         "canonical_bridge": audit_canonical_bridge(repo),
+        "replay_validation": audit_replay_validation(repo),
         "local_logs": audit_local_logs(strict_public),
         "sovereignty": audit_sovereignty(repo),
         "recommendations": [

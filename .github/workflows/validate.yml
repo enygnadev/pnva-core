@@ -37,5 +37,7 @@ jobs:
           test -s /tmp/pnva-events.jsonl
           python3 -m json.tool /tmp/pnva-entities.json >/dev/null
           python3 -m json.tool /tmp/pnva-bridge-summary.json >/dev/null
+      - name: Run replay validator
+        run: python3 tools/pnva_replay_validator.py --events reports/pnva-canonical-events-sample-2026-05-05.jsonl --entity-catalog reports/pnva-entity-catalog-2026-05-05.json >/tmp/pnva-replay-validation.json
       - name: Check release checksums
         run: sha256sum -c SHA256SUMS.txt

@@ -1,0 +1,205 @@
+{
+  "author": "Gustavo de Aguiar Martins",
+  "classification": "REPLAY_VALID",
+  "entity_catalog_ref": "reports/pnva-entity-catalog-2026-05-05.json",
+  "errors": [],
+  "events_ref": "reports/pnva-canonical-events-sample-2026-05-05.jsonl",
+  "generated_at": "2026-05-05T04:25:24Z",
+  "interpretation": {
+    "no_tick_meaning": "The canonical sequence can be replay-validated without rewriting runtime history.",
+    "proof_meaning": "Each event proof hash is deterministic over sanitized canonical content.",
+    "warning_policy": "Timestamp disorder is a warning in sampled multi-source logs unless strict ordering is requested."
+  },
+  "pass": true,
+  "project": "PNVA-Core",
+  "schema_version": "pnva.replay_validation.v1",
+  "strict_order": false,
+  "summary": {
+    "chain_count": 14,
+    "chain_timestamp_disorder": 1,
+    "event_count": 512,
+    "global_timestamp_disorder": 1,
+    "guard_block_ok": 33,
+    "guard_pass_ok": 35,
+    "largest_chains": [
+      [
+        "chain_021c088f7853",
+        128
+      ],
+      [
+        "chain_9ce61292fa5a",
+        71
+      ],
+      [
+        "chain_08fb2e218d52",
+        64
+      ],
+      [
+        "chain_482433f85efe",
+        64
+      ],
+      [
+        "chain_92287533f69d",
+        52
+      ],
+      [
+        "chain_1988457c3d12",
+        29
+      ],
+      [
+        "chain_8bfdbf9faf43",
+        23
+      ],
+      [
+        "chain_6709c2ff5904",
+        20
+      ]
+    ],
+    "proof_hash_bad": 0,
+    "proof_hash_ok": 512,
+    "relation_count": 68,
+    "risk_flags": [
+      [
+        "RESIZE_BATCH_PRESSURE",
+        176
+      ],
+      [
+        "THERMAL_PRESSURE",
+        138
+      ],
+      [
+        "VEONIC_TRACE",
+        128
+      ]
+    ],
+    "top_actions": [
+      [
+        "RESIZE_BATCH",
+        176
+      ],
+      [
+        "pnva_engine_evaluated",
+        78
+      ],
+      [
+        "EXECUTE",
+        42
+      ],
+      [
+        "assigned",
+        36
+      ],
+      [
+        "ETEV_GUARD_PASS",
+        35
+      ],
+      [
+        "ETEV_GUARD_BLOCK",
+        33
+      ],
+      [
+        "entity_range_assigned",
+        22
+      ],
+      [
+        "kernel_launched",
+        18
+      ],
+      [
+        "kernel_completed",
+        17
+      ],
+      [
+        "runtime_snapshot",
+        10
+      ],
+      [
+        "scan_ranges=2",
+        10
+      ],
+      [
+        "SWITCH_INTENSITY",
+        9
+      ]
+    ],
+    "top_decision_kinds": [
+      [
+        "collapse",
+        266
+      ],
+      [
+        "observe",
+        213
+      ],
+      [
+        "block",
+        33
+      ]
+    ],
+    "top_event_types": [
+      [
+        "range_plan_built",
+        123
+      ],
+      [
+        "pnva_engine_evaluated",
+        78
+      ],
+      [
+        "pnva_decision",
+        53
+      ],
+      [
+        "range_ledger",
+        38
+      ],
+      [
+        "ETEV_GUARD_PASS",
+        35
+      ],
+      [
+        "cuda_slot_scan",
+        35
+      ],
+      [
+        "ETEV_GUARD_BLOCK",
+        33
+      ],
+      [
+        "entity_range_assigned",
+        22
+      ],
+      [
+        "network_state_changed",
+        19
+      ],
+      [
+        "kernel_launched",
+        18
+      ],
+      [
+        "kernel_completed",
+        17
+      ],
+      [
+        "runtime_status",
+        15
+      ]
+    ],
+    "unique_event_ids": 512
+  },
+  "warnings": [
+    {
+      "code": "GLOBAL_TIMESTAMP_DISORDER",
+      "event_id": "evt_d5de6f41_000001_6fae5dcf",
+      "line": 257,
+      "timestamp": "2026-05-03T03:32:07Z"
+    },
+    {
+      "chain_id": "chain_db1f2986d74b",
+      "code": "CHAIN_TIMESTAMP_DISORDER",
+      "event_id": "evt_d5de6f41_000009_81d483e2",
+      "timestamp": "2026-05-03T03:34:37Z"
+    }
+  ]
+}
