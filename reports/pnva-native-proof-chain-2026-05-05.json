@@ -1,0 +1,95 @@
+{
+  "author": "Gustavo de Aguiar Martins",
+  "classification": "PROOF_CHAIN_SEALED",
+  "errors": [],
+  "events_ref": "reports/pnva-native-events-demo-2026-05-05.jsonl",
+  "generated_at": "2026-05-05T04:59:16Z",
+  "interpretation": {
+    "checkpoint_policy": "Checkpoints provide compact anchors without republishing every event hash.",
+    "sovereignty": "The sequence is sealed externally so old evidence remains intact and new evidence can be independently resealed.",
+    "tamper_evidence": "Any event content, event order or proof mutation changes the final_chain_hash."
+  },
+  "pass": true,
+  "project": "PNVA-Core",
+  "schema_version": "pnva.proof_chain.v1",
+  "seal": {
+    "checkpoint_interval": 64,
+    "checkpoints": [
+      {
+        "chain_hash": "3a59aef36425ea76c5c0bbb58f3beb4be9747ed23b7512589dac278fae4302ad",
+        "event_hash": "d8d00a028bd634a2165099b616b9475a75c6166d6e1b18d124f2c0c904052b8a",
+        "event_id": "evt_native_000001_8d171d93e6eb",
+        "index": 1
+      },
+      {
+        "chain_hash": "00e695228ab6b96b65e493d4481572b77e2cf8e298b6cd78e16ebac2a9aaa5fc",
+        "event_hash": "9ff544ffc505ca0b40504305cc0ac121005e87c8e5f02bb7b72c5e6c3044b0bb",
+        "event_id": "evt_native_000007_557adb9ac98a",
+        "index": 7
+      }
+    ],
+    "decision_mix": [
+      [
+        "observe",
+        2
+      ],
+      [
+        "collapse",
+        2
+      ],
+      [
+        "block",
+        2
+      ],
+      [
+        "prove",
+        1
+      ]
+    ],
+    "duplicate_event_ids": [],
+    "event_count": 7,
+    "final_chain_hash": "00e695228ab6b96b65e493d4481572b77e2cf8e298b6cd78e16ebac2a9aaa5fc",
+    "first_event_hash": "d8d00a028bd634a2165099b616b9475a75c6166d6e1b18d124f2c0c904052b8a",
+    "genesis_hash": "39a7421f83a7c8efa66b730e077fdf327e7d0079980bd29bd531d2876888a6f7",
+    "last_event_hash": "9ff544ffc505ca0b40504305cc0ac121005e87c8e5f02bb7b72c5e6c3044b0bb",
+    "proof_bad": 0,
+    "proof_ok": 7,
+    "source_formats": [
+      [
+        "native_pnva_event_v1",
+        7
+      ]
+    ],
+    "top_event_types": [
+      [
+        "FIELD_OBSERVED",
+        1
+      ],
+      [
+        "ETEV_GUARD_PASS",
+        1
+      ],
+      [
+        "RUNTIME_COLLAPSE",
+        1
+      ],
+      [
+        "THERMAL_PRESSURE",
+        1
+      ],
+      [
+        "ETEV_GUARD_BLOCK",
+        1
+      ],
+      [
+        "STALE_JOB_PRESSURE",
+        1
+      ],
+      [
+        "PROOF_SEALED",
+        1
+      ]
+    ],
+    "unique_event_ids": 7
+  }
+}

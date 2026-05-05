@@ -1,0 +1,153 @@
+{
+  "author": "Gustavo de Aguiar Martins",
+  "classification": "PROOF_CHAIN_SEALED",
+  "errors": [],
+  "events_ref": "reports/pnva-canonical-events-sample-2026-05-05.jsonl",
+  "generated_at": "2026-05-05T04:59:16Z",
+  "interpretation": {
+    "checkpoint_policy": "Checkpoints provide compact anchors without republishing every event hash.",
+    "sovereignty": "The sequence is sealed externally so old evidence remains intact and new evidence can be independently resealed.",
+    "tamper_evidence": "Any event content, event order or proof mutation changes the final_chain_hash."
+  },
+  "pass": true,
+  "project": "PNVA-Core",
+  "schema_version": "pnva.proof_chain.v1",
+  "seal": {
+    "checkpoint_interval": 64,
+    "checkpoints": [
+      {
+        "chain_hash": "d60d97e91cd42a360da2c9894b9169212d32b28b08169ab89fce60b298b0d57f",
+        "event_hash": "f4bbd6ff3ae64437f9650a07294a553abca651b44365e654f0e42c9f48e9c0ea",
+        "event_id": "evt_a48d0c7f_000001_a85b608d",
+        "index": 1
+      },
+      {
+        "chain_hash": "e32deec9f749a8c0c0040f3f87551427af533649678dd0b73a3241732dd89634",
+        "event_hash": "bd610e0ff125240cba4f5e73089fde520222d19dbc899906ef793f52ce7f75b1",
+        "event_id": "evt_a48d0c7f_000064_4746a561",
+        "index": 64
+      },
+      {
+        "chain_hash": "ad62aea3cce9abce876bc59ff30f258b34cd46fae6d3966b0b793cd9c670d79a",
+        "event_hash": "44ea919e492157f5cdd15b75d303fc02116594c1729c430398dbf6eb20b808d3",
+        "event_id": "evt_a48d0c7f_000128_37cd2093",
+        "index": 128
+      },
+      {
+        "chain_hash": "3aab98fd42483da805fac748820fb36ebb56a78f9a05bc0409ea29dfc61eb27c",
+        "event_hash": "63bb728a18f9efcecf03626f27346b767003aae1ac670ffc404155058df085f9",
+        "event_id": "evt_c1c0564a_000064_6b4a830b",
+        "index": 192
+      },
+      {
+        "chain_hash": "bc4eef223e0bb1810f0a8c0a07e662c8cbc21d966b6eb6bbb98b74167fb89ad4",
+        "event_hash": "e0afb27f10ad5663104bdfe41836429247347904be4809ee7a5dff120608bb40",
+        "event_id": "evt_c1c0564a_000128_7bcb2fe9",
+        "index": 256
+      },
+      {
+        "chain_hash": "549727b8d5384b44060e048bff3e682635296d80b6c24d4f3cb5b8b52a4ba7ff",
+        "event_hash": "85e06a73ee94073cc9aed44596e43628c84a1a2daa13b70cfef4ac7c4ca0d26e",
+        "event_id": "evt_d5de6f41_000064_9ecae8e3",
+        "index": 320
+      },
+      {
+        "chain_hash": "1a7c621a6c364e8d71f81dedbca62fed910b1ed005e6a1a9be48fc9514969c25",
+        "event_hash": "546177605bdbe845fb6adb8296b2bef64e9c5e78bcb8f4d47102d2d0a6c94f9a",
+        "event_id": "evt_d5de6f41_000128_6f95b5e5",
+        "index": 384
+      },
+      {
+        "chain_hash": "e17a92f7ea7512b5b106e43b3f0fcbec2b6c7742a34abe163ade451783c07e7a",
+        "event_hash": "c2def47612503712eedeccabd0d55128483aa1d0233bf59b5dbf83844c081059",
+        "event_id": "evt_276e496e_000064_0112dbf6",
+        "index": 448
+      },
+      {
+        "chain_hash": "a3088ad4f8fc51655dc3944fe419c39e8b94770a4882f50c8281a0bd1064d4b7",
+        "event_hash": "83b4bc7cbae65394379619164ba62e70a0abdd068897c7aef7b97064b032d359",
+        "event_id": "evt_276e496e_000128_8ef8c56b",
+        "index": 512
+      }
+    ],
+    "decision_mix": [
+      [
+        "collapse",
+        266
+      ],
+      [
+        "observe",
+        213
+      ],
+      [
+        "block",
+        33
+      ]
+    ],
+    "duplicate_event_ids": [],
+    "event_count": 512,
+    "final_chain_hash": "a3088ad4f8fc51655dc3944fe419c39e8b94770a4882f50c8281a0bd1064d4b7",
+    "first_event_hash": "f4bbd6ff3ae64437f9650a07294a553abca651b44365e654f0e42c9f48e9c0ea",
+    "genesis_hash": "39a7421f83a7c8efa66b730e077fdf327e7d0079980bd29bd531d2876888a6f7",
+    "last_event_hash": "83b4bc7cbae65394379619164ba62e70a0abdd068897c7aef7b97064b032d359",
+    "proof_bad": 0,
+    "proof_ok": 512,
+    "source_formats": [
+      [
+        "legacy_jsonl",
+        512
+      ]
+    ],
+    "top_event_types": [
+      [
+        "range_plan_built",
+        123
+      ],
+      [
+        "pnva_engine_evaluated",
+        78
+      ],
+      [
+        "pnva_decision",
+        53
+      ],
+      [
+        "range_ledger",
+        38
+      ],
+      [
+        "ETEV_GUARD_PASS",
+        35
+      ],
+      [
+        "cuda_slot_scan",
+        35
+      ],
+      [
+        "ETEV_GUARD_BLOCK",
+        33
+      ],
+      [
+        "entity_range_assigned",
+        22
+      ],
+      [
+        "network_state_changed",
+        19
+      ],
+      [
+        "kernel_launched",
+        18
+      ],
+      [
+        "kernel_completed",
+        17
+      ],
+      [
+        "runtime_status",
+        15
+      ]
+    ],
+    "unique_event_ids": 512
+  }
+}

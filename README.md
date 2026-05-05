@@ -119,6 +119,7 @@ docs/
   PNVA_NO_TICK_INVARIANTS.md
   PNVA_NATIVE_EVENT_EMITTER.md
   PNVA_SOVEREIGN_POLICY_VALIDATION.md
+  PNVA_PROOF_CHAIN_SEALING.md
   PNVA_ROBUSTNESS_EVOLUTION_REPORT_2026-05-05.md
   VEON_MODEL_VALIDATION.md
   PNVA_POST_TEMPORAL_CIVILIZATION.md
@@ -152,6 +153,8 @@ reports/
   pnva-native-no-tick-invariants-2026-05-05.json
   pnva-sovereign-policy-2026-05-05.json
   pnva-native-sovereign-policy-2026-05-05.json
+  pnva-proof-chain-2026-05-05.json
+  pnva-native-proof-chain-2026-05-05.json
 
 release/
   final production closure note
@@ -165,6 +168,7 @@ tools/
   pnva_no_tick_invariant_analyzer.py
   pnva_native_event_emitter.py
   pnva_sovereign_policy_validator.py
+  pnva_proof_chain_sealer.py
 ```
 
 ## Public Launch
@@ -234,6 +238,7 @@ python3 tools/pnva_replay_validator.py --events reports/pnva-canonical-events-sa
 python3 tools/pnva_no_tick_invariant_analyzer.py --events reports/pnva-canonical-events-sample-2026-05-05.jsonl --entity-catalog reports/pnva-entity-catalog-2026-05-05.json --replay-report reports/pnva-replay-validation-2026-05-05.json >/tmp/pnva-no-tick-invariants.json
 python3 tools/pnva_native_event_emitter.py --events /tmp/pnva-native-events.jsonl --entity-catalog /tmp/pnva-native-entities.json --summary /tmp/pnva-native-summary.json
 python3 tools/pnva_sovereign_policy_validator.py --events reports/pnva-canonical-events-sample-2026-05-05.jsonl --entity-catalog reports/pnva-entity-catalog-2026-05-05.json >/tmp/pnva-sovereign-policy.json
+python3 tools/pnva_proof_chain_sealer.py --events reports/pnva-canonical-events-sample-2026-05-05.jsonl >/tmp/pnva-proof-chain.json
 ```
 
 ## Sovereign Robustness Layer
@@ -257,6 +262,8 @@ The no-tick invariant analyzer proves the stronger PNVA claim: execution and non
 The native event emitter shows the production direction: new PNVA runtimes can emit `pnva.event.v1` directly, before any legacy bridge is needed. The current native demo is `NATIVE_EMITTER_READY`, replay-valid and no-tick-invariant-valid.
 
 The sovereign policy validator checks heuristic authority. The canonical sample is `SOVEREIGN_POLICY_READY_WITH_LEGACY_WARNINGS`, preserving 35 low-authority legacy strong decisions as explicit warnings. The native sample is `SOVEREIGN_POLICY_READY` with zero warnings.
+
+The proof-chain sealer adds sequence-level tamper evidence. It seals canonical and native event order with final chain hashes, so content or ordering changes alter the public chain anchor.
 
 ## Citation
 

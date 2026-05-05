@@ -147,6 +147,19 @@
       "native_strong_decision_count": 5,
       "native_low_authority_legacy_count": 0,
       "errors": 0
+    },
+    "proof_chain_sealing": {
+      "status": "ADDED",
+      "tool": "tools/pnva_proof_chain_sealer.py",
+      "doc": "docs/PNVA_PROOF_CHAIN_SEALING.md",
+      "canonical_report": "reports/pnva-proof-chain-2026-05-05.json",
+      "native_report": "reports/pnva-native-proof-chain-2026-05-05.json",
+      "canonical_classification": "PROOF_CHAIN_SEALED",
+      "native_classification": "PROOF_CHAIN_SEALED",
+      "canonical_event_count": 512,
+      "native_event_count": 7,
+      "canonical_proof_bad": 0,
+      "native_proof_bad": 0
     }
   },
   "files": [
@@ -177,6 +190,7 @@
     "docs/PNVA_NATIVE_EVENT_EMITTER.md",
     "docs/PNVA_NO_TICK_INVARIANTS.md",
     "docs/PNVA_POST_TEMPORAL_CIVILIZATION.md",
+    "docs/PNVA_PROOF_CHAIN_SEALING.md",
     "docs/PNVA_REPLAY_VALIDATION.md",
     "docs/PNVA_ROBUSTNESS_EVOLUTION_REPORT_2026-05-05.md",
     "docs/PNVA_SOVEREIGNTY_PUBLICATION_SCALE.md",
@@ -212,9 +226,11 @@
     "reports/pnva-native-entity-catalog-demo-2026-05-05.json",
     "reports/pnva-native-events-demo-2026-05-05.jsonl",
     "reports/pnva-native-no-tick-invariants-2026-05-05.json",
+    "reports/pnva-native-proof-chain-2026-05-05.json",
     "reports/pnva-native-replay-validation-2026-05-05.json",
     "reports/pnva-native-sovereign-policy-2026-05-05.json",
     "reports/pnva-no-tick-invariants-2026-05-05.json",
+    "reports/pnva-proof-chain-2026-05-05.json",
     "reports/pnva-replay-validation-2026-05-05.json",
     "reports/pnva-sovereign-audit-2026-05-05.json",
     "reports/pnva-sovereign-policy-2026-05-05.json",
@@ -226,6 +242,7 @@
     "tools/pnva_canonical_bridge.py",
     "tools/pnva_native_event_emitter.py",
     "tools/pnva_no_tick_invariant_analyzer.py",
+    "tools/pnva_proof_chain_sealer.py",
     "tools/pnva_replay_validator.py",
     "tools/pnva_sovereign_audit.py",
     "tools/pnva_sovereign_policy_validator.py",

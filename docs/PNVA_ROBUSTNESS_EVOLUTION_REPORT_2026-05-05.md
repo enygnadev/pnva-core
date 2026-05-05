@@ -39,12 +39,14 @@ docs/PNVA_REPLAY_VALIDATION.md
 docs/PNVA_NO_TICK_INVARIANTS.md
 docs/PNVA_NATIVE_EVENT_EMITTER.md
 docs/PNVA_SOVEREIGN_POLICY_VALIDATION.md
+docs/PNVA_PROOF_CHAIN_SEALING.md
 tools/pnva_sovereign_audit.py
 tools/pnva_canonical_bridge.py
 tools/pnva_replay_validator.py
 tools/pnva_no_tick_invariant_analyzer.py
 tools/pnva_native_event_emitter.py
 tools/pnva_sovereign_policy_validator.py
+tools/pnva_proof_chain_sealer.py
 reports/pnva-sovereign-audit-2026-05-05.json
 reports/pnva-canonical-events-sample-2026-05-05.jsonl
 reports/pnva-entity-catalog-2026-05-05.json
@@ -58,6 +60,8 @@ reports/pnva-native-replay-validation-2026-05-05.json
 reports/pnva-native-no-tick-invariants-2026-05-05.json
 reports/pnva-sovereign-policy-2026-05-05.json
 reports/pnva-native-sovereign-policy-2026-05-05.json
+reports/pnva-proof-chain-2026-05-05.json
+reports/pnva-native-proof-chain-2026-05-05.json
 ```
 
 ## Technical Diagnosis
@@ -253,6 +257,32 @@ warnings: 0
 
 This is intentionally honest. The old sample remains valid but carries legacy warnings. The native emitter is the clean path forward.
 
+### 9. Proof-chain sealing
+
+The proof-chain sealer adds tamper evidence to event sequence order.
+
+Current canonical result:
+
+```text
+classification: PROOF_CHAIN_SEALED
+event_count: 512
+unique_event_ids: 512
+proof_bad: 0
+checkpoints: 9
+```
+
+Current native result:
+
+```text
+classification: PROOF_CHAIN_SEALED
+event_count: 7
+unique_event_ids: 7
+proof_bad: 0
+checkpoints: 2
+```
+
+This does not rewrite event history. It creates a public chain anchor where any content, proof or order mutation changes the final hash.
+
 ## Next Engineering Recommendations
 
 1. Add schema version to every new JSONL event.
@@ -268,6 +298,7 @@ This is intentionally honest. The old sample remains valid but carries legacy wa
 11. Use `tools/pnva_no_tick_invariant_analyzer.py` to prove causal suppression, entity coverage and heuristic visibility after replay.
 12. Use `tools/pnva_native_event_emitter.py` as the reference pattern for new runtime emitters.
 13. Use `tools/pnva_sovereign_policy_validator.py` to enforce H2/H3 authority for future strong decisions.
+14. Use `tools/pnva_proof_chain_sealer.py` to seal event sequence order before publication.
 
 ## Sovereign Rule
 

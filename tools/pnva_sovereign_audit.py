@@ -45,6 +45,7 @@ PUBLIC_DOCS = [
     "docs/PNVA_NO_TICK_INVARIANTS.md",
     "docs/PNVA_NATIVE_EVENT_EMITTER.md",
     "docs/PNVA_SOVEREIGN_POLICY_VALIDATION.md",
+    "docs/PNVA_PROOF_CHAIN_SEALING.md",
     "paper/PNVA_CORE_OPEN_RESEARCH_PAPER.md",
 ]
 
@@ -87,6 +88,13 @@ SOVEREIGN_POLICY_FILES = [
     "docs/PNVA_SOVEREIGN_POLICY_VALIDATION.md",
     "reports/pnva-sovereign-policy-2026-05-05.json",
     "reports/pnva-native-sovereign-policy-2026-05-05.json",
+]
+
+PROOF_CHAIN_FILES = [
+    "tools/pnva_proof_chain_sealer.py",
+    "docs/PNVA_PROOF_CHAIN_SEALING.md",
+    "reports/pnva-proof-chain-2026-05-05.json",
+    "reports/pnva-native-proof-chain-2026-05-05.json",
 ]
 
 LOCAL_LOG_CANDIDATES = [
@@ -416,6 +424,42 @@ def audit_sovereign_policy(repo: Path) -> dict[str, Any]:
     }
 
 
+def audit_proof_chain(repo: Path) -> dict[str, Any]:
+    missing = [rel for rel in PROOF_CHAIN_FILES if not (repo / rel).exists()]
+    canonical_path = repo / "reports" / "pnva-proof-chain-2026-05-05.json"
+    native_path = repo / "reports" / "pnva-native-proof-chain-2026-05-05.json"
+    if not canonical_path.exists() or not native_path.exists():
+        return {
+            "chain_ok": False,
+            "missing": missing,
+            "classification": "PROOF_CHAIN_MISSING",
+            "errors": ["missing proof chain reports"],
+        }
+    canonical = _read_json(canonical_path)
+    native = _read_json(native_path)
+    canonical_seal = canonical.get("seal", {}) if isinstance(canonical, dict) else {}
+    native_seal = native.get("seal", {}) if isinstance(native, dict) else {}
+    canonical_errors = canonical.get("errors", []) if isinstance(canonical, dict) else ["invalid canonical proof chain report"]
+    native_errors = native.get("errors", []) if isinstance(native, dict) else ["invalid native proof chain report"]
+    return {
+        "chain_ok": not missing and canonical.get("pass") is True and native.get("pass") is True and not canonical_errors and not native_errors,
+        "missing": missing,
+        "classification": canonical.get("classification"),
+        "native_classification": native.get("classification"),
+        "canonical_event_count": int(canonical_seal.get("event_count", 0)),
+        "canonical_unique_event_ids": int(canonical_seal.get("unique_event_ids", 0)),
+        "canonical_proof_bad": int(canonical_seal.get("proof_bad", 0)),
+        "canonical_final_chain_hash": canonical_seal.get("final_chain_hash"),
+        "canonical_checkpoint_count": len(canonical_seal.get("checkpoints", [])) if isinstance(canonical_seal.get("checkpoints", []), list) else 0,
+        "native_event_count": int(native_seal.get("event_count", 0)),
+        "native_unique_event_ids": int(native_seal.get("unique_event_ids", 0)),
+        "native_proof_bad": int(native_seal.get("proof_bad", 0)),
+        "native_final_chain_hash": native_seal.get("final_chain_hash"),
+        "native_checkpoint_count": len(native_seal.get("checkpoints", [])) if isinstance(native_seal.get("checkpoints", []), list) else 0,
+        "errors": canonical_errors + native_errors,
+    }
+
+
 def sample_jsonl(path: Path, *, max_lines: int = 50000) -> dict[str, Any]:
     events: Counter[str] = Counter()
     decisions: Counter[str] = Counter()
@@ -609,6 +653,8 @@ def score_report(report: dict[str, Any]) -> dict[str, Any]:
     if report.get("native_emitter", {}).get("native_ok"):
         scores["actionability"] += 1
     if report.get("sovereign_policy", {}).get("policy_ok"):
+        scores["actionability"] += 0
+    if report.get("proof_chain", {}).get("chain_ok"):
         scores["actionability"] += 1
 
     local = report["local_logs"]
@@ -665,6 +711,7 @@ def build_report(repo: Path, *, strict_public: bool = False) -> dict[str, Any]:
         "no_tick_invariants": audit_no_tick_invariants(repo),
         "native_emitter": audit_native_emitter(repo),
         "sovereign_policy": audit_sovereign_policy(repo),
+        "proof_chain": audit_proof_chain(repo),
         "local_logs": audit_local_logs(strict_public),
         "sovereignty": audit_sovereignty(repo),
         "recommendations": [
@@ -673,6 +720,7 @@ def build_report(repo: Path, *, strict_public: bool = False) -> dict[str, Any]:
             "Prefer native pnva.event.v1 emission for new runtimes; use the bridge only for legacy evidence.",
             "Run no-tick invariant analysis after replay validation to prove causal suppression, not only execution.",
             "Run sovereign policy validation to separate production-grade authority from legacy-tolerated authority.",
+            "Seal canonical and native event sequences with proof-chain hashes before public release.",
             "Keep raw local logs private and publish only sanitized proof summaries.",
             "Track thermal pressure provenance when thermal pressure is high but sensor temperature/power are unavailable.",
             "Treat high RESIZE_BATCH ratio as pressure intelligence, not as a proof failure by itself.",

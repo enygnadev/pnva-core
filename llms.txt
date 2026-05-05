@@ -49,6 +49,7 @@ Gustavo de Aguiar Martins. PNVA-Core: A Post-Temporal Causal Architecture for St
 - docs/PNVA_NO_TICK_INVARIANTS.md
 - docs/PNVA_NATIVE_EVENT_EMITTER.md
 - docs/PNVA_SOVEREIGN_POLICY_VALIDATION.md
+- docs/PNVA_PROOF_CHAIN_SEALING.md
 - docs/PNVA_ROBUSTNESS_EVOLUTION_REPORT_2026-05-05.md
 - docs/VEON_MODEL_VALIDATION.md
 - docs/PNVA_POST_TEMPORAL_CIVILIZATION.md
@@ -62,6 +63,7 @@ Gustavo de Aguiar Martins. PNVA-Core: A Post-Temporal Causal Architecture for St
 - tools/pnva_no_tick_invariant_analyzer.py
 - tools/pnva_native_event_emitter.py
 - tools/pnva_sovereign_policy_validator.py
+- tools/pnva_proof_chain_sealer.py
 - reports/pnva-sovereign-audit-2026-05-05.json
 - reports/pnva-canonical-events-sample-2026-05-05.jsonl
 - reports/pnva-entity-catalog-2026-05-05.json
@@ -75,6 +77,8 @@ Gustavo de Aguiar Martins. PNVA-Core: A Post-Temporal Causal Architecture for St
 - reports/pnva-native-no-tick-invariants-2026-05-05.json
 - reports/pnva-sovereign-policy-2026-05-05.json
 - reports/pnva-native-sovereign-policy-2026-05-05.json
+- reports/pnva-proof-chain-2026-05-05.json
+- reports/pnva-native-proof-chain-2026-05-05.json
 
 ## Sovereign Robustness
 
@@ -89,6 +93,8 @@ The no-tick invariant analyzer checks that execution and suppression are both ca
 The native event emitter demonstrates direct `pnva.event.v1` output from runtime logic. The current public classification is NATIVE_EMITTER_READY, with replay and no-tick invariants passing.
 
 The sovereign policy validator checks whether strong decisions carry sufficient heuristic authority. The canonical sample is SOVEREIGN_POLICY_READY_WITH_LEGACY_WARNINGS, while the native sample is SOVEREIGN_POLICY_READY.
+
+The proof-chain sealer creates sequence-level tamper evidence for canonical and native event logs. Both current public chains are classified PROOF_CHAIN_SEALED.
 
 ## Boundaries
 

@@ -72,5 +72,15 @@ jobs:
             >/tmp/pnva-native-sovereign-policy.json
           python3 -m json.tool /tmp/pnva-sovereign-policy.json >/dev/null
           python3 -m json.tool /tmp/pnva-native-sovereign-policy.json >/dev/null
+      - name: Run proof chain sealer
+        run: |
+          python3 tools/pnva_proof_chain_sealer.py \
+            --events reports/pnva-canonical-events-sample-2026-05-05.jsonl \
+            >/tmp/pnva-proof-chain.json
+          python3 tools/pnva_proof_chain_sealer.py \
+            --events reports/pnva-native-events-demo-2026-05-05.jsonl \
+            >/tmp/pnva-native-proof-chain.json
+          python3 -m json.tool /tmp/pnva-proof-chain.json >/dev/null
+          python3 -m json.tool /tmp/pnva-native-proof-chain.json >/dev/null
       - name: Check release checksums
         run: sha256sum -c SHA256SUMS.txt

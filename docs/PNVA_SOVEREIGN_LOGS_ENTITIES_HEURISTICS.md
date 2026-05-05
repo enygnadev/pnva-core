@@ -330,6 +330,43 @@ SOVEREIGN_POLICY_READY
 
 This creates a migration path: preserve old evidence honestly, but demand stronger authority from every new runtime event.
 
+## 12. Proof-Chain Sealing
+
+After replay, invariants and policy validation, seal the event sequence:
+
+```text
+pnva.event.v1 sequence -> proof chain -> final_chain_hash
+```
+
+The proof chain computes:
+
+```text
+event_hash = sha256(canonical_event_json)
+chain_hash = sha256(index, previous_chain_hash, event_id, event_hash)
+```
+
+This makes event order externally auditable. If one event is changed, removed, inserted or reordered, the final chain hash changes.
+
+Current canonical seal:
+
+```text
+PROOF_CHAIN_SEALED
+512 events
+0 bad proofs
+```
+
+Current native seal:
+
+```text
+PROOF_CHAIN_SEALED
+7 events
+0 bad proofs
+```
+
+Production interpretation:
+
+PNVA evidence should not only be valid event by event. It should be sealed as a sequence.
+
 ## 9. Public Safety
 
 Public repositories should expose:
