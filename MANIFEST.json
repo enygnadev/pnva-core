@@ -177,6 +177,17 @@
       "native_observed_entity_count": 6,
       "native_relation_edge_count": 2,
       "native_chain_edge_count": 6
+    },
+    "sovereign_evidence_attestation": {
+      "status": "ADDED",
+      "tool": "tools/pnva_evidence_attestor.py",
+      "doc": "docs/PNVA_SOVEREIGN_EVIDENCE_ATTESTATION.md",
+      "report": "reports/pnva-sovereign-evidence-attestation-2026-05-05.json",
+      "classification": "PNVA_SOVEREIGN_EVIDENCE_ATTESTED",
+      "artifact_count": 17,
+      "failure_count": 0,
+      "evidence_hash": "sha256:15d15eea32f5dbc98a37ae4e1dfe664583355dcbc69be5e0ab5f5d40c96ff4d2",
+      "hash_policy": "sovereign audit consumes this attestation and is excluded from the attestation seed to avoid circular hashing"
     }
   },
   "files": [
@@ -212,6 +223,7 @@
     "docs/PNVA_REPLAY_VALIDATION.md",
     "docs/PNVA_ROBUSTNESS_EVOLUTION_REPORT_2026-05-05.md",
     "docs/PNVA_SOVEREIGNTY_PUBLICATION_SCALE.md",
+    "docs/PNVA_SOVEREIGN_EVIDENCE_ATTESTATION.md",
     "docs/PNVA_SOVEREIGN_LOGS_ENTITIES_HEURISTICS.md",
     "docs/PNVA_SOVEREIGN_POLICY_VALIDATION.md",
     "docs/PROOF_MATRIX.md",
@@ -253,6 +265,7 @@
     "reports/pnva-proof-chain-2026-05-05.json",
     "reports/pnva-replay-validation-2026-05-05.json",
     "reports/pnva-sovereign-audit-2026-05-05.json",
+    "reports/pnva-sovereign-evidence-attestation-2026-05-05.json",
     "reports/pnva-sovereign-policy-2026-05-05.json",
     "robots.txt",
     "schemas/pnva-entity.schema.json",
@@ -261,6 +274,7 @@
     "styles.css",
     "tools/pnva_canonical_bridge.py",
     "tools/pnva_causal_graph_auditor.py",
+    "tools/pnva_evidence_attestor.py",
     "tools/pnva_native_event_emitter.py",
     "tools/pnva_no_tick_invariant_analyzer.py",
     "tools/pnva_proof_chain_sealer.py",

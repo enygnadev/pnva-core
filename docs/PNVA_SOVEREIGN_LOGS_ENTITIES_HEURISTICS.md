@@ -410,6 +410,43 @@ Production interpretation:
 
 PNVA should expose not only decisions, but the topology of the field that made those decisions possible.
 
+## 14. Sovereign Evidence Attestation
+
+After all validators run, bind the evidence package:
+
+```text
+proofs + events + replay + invariants + policy + chains + graphs -> evidence_hash
+```
+
+The attestation lists each tracked artifact with:
+
+```text
+path
+sha256
+classification
+pass flag
+artifact counters
+```
+
+Current classification:
+
+```text
+PNVA_SOVEREIGN_EVIDENCE_ATTESTED
+```
+
+Current package:
+
+```text
+17 tracked artifacts
+0 failures
+```
+
+Production interpretation:
+
+PNVA evidence should be cited by a single aggregate hash, while still preserving every underlying proof file for independent review.
+
+The sovereign audit is not included inside that aggregate hash because it consumes the attestation. This avoids circular hashing.
+
 ## 9. Public Safety
 
 Public repositories should expose:

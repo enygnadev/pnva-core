@@ -47,6 +47,7 @@ PUBLIC_DOCS = [
     "docs/PNVA_SOVEREIGN_POLICY_VALIDATION.md",
     "docs/PNVA_PROOF_CHAIN_SEALING.md",
     "docs/PNVA_CAUSAL_GRAPH_AUDIT.md",
+    "docs/PNVA_SOVEREIGN_EVIDENCE_ATTESTATION.md",
     "paper/PNVA_CORE_OPEN_RESEARCH_PAPER.md",
 ]
 
@@ -103,6 +104,12 @@ CAUSAL_GRAPH_FILES = [
     "docs/PNVA_CAUSAL_GRAPH_AUDIT.md",
     "reports/pnva-causal-graph-2026-05-05.json",
     "reports/pnva-native-causal-graph-2026-05-05.json",
+]
+
+EVIDENCE_ATTESTATION_FILES = [
+    "tools/pnva_evidence_attestor.py",
+    "docs/PNVA_SOVEREIGN_EVIDENCE_ATTESTATION.md",
+    "reports/pnva-sovereign-evidence-attestation-2026-05-05.json",
 ]
 
 LOCAL_LOG_CANDIDATES = [
@@ -508,6 +515,30 @@ def audit_causal_graph(repo: Path) -> dict[str, Any]:
     }
 
 
+def audit_evidence_attestation(repo: Path) -> dict[str, Any]:
+    missing = [rel for rel in EVIDENCE_ATTESTATION_FILES if not (repo / rel).exists()]
+    report_path = repo / "reports" / "pnva-sovereign-evidence-attestation-2026-05-05.json"
+    if not report_path.exists():
+        return {
+            "attestation_ok": False,
+            "missing": missing,
+            "classification": "EVIDENCE_ATTESTATION_MISSING",
+            "errors": ["missing evidence attestation report"],
+        }
+    data = _read_json(report_path)
+    artifacts = data.get("artifacts", []) if isinstance(data, dict) else []
+    return {
+        "attestation_ok": not missing and data.get("pass") is True and data.get("classification") == "PNVA_SOVEREIGN_EVIDENCE_ATTESTED",
+        "missing": missing,
+        "classification": data.get("classification"),
+        "artifact_count": int(data.get("artifact_count", 0)),
+        "failure_count": int(data.get("failure_count", 0)),
+        "evidence_hash": data.get("evidence_hash"),
+        "tracked_artifacts": len(artifacts) if isinstance(artifacts, list) else 0,
+        "errors": [] if isinstance(data, dict) and data.get("pass") is True else ["attestation failed"],
+    }
+
+
 def sample_jsonl(path: Path, *, max_lines: int = 50000) -> dict[str, Any]:
     events: Counter[str] = Counter()
     decisions: Counter[str] = Counter()
@@ -705,6 +736,8 @@ def score_report(report: dict[str, Any]) -> dict[str, Any]:
     if report.get("proof_chain", {}).get("chain_ok"):
         scores["actionability"] += 0
     if report.get("causal_graph", {}).get("graph_ok"):
+        scores["actionability"] += 0
+    if report.get("evidence_attestation", {}).get("attestation_ok"):
         scores["actionability"] += 1
 
     local = report["local_logs"]
@@ -763,6 +796,7 @@ def build_report(repo: Path, *, strict_public: bool = False) -> dict[str, Any]:
         "sovereign_policy": audit_sovereign_policy(repo),
         "proof_chain": audit_proof_chain(repo),
         "causal_graph": audit_causal_graph(repo),
+        "evidence_attestation": audit_evidence_attestation(repo),
         "local_logs": audit_local_logs(strict_public),
         "sovereignty": audit_sovereignty(repo),
         "recommendations": [
@@ -773,6 +807,7 @@ def build_report(repo: Path, *, strict_public: bool = False) -> dict[str, Any]:
             "Run sovereign policy validation to separate production-grade authority from legacy-tolerated authority.",
             "Seal canonical and native event sequences with proof-chain hashes before public release.",
             "Audit causal graphs so entity topology is visible, not implicit.",
+            "Publish one sovereign evidence attestation hash with every evidence release.",
             "Keep raw local logs private and publish only sanitized proof summaries.",
             "Track thermal pressure provenance when thermal pressure is high but sensor temperature/power are unavailable.",
             "Treat high RESIZE_BATCH ratio as pressure intelligence, not as a proof failure by itself.",

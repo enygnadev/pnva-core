@@ -94,5 +94,11 @@ jobs:
             >/tmp/pnva-native-causal-graph.json
           python3 -m json.tool /tmp/pnva-causal-graph.json >/dev/null
           python3 -m json.tool /tmp/pnva-native-causal-graph.json >/dev/null
+      - name: Run evidence attestor
+        run: |
+          python3 tools/pnva_evidence_attestor.py \
+            --write /tmp/pnva-evidence-attestation.json \
+            >/dev/null
+          python3 -m json.tool /tmp/pnva-evidence-attestation.json >/dev/null
       - name: Check release checksums
         run: sha256sum -c SHA256SUMS.txt

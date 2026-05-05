@@ -41,6 +41,7 @@ docs/PNVA_NATIVE_EVENT_EMITTER.md
 docs/PNVA_SOVEREIGN_POLICY_VALIDATION.md
 docs/PNVA_PROOF_CHAIN_SEALING.md
 docs/PNVA_CAUSAL_GRAPH_AUDIT.md
+docs/PNVA_SOVEREIGN_EVIDENCE_ATTESTATION.md
 tools/pnva_sovereign_audit.py
 tools/pnva_canonical_bridge.py
 tools/pnva_replay_validator.py
@@ -49,6 +50,7 @@ tools/pnva_native_event_emitter.py
 tools/pnva_sovereign_policy_validator.py
 tools/pnva_proof_chain_sealer.py
 tools/pnva_causal_graph_auditor.py
+tools/pnva_evidence_attestor.py
 reports/pnva-sovereign-audit-2026-05-05.json
 reports/pnva-canonical-events-sample-2026-05-05.jsonl
 reports/pnva-entity-catalog-2026-05-05.json
@@ -66,6 +68,7 @@ reports/pnva-proof-chain-2026-05-05.json
 reports/pnva-native-proof-chain-2026-05-05.json
 reports/pnva-causal-graph-2026-05-05.json
 reports/pnva-native-causal-graph-2026-05-05.json
+reports/pnva-sovereign-evidence-attestation-2026-05-05.json
 ```
 
 ## Technical Diagnosis
@@ -321,6 +324,28 @@ warnings: 0
 
 This makes PNVA entity flow explicit: guards, workers, chains and relation edges become inspectable instead of remaining implicit log fields.
 
+### 11. Sovereign evidence attestation
+
+The evidence attestor binds the public package into one machine-readable record.
+
+Current result:
+
+```text
+classification: PNVA_SOVEREIGN_EVIDENCE_ATTESTED
+artifact_count: 17
+failure_count: 0
+```
+
+The attestation computes:
+
+```text
+evidence_hash
+```
+
+This hash changes if any tracked artifact changes its file hash, classification or pass flag. It gives PNVA a single citation anchor for the public evidence package.
+
+The sovereign audit consumes this attestation and is intentionally kept outside the attestation hash seed to avoid circular evidence hashing.
+
 ## Next Engineering Recommendations
 
 1. Add schema version to every new JSONL event.
@@ -338,6 +363,7 @@ This makes PNVA entity flow explicit: guards, workers, chains and relation edges
 13. Use `tools/pnva_sovereign_policy_validator.py` to enforce H2/H3 authority for future strong decisions.
 14. Use `tools/pnva_proof_chain_sealer.py` to seal event sequence order before publication.
 15. Use `tools/pnva_causal_graph_auditor.py` to audit entity topology and causal relation flow.
+16. Use `tools/pnva_evidence_attestor.py` to publish one aggregate evidence hash for each release.
 
 ## Sovereign Rule
 

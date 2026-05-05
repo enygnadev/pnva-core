@@ -53,7 +53,7 @@
     "robots_missing_tokens": [],
     "robots_ok": true,
     "sitemap_ok": true,
-    "sitemap_url_count": 34,
+    "sitemap_url_count": 36,
     "sitemap_urls": [
       "https://enygnadev.github.io/pnva-core/",
       "https://enygnadev.github.io/pnva-core/author.html",
@@ -69,6 +69,7 @@
       "https://enygnadev.github.io/pnva-core/docs/PNVA_SOVEREIGN_POLICY_VALIDATION.md",
       "https://enygnadev.github.io/pnva-core/docs/PNVA_PROOF_CHAIN_SEALING.md",
       "https://enygnadev.github.io/pnva-core/docs/PNVA_CAUSAL_GRAPH_AUDIT.md",
+      "https://enygnadev.github.io/pnva-core/docs/PNVA_SOVEREIGN_EVIDENCE_ATTESTATION.md",
       "https://enygnadev.github.io/pnva-core/docs/PNVA_ROBUSTNESS_EVOLUTION_REPORT_2026-05-05.md",
       "https://enygnadev.github.io/pnva-core/schemas/pnva-event.schema.json",
       "https://enygnadev.github.io/pnva-core/schemas/pnva-entity.schema.json",
@@ -88,10 +89,21 @@
       "https://enygnadev.github.io/pnva-core/reports/pnva-proof-chain-2026-05-05.json",
       "https://enygnadev.github.io/pnva-core/reports/pnva-native-proof-chain-2026-05-05.json",
       "https://enygnadev.github.io/pnva-core/reports/pnva-causal-graph-2026-05-05.json",
-      "https://enygnadev.github.io/pnva-core/reports/pnva-native-causal-graph-2026-05-05.json"
+      "https://enygnadev.github.io/pnva-core/reports/pnva-native-causal-graph-2026-05-05.json",
+      "https://enygnadev.github.io/pnva-core/reports/pnva-sovereign-evidence-attestation-2026-05-05.json"
     ]
   },
-  "generated_at": "2026-05-05T05:06:40Z",
+  "evidence_attestation": {
+    "artifact_count": 17,
+    "attestation_ok": true,
+    "classification": "PNVA_SOVEREIGN_EVIDENCE_ATTESTED",
+    "errors": [],
+    "evidence_hash": "sha256:15d15eea32f5dbc98a37ae4e1dfe664583355dcbc69be5e0ab5f5d40c96ff4d2",
+    "failure_count": 0,
+    "missing": [],
+    "tracked_artifacts": 17
+  },
+  "generated_at": "2026-05-05T05:14:47Z",
   "local_logs": {
     "available": true,
     "bad_json_ratio": 0.0,
@@ -861,6 +873,7 @@
     "Run sovereign policy validation to separate production-grade authority from legacy-tolerated authority.",
     "Seal canonical and native event sequences with proof-chain hashes before public release.",
     "Audit causal graphs so entity topology is visible, not implicit.",
+    "Publish one sovereign evidence attestation hash with every evidence release.",
     "Keep raw local logs private and publish only sanitized proof summaries.",
     "Track thermal pressure provenance when thermal pressure is high but sensor temperature/power are unavailable.",
     "Treat high RESIZE_BATCH ratio as pressure intelligence, not as a proof failure by itself."

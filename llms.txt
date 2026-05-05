@@ -51,6 +51,7 @@ Gustavo de Aguiar Martins. PNVA-Core: A Post-Temporal Causal Architecture for St
 - docs/PNVA_SOVEREIGN_POLICY_VALIDATION.md
 - docs/PNVA_PROOF_CHAIN_SEALING.md
 - docs/PNVA_CAUSAL_GRAPH_AUDIT.md
+- docs/PNVA_SOVEREIGN_EVIDENCE_ATTESTATION.md
 - docs/PNVA_ROBUSTNESS_EVOLUTION_REPORT_2026-05-05.md
 - docs/VEON_MODEL_VALIDATION.md
 - docs/PNVA_POST_TEMPORAL_CIVILIZATION.md
@@ -66,6 +67,7 @@ Gustavo de Aguiar Martins. PNVA-Core: A Post-Temporal Causal Architecture for St
 - tools/pnva_sovereign_policy_validator.py
 - tools/pnva_proof_chain_sealer.py
 - tools/pnva_causal_graph_auditor.py
+- tools/pnva_evidence_attestor.py
 - reports/pnva-sovereign-audit-2026-05-05.json
 - reports/pnva-canonical-events-sample-2026-05-05.jsonl
 - reports/pnva-entity-catalog-2026-05-05.json
@@ -83,6 +85,7 @@ Gustavo de Aguiar Martins. PNVA-Core: A Post-Temporal Causal Architecture for St
 - reports/pnva-native-proof-chain-2026-05-05.json
 - reports/pnva-causal-graph-2026-05-05.json
 - reports/pnva-native-causal-graph-2026-05-05.json
+- reports/pnva-sovereign-evidence-attestation-2026-05-05.json
 
 ## Sovereign Robustness
 
@@ -101,6 +104,8 @@ The sovereign policy validator checks whether strong decisions carry sufficient 
 The proof-chain sealer creates sequence-level tamper evidence for canonical and native event logs. Both current public chains are classified PROOF_CHAIN_SEALED.
 
 The causal graph auditor exposes entity topology and relation flow. Both current public graphs are classified CAUSAL_GRAPH_READY.
+
+The sovereign evidence attestor aggregates the public evidence package into one hashable attestation. The current classification is PNVA_SOVEREIGN_EVIDENCE_ATTESTED.
 
 ## Boundaries
 

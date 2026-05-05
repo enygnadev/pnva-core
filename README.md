@@ -121,6 +121,7 @@ docs/
   PNVA_SOVEREIGN_POLICY_VALIDATION.md
   PNVA_PROOF_CHAIN_SEALING.md
   PNVA_CAUSAL_GRAPH_AUDIT.md
+  PNVA_SOVEREIGN_EVIDENCE_ATTESTATION.md
   PNVA_ROBUSTNESS_EVOLUTION_REPORT_2026-05-05.md
   VEON_MODEL_VALIDATION.md
   PNVA_POST_TEMPORAL_CIVILIZATION.md
@@ -158,6 +159,7 @@ reports/
   pnva-native-proof-chain-2026-05-05.json
   pnva-causal-graph-2026-05-05.json
   pnva-native-causal-graph-2026-05-05.json
+  pnva-sovereign-evidence-attestation-2026-05-05.json
 
 release/
   final production closure note
@@ -173,6 +175,7 @@ tools/
   pnva_sovereign_policy_validator.py
   pnva_proof_chain_sealer.py
   pnva_causal_graph_auditor.py
+  pnva_evidence_attestor.py
 ```
 
 ## Public Launch
@@ -244,6 +247,7 @@ python3 tools/pnva_native_event_emitter.py --events /tmp/pnva-native-events.json
 python3 tools/pnva_sovereign_policy_validator.py --events reports/pnva-canonical-events-sample-2026-05-05.jsonl --entity-catalog reports/pnva-entity-catalog-2026-05-05.json >/tmp/pnva-sovereign-policy.json
 python3 tools/pnva_proof_chain_sealer.py --events reports/pnva-canonical-events-sample-2026-05-05.jsonl >/tmp/pnva-proof-chain.json
 python3 tools/pnva_causal_graph_auditor.py --events reports/pnva-canonical-events-sample-2026-05-05.jsonl --entity-catalog reports/pnva-entity-catalog-2026-05-05.json >/tmp/pnva-causal-graph.json
+python3 tools/pnva_evidence_attestor.py --write /tmp/pnva-evidence-attestation.json
 ```
 
 ## Sovereign Robustness Layer
@@ -271,6 +275,8 @@ The sovereign policy validator checks heuristic authority. The canonical sample 
 The proof-chain sealer adds sequence-level tamper evidence. It seals canonical and native event order with final chain hashes, so content or ordering changes alter the public chain anchor.
 
 The causal graph auditor exposes entity topology: observed entities, guard relations, causal-chain edges and graph hashes. Both canonical and native graphs are `CAUSAL_GRAPH_READY`.
+
+The sovereign evidence attestor binds the public evidence base into one machine-readable attestation. The current package is `PNVA_SOVEREIGN_EVIDENCE_ATTESTED` with `17` tracked artifacts and `0` failures; the sovereign audit consumes this attestation without being included in its hash seed.
 
 ## Citation
 
