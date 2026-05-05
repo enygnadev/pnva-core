@@ -51,8 +51,9 @@ source_line_monotonicity_rejection_count: 0
 causal_chain_slot_collision_rejection_count: 0
 no_tick_pair_integrity_count: 0
 no_tick_pair_failure_count: 0
-negative_control_detected_count: 58
-negative_control_count: 58
+same_source_file_no_tick_pair_count: 0
+negative_control_detected_count: 59
+negative_control_count: 59
 positive_control_passed_count: 6
 positive_control_count: 6
 positive_controls_fixture_only: true
@@ -98,6 +99,7 @@ entity mismatch
 precheck and commit without shared causal_chain_id
 commit timestamp before or equal to precheck timestamp
 commit JSONL line before or equal to precheck JSONL line
+precheck and commit emitted by different source.file_name values
 commit source.line before or equal to precheck source.line
 commit authority below H2
 commit action mismatch
@@ -122,6 +124,7 @@ same causal_chain_id
 causal_chain_id not reused across different slots
 commit timestamp > precheck timestamp
 commit JSONL line > precheck JSONL line
+same source.file_name across precheck and commit
 commit source.line > precheck source.line
 unique event_id values
 unique proof_hash values
@@ -207,6 +210,7 @@ reject_no_tick_pair_chain_mismatch
 reject_commit_before_precheck
 reject_commit_log_line_before_precheck
 reject_commit_source_line_before_precheck
+reject_no_tick_pair_source_file_mismatch
 reject_invalid_risk_flags
 reject_duplicate_risk_flag
 reject_unknown_risk_flag
@@ -217,7 +221,7 @@ reject_precheck_missing_target_risk_flags
 Current result:
 
 ```text
-58/58 detected
+59/59 detected
 ```
 
 ## Positive Controls
@@ -259,7 +263,7 @@ R3_RUNTIME_INSTRUMENTATION_PLAN_READY
 6 event templates
 70 required runtime events
 28 mandatory event fields
-58 negative controls
+59 negative controls
 6 positive controls
 ```
 

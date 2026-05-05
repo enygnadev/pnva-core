@@ -41,10 +41,10 @@ action_contract_count: 3
 required_runtime_event_count: 70
 event_template_count: 6
 mandatory_field_count: 28
-negative_control_detected_count: 58
+negative_control_detected_count: 59
 positive_control_passed_count: 6
-enforced_control_count: 55
-contract_check_count: 299
+enforced_control_count: 56
+contract_check_count: 303
 failure_count: 0
 ```
 
@@ -61,7 +61,7 @@ runtime approval remains false
 70 required runtime events remain paired
 6 templates remain two per action contract
 28 mandatory runtime fields are present
-58 negative controls are detected
+59 negative controls are detected
 6 positive controls are accepted as fixture-only guard controls
 guard enforced controls match the runtime contract
 contract slot IDs cover the matrix
@@ -102,6 +102,7 @@ precheck and commit must share causal_chain_id
 causal_chain_id must not be reused across different slots
 commit timestamp must be strictly after precheck timestamp
 commit JSONL line must be after precheck JSONL line
+precheck and commit must share the same source.file_name
 commit source.line must be after precheck source.line
 each slot must have exactly one precheck and one commit
 runtime event count must equal the declared requirement

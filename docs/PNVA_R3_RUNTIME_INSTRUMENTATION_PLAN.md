@@ -46,7 +46,7 @@ required_no_tick_precheck_count: 35
 required_collapse_commit_count: 35
 event_template_count: 6
 mandatory_field_count: 28
-negative_control_detected_count: 58
+negative_control_detected_count: 59
 positive_control_passed_count: 6
 ```
 
@@ -79,6 +79,7 @@ same causal_chain_id across precheck and commit
 causal_chain_id unique to one original_event_id/r3_runtime_slot_id pair
 commit timestamp > precheck timestamp
 commit JSONL line > precheck JSONL line
+same source.file_name across precheck and commit
 commit source.line > precheck source.line
 exactly one precheck and one commit per slot
 runtime event count equals required_runtime_event_count
@@ -155,7 +156,7 @@ Current result:
 
 ```text
 R3_RUNTIME_CONTRACT_VALIDATED_READY
-299 contract checks
+303 contract checks
 0 failures
 ```
 

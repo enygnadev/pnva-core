@@ -461,6 +461,7 @@ def _pair_evidence(prechecks: list[dict[str, Any]], commits: list[dict[str, Any]
     matching_chain_count = 0
     ordered_pair_count = 0
     equal_timestamp_pair_count = 0
+    same_source_file_pair_count = 0
     log_line_ordered_pair_count = 0
     source_line_ordered_pair_count = 0
     shared_chains: set[str] = set()
@@ -469,6 +470,7 @@ def _pair_evidence(prechecks: list[dict[str, Any]], commits: list[dict[str, Any]
         precheck_chain = str(precheck.get("causal_chain_id") or "")
         precheck_time = _timestamp_epoch(precheck)
         precheck_log_line = precheck.get("_line")
+        precheck_source_file = _source(precheck).get("file_name")
         precheck_source_line = _source(precheck).get("line")
         for commit in commits:
             commit_chain = str(commit.get("causal_chain_id") or "")
@@ -482,6 +484,15 @@ def _pair_evidence(prechecks: list[dict[str, Any]], commits: list[dict[str, Any]
                     ordered_pair_count += 1
                 elif commit_time == precheck_time:
                     equal_timestamp_pair_count += 1
+            commit_source_file = _source(commit).get("file_name")
+            if (
+                isinstance(precheck_source_file, str)
+                and precheck_source_file.strip()
+                and isinstance(commit_source_file, str)
+                and commit_source_file.strip()
+                and precheck_source_file.strip() == commit_source_file.strip()
+            ):
+                same_source_file_pair_count += 1
             commit_log_line = commit.get("_line")
             if (
                 isinstance(precheck_log_line, int)
@@ -503,10 +514,17 @@ def _pair_evidence(prechecks: list[dict[str, Any]], commits: list[dict[str, Any]
 
     if not exact_cardinality and prechecks and commits:
         reason = "NO_TICK_PAIR_CARDINALITY_INVALID"
-    elif ordered_pair_count > 0 and log_line_ordered_pair_count > 0 and source_line_ordered_pair_count > 0:
+    elif (
+        ordered_pair_count > 0
+        and log_line_ordered_pair_count > 0
+        and source_line_ordered_pair_count > 0
+        and same_source_file_pair_count > 0
+    ):
         reason = ""
     elif prechecks and commits and not shared_chains:
         reason = "NO_TICK_PAIR_CAUSAL_CHAIN_MISMATCH"
+    elif ordered_pair_count > 0 and log_line_ordered_pair_count > 0 and source_line_ordered_pair_count > 0:
+        reason = "NO_TICK_PAIR_SOURCE_FILE_MISMATCH"
     elif ordered_pair_count > 0 and source_line_ordered_pair_count > 0 and log_line_ordered_pair_count == 0:
         reason = "NO_TICK_PAIR_LOG_LINE_ORDER_INVALID"
     elif ordered_pair_count > 0 and source_line_ordered_pair_count == 0:
@@ -519,11 +537,18 @@ def _pair_evidence(prechecks: list[dict[str, Any]], commits: list[dict[str, Any]
         reason = "NO_TICK_PAIR_INCOMPLETE"
 
     return {
-        "valid": exact_cardinality and ordered_pair_count > 0 and log_line_ordered_pair_count > 0 and source_line_ordered_pair_count > 0,
+        "valid": (
+            exact_cardinality
+            and ordered_pair_count > 0
+            and log_line_ordered_pair_count > 0
+            and source_line_ordered_pair_count > 0
+            and same_source_file_pair_count > 0
+        ),
         "exact_cardinality": exact_cardinality,
         "matching_chain_count": matching_chain_count,
         "ordered_pair_count": ordered_pair_count,
         "equal_timestamp_pair_count": equal_timestamp_pair_count,
+        "same_source_file_pair_count": same_source_file_pair_count,
         "log_line_ordered_pair_count": log_line_ordered_pair_count,
         "source_line_ordered_pair_count": source_line_ordered_pair_count,
         "shared_causal_chain_count": len(shared_chains),
@@ -636,6 +661,7 @@ def _validate_runtime_events(matrix: dict[str, Any], events: list[dict[str, Any]
     accepted_slot_count = 0
     no_tick_pair_integrity_count = 0
     no_tick_pair_failure_count = 0
+    same_source_file_no_tick_pair_count = 0
     for original, slot in slots.items():
         row = by_slot[original]
         precheck_count = len(row["precheck"])
@@ -644,6 +670,7 @@ def _validate_runtime_events(matrix: dict[str, Any], events: list[dict[str, Any]
         pair = _pair_evidence(row["precheck"], row["commit"])
         no_tick_pair_integrity_count += 1 if pair["valid"] else 0
         no_tick_pair_failure_count += 1 if precheck_count > 0 and commit_count > 0 and not pair["valid"] else 0
+        same_source_file_no_tick_pair_count += 1 if pair["same_source_file_pair_count"] > 0 else 0
         accepted = precheck_count == 1 and commit_count == 1 and rejected_count == 0 and pair["valid"]
         accepted_slot_count += 1 if accepted else 0
         slot_rows.append(
@@ -663,6 +690,7 @@ def _validate_runtime_events(matrix: dict[str, Any], events: list[dict[str, Any]
                 "matching_causal_chain_pair_count": pair["matching_chain_count"],
                 "ordered_no_tick_pair_count": pair["ordered_pair_count"],
                 "equal_timestamp_no_tick_pair_count": pair["equal_timestamp_pair_count"],
+                "same_source_file_no_tick_pair_count": pair["same_source_file_pair_count"],
                 "log_line_ordered_no_tick_pair_count": pair["log_line_ordered_pair_count"],
                 "source_line_ordered_no_tick_pair_count": pair["source_line_ordered_pair_count"],
                 "shared_causal_chain_count": pair["shared_causal_chain_count"],
@@ -692,6 +720,7 @@ def _validate_runtime_events(matrix: dict[str, Any], events: list[dict[str, Any]
         "causal_chain_slot_collision_rejection_count": causal_chain_slot_collision_rejection_count,
         "no_tick_pair_integrity_count": no_tick_pair_integrity_count,
         "no_tick_pair_failure_count": no_tick_pair_failure_count,
+        "same_source_file_no_tick_pair_count": same_source_file_no_tick_pair_count,
         "event_type_mix": event_type_mix.most_common(),
         "decision_action_mix": action_mix.most_common(),
         "heuristic_rule_mix": rule_mix.most_common(),
@@ -955,6 +984,14 @@ def _negative_controls(matrix: dict[str, Any]) -> dict[str, Any]:
     rebind_proof_hash(line_commit)
     run_stream_control("reject_commit_source_line_before_precheck", [line_precheck, line_commit], "NO_TICK_PAIR_SOURCE_LINE_ORDER_INVALID")
 
+    source_file_precheck = _sample_event(slot, role="precheck", control="source_file_order")
+    source_file_commit = _sample_event(slot, role="commit", control="source_file_order")
+    source_file_precheck["source"]["file_name"] = "pnva-r3-runtime-guard-fixture-precheck"
+    source_file_commit["source"]["file_name"] = "pnva-r3-runtime-guard-fixture-commit"
+    rebind_proof_hash(source_file_precheck)
+    rebind_proof_hash(source_file_commit)
+    run_stream_control("reject_no_tick_pair_source_file_mismatch", [source_file_precheck, source_file_commit], "NO_TICK_PAIR_SOURCE_FILE_MISMATCH")
+
     detected_count = sum(1 for item in controls if item["detected"])
     return {
         "negative_control_count": len(controls),
@@ -1067,6 +1104,7 @@ def build_report(repo: Path, runtime_events_path: Path | None = None) -> dict[st
         "causal_chain_slot_collision_rejection_count": runtime["causal_chain_slot_collision_rejection_count"],
         "no_tick_pair_integrity_count": runtime["no_tick_pair_integrity_count"],
         "no_tick_pair_failure_count": runtime["no_tick_pair_failure_count"],
+        "same_source_file_no_tick_pair_count": runtime["same_source_file_no_tick_pair_count"],
         "negative_control_count": negative["negative_control_count"],
         "negative_control_detected_count": negative["detected_count"],
         "negative_controls_pass": negative["pass"],
@@ -1117,6 +1155,7 @@ def build_report(repo: Path, runtime_events_path: Path | None = None) -> dict[st
             "no_tick_pair_commit_after_precheck_required": True,
             "no_tick_pair_commit_strictly_after_precheck_required": True,
             "no_tick_pair_log_line_order_required": True,
+            "no_tick_pair_same_source_file_required": True,
             "no_tick_pair_source_line_order_required": True,
             "no_tick_pair_exactly_one_precheck_commit_required": True,
             "runtime_event_count_exact_required": True,
@@ -1162,6 +1201,7 @@ def build_report(repo: Path, runtime_events_path: Path | None = None) -> dict[st
             "causal_chain_slot_collision_rejection_count": runtime["causal_chain_slot_collision_rejection_count"],
             "no_tick_pair_integrity_count": runtime["no_tick_pair_integrity_count"],
             "no_tick_pair_failure_count": runtime["no_tick_pair_failure_count"],
+            "same_source_file_no_tick_pair_count": runtime["same_source_file_no_tick_pair_count"],
             "negative_control_detected_count": negative["detected_count"],
             "negative_control_count": negative["negative_control_count"],
             "positive_control_passed_count": positive["passed_count"],
@@ -1169,7 +1209,7 @@ def build_report(repo: Path, runtime_events_path: Path | None = None) -> dict[st
         },
         "interpretation": {
             "purpose": "Protect the R3 runtime intake boundary before fresh events are accepted as legacy-free evidence.",
-            "sovereignty": "PNVA becomes harder to fake when projected proofs, malformed, duplicated or content-unbound proof hashes, wrong proof-ref slot roles, wrong event types, wrong decision reasons, wrong role state transitions, malformed or inconsistent tension values, invalid gate signs, duplicate events, duplicated source locations, reused causal chains across different slots, unsafe source file names, regressed source lines, entity or slot mismatches, missing, equal or reversed pair timestamps, missing or reversed log/source location order, unsanitized sources, legacy heuristic rules, unknown heuristic rules, invalid risk flags, weak authority, missing target rules, missing precheck or commit target risk flags, extra runtime events and causally broken no-tick pairs are rejected before cutover.",
+            "sovereignty": "PNVA becomes harder to fake when projected proofs, malformed, duplicated or content-unbound proof hashes, wrong proof-ref slot roles, wrong event types, wrong decision reasons, wrong role state transitions, malformed or inconsistent tension values, invalid gate signs, duplicate events, duplicated source locations, reused causal chains across different slots, unsafe source file names, mismatched pair source files, regressed source lines, entity or slot mismatches, missing, equal or reversed pair timestamps, missing or reversed log/source location order, unsanitized sources, legacy heuristic rules, unknown heuristic rules, invalid risk flags, weak authority, missing target rules, missing precheck or commit target risk flags, extra runtime events and causally broken no-tick pairs are rejected before cutover.",
             "boundary": "Without a runtime-events file this guard certifies the intake contract only; it does not claim final runtime completion.",
         },
         "recommendations": [
@@ -1189,6 +1229,7 @@ def build_report(repo: Path, runtime_events_path: Path | None = None) -> dict[st
             "Reject runtime events whose proof_hash does not bind to the canonical event identity and source-location payload.",
             "Reject no-tick pairs whose commit JSONL line appears before the precheck line.",
             "Reject no-tick pairs whose commit timestamp is equal to the precheck timestamp.",
+            "Reject no-tick pairs whose precheck and commit are emitted by different source.file_name values.",
             "Reject no-tick pairs whose commit source.line does not follow the precheck source.line.",
             "Require proof_ref to match runtime:<slot-id>:precheck or runtime:<slot-id>:commit.",
             "Require gate_delta to equal score minus threshold, with nonpositive prechecks and nonnegative commits.",
