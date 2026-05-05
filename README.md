@@ -123,6 +123,7 @@ docs/
   PNVA_CAUSAL_GRAPH_AUDIT.md
   PNVA_SOVEREIGN_EVIDENCE_ATTESTATION.md
   PNVA_ADVERSARIAL_VALIDATION.md
+  PNVA_ENTITY_HEURISTIC_MATURITY.md
   PNVA_ROBUSTNESS_EVOLUTION_REPORT_2026-05-05.md
   VEON_MODEL_VALIDATION.md
   PNVA_POST_TEMPORAL_CIVILIZATION.md
@@ -162,6 +163,7 @@ reports/
   pnva-native-causal-graph-2026-05-05.json
   pnva-sovereign-evidence-attestation-2026-05-05.json
   pnva-adversarial-validation-2026-05-05.json
+  pnva-entity-heuristic-maturity-2026-05-05.json
 
 release/
   final production closure note
@@ -179,6 +181,7 @@ tools/
   pnva_causal_graph_auditor.py
   pnva_evidence_attestor.py
   pnva_adversarial_validator.py
+  pnva_entity_heuristic_maturity.py
 ```
 
 ## Public Launch
@@ -251,6 +254,7 @@ python3 tools/pnva_sovereign_policy_validator.py --events reports/pnva-canonical
 python3 tools/pnva_proof_chain_sealer.py --events reports/pnva-canonical-events-sample-2026-05-05.jsonl >/tmp/pnva-proof-chain.json
 python3 tools/pnva_causal_graph_auditor.py --events reports/pnva-canonical-events-sample-2026-05-05.jsonl --entity-catalog reports/pnva-entity-catalog-2026-05-05.json >/tmp/pnva-causal-graph.json
 python3 tools/pnva_adversarial_validator.py --write /tmp/pnva-adversarial-validation.json
+python3 tools/pnva_entity_heuristic_maturity.py --write /tmp/pnva-entity-heuristic-maturity.json
 python3 tools/pnva_evidence_attestor.py --write /tmp/pnva-evidence-attestation.json
 ```
 
@@ -282,7 +286,9 @@ The causal graph auditor exposes entity topology: observed entities, guard relat
 
 The adversarial validator runs negative controls against the public validators. The current package is `ADVERSARIAL_VALIDATION_PASS` with `7` detections over `7` controlled mutations.
 
-The sovereign evidence attestor binds the public evidence base into one machine-readable attestation. The current package is `PNVA_SOVEREIGN_EVIDENCE_ATTESTED` with `18` tracked artifacts and `0` failures; the sovereign audit consumes this attestation without being included in its hash seed.
+The entity and heuristic maturity auditor scores actor/rule readiness across entity coverage, proof coverage, no-tick suppression, authority and causal relations. The current package is `ENTITY_HEURISTIC_MATURITY_READY_WITH_LEGACY_WARNINGS` with score `94.59`, `0` errors and `35` preserved legacy warnings.
+
+The sovereign evidence attestor binds the public evidence base into one machine-readable attestation. The current package is `PNVA_SOVEREIGN_EVIDENCE_ATTESTED` with `19` tracked artifacts and `0` failures; the sovereign audit consumes this attestation without being included in its hash seed.
 
 ## Citation
 

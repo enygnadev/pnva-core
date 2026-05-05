@@ -100,6 +100,12 @@ jobs:
             --write /tmp/pnva-adversarial-validation.json \
             >/dev/null
           python3 -m json.tool /tmp/pnva-adversarial-validation.json >/dev/null
+      - name: Run entity heuristic maturity auditor
+        run: |
+          python3 tools/pnva_entity_heuristic_maturity.py \
+            --write /tmp/pnva-entity-heuristic-maturity.json \
+            >/dev/null
+          python3 -m json.tool /tmp/pnva-entity-heuristic-maturity.json >/dev/null
       - name: Run evidence attestor
         run: |
           python3 tools/pnva_evidence_attestor.py \

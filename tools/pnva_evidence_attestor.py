@@ -130,6 +130,13 @@ EXPECTED_ARTIFACTS = [
         "expected": "ADVERSARIAL_VALIDATION_PASS",
         "required": True,
     },
+    {
+        "id": "entity_heuristic_maturity",
+        "path": "reports/pnva-entity-heuristic-maturity-2026-05-05.json",
+        "kind": "json_classification",
+        "expected": "ENTITY_HEURISTIC_MATURITY_READY_WITH_LEGACY_WARNINGS",
+        "required": True,
+    },
 ]
 
 
@@ -264,6 +271,7 @@ def build_attestation(repo: Path) -> dict[str, Any]:
             "proof-chain sealing",
             "causal graph audit",
             "adversarial negative controls",
+            "entity and heuristic maturity",
             "sovereign audit consumes this attestation without being part of its hash seed",
         ],
         "interpretation": {
@@ -276,6 +284,7 @@ def build_attestation(repo: Path) -> dict[str, Any]:
             "Use evidence_hash as the public anchor when citing a PNVA evidence package.",
             "Keep legacy warnings visible while requiring native clean policy for new runtime events.",
             "Run adversarial negative controls so bad evidence is rejected or exposed before publication.",
+            "Use entity and heuristic maturity scores to guide the next no-tick runtime hardening step.",
         ],
     }
 

@@ -43,6 +43,7 @@ docs/PNVA_PROOF_CHAIN_SEALING.md
 docs/PNVA_CAUSAL_GRAPH_AUDIT.md
 docs/PNVA_SOVEREIGN_EVIDENCE_ATTESTATION.md
 docs/PNVA_ADVERSARIAL_VALIDATION.md
+docs/PNVA_ENTITY_HEURISTIC_MATURITY.md
 tools/pnva_sovereign_audit.py
 tools/pnva_canonical_bridge.py
 tools/pnva_replay_validator.py
@@ -53,6 +54,7 @@ tools/pnva_proof_chain_sealer.py
 tools/pnva_causal_graph_auditor.py
 tools/pnva_evidence_attestor.py
 tools/pnva_adversarial_validator.py
+tools/pnva_entity_heuristic_maturity.py
 reports/pnva-sovereign-audit-2026-05-05.json
 reports/pnva-canonical-events-sample-2026-05-05.jsonl
 reports/pnva-entity-catalog-2026-05-05.json
@@ -72,6 +74,7 @@ reports/pnva-causal-graph-2026-05-05.json
 reports/pnva-native-causal-graph-2026-05-05.json
 reports/pnva-sovereign-evidence-attestation-2026-05-05.json
 reports/pnva-adversarial-validation-2026-05-05.json
+reports/pnva-entity-heuristic-maturity-2026-05-05.json
 ```
 
 ## Technical Diagnosis
@@ -335,7 +338,7 @@ Current result:
 
 ```text
 classification: PNVA_SOVEREIGN_EVIDENCE_ATTESTED
-artifact_count: 18
+artifact_count: 19
 failure_count: 0
 ```
 
@@ -376,6 +379,47 @@ JSON_PARSE_ERROR
 
 This closes a critical proof gap. PNVA validators now demonstrate not only that valid evidence passes, but also that corrupted proof, weak authority, invalid topology, duplicate identity, order tampering and malformed JSON are rejected or exposed.
 
+### 13. Entity and heuristic maturity
+
+The entity/heuristic maturity auditor scores whether PNVA decisions are attributable to actors and rules.
+
+Current result:
+
+```text
+classification: ENTITY_HEURISTIC_MATURITY_READY_WITH_LEGACY_WARNINGS
+maturity_score: 94.59
+total_event_count: 519
+total_suppressed_count: 250
+aggregate_no_tick_suppression_ratio: 0.481696
+aggregate_hard_authority_ratio: 0.884868
+canonical_low_authority_legacy_count: 35
+native_low_authority_legacy_count: 0
+error_count: 0
+warning_count: 35
+```
+
+Canonical scope:
+
+```text
+classification: ENTITY_HEURISTIC_MATURITY_READY_WITH_LEGACY_WARNINGS
+event_count: 512
+maturity_score: 94.17
+errors: 0
+warnings: 35
+```
+
+Native scope:
+
+```text
+classification: ENTITY_HEURISTIC_MATURITY_READY
+event_count: 7
+maturity_score: 95.0
+errors: 0
+warnings: 0
+```
+
+This makes the next no-tick evolution concrete: reduce legacy authority in future runtime events while preserving old evidence honestly.
+
 ## Next Engineering Recommendations
 
 1. Add schema version to every new JSONL event.
@@ -395,6 +439,7 @@ This closes a critical proof gap. PNVA validators now demonstrate not only that 
 15. Use `tools/pnva_causal_graph_auditor.py` to audit entity topology and causal relation flow.
 16. Use `tools/pnva_evidence_attestor.py` to publish one aggregate evidence hash for each release.
 17. Use `tools/pnva_adversarial_validator.py` before release so validator failures are proven, not assumed.
+18. Use `tools/pnva_entity_heuristic_maturity.py` to choose hardening targets by entity, heuristic and authority.
 
 ## Sovereign Rule
 

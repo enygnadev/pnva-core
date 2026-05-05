@@ -437,7 +437,7 @@ PNVA_SOVEREIGN_EVIDENCE_ATTESTED
 Current package:
 
 ```text
-18 tracked artifacts
+19 tracked artifacts
 0 failures
 ```
 
@@ -485,7 +485,45 @@ Production interpretation:
 
 PNVA evidence becomes more sovereign when validators have negative controls. A `PASS` is stronger when the same tooling can also show why corrupted proof, weak authority, invalid topology, duplicate identity, reordered sequence or malformed JSON does not pass silently.
 
-## 16. Public Safety
+## 16. Entity And Heuristic Maturity
+
+After validation and adversarial controls, score the maturity of the actors and rules:
+
+```text
+entities + heuristics + authority + no-tick suppression + proof coverage -> maturity score
+```
+
+Current report:
+
+```text
+reports/pnva-entity-heuristic-maturity-2026-05-05.json
+```
+
+Current classification:
+
+```text
+ENTITY_HEURISTIC_MATURITY_READY_WITH_LEGACY_WARNINGS
+```
+
+Current aggregate:
+
+```text
+maturity_score: 94.59
+total_event_count: 519
+total_suppressed_count: 250
+aggregate_no_tick_suppression_ratio: 0.481696
+aggregate_hard_authority_ratio: 0.884868
+canonical_low_authority_legacy_count: 35
+native_low_authority_legacy_count: 0
+error_count: 0
+warning_count: 35
+```
+
+Production interpretation:
+
+The canonical legacy bridge preserves 35 low-authority strong decisions as warnings. The native runtime path has zero low-authority legacy warnings. This creates a clean migration rule: old evidence stays honest; new PNVA runtimes must emit native events with H2/H3 authority.
+
+## 17. Public Safety
 
 Public repositories should expose:
 
@@ -512,7 +550,7 @@ wallets
 host-specific automation
 ```
 
-## 17. Principle
+## 18. Principle
 
 PNVA becomes sovereign when every action can answer:
 

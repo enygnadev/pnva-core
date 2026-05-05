@@ -1,0 +1,1677 @@
+{
+  "author": "Gustavo de Aguiar Martins",
+  "classification": "ENTITY_HEURISTIC_MATURITY_READY_WITH_LEGACY_WARNINGS",
+  "error_count": 0,
+  "generated_at": "2026-05-05T05:36:32Z",
+  "interpretation": {
+    "legacy_policy": "Legacy low-authority strong decisions are warnings when preserved from old sanitized logs, not hidden failures.",
+    "native_policy": "Native events must carry H2/H3/H4 authority for strong decisions.",
+    "purpose": "Measure PNVA maturity across entities, heuristic rules, no-tick suppression, proof coverage and authority.",
+    "sovereignty": "Every important entity and heuristic should be visible, proof-backed, entity-cataloged and connected to causal chains."
+  },
+  "maturity_score": 94.59,
+  "pass": true,
+  "project": "PNVA-Core",
+  "recommendations": [
+    "Move future strong decisions away from legacy_observer authority.",
+    "Keep emitting native pnva.event.v1 events with H2/H3 authority.",
+    "Use entity maturity scores to choose the next runtime hardening target.",
+    "Track no-tick suppression per entity so non-execution remains a first-class proof."
+  ],
+  "schema_version": "pnva.entity_heuristic_maturity.v1",
+  "scopes": [
+    {
+      "classification": "ENTITY_HEURISTIC_MATURITY_READY_WITH_LEGACY_WARNINGS",
+      "entity_catalog_ref": "reports/pnva-entity-catalog-2026-05-05.json",
+      "entity_profiles": [
+        {
+          "capabilities": [
+            "emit_events",
+            "runtime_observation"
+          ],
+          "catalog_present": true,
+          "chain_count": 14,
+          "decision_mix": [
+            [
+              "collapse",
+              128
+            ],
+            [
+              "observe",
+              84
+            ]
+          ],
+          "entity_id": "zano-entity-00",
+          "entity_type": "field",
+          "event_count": 212,
+          "maturity_notes": [],
+          "maturity_score": 100,
+          "max_authority": "H2",
+          "proof_valid_count": 212,
+          "relation_in_count": 35,
+          "relation_out_count": 0,
+          "risk_flags": [
+            [
+              "VEONIC_TRACE",
+              128
+            ],
+            [
+              "RESIZE_BATCH_PRESSURE",
+              86
+            ],
+            [
+              "THERMAL_PRESSURE",
+              86
+            ]
+          ],
+          "rules": [
+            [
+              "adaptive_threshold",
+              165
+            ],
+            [
+              "field_scheduler",
+              128
+            ],
+            [
+              "veonic_layer",
+              128
+            ],
+            [
+              "legacy_observer",
+              47
+            ],
+            [
+              "affinity_router",
+              37
+            ],
+            [
+              "memory4d",
+              37
+            ],
+            [
+              "power_orchestrator",
+              37
+            ]
+          ],
+          "state": "active",
+          "strong_decision_count": 128,
+          "suppressed_count": 84
+        },
+        {
+          "capabilities": [
+            "emit_events",
+            "runtime_observation"
+          ],
+          "catalog_present": true,
+          "chain_count": 4,
+          "decision_mix": [
+            [
+              "collapse",
+              103
+            ],
+            [
+              "observe",
+              29
+            ]
+          ],
+          "entity_id": "entity_4c3ade60ea78",
+          "entity_type": "field",
+          "event_count": 132,
+          "maturity_notes": [],
+          "maturity_score": 100,
+          "max_authority": "H2",
+          "proof_valid_count": 132,
+          "relation_in_count": 0,
+          "relation_out_count": 0,
+          "risk_flags": [
+            [
+              "RESIZE_BATCH_PRESSURE",
+              90
+            ],
+            [
+              "THERMAL_PRESSURE",
+              52
+            ]
+          ],
+          "rules": [
+            [
+              "field_scheduler",
+              86
+            ],
+            [
+              "legacy_observer",
+              46
+            ]
+          ],
+          "state": "active",
+          "strong_decision_count": 103,
+          "suppressed_count": 29
+        },
+        {
+          "capabilities": [
+            "emit_events",
+            "runtime_observation"
+          ],
+          "catalog_present": true,
+          "chain_count": 6,
+          "decision_mix": [
+            [
+              "observe",
+              87
+            ]
+          ],
+          "entity_id": "zano-entity-01",
+          "entity_type": "field",
+          "event_count": 87,
+          "maturity_notes": [],
+          "maturity_score": 100,
+          "max_authority": "H2",
+          "proof_valid_count": 87,
+          "relation_in_count": 33,
+          "relation_out_count": 0,
+          "risk_flags": [],
+          "rules": [
+            [
+              "legacy_observer",
+              46
+            ],
+            [
+              "adaptive_threshold",
+              41
+            ],
+            [
+              "affinity_router",
+              41
+            ],
+            [
+              "memory4d",
+              41
+            ],
+            [
+              "power_orchestrator",
+              41
+            ]
+          ],
+          "state": "active",
+          "strong_decision_count": 0,
+          "suppressed_count": 87
+        },
+        {
+          "capabilities": [
+            "emit_events",
+            "guard_decision"
+          ],
+          "catalog_present": true,
+          "chain_count": 4,
+          "decision_mix": [
+            [
+              "collapse",
+              35
+            ]
+          ],
+          "entity_id": "entity_9ad2a10c30be",
+          "entity_type": "guard",
+          "event_count": 35,
+          "maturity_notes": [],
+          "maturity_score": 100,
+          "max_authority": "H3",
+          "proof_valid_count": 35,
+          "relation_in_count": 0,
+          "relation_out_count": 35,
+          "risk_flags": [],
+          "rules": [
+            [
+              "adaptive_threshold",
+              35
+            ],
+            [
+              "etev_guard",
+              35
+            ],
+            [
+              "field_scheduler",
+              25
+            ]
+          ],
+          "state": "active",
+          "strong_decision_count": 35,
+          "suppressed_count": 0
+        },
+        {
+          "capabilities": [
+            "emit_events",
+            "guard_decision"
+          ],
+          "catalog_present": true,
+          "chain_count": 3,
+          "decision_mix": [
+            [
+              "block",
+              33
+            ]
+          ],
+          "entity_id": "entity_9030cf1aa9f6",
+          "entity_type": "guard",
+          "event_count": 33,
+          "maturity_notes": [],
+          "maturity_score": 100,
+          "max_authority": "H3",
+          "proof_valid_count": 33,
+          "relation_in_count": 0,
+          "relation_out_count": 33,
+          "risk_flags": [],
+          "rules": [
+            [
+              "adaptive_threshold",
+              33
+            ],
+            [
+              "etev_guard",
+              33
+            ],
+            [
+              "field_scheduler",
+              25
+            ]
+          ],
+          "state": "active",
+          "strong_decision_count": 33,
+          "suppressed_count": 33
+        },
+        {
+          "capabilities": [
+            "emit_events",
+            "runtime_observation"
+          ],
+          "catalog_present": true,
+          "chain_count": 3,
+          "decision_mix": [
+            [
+              "observe",
+              13
+            ]
+          ],
+          "entity_id": "entity_8ba8a9970d6a",
+          "entity_type": "field",
+          "event_count": 13,
+          "maturity_notes": [],
+          "maturity_score": 100,
+          "max_authority": "H0",
+          "proof_valid_count": 13,
+          "relation_in_count": 0,
+          "relation_out_count": 0,
+          "risk_flags": [],
+          "rules": [
+            [
+              "legacy_observer",
+              13
+            ]
+          ],
+          "state": "active",
+          "strong_decision_count": 0,
+          "suppressed_count": 13
+        }
+      ],
+      "errors": [],
+      "events_ref": "reports/pnva-canonical-events-sample-2026-05-05.jsonl",
+      "heuristic_profiles": [
+        {
+          "authority": "H2",
+          "avg_gate_delta": -24.933734,
+          "avg_tension_score": -24.219776,
+          "decision_mix": [
+            [
+              "collapse",
+              163
+            ],
+            [
+              "observe",
+              78
+            ],
+            [
+              "block",
+              33
+            ]
+          ],
+          "entity_count": 4,
+          "event_count": 274,
+          "legacy_event_count": 274,
+          "maturity_notes": [],
+          "maturity_score": 100,
+          "native_event_count": 0,
+          "proof_valid_count": 274,
+          "risk_flags": [
+            [
+              "VEONIC_TRACE",
+              128
+            ],
+            [
+              "RESIZE_BATCH_PRESSURE",
+              86
+            ],
+            [
+              "THERMAL_PRESSURE",
+              86
+            ]
+          ],
+          "rule": "adaptive_threshold",
+          "strong_decision_count": 196,
+          "suppressed_count": 111
+        },
+        {
+          "authority": "H2",
+          "avg_gate_delta": -32.065334,
+          "avg_tension_score": -31.591644,
+          "decision_mix": [
+            [
+              "collapse",
+              221
+            ],
+            [
+              "block",
+              25
+            ],
+            [
+              "observe",
+              18
+            ]
+          ],
+          "entity_count": 4,
+          "event_count": 264,
+          "legacy_event_count": 264,
+          "maturity_notes": [],
+          "maturity_score": 100,
+          "native_event_count": 0,
+          "proof_valid_count": 264,
+          "risk_flags": [
+            [
+              "RESIZE_BATCH_PRESSURE",
+              144
+            ],
+            [
+              "THERMAL_PRESSURE",
+              138
+            ],
+            [
+              "VEONIC_TRACE",
+              128
+            ]
+          ],
+          "rule": "field_scheduler",
+          "strong_decision_count": 246,
+          "suppressed_count": 43
+        },
+        {
+          "authority": "H0",
+          "avg_gate_delta": -14.823241,
+          "avg_tension_score": -14.823241,
+          "decision_mix": [
+            [
+              "observe",
+              117
+            ],
+            [
+              "collapse",
+              35
+            ]
+          ],
+          "entity_count": 4,
+          "event_count": 152,
+          "legacy_event_count": 152,
+          "maturity_notes": [
+            "low_authority_strong_decisions"
+          ],
+          "maturity_score": 70,
+          "native_event_count": 0,
+          "proof_valid_count": 152,
+          "risk_flags": [
+            [
+              "RESIZE_BATCH_PRESSURE",
+              32
+            ]
+          ],
+          "rule": "legacy_observer",
+          "strong_decision_count": 35,
+          "suppressed_count": 117
+        },
+        {
+          "authority": "H1",
+          "avg_gate_delta": -53.377252,
+          "avg_tension_score": -52.683958,
+          "decision_mix": [
+            [
+              "collapse",
+              128
+            ]
+          ],
+          "entity_count": 1,
+          "event_count": 128,
+          "legacy_event_count": 128,
+          "maturity_notes": [
+            "low_authority_strong_decisions"
+          ],
+          "maturity_score": 70,
+          "native_event_count": 0,
+          "proof_valid_count": 128,
+          "risk_flags": [
+            [
+              "VEONIC_TRACE",
+              128
+            ],
+            [
+              "RESIZE_BATCH_PRESSURE",
+              86
+            ],
+            [
+              "THERMAL_PRESSURE",
+              86
+            ]
+          ],
+          "rule": "veonic_layer",
+          "strong_decision_count": 128,
+          "suppressed_count": 0
+        },
+        {
+          "authority": "H2",
+          "avg_gate_delta": 0.010131,
+          "avg_tension_score": 0.741036,
+          "decision_mix": [
+            [
+              "observe",
+              78
+            ]
+          ],
+          "entity_count": 2,
+          "event_count": 78,
+          "legacy_event_count": 78,
+          "maturity_notes": [],
+          "maturity_score": 100,
+          "native_event_count": 0,
+          "proof_valid_count": 78,
+          "risk_flags": [],
+          "rule": "affinity_router",
+          "strong_decision_count": 0,
+          "suppressed_count": 78
+        },
+        {
+          "authority": "H1",
+          "avg_gate_delta": 0.010131,
+          "avg_tension_score": 0.741036,
+          "decision_mix": [
+            [
+              "observe",
+              78
+            ]
+          ],
+          "entity_count": 2,
+          "event_count": 78,
+          "legacy_event_count": 78,
+          "maturity_notes": [],
+          "maturity_score": 100,
+          "native_event_count": 0,
+          "proof_valid_count": 78,
+          "risk_flags": [],
+          "rule": "memory4d",
+          "strong_decision_count": 0,
+          "suppressed_count": 78
+        },
+        {
+          "authority": "H2",
+          "avg_gate_delta": 0.010131,
+          "avg_tension_score": 0.741036,
+          "decision_mix": [
+            [
+              "observe",
+              78
+            ]
+          ],
+          "entity_count": 2,
+          "event_count": 78,
+          "legacy_event_count": 78,
+          "maturity_notes": [],
+          "maturity_score": 100,
+          "native_event_count": 0,
+          "proof_valid_count": 78,
+          "risk_flags": [],
+          "rule": "power_orchestrator",
+          "strong_decision_count": 0,
+          "suppressed_count": 78
+        },
+        {
+          "authority": "H3",
+          "avg_gate_delta": -0.005075,
+          "avg_tension_score": 0.728339,
+          "decision_mix": [
+            [
+              "collapse",
+              35
+            ],
+            [
+              "block",
+              33
+            ]
+          ],
+          "entity_count": 2,
+          "event_count": 68,
+          "legacy_event_count": 68,
+          "maturity_notes": [],
+          "maturity_score": 100,
+          "native_event_count": 0,
+          "proof_valid_count": 68,
+          "risk_flags": [],
+          "rule": "etev_guard",
+          "strong_decision_count": 68,
+          "suppressed_count": 33
+        }
+      ],
+      "maturity_score": 94.17,
+      "pass": true,
+      "scope": "canonical_legacy_bridge",
+      "summary": {
+        "authority_mix": [
+          [
+            "H2",
+            292
+          ],
+          [
+            "H0",
+            152
+          ],
+          [
+            "H3",
+            68
+          ]
+        ],
+        "avg_gate_delta": -20.932827,
+        "avg_tension_score": -20.550748,
+        "catalog_entity_count": 6,
+        "decision_mix": [
+          [
+            "collapse",
+            266
+          ],
+          [
+            "observe",
+            213
+          ],
+          [
+            "block",
+            33
+          ]
+        ],
+        "entity_coverage_ratio": 1.0,
+        "event_count": 512,
+        "hard_authority_ratio": 0.882943,
+        "heuristic_count": 8,
+        "heuristic_visibility_ratio": 1.0,
+        "legacy_event_count": 512,
+        "low_authority_legacy_count": 35,
+        "native_event_count": 0,
+        "no_tick_suppression_ratio": 0.480469,
+        "observed_entity_count": 6,
+        "proof_integrity_ratio": 1.0,
+        "proof_valid_count": 512,
+        "relation_coverage_ratio": 0.666667,
+        "risk_flags": [
+          [
+            "RESIZE_BATCH_PRESSURE",
+            176
+          ],
+          [
+            "THERMAL_PRESSURE",
+            138
+          ],
+          [
+            "VEONIC_TRACE",
+            128
+          ]
+        ],
+        "source_mix": [
+          [
+            "legacy_jsonl",
+            512
+          ]
+        ],
+        "strong_decision_count": 299,
+        "strong_with_hard_authority": 264,
+        "suppressed_count": 246
+      },
+      "warnings": [
+        {
+          "code": "LOW_AUTHORITY_STRONG_DECISION",
+          "decision_kind": "collapse",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000001_5f5d2586",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 385,
+          "max_authority": "H0",
+          "rules": [
+            "legacy_observer"
+          ],
+          "source_format": "legacy_jsonl"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_DECISION",
+          "decision_kind": "collapse",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000003_392d3b13",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 387,
+          "max_authority": "H0",
+          "rules": [
+            "legacy_observer"
+          ],
+          "source_format": "legacy_jsonl"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_DECISION",
+          "decision_kind": "collapse",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000008_597a2713",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 392,
+          "max_authority": "H0",
+          "rules": [
+            "legacy_observer"
+          ],
+          "source_format": "legacy_jsonl"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_DECISION",
+          "decision_kind": "collapse",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000010_54e369e9",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 394,
+          "max_authority": "H0",
+          "rules": [
+            "legacy_observer"
+          ],
+          "source_format": "legacy_jsonl"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_DECISION",
+          "decision_kind": "collapse",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000015_ddd7919f",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 399,
+          "max_authority": "H0",
+          "rules": [
+            "legacy_observer"
+          ],
+          "source_format": "legacy_jsonl"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_DECISION",
+          "decision_kind": "collapse",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000017_b19df11f",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 401,
+          "max_authority": "H0",
+          "rules": [
+            "legacy_observer"
+          ],
+          "source_format": "legacy_jsonl"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_DECISION",
+          "decision_kind": "collapse",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000022_460f742b",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 406,
+          "max_authority": "H0",
+          "rules": [
+            "legacy_observer"
+          ],
+          "source_format": "legacy_jsonl"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_DECISION",
+          "decision_kind": "collapse",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000024_b9380e24",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 408,
+          "max_authority": "H0",
+          "rules": [
+            "legacy_observer"
+          ],
+          "source_format": "legacy_jsonl"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_DECISION",
+          "decision_kind": "collapse",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000029_e115771c",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 413,
+          "max_authority": "H0",
+          "rules": [
+            "legacy_observer"
+          ],
+          "source_format": "legacy_jsonl"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_DECISION",
+          "decision_kind": "collapse",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000031_f7f54e57",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 415,
+          "max_authority": "H0",
+          "rules": [
+            "legacy_observer"
+          ],
+          "source_format": "legacy_jsonl"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_DECISION",
+          "decision_kind": "collapse",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000038_704394c1",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 422,
+          "max_authority": "H0",
+          "rules": [
+            "legacy_observer"
+          ],
+          "source_format": "legacy_jsonl"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_DECISION",
+          "decision_kind": "collapse",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000040_456190e1",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 424,
+          "max_authority": "H0",
+          "rules": [
+            "legacy_observer"
+          ],
+          "source_format": "legacy_jsonl"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_DECISION",
+          "decision_kind": "collapse",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000045_044db479",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 429,
+          "max_authority": "H0",
+          "rules": [
+            "legacy_observer"
+          ],
+          "source_format": "legacy_jsonl"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_DECISION",
+          "decision_kind": "collapse",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000047_2f09ade1",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 431,
+          "max_authority": "H0",
+          "rules": [
+            "legacy_observer"
+          ],
+          "source_format": "legacy_jsonl"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_DECISION",
+          "decision_kind": "collapse",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000052_18bf554d",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 436,
+          "max_authority": "H0",
+          "rules": [
+            "legacy_observer"
+          ],
+          "source_format": "legacy_jsonl"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_DECISION",
+          "decision_kind": "collapse",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000054_3898d4c2",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 438,
+          "max_authority": "H0",
+          "rules": [
+            "legacy_observer"
+          ],
+          "source_format": "legacy_jsonl"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_DECISION",
+          "decision_kind": "collapse",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000059_01f7a41e",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 443,
+          "max_authority": "H0",
+          "rules": [
+            "legacy_observer"
+          ],
+          "source_format": "legacy_jsonl"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_DECISION",
+          "decision_kind": "collapse",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000061_1a9c106c",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 445,
+          "max_authority": "H0",
+          "rules": [
+            "legacy_observer"
+          ],
+          "source_format": "legacy_jsonl"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_DECISION",
+          "decision_kind": "collapse",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000071_4bf4fe50",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 455,
+          "max_authority": "H0",
+          "rules": [
+            "legacy_observer"
+          ],
+          "source_format": "legacy_jsonl"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_DECISION",
+          "decision_kind": "collapse",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000073_bc920d9e",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 457,
+          "max_authority": "H0",
+          "rules": [
+            "legacy_observer"
+          ],
+          "source_format": "legacy_jsonl"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_DECISION",
+          "decision_kind": "collapse",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000078_933bffc6",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 462,
+          "max_authority": "H0",
+          "rules": [
+            "legacy_observer"
+          ],
+          "source_format": "legacy_jsonl"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_DECISION",
+          "decision_kind": "collapse",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000080_7f5c085d",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 464,
+          "max_authority": "H0",
+          "rules": [
+            "legacy_observer"
+          ],
+          "source_format": "legacy_jsonl"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_DECISION",
+          "decision_kind": "collapse",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000085_2950be7a",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 469,
+          "max_authority": "H0",
+          "rules": [
+            "legacy_observer"
+          ],
+          "source_format": "legacy_jsonl"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_DECISION",
+          "decision_kind": "collapse",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000087_2b862356",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 471,
+          "max_authority": "H0",
+          "rules": [
+            "legacy_observer"
+          ],
+          "source_format": "legacy_jsonl"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_DECISION",
+          "decision_kind": "collapse",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000092_7c509ec7",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 476,
+          "max_authority": "H0",
+          "rules": [
+            "legacy_observer"
+          ],
+          "source_format": "legacy_jsonl"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_DECISION",
+          "decision_kind": "collapse",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000094_7cdd1632",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 478,
+          "max_authority": "H0",
+          "rules": [
+            "legacy_observer"
+          ],
+          "source_format": "legacy_jsonl"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_DECISION",
+          "decision_kind": "collapse",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000099_a59ef6d5",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 483,
+          "max_authority": "H0",
+          "rules": [
+            "legacy_observer"
+          ],
+          "source_format": "legacy_jsonl"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_DECISION",
+          "decision_kind": "collapse",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000101_8ad59514",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 485,
+          "max_authority": "H0",
+          "rules": [
+            "legacy_observer"
+          ],
+          "source_format": "legacy_jsonl"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_DECISION",
+          "decision_kind": "collapse",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000106_d4230bdb",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 490,
+          "max_authority": "H0",
+          "rules": [
+            "legacy_observer"
+          ],
+          "source_format": "legacy_jsonl"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_DECISION",
+          "decision_kind": "collapse",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000108_25063b2d",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 492,
+          "max_authority": "H0",
+          "rules": [
+            "legacy_observer"
+          ],
+          "source_format": "legacy_jsonl"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_DECISION",
+          "decision_kind": "collapse",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000113_4a44cb7a",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 497,
+          "max_authority": "H0",
+          "rules": [
+            "legacy_observer"
+          ],
+          "source_format": "legacy_jsonl"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_DECISION",
+          "decision_kind": "collapse",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000115_cba9a5dc",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 499,
+          "max_authority": "H0",
+          "rules": [
+            "legacy_observer"
+          ],
+          "source_format": "legacy_jsonl"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_DECISION",
+          "decision_kind": "collapse",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000120_ef36629d",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 504,
+          "max_authority": "H0",
+          "rules": [
+            "legacy_observer"
+          ],
+          "source_format": "legacy_jsonl"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_DECISION",
+          "decision_kind": "collapse",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000122_197aa047",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 506,
+          "max_authority": "H0",
+          "rules": [
+            "legacy_observer"
+          ],
+          "source_format": "legacy_jsonl"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_DECISION",
+          "decision_kind": "collapse",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000127_2ae25618",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 511,
+          "max_authority": "H0",
+          "rules": [
+            "legacy_observer"
+          ],
+          "source_format": "legacy_jsonl"
+        }
+      ]
+    },
+    {
+      "classification": "ENTITY_HEURISTIC_MATURITY_READY",
+      "entity_catalog_ref": "reports/pnva-native-entity-catalog-demo-2026-05-05.json",
+      "entity_profiles": [
+        {
+          "capabilities": [
+            "emit_native_pnva_event",
+            "guard_decision"
+          ],
+          "catalog_present": true,
+          "chain_count": 1,
+          "decision_mix": [
+            [
+              "collapse",
+              1
+            ],
+            [
+              "block",
+              1
+            ]
+          ],
+          "entity_id": "pnva-etev-guard",
+          "entity_type": "guard",
+          "event_count": 2,
+          "maturity_notes": [],
+          "maturity_score": 100,
+          "max_authority": "H3",
+          "proof_valid_count": 2,
+          "relation_in_count": 0,
+          "relation_out_count": 2,
+          "risk_flags": [
+            [
+              "STALE_PRESSURE",
+              1
+            ]
+          ],
+          "rules": [
+            [
+              "adaptive_threshold",
+              2
+            ],
+            [
+              "etev_guard",
+              2
+            ],
+            [
+              "native_event_emitter",
+              2
+            ]
+          ],
+          "state": "blocked",
+          "strong_decision_count": 2,
+          "suppressed_count": 1
+        },
+        {
+          "capabilities": [
+            "emit_native_pnva_event"
+          ],
+          "catalog_present": true,
+          "chain_count": 1,
+          "decision_mix": [
+            [
+              "observe",
+              1
+            ]
+          ],
+          "entity_id": "pnva-field-demo",
+          "entity_type": "field",
+          "event_count": 1,
+          "maturity_notes": [],
+          "maturity_score": 100,
+          "max_authority": "H2",
+          "proof_valid_count": 1,
+          "relation_in_count": 0,
+          "relation_out_count": 0,
+          "risk_flags": [],
+          "rules": [
+            [
+              "legacy_observer",
+              1
+            ],
+            [
+              "native_event_emitter",
+              1
+            ]
+          ],
+          "state": "observing",
+          "strong_decision_count": 0,
+          "suppressed_count": 1
+        },
+        {
+          "capabilities": [
+            "emit_native_pnva_event"
+          ],
+          "catalog_present": true,
+          "chain_count": 1,
+          "decision_mix": [
+            [
+              "prove",
+              1
+            ]
+          ],
+          "entity_id": "pnva-proof-native-demo",
+          "entity_type": "proof",
+          "event_count": 1,
+          "maturity_notes": [],
+          "maturity_score": 100,
+          "max_authority": "H2",
+          "proof_valid_count": 1,
+          "relation_in_count": 0,
+          "relation_out_count": 0,
+          "risk_flags": [],
+          "rules": [
+            [
+              "native_event_emitter",
+              1
+            ]
+          ],
+          "state": "observing",
+          "strong_decision_count": 1,
+          "suppressed_count": 0
+        },
+        {
+          "capabilities": [
+            "emit_native_pnva_event"
+          ],
+          "catalog_present": true,
+          "chain_count": 1,
+          "decision_mix": [
+            [
+              "observe",
+              1
+            ]
+          ],
+          "entity_id": "pnva-thermal-guard",
+          "entity_type": "guard",
+          "event_count": 1,
+          "maturity_notes": [],
+          "maturity_score": 100,
+          "max_authority": "H2",
+          "proof_valid_count": 1,
+          "relation_in_count": 0,
+          "relation_out_count": 0,
+          "risk_flags": [
+            [
+              "THERMAL_PRESSURE",
+              1
+            ]
+          ],
+          "rules": [
+            [
+              "native_event_emitter",
+              1
+            ],
+            [
+              "power_orchestrator",
+              1
+            ]
+          ],
+          "state": "observing",
+          "strong_decision_count": 0,
+          "suppressed_count": 1
+        },
+        {
+          "capabilities": [
+            "emit_native_pnva_event",
+            "receive_guard_decision"
+          ],
+          "catalog_present": true,
+          "chain_count": 1,
+          "decision_mix": [
+            [
+              "collapse",
+              1
+            ]
+          ],
+          "entity_id": "zano-entity-00",
+          "entity_type": "worker",
+          "event_count": 1,
+          "maturity_notes": [],
+          "maturity_score": 100,
+          "max_authority": "H2",
+          "proof_valid_count": 1,
+          "relation_in_count": 1,
+          "relation_out_count": 0,
+          "risk_flags": [],
+          "rules": [
+            [
+              "field_scheduler",
+              1
+            ],
+            [
+              "memory4d",
+              1
+            ],
+            [
+              "native_event_emitter",
+              1
+            ]
+          ],
+          "state": "active",
+          "strong_decision_count": 1,
+          "suppressed_count": 0
+        },
+        {
+          "capabilities": [
+            "emit_native_pnva_event",
+            "receive_guard_decision"
+          ],
+          "catalog_present": true,
+          "chain_count": 1,
+          "decision_mix": [
+            [
+              "block",
+              1
+            ]
+          ],
+          "entity_id": "zano-entity-01",
+          "entity_type": "worker",
+          "event_count": 1,
+          "maturity_notes": [],
+          "maturity_score": 100,
+          "max_authority": "H2",
+          "proof_valid_count": 1,
+          "relation_in_count": 1,
+          "relation_out_count": 0,
+          "risk_flags": [
+            [
+              "STALE_PRESSURE",
+              1
+            ]
+          ],
+          "rules": [
+            [
+              "field_scheduler",
+              1
+            ],
+            [
+              "native_event_emitter",
+              1
+            ]
+          ],
+          "state": "blocked",
+          "strong_decision_count": 1,
+          "suppressed_count": 1
+        }
+      ],
+      "errors": [],
+      "events_ref": "reports/pnva-native-events-demo-2026-05-05.jsonl",
+      "heuristic_profiles": [
+        {
+          "authority": "H2",
+          "avg_gate_delta": -0.299,
+          "avg_tension_score": 0.308143,
+          "decision_mix": [
+            [
+              "observe",
+              2
+            ],
+            [
+              "collapse",
+              2
+            ],
+            [
+              "block",
+              2
+            ],
+            [
+              "prove",
+              1
+            ]
+          ],
+          "entity_count": 6,
+          "event_count": 7,
+          "legacy_event_count": 0,
+          "maturity_notes": [],
+          "maturity_score": 100,
+          "native_event_count": 7,
+          "proof_valid_count": 7,
+          "risk_flags": [
+            [
+              "STALE_PRESSURE",
+              2
+            ],
+            [
+              "THERMAL_PRESSURE",
+              1
+            ]
+          ],
+          "rule": "native_event_emitter",
+          "strong_decision_count": 5,
+          "suppressed_count": 4
+        },
+        {
+          "authority": "H2",
+          "avg_gate_delta": -0.282,
+          "avg_tension_score": 0.408,
+          "decision_mix": [
+            [
+              "collapse",
+              1
+            ],
+            [
+              "block",
+              1
+            ]
+          ],
+          "entity_count": 1,
+          "event_count": 2,
+          "legacy_event_count": 0,
+          "maturity_notes": [],
+          "maturity_score": 100,
+          "native_event_count": 2,
+          "proof_valid_count": 2,
+          "risk_flags": [
+            [
+              "STALE_PRESSURE",
+              1
+            ]
+          ],
+          "rule": "adaptive_threshold",
+          "strong_decision_count": 2,
+          "suppressed_count": 1
+        },
+        {
+          "authority": "H3",
+          "avg_gate_delta": -0.282,
+          "avg_tension_score": 0.408,
+          "decision_mix": [
+            [
+              "collapse",
+              1
+            ],
+            [
+              "block",
+              1
+            ]
+          ],
+          "entity_count": 1,
+          "event_count": 2,
+          "legacy_event_count": 0,
+          "maturity_notes": [],
+          "maturity_score": 100,
+          "native_event_count": 2,
+          "proof_valid_count": 2,
+          "risk_flags": [
+            [
+              "STALE_PRESSURE",
+              1
+            ]
+          ],
+          "rule": "etev_guard",
+          "strong_decision_count": 2,
+          "suppressed_count": 1
+        },
+        {
+          "authority": "H2",
+          "avg_gate_delta": -0.2375,
+          "avg_tension_score": 0.3325,
+          "decision_mix": [
+            [
+              "collapse",
+              1
+            ],
+            [
+              "block",
+              1
+            ]
+          ],
+          "entity_count": 2,
+          "event_count": 2,
+          "legacy_event_count": 0,
+          "maturity_notes": [],
+          "maturity_score": 100,
+          "native_event_count": 2,
+          "proof_valid_count": 2,
+          "risk_flags": [
+            [
+              "STALE_PRESSURE",
+              1
+            ]
+          ],
+          "rule": "field_scheduler",
+          "strong_decision_count": 2,
+          "suppressed_count": 1
+        },
+        {
+          "authority": "H0",
+          "avg_gate_delta": -0.554,
+          "avg_tension_score": 0.046,
+          "decision_mix": [
+            [
+              "observe",
+              1
+            ]
+          ],
+          "entity_count": 1,
+          "event_count": 1,
+          "legacy_event_count": 0,
+          "maturity_notes": [],
+          "maturity_score": 100,
+          "native_event_count": 1,
+          "proof_valid_count": 1,
+          "risk_flags": [],
+          "rule": "legacy_observer",
+          "strong_decision_count": 0,
+          "suppressed_count": 1
+        },
+        {
+          "authority": "H1",
+          "avg_gate_delta": 0.046,
+          "avg_tension_score": 0.566,
+          "decision_mix": [
+            [
+              "collapse",
+              1
+            ]
+          ],
+          "entity_count": 1,
+          "event_count": 1,
+          "legacy_event_count": 0,
+          "maturity_notes": [
+            "low_authority_strong_decisions"
+          ],
+          "maturity_score": 70,
+          "native_event_count": 1,
+          "proof_valid_count": 1,
+          "risk_flags": [],
+          "rule": "memory4d",
+          "strong_decision_count": 1,
+          "suppressed_count": 0
+        },
+        {
+          "authority": "H2",
+          "avg_gate_delta": -0.548,
+          "avg_tension_score": 0.132,
+          "decision_mix": [
+            [
+              "observe",
+              1
+            ]
+          ],
+          "entity_count": 1,
+          "event_count": 1,
+          "legacy_event_count": 0,
+          "maturity_notes": [],
+          "maturity_score": 100,
+          "native_event_count": 1,
+          "proof_valid_count": 1,
+          "risk_flags": [
+            [
+              "THERMAL_PRESSURE",
+              1
+            ]
+          ],
+          "rule": "power_orchestrator",
+          "strong_decision_count": 0,
+          "suppressed_count": 1
+        }
+      ],
+      "maturity_score": 95.0,
+      "pass": true,
+      "scope": "native_runtime_demo",
+      "summary": {
+        "authority_mix": [
+          [
+            "H2",
+            5
+          ],
+          [
+            "H3",
+            2
+          ]
+        ],
+        "avg_gate_delta": -0.299,
+        "avg_tension_score": 0.308143,
+        "catalog_entity_count": 6,
+        "decision_mix": [
+          [
+            "observe",
+            2
+          ],
+          [
+            "collapse",
+            2
+          ],
+          [
+            "block",
+            2
+          ],
+          [
+            "prove",
+            1
+          ]
+        ],
+        "entity_coverage_ratio": 1.0,
+        "event_count": 7,
+        "hard_authority_ratio": 1.0,
+        "heuristic_count": 7,
+        "heuristic_visibility_ratio": 1.0,
+        "legacy_event_count": 0,
+        "low_authority_legacy_count": 0,
+        "native_event_count": 7,
+        "no_tick_suppression_ratio": 0.571429,
+        "observed_entity_count": 6,
+        "proof_integrity_ratio": 1.0,
+        "proof_valid_count": 7,
+        "relation_coverage_ratio": 0.5,
+        "risk_flags": [
+          [
+            "STALE_PRESSURE",
+            2
+          ],
+          [
+            "THERMAL_PRESSURE",
+            1
+          ]
+        ],
+        "source_mix": [
+          [
+            "native_pnva_event_v1",
+            7
+          ]
+        ],
+        "strong_decision_count": 5,
+        "strong_with_hard_authority": 5,
+        "suppressed_count": 4
+      },
+      "warnings": []
+    }
+  ],
+  "summary": {
+    "aggregate_hard_authority_ratio": 0.884868,
+    "aggregate_no_tick_suppression_ratio": 0.481696,
+    "canonical_low_authority_legacy_count": 35,
+    "canonical_maturity_score": 94.17,
+    "native_low_authority_legacy_count": 0,
+    "native_maturity_score": 95.0,
+    "total_event_count": 519,
+    "total_strong_decision_count": 304,
+    "total_strong_with_hard_authority": 269,
+    "total_suppressed_count": 250
+  },
+  "warning_count": 35
+}

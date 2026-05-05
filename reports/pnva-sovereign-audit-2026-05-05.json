@@ -72,7 +72,7 @@
     "robots_missing_tokens": [],
     "robots_ok": true,
     "sitemap_ok": true,
-    "sitemap_url_count": 38,
+    "sitemap_url_count": 40,
     "sitemap_urls": [
       "https://enygnadev.github.io/pnva-core/",
       "https://enygnadev.github.io/pnva-core/author.html",
@@ -90,6 +90,7 @@
       "https://enygnadev.github.io/pnva-core/docs/PNVA_CAUSAL_GRAPH_AUDIT.md",
       "https://enygnadev.github.io/pnva-core/docs/PNVA_SOVEREIGN_EVIDENCE_ATTESTATION.md",
       "https://enygnadev.github.io/pnva-core/docs/PNVA_ADVERSARIAL_VALIDATION.md",
+      "https://enygnadev.github.io/pnva-core/docs/PNVA_ENTITY_HEURISTIC_MATURITY.md",
       "https://enygnadev.github.io/pnva-core/docs/PNVA_ROBUSTNESS_EVOLUTION_REPORT_2026-05-05.md",
       "https://enygnadev.github.io/pnva-core/schemas/pnva-event.schema.json",
       "https://enygnadev.github.io/pnva-core/schemas/pnva-entity.schema.json",
@@ -111,20 +112,36 @@
       "https://enygnadev.github.io/pnva-core/reports/pnva-causal-graph-2026-05-05.json",
       "https://enygnadev.github.io/pnva-core/reports/pnva-native-causal-graph-2026-05-05.json",
       "https://enygnadev.github.io/pnva-core/reports/pnva-adversarial-validation-2026-05-05.json",
+      "https://enygnadev.github.io/pnva-core/reports/pnva-entity-heuristic-maturity-2026-05-05.json",
       "https://enygnadev.github.io/pnva-core/reports/pnva-sovereign-evidence-attestation-2026-05-05.json"
     ]
   },
+  "entity_heuristic_maturity": {
+    "aggregate_hard_authority_ratio": 0.884868,
+    "aggregate_no_tick_suppression_ratio": 0.481696,
+    "canonical_low_authority_legacy_count": 35,
+    "classification": "ENTITY_HEURISTIC_MATURITY_READY_WITH_LEGACY_WARNINGS",
+    "error_count": 0,
+    "errors": [],
+    "maturity_ok": true,
+    "maturity_score": 94.59,
+    "missing": [],
+    "native_low_authority_legacy_count": 0,
+    "total_event_count": 519,
+    "total_suppressed_count": 250,
+    "warning_count": 35
+  },
   "evidence_attestation": {
-    "artifact_count": 18,
+    "artifact_count": 19,
     "attestation_ok": true,
     "classification": "PNVA_SOVEREIGN_EVIDENCE_ATTESTED",
     "errors": [],
-    "evidence_hash": "sha256:cc28cbd7a76fcd4300e779573944b980fa48cf9e0468d80d982697cbd636b721",
+    "evidence_hash": "sha256:a622b1aa24661c9d76344de08d00823ad9b4f4e4271b9a953c918263b13e23b3",
     "failure_count": 0,
     "missing": [],
-    "tracked_artifacts": 18
+    "tracked_artifacts": 19
   },
-  "generated_at": "2026-05-05T05:25:42Z",
+  "generated_at": "2026-05-05T05:36:32Z",
   "local_logs": {
     "available": true,
     "bad_json_ratio": 0.0,
@@ -896,6 +913,7 @@
     "Audit causal graphs so entity topology is visible, not implicit.",
     "Publish one sovereign evidence attestation hash with every evidence release.",
     "Run adversarial validation so validators prove tamper detection, not only green-path acceptance.",
+    "Track entity and heuristic maturity so no-tick suppression stays attributable to actors and authority.",
     "Keep raw local logs private and publish only sanitized proof summaries.",
     "Track thermal pressure provenance when thermal pressure is high but sensor temperature/power are unavailable.",
     "Treat high RESIZE_BATCH ratio as pressure intelligence, not as a proof failure by itself."

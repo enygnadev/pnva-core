@@ -49,6 +49,7 @@ PUBLIC_DOCS = [
     "docs/PNVA_CAUSAL_GRAPH_AUDIT.md",
     "docs/PNVA_SOVEREIGN_EVIDENCE_ATTESTATION.md",
     "docs/PNVA_ADVERSARIAL_VALIDATION.md",
+    "docs/PNVA_ENTITY_HEURISTIC_MATURITY.md",
     "paper/PNVA_CORE_OPEN_RESEARCH_PAPER.md",
 ]
 
@@ -117,6 +118,12 @@ ADVERSARIAL_VALIDATION_FILES = [
     "tools/pnva_adversarial_validator.py",
     "docs/PNVA_ADVERSARIAL_VALIDATION.md",
     "reports/pnva-adversarial-validation-2026-05-05.json",
+]
+
+ENTITY_HEURISTIC_MATURITY_FILES = [
+    "tools/pnva_entity_heuristic_maturity.py",
+    "docs/PNVA_ENTITY_HEURISTIC_MATURITY.md",
+    "reports/pnva-entity-heuristic-maturity-2026-05-05.json",
 ]
 
 LOCAL_LOG_CANDIDATES = [
@@ -588,6 +595,41 @@ def audit_adversarial_validation(repo: Path) -> dict[str, Any]:
     }
 
 
+def audit_entity_heuristic_maturity(repo: Path) -> dict[str, Any]:
+    missing = [rel for rel in ENTITY_HEURISTIC_MATURITY_FILES if not (repo / rel).exists()]
+    report_path = repo / "reports" / "pnva-entity-heuristic-maturity-2026-05-05.json"
+    if not report_path.exists():
+        return {
+            "maturity_ok": False,
+            "missing": missing,
+            "classification": "ENTITY_HEURISTIC_MATURITY_MISSING",
+            "errors": ["missing entity heuristic maturity report"],
+        }
+    data = _read_json(report_path)
+    summary = data.get("summary", {}) if isinstance(data, dict) else {}
+    allowed = {"ENTITY_HEURISTIC_MATURITY_READY", "ENTITY_HEURISTIC_MATURITY_READY_WITH_LEGACY_WARNINGS"}
+    return {
+        "maturity_ok": (
+            not missing
+            and data.get("pass") is True
+            and data.get("classification") in allowed
+            and int(data.get("error_count", 0)) == 0
+        ),
+        "missing": missing,
+        "classification": data.get("classification"),
+        "maturity_score": float(data.get("maturity_score", 0.0)),
+        "error_count": int(data.get("error_count", 0)),
+        "warning_count": int(data.get("warning_count", 0)),
+        "total_event_count": int(summary.get("total_event_count", 0)),
+        "total_suppressed_count": int(summary.get("total_suppressed_count", 0)),
+        "aggregate_no_tick_suppression_ratio": float(summary.get("aggregate_no_tick_suppression_ratio", 0.0)),
+        "aggregate_hard_authority_ratio": float(summary.get("aggregate_hard_authority_ratio", 0.0)),
+        "canonical_low_authority_legacy_count": int(summary.get("canonical_low_authority_legacy_count", 0)),
+        "native_low_authority_legacy_count": int(summary.get("native_low_authority_legacy_count", 0)),
+        "errors": [] if isinstance(data, dict) and data.get("pass") is True else ["entity heuristic maturity failed"],
+    }
+
+
 def sample_jsonl(path: Path, *, max_lines: int = 50000) -> dict[str, Any]:
     events: Counter[str] = Counter()
     decisions: Counter[str] = Counter()
@@ -847,6 +889,7 @@ def build_report(repo: Path, *, strict_public: bool = False) -> dict[str, Any]:
         "causal_graph": audit_causal_graph(repo),
         "evidence_attestation": audit_evidence_attestation(repo),
         "adversarial_validation": audit_adversarial_validation(repo),
+        "entity_heuristic_maturity": audit_entity_heuristic_maturity(repo),
         "local_logs": audit_local_logs(strict_public),
         "sovereignty": audit_sovereignty(repo),
         "recommendations": [
@@ -859,6 +902,7 @@ def build_report(repo: Path, *, strict_public: bool = False) -> dict[str, Any]:
             "Audit causal graphs so entity topology is visible, not implicit.",
             "Publish one sovereign evidence attestation hash with every evidence release.",
             "Run adversarial validation so validators prove tamper detection, not only green-path acceptance.",
+            "Track entity and heuristic maturity so no-tick suppression stays attributable to actors and authority.",
             "Keep raw local logs private and publish only sanitized proof summaries.",
             "Track thermal pressure provenance when thermal pressure is high but sensor temperature/power are unavailable.",
             "Treat high RESIZE_BATCH ratio as pressure intelligence, not as a proof failure by itself.",

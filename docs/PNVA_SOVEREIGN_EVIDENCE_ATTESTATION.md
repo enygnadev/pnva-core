@@ -18,6 +18,7 @@ sovereign policy validation
 proof-chain sealing
 causal graph audit
 adversarial validation
+entity and heuristic maturity
 sovereign audit
 ```
 
@@ -57,7 +58,7 @@ Current result:
 ```text
 classification: PNVA_SOVEREIGN_EVIDENCE_ATTESTED
 pass: true
-artifact_count: 18
+artifact_count: 19
 failure_count: 0
 ```
 

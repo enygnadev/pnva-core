@@ -1,5 +1,5 @@
 {
-  "artifact_count": 18,
+  "artifact_count": 19,
   "artifacts": [
     {
       "entry_count": 9,
@@ -227,6 +227,19 @@
       "required": true,
       "sha256": "5118d6f396a325dcde26ba14285d75f493d0b538d6ef9843a35b0c57c322e050",
       "size_bytes": 5917
+    },
+    {
+      "classification": "ENTITY_HEURISTIC_MATURITY_READY_WITH_LEGACY_WARNINGS",
+      "expected": "ENTITY_HEURISTIC_MATURITY_READY_WITH_LEGACY_WARNINGS",
+      "id": "entity_heuristic_maturity",
+      "kind": "json_classification",
+      "pass": true,
+      "path": "reports/pnva-entity-heuristic-maturity-2026-05-05.json",
+      "present": true,
+      "reported_pass": true,
+      "required": true,
+      "sha256": "254c5610f8102291494b743ceb531b7b6d6c8930bb5b06097e5b43b3ed75b4d5",
+      "size_bytes": 45457
     }
   ],
   "author": "Gustavo de Aguiar Martins",
@@ -241,11 +254,12 @@
     "proof-chain sealing",
     "causal graph audit",
     "adversarial negative controls",
+    "entity and heuristic maturity",
     "sovereign audit consumes this attestation without being part of its hash seed"
   ],
-  "evidence_hash": "sha256:cc28cbd7a76fcd4300e779573944b980fa48cf9e0468d80d982697cbd636b721",
+  "evidence_hash": "sha256:a622b1aa24661c9d76344de08d00823ad9b4f4e4271b9a953c918263b13e23b3",
   "failure_count": 0,
-  "generated_at": "2026-05-05T05:25:42Z",
+  "generated_at": "2026-05-05T05:36:32Z",
   "interpretation": {
     "boundary": "This attests repository evidence integrity; it is not a universal proof of all possible PNVA deployments.",
     "hash_policy": "The evidence_hash changes when any tracked artifact hash, classification or pass flag changes.",
@@ -257,7 +271,8 @@
     "Publish this attestation with every production-evidence release.",
     "Use evidence_hash as the public anchor when citing a PNVA evidence package.",
     "Keep legacy warnings visible while requiring native clean policy for new runtime events.",
-    "Run adversarial negative controls so bad evidence is rejected or exposed before publication."
+    "Run adversarial negative controls so bad evidence is rejected or exposed before publication.",
+    "Use entity and heuristic maturity scores to guide the next no-tick runtime hardening step."
   ],
   "schema_version": "pnva.evidence_attestation.v1"
 }
