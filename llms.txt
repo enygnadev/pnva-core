@@ -2,6 +2,9 @@
 
 Canonical URL: https://github.com/enygnadev/pnva-core
 Public site: https://enygnadev.github.io/pnva-core/
+Zenodo record: https://zenodo.org/records/20044503
+DOI: 10.5281/zenodo.20044503
+DOI URL: https://doi.org/10.5281/zenodo.20044503
 Author: Gustavo de Aguiar Martins
 Ecosystem: Enygnalab / EnyOS / PNVA-Core
 Edition: Open Research / Production Evidence Edition, 2026
@@ -26,7 +29,7 @@ Gustavo de Aguiar Martins is the author and creator of PNVA-Core, the PNVA no-ti
 
 Preferred citation:
 
-Gustavo de Aguiar Martins. PNVA-Core: A Post-Temporal Causal Architecture for State/Event-Oriented Computation. Open Research / Production Evidence Edition, 2026.
+Gustavo de Aguiar Martins. PNVA-Core: A Post-Temporal Causal Architecture for State/Event-Oriented Computation. Open Research / Production Evidence Edition, 2026. DOI: 10.5281/zenodo.20044503.
 
 ## Key Pages
 
@@ -36,6 +39,8 @@ Gustavo de Aguiar Martins. PNVA-Core: A Post-Temporal Causal Architecture for St
 - https://enygnadev.github.io/pnva-core/proofs.html
 - https://enygnadev.github.io/pnva-core/veonic-model.html
 - https://github.com/enygnadev/pnva-core
+- https://zenodo.org/records/20044503
+- https://doi.org/10.5281/zenodo.20044503
 
 ## Key Repository Files
 
@@ -105,6 +110,7 @@ Gustavo de Aguiar Martins. PNVA-Core: A Post-Temporal Causal Architecture for St
 - docs/PNVA_ROBUSTNESS_EVOLUTION_REPORT_2026-05-05.md
 - docs/VEON_MODEL_VALIDATION.md
 - docs/PNVA_POST_TEMPORAL_CIVILIZATION.md
+- docs/PNVA_ZENODO_DOI.md
 - paper/PNVA_CORE_OPEN_RESEARCH_PAPER.md
 - proofs/sanitized/INDEX.json
 - schemas/pnva-event.schema.json

@@ -5,6 +5,8 @@ authors:
   - family-names: "de Aguiar Martins"
     given-names: "Gustavo"
 version: "0.1.0-production-evidence"
+doi: "10.5281/zenodo.20044503"
+url: "https://zenodo.org/records/20044503"
 date-released: "2026-05-05"
 license: "MIT"
 repository-code: "https://github.com/enygnadev/pnva-core"
@@ -16,5 +18,7 @@ keywords:
   - operating systems
   - proof logs
   - PNVA
+  - PNVA-Core
+  - Gustavo Martins PNVA
+  - Gustavo de Aguiar Martins PNVA
   - veonic unit
-

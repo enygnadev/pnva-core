@@ -11,6 +11,7 @@
 <p align="center">
   <a href="LICENSE"><img alt="Code License: MIT" src="https://img.shields.io/badge/code-MIT-0b1020?style=for-the-badge"></a>
   <a href="LICENSE-DOCS"><img alt="Docs License: CC BY 4.0" src="https://img.shields.io/badge/docs-CC_BY_4.0-1d4ed8?style=for-the-badge"></a>
+  <a href="https://doi.org/10.5281/zenodo.20044503"><img alt="DOI: 10.5281/zenodo.20044503" src="https://zenodo.org/badge/DOI/10.5281/zenodo.20044503.svg"></a>
   <img alt="Production Candidate" src="https://img.shields.io/badge/production--candidate-PASS-c9a227?style=for-the-badge">
   <img alt="Research Edition" src="https://img.shields.io/badge/open--research-2026-6d28d9?style=for-the-badge">
 </p>
@@ -33,6 +34,18 @@ to:   "did the field change enough to justify action?"
 ```
 
 PNVA is not presented here as a universal physical theory or a miracle optimization. It is a technical architecture for event-aware, proof-driven computation.
+
+## DOI
+
+Canonical Zenodo record:
+
+```text
+Gustavo de Aguiar Martins. PNVA-Core: A Post-Temporal Causal Architecture for State/Event-Oriented Computation. Open Research / Production Evidence Edition, 2026. DOI: 10.5281/zenodo.20044503
+```
+
+Record URL: https://zenodo.org/records/20044503
+
+DOI URL: https://doi.org/10.5281/zenodo.20044503
 
 ## Production Evidence
 
