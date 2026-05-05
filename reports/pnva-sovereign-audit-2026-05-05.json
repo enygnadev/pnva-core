@@ -120,7 +120,7 @@
     "robots_missing_tokens": [],
     "robots_ok": true,
     "sitemap_ok": true,
-    "sitemap_url_count": 73,
+    "sitemap_url_count": 75,
     "sitemap_urls": [
       "https://enygnadev.github.io/pnva-core/",
       "https://enygnadev.github.io/pnva-core/author.html",
@@ -148,6 +148,7 @@
       "https://enygnadev.github.io/pnva-core/docs/PNVA_AUTHORITY_MIGRATION_LEDGER.md",
       "https://enygnadev.github.io/pnva-core/docs/PNVA_R3_AUTHORITY_PROJECTION.md",
       "https://enygnadev.github.io/pnva-core/docs/PNVA_R3_CUTOVER_GATE.md",
+      "https://enygnadev.github.io/pnva-core/docs/PNVA_R3_RUNTIME_CAPTURE_MATRIX.md",
       "https://enygnadev.github.io/pnva-core/docs/PNVA_SOVEREIGN_EVIDENCE_ATTESTATION.md",
       "https://enygnadev.github.io/pnva-core/docs/PNVA_ADVERSARIAL_VALIDATION.md",
       "https://enygnadev.github.io/pnva-core/docs/PNVA_ENTITY_HEURISTIC_MATURITY.md",
@@ -192,6 +193,7 @@
       "https://enygnadev.github.io/pnva-core/reports/pnva-r3-authority-projection-policy-2026-05-05.json",
       "https://enygnadev.github.io/pnva-core/reports/pnva-r3-authority-projection-no-tick-2026-05-05.json",
       "https://enygnadev.github.io/pnva-core/reports/pnva-r3-cutover-gate-2026-05-05.json",
+      "https://enygnadev.github.io/pnva-core/reports/pnva-r3-runtime-capture-matrix-2026-05-05.json",
       "https://enygnadev.github.io/pnva-core/reports/pnva-semantic-consistency-2026-05-05.json",
       "https://enygnadev.github.io/pnva-core/reports/pnva-reproducibility-2026-05-05.json",
       "https://enygnadev.github.io/pnva-core/reports/pnva-sovereign-evidence-attestation-2026-05-05.json"
@@ -228,16 +230,16 @@
     "warning_count": 35
   },
   "evidence_attestation": {
-    "artifact_count": 36,
+    "artifact_count": 37,
     "attestation_ok": true,
     "classification": "PNVA_SOVEREIGN_EVIDENCE_ATTESTED",
     "errors": [],
-    "evidence_hash": "sha256:126803fdc1459c2d7398027c54720812fd184c013fc0615f979d065345778ef0",
+    "evidence_hash": "sha256:ab39ebb438c96e62fd11262122e635cbbefab5aa983b40e6768f7d2d60ced493",
     "failure_count": 0,
     "missing": [],
-    "tracked_artifacts": 36
+    "tracked_artifacts": 37
   },
-  "generated_at": "2026-05-05T09:11:32Z",
+  "generated_at": "2026-05-05T09:28:32Z",
   "heuristic_influence_map": {
     "classification": "HEURISTIC_INFLUENCE_MAP_READY_WITH_LEGACY_WARNINGS",
     "error_count": 0,
@@ -1074,6 +1076,28 @@
     "target_robustness_score": 100,
     "warning_count": 1
   },
+  "r3_runtime_capture_matrix": {
+    "action_target_count": 3,
+    "capture_contract_ready": true,
+    "capture_slot_count": 35,
+    "classification": "R3_RUNTIME_CAPTURE_MATRIX_READY_PENDING_RUNTIME",
+    "entity_target_count": 1,
+    "errors": [],
+    "missing": [],
+    "pending_slot_count": 35,
+    "projection_pair_count": 35,
+    "projection_pair_coverage_ratio": 1.0,
+    "r3_runtime_capture_matrix_ok": true,
+    "required_collapse_commit_count": 35,
+    "required_no_tick_precheck_count": 35,
+    "required_runtime_event_count": 70,
+    "runtime_capture_approved": false,
+    "runtime_capture_complete": false,
+    "runtime_capture_coverage_ratio": 0.0,
+    "source_candidate_count": 35,
+    "target_rule_count": 4,
+    "verified_runtime_slot_count": 0
+  },
   "recommendations": [
     "Add schema_version, entity_id and causal_chain_id to every new JSONL event.",
     "Normalize legacy event/kind payloads into pnva.event.v1 before publishing.",
@@ -1094,6 +1118,7 @@
     "Run authority migration ledger so H0 strong decisions become entity/action-specific native targets.",
     "Run R3 authority projection so mapped H0 debt has native replay, policy and no-tick validation before runtime replacement.",
     "Run R3 cutover gate so contract readiness and final runtime approval remain separate.",
+    "Run R3 runtime capture matrix so remaining runtime replacements are explicit by entity, action, heuristic and no-tick precheck.",
     "Publish one sovereign evidence attestation hash with every evidence release.",
     "Run adversarial validation so validators prove tamper detection, not only green-path acceptance.",
     "Track entity and heuristic maturity so no-tick suppression stays attributable to actors and authority.",
@@ -1119,9 +1144,9 @@
   "repo_path": "<REPO>",
   "reproducibility": {
     "classification": "REPRODUCIBILITY_READY",
-    "command_count": 30,
+    "command_count": 31,
     "command_failure_count": 0,
-    "comparison_count": 292,
+    "comparison_count": 310,
     "comparison_failure_count": 0,
     "errors": [],
     "failure_count": 0,
@@ -1155,7 +1180,7 @@
     "total": 100
   },
   "semantic_consistency": {
-    "check_count": 232,
+    "check_count": 246,
     "classification": "SEMANTIC_CONSISTENCY_READY",
     "consistency_ok": true,
     "error_count": 0,

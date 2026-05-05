@@ -133,6 +133,7 @@ docs/
   PNVA_AUTHORITY_MIGRATION_LEDGER.md
   PNVA_R3_AUTHORITY_PROJECTION.md
   PNVA_R3_CUTOVER_GATE.md
+  PNVA_R3_RUNTIME_CAPTURE_MATRIX.md
   PNVA_SOVEREIGN_EVIDENCE_ATTESTATION.md
   PNVA_ADVERSARIAL_VALIDATION.md
   PNVA_ENTITY_HEURISTIC_MATURITY.md
@@ -191,6 +192,8 @@ reports/
   pnva-r3-authority-projection-replay-2026-05-05.json
   pnva-r3-authority-projection-policy-2026-05-05.json
   pnva-r3-authority-projection-no-tick-2026-05-05.json
+  pnva-r3-cutover-gate-2026-05-05.json
+  pnva-r3-runtime-capture-matrix-2026-05-05.json
   pnva-sovereign-evidence-attestation-2026-05-05.json
   pnva-adversarial-validation-2026-05-05.json
   pnva-entity-heuristic-maturity-2026-05-05.json
@@ -222,6 +225,8 @@ tools/
   pnva_r3_migration_planner.py
   pnva_authority_migration_ledger.py
   pnva_r3_authority_projection.py
+  pnva_r3_cutover_gate.py
+  pnva_r3_runtime_capture_matrix.py
   pnva_evidence_attestor.py
   pnva_adversarial_validator.py
   pnva_entity_heuristic_maturity.py
@@ -362,15 +367,17 @@ The R3 authority projection converts those `35` mapped candidates into a native 
 
 The R3 cutover gate separates native contract readiness from final runtime approval. The current package is `R3_CUTOVER_GATE_READY_RUNTIME_REQUIRED` with `contract_ready=true`, `cutover_approved=false`, `legacy_free_claim_allowed=false`, `35` remaining runtime replacements, `3` runtime blockers and contract score `100`; this prevents projected evidence from being mislabeled as final R3 runtime evidence.
 
+The R3 runtime capture matrix converts those `35` remaining replacements into entity/action/no-tick capture slots. The current package is `R3_RUNTIME_CAPTURE_MATRIX_READY_PENDING_RUNTIME` with `35` capture slots, `35` pending runtime slots, `70` required fresh runtime events, projection-pair coverage `1.0`, `1` target entity, `3` target actions and `4` target rules; this makes the next runtime step explicit without claiming R3 completion early.
+
 The adversarial validator runs negative controls against the public validators. The current package is `ADVERSARIAL_VALIDATION_PASS` with `7` detections over `7` controlled mutations.
 
 The entity and heuristic maturity auditor scores actor/rule readiness across entity coverage, proof coverage, no-tick suppression, authority and causal relations. The current package is `ENTITY_HEURISTIC_MATURITY_READY_WITH_LEGACY_WARNINGS` with score `94.59`, `0` errors and `35` preserved legacy warnings.
 
-The semantic consistency guard checks cross-report agreement across Manifest, replay, no-tick, policy, proof-chain, graph, schema contract, causal chronology, tension-decision calibration, decision trace index, heuristic influence map, entity no-tick matrix, suppression ledger, robustness gate, R3 migration plan, authority migration ledger, R3 authority projection, R3 cutover gate, maturity, adversarial validation, attestation and audit. The current package is `SEMANTIC_CONSISTENCY_READY` with `232` checks, `0` errors and `0` warnings.
+The semantic consistency guard checks cross-report agreement across Manifest, replay, no-tick, policy, proof-chain, graph, schema contract, causal chronology, tension-decision calibration, decision trace index, heuristic influence map, entity no-tick matrix, suppression ledger, robustness gate, R3 migration plan, authority migration ledger, R3 authority projection, R3 cutover gate, R3 runtime capture matrix, maturity, adversarial validation, attestation and audit. The current package is `SEMANTIC_CONSISTENCY_READY` with `246` checks, `0` errors and `0` warnings.
 
-The reproducibility guard reruns the current evidence commands and compares stable fields against the published reports. The current package is `REPRODUCIBILITY_READY` with `30` commands, `292` stable-field comparisons and `0` failures.
+The reproducibility guard reruns the current evidence commands and compares stable fields against the published reports. The current package is `REPRODUCIBILITY_READY` with `31` commands, `310` stable-field comparisons and `0` failures.
 
-The sovereign evidence attestor binds the public evidence base into one machine-readable attestation. The current package is `PNVA_SOVEREIGN_EVIDENCE_ATTESTED` with `36` tracked artifacts and `0` failures; the sovereign audit consumes this attestation without being included in its hash seed.
+The sovereign evidence attestor binds the public evidence base into one machine-readable attestation. The current package is `PNVA_SOVEREIGN_EVIDENCE_ATTESTED` with `37` tracked artifacts and `0` failures; the sovereign audit consumes this attestation without being included in its hash seed.
 
 ## Citation
 

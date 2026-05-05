@@ -37,6 +37,7 @@ REPORTS = {
     "r3_authority_projection_policy": "reports/pnva-r3-authority-projection-policy-2026-05-05.json",
     "r3_authority_projection_no_tick": "reports/pnva-r3-authority-projection-no-tick-2026-05-05.json",
     "r3_cutover_gate": "reports/pnva-r3-cutover-gate-2026-05-05.json",
+    "r3_runtime_capture_matrix": "reports/pnva-r3-runtime-capture-matrix-2026-05-05.json",
     "adversarial": "reports/pnva-adversarial-validation-2026-05-05.json",
     "maturity": "reports/pnva-entity-heuristic-maturity-2026-05-05.json",
     "attestation": "reports/pnva-sovereign-evidence-attestation-2026-05-05.json",
@@ -69,6 +70,7 @@ EXPECTED_CLASSIFICATIONS = {
     "r3_authority_projection_policy": "SOVEREIGN_POLICY_READY",
     "r3_authority_projection_no_tick": "SOVEREIGN_NO_TICK_READY",
     "r3_cutover_gate": "R3_CUTOVER_GATE_READY_RUNTIME_REQUIRED",
+    "r3_runtime_capture_matrix": "R3_RUNTIME_CAPTURE_MATRIX_READY_PENDING_RUNTIME",
     "adversarial": "ADVERSARIAL_VALIDATION_PASS",
     "maturity": "ENTITY_HEURISTIC_MATURITY_READY_WITH_LEGACY_WARNINGS",
     "attestation": "PNVA_SOVEREIGN_EVIDENCE_ATTESTED",
@@ -236,6 +238,10 @@ def build_report(repo: Path) -> dict[str, Any]:
     check_error(group="manifest", name="manifest_r3_cutover_approved", left_ref="MANIFEST:r3_cutover_gate.cutover_approved", left=_dig(manifest_summary, ["r3_cutover_gate", "cutover_approved"]), right_ref="r3_cutover_gate:cutover_approved", right=data["r3_cutover_gate"].get("cutover_approved"))
     check_error(group="manifest", name="manifest_r3_cutover_remaining_replacement", left_ref="MANIFEST:r3_cutover_gate.remaining_runtime_replacement_count", left=_dig(manifest_summary, ["r3_cutover_gate", "remaining_runtime_replacement_count"]), right_ref="r3_cutover_gate:remaining_runtime_replacement_count", right=data["r3_cutover_gate"].get("remaining_runtime_replacement_count"))
     check_error(group="manifest", name="manifest_r3_cutover_runtime_blockers", left_ref="MANIFEST:r3_cutover_gate.runtime_blocker_count", left=_dig(manifest_summary, ["r3_cutover_gate", "runtime_blocker_count"]), right_ref="r3_cutover_gate:runtime_blocker_count", right=data["r3_cutover_gate"].get("runtime_blocker_count"))
+    check_error(group="manifest", name="manifest_r3_capture_contract_ready", left_ref="MANIFEST:r3_runtime_capture_matrix.capture_contract_ready", left=_dig(manifest_summary, ["r3_runtime_capture_matrix", "capture_contract_ready"]), right_ref="r3_runtime_capture_matrix:capture_contract_ready", right=data["r3_runtime_capture_matrix"].get("capture_contract_ready"))
+    check_error(group="manifest", name="manifest_r3_capture_slot_count", left_ref="MANIFEST:r3_runtime_capture_matrix.capture_slot_count", left=_dig(manifest_summary, ["r3_runtime_capture_matrix", "capture_slot_count"]), right_ref="r3_runtime_capture_matrix:capture_slot_count", right=data["r3_runtime_capture_matrix"].get("capture_slot_count"))
+    check_error(group="manifest", name="manifest_r3_capture_pending_slot_count", left_ref="MANIFEST:r3_runtime_capture_matrix.pending_slot_count", left=_dig(manifest_summary, ["r3_runtime_capture_matrix", "pending_slot_count"]), right_ref="r3_runtime_capture_matrix:pending_slot_count", right=data["r3_runtime_capture_matrix"].get("pending_slot_count"))
+    check_error(group="manifest", name="manifest_r3_capture_required_runtime_event_count", left_ref="MANIFEST:r3_runtime_capture_matrix.required_runtime_event_count", left=_dig(manifest_summary, ["r3_runtime_capture_matrix", "required_runtime_event_count"]), right_ref="r3_runtime_capture_matrix:required_runtime_event_count", right=data["r3_runtime_capture_matrix"].get("required_runtime_event_count"))
 
     # Canonical report agreement.
     for key, report_name in (
@@ -326,6 +332,12 @@ def build_report(repo: Path) -> dict[str, Any]:
     check_error(group="r3_cutover_gate", name="cutover_legacy_free_claim_blocked", left_ref="r3_cutover_gate:legacy_free_claim_allowed", left=data["r3_cutover_gate"].get("legacy_free_claim_allowed"), right_ref="expected", right=False)
     check_error(group="r3_cutover_gate", name="cutover_remaining_runtime_matches_candidates", left_ref="r3_cutover_gate:remaining_runtime_replacement_count", left=data["r3_cutover_gate"].get("remaining_runtime_replacement_count"), right_ref="authority_migration_ledger:candidate_event_count", right=data["authority_migration_ledger"].get("candidate_event_count"))
     check_error(group="r3_cutover_gate", name="cutover_preconditions_clean", left_ref="r3_cutover_gate:precondition_failure_count", left=data["r3_cutover_gate"].get("precondition_failure_count"), right_ref="expected", right=0)
+    check_error(group="r3_runtime_capture_matrix", name="capture_slots_match_authority_candidates", left_ref="r3_runtime_capture_matrix:capture_slot_count", left=data["r3_runtime_capture_matrix"].get("capture_slot_count"), right_ref="authority_migration_ledger:candidate_event_count", right=data["authority_migration_ledger"].get("candidate_event_count"))
+    check_error(group="r3_runtime_capture_matrix", name="capture_pending_matches_cutover_remaining", left_ref="r3_runtime_capture_matrix:pending_slot_count", left=data["r3_runtime_capture_matrix"].get("pending_slot_count"), right_ref="r3_cutover_gate:remaining_runtime_replacement_count", right=data["r3_cutover_gate"].get("remaining_runtime_replacement_count"))
+    check_error(group="r3_runtime_capture_matrix", name="capture_contract_ready_true", left_ref="r3_runtime_capture_matrix:capture_contract_ready", left=data["r3_runtime_capture_matrix"].get("capture_contract_ready"), right_ref="expected", right=True)
+    check_error(group="r3_runtime_capture_matrix", name="capture_not_complete_without_runtime", left_ref="r3_runtime_capture_matrix:runtime_capture_complete", left=data["r3_runtime_capture_matrix"].get("runtime_capture_complete"), right_ref="expected", right=False)
+    check_error(group="r3_runtime_capture_matrix", name="capture_projection_pair_full_coverage", left_ref="r3_runtime_capture_matrix:projection_pair_coverage_ratio", left=data["r3_runtime_capture_matrix"].get("projection_pair_coverage_ratio"), right_ref="expected", right=1.0, tolerance=0.000001)
+    check_error(group="r3_runtime_capture_matrix", name="capture_required_events_are_slot_pairs", left_ref="r3_runtime_capture_matrix:required_runtime_event_count", left=data["r3_runtime_capture_matrix"].get("required_runtime_event_count"), right_ref="capture_slot_count*2", right=int(data["r3_runtime_capture_matrix"].get("capture_slot_count", 0)) * 2)
 
     # Maturity aggregate math.
     maturity_summary = data["maturity"].get("summary", {})
@@ -341,7 +353,7 @@ def build_report(repo: Path) -> dict[str, Any]:
     artifact_ids = [str(item.get("id")) for item in artifacts if isinstance(item, dict)]
     check_error(group="attestation", name="artifact_count_matches_list", left_ref="attestation:artifact_count", left=data["attestation"].get("artifact_count"), right_ref="len(attestation.artifacts)", right=len(artifacts))
     check_error(group="attestation", name="failure_count_zero", left_ref="attestation:failure_count", left=data["attestation"].get("failure_count"), right_ref="expected", right=0)
-    for required_id in ("schema_contract_validation", "causal_chronology", "tension_decision_calibration", "decision_trace_index", "heuristic_influence_map", "entity_no_tick_matrix", "suppression_ledger", "sovereign_robustness_gate", "r3_migration_plan", "authority_migration_ledger", "r3_authority_projection_summary", "r3_authority_projection_events", "r3_authority_projection_entities", "r3_authority_projection_replay", "r3_authority_projection_policy", "r3_authority_projection_no_tick", "r3_cutover_gate", "adversarial_validation", "entity_heuristic_maturity"):
+    for required_id in ("schema_contract_validation", "causal_chronology", "tension_decision_calibration", "decision_trace_index", "heuristic_influence_map", "entity_no_tick_matrix", "suppression_ledger", "sovereign_robustness_gate", "r3_migration_plan", "authority_migration_ledger", "r3_authority_projection_summary", "r3_authority_projection_events", "r3_authority_projection_entities", "r3_authority_projection_replay", "r3_authority_projection_policy", "r3_authority_projection_no_tick", "r3_cutover_gate", "r3_runtime_capture_matrix", "adversarial_validation", "entity_heuristic_maturity"):
         check_error(group="attestation", name=f"attestation_contains_{required_id}", left_ref="attestation:artifact_ids", left=required_id in artifact_ids, right_ref="expected", right=True)
     check_error(group="audit", name="audit_score_ready", left_ref="audit:score.classification", left=_dig(data["audit"], ["score", "classification"]), right_ref="expected", right="SOVEREIGN_READY")
     check_error(group="audit", name="audit_attestation_hash_matches", left_ref="audit:evidence_attestation.evidence_hash", left=_dig(data["audit"], ["evidence_attestation", "evidence_hash"]), right_ref="attestation:evidence_hash", right=data["attestation"].get("evidence_hash"))
@@ -358,6 +370,7 @@ def build_report(repo: Path) -> dict[str, Any]:
     check_error(group="audit", name="audit_authority_migration_ledger_matches", left_ref="audit:authority_migration_ledger.classification", left=_dig(data["audit"], ["authority_migration_ledger", "classification"]), right_ref="authority_migration_ledger:classification", right=data["authority_migration_ledger"].get("classification"))
     check_error(group="audit", name="audit_r3_authority_projection_matches", left_ref="audit:r3_authority_projection.classification", left=_dig(data["audit"], ["r3_authority_projection", "classification"]), right_ref="r3_authority_projection:classification", right=data["r3_authority_projection"].get("classification"))
     check_error(group="audit", name="audit_r3_cutover_gate_matches", left_ref="audit:r3_cutover_gate.classification", left=_dig(data["audit"], ["r3_cutover_gate", "classification"]), right_ref="r3_cutover_gate:classification", right=data["r3_cutover_gate"].get("classification"))
+    check_error(group="audit", name="audit_r3_runtime_capture_matrix_matches", left_ref="audit:r3_runtime_capture_matrix.classification", left=_dig(data["audit"], ["r3_runtime_capture_matrix", "classification"]), right_ref="r3_runtime_capture_matrix:classification", right=data["r3_runtime_capture_matrix"].get("classification"))
 
     manifest_files = data["manifest"].get("files", []) if isinstance(data["manifest"], dict) else []
     duplicate_files = sorted({item for item in manifest_files if manifest_files.count(item) > 1})
@@ -424,6 +437,11 @@ def build_report(repo: Path) -> dict[str, Any]:
             "r3_cutover_approved": data["r3_cutover_gate"].get("cutover_approved"),
             "r3_cutover_remaining_runtime_replacement_count": data["r3_cutover_gate"].get("remaining_runtime_replacement_count"),
             "r3_cutover_runtime_blocker_count": data["r3_cutover_gate"].get("runtime_blocker_count"),
+            "r3_runtime_capture_contract_ready": data["r3_runtime_capture_matrix"].get("capture_contract_ready"),
+            "r3_runtime_capture_complete": data["r3_runtime_capture_matrix"].get("runtime_capture_complete"),
+            "r3_runtime_capture_slot_count": data["r3_runtime_capture_matrix"].get("capture_slot_count"),
+            "r3_runtime_capture_pending_slot_count": data["r3_runtime_capture_matrix"].get("pending_slot_count"),
+            "r3_runtime_capture_required_event_count": data["r3_runtime_capture_matrix"].get("required_runtime_event_count"),
             "attestation_artifact_count": data["attestation"].get("artifact_count"),
             "audit_score": _dig(data["audit"], ["score", "total"]),
         },

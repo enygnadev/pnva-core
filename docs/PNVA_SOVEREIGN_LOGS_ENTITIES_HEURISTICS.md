@@ -904,12 +904,55 @@ Production interpretation:
 
 The cutover gate prevents a false R3 claim. The native replacement contract is ready, but final legacy-free production status remains blocked until fresh runtime events replace the projected evidence and pass replay, policy, no-tick, robustness, semantic and reproducibility validation.
 
-## 26. Sovereign Evidence Attestation
+## 26. R3 Runtime Capture Matrix
+
+After the cutover gate blocks premature R3 completion, convert the remaining runtime work into exact capture slots:
+
+```text
+R3 cutover gate + authority ledger + projection pairs -> runtime capture matrix
+```
+
+Current report:
+
+```text
+reports/pnva-r3-runtime-capture-matrix-2026-05-05.json
+```
+
+Current classification:
+
+```text
+R3_RUNTIME_CAPTURE_MATRIX_READY_PENDING_RUNTIME
+```
+
+Current result:
+
+```text
+capture_contract_ready: true
+runtime_capture_complete: false
+runtime_capture_approved: false
+capture_slot_count: 35
+verified_runtime_slot_count: 0
+pending_slot_count: 35
+required_runtime_event_count: 70
+required_no_tick_precheck_count: 35
+required_collapse_commit_count: 35
+projection_pair_count: 35
+projection_pair_coverage_ratio: 1.0
+entity_target_count: 1
+action_target_count: 3
+target_rule_count: 4
+```
+
+Production interpretation:
+
+The matrix makes the next runtime step precise. Each remaining R3 replacement now has an entity, action, target heuristic set, required no-tick precheck, required commit and proof rule. It improves no-tick without claiming final runtime completion.
+
+## 27. Sovereign Evidence Attestation
 
 After all validators run, bind the evidence package:
 
 ```text
-proofs + events + replay + invariants + policy + chains + graphs + schema contract + chronology + tension decision + decision trace + heuristic influence + entity matrix + suppression ledger + robustness gate + R3 migration plan + authority migration ledger + R3 authority projection + R3 cutover gate -> evidence_hash
+proofs + events + replay + invariants + policy + chains + graphs + schema contract + chronology + tension decision + decision trace + heuristic influence + entity matrix + suppression ledger + robustness gate + R3 migration plan + authority migration ledger + R3 authority projection + R3 cutover gate + R3 runtime capture matrix -> evidence_hash
 ```
 
 The attestation lists each tracked artifact with:
@@ -931,7 +974,7 @@ PNVA_SOVEREIGN_EVIDENCE_ATTESTED
 Current package:
 
 ```text
-36 tracked artifacts
+37 tracked artifacts
 0 failures
 ```
 
@@ -1017,7 +1060,7 @@ Production interpretation:
 
 The canonical legacy bridge preserves 35 low-authority strong decisions as warnings. The native runtime path has zero low-authority legacy warnings. This creates a clean migration rule: old evidence stays honest; new PNVA runtimes must emit native events with H2/H3 authority.
 
-## 29. Semantic Consistency Guard
+## 30. Semantic Consistency Guard
 
 After all evidence reports are generated, check whether they agree as a system:
 
@@ -1040,18 +1083,18 @@ SEMANTIC_CONSISTENCY_READY
 Current result:
 
 ```text
-check_count: 232
+check_count: 246
 error_count: 0
 warning_count: 0
 ```
 
 Production interpretation:
 
-PNVA evidence should not pass only as isolated files. The release is stronger when event counts, trace coverage, heuristic influence, suppression counts, avoided-execution counts, strong-decision counts, graph counts, chronology, tension-decision calibration, decision trace index, entity no-tick matrix, suppression ledger, robustness gate, R3 migration plan, authority migration ledger, R3 authority projection, R3 cutover gate, maturity math, Manifest metadata, audit summaries and attestation hashes all agree.
+PNVA evidence should not pass only as isolated files. The release is stronger when event counts, trace coverage, heuristic influence, suppression counts, avoided-execution counts, strong-decision counts, graph counts, chronology, tension-decision calibration, decision trace index, entity no-tick matrix, suppression ledger, robustness gate, R3 migration plan, authority migration ledger, R3 authority projection, R3 cutover gate, R3 runtime capture matrix, maturity math, Manifest metadata, audit summaries and attestation hashes all agree.
 
 The semantic consistency report is not included in the attestation hash seed because it consumes the attestation.
 
-## 30. Reproducibility Guard
+## 31. Reproducibility Guard
 
 After semantic consistency, rerun the current tools and compare stable fields against published reports:
 
@@ -1074,8 +1117,8 @@ REPRODUCIBILITY_READY
 Current result:
 
 ```text
-command_count: 30
-comparison_count: 292
+command_count: 31
+comparison_count: 310
 failure_count: 0
 command_failure_count: 0
 comparison_failure_count: 0
@@ -1083,11 +1126,11 @@ comparison_failure_count: 0
 
 Production interpretation:
 
-PNVA evidence becomes stronger when reports are not only internally consistent, but reproducible from the repository commands. This checks that replay, no-tick invariants, native emission, policy, proof-chain, graph, schema contract, chronology, tension-decision calibration, decision trace index, heuristic influence map, entity no-tick matrix, suppression ledger, robustness gate, R3 migration plan, authority migration ledger, R3 authority projection, R3 cutover gate, adversarial validation, maturity, attestation and semantic consistency can be regenerated without stable-field drift.
+PNVA evidence becomes stronger when reports are not only internally consistent, but reproducible from the repository commands. This checks that replay, no-tick invariants, native emission, policy, proof-chain, graph, schema contract, chronology, tension-decision calibration, decision trace index, heuristic influence map, entity no-tick matrix, suppression ledger, robustness gate, R3 migration plan, authority migration ledger, R3 authority projection, R3 cutover gate, R3 runtime capture matrix, adversarial validation, maturity, attestation and semantic consistency can be regenerated without stable-field drift.
 
 The reproducibility report is not included in the attestation hash seed because it consumes the attestation. This keeps the evidence graph acyclic.
 
-## 31. Public Safety
+## 32. Public Safety
 
 Public repositories should expose:
 

@@ -1,0 +1,2171 @@
+{
+  "acceptance_contract": {
+    "entity_schema": "pnva.entity_catalog.v1",
+    "event_schema": "pnva.event.v1",
+    "forbidden_final_runtime_fields": [
+      "proof.projection=true",
+      "legacy_observer as max authority",
+      "missing entity_id",
+      "missing causal_chain_id",
+      "missing proof_hash"
+    ],
+    "minimum_authority_for_commit": "H2",
+    "required_pair_per_slot": [
+      "native no-tick precheck",
+      "native collapse commit"
+    ],
+    "required_validators": [
+      "replay",
+      "sovereign_policy",
+      "no_tick_invariants",
+      "proof_chain",
+      "semantic_consistency",
+      "reproducibility"
+    ]
+  },
+  "action_rows": [
+    {
+      "decision_action": "RESIZE_BATCH",
+      "entity_id": "entity_4c3ade60ea78",
+      "pending_slot_count": 32,
+      "required_collapse_commits": 32,
+      "required_no_tick_prechecks": 32,
+      "required_slot_count": 32,
+      "risk_flags": [
+        [
+          "RESIZE_BATCH_PRESSURE",
+          32
+        ]
+      ],
+      "runtime_coverage_ratio": 0.0,
+      "target_rules": [
+        [
+          "native_event_emitter",
+          32
+        ],
+        [
+          "adaptive_threshold",
+          32
+        ],
+        [
+          "field_scheduler",
+          32
+        ]
+      ],
+      "verified_runtime_slot_count": 0
+    },
+    {
+      "decision_action": "COOLDOWN_GPU",
+      "entity_id": "entity_4c3ade60ea78",
+      "pending_slot_count": 2,
+      "required_collapse_commits": 2,
+      "required_no_tick_prechecks": 2,
+      "required_slot_count": 2,
+      "risk_flags": [],
+      "runtime_coverage_ratio": 0.0,
+      "target_rules": [
+        [
+          "native_event_emitter",
+          2
+        ],
+        [
+          "power_orchestrator",
+          2
+        ],
+        [
+          "field_scheduler",
+          2
+        ],
+        [
+          "adaptive_threshold",
+          2
+        ]
+      ],
+      "verified_runtime_slot_count": 0
+    },
+    {
+      "decision_action": "EXECUTE",
+      "entity_id": "entity_4c3ade60ea78",
+      "pending_slot_count": 1,
+      "required_collapse_commits": 1,
+      "required_no_tick_prechecks": 1,
+      "required_slot_count": 1,
+      "risk_flags": [],
+      "runtime_coverage_ratio": 0.0,
+      "target_rules": [
+        [
+          "native_event_emitter",
+          1
+        ],
+        [
+          "adaptive_threshold",
+          1
+        ],
+        [
+          "field_scheduler",
+          1
+        ]
+      ],
+      "verified_runtime_slot_count": 0
+    }
+  ],
+  "action_target_count": 3,
+  "author": "Gustavo de Aguiar Martins",
+  "capture_contract_ready": true,
+  "capture_slot_count": 35,
+  "capture_slots": [
+    {
+      "current_max_authority": "H0",
+      "current_rules": [
+        "legacy_observer"
+      ],
+      "decision_action": "RESIZE_BATCH",
+      "decision_kind": "collapse",
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_type": "cuda_slot_scan",
+      "gate_delta": -22.40780054,
+      "original_event_id": "evt_276e496e_000001_5f5d2586",
+      "original_line": 385,
+      "projected_commit_event_id": "evt_r3auth_commit_31755b90cd9b75de",
+      "projected_precheck_event_id": "evt_r3auth_precheck_96edacd892c0a582",
+      "projection_pair_ready": true,
+      "proof_valid": true,
+      "required_runtime_commit": {
+        "decision_action": "RESIZE_BATCH",
+        "decision_kind": "collapse",
+        "event_type": "cuda_slot_scan",
+        "min_authority": "H2",
+        "proof_projection_allowed": false
+      },
+      "required_runtime_precheck": {
+        "decision_action": "NO_ACTION",
+        "decision_kind": "observe",
+        "event_type": "cuda_slot_scan_authority_precheck",
+        "proof_projection_allowed": false,
+        "required_reason": "native_authority_precheck_no_tick"
+      },
+      "risk_flags": [
+        "RESIZE_BATCH_PRESSURE"
+      ],
+      "runtime_status": {
+        "non_projected_runtime_event_count": 0,
+        "observed_runtime_event_count": 0,
+        "runtime_commit_count": 0,
+        "runtime_hard_authority": false,
+        "runtime_precheck_count": 0,
+        "runtime_proof_clean": false,
+        "verified": false
+      },
+      "score": -22.40780054,
+      "slot_id": "r3-runtime-slot-001",
+      "source_file": "pnva-miner-events.jsonl",
+      "status": "pending_runtime",
+      "target_max_authority": "H2",
+      "target_rules": [
+        "native_event_emitter",
+        "adaptive_threshold",
+        "field_scheduler"
+      ],
+      "threshold": 0.0
+    },
+    {
+      "current_max_authority": "H0",
+      "current_rules": [
+        "legacy_observer"
+      ],
+      "decision_action": "RESIZE_BATCH",
+      "decision_kind": "collapse",
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_type": "cuda_slot_scan",
+      "gate_delta": -24.24524466,
+      "original_event_id": "evt_276e496e_000003_392d3b13",
+      "original_line": 387,
+      "projected_commit_event_id": "evt_r3auth_commit_b6ce21756b32f93a",
+      "projected_precheck_event_id": "evt_r3auth_precheck_3e1ca0cc76bd4d7f",
+      "projection_pair_ready": true,
+      "proof_valid": true,
+      "required_runtime_commit": {
+        "decision_action": "RESIZE_BATCH",
+        "decision_kind": "collapse",
+        "event_type": "cuda_slot_scan",
+        "min_authority": "H2",
+        "proof_projection_allowed": false
+      },
+      "required_runtime_precheck": {
+        "decision_action": "NO_ACTION",
+        "decision_kind": "observe",
+        "event_type": "cuda_slot_scan_authority_precheck",
+        "proof_projection_allowed": false,
+        "required_reason": "native_authority_precheck_no_tick"
+      },
+      "risk_flags": [
+        "RESIZE_BATCH_PRESSURE"
+      ],
+      "runtime_status": {
+        "non_projected_runtime_event_count": 0,
+        "observed_runtime_event_count": 0,
+        "runtime_commit_count": 0,
+        "runtime_hard_authority": false,
+        "runtime_precheck_count": 0,
+        "runtime_proof_clean": false,
+        "verified": false
+      },
+      "score": -24.24524466,
+      "slot_id": "r3-runtime-slot-002",
+      "source_file": "pnva-miner-events.jsonl",
+      "status": "pending_runtime",
+      "target_max_authority": "H2",
+      "target_rules": [
+        "native_event_emitter",
+        "adaptive_threshold",
+        "field_scheduler"
+      ],
+      "threshold": 0.0
+    },
+    {
+      "current_max_authority": "H0",
+      "current_rules": [
+        "legacy_observer"
+      ],
+      "decision_action": "RESIZE_BATCH",
+      "decision_kind": "collapse",
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_type": "cuda_slot_scan",
+      "gate_delta": -28.07419177,
+      "original_event_id": "evt_276e496e_000008_597a2713",
+      "original_line": 392,
+      "projected_commit_event_id": "evt_r3auth_commit_0d6c06e25e97623d",
+      "projected_precheck_event_id": "evt_r3auth_precheck_e641e1ed4c37d988",
+      "projection_pair_ready": true,
+      "proof_valid": true,
+      "required_runtime_commit": {
+        "decision_action": "RESIZE_BATCH",
+        "decision_kind": "collapse",
+        "event_type": "cuda_slot_scan",
+        "min_authority": "H2",
+        "proof_projection_allowed": false
+      },
+      "required_runtime_precheck": {
+        "decision_action": "NO_ACTION",
+        "decision_kind": "observe",
+        "event_type": "cuda_slot_scan_authority_precheck",
+        "proof_projection_allowed": false,
+        "required_reason": "native_authority_precheck_no_tick"
+      },
+      "risk_flags": [
+        "RESIZE_BATCH_PRESSURE"
+      ],
+      "runtime_status": {
+        "non_projected_runtime_event_count": 0,
+        "observed_runtime_event_count": 0,
+        "runtime_commit_count": 0,
+        "runtime_hard_authority": false,
+        "runtime_precheck_count": 0,
+        "runtime_proof_clean": false,
+        "verified": false
+      },
+      "score": -28.07419177,
+      "slot_id": "r3-runtime-slot-003",
+      "source_file": "pnva-miner-events.jsonl",
+      "status": "pending_runtime",
+      "target_max_authority": "H2",
+      "target_rules": [
+        "native_event_emitter",
+        "adaptive_threshold",
+        "field_scheduler"
+      ],
+      "threshold": 0.0
+    },
+    {
+      "current_max_authority": "H0",
+      "current_rules": [
+        "legacy_observer"
+      ],
+      "decision_action": "RESIZE_BATCH",
+      "decision_kind": "collapse",
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_type": "cuda_slot_scan",
+      "gate_delta": -30.06577137,
+      "original_event_id": "evt_276e496e_000010_54e369e9",
+      "original_line": 394,
+      "projected_commit_event_id": "evt_r3auth_commit_e990a805a95e9652",
+      "projected_precheck_event_id": "evt_r3auth_precheck_97149b327e3b917c",
+      "projection_pair_ready": true,
+      "proof_valid": true,
+      "required_runtime_commit": {
+        "decision_action": "RESIZE_BATCH",
+        "decision_kind": "collapse",
+        "event_type": "cuda_slot_scan",
+        "min_authority": "H2",
+        "proof_projection_allowed": false
+      },
+      "required_runtime_precheck": {
+        "decision_action": "NO_ACTION",
+        "decision_kind": "observe",
+        "event_type": "cuda_slot_scan_authority_precheck",
+        "proof_projection_allowed": false,
+        "required_reason": "native_authority_precheck_no_tick"
+      },
+      "risk_flags": [
+        "RESIZE_BATCH_PRESSURE"
+      ],
+      "runtime_status": {
+        "non_projected_runtime_event_count": 0,
+        "observed_runtime_event_count": 0,
+        "runtime_commit_count": 0,
+        "runtime_hard_authority": false,
+        "runtime_precheck_count": 0,
+        "runtime_proof_clean": false,
+        "verified": false
+      },
+      "score": -30.06577137,
+      "slot_id": "r3-runtime-slot-004",
+      "source_file": "pnva-miner-events.jsonl",
+      "status": "pending_runtime",
+      "target_max_authority": "H2",
+      "target_rules": [
+        "native_event_emitter",
+        "adaptive_threshold",
+        "field_scheduler"
+      ],
+      "threshold": 0.0
+    },
+    {
+      "current_max_authority": "H0",
+      "current_rules": [
+        "legacy_observer"
+      ],
+      "decision_action": "RESIZE_BATCH",
+      "decision_kind": "collapse",
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_type": "cuda_slot_scan",
+      "gate_delta": -34.21313407,
+      "original_event_id": "evt_276e496e_000015_ddd7919f",
+      "original_line": 399,
+      "projected_commit_event_id": "evt_r3auth_commit_578a1786a510c399",
+      "projected_precheck_event_id": "evt_r3auth_precheck_89502d5d41445adb",
+      "projection_pair_ready": true,
+      "proof_valid": true,
+      "required_runtime_commit": {
+        "decision_action": "RESIZE_BATCH",
+        "decision_kind": "collapse",
+        "event_type": "cuda_slot_scan",
+        "min_authority": "H2",
+        "proof_projection_allowed": false
+      },
+      "required_runtime_precheck": {
+        "decision_action": "NO_ACTION",
+        "decision_kind": "observe",
+        "event_type": "cuda_slot_scan_authority_precheck",
+        "proof_projection_allowed": false,
+        "required_reason": "native_authority_precheck_no_tick"
+      },
+      "risk_flags": [
+        "RESIZE_BATCH_PRESSURE"
+      ],
+      "runtime_status": {
+        "non_projected_runtime_event_count": 0,
+        "observed_runtime_event_count": 0,
+        "runtime_commit_count": 0,
+        "runtime_hard_authority": false,
+        "runtime_precheck_count": 0,
+        "runtime_proof_clean": false,
+        "verified": false
+      },
+      "score": -34.21313407,
+      "slot_id": "r3-runtime-slot-005",
+      "source_file": "pnva-miner-events.jsonl",
+      "status": "pending_runtime",
+      "target_max_authority": "H2",
+      "target_rules": [
+        "native_event_emitter",
+        "adaptive_threshold",
+        "field_scheduler"
+      ],
+      "threshold": 0.0
+    },
+    {
+      "current_max_authority": "H0",
+      "current_rules": [
+        "legacy_observer"
+      ],
+      "decision_action": "RESIZE_BATCH",
+      "decision_kind": "collapse",
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_type": "cuda_slot_scan",
+      "gate_delta": -36.38802327,
+      "original_event_id": "evt_276e496e_000017_b19df11f",
+      "original_line": 401,
+      "projected_commit_event_id": "evt_r3auth_commit_90c4ad211f8a21f1",
+      "projected_precheck_event_id": "evt_r3auth_precheck_093183a889ee80d9",
+      "projection_pair_ready": true,
+      "proof_valid": true,
+      "required_runtime_commit": {
+        "decision_action": "RESIZE_BATCH",
+        "decision_kind": "collapse",
+        "event_type": "cuda_slot_scan",
+        "min_authority": "H2",
+        "proof_projection_allowed": false
+      },
+      "required_runtime_precheck": {
+        "decision_action": "NO_ACTION",
+        "decision_kind": "observe",
+        "event_type": "cuda_slot_scan_authority_precheck",
+        "proof_projection_allowed": false,
+        "required_reason": "native_authority_precheck_no_tick"
+      },
+      "risk_flags": [
+        "RESIZE_BATCH_PRESSURE"
+      ],
+      "runtime_status": {
+        "non_projected_runtime_event_count": 0,
+        "observed_runtime_event_count": 0,
+        "runtime_commit_count": 0,
+        "runtime_hard_authority": false,
+        "runtime_precheck_count": 0,
+        "runtime_proof_clean": false,
+        "verified": false
+      },
+      "score": -36.38802327,
+      "slot_id": "r3-runtime-slot-006",
+      "source_file": "pnva-miner-events.jsonl",
+      "status": "pending_runtime",
+      "target_max_authority": "H2",
+      "target_rules": [
+        "native_event_emitter",
+        "adaptive_threshold",
+        "field_scheduler"
+      ],
+      "threshold": 0.0
+    },
+    {
+      "current_max_authority": "H0",
+      "current_rules": [
+        "legacy_observer"
+      ],
+      "decision_action": "RESIZE_BATCH",
+      "decision_kind": "collapse",
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_type": "cuda_slot_scan",
+      "gate_delta": -40.89884015,
+      "original_event_id": "evt_276e496e_000022_460f742b",
+      "original_line": 406,
+      "projected_commit_event_id": "evt_r3auth_commit_42ccd7b116ef2ab3",
+      "projected_precheck_event_id": "evt_r3auth_precheck_042b49fa2a89b072",
+      "projection_pair_ready": true,
+      "proof_valid": true,
+      "required_runtime_commit": {
+        "decision_action": "RESIZE_BATCH",
+        "decision_kind": "collapse",
+        "event_type": "cuda_slot_scan",
+        "min_authority": "H2",
+        "proof_projection_allowed": false
+      },
+      "required_runtime_precheck": {
+        "decision_action": "NO_ACTION",
+        "decision_kind": "observe",
+        "event_type": "cuda_slot_scan_authority_precheck",
+        "proof_projection_allowed": false,
+        "required_reason": "native_authority_precheck_no_tick"
+      },
+      "risk_flags": [
+        "RESIZE_BATCH_PRESSURE"
+      ],
+      "runtime_status": {
+        "non_projected_runtime_event_count": 0,
+        "observed_runtime_event_count": 0,
+        "runtime_commit_count": 0,
+        "runtime_hard_authority": false,
+        "runtime_precheck_count": 0,
+        "runtime_proof_clean": false,
+        "verified": false
+      },
+      "score": -40.89884015,
+      "slot_id": "r3-runtime-slot-007",
+      "source_file": "pnva-miner-events.jsonl",
+      "status": "pending_runtime",
+      "target_max_authority": "H2",
+      "target_rules": [
+        "native_event_emitter",
+        "adaptive_threshold",
+        "field_scheduler"
+      ],
+      "threshold": 0.0
+    },
+    {
+      "current_max_authority": "H0",
+      "current_rules": [
+        "legacy_observer"
+      ],
+      "decision_action": "RESIZE_BATCH",
+      "decision_kind": "collapse",
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_type": "cuda_slot_scan",
+      "gate_delta": -43.2183602,
+      "original_event_id": "evt_276e496e_000024_b9380e24",
+      "original_line": 408,
+      "projected_commit_event_id": "evt_r3auth_commit_19f3a5fde07265ba",
+      "projected_precheck_event_id": "evt_r3auth_precheck_b425dd5ffde57aa0",
+      "projection_pair_ready": true,
+      "proof_valid": true,
+      "required_runtime_commit": {
+        "decision_action": "RESIZE_BATCH",
+        "decision_kind": "collapse",
+        "event_type": "cuda_slot_scan",
+        "min_authority": "H2",
+        "proof_projection_allowed": false
+      },
+      "required_runtime_precheck": {
+        "decision_action": "NO_ACTION",
+        "decision_kind": "observe",
+        "event_type": "cuda_slot_scan_authority_precheck",
+        "proof_projection_allowed": false,
+        "required_reason": "native_authority_precheck_no_tick"
+      },
+      "risk_flags": [
+        "RESIZE_BATCH_PRESSURE"
+      ],
+      "runtime_status": {
+        "non_projected_runtime_event_count": 0,
+        "observed_runtime_event_count": 0,
+        "runtime_commit_count": 0,
+        "runtime_hard_authority": false,
+        "runtime_precheck_count": 0,
+        "runtime_proof_clean": false,
+        "verified": false
+      },
+      "score": -43.2183602,
+      "slot_id": "r3-runtime-slot-008",
+      "source_file": "pnva-miner-events.jsonl",
+      "status": "pending_runtime",
+      "target_max_authority": "H2",
+      "target_rules": [
+        "native_event_emitter",
+        "adaptive_threshold",
+        "field_scheduler"
+      ],
+      "threshold": 0.0
+    },
+    {
+      "current_max_authority": "H0",
+      "current_rules": [
+        "legacy_observer"
+      ],
+      "decision_action": "RESIZE_BATCH",
+      "decision_kind": "collapse",
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_type": "cuda_slot_scan",
+      "gate_delta": -47.98796555,
+      "original_event_id": "evt_276e496e_000029_e115771c",
+      "original_line": 413,
+      "projected_commit_event_id": "evt_r3auth_commit_73e62d8e7f8485c3",
+      "projected_precheck_event_id": "evt_r3auth_precheck_8d7755e27718e422",
+      "projection_pair_ready": true,
+      "proof_valid": true,
+      "required_runtime_commit": {
+        "decision_action": "RESIZE_BATCH",
+        "decision_kind": "collapse",
+        "event_type": "cuda_slot_scan",
+        "min_authority": "H2",
+        "proof_projection_allowed": false
+      },
+      "required_runtime_precheck": {
+        "decision_action": "NO_ACTION",
+        "decision_kind": "observe",
+        "event_type": "cuda_slot_scan_authority_precheck",
+        "proof_projection_allowed": false,
+        "required_reason": "native_authority_precheck_no_tick"
+      },
+      "risk_flags": [
+        "RESIZE_BATCH_PRESSURE"
+      ],
+      "runtime_status": {
+        "non_projected_runtime_event_count": 0,
+        "observed_runtime_event_count": 0,
+        "runtime_commit_count": 0,
+        "runtime_hard_authority": false,
+        "runtime_precheck_count": 0,
+        "runtime_proof_clean": false,
+        "verified": false
+      },
+      "score": -47.98796555,
+      "slot_id": "r3-runtime-slot-009",
+      "source_file": "pnva-miner-events.jsonl",
+      "status": "pending_runtime",
+      "target_max_authority": "H2",
+      "target_rules": [
+        "native_event_emitter",
+        "adaptive_threshold",
+        "field_scheduler"
+      ],
+      "threshold": 0.0
+    },
+    {
+      "current_max_authority": "H0",
+      "current_rules": [
+        "legacy_observer"
+      ],
+      "decision_action": "RESIZE_BATCH",
+      "decision_kind": "collapse",
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_type": "cuda_slot_scan",
+      "gate_delta": -50.44952287,
+      "original_event_id": "evt_276e496e_000031_f7f54e57",
+      "original_line": 415,
+      "projected_commit_event_id": "evt_r3auth_commit_f517a7bef9c766bb",
+      "projected_precheck_event_id": "evt_r3auth_precheck_491ee7149d83633d",
+      "projection_pair_ready": true,
+      "proof_valid": true,
+      "required_runtime_commit": {
+        "decision_action": "RESIZE_BATCH",
+        "decision_kind": "collapse",
+        "event_type": "cuda_slot_scan",
+        "min_authority": "H2",
+        "proof_projection_allowed": false
+      },
+      "required_runtime_precheck": {
+        "decision_action": "NO_ACTION",
+        "decision_kind": "observe",
+        "event_type": "cuda_slot_scan_authority_precheck",
+        "proof_projection_allowed": false,
+        "required_reason": "native_authority_precheck_no_tick"
+      },
+      "risk_flags": [
+        "RESIZE_BATCH_PRESSURE"
+      ],
+      "runtime_status": {
+        "non_projected_runtime_event_count": 0,
+        "observed_runtime_event_count": 0,
+        "runtime_commit_count": 0,
+        "runtime_hard_authority": false,
+        "runtime_precheck_count": 0,
+        "runtime_proof_clean": false,
+        "verified": false
+      },
+      "score": -50.44952287,
+      "slot_id": "r3-runtime-slot-010",
+      "source_file": "pnva-miner-events.jsonl",
+      "status": "pending_runtime",
+      "target_max_authority": "H2",
+      "target_rules": [
+        "native_event_emitter",
+        "adaptive_threshold",
+        "field_scheduler"
+      ],
+      "threshold": 0.0
+    },
+    {
+      "current_max_authority": "H0",
+      "current_rules": [
+        "legacy_observer"
+      ],
+      "decision_action": "RESIZE_BATCH",
+      "decision_kind": "collapse",
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_type": "cuda_slot_scan",
+      "gate_delta": -55.53818641,
+      "original_event_id": "evt_276e496e_000038_704394c1",
+      "original_line": 422,
+      "projected_commit_event_id": "evt_r3auth_commit_d5abd06c76f7e106",
+      "projected_precheck_event_id": "evt_r3auth_precheck_866852f11a65e384",
+      "projection_pair_ready": true,
+      "proof_valid": true,
+      "required_runtime_commit": {
+        "decision_action": "RESIZE_BATCH",
+        "decision_kind": "collapse",
+        "event_type": "cuda_slot_scan",
+        "min_authority": "H2",
+        "proof_projection_allowed": false
+      },
+      "required_runtime_precheck": {
+        "decision_action": "NO_ACTION",
+        "decision_kind": "observe",
+        "event_type": "cuda_slot_scan_authority_precheck",
+        "proof_projection_allowed": false,
+        "required_reason": "native_authority_precheck_no_tick"
+      },
+      "risk_flags": [
+        "RESIZE_BATCH_PRESSURE"
+      ],
+      "runtime_status": {
+        "non_projected_runtime_event_count": 0,
+        "observed_runtime_event_count": 0,
+        "runtime_commit_count": 0,
+        "runtime_hard_authority": false,
+        "runtime_precheck_count": 0,
+        "runtime_proof_clean": false,
+        "verified": false
+      },
+      "score": -55.53818641,
+      "slot_id": "r3-runtime-slot-011",
+      "source_file": "pnva-miner-events.jsonl",
+      "status": "pending_runtime",
+      "target_max_authority": "H2",
+      "target_rules": [
+        "native_event_emitter",
+        "adaptive_threshold",
+        "field_scheduler"
+      ],
+      "threshold": 0.0
+    },
+    {
+      "current_max_authority": "H0",
+      "current_rules": [
+        "legacy_observer"
+      ],
+      "decision_action": "RESIZE_BATCH",
+      "decision_kind": "collapse",
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_type": "cuda_slot_scan",
+      "gate_delta": -58.19041132,
+      "original_event_id": "evt_276e496e_000040_456190e1",
+      "original_line": 424,
+      "projected_commit_event_id": "evt_r3auth_commit_4a83cae55fad11d7",
+      "projected_precheck_event_id": "evt_r3auth_precheck_d2db75b1d8aee7c4",
+      "projection_pair_ready": true,
+      "proof_valid": true,
+      "required_runtime_commit": {
+        "decision_action": "RESIZE_BATCH",
+        "decision_kind": "collapse",
+        "event_type": "cuda_slot_scan",
+        "min_authority": "H2",
+        "proof_projection_allowed": false
+      },
+      "required_runtime_precheck": {
+        "decision_action": "NO_ACTION",
+        "decision_kind": "observe",
+        "event_type": "cuda_slot_scan_authority_precheck",
+        "proof_projection_allowed": false,
+        "required_reason": "native_authority_precheck_no_tick"
+      },
+      "risk_flags": [
+        "RESIZE_BATCH_PRESSURE"
+      ],
+      "runtime_status": {
+        "non_projected_runtime_event_count": 0,
+        "observed_runtime_event_count": 0,
+        "runtime_commit_count": 0,
+        "runtime_hard_authority": false,
+        "runtime_precheck_count": 0,
+        "runtime_proof_clean": false,
+        "verified": false
+      },
+      "score": -58.19041132,
+      "slot_id": "r3-runtime-slot-012",
+      "source_file": "pnva-miner-events.jsonl",
+      "status": "pending_runtime",
+      "target_max_authority": "H2",
+      "target_rules": [
+        "native_event_emitter",
+        "adaptive_threshold",
+        "field_scheduler"
+      ],
+      "threshold": 0.0
+    },
+    {
+      "current_max_authority": "H0",
+      "current_rules": [
+        "legacy_observer"
+      ],
+      "decision_action": "RESIZE_BATCH",
+      "decision_kind": "collapse",
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_type": "cuda_slot_scan",
+      "gate_delta": -63.20935549,
+      "original_event_id": "evt_276e496e_000045_044db479",
+      "original_line": 429,
+      "projected_commit_event_id": "evt_r3auth_commit_42a5c56df5e7f628",
+      "projected_precheck_event_id": "evt_r3auth_precheck_058caff1d166e00b",
+      "projection_pair_ready": true,
+      "proof_valid": true,
+      "required_runtime_commit": {
+        "decision_action": "RESIZE_BATCH",
+        "decision_kind": "collapse",
+        "event_type": "cuda_slot_scan",
+        "min_authority": "H2",
+        "proof_projection_allowed": false
+      },
+      "required_runtime_precheck": {
+        "decision_action": "NO_ACTION",
+        "decision_kind": "observe",
+        "event_type": "cuda_slot_scan_authority_precheck",
+        "proof_projection_allowed": false,
+        "required_reason": "native_authority_precheck_no_tick"
+      },
+      "risk_flags": [
+        "RESIZE_BATCH_PRESSURE"
+      ],
+      "runtime_status": {
+        "non_projected_runtime_event_count": 0,
+        "observed_runtime_event_count": 0,
+        "runtime_commit_count": 0,
+        "runtime_hard_authority": false,
+        "runtime_precheck_count": 0,
+        "runtime_proof_clean": false,
+        "verified": false
+      },
+      "score": -63.20935549,
+      "slot_id": "r3-runtime-slot-013",
+      "source_file": "pnva-miner-events.jsonl",
+      "status": "pending_runtime",
+      "target_max_authority": "H2",
+      "target_rules": [
+        "native_event_emitter",
+        "adaptive_threshold",
+        "field_scheduler"
+      ],
+      "threshold": 0.0
+    },
+    {
+      "current_max_authority": "H0",
+      "current_rules": [
+        "legacy_observer"
+      ],
+      "decision_action": "RESIZE_BATCH",
+      "decision_kind": "collapse",
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_type": "cuda_slot_scan",
+      "gate_delta": -65.58750348,
+      "original_event_id": "evt_276e496e_000047_2f09ade1",
+      "original_line": 431,
+      "projected_commit_event_id": "evt_r3auth_commit_d4f6dafe6b537ca2",
+      "projected_precheck_event_id": "evt_r3auth_precheck_f3eb47e48f918f34",
+      "projection_pair_ready": true,
+      "proof_valid": true,
+      "required_runtime_commit": {
+        "decision_action": "RESIZE_BATCH",
+        "decision_kind": "collapse",
+        "event_type": "cuda_slot_scan",
+        "min_authority": "H2",
+        "proof_projection_allowed": false
+      },
+      "required_runtime_precheck": {
+        "decision_action": "NO_ACTION",
+        "decision_kind": "observe",
+        "event_type": "cuda_slot_scan_authority_precheck",
+        "proof_projection_allowed": false,
+        "required_reason": "native_authority_precheck_no_tick"
+      },
+      "risk_flags": [
+        "RESIZE_BATCH_PRESSURE"
+      ],
+      "runtime_status": {
+        "non_projected_runtime_event_count": 0,
+        "observed_runtime_event_count": 0,
+        "runtime_commit_count": 0,
+        "runtime_hard_authority": false,
+        "runtime_precheck_count": 0,
+        "runtime_proof_clean": false,
+        "verified": false
+      },
+      "score": -65.58750348,
+      "slot_id": "r3-runtime-slot-014",
+      "source_file": "pnva-miner-events.jsonl",
+      "status": "pending_runtime",
+      "target_max_authority": "H2",
+      "target_rules": [
+        "native_event_emitter",
+        "adaptive_threshold",
+        "field_scheduler"
+      ],
+      "threshold": 0.0
+    },
+    {
+      "current_max_authority": "H0",
+      "current_rules": [
+        "legacy_observer"
+      ],
+      "decision_action": "RESIZE_BATCH",
+      "decision_kind": "collapse",
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_type": "cuda_slot_scan",
+      "gate_delta": -70.16571307,
+      "original_event_id": "evt_276e496e_000052_18bf554d",
+      "original_line": 436,
+      "projected_commit_event_id": "evt_r3auth_commit_5503ca5f7c641d3a",
+      "projected_precheck_event_id": "evt_r3auth_precheck_4365a5cafeef03f3",
+      "projection_pair_ready": true,
+      "proof_valid": true,
+      "required_runtime_commit": {
+        "decision_action": "RESIZE_BATCH",
+        "decision_kind": "collapse",
+        "event_type": "cuda_slot_scan",
+        "min_authority": "H2",
+        "proof_projection_allowed": false
+      },
+      "required_runtime_precheck": {
+        "decision_action": "NO_ACTION",
+        "decision_kind": "observe",
+        "event_type": "cuda_slot_scan_authority_precheck",
+        "proof_projection_allowed": false,
+        "required_reason": "native_authority_precheck_no_tick"
+      },
+      "risk_flags": [
+        "RESIZE_BATCH_PRESSURE"
+      ],
+      "runtime_status": {
+        "non_projected_runtime_event_count": 0,
+        "observed_runtime_event_count": 0,
+        "runtime_commit_count": 0,
+        "runtime_hard_authority": false,
+        "runtime_precheck_count": 0,
+        "runtime_proof_clean": false,
+        "verified": false
+      },
+      "score": -70.16571307,
+      "slot_id": "r3-runtime-slot-015",
+      "source_file": "pnva-miner-events.jsonl",
+      "status": "pending_runtime",
+      "target_max_authority": "H2",
+      "target_rules": [
+        "native_event_emitter",
+        "adaptive_threshold",
+        "field_scheduler"
+      ],
+      "threshold": 0.0
+    },
+    {
+      "current_max_authority": "H0",
+      "current_rules": [
+        "legacy_observer"
+      ],
+      "decision_action": "RESIZE_BATCH",
+      "decision_kind": "collapse",
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_type": "cuda_slot_scan",
+      "gate_delta": -72.41583374,
+      "original_event_id": "evt_276e496e_000054_3898d4c2",
+      "original_line": 438,
+      "projected_commit_event_id": "evt_r3auth_commit_1bd92a53acff3b56",
+      "projected_precheck_event_id": "evt_r3auth_precheck_4d13433e98e67805",
+      "projection_pair_ready": true,
+      "proof_valid": true,
+      "required_runtime_commit": {
+        "decision_action": "RESIZE_BATCH",
+        "decision_kind": "collapse",
+        "event_type": "cuda_slot_scan",
+        "min_authority": "H2",
+        "proof_projection_allowed": false
+      },
+      "required_runtime_precheck": {
+        "decision_action": "NO_ACTION",
+        "decision_kind": "observe",
+        "event_type": "cuda_slot_scan_authority_precheck",
+        "proof_projection_allowed": false,
+        "required_reason": "native_authority_precheck_no_tick"
+      },
+      "risk_flags": [
+        "RESIZE_BATCH_PRESSURE"
+      ],
+      "runtime_status": {
+        "non_projected_runtime_event_count": 0,
+        "observed_runtime_event_count": 0,
+        "runtime_commit_count": 0,
+        "runtime_hard_authority": false,
+        "runtime_precheck_count": 0,
+        "runtime_proof_clean": false,
+        "verified": false
+      },
+      "score": -72.41583374,
+      "slot_id": "r3-runtime-slot-016",
+      "source_file": "pnva-miner-events.jsonl",
+      "status": "pending_runtime",
+      "target_max_authority": "H2",
+      "target_rules": [
+        "native_event_emitter",
+        "adaptive_threshold",
+        "field_scheduler"
+      ],
+      "threshold": 0.0
+    },
+    {
+      "current_max_authority": "H0",
+      "current_rules": [
+        "legacy_observer"
+      ],
+      "decision_action": "RESIZE_BATCH",
+      "decision_kind": "collapse",
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_type": "cuda_slot_scan",
+      "gate_delta": -76.86357982,
+      "original_event_id": "evt_276e496e_000059_01f7a41e",
+      "original_line": 443,
+      "projected_commit_event_id": "evt_r3auth_commit_b706fa5777748959",
+      "projected_precheck_event_id": "evt_r3auth_precheck_0f4ff4adc96977e4",
+      "projection_pair_ready": true,
+      "proof_valid": true,
+      "required_runtime_commit": {
+        "decision_action": "RESIZE_BATCH",
+        "decision_kind": "collapse",
+        "event_type": "cuda_slot_scan",
+        "min_authority": "H2",
+        "proof_projection_allowed": false
+      },
+      "required_runtime_precheck": {
+        "decision_action": "NO_ACTION",
+        "decision_kind": "observe",
+        "event_type": "cuda_slot_scan_authority_precheck",
+        "proof_projection_allowed": false,
+        "required_reason": "native_authority_precheck_no_tick"
+      },
+      "risk_flags": [
+        "RESIZE_BATCH_PRESSURE"
+      ],
+      "runtime_status": {
+        "non_projected_runtime_event_count": 0,
+        "observed_runtime_event_count": 0,
+        "runtime_commit_count": 0,
+        "runtime_hard_authority": false,
+        "runtime_precheck_count": 0,
+        "runtime_proof_clean": false,
+        "verified": false
+      },
+      "score": -76.86357982,
+      "slot_id": "r3-runtime-slot-017",
+      "source_file": "pnva-miner-events.jsonl",
+      "status": "pending_runtime",
+      "target_max_authority": "H2",
+      "target_rules": [
+        "native_event_emitter",
+        "adaptive_threshold",
+        "field_scheduler"
+      ],
+      "threshold": 0.0
+    },
+    {
+      "current_max_authority": "H0",
+      "current_rules": [
+        "legacy_observer"
+      ],
+      "decision_action": "RESIZE_BATCH",
+      "decision_kind": "collapse",
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_type": "cuda_slot_scan",
+      "gate_delta": -79.08291569,
+      "original_event_id": "evt_276e496e_000061_1a9c106c",
+      "original_line": 445,
+      "projected_commit_event_id": "evt_r3auth_commit_dd0c79896b61cdb6",
+      "projected_precheck_event_id": "evt_r3auth_precheck_bcff6d67d6efe20e",
+      "projection_pair_ready": true,
+      "proof_valid": true,
+      "required_runtime_commit": {
+        "decision_action": "RESIZE_BATCH",
+        "decision_kind": "collapse",
+        "event_type": "cuda_slot_scan",
+        "min_authority": "H2",
+        "proof_projection_allowed": false
+      },
+      "required_runtime_precheck": {
+        "decision_action": "NO_ACTION",
+        "decision_kind": "observe",
+        "event_type": "cuda_slot_scan_authority_precheck",
+        "proof_projection_allowed": false,
+        "required_reason": "native_authority_precheck_no_tick"
+      },
+      "risk_flags": [
+        "RESIZE_BATCH_PRESSURE"
+      ],
+      "runtime_status": {
+        "non_projected_runtime_event_count": 0,
+        "observed_runtime_event_count": 0,
+        "runtime_commit_count": 0,
+        "runtime_hard_authority": false,
+        "runtime_precheck_count": 0,
+        "runtime_proof_clean": false,
+        "verified": false
+      },
+      "score": -79.08291569,
+      "slot_id": "r3-runtime-slot-018",
+      "source_file": "pnva-miner-events.jsonl",
+      "status": "pending_runtime",
+      "target_max_authority": "H2",
+      "target_rules": [
+        "native_event_emitter",
+        "adaptive_threshold",
+        "field_scheduler"
+      ],
+      "threshold": 0.0
+    },
+    {
+      "current_max_authority": "H0",
+      "current_rules": [
+        "legacy_observer"
+      ],
+      "decision_action": "COOLDOWN_GPU",
+      "decision_kind": "collapse",
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_type": "cuda_slot_scan",
+      "gate_delta": 0.04071151,
+      "original_event_id": "evt_276e496e_000071_4bf4fe50",
+      "original_line": 455,
+      "projected_commit_event_id": "evt_r3auth_commit_930a42a7c9660b63",
+      "projected_precheck_event_id": "evt_r3auth_precheck_2d0c3b93aab16fdf",
+      "projection_pair_ready": true,
+      "proof_valid": true,
+      "required_runtime_commit": {
+        "decision_action": "COOLDOWN_GPU",
+        "decision_kind": "collapse",
+        "event_type": "cuda_slot_scan",
+        "min_authority": "H2",
+        "proof_projection_allowed": false
+      },
+      "required_runtime_precheck": {
+        "decision_action": "NO_ACTION",
+        "decision_kind": "observe",
+        "event_type": "cuda_slot_scan_authority_precheck",
+        "proof_projection_allowed": false,
+        "required_reason": "native_authority_precheck_no_tick"
+      },
+      "risk_flags": [],
+      "runtime_status": {
+        "non_projected_runtime_event_count": 0,
+        "observed_runtime_event_count": 0,
+        "runtime_commit_count": 0,
+        "runtime_hard_authority": false,
+        "runtime_precheck_count": 0,
+        "runtime_proof_clean": false,
+        "verified": false
+      },
+      "score": 0.04071151,
+      "slot_id": "r3-runtime-slot-019",
+      "source_file": "pnva-miner-events.jsonl",
+      "status": "pending_runtime",
+      "target_max_authority": "H2",
+      "target_rules": [
+        "native_event_emitter",
+        "power_orchestrator",
+        "field_scheduler",
+        "adaptive_threshold"
+      ],
+      "threshold": 0.0
+    },
+    {
+      "current_max_authority": "H0",
+      "current_rules": [
+        "legacy_observer"
+      ],
+      "decision_action": "EXECUTE",
+      "decision_kind": "collapse",
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_type": "cuda_slot_scan",
+      "gate_delta": -0.07285287,
+      "original_event_id": "evt_276e496e_000073_bc920d9e",
+      "original_line": 457,
+      "projected_commit_event_id": "evt_r3auth_commit_7adbdca84ddf9c84",
+      "projected_precheck_event_id": "evt_r3auth_precheck_cfbc6e52417e7f08",
+      "projection_pair_ready": true,
+      "proof_valid": true,
+      "required_runtime_commit": {
+        "decision_action": "EXECUTE",
+        "decision_kind": "collapse",
+        "event_type": "cuda_slot_scan",
+        "min_authority": "H2",
+        "proof_projection_allowed": false
+      },
+      "required_runtime_precheck": {
+        "decision_action": "NO_ACTION",
+        "decision_kind": "observe",
+        "event_type": "cuda_slot_scan_authority_precheck",
+        "proof_projection_allowed": false,
+        "required_reason": "native_authority_precheck_no_tick"
+      },
+      "risk_flags": [],
+      "runtime_status": {
+        "non_projected_runtime_event_count": 0,
+        "observed_runtime_event_count": 0,
+        "runtime_commit_count": 0,
+        "runtime_hard_authority": false,
+        "runtime_precheck_count": 0,
+        "runtime_proof_clean": false,
+        "verified": false
+      },
+      "score": -0.07285287,
+      "slot_id": "r3-runtime-slot-020",
+      "source_file": "pnva-miner-events.jsonl",
+      "status": "pending_runtime",
+      "target_max_authority": "H2",
+      "target_rules": [
+        "native_event_emitter",
+        "adaptive_threshold",
+        "field_scheduler"
+      ],
+      "threshold": 0.0
+    },
+    {
+      "current_max_authority": "H0",
+      "current_rules": [
+        "legacy_observer"
+      ],
+      "decision_action": "COOLDOWN_GPU",
+      "decision_kind": "collapse",
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_type": "cuda_slot_scan",
+      "gate_delta": -0.62691263,
+      "original_event_id": "evt_276e496e_000078_933bffc6",
+      "original_line": 462,
+      "projected_commit_event_id": "evt_r3auth_commit_3cabb356944305cc",
+      "projected_precheck_event_id": "evt_r3auth_precheck_13e06a935a3828f8",
+      "projection_pair_ready": true,
+      "proof_valid": true,
+      "required_runtime_commit": {
+        "decision_action": "COOLDOWN_GPU",
+        "decision_kind": "collapse",
+        "event_type": "cuda_slot_scan",
+        "min_authority": "H2",
+        "proof_projection_allowed": false
+      },
+      "required_runtime_precheck": {
+        "decision_action": "NO_ACTION",
+        "decision_kind": "observe",
+        "event_type": "cuda_slot_scan_authority_precheck",
+        "proof_projection_allowed": false,
+        "required_reason": "native_authority_precheck_no_tick"
+      },
+      "risk_flags": [],
+      "runtime_status": {
+        "non_projected_runtime_event_count": 0,
+        "observed_runtime_event_count": 0,
+        "runtime_commit_count": 0,
+        "runtime_hard_authority": false,
+        "runtime_precheck_count": 0,
+        "runtime_proof_clean": false,
+        "verified": false
+      },
+      "score": -0.62691263,
+      "slot_id": "r3-runtime-slot-021",
+      "source_file": "pnva-miner-events.jsonl",
+      "status": "pending_runtime",
+      "target_max_authority": "H2",
+      "target_rules": [
+        "native_event_emitter",
+        "power_orchestrator",
+        "field_scheduler",
+        "adaptive_threshold"
+      ],
+      "threshold": 0.0
+    },
+    {
+      "current_max_authority": "H0",
+      "current_rules": [
+        "legacy_observer"
+      ],
+      "decision_action": "RESIZE_BATCH",
+      "decision_kind": "collapse",
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_type": "cuda_slot_scan",
+      "gate_delta": -1.08342484,
+      "original_event_id": "evt_276e496e_000080_7f5c085d",
+      "original_line": 464,
+      "projected_commit_event_id": "evt_r3auth_commit_8eb87a48618d9c76",
+      "projected_precheck_event_id": "evt_r3auth_precheck_114542854a4d323a",
+      "projection_pair_ready": true,
+      "proof_valid": true,
+      "required_runtime_commit": {
+        "decision_action": "RESIZE_BATCH",
+        "decision_kind": "collapse",
+        "event_type": "cuda_slot_scan",
+        "min_authority": "H2",
+        "proof_projection_allowed": false
+      },
+      "required_runtime_precheck": {
+        "decision_action": "NO_ACTION",
+        "decision_kind": "observe",
+        "event_type": "cuda_slot_scan_authority_precheck",
+        "proof_projection_allowed": false,
+        "required_reason": "native_authority_precheck_no_tick"
+      },
+      "risk_flags": [
+        "RESIZE_BATCH_PRESSURE"
+      ],
+      "runtime_status": {
+        "non_projected_runtime_event_count": 0,
+        "observed_runtime_event_count": 0,
+        "runtime_commit_count": 0,
+        "runtime_hard_authority": false,
+        "runtime_precheck_count": 0,
+        "runtime_proof_clean": false,
+        "verified": false
+      },
+      "score": -1.08342484,
+      "slot_id": "r3-runtime-slot-022",
+      "source_file": "pnva-miner-events.jsonl",
+      "status": "pending_runtime",
+      "target_max_authority": "H2",
+      "target_rules": [
+        "native_event_emitter",
+        "adaptive_threshold",
+        "field_scheduler"
+      ],
+      "threshold": 0.0
+    },
+    {
+      "current_max_authority": "H0",
+      "current_rules": [
+        "legacy_observer"
+      ],
+      "decision_action": "RESIZE_BATCH",
+      "decision_kind": "collapse",
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_type": "cuda_slot_scan",
+      "gate_delta": -2.32643233,
+      "original_event_id": "evt_276e496e_000085_2950be7a",
+      "original_line": 469,
+      "projected_commit_event_id": "evt_r3auth_commit_46fcc5afea77a668",
+      "projected_precheck_event_id": "evt_r3auth_precheck_9fdaaded1ea12736",
+      "projection_pair_ready": true,
+      "proof_valid": true,
+      "required_runtime_commit": {
+        "decision_action": "RESIZE_BATCH",
+        "decision_kind": "collapse",
+        "event_type": "cuda_slot_scan",
+        "min_authority": "H2",
+        "proof_projection_allowed": false
+      },
+      "required_runtime_precheck": {
+        "decision_action": "NO_ACTION",
+        "decision_kind": "observe",
+        "event_type": "cuda_slot_scan_authority_precheck",
+        "proof_projection_allowed": false,
+        "required_reason": "native_authority_precheck_no_tick"
+      },
+      "risk_flags": [
+        "RESIZE_BATCH_PRESSURE"
+      ],
+      "runtime_status": {
+        "non_projected_runtime_event_count": 0,
+        "observed_runtime_event_count": 0,
+        "runtime_commit_count": 0,
+        "runtime_hard_authority": false,
+        "runtime_precheck_count": 0,
+        "runtime_proof_clean": false,
+        "verified": false
+      },
+      "score": -2.32643233,
+      "slot_id": "r3-runtime-slot-023",
+      "source_file": "pnva-miner-events.jsonl",
+      "status": "pending_runtime",
+      "target_max_authority": "H2",
+      "target_rules": [
+        "native_event_emitter",
+        "adaptive_threshold",
+        "field_scheduler"
+      ],
+      "threshold": 0.0
+    },
+    {
+      "current_max_authority": "H0",
+      "current_rules": [
+        "legacy_observer"
+      ],
+      "decision_action": "RESIZE_BATCH",
+      "decision_kind": "collapse",
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_type": "cuda_slot_scan",
+      "gate_delta": -3.10220238,
+      "original_event_id": "evt_276e496e_000087_2b862356",
+      "original_line": 471,
+      "projected_commit_event_id": "evt_r3auth_commit_64c347e64d89537d",
+      "projected_precheck_event_id": "evt_r3auth_precheck_84c11cbb40101b85",
+      "projection_pair_ready": true,
+      "proof_valid": true,
+      "required_runtime_commit": {
+        "decision_action": "RESIZE_BATCH",
+        "decision_kind": "collapse",
+        "event_type": "cuda_slot_scan",
+        "min_authority": "H2",
+        "proof_projection_allowed": false
+      },
+      "required_runtime_precheck": {
+        "decision_action": "NO_ACTION",
+        "decision_kind": "observe",
+        "event_type": "cuda_slot_scan_authority_precheck",
+        "proof_projection_allowed": false,
+        "required_reason": "native_authority_precheck_no_tick"
+      },
+      "risk_flags": [
+        "RESIZE_BATCH_PRESSURE"
+      ],
+      "runtime_status": {
+        "non_projected_runtime_event_count": 0,
+        "observed_runtime_event_count": 0,
+        "runtime_commit_count": 0,
+        "runtime_hard_authority": false,
+        "runtime_precheck_count": 0,
+        "runtime_proof_clean": false,
+        "verified": false
+      },
+      "score": -3.10220238,
+      "slot_id": "r3-runtime-slot-024",
+      "source_file": "pnva-miner-events.jsonl",
+      "status": "pending_runtime",
+      "target_max_authority": "H2",
+      "target_rules": [
+        "native_event_emitter",
+        "adaptive_threshold",
+        "field_scheduler"
+      ],
+      "threshold": 0.0
+    },
+    {
+      "current_max_authority": "H0",
+      "current_rules": [
+        "legacy_observer"
+      ],
+      "decision_action": "RESIZE_BATCH",
+      "decision_kind": "collapse",
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_type": "cuda_slot_scan",
+      "gate_delta": -4.93143438,
+      "original_event_id": "evt_276e496e_000092_7c509ec7",
+      "original_line": 476,
+      "projected_commit_event_id": "evt_r3auth_commit_33f32325d8492887",
+      "projected_precheck_event_id": "evt_r3auth_precheck_96ad22eebb287e80",
+      "projection_pair_ready": true,
+      "proof_valid": true,
+      "required_runtime_commit": {
+        "decision_action": "RESIZE_BATCH",
+        "decision_kind": "collapse",
+        "event_type": "cuda_slot_scan",
+        "min_authority": "H2",
+        "proof_projection_allowed": false
+      },
+      "required_runtime_precheck": {
+        "decision_action": "NO_ACTION",
+        "decision_kind": "observe",
+        "event_type": "cuda_slot_scan_authority_precheck",
+        "proof_projection_allowed": false,
+        "required_reason": "native_authority_precheck_no_tick"
+      },
+      "risk_flags": [
+        "RESIZE_BATCH_PRESSURE"
+      ],
+      "runtime_status": {
+        "non_projected_runtime_event_count": 0,
+        "observed_runtime_event_count": 0,
+        "runtime_commit_count": 0,
+        "runtime_hard_authority": false,
+        "runtime_precheck_count": 0,
+        "runtime_proof_clean": false,
+        "verified": false
+      },
+      "score": -4.93143438,
+      "slot_id": "r3-runtime-slot-025",
+      "source_file": "pnva-miner-events.jsonl",
+      "status": "pending_runtime",
+      "target_max_authority": "H2",
+      "target_rules": [
+        "native_event_emitter",
+        "adaptive_threshold",
+        "field_scheduler"
+      ],
+      "threshold": 0.0
+    },
+    {
+      "current_max_authority": "H0",
+      "current_rules": [
+        "legacy_observer"
+      ],
+      "decision_action": "RESIZE_BATCH",
+      "decision_kind": "collapse",
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_type": "cuda_slot_scan",
+      "gate_delta": -5.98824645,
+      "original_event_id": "evt_276e496e_000094_7cdd1632",
+      "original_line": 478,
+      "projected_commit_event_id": "evt_r3auth_commit_478f91c42037d500",
+      "projected_precheck_event_id": "evt_r3auth_precheck_b7ca140dc5da14de",
+      "projection_pair_ready": true,
+      "proof_valid": true,
+      "required_runtime_commit": {
+        "decision_action": "RESIZE_BATCH",
+        "decision_kind": "collapse",
+        "event_type": "cuda_slot_scan",
+        "min_authority": "H2",
+        "proof_projection_allowed": false
+      },
+      "required_runtime_precheck": {
+        "decision_action": "NO_ACTION",
+        "decision_kind": "observe",
+        "event_type": "cuda_slot_scan_authority_precheck",
+        "proof_projection_allowed": false,
+        "required_reason": "native_authority_precheck_no_tick"
+      },
+      "risk_flags": [
+        "RESIZE_BATCH_PRESSURE"
+      ],
+      "runtime_status": {
+        "non_projected_runtime_event_count": 0,
+        "observed_runtime_event_count": 0,
+        "runtime_commit_count": 0,
+        "runtime_hard_authority": false,
+        "runtime_precheck_count": 0,
+        "runtime_proof_clean": false,
+        "verified": false
+      },
+      "score": -5.98824645,
+      "slot_id": "r3-runtime-slot-026",
+      "source_file": "pnva-miner-events.jsonl",
+      "status": "pending_runtime",
+      "target_max_authority": "H2",
+      "target_rules": [
+        "native_event_emitter",
+        "adaptive_threshold",
+        "field_scheduler"
+      ],
+      "threshold": 0.0
+    },
+    {
+      "current_max_authority": "H0",
+      "current_rules": [
+        "legacy_observer"
+      ],
+      "decision_action": "RESIZE_BATCH",
+      "decision_kind": "collapse",
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_type": "cuda_slot_scan",
+      "gate_delta": -8.3363053,
+      "original_event_id": "evt_276e496e_000099_a59ef6d5",
+      "original_line": 483,
+      "projected_commit_event_id": "evt_r3auth_commit_f02913a8de3905ce",
+      "projected_precheck_event_id": "evt_r3auth_precheck_c65af561448d89e3",
+      "projection_pair_ready": true,
+      "proof_valid": true,
+      "required_runtime_commit": {
+        "decision_action": "RESIZE_BATCH",
+        "decision_kind": "collapse",
+        "event_type": "cuda_slot_scan",
+        "min_authority": "H2",
+        "proof_projection_allowed": false
+      },
+      "required_runtime_precheck": {
+        "decision_action": "NO_ACTION",
+        "decision_kind": "observe",
+        "event_type": "cuda_slot_scan_authority_precheck",
+        "proof_projection_allowed": false,
+        "required_reason": "native_authority_precheck_no_tick"
+      },
+      "risk_flags": [
+        "RESIZE_BATCH_PRESSURE"
+      ],
+      "runtime_status": {
+        "non_projected_runtime_event_count": 0,
+        "observed_runtime_event_count": 0,
+        "runtime_commit_count": 0,
+        "runtime_hard_authority": false,
+        "runtime_precheck_count": 0,
+        "runtime_proof_clean": false,
+        "verified": false
+      },
+      "score": -8.3363053,
+      "slot_id": "r3-runtime-slot-027",
+      "source_file": "pnva-miner-events.jsonl",
+      "status": "pending_runtime",
+      "target_max_authority": "H2",
+      "target_rules": [
+        "native_event_emitter",
+        "adaptive_threshold",
+        "field_scheduler"
+      ],
+      "threshold": 0.0
+    },
+    {
+      "current_max_authority": "H0",
+      "current_rules": [
+        "legacy_observer"
+      ],
+      "decision_action": "RESIZE_BATCH",
+      "decision_kind": "collapse",
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_type": "cuda_slot_scan",
+      "gate_delta": -9.6072683,
+      "original_event_id": "evt_276e496e_000101_8ad59514",
+      "original_line": 485,
+      "projected_commit_event_id": "evt_r3auth_commit_49b2e6633a9452f5",
+      "projected_precheck_event_id": "evt_r3auth_precheck_ecb65af35099e861",
+      "projection_pair_ready": true,
+      "proof_valid": true,
+      "required_runtime_commit": {
+        "decision_action": "RESIZE_BATCH",
+        "decision_kind": "collapse",
+        "event_type": "cuda_slot_scan",
+        "min_authority": "H2",
+        "proof_projection_allowed": false
+      },
+      "required_runtime_precheck": {
+        "decision_action": "NO_ACTION",
+        "decision_kind": "observe",
+        "event_type": "cuda_slot_scan_authority_precheck",
+        "proof_projection_allowed": false,
+        "required_reason": "native_authority_precheck_no_tick"
+      },
+      "risk_flags": [
+        "RESIZE_BATCH_PRESSURE"
+      ],
+      "runtime_status": {
+        "non_projected_runtime_event_count": 0,
+        "observed_runtime_event_count": 0,
+        "runtime_commit_count": 0,
+        "runtime_hard_authority": false,
+        "runtime_precheck_count": 0,
+        "runtime_proof_clean": false,
+        "verified": false
+      },
+      "score": -9.6072683,
+      "slot_id": "r3-runtime-slot-028",
+      "source_file": "pnva-miner-events.jsonl",
+      "status": "pending_runtime",
+      "target_max_authority": "H2",
+      "target_rules": [
+        "native_event_emitter",
+        "adaptive_threshold",
+        "field_scheduler"
+      ],
+      "threshold": 0.0
+    },
+    {
+      "current_max_authority": "H0",
+      "current_rules": [
+        "legacy_observer"
+      ],
+      "decision_action": "RESIZE_BATCH",
+      "decision_kind": "collapse",
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_type": "cuda_slot_scan",
+      "gate_delta": -12.32502554,
+      "original_event_id": "evt_276e496e_000106_d4230bdb",
+      "original_line": 490,
+      "projected_commit_event_id": "evt_r3auth_commit_8388ad8012eb4642",
+      "projected_precheck_event_id": "evt_r3auth_precheck_352048f6e580a3f4",
+      "projection_pair_ready": true,
+      "proof_valid": true,
+      "required_runtime_commit": {
+        "decision_action": "RESIZE_BATCH",
+        "decision_kind": "collapse",
+        "event_type": "cuda_slot_scan",
+        "min_authority": "H2",
+        "proof_projection_allowed": false
+      },
+      "required_runtime_precheck": {
+        "decision_action": "NO_ACTION",
+        "decision_kind": "observe",
+        "event_type": "cuda_slot_scan_authority_precheck",
+        "proof_projection_allowed": false,
+        "required_reason": "native_authority_precheck_no_tick"
+      },
+      "risk_flags": [
+        "RESIZE_BATCH_PRESSURE"
+      ],
+      "runtime_status": {
+        "non_projected_runtime_event_count": 0,
+        "observed_runtime_event_count": 0,
+        "runtime_commit_count": 0,
+        "runtime_hard_authority": false,
+        "runtime_precheck_count": 0,
+        "runtime_proof_clean": false,
+        "verified": false
+      },
+      "score": -12.32502554,
+      "slot_id": "r3-runtime-slot-029",
+      "source_file": "pnva-miner-events.jsonl",
+      "status": "pending_runtime",
+      "target_max_authority": "H2",
+      "target_rules": [
+        "native_event_emitter",
+        "adaptive_threshold",
+        "field_scheduler"
+      ],
+      "threshold": 0.0
+    },
+    {
+      "current_max_authority": "H0",
+      "current_rules": [
+        "legacy_observer"
+      ],
+      "decision_action": "RESIZE_BATCH",
+      "decision_kind": "collapse",
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_type": "cuda_slot_scan",
+      "gate_delta": -13.77355208,
+      "original_event_id": "evt_276e496e_000108_25063b2d",
+      "original_line": 492,
+      "projected_commit_event_id": "evt_r3auth_commit_84416900d34665d6",
+      "projected_precheck_event_id": "evt_r3auth_precheck_1906469610388135",
+      "projection_pair_ready": true,
+      "proof_valid": true,
+      "required_runtime_commit": {
+        "decision_action": "RESIZE_BATCH",
+        "decision_kind": "collapse",
+        "event_type": "cuda_slot_scan",
+        "min_authority": "H2",
+        "proof_projection_allowed": false
+      },
+      "required_runtime_precheck": {
+        "decision_action": "NO_ACTION",
+        "decision_kind": "observe",
+        "event_type": "cuda_slot_scan_authority_precheck",
+        "proof_projection_allowed": false,
+        "required_reason": "native_authority_precheck_no_tick"
+      },
+      "risk_flags": [
+        "RESIZE_BATCH_PRESSURE"
+      ],
+      "runtime_status": {
+        "non_projected_runtime_event_count": 0,
+        "observed_runtime_event_count": 0,
+        "runtime_commit_count": 0,
+        "runtime_hard_authority": false,
+        "runtime_precheck_count": 0,
+        "runtime_proof_clean": false,
+        "verified": false
+      },
+      "score": -13.77355208,
+      "slot_id": "r3-runtime-slot-030",
+      "source_file": "pnva-miner-events.jsonl",
+      "status": "pending_runtime",
+      "target_max_authority": "H2",
+      "target_rules": [
+        "native_event_emitter",
+        "adaptive_threshold",
+        "field_scheduler"
+      ],
+      "threshold": 0.0
+    },
+    {
+      "current_max_authority": "H0",
+      "current_rules": [
+        "legacy_observer"
+      ],
+      "decision_action": "RESIZE_BATCH",
+      "decision_kind": "collapse",
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_type": "cuda_slot_scan",
+      "gate_delta": -16.85057824,
+      "original_event_id": "evt_276e496e_000113_4a44cb7a",
+      "original_line": 497,
+      "projected_commit_event_id": "evt_r3auth_commit_0eaa9f8fd0126088",
+      "projected_precheck_event_id": "evt_r3auth_precheck_3f32d7c63cb585fe",
+      "projection_pair_ready": true,
+      "proof_valid": true,
+      "required_runtime_commit": {
+        "decision_action": "RESIZE_BATCH",
+        "decision_kind": "collapse",
+        "event_type": "cuda_slot_scan",
+        "min_authority": "H2",
+        "proof_projection_allowed": false
+      },
+      "required_runtime_precheck": {
+        "decision_action": "NO_ACTION",
+        "decision_kind": "observe",
+        "event_type": "cuda_slot_scan_authority_precheck",
+        "proof_projection_allowed": false,
+        "required_reason": "native_authority_precheck_no_tick"
+      },
+      "risk_flags": [
+        "RESIZE_BATCH_PRESSURE"
+      ],
+      "runtime_status": {
+        "non_projected_runtime_event_count": 0,
+        "observed_runtime_event_count": 0,
+        "runtime_commit_count": 0,
+        "runtime_hard_authority": false,
+        "runtime_precheck_count": 0,
+        "runtime_proof_clean": false,
+        "verified": false
+      },
+      "score": -16.85057824,
+      "slot_id": "r3-runtime-slot-031",
+      "source_file": "pnva-miner-events.jsonl",
+      "status": "pending_runtime",
+      "target_max_authority": "H2",
+      "target_rules": [
+        "native_event_emitter",
+        "adaptive_threshold",
+        "field_scheduler"
+      ],
+      "threshold": 0.0
+    },
+    {
+      "current_max_authority": "H0",
+      "current_rules": [
+        "legacy_observer"
+      ],
+      "decision_action": "RESIZE_BATCH",
+      "decision_kind": "collapse",
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_type": "cuda_slot_scan",
+      "gate_delta": -18.49472169,
+      "original_event_id": "evt_276e496e_000115_cba9a5dc",
+      "original_line": 499,
+      "projected_commit_event_id": "evt_r3auth_commit_978dd32a6596535d",
+      "projected_precheck_event_id": "evt_r3auth_precheck_9d4affd0d8b0d3a4",
+      "projection_pair_ready": true,
+      "proof_valid": true,
+      "required_runtime_commit": {
+        "decision_action": "RESIZE_BATCH",
+        "decision_kind": "collapse",
+        "event_type": "cuda_slot_scan",
+        "min_authority": "H2",
+        "proof_projection_allowed": false
+      },
+      "required_runtime_precheck": {
+        "decision_action": "NO_ACTION",
+        "decision_kind": "observe",
+        "event_type": "cuda_slot_scan_authority_precheck",
+        "proof_projection_allowed": false,
+        "required_reason": "native_authority_precheck_no_tick"
+      },
+      "risk_flags": [
+        "RESIZE_BATCH_PRESSURE"
+      ],
+      "runtime_status": {
+        "non_projected_runtime_event_count": 0,
+        "observed_runtime_event_count": 0,
+        "runtime_commit_count": 0,
+        "runtime_hard_authority": false,
+        "runtime_precheck_count": 0,
+        "runtime_proof_clean": false,
+        "verified": false
+      },
+      "score": -18.49472169,
+      "slot_id": "r3-runtime-slot-032",
+      "source_file": "pnva-miner-events.jsonl",
+      "status": "pending_runtime",
+      "target_max_authority": "H2",
+      "target_rules": [
+        "native_event_emitter",
+        "adaptive_threshold",
+        "field_scheduler"
+      ],
+      "threshold": 0.0
+    },
+    {
+      "current_max_authority": "H0",
+      "current_rules": [
+        "legacy_observer"
+      ],
+      "decision_action": "RESIZE_BATCH",
+      "decision_kind": "collapse",
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_type": "cuda_slot_scan",
+      "gate_delta": -21.98859452,
+      "original_event_id": "evt_276e496e_000120_ef36629d",
+      "original_line": 504,
+      "projected_commit_event_id": "evt_r3auth_commit_61f4613d1064c5df",
+      "projected_precheck_event_id": "evt_r3auth_precheck_d85eabdce453e235",
+      "projection_pair_ready": true,
+      "proof_valid": true,
+      "required_runtime_commit": {
+        "decision_action": "RESIZE_BATCH",
+        "decision_kind": "collapse",
+        "event_type": "cuda_slot_scan",
+        "min_authority": "H2",
+        "proof_projection_allowed": false
+      },
+      "required_runtime_precheck": {
+        "decision_action": "NO_ACTION",
+        "decision_kind": "observe",
+        "event_type": "cuda_slot_scan_authority_precheck",
+        "proof_projection_allowed": false,
+        "required_reason": "native_authority_precheck_no_tick"
+      },
+      "risk_flags": [
+        "RESIZE_BATCH_PRESSURE"
+      ],
+      "runtime_status": {
+        "non_projected_runtime_event_count": 0,
+        "observed_runtime_event_count": 0,
+        "runtime_commit_count": 0,
+        "runtime_hard_authority": false,
+        "runtime_precheck_count": 0,
+        "runtime_proof_clean": false,
+        "verified": false
+      },
+      "score": -21.98859452,
+      "slot_id": "r3-runtime-slot-033",
+      "source_file": "pnva-miner-events.jsonl",
+      "status": "pending_runtime",
+      "target_max_authority": "H2",
+      "target_rules": [
+        "native_event_emitter",
+        "adaptive_threshold",
+        "field_scheduler"
+      ],
+      "threshold": 0.0
+    },
+    {
+      "current_max_authority": "H0",
+      "current_rules": [
+        "legacy_observer"
+      ],
+      "decision_action": "RESIZE_BATCH",
+      "decision_kind": "collapse",
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_type": "cuda_slot_scan",
+      "gate_delta": -23.85151073,
+      "original_event_id": "evt_276e496e_000122_197aa047",
+      "original_line": 506,
+      "projected_commit_event_id": "evt_r3auth_commit_0ab193b21588ca1b",
+      "projected_precheck_event_id": "evt_r3auth_precheck_27379f646e16f30c",
+      "projection_pair_ready": true,
+      "proof_valid": true,
+      "required_runtime_commit": {
+        "decision_action": "RESIZE_BATCH",
+        "decision_kind": "collapse",
+        "event_type": "cuda_slot_scan",
+        "min_authority": "H2",
+        "proof_projection_allowed": false
+      },
+      "required_runtime_precheck": {
+        "decision_action": "NO_ACTION",
+        "decision_kind": "observe",
+        "event_type": "cuda_slot_scan_authority_precheck",
+        "proof_projection_allowed": false,
+        "required_reason": "native_authority_precheck_no_tick"
+      },
+      "risk_flags": [
+        "RESIZE_BATCH_PRESSURE"
+      ],
+      "runtime_status": {
+        "non_projected_runtime_event_count": 0,
+        "observed_runtime_event_count": 0,
+        "runtime_commit_count": 0,
+        "runtime_hard_authority": false,
+        "runtime_precheck_count": 0,
+        "runtime_proof_clean": false,
+        "verified": false
+      },
+      "score": -23.85151073,
+      "slot_id": "r3-runtime-slot-034",
+      "source_file": "pnva-miner-events.jsonl",
+      "status": "pending_runtime",
+      "target_max_authority": "H2",
+      "target_rules": [
+        "native_event_emitter",
+        "adaptive_threshold",
+        "field_scheduler"
+      ],
+      "threshold": 0.0
+    },
+    {
+      "current_max_authority": "H0",
+      "current_rules": [
+        "legacy_observer"
+      ],
+      "decision_action": "RESIZE_BATCH",
+      "decision_kind": "collapse",
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_type": "cuda_slot_scan",
+      "gate_delta": -27.75862597,
+      "original_event_id": "evt_276e496e_000127_2ae25618",
+      "original_line": 511,
+      "projected_commit_event_id": "evt_r3auth_commit_9f1dc4553561fbc8",
+      "projected_precheck_event_id": "evt_r3auth_precheck_ef196e5b7cb0e7d5",
+      "projection_pair_ready": true,
+      "proof_valid": true,
+      "required_runtime_commit": {
+        "decision_action": "RESIZE_BATCH",
+        "decision_kind": "collapse",
+        "event_type": "cuda_slot_scan",
+        "min_authority": "H2",
+        "proof_projection_allowed": false
+      },
+      "required_runtime_precheck": {
+        "decision_action": "NO_ACTION",
+        "decision_kind": "observe",
+        "event_type": "cuda_slot_scan_authority_precheck",
+        "proof_projection_allowed": false,
+        "required_reason": "native_authority_precheck_no_tick"
+      },
+      "risk_flags": [
+        "RESIZE_BATCH_PRESSURE"
+      ],
+      "runtime_status": {
+        "non_projected_runtime_event_count": 0,
+        "observed_runtime_event_count": 0,
+        "runtime_commit_count": 0,
+        "runtime_hard_authority": false,
+        "runtime_precheck_count": 0,
+        "runtime_proof_clean": false,
+        "verified": false
+      },
+      "score": -27.75862597,
+      "slot_id": "r3-runtime-slot-035",
+      "source_file": "pnva-miner-events.jsonl",
+      "status": "pending_runtime",
+      "target_max_authority": "H2",
+      "target_rules": [
+        "native_event_emitter",
+        "adaptive_threshold",
+        "field_scheduler"
+      ],
+      "threshold": 0.0
+    }
+  ],
+  "classification": "R3_RUNTIME_CAPTURE_MATRIX_READY_PENDING_RUNTIME",
+  "cutover_remaining_runtime_replacement_count": 35,
+  "entity_rows": [
+    {
+      "actions": [
+        [
+          "RESIZE_BATCH",
+          32
+        ],
+        [
+          "COOLDOWN_GPU",
+          2
+        ],
+        [
+          "EXECUTE",
+          1
+        ]
+      ],
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "pending_slot_count": 35,
+      "required_slot_count": 35,
+      "risk_flags": [
+        [
+          "RESIZE_BATCH_PRESSURE",
+          32
+        ]
+      ],
+      "runtime_coverage_ratio": 0.0,
+      "target_rules": [
+        [
+          "native_event_emitter",
+          35
+        ],
+        [
+          "adaptive_threshold",
+          35
+        ],
+        [
+          "field_scheduler",
+          35
+        ],
+        [
+          "power_orchestrator",
+          2
+        ]
+      ],
+      "verified_runtime_slot_count": 0
+    }
+  ],
+  "entity_target_count": 1,
+  "generated_at": "2026-05-05T09:18:23Z",
+  "interpretation": {
+    "boundary": "This matrix approves the capture contract, not the final runtime cutover. Pending slots must be replaced by fresh native runtime evidence before R3 legacy-free can be claimed.",
+    "purpose": "Convert the R3 authority debt into concrete runtime capture slots with entity, action, no-tick and heuristic acceptance criteria.",
+    "sovereignty": "PNVA becomes harder to misrepresent when every remaining runtime replacement has an explicit slot, target authority and proof requirement."
+  },
+  "ledger_candidate_count": 35,
+  "pass": true,
+  "pending_slot_count": 35,
+  "project": "PNVA-Core",
+  "projected_commit_count": 35,
+  "projected_no_tick_suppression_count": 35,
+  "projected_no_tick_suppression_ratio": 0.5,
+  "projected_precheck_count": 35,
+  "projection_no_tick_classification": "SOVEREIGN_NO_TICK_READY",
+  "projection_pair_count": 35,
+  "projection_pair_coverage_ratio": 1.0,
+  "recommendations": [
+    "Instrument the runtime so each slot emits one no-tick precheck and one native commit without proof.projection=true.",
+    "Keep adaptive_threshold, field_scheduler and native_event_emitter on every replacement commit.",
+    "Use power_orchestrator on cooldown and thermal-pressure replacement slots.",
+    "Run replay, policy and no-tick validation over the fresh runtime capture sample before changing the cutover gate."
+  ],
+  "reports_checked": {
+    "authority_ledger": "reports/pnva-authority-migration-ledger-2026-05-05.json",
+    "canonical_events": "reports/pnva-canonical-events-sample-2026-05-05.jsonl",
+    "r3_cutover_gate": "reports/pnva-r3-cutover-gate-2026-05-05.json",
+    "r3_projection_events": "reports/pnva-r3-authority-projection-events-2026-05-05.jsonl",
+    "r3_projection_no_tick": "reports/pnva-r3-authority-projection-no-tick-2026-05-05.json",
+    "r3_projection_summary": "reports/pnva-r3-authority-projection-summary-2026-05-05.json",
+    "runtime_events": ""
+  },
+  "required_collapse_commit_count": 35,
+  "required_no_tick_precheck_count": 35,
+  "required_runtime_event_count": 70,
+  "risk_flag_mix": [
+    [
+      "RESIZE_BATCH_PRESSURE",
+      32
+    ]
+  ],
+  "runtime_capture_approved": false,
+  "runtime_capture_complete": false,
+  "runtime_capture_coverage_ratio": 0.0,
+  "runtime_capture_present": false,
+  "schema_version": "pnva.r3_runtime_capture_matrix.v1",
+  "source_candidate_count": 35,
+  "summary": {
+    "action_target_count": 3,
+    "capture_contract_ready": true,
+    "capture_slot_count": 35,
+    "entity_target_count": 1,
+    "pending_slot_count": 35,
+    "projection_pair_coverage_ratio": 1.0,
+    "required_runtime_event_count": 70,
+    "runtime_capture_complete": false,
+    "runtime_capture_coverage_ratio": 0.0,
+    "source_candidate_count": 35,
+    "target_rule_count": 4,
+    "verified_runtime_slot_count": 0
+  },
+  "target_rule_count": 4,
+  "target_rule_mix": [
+    [
+      "native_event_emitter",
+      35
+    ],
+    [
+      "adaptive_threshold",
+      35
+    ],
+    [
+      "field_scheduler",
+      35
+    ],
+    [
+      "power_orchestrator",
+      2
+    ]
+  ],
+  "verified_runtime_slot_count": 0
+}

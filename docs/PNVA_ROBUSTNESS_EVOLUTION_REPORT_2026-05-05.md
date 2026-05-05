@@ -53,6 +53,7 @@ docs/PNVA_R3_MIGRATION_PLAN.md
 docs/PNVA_AUTHORITY_MIGRATION_LEDGER.md
 docs/PNVA_R3_AUTHORITY_PROJECTION.md
 docs/PNVA_R3_CUTOVER_GATE.md
+docs/PNVA_R3_RUNTIME_CAPTURE_MATRIX.md
 docs/PNVA_SOVEREIGN_EVIDENCE_ATTESTATION.md
 docs/PNVA_ADVERSARIAL_VALIDATION.md
 docs/PNVA_ENTITY_HEURISTIC_MATURITY.md
@@ -78,6 +79,7 @@ tools/pnva_r3_migration_planner.py
 tools/pnva_authority_migration_ledger.py
 tools/pnva_r3_authority_projection.py
 tools/pnva_r3_cutover_gate.py
+tools/pnva_r3_runtime_capture_matrix.py
 tools/pnva_evidence_attestor.py
 tools/pnva_adversarial_validator.py
 tools/pnva_entity_heuristic_maturity.py
@@ -117,6 +119,7 @@ reports/pnva-r3-authority-projection-replay-2026-05-05.json
 reports/pnva-r3-authority-projection-policy-2026-05-05.json
 reports/pnva-r3-authority-projection-no-tick-2026-05-05.json
 reports/pnva-r3-cutover-gate-2026-05-05.json
+reports/pnva-r3-runtime-capture-matrix-2026-05-05.json
 reports/pnva-sovereign-evidence-attestation-2026-05-05.json
 reports/pnva-adversarial-validation-2026-05-05.json
 reports/pnva-entity-heuristic-maturity-2026-05-05.json
@@ -706,7 +709,33 @@ contract_score: 100
 
 This prevents premature R3 claims. The contract is ready, but the final legacy-free claim remains blocked until fresh runtime-emitted `pnva.event.v1` evidence replaces the projected sample and passes replay, policy, no-tick, robustness, semantic and reproducibility validation.
 
-### 23. Sovereign evidence attestation
+### 23. R3 runtime capture matrix
+
+The R3 runtime capture matrix converts the remaining runtime replacement work into explicit entity/action/no-tick slots.
+
+Current result:
+
+```text
+classification: R3_RUNTIME_CAPTURE_MATRIX_READY_PENDING_RUNTIME
+capture_contract_ready: true
+runtime_capture_complete: false
+runtime_capture_approved: false
+capture_slot_count: 35
+verified_runtime_slot_count: 0
+pending_slot_count: 35
+required_runtime_event_count: 70
+required_no_tick_precheck_count: 35
+required_collapse_commit_count: 35
+projection_pair_count: 35
+projection_pair_coverage_ratio: 1.0
+entity_target_count: 1
+action_target_count: 3
+target_rule_count: 4
+```
+
+This turns the final R3 step into a concrete capture contract. The next runtime must emit one no-tick precheck and one native commit for each pending slot, without `proof.projection=true`, with H2 or stronger commit authority.
+
+### 24. Sovereign evidence attestation
 
 The evidence attestor binds the public package into one machine-readable record.
 
@@ -714,7 +743,7 @@ Current result:
 
 ```text
 classification: PNVA_SOVEREIGN_EVIDENCE_ATTESTED
-artifact_count: 36
+artifact_count: 37
 failure_count: 0
 ```
 
@@ -804,7 +833,7 @@ Current result:
 
 ```text
 classification: SEMANTIC_CONSISTENCY_READY
-check_count: 232
+check_count: 246
 error_count: 0
 warning_count: 0
 ```
@@ -828,12 +857,13 @@ R3 migration plan vs Manifest and audit
 authority migration ledger vs Manifest, R3 plan, policy, heuristic influence, attestation and audit
 R3 authority projection vs Manifest, authority migration ledger, replay, policy, no-tick, attestation and audit
 R3 cutover gate vs Manifest, authority migration ledger, R3 authority projection, attestation and audit
+R3 runtime capture matrix vs Manifest, authority migration ledger, R3 cutover gate, attestation and audit
 Manifest file list existence
 ```
 
 This closes a publication risk: reports can no longer drift silently while still appearing valid individually.
 
-### 27. Reproducibility guard
+### 28. Reproducibility guard
 
 The reproducibility guard reruns the evidence commands and compares stable fields against the published package.
 
@@ -841,8 +871,8 @@ Current result:
 
 ```text
 classification: REPRODUCIBILITY_READY
-command_count: 30
-comparison_count: 292
+command_count: 31
+comparison_count: 310
 failure_count: 0
 command_failure_count: 0
 comparison_failure_count: 0
@@ -869,6 +899,7 @@ R3 migration plan
 authority migration ledger
 R3 authority projection
 R3 cutover gate
+R3 runtime capture matrix
 adversarial validation
 entity and heuristic maturity
 evidence attestation
@@ -906,11 +937,12 @@ This closes the method gap: the public evidence is now not only stored and cross
 25. Use `tools/pnva_authority_migration_ledger.py` before attestation so H0 strong legacy decisions become entity/action-specific native migration targets.
 26. Use `tools/pnva_r3_authority_projection.py` before attestation so mapped H0 debt has native replay, policy and no-tick validation before runtime replacement.
 27. Use `tools/pnva_r3_cutover_gate.py` before attestation so projection readiness and final runtime approval remain separate.
-28. Use `tools/pnva_evidence_attestor.py` to publish one aggregate evidence hash for each release.
-29. Use `tools/pnva_adversarial_validator.py` before release so validator failures are proven, not assumed.
-30. Use `tools/pnva_entity_heuristic_maturity.py` to choose hardening targets by entity, heuristic and authority.
-31. Use `tools/pnva_semantic_consistency_guard.py` after attestation to block cross-report drift.
-32. Use `tools/pnva_reproducibility_guard.py` after semantic consistency to prove source-command reproducibility.
+28. Use `tools/pnva_r3_runtime_capture_matrix.py` before attestation so every remaining runtime replacement is explicit by entity, action, heuristic and no-tick precheck.
+29. Use `tools/pnva_evidence_attestor.py` to publish one aggregate evidence hash for each release.
+30. Use `tools/pnva_adversarial_validator.py` before release so validator failures are proven, not assumed.
+31. Use `tools/pnva_entity_heuristic_maturity.py` to choose hardening targets by entity, heuristic and authority.
+32. Use `tools/pnva_semantic_consistency_guard.py` after attestation to block cross-report drift.
+33. Use `tools/pnva_reproducibility_guard.py` after semantic consistency to prove source-command reproducibility.
 
 ## Sovereign Rule
 

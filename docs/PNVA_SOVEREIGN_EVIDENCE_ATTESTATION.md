@@ -29,6 +29,7 @@ R3 migration plan
 authority migration ledger
 R3 authority projection
 R3 cutover gate
+R3 runtime capture matrix
 adversarial validation
 entity and heuristic maturity
 sovereign audit
@@ -70,7 +71,7 @@ Current result:
 ```text
 classification: PNVA_SOVEREIGN_EVIDENCE_ATTESTED
 pass: true
-artifact_count: 36
+artifact_count: 37
 failure_count: 0
 ```
 

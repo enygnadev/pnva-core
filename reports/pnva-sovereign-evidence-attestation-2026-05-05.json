@@ -1,5 +1,5 @@
 {
-  "artifact_count": 36,
+  "artifact_count": 37,
   "artifacts": [
     {
       "entry_count": 9,
@@ -333,6 +333,19 @@
       "size_bytes": 7421
     },
     {
+      "classification": "R3_RUNTIME_CAPTURE_MATRIX_READY_PENDING_RUNTIME",
+      "expected": "R3_RUNTIME_CAPTURE_MATRIX_READY_PENDING_RUNTIME",
+      "id": "r3_runtime_capture_matrix",
+      "kind": "json_classification",
+      "pass": true,
+      "path": "reports/pnva-r3-runtime-capture-matrix-2026-05-05.json",
+      "present": true,
+      "reported_pass": true,
+      "required": true,
+      "sha256": "2ea707f1ca79a025c87d937804e971f513151ecb2ea0f67944e07d53cb120046",
+      "size_bytes": 71818
+    },
+    {
       "classification": "NATIVE_EMITTER_READY",
       "expected": "NATIVE_EMITTER_READY",
       "id": "native_emitter",
@@ -484,13 +497,14 @@
     "authority migration ledger",
     "R3 authority projection",
     "R3 cutover gate",
+    "R3 runtime capture matrix",
     "adversarial negative controls",
     "entity and heuristic maturity",
     "sovereign audit consumes this attestation without being part of its hash seed"
   ],
-  "evidence_hash": "sha256:126803fdc1459c2d7398027c54720812fd184c013fc0615f979d065345778ef0",
+  "evidence_hash": "sha256:ab39ebb438c96e62fd11262122e635cbbefab5aa983b40e6768f7d2d60ced493",
   "failure_count": 0,
-  "generated_at": "2026-05-05T09:11:06Z",
+  "generated_at": "2026-05-05T09:25:35Z",
   "interpretation": {
     "boundary": "This attests repository evidence integrity; it is not a universal proof of all possible PNVA deployments.",
     "hash_policy": "The evidence_hash changes when any tracked artifact hash, classification or pass flag changes.",
@@ -515,7 +529,8 @@
     "Run R3 migration planner before attestation so the next legacy-free target is measurable.",
     "Run authority migration ledger before attestation so H0 strong decisions become entity/action-specific native targets.",
     "Run R3 authority projection before attestation so mapped debt has replay, policy and no-tick native proof.",
-    "Run R3 cutover gate before attestation so projection readiness is separated from final runtime cutover approval."
+    "Run R3 cutover gate before attestation so projection readiness is separated from final runtime cutover approval.",
+    "Run R3 runtime capture matrix before attestation so every pending runtime replacement has an entity/action/no-tick acceptance slot."
   ],
   "schema_version": "pnva.evidence_attestation.v1"
 }
