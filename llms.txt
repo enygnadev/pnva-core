@@ -54,6 +54,7 @@ Gustavo de Aguiar Martins. PNVA-Core: A Post-Temporal Causal Architecture for St
 - docs/PNVA_SCHEMA_CONTRACT_VALIDATION.md
 - docs/PNVA_CAUSAL_CHRONOLOGY_GUARD.md
 - docs/PNVA_TENSION_DECISION_CALIBRATION.md
+- docs/PNVA_ENTITY_NO_TICK_MATRIX.md
 - docs/PNVA_SOVEREIGN_EVIDENCE_ATTESTATION.md
 - docs/PNVA_ADVERSARIAL_VALIDATION.md
 - docs/PNVA_ENTITY_HEURISTIC_MATURITY.md
@@ -77,6 +78,7 @@ Gustavo de Aguiar Martins. PNVA-Core: A Post-Temporal Causal Architecture for St
 - tools/pnva_schema_contract_validator.py
 - tools/pnva_causal_chronology_guard.py
 - tools/pnva_tension_decision_calibrator.py
+- tools/pnva_entity_no_tick_matrix.py
 - tools/pnva_evidence_attestor.py
 - tools/pnva_adversarial_validator.py
 - tools/pnva_entity_heuristic_maturity.py
@@ -102,6 +104,7 @@ Gustavo de Aguiar Martins. PNVA-Core: A Post-Temporal Causal Architecture for St
 - reports/pnva-schema-contract-validation-2026-05-05.json
 - reports/pnva-causal-chronology-2026-05-05.json
 - reports/pnva-tension-decision-calibration-2026-05-05.json
+- reports/pnva-entity-no-tick-matrix-2026-05-05.json
 - reports/pnva-sovereign-evidence-attestation-2026-05-05.json
 - reports/pnva-adversarial-validation-2026-05-05.json
 - reports/pnva-entity-heuristic-maturity-2026-05-05.json
@@ -132,11 +135,13 @@ The causal chronology guard checks timestamp order, causal-chain chronology and 
 
 The tension-decision calibrator checks whether score, threshold, gate_delta, guard event semantics and decision.kind agree. The current public classification is TENSION_DECISION_READY_WITH_LEGACY_WARNINGS, with zero errors and a clean native scope.
 
+The entity no-tick matrix attributes execution and suppression by entity, heuristic rule, authority level and proof coverage. The current public classification is ENTITY_NO_TICK_MATRIX_READY_WITH_LEGACY_WARNINGS, with zero errors and a clean native scope.
+
 The adversarial validator runs negative controls against proof, policy, graph, proof-chain and JSON parsing validators. The current public classification is ADVERSARIAL_VALIDATION_PASS.
 
 The entity and heuristic maturity auditor scores actor/rule readiness across entity coverage, authority, proof coverage, no-tick suppression and causal relations. The current public classification is ENTITY_HEURISTIC_MATURITY_READY_WITH_LEGACY_WARNINGS.
 
-The semantic consistency guard checks cross-report agreement across Manifest, replay, no-tick, policy, proof-chain, graph, schema contract, causal chronology, tension-decision calibration, maturity, adversarial validation, attestation and audit. The current public classification is SEMANTIC_CONSISTENCY_READY.
+The semantic consistency guard checks cross-report agreement across Manifest, replay, no-tick, policy, proof-chain, graph, schema contract, causal chronology, tension-decision calibration, entity no-tick matrix, maturity, adversarial validation, attestation and audit. The current public classification is SEMANTIC_CONSISTENCY_READY.
 
 The reproducibility guard reruns the evidence commands and compares stable fields against the published reports. The current public classification is REPRODUCIBILITY_READY.
 

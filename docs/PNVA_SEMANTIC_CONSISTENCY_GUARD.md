@@ -31,6 +31,7 @@ causal graph
 schema contract validation
 causal chronology guard
 tension-decision calibration
+entity no-tick matrix
 adversarial validation
 entity and heuristic maturity
 evidence attestation
@@ -56,7 +57,7 @@ SEMANTIC_CONSISTENCY_READY
 Current result:
 
 ```text
-check_count: 92
+check_count: 102
 error_count: 0
 warning_count: 0
 ```
@@ -72,6 +73,7 @@ native emitter vs native no-tick/policy/graph/proof-chain
 schema contract report vs Manifest and attestation
 causal chronology report vs Manifest and attestation
 tension-decision calibration report vs Manifest, attestation and audit
+entity no-tick matrix vs Manifest, attestation and audit
 maturity aggregate math vs canonical + native reports
 attestation artifact count vs artifact list
 audit summary vs attestation and maturity report

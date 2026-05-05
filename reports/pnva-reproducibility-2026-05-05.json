@@ -1,7 +1,7 @@
 {
   "author": "Gustavo de Aguiar Martins",
   "classification": "REPRODUCIBILITY_READY",
-  "command_count": 18,
+  "command_count": 19,
   "command_failure_count": 0,
   "command_failures": [],
   "commands": {
@@ -29,6 +29,13 @@
     "causal_graph": {
       "classification": "CAUSAL_GRAPH_READY",
       "command": "tools/pnva_causal_graph_auditor.py --events reports/pnva-canonical-events-sample-2026-05-05.jsonl --entity-catalog reports/pnva-entity-catalog-2026-05-05.json --write <TEMP>/causal-graph.json",
+      "exit_code": 0,
+      "parse_error": "",
+      "pass": true
+    },
+    "entity_no_tick_matrix": {
+      "classification": "ENTITY_NO_TICK_MATRIX_READY_WITH_LEGACY_WARNINGS",
+      "command": "tools/pnva_entity_no_tick_matrix.py --write <TEMP>/entity-no-tick-matrix.json",
       "exit_code": 0,
       "parse_error": "",
       "pass": true
@@ -132,7 +139,7 @@
       "pass": true
     }
   },
-  "comparison_count": 145,
+  "comparison_count": 155,
   "comparison_failure_count": 0,
   "comparison_failures": [],
   "comparisons": [
@@ -958,6 +965,76 @@
     {
       "field": "classification",
       "pass": true,
+      "published": "ENTITY_NO_TICK_MATRIX_READY_WITH_LEGACY_WARNINGS",
+      "report": "entity_no_tick_matrix",
+      "reproduced": "ENTITY_NO_TICK_MATRIX_READY_WITH_LEGACY_WARNINGS"
+    },
+    {
+      "field": "pass",
+      "pass": true,
+      "published": true,
+      "report": "entity_no_tick_matrix",
+      "reproduced": true
+    },
+    {
+      "field": "scope_count",
+      "pass": true,
+      "published": 2,
+      "report": "entity_no_tick_matrix",
+      "reproduced": 2
+    },
+    {
+      "field": "event_count",
+      "pass": true,
+      "published": 519,
+      "report": "entity_no_tick_matrix",
+      "reproduced": 519
+    },
+    {
+      "field": "entity_row_count",
+      "pass": true,
+      "published": 12,
+      "report": "entity_no_tick_matrix",
+      "reproduced": 12
+    },
+    {
+      "field": "observed_entity_row_count",
+      "pass": true,
+      "published": 12,
+      "report": "entity_no_tick_matrix",
+      "reproduced": 12
+    },
+    {
+      "field": "suppressed_count",
+      "pass": true,
+      "published": 250,
+      "report": "entity_no_tick_matrix",
+      "reproduced": 250
+    },
+    {
+      "field": "warning_count",
+      "pass": true,
+      "published": 35,
+      "report": "entity_no_tick_matrix",
+      "reproduced": 35
+    },
+    {
+      "field": "native_matrix_clean",
+      "pass": true,
+      "published": true,
+      "report": "entity_no_tick_matrix",
+      "reproduced": true
+    },
+    {
+      "field": "legacy_low_authority_warning_count",
+      "pass": true,
+      "published": 35,
+      "report": "entity_no_tick_matrix",
+      "reproduced": 35
+    },
+    {
+      "field": "classification",
+      "pass": true,
       "published": "ADVERSARIAL_VALIDATION_PASS",
       "report": "adversarial",
       "reproduced": "ADVERSARIAL_VALIDATION_PASS"
@@ -1084,9 +1161,9 @@
     {
       "field": "artifact_count",
       "pass": true,
-      "published": 22,
+      "published": 23,
       "report": "attestation",
-      "reproduced": 22
+      "reproduced": 23
     },
     {
       "field": "failure_count",
@@ -1098,9 +1175,9 @@
     {
       "field": "evidence_hash",
       "pass": true,
-      "published": "sha256:ef193f016573569f4b951fd65b3bd2d4d8a40b08816f7bf0dc611a1e77f098f1",
+      "published": "sha256:ab9c36eba9d4b7301930615648a44483d3167fd7a268c04355a14d6f7190a55e",
       "report": "attestation",
-      "reproduced": "sha256:ef193f016573569f4b951fd65b3bd2d4d8a40b08816f7bf0dc611a1e77f098f1"
+      "reproduced": "sha256:ab9c36eba9d4b7301930615648a44483d3167fd7a268c04355a14d6f7190a55e"
     },
     {
       "field": "classification",
@@ -1119,9 +1196,9 @@
     {
       "field": "check_count",
       "pass": true,
-      "published": 92,
+      "published": 102,
       "report": "semantic",
-      "reproduced": 92
+      "reproduced": 102
     },
     {
       "field": "error_count",
@@ -1153,7 +1230,7 @@
     }
   ],
   "failure_count": 0,
-  "generated_at": "2026-05-05T06:43:06Z",
+  "generated_at": "2026-05-05T06:58:05Z",
   "interpretation": {
     "boundary": "Generated timestamps, temporary paths and non-semantic ordering are intentionally excluded from comparison.",
     "purpose": "Regenerate PNVA evidence reports with current tools and compare stable fields against the published evidence package.",
@@ -1168,12 +1245,13 @@
   ],
   "schema_version": "pnva.reproducibility_guard.v1",
   "summary": {
-    "published_attestation_hash": "sha256:ef193f016573569f4b951fd65b3bd2d4d8a40b08816f7bf0dc611a1e77f098f1",
+    "published_attestation_hash": "sha256:ab9c36eba9d4b7301930615648a44483d3167fd7a268c04355a14d6f7190a55e",
     "reports_reproduced": [
       "adversarial",
       "attestation",
       "causal_chronology",
       "causal_graph",
+      "entity_no_tick_matrix",
       "maturity",
       "native_causal_graph",
       "native_emitter",
@@ -1189,7 +1267,7 @@
       "semantic",
       "tension_decision"
     ],
-    "reproduced_attestation_hash": "sha256:ef193f016573569f4b951fd65b3bd2d4d8a40b08816f7bf0dc611a1e77f098f1",
-    "stable_fields_compared": 145
+    "reproduced_attestation_hash": "sha256:ab9c36eba9d4b7301930615648a44483d3167fd7a268c04355a14d6f7190a55e",
+    "stable_fields_compared": 155
   }
 }

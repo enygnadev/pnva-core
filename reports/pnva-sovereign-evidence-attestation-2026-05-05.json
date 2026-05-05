@@ -1,5 +1,5 @@
 {
-  "artifact_count": 22,
+  "artifact_count": 23,
   "artifacts": [
     {
       "entry_count": 9,
@@ -153,6 +153,19 @@
       "size_bytes": 93378
     },
     {
+      "classification": "ENTITY_NO_TICK_MATRIX_READY_WITH_LEGACY_WARNINGS",
+      "expected": "ENTITY_NO_TICK_MATRIX_READY_WITH_LEGACY_WARNINGS",
+      "id": "entity_no_tick_matrix",
+      "kind": "json_classification",
+      "pass": true,
+      "path": "reports/pnva-entity-no-tick-matrix-2026-05-05.json",
+      "present": true,
+      "reported_pass": true,
+      "required": true,
+      "sha256": "bdcfffe901576547d26e09fe28faf13d3e557fe53fd5296c7e9e822ecb74c9dc",
+      "size_bytes": 94515
+    },
+    {
       "classification": "NATIVE_EMITTER_READY",
       "expected": "NATIVE_EMITTER_READY",
       "id": "native_emitter",
@@ -295,13 +308,14 @@
     "schema contract validation",
     "causal chronology guard",
     "tension-decision calibration",
+    "entity no-tick matrix",
     "adversarial negative controls",
     "entity and heuristic maturity",
     "sovereign audit consumes this attestation without being part of its hash seed"
   ],
-  "evidence_hash": "sha256:ef193f016573569f4b951fd65b3bd2d4d8a40b08816f7bf0dc611a1e77f098f1",
+  "evidence_hash": "sha256:ab9c36eba9d4b7301930615648a44483d3167fd7a268c04355a14d6f7190a55e",
   "failure_count": 0,
-  "generated_at": "2026-05-05T06:41:52Z",
+  "generated_at": "2026-05-05T06:57:40Z",
   "interpretation": {
     "boundary": "This attests repository evidence integrity; it is not a universal proof of all possible PNVA deployments.",
     "hash_policy": "The evidence_hash changes when any tracked artifact hash, classification or pass flag changes.",
@@ -317,7 +331,8 @@
     "Use entity and heuristic maturity scores to guide the next no-tick runtime hardening step.",
     "Run schema contract validation before attestation so event/entity shape defects become release blockers.",
     "Run causal chronology before attestation so timestamp regressions and batch compaction are explicit.",
-    "Run tension-decision calibration before attestation so threshold/decision drift is explicit."
+    "Run tension-decision calibration before attestation so threshold/decision drift is explicit.",
+    "Run entity no-tick matrix before attestation so suppression and execution are attributable by entity."
   ],
   "schema_version": "pnva.evidence_attestation.v1"
 }

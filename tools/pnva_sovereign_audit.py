@@ -50,6 +50,7 @@ PUBLIC_DOCS = [
     "docs/PNVA_SCHEMA_CONTRACT_VALIDATION.md",
     "docs/PNVA_CAUSAL_CHRONOLOGY_GUARD.md",
     "docs/PNVA_TENSION_DECISION_CALIBRATION.md",
+    "docs/PNVA_ENTITY_NO_TICK_MATRIX.md",
     "docs/PNVA_SOVEREIGN_EVIDENCE_ATTESTATION.md",
     "docs/PNVA_ADVERSARIAL_VALIDATION.md",
     "docs/PNVA_ENTITY_HEURISTIC_MATURITY.md",
@@ -129,6 +130,12 @@ TENSION_DECISION_FILES = [
     "tools/pnva_tension_decision_calibrator.py",
     "docs/PNVA_TENSION_DECISION_CALIBRATION.md",
     "reports/pnva-tension-decision-calibration-2026-05-05.json",
+]
+
+ENTITY_NO_TICK_MATRIX_FILES = [
+    "tools/pnva_entity_no_tick_matrix.py",
+    "docs/PNVA_ENTITY_NO_TICK_MATRIX.md",
+    "reports/pnva-entity-no-tick-matrix-2026-05-05.json",
 ]
 
 EVIDENCE_ATTESTATION_FILES = [
@@ -783,6 +790,40 @@ def audit_tension_decision_calibration(repo: Path) -> dict[str, Any]:
     }
 
 
+def audit_entity_no_tick_matrix(repo: Path) -> dict[str, Any]:
+    missing = [rel for rel in ENTITY_NO_TICK_MATRIX_FILES if not (repo / rel).exists()]
+    report_path = repo / "reports" / "pnva-entity-no-tick-matrix-2026-05-05.json"
+    if not report_path.exists():
+        return {
+            "matrix_ok": False,
+            "missing": missing,
+            "classification": "ENTITY_NO_TICK_MATRIX_MISSING",
+            "errors": ["missing entity no-tick matrix report"],
+        }
+    data = _read_json(report_path)
+    return {
+        "matrix_ok": (
+            not missing
+            and data.get("pass") is True
+            and str(data.get("classification", "")).startswith("ENTITY_NO_TICK_MATRIX_READY")
+            and int(data.get("error_count", 0)) == 0
+            and data.get("native_matrix_clean") is True
+        ),
+        "missing": missing,
+        "classification": data.get("classification"),
+        "event_count": int(data.get("event_count", 0)),
+        "entity_row_count": int(data.get("entity_row_count", 0)),
+        "observed_entity_row_count": int(data.get("observed_entity_row_count", 0)),
+        "suppressed_count": int(data.get("suppressed_count", 0)),
+        "entity_suppression_row_count": int(data.get("entity_suppression_row_count", 0)),
+        "error_count": int(data.get("error_count", 0)),
+        "warning_count": int(data.get("warning_count", 0)),
+        "legacy_low_authority_warning_count": int(data.get("legacy_low_authority_warning_count", 0)),
+        "native_matrix_clean": bool(data.get("native_matrix_clean")),
+        "errors": [] if isinstance(data, dict) and data.get("pass") is True else ["entity no-tick matrix failed"],
+    }
+
+
 def audit_reproducibility(repo: Path) -> dict[str, Any]:
     missing = [rel for rel in REPRODUCIBILITY_FILES if not (repo / rel).exists()]
     report_path = repo / "reports" / "pnva-reproducibility-2026-05-05.json"
@@ -1010,6 +1051,8 @@ def score_report(report: dict[str, Any]) -> dict[str, Any]:
         scores["actionability"] += 1
     if report.get("tension_decision_calibration", {}).get("calibration_ok"):
         scores["actionability"] += 0
+    if report.get("entity_no_tick_matrix", {}).get("matrix_ok"):
+        scores["actionability"] += 0
     if report.get("sovereign_policy", {}).get("policy_ok"):
         scores["actionability"] += 0
     if report.get("proof_chain", {}).get("chain_ok"):
@@ -1080,6 +1123,7 @@ def build_report(repo: Path, *, strict_public: bool = False) -> dict[str, Any]:
         "schema_contract_validation": audit_schema_contract_validation(repo),
         "causal_chronology": audit_causal_chronology(repo),
         "tension_decision_calibration": audit_tension_decision_calibration(repo),
+        "entity_no_tick_matrix": audit_entity_no_tick_matrix(repo),
         "evidence_attestation": audit_evidence_attestation(repo),
         "adversarial_validation": audit_adversarial_validation(repo),
         "entity_heuristic_maturity": audit_entity_heuristic_maturity(repo),
@@ -1098,6 +1142,7 @@ def build_report(repo: Path, *, strict_public: bool = False) -> dict[str, Any]:
             "Run schema contract validation so event and entity envelopes are checked before attestation.",
             "Run causal chronology guard so time remains an audited trace, not a blind execution driver.",
             "Run tension-decision calibration so threshold/decision drift remains explicit.",
+            "Run entity no-tick matrix so suppression and execution remain attributable by entity.",
             "Publish one sovereign evidence attestation hash with every evidence release.",
             "Run adversarial validation so validators prove tamper detection, not only green-path acceptance.",
             "Track entity and heuristic maturity so no-tick suppression stays attributable to actors and authority.",

@@ -84,7 +84,7 @@
     "robots_missing_tokens": [],
     "robots_ok": true,
     "sitemap_ok": true,
-    "sitemap_url_count": 50,
+    "sitemap_url_count": 52,
     "sitemap_urls": [
       "https://enygnadev.github.io/pnva-core/",
       "https://enygnadev.github.io/pnva-core/author.html",
@@ -103,6 +103,7 @@
       "https://enygnadev.github.io/pnva-core/docs/PNVA_SCHEMA_CONTRACT_VALIDATION.md",
       "https://enygnadev.github.io/pnva-core/docs/PNVA_CAUSAL_CHRONOLOGY_GUARD.md",
       "https://enygnadev.github.io/pnva-core/docs/PNVA_TENSION_DECISION_CALIBRATION.md",
+      "https://enygnadev.github.io/pnva-core/docs/PNVA_ENTITY_NO_TICK_MATRIX.md",
       "https://enygnadev.github.io/pnva-core/docs/PNVA_SOVEREIGN_EVIDENCE_ATTESTATION.md",
       "https://enygnadev.github.io/pnva-core/docs/PNVA_ADVERSARIAL_VALIDATION.md",
       "https://enygnadev.github.io/pnva-core/docs/PNVA_ENTITY_HEURISTIC_MATURITY.md",
@@ -131,6 +132,7 @@
       "https://enygnadev.github.io/pnva-core/reports/pnva-schema-contract-validation-2026-05-05.json",
       "https://enygnadev.github.io/pnva-core/reports/pnva-causal-chronology-2026-05-05.json",
       "https://enygnadev.github.io/pnva-core/reports/pnva-tension-decision-calibration-2026-05-05.json",
+      "https://enygnadev.github.io/pnva-core/reports/pnva-entity-no-tick-matrix-2026-05-05.json",
       "https://enygnadev.github.io/pnva-core/reports/pnva-adversarial-validation-2026-05-05.json",
       "https://enygnadev.github.io/pnva-core/reports/pnva-entity-heuristic-maturity-2026-05-05.json",
       "https://enygnadev.github.io/pnva-core/reports/pnva-semantic-consistency-2026-05-05.json",
@@ -153,17 +155,32 @@
     "total_suppressed_count": 250,
     "warning_count": 35
   },
+  "entity_no_tick_matrix": {
+    "classification": "ENTITY_NO_TICK_MATRIX_READY_WITH_LEGACY_WARNINGS",
+    "entity_row_count": 12,
+    "entity_suppression_row_count": 9,
+    "error_count": 0,
+    "errors": [],
+    "event_count": 519,
+    "legacy_low_authority_warning_count": 35,
+    "matrix_ok": true,
+    "missing": [],
+    "native_matrix_clean": true,
+    "observed_entity_row_count": 12,
+    "suppressed_count": 250,
+    "warning_count": 35
+  },
   "evidence_attestation": {
-    "artifact_count": 22,
+    "artifact_count": 23,
     "attestation_ok": true,
     "classification": "PNVA_SOVEREIGN_EVIDENCE_ATTESTED",
     "errors": [],
-    "evidence_hash": "sha256:ef193f016573569f4b951fd65b3bd2d4d8a40b08816f7bf0dc611a1e77f098f1",
+    "evidence_hash": "sha256:ab9c36eba9d4b7301930615648a44483d3167fd7a268c04355a14d6f7190a55e",
     "failure_count": 0,
     "missing": [],
-    "tracked_artifacts": 22
+    "tracked_artifacts": 23
   },
-  "generated_at": "2026-05-05T06:43:20Z",
+  "generated_at": "2026-05-05T06:58:05Z",
   "local_logs": {
     "available": true,
     "bad_json_ratio": 0.0,
@@ -936,6 +953,7 @@
     "Run schema contract validation so event and entity envelopes are checked before attestation.",
     "Run causal chronology guard so time remains an audited trace, not a blind execution driver.",
     "Run tension-decision calibration so threshold/decision drift remains explicit.",
+    "Run entity no-tick matrix so suppression and execution remain attributable by entity.",
     "Publish one sovereign evidence attestation hash with every evidence release.",
     "Run adversarial validation so validators prove tamper detection, not only green-path acceptance.",
     "Track entity and heuristic maturity so no-tick suppression stays attributable to actors and authority.",
@@ -961,9 +979,9 @@
   "repo_path": "<REPO>",
   "reproducibility": {
     "classification": "REPRODUCIBILITY_READY",
-    "command_count": 18,
+    "command_count": 19,
     "command_failure_count": 0,
-    "comparison_count": 145,
+    "comparison_count": 155,
     "comparison_failure_count": 0,
     "errors": [],
     "failure_count": 0,
@@ -997,7 +1015,7 @@
     "total": 100
   },
   "semantic_consistency": {
-    "check_count": 92,
+    "check_count": 102,
     "classification": "SEMANTIC_CONSISTENCY_READY",
     "consistency_ok": true,
     "error_count": 0,

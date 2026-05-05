@@ -1,0 +1,3658 @@
+{
+  "aggregate_entity_suppression_coverage_ratio": 0.75,
+  "aggregate_no_tick_suppression_ratio": 0.481696,
+  "author": "Gustavo de Aguiar Martins",
+  "classification": "ENTITY_NO_TICK_MATRIX_READY_WITH_LEGACY_WARNINGS",
+  "entity_row_count": 12,
+  "entity_suppression_row_count": 9,
+  "error_count": 0,
+  "errors": [],
+  "event_count": 519,
+  "generated_at": "2026-05-05T06:57:40Z",
+  "interpretation": {
+    "boundary": "This matrix aggregates public sanitized evidence; it does not expose raw private local logs or commercial tuning.",
+    "purpose": "Expose PNVA no-tick behavior as an entity-by-heuristic matrix.",
+    "sovereignty": "A no-tick decision is stronger when suppression, execution, proof, authority and risk are attributable to a concrete entity."
+  },
+  "legacy_low_authority_warning_count": 35,
+  "native_matrix_clean": true,
+  "observed_entity_row_count": 12,
+  "pass": true,
+  "project": "PNVA-Core",
+  "recommendations": [
+    "Use this matrix to select the next entity-level hardening target.",
+    "Keep native entity rows clean: no missing proof, no missing catalog, no low-authority strong decision.",
+    "Treat canonical legacy warnings as migration debt until all production events are emitted natively."
+  ],
+  "schema_version": "pnva.entity_no_tick_matrix.v1",
+  "scope_count": 2,
+  "scopes": [
+    {
+      "authority_mix": [
+        [
+          "H2",
+          292
+        ],
+        [
+          "H0",
+          152
+        ],
+        [
+          "H3",
+          68
+        ]
+      ],
+      "catalog_entity_count": 6,
+      "classification": "ENTITY_NO_TICK_MATRIX_READY",
+      "decision_mix": [
+        [
+          "collapse",
+          266
+        ],
+        [
+          "observe",
+          213
+        ],
+        [
+          "block",
+          33
+        ]
+      ],
+      "entity_catalog_ref": "reports/pnva-entity-catalog-2026-05-05.json",
+      "entity_suppression_coverage_ratio": 0.833333,
+      "entity_suppression_row_count": 5,
+      "error_count": 0,
+      "errors": [],
+      "event_count": 512,
+      "events_ref": "reports/pnva-canonical-events-sample-2026-05-05.jsonl",
+      "heuristic_rule_counts": [
+        [
+          "adaptive_threshold",
+          274
+        ],
+        [
+          "field_scheduler",
+          264
+        ],
+        [
+          "legacy_observer",
+          152
+        ],
+        [
+          "veonic_layer",
+          128
+        ],
+        [
+          "affinity_router",
+          78
+        ],
+        [
+          "memory4d",
+          78
+        ],
+        [
+          "power_orchestrator",
+          78
+        ],
+        [
+          "etev_guard",
+          68
+        ]
+      ],
+      "heuristic_visibility_ratio": 1.0,
+      "legacy_event_count": 512,
+      "legacy_low_authority_warning_count": 35,
+      "legacy_tolerant": true,
+      "matrix": [
+        {
+          "authority_mix": [
+            [
+              "H2",
+              165
+            ],
+            [
+              "H0",
+              47
+            ]
+          ],
+          "avg_gate_delta": -34.891216,
+          "avg_tension_score": -34.345135,
+          "block_count": 0,
+          "capabilities": [
+            "emit_events",
+            "runtime_observation"
+          ],
+          "catalog_present": true,
+          "catalog_state": "active",
+          "chain_count": 14,
+          "collapse_count": 128,
+          "decision_mix": [
+            [
+              "collapse",
+              128
+            ],
+            [
+              "observe",
+              84
+            ]
+          ],
+          "entity_id": "zano-entity-00",
+          "entity_type": "field",
+          "event_count": 212,
+          "legacy_event_count": 212,
+          "max_authority": "H2",
+          "native_event_count": 0,
+          "observe_count": 84,
+          "proof_coverage_ratio": 1.0,
+          "proof_valid_count": 212,
+          "prove_count": 0,
+          "relation_in_count": 35,
+          "relation_out_count": 0,
+          "risk_flags": [
+            [
+              "VEONIC_TRACE",
+              128
+            ],
+            [
+              "RESIZE_BATCH_PRESSURE",
+              86
+            ],
+            [
+              "THERMAL_PRESSURE",
+              86
+            ]
+          ],
+          "rules": [
+            [
+              "adaptive_threshold",
+              165
+            ],
+            [
+              "field_scheduler",
+              128
+            ],
+            [
+              "veonic_layer",
+              128
+            ],
+            [
+              "legacy_observer",
+              47
+            ],
+            [
+              "affinity_router",
+              37
+            ],
+            [
+              "memory4d",
+              37
+            ],
+            [
+              "power_orchestrator",
+              37
+            ]
+          ],
+          "scope": "canonical",
+          "status": "no_tick_balanced",
+          "strong_decision_count": 128,
+          "strong_decision_ratio": 0.603774,
+          "suppressed_count": 84,
+          "suppression_ratio": 0.396226,
+          "top_actions": [
+            [
+              "RESIZE_BATCH",
+              86
+            ],
+            [
+              "pnva_engine_evaluated",
+              37
+            ],
+            [
+              "EXECUTE",
+              35
+            ],
+            [
+              "assigned",
+              18
+            ],
+            [
+              "entity_range_assigned",
+              11
+            ],
+            [
+              "kernel_completed",
+              9
+            ],
+            [
+              "kernel_launched",
+              9
+            ],
+            [
+              "SWITCH_INTENSITY",
+              7
+            ]
+          ]
+        },
+        {
+          "authority_mix": [
+            [
+              "H2",
+              86
+            ],
+            [
+              "H0",
+              46
+            ]
+          ],
+          "avg_gate_delta": -20.876214,
+          "avg_tension_score": -20.876214,
+          "block_count": 0,
+          "capabilities": [
+            "emit_events",
+            "runtime_observation"
+          ],
+          "catalog_present": true,
+          "catalog_state": "active",
+          "chain_count": 4,
+          "collapse_count": 103,
+          "decision_mix": [
+            [
+              "collapse",
+              103
+            ],
+            [
+              "observe",
+              29
+            ]
+          ],
+          "entity_id": "entity_4c3ade60ea78",
+          "entity_type": "field",
+          "event_count": 132,
+          "legacy_event_count": 132,
+          "max_authority": "H2",
+          "native_event_count": 0,
+          "observe_count": 29,
+          "proof_coverage_ratio": 1.0,
+          "proof_valid_count": 132,
+          "prove_count": 0,
+          "relation_in_count": 0,
+          "relation_out_count": 0,
+          "risk_flags": [
+            [
+              "RESIZE_BATCH_PRESSURE",
+              90
+            ],
+            [
+              "THERMAL_PRESSURE",
+              52
+            ]
+          ],
+          "rules": [
+            [
+              "field_scheduler",
+              86
+            ],
+            [
+              "legacy_observer",
+              46
+            ]
+          ],
+          "scope": "canonical",
+          "status": "no_tick_balanced",
+          "strong_decision_count": 103,
+          "strong_decision_ratio": 0.780303,
+          "suppressed_count": 29,
+          "suppression_ratio": 0.219697,
+          "top_actions": [
+            [
+              "RESIZE_BATCH",
+              90
+            ],
+            [
+              "scan_ranges=2",
+              10
+            ],
+            [
+              "EXECUTE",
+              7
+            ],
+            [
+              "COOLDOWN_GPU",
+              4
+            ],
+            [
+              "eth_getWork_sent",
+              2
+            ],
+            [
+              "eth_getWork_response",
+              2
+            ],
+            [
+              "STRATUM_JOB",
+              2
+            ],
+            [
+              "pool_authorized",
+              2
+            ]
+          ]
+        },
+        {
+          "authority_mix": [
+            [
+              "H0",
+              46
+            ],
+            [
+              "H2",
+              41
+            ]
+          ],
+          "avg_gate_delta": -6.490391,
+          "avg_tension_score": -6.145759,
+          "block_count": 0,
+          "capabilities": [
+            "emit_events",
+            "runtime_observation"
+          ],
+          "catalog_present": true,
+          "catalog_state": "active",
+          "chain_count": 6,
+          "collapse_count": 0,
+          "decision_mix": [
+            [
+              "observe",
+              87
+            ]
+          ],
+          "entity_id": "zano-entity-01",
+          "entity_type": "field",
+          "event_count": 87,
+          "legacy_event_count": 87,
+          "max_authority": "H2",
+          "native_event_count": 0,
+          "observe_count": 87,
+          "proof_coverage_ratio": 1.0,
+          "proof_valid_count": 87,
+          "prove_count": 0,
+          "relation_in_count": 33,
+          "relation_out_count": 0,
+          "risk_flags": [],
+          "rules": [
+            [
+              "legacy_observer",
+              46
+            ],
+            [
+              "adaptive_threshold",
+              41
+            ],
+            [
+              "affinity_router",
+              41
+            ],
+            [
+              "memory4d",
+              41
+            ],
+            [
+              "power_orchestrator",
+              41
+            ]
+          ],
+          "scope": "canonical",
+          "status": "no_tick_suppressor",
+          "strong_decision_count": 0,
+          "strong_decision_ratio": 0.0,
+          "suppressed_count": 87,
+          "suppression_ratio": 1.0,
+          "top_actions": [
+            [
+              "pnva_engine_evaluated",
+              41
+            ],
+            [
+              "assigned",
+              18
+            ],
+            [
+              "entity_range_assigned",
+              11
+            ],
+            [
+              "kernel_launched",
+              9
+            ],
+            [
+              "kernel_completed",
+              8
+            ]
+          ]
+        },
+        {
+          "authority_mix": [
+            [
+              "H3",
+              35
+            ]
+          ],
+          "avg_gate_delta": 0.009155,
+          "avg_tension_score": 0.745294,
+          "block_count": 0,
+          "capabilities": [
+            "emit_events",
+            "guard_decision"
+          ],
+          "catalog_present": true,
+          "catalog_state": "active",
+          "chain_count": 4,
+          "collapse_count": 35,
+          "decision_mix": [
+            [
+              "collapse",
+              35
+            ]
+          ],
+          "entity_id": "entity_9ad2a10c30be",
+          "entity_type": "guard",
+          "event_count": 35,
+          "legacy_event_count": 35,
+          "max_authority": "H3",
+          "native_event_count": 0,
+          "observe_count": 0,
+          "proof_coverage_ratio": 1.0,
+          "proof_valid_count": 35,
+          "prove_count": 0,
+          "relation_in_count": 0,
+          "relation_out_count": 35,
+          "risk_flags": [],
+          "rules": [
+            [
+              "adaptive_threshold",
+              35
+            ],
+            [
+              "etev_guard",
+              35
+            ],
+            [
+              "field_scheduler",
+              25
+            ]
+          ],
+          "scope": "canonical",
+          "status": "causal_executor",
+          "strong_decision_count": 35,
+          "strong_decision_ratio": 1.0,
+          "suppressed_count": 0,
+          "suppression_ratio": 0.0,
+          "top_actions": [
+            [
+              "ETEV_GUARD_PASS",
+              35
+            ]
+          ]
+        },
+        {
+          "authority_mix": [
+            [
+              "H3",
+              33
+            ]
+          ],
+          "avg_gate_delta": -0.020167,
+          "avg_tension_score": 0.710356,
+          "block_count": 33,
+          "capabilities": [
+            "emit_events",
+            "guard_decision"
+          ],
+          "catalog_present": true,
+          "catalog_state": "active",
+          "chain_count": 3,
+          "collapse_count": 0,
+          "decision_mix": [
+            [
+              "block",
+              33
+            ]
+          ],
+          "entity_id": "entity_9030cf1aa9f6",
+          "entity_type": "guard",
+          "event_count": 33,
+          "legacy_event_count": 33,
+          "max_authority": "H3",
+          "native_event_count": 0,
+          "observe_count": 0,
+          "proof_coverage_ratio": 1.0,
+          "proof_valid_count": 33,
+          "prove_count": 0,
+          "relation_in_count": 0,
+          "relation_out_count": 33,
+          "risk_flags": [],
+          "rules": [
+            [
+              "adaptive_threshold",
+              33
+            ],
+            [
+              "etev_guard",
+              33
+            ],
+            [
+              "field_scheduler",
+              25
+            ]
+          ],
+          "scope": "canonical",
+          "status": "no_tick_suppressor",
+          "strong_decision_count": 33,
+          "strong_decision_ratio": 1.0,
+          "suppressed_count": 33,
+          "suppression_ratio": 1.0,
+          "top_actions": [
+            [
+              "ETEV_GUARD_BLOCK",
+              33
+            ]
+          ]
+        },
+        {
+          "authority_mix": [
+            [
+              "H0",
+              13
+            ]
+          ],
+          "avg_gate_delta": 0.0,
+          "avg_tension_score": 0.0,
+          "block_count": 0,
+          "capabilities": [
+            "emit_events",
+            "runtime_observation"
+          ],
+          "catalog_present": true,
+          "catalog_state": "active",
+          "chain_count": 3,
+          "collapse_count": 0,
+          "decision_mix": [
+            [
+              "observe",
+              13
+            ]
+          ],
+          "entity_id": "entity_8ba8a9970d6a",
+          "entity_type": "field",
+          "event_count": 13,
+          "legacy_event_count": 13,
+          "max_authority": "H0",
+          "native_event_count": 0,
+          "observe_count": 13,
+          "proof_coverage_ratio": 1.0,
+          "proof_valid_count": 13,
+          "prove_count": 0,
+          "relation_in_count": 0,
+          "relation_out_count": 0,
+          "risk_flags": [],
+          "rules": [
+            [
+              "legacy_observer",
+              13
+            ]
+          ],
+          "scope": "canonical",
+          "status": "no_tick_suppressor",
+          "strong_decision_count": 0,
+          "strong_decision_ratio": 0.0,
+          "suppressed_count": 13,
+          "suppression_ratio": 1.0,
+          "top_actions": [
+            [
+              "runtime_snapshot",
+              10
+            ],
+            [
+              "job_received",
+              3
+            ]
+          ]
+        }
+      ],
+      "matrix_entity_count": 6,
+      "native_event_count": 0,
+      "native_matrix_clean": true,
+      "no_tick_suppression_ratio": 0.480469,
+      "observed_entity_count": 6,
+      "pass": true,
+      "proof_coverage_ratio": 1.0,
+      "proof_valid_count": 512,
+      "risk_flags": [
+        [
+          "RESIZE_BATCH_PRESSURE",
+          176
+        ],
+        [
+          "THERMAL_PRESSURE",
+          138
+        ],
+        [
+          "VEONIC_TRACE",
+          128
+        ]
+      ],
+      "scope": "canonical",
+      "strong_decision_count": 299,
+      "strong_with_hard_authority": 264,
+      "suppressed_count": 246,
+      "top_entities_by_events": [
+        {
+          "authority_mix": [
+            [
+              "H2",
+              165
+            ],
+            [
+              "H0",
+              47
+            ]
+          ],
+          "avg_gate_delta": -34.891216,
+          "avg_tension_score": -34.345135,
+          "block_count": 0,
+          "capabilities": [
+            "emit_events",
+            "runtime_observation"
+          ],
+          "catalog_present": true,
+          "catalog_state": "active",
+          "chain_count": 14,
+          "collapse_count": 128,
+          "decision_mix": [
+            [
+              "collapse",
+              128
+            ],
+            [
+              "observe",
+              84
+            ]
+          ],
+          "entity_id": "zano-entity-00",
+          "entity_type": "field",
+          "event_count": 212,
+          "legacy_event_count": 212,
+          "max_authority": "H2",
+          "native_event_count": 0,
+          "observe_count": 84,
+          "proof_coverage_ratio": 1.0,
+          "proof_valid_count": 212,
+          "prove_count": 0,
+          "relation_in_count": 35,
+          "relation_out_count": 0,
+          "risk_flags": [
+            [
+              "VEONIC_TRACE",
+              128
+            ],
+            [
+              "RESIZE_BATCH_PRESSURE",
+              86
+            ],
+            [
+              "THERMAL_PRESSURE",
+              86
+            ]
+          ],
+          "rules": [
+            [
+              "adaptive_threshold",
+              165
+            ],
+            [
+              "field_scheduler",
+              128
+            ],
+            [
+              "veonic_layer",
+              128
+            ],
+            [
+              "legacy_observer",
+              47
+            ],
+            [
+              "affinity_router",
+              37
+            ],
+            [
+              "memory4d",
+              37
+            ],
+            [
+              "power_orchestrator",
+              37
+            ]
+          ],
+          "scope": "canonical",
+          "status": "no_tick_balanced",
+          "strong_decision_count": 128,
+          "strong_decision_ratio": 0.603774,
+          "suppressed_count": 84,
+          "suppression_ratio": 0.396226,
+          "top_actions": [
+            [
+              "RESIZE_BATCH",
+              86
+            ],
+            [
+              "pnva_engine_evaluated",
+              37
+            ],
+            [
+              "EXECUTE",
+              35
+            ],
+            [
+              "assigned",
+              18
+            ],
+            [
+              "entity_range_assigned",
+              11
+            ],
+            [
+              "kernel_completed",
+              9
+            ],
+            [
+              "kernel_launched",
+              9
+            ],
+            [
+              "SWITCH_INTENSITY",
+              7
+            ]
+          ]
+        },
+        {
+          "authority_mix": [
+            [
+              "H2",
+              86
+            ],
+            [
+              "H0",
+              46
+            ]
+          ],
+          "avg_gate_delta": -20.876214,
+          "avg_tension_score": -20.876214,
+          "block_count": 0,
+          "capabilities": [
+            "emit_events",
+            "runtime_observation"
+          ],
+          "catalog_present": true,
+          "catalog_state": "active",
+          "chain_count": 4,
+          "collapse_count": 103,
+          "decision_mix": [
+            [
+              "collapse",
+              103
+            ],
+            [
+              "observe",
+              29
+            ]
+          ],
+          "entity_id": "entity_4c3ade60ea78",
+          "entity_type": "field",
+          "event_count": 132,
+          "legacy_event_count": 132,
+          "max_authority": "H2",
+          "native_event_count": 0,
+          "observe_count": 29,
+          "proof_coverage_ratio": 1.0,
+          "proof_valid_count": 132,
+          "prove_count": 0,
+          "relation_in_count": 0,
+          "relation_out_count": 0,
+          "risk_flags": [
+            [
+              "RESIZE_BATCH_PRESSURE",
+              90
+            ],
+            [
+              "THERMAL_PRESSURE",
+              52
+            ]
+          ],
+          "rules": [
+            [
+              "field_scheduler",
+              86
+            ],
+            [
+              "legacy_observer",
+              46
+            ]
+          ],
+          "scope": "canonical",
+          "status": "no_tick_balanced",
+          "strong_decision_count": 103,
+          "strong_decision_ratio": 0.780303,
+          "suppressed_count": 29,
+          "suppression_ratio": 0.219697,
+          "top_actions": [
+            [
+              "RESIZE_BATCH",
+              90
+            ],
+            [
+              "scan_ranges=2",
+              10
+            ],
+            [
+              "EXECUTE",
+              7
+            ],
+            [
+              "COOLDOWN_GPU",
+              4
+            ],
+            [
+              "eth_getWork_sent",
+              2
+            ],
+            [
+              "eth_getWork_response",
+              2
+            ],
+            [
+              "STRATUM_JOB",
+              2
+            ],
+            [
+              "pool_authorized",
+              2
+            ]
+          ]
+        },
+        {
+          "authority_mix": [
+            [
+              "H0",
+              46
+            ],
+            [
+              "H2",
+              41
+            ]
+          ],
+          "avg_gate_delta": -6.490391,
+          "avg_tension_score": -6.145759,
+          "block_count": 0,
+          "capabilities": [
+            "emit_events",
+            "runtime_observation"
+          ],
+          "catalog_present": true,
+          "catalog_state": "active",
+          "chain_count": 6,
+          "collapse_count": 0,
+          "decision_mix": [
+            [
+              "observe",
+              87
+            ]
+          ],
+          "entity_id": "zano-entity-01",
+          "entity_type": "field",
+          "event_count": 87,
+          "legacy_event_count": 87,
+          "max_authority": "H2",
+          "native_event_count": 0,
+          "observe_count": 87,
+          "proof_coverage_ratio": 1.0,
+          "proof_valid_count": 87,
+          "prove_count": 0,
+          "relation_in_count": 33,
+          "relation_out_count": 0,
+          "risk_flags": [],
+          "rules": [
+            [
+              "legacy_observer",
+              46
+            ],
+            [
+              "adaptive_threshold",
+              41
+            ],
+            [
+              "affinity_router",
+              41
+            ],
+            [
+              "memory4d",
+              41
+            ],
+            [
+              "power_orchestrator",
+              41
+            ]
+          ],
+          "scope": "canonical",
+          "status": "no_tick_suppressor",
+          "strong_decision_count": 0,
+          "strong_decision_ratio": 0.0,
+          "suppressed_count": 87,
+          "suppression_ratio": 1.0,
+          "top_actions": [
+            [
+              "pnva_engine_evaluated",
+              41
+            ],
+            [
+              "assigned",
+              18
+            ],
+            [
+              "entity_range_assigned",
+              11
+            ],
+            [
+              "kernel_launched",
+              9
+            ],
+            [
+              "kernel_completed",
+              8
+            ]
+          ]
+        },
+        {
+          "authority_mix": [
+            [
+              "H3",
+              35
+            ]
+          ],
+          "avg_gate_delta": 0.009155,
+          "avg_tension_score": 0.745294,
+          "block_count": 0,
+          "capabilities": [
+            "emit_events",
+            "guard_decision"
+          ],
+          "catalog_present": true,
+          "catalog_state": "active",
+          "chain_count": 4,
+          "collapse_count": 35,
+          "decision_mix": [
+            [
+              "collapse",
+              35
+            ]
+          ],
+          "entity_id": "entity_9ad2a10c30be",
+          "entity_type": "guard",
+          "event_count": 35,
+          "legacy_event_count": 35,
+          "max_authority": "H3",
+          "native_event_count": 0,
+          "observe_count": 0,
+          "proof_coverage_ratio": 1.0,
+          "proof_valid_count": 35,
+          "prove_count": 0,
+          "relation_in_count": 0,
+          "relation_out_count": 35,
+          "risk_flags": [],
+          "rules": [
+            [
+              "adaptive_threshold",
+              35
+            ],
+            [
+              "etev_guard",
+              35
+            ],
+            [
+              "field_scheduler",
+              25
+            ]
+          ],
+          "scope": "canonical",
+          "status": "causal_executor",
+          "strong_decision_count": 35,
+          "strong_decision_ratio": 1.0,
+          "suppressed_count": 0,
+          "suppression_ratio": 0.0,
+          "top_actions": [
+            [
+              "ETEV_GUARD_PASS",
+              35
+            ]
+          ]
+        },
+        {
+          "authority_mix": [
+            [
+              "H3",
+              33
+            ]
+          ],
+          "avg_gate_delta": -0.020167,
+          "avg_tension_score": 0.710356,
+          "block_count": 33,
+          "capabilities": [
+            "emit_events",
+            "guard_decision"
+          ],
+          "catalog_present": true,
+          "catalog_state": "active",
+          "chain_count": 3,
+          "collapse_count": 0,
+          "decision_mix": [
+            [
+              "block",
+              33
+            ]
+          ],
+          "entity_id": "entity_9030cf1aa9f6",
+          "entity_type": "guard",
+          "event_count": 33,
+          "legacy_event_count": 33,
+          "max_authority": "H3",
+          "native_event_count": 0,
+          "observe_count": 0,
+          "proof_coverage_ratio": 1.0,
+          "proof_valid_count": 33,
+          "prove_count": 0,
+          "relation_in_count": 0,
+          "relation_out_count": 33,
+          "risk_flags": [],
+          "rules": [
+            [
+              "adaptive_threshold",
+              33
+            ],
+            [
+              "etev_guard",
+              33
+            ],
+            [
+              "field_scheduler",
+              25
+            ]
+          ],
+          "scope": "canonical",
+          "status": "no_tick_suppressor",
+          "strong_decision_count": 33,
+          "strong_decision_ratio": 1.0,
+          "suppressed_count": 33,
+          "suppression_ratio": 1.0,
+          "top_actions": [
+            [
+              "ETEV_GUARD_BLOCK",
+              33
+            ]
+          ]
+        },
+        {
+          "authority_mix": [
+            [
+              "H0",
+              13
+            ]
+          ],
+          "avg_gate_delta": 0.0,
+          "avg_tension_score": 0.0,
+          "block_count": 0,
+          "capabilities": [
+            "emit_events",
+            "runtime_observation"
+          ],
+          "catalog_present": true,
+          "catalog_state": "active",
+          "chain_count": 3,
+          "collapse_count": 0,
+          "decision_mix": [
+            [
+              "observe",
+              13
+            ]
+          ],
+          "entity_id": "entity_8ba8a9970d6a",
+          "entity_type": "field",
+          "event_count": 13,
+          "legacy_event_count": 13,
+          "max_authority": "H0",
+          "native_event_count": 0,
+          "observe_count": 13,
+          "proof_coverage_ratio": 1.0,
+          "proof_valid_count": 13,
+          "prove_count": 0,
+          "relation_in_count": 0,
+          "relation_out_count": 0,
+          "risk_flags": [],
+          "rules": [
+            [
+              "legacy_observer",
+              13
+            ]
+          ],
+          "scope": "canonical",
+          "status": "no_tick_suppressor",
+          "strong_decision_count": 0,
+          "strong_decision_ratio": 0.0,
+          "suppressed_count": 13,
+          "suppression_ratio": 1.0,
+          "top_actions": [
+            [
+              "runtime_snapshot",
+              10
+            ],
+            [
+              "job_received",
+              3
+            ]
+          ]
+        }
+      ],
+      "top_entities_by_suppression": [
+        {
+          "authority_mix": [
+            [
+              "H0",
+              46
+            ],
+            [
+              "H2",
+              41
+            ]
+          ],
+          "avg_gate_delta": -6.490391,
+          "avg_tension_score": -6.145759,
+          "block_count": 0,
+          "capabilities": [
+            "emit_events",
+            "runtime_observation"
+          ],
+          "catalog_present": true,
+          "catalog_state": "active",
+          "chain_count": 6,
+          "collapse_count": 0,
+          "decision_mix": [
+            [
+              "observe",
+              87
+            ]
+          ],
+          "entity_id": "zano-entity-01",
+          "entity_type": "field",
+          "event_count": 87,
+          "legacy_event_count": 87,
+          "max_authority": "H2",
+          "native_event_count": 0,
+          "observe_count": 87,
+          "proof_coverage_ratio": 1.0,
+          "proof_valid_count": 87,
+          "prove_count": 0,
+          "relation_in_count": 33,
+          "relation_out_count": 0,
+          "risk_flags": [],
+          "rules": [
+            [
+              "legacy_observer",
+              46
+            ],
+            [
+              "adaptive_threshold",
+              41
+            ],
+            [
+              "affinity_router",
+              41
+            ],
+            [
+              "memory4d",
+              41
+            ],
+            [
+              "power_orchestrator",
+              41
+            ]
+          ],
+          "scope": "canonical",
+          "status": "no_tick_suppressor",
+          "strong_decision_count": 0,
+          "strong_decision_ratio": 0.0,
+          "suppressed_count": 87,
+          "suppression_ratio": 1.0,
+          "top_actions": [
+            [
+              "pnva_engine_evaluated",
+              41
+            ],
+            [
+              "assigned",
+              18
+            ],
+            [
+              "entity_range_assigned",
+              11
+            ],
+            [
+              "kernel_launched",
+              9
+            ],
+            [
+              "kernel_completed",
+              8
+            ]
+          ]
+        },
+        {
+          "authority_mix": [
+            [
+              "H2",
+              165
+            ],
+            [
+              "H0",
+              47
+            ]
+          ],
+          "avg_gate_delta": -34.891216,
+          "avg_tension_score": -34.345135,
+          "block_count": 0,
+          "capabilities": [
+            "emit_events",
+            "runtime_observation"
+          ],
+          "catalog_present": true,
+          "catalog_state": "active",
+          "chain_count": 14,
+          "collapse_count": 128,
+          "decision_mix": [
+            [
+              "collapse",
+              128
+            ],
+            [
+              "observe",
+              84
+            ]
+          ],
+          "entity_id": "zano-entity-00",
+          "entity_type": "field",
+          "event_count": 212,
+          "legacy_event_count": 212,
+          "max_authority": "H2",
+          "native_event_count": 0,
+          "observe_count": 84,
+          "proof_coverage_ratio": 1.0,
+          "proof_valid_count": 212,
+          "prove_count": 0,
+          "relation_in_count": 35,
+          "relation_out_count": 0,
+          "risk_flags": [
+            [
+              "VEONIC_TRACE",
+              128
+            ],
+            [
+              "RESIZE_BATCH_PRESSURE",
+              86
+            ],
+            [
+              "THERMAL_PRESSURE",
+              86
+            ]
+          ],
+          "rules": [
+            [
+              "adaptive_threshold",
+              165
+            ],
+            [
+              "field_scheduler",
+              128
+            ],
+            [
+              "veonic_layer",
+              128
+            ],
+            [
+              "legacy_observer",
+              47
+            ],
+            [
+              "affinity_router",
+              37
+            ],
+            [
+              "memory4d",
+              37
+            ],
+            [
+              "power_orchestrator",
+              37
+            ]
+          ],
+          "scope": "canonical",
+          "status": "no_tick_balanced",
+          "strong_decision_count": 128,
+          "strong_decision_ratio": 0.603774,
+          "suppressed_count": 84,
+          "suppression_ratio": 0.396226,
+          "top_actions": [
+            [
+              "RESIZE_BATCH",
+              86
+            ],
+            [
+              "pnva_engine_evaluated",
+              37
+            ],
+            [
+              "EXECUTE",
+              35
+            ],
+            [
+              "assigned",
+              18
+            ],
+            [
+              "entity_range_assigned",
+              11
+            ],
+            [
+              "kernel_completed",
+              9
+            ],
+            [
+              "kernel_launched",
+              9
+            ],
+            [
+              "SWITCH_INTENSITY",
+              7
+            ]
+          ]
+        },
+        {
+          "authority_mix": [
+            [
+              "H3",
+              33
+            ]
+          ],
+          "avg_gate_delta": -0.020167,
+          "avg_tension_score": 0.710356,
+          "block_count": 33,
+          "capabilities": [
+            "emit_events",
+            "guard_decision"
+          ],
+          "catalog_present": true,
+          "catalog_state": "active",
+          "chain_count": 3,
+          "collapse_count": 0,
+          "decision_mix": [
+            [
+              "block",
+              33
+            ]
+          ],
+          "entity_id": "entity_9030cf1aa9f6",
+          "entity_type": "guard",
+          "event_count": 33,
+          "legacy_event_count": 33,
+          "max_authority": "H3",
+          "native_event_count": 0,
+          "observe_count": 0,
+          "proof_coverage_ratio": 1.0,
+          "proof_valid_count": 33,
+          "prove_count": 0,
+          "relation_in_count": 0,
+          "relation_out_count": 33,
+          "risk_flags": [],
+          "rules": [
+            [
+              "adaptive_threshold",
+              33
+            ],
+            [
+              "etev_guard",
+              33
+            ],
+            [
+              "field_scheduler",
+              25
+            ]
+          ],
+          "scope": "canonical",
+          "status": "no_tick_suppressor",
+          "strong_decision_count": 33,
+          "strong_decision_ratio": 1.0,
+          "suppressed_count": 33,
+          "suppression_ratio": 1.0,
+          "top_actions": [
+            [
+              "ETEV_GUARD_BLOCK",
+              33
+            ]
+          ]
+        },
+        {
+          "authority_mix": [
+            [
+              "H2",
+              86
+            ],
+            [
+              "H0",
+              46
+            ]
+          ],
+          "avg_gate_delta": -20.876214,
+          "avg_tension_score": -20.876214,
+          "block_count": 0,
+          "capabilities": [
+            "emit_events",
+            "runtime_observation"
+          ],
+          "catalog_present": true,
+          "catalog_state": "active",
+          "chain_count": 4,
+          "collapse_count": 103,
+          "decision_mix": [
+            [
+              "collapse",
+              103
+            ],
+            [
+              "observe",
+              29
+            ]
+          ],
+          "entity_id": "entity_4c3ade60ea78",
+          "entity_type": "field",
+          "event_count": 132,
+          "legacy_event_count": 132,
+          "max_authority": "H2",
+          "native_event_count": 0,
+          "observe_count": 29,
+          "proof_coverage_ratio": 1.0,
+          "proof_valid_count": 132,
+          "prove_count": 0,
+          "relation_in_count": 0,
+          "relation_out_count": 0,
+          "risk_flags": [
+            [
+              "RESIZE_BATCH_PRESSURE",
+              90
+            ],
+            [
+              "THERMAL_PRESSURE",
+              52
+            ]
+          ],
+          "rules": [
+            [
+              "field_scheduler",
+              86
+            ],
+            [
+              "legacy_observer",
+              46
+            ]
+          ],
+          "scope": "canonical",
+          "status": "no_tick_balanced",
+          "strong_decision_count": 103,
+          "strong_decision_ratio": 0.780303,
+          "suppressed_count": 29,
+          "suppression_ratio": 0.219697,
+          "top_actions": [
+            [
+              "RESIZE_BATCH",
+              90
+            ],
+            [
+              "scan_ranges=2",
+              10
+            ],
+            [
+              "EXECUTE",
+              7
+            ],
+            [
+              "COOLDOWN_GPU",
+              4
+            ],
+            [
+              "eth_getWork_sent",
+              2
+            ],
+            [
+              "eth_getWork_response",
+              2
+            ],
+            [
+              "STRATUM_JOB",
+              2
+            ],
+            [
+              "pool_authorized",
+              2
+            ]
+          ]
+        },
+        {
+          "authority_mix": [
+            [
+              "H0",
+              13
+            ]
+          ],
+          "avg_gate_delta": 0.0,
+          "avg_tension_score": 0.0,
+          "block_count": 0,
+          "capabilities": [
+            "emit_events",
+            "runtime_observation"
+          ],
+          "catalog_present": true,
+          "catalog_state": "active",
+          "chain_count": 3,
+          "collapse_count": 0,
+          "decision_mix": [
+            [
+              "observe",
+              13
+            ]
+          ],
+          "entity_id": "entity_8ba8a9970d6a",
+          "entity_type": "field",
+          "event_count": 13,
+          "legacy_event_count": 13,
+          "max_authority": "H0",
+          "native_event_count": 0,
+          "observe_count": 13,
+          "proof_coverage_ratio": 1.0,
+          "proof_valid_count": 13,
+          "prove_count": 0,
+          "relation_in_count": 0,
+          "relation_out_count": 0,
+          "risk_flags": [],
+          "rules": [
+            [
+              "legacy_observer",
+              13
+            ]
+          ],
+          "scope": "canonical",
+          "status": "no_tick_suppressor",
+          "strong_decision_count": 0,
+          "strong_decision_ratio": 0.0,
+          "suppressed_count": 13,
+          "suppression_ratio": 1.0,
+          "top_actions": [
+            [
+              "runtime_snapshot",
+              10
+            ],
+            [
+              "job_received",
+              3
+            ]
+          ]
+        },
+        {
+          "authority_mix": [
+            [
+              "H3",
+              35
+            ]
+          ],
+          "avg_gate_delta": 0.009155,
+          "avg_tension_score": 0.745294,
+          "block_count": 0,
+          "capabilities": [
+            "emit_events",
+            "guard_decision"
+          ],
+          "catalog_present": true,
+          "catalog_state": "active",
+          "chain_count": 4,
+          "collapse_count": 35,
+          "decision_mix": [
+            [
+              "collapse",
+              35
+            ]
+          ],
+          "entity_id": "entity_9ad2a10c30be",
+          "entity_type": "guard",
+          "event_count": 35,
+          "legacy_event_count": 35,
+          "max_authority": "H3",
+          "native_event_count": 0,
+          "observe_count": 0,
+          "proof_coverage_ratio": 1.0,
+          "proof_valid_count": 35,
+          "prove_count": 0,
+          "relation_in_count": 0,
+          "relation_out_count": 35,
+          "risk_flags": [],
+          "rules": [
+            [
+              "adaptive_threshold",
+              35
+            ],
+            [
+              "etev_guard",
+              35
+            ],
+            [
+              "field_scheduler",
+              25
+            ]
+          ],
+          "scope": "canonical",
+          "status": "causal_executor",
+          "strong_decision_count": 35,
+          "strong_decision_ratio": 1.0,
+          "suppressed_count": 0,
+          "suppression_ratio": 0.0,
+          "top_actions": [
+            [
+              "ETEV_GUARD_PASS",
+              35
+            ]
+          ]
+        }
+      ],
+      "warning_count": 35,
+      "warnings": [
+        {
+          "code": "LOW_AUTHORITY_STRONG_DECISION",
+          "decision_kind": "collapse",
+          "detail": "max_authority=H0",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000001_5f5d2586",
+          "legacy_tolerated": true,
+          "line": 385,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_DECISION",
+          "decision_kind": "collapse",
+          "detail": "max_authority=H0",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000003_392d3b13",
+          "legacy_tolerated": true,
+          "line": 387,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_DECISION",
+          "decision_kind": "collapse",
+          "detail": "max_authority=H0",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000008_597a2713",
+          "legacy_tolerated": true,
+          "line": 392,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_DECISION",
+          "decision_kind": "collapse",
+          "detail": "max_authority=H0",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000010_54e369e9",
+          "legacy_tolerated": true,
+          "line": 394,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_DECISION",
+          "decision_kind": "collapse",
+          "detail": "max_authority=H0",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000015_ddd7919f",
+          "legacy_tolerated": true,
+          "line": 399,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_DECISION",
+          "decision_kind": "collapse",
+          "detail": "max_authority=H0",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000017_b19df11f",
+          "legacy_tolerated": true,
+          "line": 401,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_DECISION",
+          "decision_kind": "collapse",
+          "detail": "max_authority=H0",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000022_460f742b",
+          "legacy_tolerated": true,
+          "line": 406,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_DECISION",
+          "decision_kind": "collapse",
+          "detail": "max_authority=H0",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000024_b9380e24",
+          "legacy_tolerated": true,
+          "line": 408,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_DECISION",
+          "decision_kind": "collapse",
+          "detail": "max_authority=H0",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000029_e115771c",
+          "legacy_tolerated": true,
+          "line": 413,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_DECISION",
+          "decision_kind": "collapse",
+          "detail": "max_authority=H0",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000031_f7f54e57",
+          "legacy_tolerated": true,
+          "line": 415,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_DECISION",
+          "decision_kind": "collapse",
+          "detail": "max_authority=H0",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000038_704394c1",
+          "legacy_tolerated": true,
+          "line": 422,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_DECISION",
+          "decision_kind": "collapse",
+          "detail": "max_authority=H0",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000040_456190e1",
+          "legacy_tolerated": true,
+          "line": 424,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_DECISION",
+          "decision_kind": "collapse",
+          "detail": "max_authority=H0",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000045_044db479",
+          "legacy_tolerated": true,
+          "line": 429,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_DECISION",
+          "decision_kind": "collapse",
+          "detail": "max_authority=H0",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000047_2f09ade1",
+          "legacy_tolerated": true,
+          "line": 431,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_DECISION",
+          "decision_kind": "collapse",
+          "detail": "max_authority=H0",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000052_18bf554d",
+          "legacy_tolerated": true,
+          "line": 436,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_DECISION",
+          "decision_kind": "collapse",
+          "detail": "max_authority=H0",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000054_3898d4c2",
+          "legacy_tolerated": true,
+          "line": 438,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_DECISION",
+          "decision_kind": "collapse",
+          "detail": "max_authority=H0",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000059_01f7a41e",
+          "legacy_tolerated": true,
+          "line": 443,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_DECISION",
+          "decision_kind": "collapse",
+          "detail": "max_authority=H0",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000061_1a9c106c",
+          "legacy_tolerated": true,
+          "line": 445,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_DECISION",
+          "decision_kind": "collapse",
+          "detail": "max_authority=H0",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000071_4bf4fe50",
+          "legacy_tolerated": true,
+          "line": 455,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_DECISION",
+          "decision_kind": "collapse",
+          "detail": "max_authority=H0",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000073_bc920d9e",
+          "legacy_tolerated": true,
+          "line": 457,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_DECISION",
+          "decision_kind": "collapse",
+          "detail": "max_authority=H0",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000078_933bffc6",
+          "legacy_tolerated": true,
+          "line": 462,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_DECISION",
+          "decision_kind": "collapse",
+          "detail": "max_authority=H0",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000080_7f5c085d",
+          "legacy_tolerated": true,
+          "line": 464,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_DECISION",
+          "decision_kind": "collapse",
+          "detail": "max_authority=H0",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000085_2950be7a",
+          "legacy_tolerated": true,
+          "line": 469,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_DECISION",
+          "decision_kind": "collapse",
+          "detail": "max_authority=H0",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000087_2b862356",
+          "legacy_tolerated": true,
+          "line": 471,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_DECISION",
+          "decision_kind": "collapse",
+          "detail": "max_authority=H0",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000092_7c509ec7",
+          "legacy_tolerated": true,
+          "line": 476,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_DECISION",
+          "decision_kind": "collapse",
+          "detail": "max_authority=H0",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000094_7cdd1632",
+          "legacy_tolerated": true,
+          "line": 478,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_DECISION",
+          "decision_kind": "collapse",
+          "detail": "max_authority=H0",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000099_a59ef6d5",
+          "legacy_tolerated": true,
+          "line": 483,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_DECISION",
+          "decision_kind": "collapse",
+          "detail": "max_authority=H0",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000101_8ad59514",
+          "legacy_tolerated": true,
+          "line": 485,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_DECISION",
+          "decision_kind": "collapse",
+          "detail": "max_authority=H0",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000106_d4230bdb",
+          "legacy_tolerated": true,
+          "line": 490,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_DECISION",
+          "decision_kind": "collapse",
+          "detail": "max_authority=H0",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000108_25063b2d",
+          "legacy_tolerated": true,
+          "line": 492,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_DECISION",
+          "decision_kind": "collapse",
+          "detail": "max_authority=H0",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000113_4a44cb7a",
+          "legacy_tolerated": true,
+          "line": 497,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_DECISION",
+          "decision_kind": "collapse",
+          "detail": "max_authority=H0",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000115_cba9a5dc",
+          "legacy_tolerated": true,
+          "line": 499,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_DECISION",
+          "decision_kind": "collapse",
+          "detail": "max_authority=H0",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000120_ef36629d",
+          "legacy_tolerated": true,
+          "line": 504,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_DECISION",
+          "decision_kind": "collapse",
+          "detail": "max_authority=H0",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000122_197aa047",
+          "legacy_tolerated": true,
+          "line": 506,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_DECISION",
+          "decision_kind": "collapse",
+          "detail": "max_authority=H0",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000127_2ae25618",
+          "legacy_tolerated": true,
+          "line": 511,
+          "scope": "canonical"
+        }
+      ]
+    },
+    {
+      "authority_mix": [
+        [
+          "H2",
+          5
+        ],
+        [
+          "H3",
+          2
+        ]
+      ],
+      "catalog_entity_count": 6,
+      "classification": "ENTITY_NO_TICK_MATRIX_READY",
+      "decision_mix": [
+        [
+          "observe",
+          2
+        ],
+        [
+          "collapse",
+          2
+        ],
+        [
+          "block",
+          2
+        ],
+        [
+          "prove",
+          1
+        ]
+      ],
+      "entity_catalog_ref": "reports/pnva-native-entity-catalog-demo-2026-05-05.json",
+      "entity_suppression_coverage_ratio": 0.666667,
+      "entity_suppression_row_count": 4,
+      "error_count": 0,
+      "errors": [],
+      "event_count": 7,
+      "events_ref": "reports/pnva-native-events-demo-2026-05-05.jsonl",
+      "heuristic_rule_counts": [
+        [
+          "native_event_emitter",
+          7
+        ],
+        [
+          "adaptive_threshold",
+          2
+        ],
+        [
+          "etev_guard",
+          2
+        ],
+        [
+          "field_scheduler",
+          2
+        ],
+        [
+          "legacy_observer",
+          1
+        ],
+        [
+          "memory4d",
+          1
+        ],
+        [
+          "power_orchestrator",
+          1
+        ]
+      ],
+      "heuristic_visibility_ratio": 1.0,
+      "legacy_event_count": 0,
+      "legacy_low_authority_warning_count": 0,
+      "legacy_tolerant": false,
+      "matrix": [
+        {
+          "authority_mix": [
+            [
+              "H3",
+              2
+            ]
+          ],
+          "avg_gate_delta": -0.282,
+          "avg_tension_score": 0.408,
+          "block_count": 1,
+          "capabilities": [
+            "emit_native_pnva_event",
+            "guard_decision"
+          ],
+          "catalog_present": true,
+          "catalog_state": "blocked",
+          "chain_count": 1,
+          "collapse_count": 1,
+          "decision_mix": [
+            [
+              "collapse",
+              1
+            ],
+            [
+              "block",
+              1
+            ]
+          ],
+          "entity_id": "pnva-etev-guard",
+          "entity_type": "guard",
+          "event_count": 2,
+          "legacy_event_count": 0,
+          "max_authority": "H3",
+          "native_event_count": 2,
+          "observe_count": 0,
+          "proof_coverage_ratio": 1.0,
+          "proof_valid_count": 2,
+          "prove_count": 0,
+          "relation_in_count": 0,
+          "relation_out_count": 2,
+          "risk_flags": [
+            [
+              "STALE_PRESSURE",
+              1
+            ]
+          ],
+          "rules": [
+            [
+              "adaptive_threshold",
+              2
+            ],
+            [
+              "etev_guard",
+              2
+            ],
+            [
+              "native_event_emitter",
+              2
+            ]
+          ],
+          "scope": "native",
+          "status": "no_tick_balanced",
+          "strong_decision_count": 2,
+          "strong_decision_ratio": 1.0,
+          "suppressed_count": 1,
+          "suppression_ratio": 0.5,
+          "top_actions": [
+            [
+              "AUTHORIZE_COLLAPSE",
+              1
+            ],
+            [
+              "BLOCK_EXECUTION",
+              1
+            ]
+          ]
+        },
+        {
+          "authority_mix": [
+            [
+              "H2",
+              1
+            ]
+          ],
+          "avg_gate_delta": -0.554,
+          "avg_tension_score": 0.046,
+          "block_count": 0,
+          "capabilities": [
+            "emit_native_pnva_event"
+          ],
+          "catalog_present": true,
+          "catalog_state": "observing",
+          "chain_count": 1,
+          "collapse_count": 0,
+          "decision_mix": [
+            [
+              "observe",
+              1
+            ]
+          ],
+          "entity_id": "pnva-field-demo",
+          "entity_type": "field",
+          "event_count": 1,
+          "legacy_event_count": 0,
+          "max_authority": "H2",
+          "native_event_count": 1,
+          "observe_count": 1,
+          "proof_coverage_ratio": 1.0,
+          "proof_valid_count": 1,
+          "prove_count": 0,
+          "relation_in_count": 0,
+          "relation_out_count": 0,
+          "risk_flags": [],
+          "rules": [
+            [
+              "legacy_observer",
+              1
+            ],
+            [
+              "native_event_emitter",
+              1
+            ]
+          ],
+          "scope": "native",
+          "status": "no_tick_suppressor",
+          "strong_decision_count": 0,
+          "strong_decision_ratio": 0.0,
+          "suppressed_count": 1,
+          "suppression_ratio": 1.0,
+          "top_actions": [
+            [
+              "NO_ACTION",
+              1
+            ]
+          ]
+        },
+        {
+          "authority_mix": [
+            [
+              "H2",
+              1
+            ]
+          ],
+          "avg_gate_delta": 0.048,
+          "avg_tension_score": 0.498,
+          "block_count": 0,
+          "capabilities": [
+            "emit_native_pnva_event"
+          ],
+          "catalog_present": true,
+          "catalog_state": "observing",
+          "chain_count": 1,
+          "collapse_count": 0,
+          "decision_mix": [
+            [
+              "prove",
+              1
+            ]
+          ],
+          "entity_id": "pnva-proof-native-demo",
+          "entity_type": "proof",
+          "event_count": 1,
+          "legacy_event_count": 0,
+          "max_authority": "H2",
+          "native_event_count": 1,
+          "observe_count": 0,
+          "proof_coverage_ratio": 1.0,
+          "proof_valid_count": 1,
+          "prove_count": 1,
+          "relation_in_count": 0,
+          "relation_out_count": 0,
+          "risk_flags": [],
+          "rules": [
+            [
+              "native_event_emitter",
+              1
+            ]
+          ],
+          "scope": "native",
+          "status": "causal_executor",
+          "strong_decision_count": 1,
+          "strong_decision_ratio": 1.0,
+          "suppressed_count": 0,
+          "suppression_ratio": 0.0,
+          "top_actions": [
+            [
+              "SEAL_PROOF",
+              1
+            ]
+          ]
+        },
+        {
+          "authority_mix": [
+            [
+              "H2",
+              1
+            ]
+          ],
+          "avg_gate_delta": -0.548,
+          "avg_tension_score": 0.132,
+          "block_count": 0,
+          "capabilities": [
+            "emit_native_pnva_event"
+          ],
+          "catalog_present": true,
+          "catalog_state": "observing",
+          "chain_count": 1,
+          "collapse_count": 0,
+          "decision_mix": [
+            [
+              "observe",
+              1
+            ]
+          ],
+          "entity_id": "pnva-thermal-guard",
+          "entity_type": "guard",
+          "event_count": 1,
+          "legacy_event_count": 0,
+          "max_authority": "H2",
+          "native_event_count": 1,
+          "observe_count": 1,
+          "proof_coverage_ratio": 1.0,
+          "proof_valid_count": 1,
+          "prove_count": 0,
+          "relation_in_count": 0,
+          "relation_out_count": 0,
+          "risk_flags": [
+            [
+              "THERMAL_PRESSURE",
+              1
+            ]
+          ],
+          "rules": [
+            [
+              "native_event_emitter",
+              1
+            ],
+            [
+              "power_orchestrator",
+              1
+            ]
+          ],
+          "scope": "native",
+          "status": "no_tick_suppressor",
+          "strong_decision_count": 0,
+          "strong_decision_ratio": 0.0,
+          "suppressed_count": 1,
+          "suppression_ratio": 1.0,
+          "top_actions": [
+            [
+              "HOLD_PRESSURE",
+              1
+            ]
+          ]
+        },
+        {
+          "authority_mix": [
+            [
+              "H2",
+              1
+            ]
+          ],
+          "avg_gate_delta": 0.046,
+          "avg_tension_score": 0.566,
+          "block_count": 0,
+          "capabilities": [
+            "emit_native_pnva_event",
+            "receive_guard_decision"
+          ],
+          "catalog_present": true,
+          "catalog_state": "active",
+          "chain_count": 1,
+          "collapse_count": 1,
+          "decision_mix": [
+            [
+              "collapse",
+              1
+            ]
+          ],
+          "entity_id": "zano-entity-00",
+          "entity_type": "worker",
+          "event_count": 1,
+          "legacy_event_count": 0,
+          "max_authority": "H2",
+          "native_event_count": 1,
+          "observe_count": 0,
+          "proof_coverage_ratio": 1.0,
+          "proof_valid_count": 1,
+          "prove_count": 0,
+          "relation_in_count": 1,
+          "relation_out_count": 0,
+          "risk_flags": [],
+          "rules": [
+            [
+              "field_scheduler",
+              1
+            ],
+            [
+              "memory4d",
+              1
+            ],
+            [
+              "native_event_emitter",
+              1
+            ]
+          ],
+          "scope": "native",
+          "status": "causal_executor",
+          "strong_decision_count": 1,
+          "strong_decision_ratio": 1.0,
+          "suppressed_count": 0,
+          "suppression_ratio": 0.0,
+          "top_actions": [
+            [
+              "EXECUTE",
+              1
+            ]
+          ]
+        },
+        {
+          "authority_mix": [
+            [
+              "H2",
+              1
+            ]
+          ],
+          "avg_gate_delta": -0.521,
+          "avg_tension_score": 0.099,
+          "block_count": 1,
+          "capabilities": [
+            "emit_native_pnva_event",
+            "receive_guard_decision"
+          ],
+          "catalog_present": true,
+          "catalog_state": "blocked",
+          "chain_count": 1,
+          "collapse_count": 0,
+          "decision_mix": [
+            [
+              "block",
+              1
+            ]
+          ],
+          "entity_id": "zano-entity-01",
+          "entity_type": "worker",
+          "event_count": 1,
+          "legacy_event_count": 0,
+          "max_authority": "H2",
+          "native_event_count": 1,
+          "observe_count": 0,
+          "proof_coverage_ratio": 1.0,
+          "proof_valid_count": 1,
+          "prove_count": 0,
+          "relation_in_count": 1,
+          "relation_out_count": 0,
+          "risk_flags": [
+            [
+              "STALE_PRESSURE",
+              1
+            ]
+          ],
+          "rules": [
+            [
+              "field_scheduler",
+              1
+            ],
+            [
+              "native_event_emitter",
+              1
+            ]
+          ],
+          "scope": "native",
+          "status": "no_tick_suppressor",
+          "strong_decision_count": 1,
+          "strong_decision_ratio": 1.0,
+          "suppressed_count": 1,
+          "suppression_ratio": 1.0,
+          "top_actions": [
+            [
+              "DROP_STALE",
+              1
+            ]
+          ]
+        }
+      ],
+      "matrix_entity_count": 6,
+      "native_event_count": 7,
+      "native_matrix_clean": true,
+      "no_tick_suppression_ratio": 0.571429,
+      "observed_entity_count": 6,
+      "pass": true,
+      "proof_coverage_ratio": 1.0,
+      "proof_valid_count": 7,
+      "risk_flags": [
+        [
+          "STALE_PRESSURE",
+          2
+        ],
+        [
+          "THERMAL_PRESSURE",
+          1
+        ]
+      ],
+      "scope": "native",
+      "strong_decision_count": 5,
+      "strong_with_hard_authority": 5,
+      "suppressed_count": 4,
+      "top_entities_by_events": [
+        {
+          "authority_mix": [
+            [
+              "H3",
+              2
+            ]
+          ],
+          "avg_gate_delta": -0.282,
+          "avg_tension_score": 0.408,
+          "block_count": 1,
+          "capabilities": [
+            "emit_native_pnva_event",
+            "guard_decision"
+          ],
+          "catalog_present": true,
+          "catalog_state": "blocked",
+          "chain_count": 1,
+          "collapse_count": 1,
+          "decision_mix": [
+            [
+              "collapse",
+              1
+            ],
+            [
+              "block",
+              1
+            ]
+          ],
+          "entity_id": "pnva-etev-guard",
+          "entity_type": "guard",
+          "event_count": 2,
+          "legacy_event_count": 0,
+          "max_authority": "H3",
+          "native_event_count": 2,
+          "observe_count": 0,
+          "proof_coverage_ratio": 1.0,
+          "proof_valid_count": 2,
+          "prove_count": 0,
+          "relation_in_count": 0,
+          "relation_out_count": 2,
+          "risk_flags": [
+            [
+              "STALE_PRESSURE",
+              1
+            ]
+          ],
+          "rules": [
+            [
+              "adaptive_threshold",
+              2
+            ],
+            [
+              "etev_guard",
+              2
+            ],
+            [
+              "native_event_emitter",
+              2
+            ]
+          ],
+          "scope": "native",
+          "status": "no_tick_balanced",
+          "strong_decision_count": 2,
+          "strong_decision_ratio": 1.0,
+          "suppressed_count": 1,
+          "suppression_ratio": 0.5,
+          "top_actions": [
+            [
+              "AUTHORIZE_COLLAPSE",
+              1
+            ],
+            [
+              "BLOCK_EXECUTION",
+              1
+            ]
+          ]
+        },
+        {
+          "authority_mix": [
+            [
+              "H2",
+              1
+            ]
+          ],
+          "avg_gate_delta": -0.554,
+          "avg_tension_score": 0.046,
+          "block_count": 0,
+          "capabilities": [
+            "emit_native_pnva_event"
+          ],
+          "catalog_present": true,
+          "catalog_state": "observing",
+          "chain_count": 1,
+          "collapse_count": 0,
+          "decision_mix": [
+            [
+              "observe",
+              1
+            ]
+          ],
+          "entity_id": "pnva-field-demo",
+          "entity_type": "field",
+          "event_count": 1,
+          "legacy_event_count": 0,
+          "max_authority": "H2",
+          "native_event_count": 1,
+          "observe_count": 1,
+          "proof_coverage_ratio": 1.0,
+          "proof_valid_count": 1,
+          "prove_count": 0,
+          "relation_in_count": 0,
+          "relation_out_count": 0,
+          "risk_flags": [],
+          "rules": [
+            [
+              "legacy_observer",
+              1
+            ],
+            [
+              "native_event_emitter",
+              1
+            ]
+          ],
+          "scope": "native",
+          "status": "no_tick_suppressor",
+          "strong_decision_count": 0,
+          "strong_decision_ratio": 0.0,
+          "suppressed_count": 1,
+          "suppression_ratio": 1.0,
+          "top_actions": [
+            [
+              "NO_ACTION",
+              1
+            ]
+          ]
+        },
+        {
+          "authority_mix": [
+            [
+              "H2",
+              1
+            ]
+          ],
+          "avg_gate_delta": 0.048,
+          "avg_tension_score": 0.498,
+          "block_count": 0,
+          "capabilities": [
+            "emit_native_pnva_event"
+          ],
+          "catalog_present": true,
+          "catalog_state": "observing",
+          "chain_count": 1,
+          "collapse_count": 0,
+          "decision_mix": [
+            [
+              "prove",
+              1
+            ]
+          ],
+          "entity_id": "pnva-proof-native-demo",
+          "entity_type": "proof",
+          "event_count": 1,
+          "legacy_event_count": 0,
+          "max_authority": "H2",
+          "native_event_count": 1,
+          "observe_count": 0,
+          "proof_coverage_ratio": 1.0,
+          "proof_valid_count": 1,
+          "prove_count": 1,
+          "relation_in_count": 0,
+          "relation_out_count": 0,
+          "risk_flags": [],
+          "rules": [
+            [
+              "native_event_emitter",
+              1
+            ]
+          ],
+          "scope": "native",
+          "status": "causal_executor",
+          "strong_decision_count": 1,
+          "strong_decision_ratio": 1.0,
+          "suppressed_count": 0,
+          "suppression_ratio": 0.0,
+          "top_actions": [
+            [
+              "SEAL_PROOF",
+              1
+            ]
+          ]
+        },
+        {
+          "authority_mix": [
+            [
+              "H2",
+              1
+            ]
+          ],
+          "avg_gate_delta": -0.548,
+          "avg_tension_score": 0.132,
+          "block_count": 0,
+          "capabilities": [
+            "emit_native_pnva_event"
+          ],
+          "catalog_present": true,
+          "catalog_state": "observing",
+          "chain_count": 1,
+          "collapse_count": 0,
+          "decision_mix": [
+            [
+              "observe",
+              1
+            ]
+          ],
+          "entity_id": "pnva-thermal-guard",
+          "entity_type": "guard",
+          "event_count": 1,
+          "legacy_event_count": 0,
+          "max_authority": "H2",
+          "native_event_count": 1,
+          "observe_count": 1,
+          "proof_coverage_ratio": 1.0,
+          "proof_valid_count": 1,
+          "prove_count": 0,
+          "relation_in_count": 0,
+          "relation_out_count": 0,
+          "risk_flags": [
+            [
+              "THERMAL_PRESSURE",
+              1
+            ]
+          ],
+          "rules": [
+            [
+              "native_event_emitter",
+              1
+            ],
+            [
+              "power_orchestrator",
+              1
+            ]
+          ],
+          "scope": "native",
+          "status": "no_tick_suppressor",
+          "strong_decision_count": 0,
+          "strong_decision_ratio": 0.0,
+          "suppressed_count": 1,
+          "suppression_ratio": 1.0,
+          "top_actions": [
+            [
+              "HOLD_PRESSURE",
+              1
+            ]
+          ]
+        },
+        {
+          "authority_mix": [
+            [
+              "H2",
+              1
+            ]
+          ],
+          "avg_gate_delta": 0.046,
+          "avg_tension_score": 0.566,
+          "block_count": 0,
+          "capabilities": [
+            "emit_native_pnva_event",
+            "receive_guard_decision"
+          ],
+          "catalog_present": true,
+          "catalog_state": "active",
+          "chain_count": 1,
+          "collapse_count": 1,
+          "decision_mix": [
+            [
+              "collapse",
+              1
+            ]
+          ],
+          "entity_id": "zano-entity-00",
+          "entity_type": "worker",
+          "event_count": 1,
+          "legacy_event_count": 0,
+          "max_authority": "H2",
+          "native_event_count": 1,
+          "observe_count": 0,
+          "proof_coverage_ratio": 1.0,
+          "proof_valid_count": 1,
+          "prove_count": 0,
+          "relation_in_count": 1,
+          "relation_out_count": 0,
+          "risk_flags": [],
+          "rules": [
+            [
+              "field_scheduler",
+              1
+            ],
+            [
+              "memory4d",
+              1
+            ],
+            [
+              "native_event_emitter",
+              1
+            ]
+          ],
+          "scope": "native",
+          "status": "causal_executor",
+          "strong_decision_count": 1,
+          "strong_decision_ratio": 1.0,
+          "suppressed_count": 0,
+          "suppression_ratio": 0.0,
+          "top_actions": [
+            [
+              "EXECUTE",
+              1
+            ]
+          ]
+        },
+        {
+          "authority_mix": [
+            [
+              "H2",
+              1
+            ]
+          ],
+          "avg_gate_delta": -0.521,
+          "avg_tension_score": 0.099,
+          "block_count": 1,
+          "capabilities": [
+            "emit_native_pnva_event",
+            "receive_guard_decision"
+          ],
+          "catalog_present": true,
+          "catalog_state": "blocked",
+          "chain_count": 1,
+          "collapse_count": 0,
+          "decision_mix": [
+            [
+              "block",
+              1
+            ]
+          ],
+          "entity_id": "zano-entity-01",
+          "entity_type": "worker",
+          "event_count": 1,
+          "legacy_event_count": 0,
+          "max_authority": "H2",
+          "native_event_count": 1,
+          "observe_count": 0,
+          "proof_coverage_ratio": 1.0,
+          "proof_valid_count": 1,
+          "prove_count": 0,
+          "relation_in_count": 1,
+          "relation_out_count": 0,
+          "risk_flags": [
+            [
+              "STALE_PRESSURE",
+              1
+            ]
+          ],
+          "rules": [
+            [
+              "field_scheduler",
+              1
+            ],
+            [
+              "native_event_emitter",
+              1
+            ]
+          ],
+          "scope": "native",
+          "status": "no_tick_suppressor",
+          "strong_decision_count": 1,
+          "strong_decision_ratio": 1.0,
+          "suppressed_count": 1,
+          "suppression_ratio": 1.0,
+          "top_actions": [
+            [
+              "DROP_STALE",
+              1
+            ]
+          ]
+        }
+      ],
+      "top_entities_by_suppression": [
+        {
+          "authority_mix": [
+            [
+              "H3",
+              2
+            ]
+          ],
+          "avg_gate_delta": -0.282,
+          "avg_tension_score": 0.408,
+          "block_count": 1,
+          "capabilities": [
+            "emit_native_pnva_event",
+            "guard_decision"
+          ],
+          "catalog_present": true,
+          "catalog_state": "blocked",
+          "chain_count": 1,
+          "collapse_count": 1,
+          "decision_mix": [
+            [
+              "collapse",
+              1
+            ],
+            [
+              "block",
+              1
+            ]
+          ],
+          "entity_id": "pnva-etev-guard",
+          "entity_type": "guard",
+          "event_count": 2,
+          "legacy_event_count": 0,
+          "max_authority": "H3",
+          "native_event_count": 2,
+          "observe_count": 0,
+          "proof_coverage_ratio": 1.0,
+          "proof_valid_count": 2,
+          "prove_count": 0,
+          "relation_in_count": 0,
+          "relation_out_count": 2,
+          "risk_flags": [
+            [
+              "STALE_PRESSURE",
+              1
+            ]
+          ],
+          "rules": [
+            [
+              "adaptive_threshold",
+              2
+            ],
+            [
+              "etev_guard",
+              2
+            ],
+            [
+              "native_event_emitter",
+              2
+            ]
+          ],
+          "scope": "native",
+          "status": "no_tick_balanced",
+          "strong_decision_count": 2,
+          "strong_decision_ratio": 1.0,
+          "suppressed_count": 1,
+          "suppression_ratio": 0.5,
+          "top_actions": [
+            [
+              "AUTHORIZE_COLLAPSE",
+              1
+            ],
+            [
+              "BLOCK_EXECUTION",
+              1
+            ]
+          ]
+        },
+        {
+          "authority_mix": [
+            [
+              "H2",
+              1
+            ]
+          ],
+          "avg_gate_delta": -0.554,
+          "avg_tension_score": 0.046,
+          "block_count": 0,
+          "capabilities": [
+            "emit_native_pnva_event"
+          ],
+          "catalog_present": true,
+          "catalog_state": "observing",
+          "chain_count": 1,
+          "collapse_count": 0,
+          "decision_mix": [
+            [
+              "observe",
+              1
+            ]
+          ],
+          "entity_id": "pnva-field-demo",
+          "entity_type": "field",
+          "event_count": 1,
+          "legacy_event_count": 0,
+          "max_authority": "H2",
+          "native_event_count": 1,
+          "observe_count": 1,
+          "proof_coverage_ratio": 1.0,
+          "proof_valid_count": 1,
+          "prove_count": 0,
+          "relation_in_count": 0,
+          "relation_out_count": 0,
+          "risk_flags": [],
+          "rules": [
+            [
+              "legacy_observer",
+              1
+            ],
+            [
+              "native_event_emitter",
+              1
+            ]
+          ],
+          "scope": "native",
+          "status": "no_tick_suppressor",
+          "strong_decision_count": 0,
+          "strong_decision_ratio": 0.0,
+          "suppressed_count": 1,
+          "suppression_ratio": 1.0,
+          "top_actions": [
+            [
+              "NO_ACTION",
+              1
+            ]
+          ]
+        },
+        {
+          "authority_mix": [
+            [
+              "H2",
+              1
+            ]
+          ],
+          "avg_gate_delta": -0.548,
+          "avg_tension_score": 0.132,
+          "block_count": 0,
+          "capabilities": [
+            "emit_native_pnva_event"
+          ],
+          "catalog_present": true,
+          "catalog_state": "observing",
+          "chain_count": 1,
+          "collapse_count": 0,
+          "decision_mix": [
+            [
+              "observe",
+              1
+            ]
+          ],
+          "entity_id": "pnva-thermal-guard",
+          "entity_type": "guard",
+          "event_count": 1,
+          "legacy_event_count": 0,
+          "max_authority": "H2",
+          "native_event_count": 1,
+          "observe_count": 1,
+          "proof_coverage_ratio": 1.0,
+          "proof_valid_count": 1,
+          "prove_count": 0,
+          "relation_in_count": 0,
+          "relation_out_count": 0,
+          "risk_flags": [
+            [
+              "THERMAL_PRESSURE",
+              1
+            ]
+          ],
+          "rules": [
+            [
+              "native_event_emitter",
+              1
+            ],
+            [
+              "power_orchestrator",
+              1
+            ]
+          ],
+          "scope": "native",
+          "status": "no_tick_suppressor",
+          "strong_decision_count": 0,
+          "strong_decision_ratio": 0.0,
+          "suppressed_count": 1,
+          "suppression_ratio": 1.0,
+          "top_actions": [
+            [
+              "HOLD_PRESSURE",
+              1
+            ]
+          ]
+        },
+        {
+          "authority_mix": [
+            [
+              "H2",
+              1
+            ]
+          ],
+          "avg_gate_delta": -0.521,
+          "avg_tension_score": 0.099,
+          "block_count": 1,
+          "capabilities": [
+            "emit_native_pnva_event",
+            "receive_guard_decision"
+          ],
+          "catalog_present": true,
+          "catalog_state": "blocked",
+          "chain_count": 1,
+          "collapse_count": 0,
+          "decision_mix": [
+            [
+              "block",
+              1
+            ]
+          ],
+          "entity_id": "zano-entity-01",
+          "entity_type": "worker",
+          "event_count": 1,
+          "legacy_event_count": 0,
+          "max_authority": "H2",
+          "native_event_count": 1,
+          "observe_count": 0,
+          "proof_coverage_ratio": 1.0,
+          "proof_valid_count": 1,
+          "prove_count": 0,
+          "relation_in_count": 1,
+          "relation_out_count": 0,
+          "risk_flags": [
+            [
+              "STALE_PRESSURE",
+              1
+            ]
+          ],
+          "rules": [
+            [
+              "field_scheduler",
+              1
+            ],
+            [
+              "native_event_emitter",
+              1
+            ]
+          ],
+          "scope": "native",
+          "status": "no_tick_suppressor",
+          "strong_decision_count": 1,
+          "strong_decision_ratio": 1.0,
+          "suppressed_count": 1,
+          "suppression_ratio": 1.0,
+          "top_actions": [
+            [
+              "DROP_STALE",
+              1
+            ]
+          ]
+        },
+        {
+          "authority_mix": [
+            [
+              "H2",
+              1
+            ]
+          ],
+          "avg_gate_delta": 0.048,
+          "avg_tension_score": 0.498,
+          "block_count": 0,
+          "capabilities": [
+            "emit_native_pnva_event"
+          ],
+          "catalog_present": true,
+          "catalog_state": "observing",
+          "chain_count": 1,
+          "collapse_count": 0,
+          "decision_mix": [
+            [
+              "prove",
+              1
+            ]
+          ],
+          "entity_id": "pnva-proof-native-demo",
+          "entity_type": "proof",
+          "event_count": 1,
+          "legacy_event_count": 0,
+          "max_authority": "H2",
+          "native_event_count": 1,
+          "observe_count": 0,
+          "proof_coverage_ratio": 1.0,
+          "proof_valid_count": 1,
+          "prove_count": 1,
+          "relation_in_count": 0,
+          "relation_out_count": 0,
+          "risk_flags": [],
+          "rules": [
+            [
+              "native_event_emitter",
+              1
+            ]
+          ],
+          "scope": "native",
+          "status": "causal_executor",
+          "strong_decision_count": 1,
+          "strong_decision_ratio": 1.0,
+          "suppressed_count": 0,
+          "suppression_ratio": 0.0,
+          "top_actions": [
+            [
+              "SEAL_PROOF",
+              1
+            ]
+          ]
+        },
+        {
+          "authority_mix": [
+            [
+              "H2",
+              1
+            ]
+          ],
+          "avg_gate_delta": 0.046,
+          "avg_tension_score": 0.566,
+          "block_count": 0,
+          "capabilities": [
+            "emit_native_pnva_event",
+            "receive_guard_decision"
+          ],
+          "catalog_present": true,
+          "catalog_state": "active",
+          "chain_count": 1,
+          "collapse_count": 1,
+          "decision_mix": [
+            [
+              "collapse",
+              1
+            ]
+          ],
+          "entity_id": "zano-entity-00",
+          "entity_type": "worker",
+          "event_count": 1,
+          "legacy_event_count": 0,
+          "max_authority": "H2",
+          "native_event_count": 1,
+          "observe_count": 0,
+          "proof_coverage_ratio": 1.0,
+          "proof_valid_count": 1,
+          "prove_count": 0,
+          "relation_in_count": 1,
+          "relation_out_count": 0,
+          "risk_flags": [],
+          "rules": [
+            [
+              "field_scheduler",
+              1
+            ],
+            [
+              "memory4d",
+              1
+            ],
+            [
+              "native_event_emitter",
+              1
+            ]
+          ],
+          "scope": "native",
+          "status": "causal_executor",
+          "strong_decision_count": 1,
+          "strong_decision_ratio": 1.0,
+          "suppressed_count": 0,
+          "suppression_ratio": 0.0,
+          "top_actions": [
+            [
+              "EXECUTE",
+              1
+            ]
+          ]
+        }
+      ],
+      "warning_count": 0,
+      "warnings": []
+    }
+  ],
+  "strong_decision_count": 304,
+  "strong_with_hard_authority": 269,
+  "summary": {
+    "aggregate_no_tick_suppression_ratio": 0.481696,
+    "entity_suppression_row_count": 9,
+    "legacy_low_authority_warning_count": 35,
+    "native_matrix_clean": true,
+    "total_entity_rows": 12,
+    "total_event_count": 519,
+    "total_observed_entity_rows": 12,
+    "total_strong_decision_count": 304,
+    "total_strong_with_hard_authority": 269,
+    "total_suppressed_count": 250
+  },
+  "suppressed_count": 250,
+  "warning_count": 35,
+  "warnings": [
+    {
+      "code": "LOW_AUTHORITY_STRONG_DECISION",
+      "decision_kind": "collapse",
+      "detail": "max_authority=H0",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000001_5f5d2586",
+      "legacy_tolerated": true,
+      "line": 385,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_DECISION",
+      "decision_kind": "collapse",
+      "detail": "max_authority=H0",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000003_392d3b13",
+      "legacy_tolerated": true,
+      "line": 387,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_DECISION",
+      "decision_kind": "collapse",
+      "detail": "max_authority=H0",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000008_597a2713",
+      "legacy_tolerated": true,
+      "line": 392,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_DECISION",
+      "decision_kind": "collapse",
+      "detail": "max_authority=H0",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000010_54e369e9",
+      "legacy_tolerated": true,
+      "line": 394,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_DECISION",
+      "decision_kind": "collapse",
+      "detail": "max_authority=H0",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000015_ddd7919f",
+      "legacy_tolerated": true,
+      "line": 399,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_DECISION",
+      "decision_kind": "collapse",
+      "detail": "max_authority=H0",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000017_b19df11f",
+      "legacy_tolerated": true,
+      "line": 401,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_DECISION",
+      "decision_kind": "collapse",
+      "detail": "max_authority=H0",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000022_460f742b",
+      "legacy_tolerated": true,
+      "line": 406,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_DECISION",
+      "decision_kind": "collapse",
+      "detail": "max_authority=H0",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000024_b9380e24",
+      "legacy_tolerated": true,
+      "line": 408,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_DECISION",
+      "decision_kind": "collapse",
+      "detail": "max_authority=H0",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000029_e115771c",
+      "legacy_tolerated": true,
+      "line": 413,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_DECISION",
+      "decision_kind": "collapse",
+      "detail": "max_authority=H0",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000031_f7f54e57",
+      "legacy_tolerated": true,
+      "line": 415,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_DECISION",
+      "decision_kind": "collapse",
+      "detail": "max_authority=H0",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000038_704394c1",
+      "legacy_tolerated": true,
+      "line": 422,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_DECISION",
+      "decision_kind": "collapse",
+      "detail": "max_authority=H0",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000040_456190e1",
+      "legacy_tolerated": true,
+      "line": 424,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_DECISION",
+      "decision_kind": "collapse",
+      "detail": "max_authority=H0",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000045_044db479",
+      "legacy_tolerated": true,
+      "line": 429,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_DECISION",
+      "decision_kind": "collapse",
+      "detail": "max_authority=H0",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000047_2f09ade1",
+      "legacy_tolerated": true,
+      "line": 431,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_DECISION",
+      "decision_kind": "collapse",
+      "detail": "max_authority=H0",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000052_18bf554d",
+      "legacy_tolerated": true,
+      "line": 436,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_DECISION",
+      "decision_kind": "collapse",
+      "detail": "max_authority=H0",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000054_3898d4c2",
+      "legacy_tolerated": true,
+      "line": 438,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_DECISION",
+      "decision_kind": "collapse",
+      "detail": "max_authority=H0",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000059_01f7a41e",
+      "legacy_tolerated": true,
+      "line": 443,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_DECISION",
+      "decision_kind": "collapse",
+      "detail": "max_authority=H0",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000061_1a9c106c",
+      "legacy_tolerated": true,
+      "line": 445,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_DECISION",
+      "decision_kind": "collapse",
+      "detail": "max_authority=H0",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000071_4bf4fe50",
+      "legacy_tolerated": true,
+      "line": 455,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_DECISION",
+      "decision_kind": "collapse",
+      "detail": "max_authority=H0",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000073_bc920d9e",
+      "legacy_tolerated": true,
+      "line": 457,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_DECISION",
+      "decision_kind": "collapse",
+      "detail": "max_authority=H0",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000078_933bffc6",
+      "legacy_tolerated": true,
+      "line": 462,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_DECISION",
+      "decision_kind": "collapse",
+      "detail": "max_authority=H0",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000080_7f5c085d",
+      "legacy_tolerated": true,
+      "line": 464,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_DECISION",
+      "decision_kind": "collapse",
+      "detail": "max_authority=H0",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000085_2950be7a",
+      "legacy_tolerated": true,
+      "line": 469,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_DECISION",
+      "decision_kind": "collapse",
+      "detail": "max_authority=H0",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000087_2b862356",
+      "legacy_tolerated": true,
+      "line": 471,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_DECISION",
+      "decision_kind": "collapse",
+      "detail": "max_authority=H0",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000092_7c509ec7",
+      "legacy_tolerated": true,
+      "line": 476,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_DECISION",
+      "decision_kind": "collapse",
+      "detail": "max_authority=H0",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000094_7cdd1632",
+      "legacy_tolerated": true,
+      "line": 478,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_DECISION",
+      "decision_kind": "collapse",
+      "detail": "max_authority=H0",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000099_a59ef6d5",
+      "legacy_tolerated": true,
+      "line": 483,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_DECISION",
+      "decision_kind": "collapse",
+      "detail": "max_authority=H0",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000101_8ad59514",
+      "legacy_tolerated": true,
+      "line": 485,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_DECISION",
+      "decision_kind": "collapse",
+      "detail": "max_authority=H0",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000106_d4230bdb",
+      "legacy_tolerated": true,
+      "line": 490,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_DECISION",
+      "decision_kind": "collapse",
+      "detail": "max_authority=H0",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000108_25063b2d",
+      "legacy_tolerated": true,
+      "line": 492,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_DECISION",
+      "decision_kind": "collapse",
+      "detail": "max_authority=H0",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000113_4a44cb7a",
+      "legacy_tolerated": true,
+      "line": 497,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_DECISION",
+      "decision_kind": "collapse",
+      "detail": "max_authority=H0",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000115_cba9a5dc",
+      "legacy_tolerated": true,
+      "line": 499,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_DECISION",
+      "decision_kind": "collapse",
+      "detail": "max_authority=H0",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000120_ef36629d",
+      "legacy_tolerated": true,
+      "line": 504,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_DECISION",
+      "decision_kind": "collapse",
+      "detail": "max_authority=H0",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000122_197aa047",
+      "legacy_tolerated": true,
+      "line": 506,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_DECISION",
+      "decision_kind": "collapse",
+      "detail": "max_authority=H0",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000127_2ae25618",
+      "legacy_tolerated": true,
+      "line": 511,
+      "scope": "canonical"
+    }
+  ]
+}

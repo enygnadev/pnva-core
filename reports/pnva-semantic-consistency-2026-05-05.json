@@ -1,6 +1,6 @@
 {
   "author": "Gustavo de Aguiar Martins",
-  "check_count": 92,
+  "check_count": 102,
   "checks": [
     {
       "group": "classification",
@@ -264,6 +264,26 @@
     },
     {
       "group": "classification",
+      "left": "ENTITY_NO_TICK_MATRIX_READY_WITH_LEGACY_WARNINGS",
+      "left_ref": "reports/pnva-entity-no-tick-matrix-2026-05-05.json:classification",
+      "name": "entity_no_tick_matrix_classification",
+      "pass": true,
+      "right": "ENTITY_NO_TICK_MATRIX_READY_WITH_LEGACY_WARNINGS",
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "classification",
+      "left": true,
+      "left_ref": "reports/pnva-entity-no-tick-matrix-2026-05-05.json:pass",
+      "name": "entity_no_tick_matrix_pass_flag",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "classification",
       "left": "ADVERSARIAL_VALIDATION_PASS",
       "left_ref": "reports/pnva-adversarial-validation-2026-05-05.json:classification",
       "name": "adversarial_classification",
@@ -435,21 +455,21 @@
     },
     {
       "group": "manifest",
-      "left": 22,
+      "left": 23,
       "left_ref": "MANIFEST:sovereign_evidence_attestation.artifact_count",
       "name": "manifest_attestation_artifact_count",
       "pass": true,
-      "right": 22,
+      "right": 23,
       "right_ref": "attestation:artifact_count",
       "severity": "error"
     },
     {
       "group": "manifest",
-      "left": "sha256:ef193f016573569f4b951fd65b3bd2d4d8a40b08816f7bf0dc611a1e77f098f1",
+      "left": "sha256:ab9c36eba9d4b7301930615648a44483d3167fd7a268c04355a14d6f7190a55e",
       "left_ref": "MANIFEST:sovereign_evidence_attestation.evidence_hash",
       "name": "manifest_attestation_hash",
       "pass": true,
-      "right": "sha256:ef193f016573569f4b951fd65b3bd2d4d8a40b08816f7bf0dc611a1e77f098f1",
+      "right": "sha256:ab9c36eba9d4b7301930615648a44483d3167fd7a268c04355a14d6f7190a55e",
       "right_ref": "attestation:evidence_hash",
       "severity": "error"
     },
@@ -541,6 +561,36 @@
       "pass": true,
       "right": true,
       "right_ref": "tension_decision:native_calibration_clean",
+      "severity": "error"
+    },
+    {
+      "group": "manifest",
+      "left": 519,
+      "left_ref": "MANIFEST:entity_no_tick_matrix.event_count",
+      "name": "manifest_entity_no_tick_matrix_event_count",
+      "pass": true,
+      "right": 519,
+      "right_ref": "entity_no_tick_matrix:event_count",
+      "severity": "error"
+    },
+    {
+      "group": "manifest",
+      "left": 250,
+      "left_ref": "MANIFEST:entity_no_tick_matrix.suppressed_count",
+      "name": "manifest_entity_no_tick_matrix_suppressed_count",
+      "pass": true,
+      "right": 250,
+      "right_ref": "entity_no_tick_matrix:suppressed_count",
+      "severity": "error"
+    },
+    {
+      "group": "manifest",
+      "left": true,
+      "left_ref": "MANIFEST:entity_no_tick_matrix.native_matrix_clean",
+      "name": "manifest_entity_no_tick_matrix_native_clean",
+      "pass": true,
+      "right": true,
+      "right_ref": "entity_no_tick_matrix:native_matrix_clean",
       "severity": "error"
     },
     {
@@ -714,6 +764,36 @@
       "severity": "error"
     },
     {
+      "group": "entity_no_tick_matrix",
+      "left": 519,
+      "left_ref": "entity_no_tick_matrix:event_count",
+      "name": "entity_matrix_total_event_count",
+      "pass": true,
+      "right": 519,
+      "right_ref": "canonical_events+native_events",
+      "severity": "error"
+    },
+    {
+      "group": "entity_no_tick_matrix",
+      "left": 250,
+      "left_ref": "entity_no_tick_matrix:suppressed_count",
+      "name": "entity_matrix_total_suppressed_count",
+      "pass": true,
+      "right": 250,
+      "right_ref": "canonical_suppressed+native_suppressed",
+      "severity": "error"
+    },
+    {
+      "group": "entity_no_tick_matrix",
+      "left": true,
+      "left_ref": "entity_no_tick_matrix:native_matrix_clean",
+      "name": "entity_matrix_native_clean",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
       "group": "maturity_math",
       "left": 519,
       "left_ref": "maturity:summary.total_event_count",
@@ -777,11 +857,11 @@
     },
     {
       "group": "attestation",
-      "left": 22,
+      "left": 23,
       "left_ref": "attestation:artifact_count",
       "name": "artifact_count_matches_list",
       "pass": true,
-      "right": 22,
+      "right": 23,
       "right_ref": "len(attestation.artifacts)",
       "severity": "error"
     },
@@ -829,6 +909,16 @@
       "group": "attestation",
       "left": true,
       "left_ref": "attestation:artifact_ids",
+      "name": "attestation_contains_entity_no_tick_matrix",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "attestation",
+      "left": true,
+      "left_ref": "attestation:artifact_ids",
       "name": "attestation_contains_adversarial_validation",
       "pass": true,
       "right": true,
@@ -857,11 +947,11 @@
     },
     {
       "group": "audit",
-      "left": "sha256:ef193f016573569f4b951fd65b3bd2d4d8a40b08816f7bf0dc611a1e77f098f1",
+      "left": "sha256:ab9c36eba9d4b7301930615648a44483d3167fd7a268c04355a14d6f7190a55e",
       "left_ref": "audit:evidence_attestation.evidence_hash",
       "name": "audit_attestation_hash_matches",
       "pass": true,
-      "right": "sha256:ef193f016573569f4b951fd65b3bd2d4d8a40b08816f7bf0dc611a1e77f098f1",
+      "right": "sha256:ab9c36eba9d4b7301930615648a44483d3167fd7a268c04355a14d6f7190a55e",
       "right_ref": "attestation:evidence_hash",
       "severity": "error"
     },
@@ -907,6 +997,16 @@
       "severity": "error"
     },
     {
+      "group": "audit",
+      "left": "ENTITY_NO_TICK_MATRIX_READY_WITH_LEGACY_WARNINGS",
+      "left_ref": "audit:entity_no_tick_matrix.classification",
+      "name": "audit_entity_no_tick_matrix_matches",
+      "pass": true,
+      "right": "ENTITY_NO_TICK_MATRIX_READY_WITH_LEGACY_WARNINGS",
+      "right_ref": "entity_no_tick_matrix:classification",
+      "severity": "error"
+    },
+    {
       "group": "manifest_hygiene",
       "left": [],
       "left_ref": "MANIFEST:files duplicates",
@@ -930,7 +1030,7 @@
   "classification": "SEMANTIC_CONSISTENCY_READY",
   "error_count": 0,
   "errors": [],
-  "generated_at": "2026-05-05T06:42:56Z",
+  "generated_at": "2026-05-05T06:58:02Z",
   "interpretation": {
     "boundary": "This guard checks semantic consistency of the public evidence package; it does not replace runtime execution tests.",
     "purpose": "Detect drift between PNVA public evidence reports, manifest metadata, attestation and audit summaries.",
@@ -950,6 +1050,7 @@
     "bridge": "reports/pnva-canonical-bridge-summary-2026-05-05.json",
     "causal_chronology": "reports/pnva-causal-chronology-2026-05-05.json",
     "causal_graph": "reports/pnva-causal-graph-2026-05-05.json",
+    "entity_no_tick_matrix": "reports/pnva-entity-no-tick-matrix-2026-05-05.json",
     "manifest": "MANIFEST.json",
     "maturity": "reports/pnva-entity-heuristic-maturity-2026-05-05.json",
     "native_causal_graph": "reports/pnva-native-causal-graph-2026-05-05.json",
@@ -966,12 +1067,15 @@
   },
   "schema_version": "pnva.semantic_consistency.v1",
   "summary": {
-    "attestation_artifact_count": 22,
+    "attestation_artifact_count": 23,
     "audit_score": 100,
     "canonical_event_count": 512,
     "canonical_suppressed_count": 246,
     "causal_chronology_event_count": 519,
     "causal_chronology_warning_count": 2,
+    "entity_no_tick_matrix_event_count": 519,
+    "entity_no_tick_matrix_suppressed_count": 250,
+    "entity_no_tick_matrix_warning_count": 35,
     "native_event_count": 7,
     "native_suppressed_count": 4,
     "schema_contract_event_count": 519,

@@ -91,6 +91,13 @@ EXPECTED_ARTIFACTS = [
         "required": True,
     },
     {
+        "id": "entity_no_tick_matrix",
+        "path": "reports/pnva-entity-no-tick-matrix-2026-05-05.json",
+        "kind": "json_classification",
+        "expected": "ENTITY_NO_TICK_MATRIX_READY_WITH_LEGACY_WARNINGS",
+        "required": True,
+    },
+    {
         "id": "native_emitter",
         "path": "reports/pnva-native-emitter-summary-2026-05-05.json",
         "kind": "json_classification",
@@ -294,6 +301,7 @@ def build_attestation(repo: Path) -> dict[str, Any]:
             "schema contract validation",
             "causal chronology guard",
             "tension-decision calibration",
+            "entity no-tick matrix",
             "adversarial negative controls",
             "entity and heuristic maturity",
             "sovereign audit consumes this attestation without being part of its hash seed",
@@ -312,6 +320,7 @@ def build_attestation(repo: Path) -> dict[str, Any]:
             "Run schema contract validation before attestation so event/entity shape defects become release blockers.",
             "Run causal chronology before attestation so timestamp regressions and batch compaction are explicit.",
             "Run tension-decision calibration before attestation so threshold/decision drift is explicit.",
+            "Run entity no-tick matrix before attestation so suppression and execution are attributable by entity.",
         ],
     }
 
