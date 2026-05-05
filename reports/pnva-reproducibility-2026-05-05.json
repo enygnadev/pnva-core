@@ -1,7 +1,7 @@
 {
   "author": "Gustavo de Aguiar Martins",
   "classification": "REPRODUCIBILITY_READY",
-  "command_count": 29,
+  "command_count": 30,
   "command_failure_count": 0,
   "command_failures": [],
   "commands": {
@@ -159,6 +159,13 @@
       "parse_error": "",
       "pass": true
     },
+    "r3_cutover_gate": {
+      "classification": "R3_CUTOVER_GATE_READY_RUNTIME_REQUIRED",
+      "command": "tools/pnva_r3_cutover_gate.py --write <TEMP>/r3-cutover-gate.json",
+      "exit_code": 0,
+      "parse_error": "",
+      "pass": true
+    },
     "r3_migration_plan": {
       "classification": "R3_MIGRATION_PLAN_READY",
       "command": "tools/pnva_r3_migration_planner.py --write <TEMP>/r3-migration-plan.json",
@@ -209,7 +216,7 @@
       "pass": true
     }
   },
-  "comparison_count": 275,
+  "comparison_count": 292,
   "comparison_failure_count": 0,
   "comparison_failures": [],
   "comparisons": [
@@ -1945,6 +1952,125 @@
     {
       "field": "classification",
       "pass": true,
+      "published": "R3_CUTOVER_GATE_READY_RUNTIME_REQUIRED",
+      "report": "r3_cutover_gate",
+      "reproduced": "R3_CUTOVER_GATE_READY_RUNTIME_REQUIRED"
+    },
+    {
+      "field": "pass",
+      "pass": true,
+      "published": true,
+      "report": "r3_cutover_gate",
+      "reproduced": true
+    },
+    {
+      "field": "contract_ready",
+      "pass": true,
+      "published": true,
+      "report": "r3_cutover_gate",
+      "reproduced": true
+    },
+    {
+      "field": "cutover_approved",
+      "pass": true,
+      "published": false,
+      "report": "r3_cutover_gate",
+      "reproduced": false
+    },
+    {
+      "field": "legacy_free_claim_allowed",
+      "pass": true,
+      "published": false,
+      "report": "r3_cutover_gate",
+      "reproduced": false
+    },
+    {
+      "field": "fresh_runtime_evidence_present",
+      "pass": true,
+      "published": false,
+      "report": "r3_cutover_gate",
+      "reproduced": false
+    },
+    {
+      "field": "authority_candidate_count",
+      "pass": true,
+      "published": 35,
+      "report": "r3_cutover_gate",
+      "reproduced": 35
+    },
+    {
+      "field": "projected_event_count",
+      "pass": true,
+      "published": 70,
+      "report": "r3_cutover_gate",
+      "reproduced": 70
+    },
+    {
+      "field": "projected_precheck_count",
+      "pass": true,
+      "published": 35,
+      "report": "r3_cutover_gate",
+      "reproduced": 35
+    },
+    {
+      "field": "projected_commit_count",
+      "pass": true,
+      "published": 35,
+      "report": "r3_cutover_gate",
+      "reproduced": 35
+    },
+    {
+      "field": "projected_low_authority_strong_count",
+      "pass": true,
+      "published": 0,
+      "report": "r3_cutover_gate",
+      "reproduced": 0
+    },
+    {
+      "field": "remaining_runtime_replacement_count",
+      "pass": true,
+      "published": 35,
+      "report": "r3_cutover_gate",
+      "reproduced": 35
+    },
+    {
+      "field": "runtime_replacement_coverage_ratio",
+      "pass": true,
+      "published": 0.0,
+      "report": "r3_cutover_gate",
+      "reproduced": 0.0
+    },
+    {
+      "field": "runtime_requirement_count",
+      "pass": true,
+      "published": 3,
+      "report": "r3_cutover_gate",
+      "reproduced": 3
+    },
+    {
+      "field": "runtime_blocker_count",
+      "pass": true,
+      "published": 3,
+      "report": "r3_cutover_gate",
+      "reproduced": 3
+    },
+    {
+      "field": "precondition_failure_count",
+      "pass": true,
+      "published": 0,
+      "report": "r3_cutover_gate",
+      "reproduced": 0
+    },
+    {
+      "field": "contract_score",
+      "pass": true,
+      "published": 100,
+      "report": "r3_cutover_gate",
+      "reproduced": 100
+    },
+    {
+      "field": "classification",
+      "pass": true,
       "published": "ADVERSARIAL_VALIDATION_PASS",
       "report": "adversarial",
       "reproduced": "ADVERSARIAL_VALIDATION_PASS"
@@ -2071,9 +2197,9 @@
     {
       "field": "artifact_count",
       "pass": true,
-      "published": 35,
+      "published": 36,
       "report": "attestation",
-      "reproduced": 35
+      "reproduced": 36
     },
     {
       "field": "failure_count",
@@ -2085,9 +2211,9 @@
     {
       "field": "evidence_hash",
       "pass": true,
-      "published": "sha256:5f1b6f2bcffb5e60a8e0371964077507d32cce1422006b68a158ced0d4bdbbd0",
+      "published": "sha256:126803fdc1459c2d7398027c54720812fd184c013fc0615f979d065345778ef0",
       "report": "attestation",
-      "reproduced": "sha256:5f1b6f2bcffb5e60a8e0371964077507d32cce1422006b68a158ced0d4bdbbd0"
+      "reproduced": "sha256:126803fdc1459c2d7398027c54720812fd184c013fc0615f979d065345778ef0"
     },
     {
       "field": "classification",
@@ -2106,9 +2232,9 @@
     {
       "field": "check_count",
       "pass": true,
-      "published": 217,
+      "published": 232,
       "report": "semantic",
-      "reproduced": 217
+      "reproduced": 232
     },
     {
       "field": "error_count",
@@ -2140,7 +2266,7 @@
     }
   ],
   "failure_count": 0,
-  "generated_at": "2026-05-05T08:49:49Z",
+  "generated_at": "2026-05-05T09:11:20Z",
   "interpretation": {
     "boundary": "Generated timestamps, temporary paths and non-semantic ordering are intentionally excluded from comparison.",
     "purpose": "Regenerate PNVA evidence reports with current tools and compare stable fields against the published evidence package.",
@@ -2155,7 +2281,7 @@
   ],
   "schema_version": "pnva.reproducibility_guard.v1",
   "summary": {
-    "published_attestation_hash": "sha256:5f1b6f2bcffb5e60a8e0371964077507d32cce1422006b68a158ced0d4bdbbd0",
+    "published_attestation_hash": "sha256:126803fdc1459c2d7398027c54720812fd184c013fc0615f979d065345778ef0",
     "reports_reproduced": [
       "adversarial",
       "attestation",
@@ -2179,6 +2305,7 @@
       "r3_authority_projection_no_tick",
       "r3_authority_projection_policy",
       "r3_authority_projection_replay",
+      "r3_cutover_gate",
       "r3_migration_plan",
       "replay",
       "schema_contract",
@@ -2187,7 +2314,7 @@
       "suppression_ledger",
       "tension_decision"
     ],
-    "reproduced_attestation_hash": "sha256:5f1b6f2bcffb5e60a8e0371964077507d32cce1422006b68a158ced0d4bdbbd0",
-    "stable_fields_compared": 275
+    "reproduced_attestation_hash": "sha256:126803fdc1459c2d7398027c54720812fd184c013fc0615f979d065345778ef0",
+    "stable_fields_compared": 292
   }
 }

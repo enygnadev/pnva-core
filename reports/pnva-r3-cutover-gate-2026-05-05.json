@@ -1,0 +1,232 @@
+{
+  "author": "Gustavo de Aguiar Martins",
+  "authority_candidate_count": 35,
+  "classification": "R3_CUTOVER_GATE_READY_RUNTIME_REQUIRED",
+  "contract_ready": true,
+  "contract_score": 100,
+  "cutover_approved": false,
+  "dominant_entity": {
+    "entity_id": "entity_4c3ade60ea78",
+    "entity_type": "event_source",
+    "event_count": 70,
+    "risk_flags": [
+      [
+        "RESIZE_BATCH_PRESSURE",
+        64
+      ],
+      [
+        "R3_AUTHORITY_PREFLIGHT",
+        35
+      ],
+      [
+        "R3_AUTHORITY_PROJECTED",
+        35
+      ]
+    ],
+    "sovereignty_domain": "runtime",
+    "state": "candidate",
+    "top_actions": [
+      [
+        "NO_ACTION",
+        35
+      ],
+      [
+        "RESIZE_BATCH",
+        32
+      ],
+      [
+        "COOLDOWN_GPU",
+        2
+      ],
+      [
+        "EXECUTE",
+        1
+      ]
+    ],
+    "top_rules": [
+      [
+        "adaptive_threshold",
+        70
+      ],
+      [
+        "field_scheduler",
+        70
+      ],
+      [
+        "native_event_emitter",
+        70
+      ],
+      [
+        "power_orchestrator",
+        4
+      ]
+    ]
+  },
+  "fresh_runtime_evidence_present": false,
+  "generated_at": "2026-05-05T09:00:06Z",
+  "interpretation": {
+    "boundary": "This gate does not erase historical H0 evidence. It approves the cutover contract and blocks the final R3 claim until fresh runtime evidence replaces the projection.",
+    "purpose": "Decide whether PNVA can safely move from projected R3 authority replacement into a real runtime cutover.",
+    "sovereignty": "A release is stronger when it separates implementation contract readiness from the final legacy-free claim."
+  },
+  "legacy_debt_count": 35,
+  "legacy_free_claim_allowed": false,
+  "mapped_candidate_count": 35,
+  "pass": true,
+  "precondition_count": 8,
+  "precondition_failure_count": 0,
+  "preconditions": [
+    {
+      "evidence": {
+        "classification": "SOVEREIGN_ROBUSTNESS_GATE_READY_WITH_LEGACY_WARNINGS",
+        "readiness_level": "R2_NATIVE_CLEAN_LEGACY_QUARANTINED"
+      },
+      "name": "robustness_gate_pass",
+      "pass": true,
+      "required": true
+    },
+    {
+      "evidence": {
+        "classification": "R3_MIGRATION_PLAN_READY",
+        "primary_blocking_debt_count": 35
+      },
+      "name": "r3_plan_pass",
+      "pass": true,
+      "required": true
+    },
+    {
+      "evidence": {
+        "candidate_event_count": 35,
+        "classification": "AUTHORITY_MIGRATION_LEDGER_READY_WITH_LEGACY_WARNINGS",
+        "mapped_candidate_count": 35,
+        "migration_coverage_ratio": 1.0
+      },
+      "name": "authority_ledger_full_mapping",
+      "pass": true,
+      "required": true
+    },
+    {
+      "evidence": {
+        "authority_candidate_count": 35,
+        "classification": "R3_AUTHORITY_PROJECTION_READY",
+        "projected_commit_count": 35,
+        "projected_precheck_count": 35
+      },
+      "name": "projection_covers_authority_debt",
+      "pass": true,
+      "required": true
+    },
+    {
+      "evidence": {
+        "projected_low_authority_strong_count": 0
+      },
+      "name": "projection_has_no_low_authority_strong_decisions",
+      "pass": true,
+      "required": true
+    },
+    {
+      "evidence": {
+        "no_tick": "SOVEREIGN_NO_TICK_READY",
+        "policy": "SOVEREIGN_POLICY_READY",
+        "replay": "REPLAY_VALID"
+      },
+      "name": "projection_replay_policy_no_tick_pass",
+      "pass": true,
+      "required": true
+    },
+    {
+      "evidence": {
+        "projected_commit_count": 35,
+        "projected_event_count": 70,
+        "projected_no_tick_suppression_count": 35,
+        "projected_precheck_count": 35
+      },
+      "name": "projection_no_tick_pairing",
+      "pass": true,
+      "required": true
+    },
+    {
+      "evidence": {
+        "proof_coverage_ratio": 1.0
+      },
+      "name": "projection_proof_full_coverage",
+      "pass": true,
+      "required": true
+    }
+  ],
+  "project": "PNVA-Core",
+  "projected_commit_count": 35,
+  "projected_event_count": 70,
+  "projected_low_authority_strong_count": 0,
+  "projected_native_event_count": 70,
+  "projected_no_tick_suppression_count": 35,
+  "projected_no_tick_suppression_ratio": 0.5,
+  "projected_precheck_count": 35,
+  "proof_coverage_ratio": 1.0,
+  "recommendations": [
+    "Use this gate as the final checklist before claiming R3_NATIVE_CLEAN_LEGACY_FREE.",
+    "Capture fresh native cuda_slot_scan runtime events that match the mapped authority debt.",
+    "Publish replay, policy and no-tick validation for the fresh runtime sample before replacing projected evidence.",
+    "Keep cutover_approved=false until proof.projection=true disappears from the final runtime replacement sample."
+  ],
+  "remaining_runtime_replacement_count": 35,
+  "reports_checked": {
+    "authority_migration_ledger": "reports/pnva-authority-migration-ledger-2026-05-05.json",
+    "r3_authority_projection": "reports/pnva-r3-authority-projection-summary-2026-05-05.json",
+    "r3_authority_projection_entities": "reports/pnva-r3-authority-projection-entities-2026-05-05.json",
+    "r3_authority_projection_no_tick": "reports/pnva-r3-authority-projection-no-tick-2026-05-05.json",
+    "r3_authority_projection_policy": "reports/pnva-r3-authority-projection-policy-2026-05-05.json",
+    "r3_authority_projection_replay": "reports/pnva-r3-authority-projection-replay-2026-05-05.json",
+    "r3_migration_plan": "reports/pnva-r3-migration-plan-2026-05-05.json",
+    "robustness_gate": "reports/pnva-sovereign-robustness-gate-2026-05-05.json"
+  },
+  "runtime_blocker_count": 3,
+  "runtime_evidence_required": true,
+  "runtime_replacement_coverage_ratio": 0.0,
+  "runtime_requirement_count": 3,
+  "runtime_requirements": [
+    {
+      "remaining_count": 35,
+      "required_count": 35,
+      "requirement_id": "CUTOVER-R1",
+      "status": "pending",
+      "title": "Capture fresh native runtime evidence for the mapped authority debt.",
+      "validation": "Run replay, sovereign policy and no-tick invariant analysis over the fresh native runtime event sample.",
+      "verified_count": 0
+    },
+    {
+      "remaining_count": 70,
+      "required_count": 70,
+      "requirement_id": "CUTOVER-R2",
+      "status": "pending",
+      "title": "Replace projected candidate events with runtime-emitted pnva.event.v1 events.",
+      "validation": "Published runtime events must not contain proof.projection=true for the final R3 claim.",
+      "verified_count": 0
+    },
+    {
+      "remaining_count": 4,
+      "required_count": 4,
+      "requirement_id": "CUTOVER-R3",
+      "status": "pending",
+      "title": "Re-run robustness, maturity, semantic consistency and reproducibility after the fresh sample is published.",
+      "validation": "R3 can only be claimed when the new public package remains internally consistent and reproducible.",
+      "verified_count": 0
+    }
+  ],
+  "schema_version": "pnva.r3_cutover_gate.v1",
+  "source_event_count": 519,
+  "source_readiness_level": "R2_NATIVE_CLEAN_LEGACY_QUARANTINED",
+  "summary": {
+    "authority_candidate_count": 35,
+    "contract_ready": true,
+    "cutover_approved": false,
+    "legacy_free_claim_allowed": false,
+    "projected_commit_count": 35,
+    "projected_precheck_count": 35,
+    "remaining_runtime_replacement_count": 35,
+    "runtime_blocker_count": 3,
+    "runtime_replacement_coverage_ratio": 0.0
+  },
+  "target_readiness_level": "R3_NATIVE_CLEAN_LEGACY_FREE",
+  "verified_runtime_replacement_count": 0
+}

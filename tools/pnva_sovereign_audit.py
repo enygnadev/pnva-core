@@ -58,6 +58,7 @@ PUBLIC_DOCS = [
     "docs/PNVA_R3_MIGRATION_PLAN.md",
     "docs/PNVA_AUTHORITY_MIGRATION_LEDGER.md",
     "docs/PNVA_R3_AUTHORITY_PROJECTION.md",
+    "docs/PNVA_R3_CUTOVER_GATE.md",
     "docs/PNVA_SOVEREIGN_EVIDENCE_ATTESTATION.md",
     "docs/PNVA_ADVERSARIAL_VALIDATION.md",
     "docs/PNVA_ENTITY_HEURISTIC_MATURITY.md",
@@ -190,6 +191,12 @@ R3_AUTHORITY_PROJECTION_FILES = [
     "reports/pnva-r3-authority-projection-replay-2026-05-05.json",
     "reports/pnva-r3-authority-projection-policy-2026-05-05.json",
     "reports/pnva-r3-authority-projection-no-tick-2026-05-05.json",
+]
+
+R3_CUTOVER_GATE_FILES = [
+    "tools/pnva_r3_cutover_gate.py",
+    "docs/PNVA_R3_CUTOVER_GATE.md",
+    "reports/pnva-r3-cutover-gate-2026-05-05.json",
 ]
 
 EVIDENCE_ATTESTATION_FILES = [
@@ -1155,6 +1162,49 @@ def audit_r3_authority_projection(repo: Path) -> dict[str, Any]:
     }
 
 
+def audit_r3_cutover_gate(repo: Path) -> dict[str, Any]:
+    missing = [rel for rel in R3_CUTOVER_GATE_FILES if not (repo / rel).exists()]
+    report_path = repo / "reports" / "pnva-r3-cutover-gate-2026-05-05.json"
+    if not report_path.exists():
+        return {
+            "r3_cutover_gate_ok": False,
+            "missing": missing,
+            "classification": "R3_CUTOVER_GATE_MISSING",
+            "errors": ["missing R3 cutover gate report"],
+        }
+    data = _read_json(report_path)
+    ok = (
+        not missing
+        and data.get("pass") is True
+        and data.get("classification") == "R3_CUTOVER_GATE_READY_RUNTIME_REQUIRED"
+        and data.get("contract_ready") is True
+        and data.get("cutover_approved") is False
+        and data.get("legacy_free_claim_allowed") is False
+        and int(data.get("precondition_failure_count", 1)) == 0
+        and int(data.get("remaining_runtime_replacement_count", -1)) == int(data.get("authority_candidate_count", 0))
+    )
+    return {
+        "r3_cutover_gate_ok": ok,
+        "missing": missing,
+        "classification": data.get("classification"),
+        "contract_ready": bool(data.get("contract_ready", False)),
+        "cutover_approved": bool(data.get("cutover_approved", False)),
+        "legacy_free_claim_allowed": bool(data.get("legacy_free_claim_allowed", False)),
+        "fresh_runtime_evidence_present": bool(data.get("fresh_runtime_evidence_present", False)),
+        "runtime_evidence_required": bool(data.get("runtime_evidence_required", False)),
+        "authority_candidate_count": int(data.get("authority_candidate_count", 0)),
+        "projected_event_count": int(data.get("projected_event_count", 0)),
+        "projected_commit_count": int(data.get("projected_commit_count", 0)),
+        "projected_precheck_count": int(data.get("projected_precheck_count", 0)),
+        "projected_low_authority_strong_count": int(data.get("projected_low_authority_strong_count", 0)),
+        "remaining_runtime_replacement_count": int(data.get("remaining_runtime_replacement_count", 0)),
+        "runtime_replacement_coverage_ratio": float(data.get("runtime_replacement_coverage_ratio", 0.0)),
+        "runtime_blocker_count": int(data.get("runtime_blocker_count", 0)),
+        "contract_score": int(data.get("contract_score", 0)),
+        "errors": [] if ok else ["R3 cutover gate failed"],
+    }
+
+
 def audit_reproducibility(repo: Path) -> dict[str, Any]:
     missing = [rel for rel in REPRODUCIBILITY_FILES if not (repo / rel).exists()]
     report_path = repo / "reports" / "pnva-reproducibility-2026-05-05.json"
@@ -1476,6 +1526,7 @@ def build_report(repo: Path, *, strict_public: bool = False) -> dict[str, Any]:
         "r3_migration_plan": audit_r3_migration_plan(repo),
         "authority_migration_ledger": audit_authority_migration_ledger(repo),
         "r3_authority_projection": audit_r3_authority_projection(repo),
+        "r3_cutover_gate": audit_r3_cutover_gate(repo),
         "evidence_attestation": audit_evidence_attestation(repo),
         "adversarial_validation": audit_adversarial_validation(repo),
         "entity_heuristic_maturity": audit_entity_heuristic_maturity(repo),
@@ -1502,6 +1553,7 @@ def build_report(repo: Path, *, strict_public: bool = False) -> dict[str, Any]:
             "Run R3 migration planner so the path from R2 quarantined legacy to R3 legacy-free is measurable.",
             "Run authority migration ledger so H0 strong decisions become entity/action-specific native targets.",
             "Run R3 authority projection so mapped H0 debt has native replay, policy and no-tick validation before runtime replacement.",
+            "Run R3 cutover gate so contract readiness and final runtime approval remain separate.",
             "Publish one sovereign evidence attestation hash with every evidence release.",
             "Run adversarial validation so validators prove tamper detection, not only green-path acceptance.",
             "Track entity and heuristic maturity so no-tick suppression stays attributable to actors and authority.",

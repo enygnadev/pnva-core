@@ -1,6 +1,6 @@
 {
   "author": "Gustavo de Aguiar Martins",
-  "check_count": 217,
+  "check_count": 232,
   "checks": [
     {
       "group": "classification",
@@ -484,6 +484,26 @@
     },
     {
       "group": "classification",
+      "left": "R3_CUTOVER_GATE_READY_RUNTIME_REQUIRED",
+      "left_ref": "reports/pnva-r3-cutover-gate-2026-05-05.json:classification",
+      "name": "r3_cutover_gate_classification",
+      "pass": true,
+      "right": "R3_CUTOVER_GATE_READY_RUNTIME_REQUIRED",
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "classification",
+      "left": true,
+      "left_ref": "reports/pnva-r3-cutover-gate-2026-05-05.json:pass",
+      "name": "r3_cutover_gate_pass_flag",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "classification",
       "left": "ADVERSARIAL_VALIDATION_PASS",
       "left_ref": "reports/pnva-adversarial-validation-2026-05-05.json:classification",
       "name": "adversarial_classification",
@@ -655,21 +675,21 @@
     },
     {
       "group": "manifest",
-      "left": 35,
+      "left": 36,
       "left_ref": "MANIFEST:sovereign_evidence_attestation.artifact_count",
       "name": "manifest_attestation_artifact_count",
       "pass": true,
-      "right": 35,
+      "right": 36,
       "right_ref": "attestation:artifact_count",
       "severity": "error"
     },
     {
       "group": "manifest",
-      "left": "sha256:5f1b6f2bcffb5e60a8e0371964077507d32cce1422006b68a158ced0d4bdbbd0",
+      "left": "sha256:126803fdc1459c2d7398027c54720812fd184c013fc0615f979d065345778ef0",
       "left_ref": "MANIFEST:sovereign_evidence_attestation.evidence_hash",
       "name": "manifest_attestation_hash",
       "pass": true,
-      "right": "sha256:5f1b6f2bcffb5e60a8e0371964077507d32cce1422006b68a158ced0d4bdbbd0",
+      "right": "sha256:126803fdc1459c2d7398027c54720812fd184c013fc0615f979d065345778ef0",
       "right_ref": "attestation:evidence_hash",
       "severity": "error"
     },
@@ -1083,6 +1103,46 @@
       "pass": true,
       "right": 0,
       "right_ref": "r3_authority_projection:projected_low_authority_strong_count",
+      "severity": "error"
+    },
+    {
+      "group": "manifest",
+      "left": true,
+      "left_ref": "MANIFEST:r3_cutover_gate.contract_ready",
+      "name": "manifest_r3_cutover_contract_ready",
+      "pass": true,
+      "right": true,
+      "right_ref": "r3_cutover_gate:contract_ready",
+      "severity": "error"
+    },
+    {
+      "group": "manifest",
+      "left": false,
+      "left_ref": "MANIFEST:r3_cutover_gate.cutover_approved",
+      "name": "manifest_r3_cutover_approved",
+      "pass": true,
+      "right": false,
+      "right_ref": "r3_cutover_gate:cutover_approved",
+      "severity": "error"
+    },
+    {
+      "group": "manifest",
+      "left": 35,
+      "left_ref": "MANIFEST:r3_cutover_gate.remaining_runtime_replacement_count",
+      "name": "manifest_r3_cutover_remaining_replacement",
+      "pass": true,
+      "right": 35,
+      "right_ref": "r3_cutover_gate:remaining_runtime_replacement_count",
+      "severity": "error"
+    },
+    {
+      "group": "manifest",
+      "left": 3,
+      "left_ref": "MANIFEST:r3_cutover_gate.runtime_blocker_count",
+      "name": "manifest_r3_cutover_runtime_blockers",
+      "pass": true,
+      "right": 3,
+      "right_ref": "r3_cutover_gate:runtime_blocker_count",
       "severity": "error"
     },
     {
@@ -1766,6 +1826,76 @@
       "severity": "error"
     },
     {
+      "group": "r3_cutover_gate",
+      "left": 35,
+      "left_ref": "r3_cutover_gate:authority_candidate_count",
+      "name": "cutover_authority_candidates_match_ledger",
+      "pass": true,
+      "right": 35,
+      "right_ref": "authority_migration_ledger:candidate_event_count",
+      "severity": "error"
+    },
+    {
+      "group": "r3_cutover_gate",
+      "left": 35,
+      "left_ref": "r3_cutover_gate:projected_commit_count",
+      "name": "cutover_projected_commit_matches_projection",
+      "pass": true,
+      "right": 35,
+      "right_ref": "r3_authority_projection:projected_commit_count",
+      "severity": "error"
+    },
+    {
+      "group": "r3_cutover_gate",
+      "left": true,
+      "left_ref": "r3_cutover_gate:contract_ready",
+      "name": "cutover_contract_ready_true",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "r3_cutover_gate",
+      "left": false,
+      "left_ref": "r3_cutover_gate:cutover_approved",
+      "name": "cutover_not_approved_without_runtime",
+      "pass": true,
+      "right": false,
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "r3_cutover_gate",
+      "left": false,
+      "left_ref": "r3_cutover_gate:legacy_free_claim_allowed",
+      "name": "cutover_legacy_free_claim_blocked",
+      "pass": true,
+      "right": false,
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "r3_cutover_gate",
+      "left": 35,
+      "left_ref": "r3_cutover_gate:remaining_runtime_replacement_count",
+      "name": "cutover_remaining_runtime_matches_candidates",
+      "pass": true,
+      "right": 35,
+      "right_ref": "authority_migration_ledger:candidate_event_count",
+      "severity": "error"
+    },
+    {
+      "group": "r3_cutover_gate",
+      "left": 0,
+      "left_ref": "r3_cutover_gate:precondition_failure_count",
+      "name": "cutover_preconditions_clean",
+      "pass": true,
+      "right": 0,
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
       "group": "maturity_math",
       "left": 519,
       "left_ref": "maturity:summary.total_event_count",
@@ -1829,11 +1959,11 @@
     },
     {
       "group": "attestation",
-      "left": 35,
+      "left": 36,
       "left_ref": "attestation:artifact_count",
       "name": "artifact_count_matches_list",
       "pass": true,
-      "right": 35,
+      "right": 36,
       "right_ref": "len(attestation.artifacts)",
       "severity": "error"
     },
@@ -2011,6 +2141,16 @@
       "group": "attestation",
       "left": true,
       "left_ref": "attestation:artifact_ids",
+      "name": "attestation_contains_r3_cutover_gate",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "attestation",
+      "left": true,
+      "left_ref": "attestation:artifact_ids",
       "name": "attestation_contains_adversarial_validation",
       "pass": true,
       "right": true,
@@ -2039,11 +2179,11 @@
     },
     {
       "group": "audit",
-      "left": "sha256:5f1b6f2bcffb5e60a8e0371964077507d32cce1422006b68a158ced0d4bdbbd0",
+      "left": "sha256:126803fdc1459c2d7398027c54720812fd184c013fc0615f979d065345778ef0",
       "left_ref": "audit:evidence_attestation.evidence_hash",
       "name": "audit_attestation_hash_matches",
       "pass": true,
-      "right": "sha256:5f1b6f2bcffb5e60a8e0371964077507d32cce1422006b68a158ced0d4bdbbd0",
+      "right": "sha256:126803fdc1459c2d7398027c54720812fd184c013fc0615f979d065345778ef0",
       "right_ref": "attestation:evidence_hash",
       "severity": "error"
     },
@@ -2169,6 +2309,16 @@
       "severity": "error"
     },
     {
+      "group": "audit",
+      "left": "R3_CUTOVER_GATE_READY_RUNTIME_REQUIRED",
+      "left_ref": "audit:r3_cutover_gate.classification",
+      "name": "audit_r3_cutover_gate_matches",
+      "pass": true,
+      "right": "R3_CUTOVER_GATE_READY_RUNTIME_REQUIRED",
+      "right_ref": "r3_cutover_gate:classification",
+      "severity": "error"
+    },
+    {
       "group": "manifest_hygiene",
       "left": [],
       "left_ref": "MANIFEST:files duplicates",
@@ -2192,7 +2342,7 @@
   "classification": "SEMANTIC_CONSISTENCY_READY",
   "error_count": 0,
   "errors": [],
-  "generated_at": "2026-05-05T08:53:06Z",
+  "generated_at": "2026-05-05T09:11:16Z",
   "interpretation": {
     "boundary": "This guard checks semantic consistency of the public evidence package; it does not replace runtime execution tests.",
     "purpose": "Detect drift between PNVA public evidence reports, manifest metadata, attestation and audit summaries.",
@@ -2230,6 +2380,7 @@
     "r3_authority_projection_no_tick": "reports/pnva-r3-authority-projection-no-tick-2026-05-05.json",
     "r3_authority_projection_policy": "reports/pnva-r3-authority-projection-policy-2026-05-05.json",
     "r3_authority_projection_replay": "reports/pnva-r3-authority-projection-replay-2026-05-05.json",
+    "r3_cutover_gate": "reports/pnva-r3-cutover-gate-2026-05-05.json",
     "r3_migration_plan": "reports/pnva-r3-migration-plan-2026-05-05.json",
     "replay": "reports/pnva-replay-validation-2026-05-05.json",
     "schema_contract": "reports/pnva-schema-contract-validation-2026-05-05.json",
@@ -2239,7 +2390,7 @@
   },
   "schema_version": "pnva.semantic_consistency.v1",
   "summary": {
-    "attestation_artifact_count": 35,
+    "attestation_artifact_count": 36,
     "audit_score": 100,
     "authority_migration_action_candidate_count": 3,
     "authority_migration_candidate_count": 35,
@@ -2264,6 +2415,10 @@
     "r3_authority_projection_event_count": 70,
     "r3_authority_projection_low_authority_strong_count": 0,
     "r3_authority_projection_suppression_count": 35,
+    "r3_cutover_approved": false,
+    "r3_cutover_contract_ready": true,
+    "r3_cutover_remaining_runtime_replacement_count": 35,
+    "r3_cutover_runtime_blocker_count": 3,
     "r3_migration_action_count": 6,
     "r3_migration_current_score": 97,
     "r3_migration_primary_debt_count": 35,

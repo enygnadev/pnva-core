@@ -863,12 +863,53 @@ Production interpretation:
 
 This does not rewrite the historical H0 evidence. It creates the native implementation contract for R3: every mapped H0 candidate gets a no-action precheck and a hard-authority collapse commit, then passes replay, policy and no-tick validation before runtime replacement.
 
-## 25. Sovereign Evidence Attestation
+## 25. R3 Cutover Gate
+
+After the projection is valid, separate contract readiness from final runtime approval:
+
+```text
+R3 authority projection + replay + policy + no-tick -> cutover gate
+```
+
+Current report:
+
+```text
+reports/pnva-r3-cutover-gate-2026-05-05.json
+```
+
+Current classification:
+
+```text
+R3_CUTOVER_GATE_READY_RUNTIME_REQUIRED
+```
+
+Current result:
+
+```text
+contract_ready: true
+cutover_approved: false
+legacy_free_claim_allowed: false
+fresh_runtime_evidence_present: false
+authority_candidate_count: 35
+projected_event_count: 70
+projected_precheck_count: 35
+projected_commit_count: 35
+projected_low_authority_strong_count: 0
+remaining_runtime_replacement_count: 35
+runtime_blocker_count: 3
+contract_score: 100
+```
+
+Production interpretation:
+
+The cutover gate prevents a false R3 claim. The native replacement contract is ready, but final legacy-free production status remains blocked until fresh runtime events replace the projected evidence and pass replay, policy, no-tick, robustness, semantic and reproducibility validation.
+
+## 26. Sovereign Evidence Attestation
 
 After all validators run, bind the evidence package:
 
 ```text
-proofs + events + replay + invariants + policy + chains + graphs + schema contract + chronology + tension decision + decision trace + heuristic influence + entity matrix + suppression ledger + robustness gate + R3 migration plan + authority migration ledger + R3 authority projection -> evidence_hash
+proofs + events + replay + invariants + policy + chains + graphs + schema contract + chronology + tension decision + decision trace + heuristic influence + entity matrix + suppression ledger + robustness gate + R3 migration plan + authority migration ledger + R3 authority projection + R3 cutover gate -> evidence_hash
 ```
 
 The attestation lists each tracked artifact with:
@@ -890,7 +931,7 @@ PNVA_SOVEREIGN_EVIDENCE_ATTESTED
 Current package:
 
 ```text
-35 tracked artifacts
+36 tracked artifacts
 0 failures
 ```
 
@@ -900,7 +941,7 @@ PNVA evidence should be cited by a single aggregate hash, while still preserving
 
 The sovereign audit is not included inside that aggregate hash because it consumes the attestation. This avoids circular hashing.
 
-## 26. Adversarial Validation
+## 27. Adversarial Validation
 
 A sovereign validator must prove that it rejects bad evidence, not only that it accepts clean evidence.
 
@@ -938,7 +979,7 @@ Production interpretation:
 
 PNVA evidence becomes more sovereign when validators have negative controls. A `PASS` is stronger when the same tooling can also show why corrupted proof, weak authority, invalid topology, duplicate identity, reordered sequence or malformed JSON does not pass silently.
 
-## 27. Entity And Heuristic Maturity
+## 28. Entity And Heuristic Maturity
 
 After validation and adversarial controls, score the maturity of the actors and rules:
 
@@ -976,7 +1017,7 @@ Production interpretation:
 
 The canonical legacy bridge preserves 35 low-authority strong decisions as warnings. The native runtime path has zero low-authority legacy warnings. This creates a clean migration rule: old evidence stays honest; new PNVA runtimes must emit native events with H2/H3 authority.
 
-## 28. Semantic Consistency Guard
+## 29. Semantic Consistency Guard
 
 After all evidence reports are generated, check whether they agree as a system:
 
@@ -999,18 +1040,18 @@ SEMANTIC_CONSISTENCY_READY
 Current result:
 
 ```text
-check_count: 217
+check_count: 232
 error_count: 0
 warning_count: 0
 ```
 
 Production interpretation:
 
-PNVA evidence should not pass only as isolated files. The release is stronger when event counts, trace coverage, heuristic influence, suppression counts, avoided-execution counts, strong-decision counts, graph counts, chronology, tension-decision calibration, decision trace index, entity no-tick matrix, suppression ledger, robustness gate, R3 migration plan, authority migration ledger, R3 authority projection, maturity math, Manifest metadata, audit summaries and attestation hashes all agree.
+PNVA evidence should not pass only as isolated files. The release is stronger when event counts, trace coverage, heuristic influence, suppression counts, avoided-execution counts, strong-decision counts, graph counts, chronology, tension-decision calibration, decision trace index, entity no-tick matrix, suppression ledger, robustness gate, R3 migration plan, authority migration ledger, R3 authority projection, R3 cutover gate, maturity math, Manifest metadata, audit summaries and attestation hashes all agree.
 
 The semantic consistency report is not included in the attestation hash seed because it consumes the attestation.
 
-## 29. Reproducibility Guard
+## 30. Reproducibility Guard
 
 After semantic consistency, rerun the current tools and compare stable fields against published reports:
 
@@ -1033,8 +1074,8 @@ REPRODUCIBILITY_READY
 Current result:
 
 ```text
-command_count: 29
-comparison_count: 275
+command_count: 30
+comparison_count: 292
 failure_count: 0
 command_failure_count: 0
 comparison_failure_count: 0
@@ -1042,11 +1083,11 @@ comparison_failure_count: 0
 
 Production interpretation:
 
-PNVA evidence becomes stronger when reports are not only internally consistent, but reproducible from the repository commands. This checks that replay, no-tick invariants, native emission, policy, proof-chain, graph, schema contract, chronology, tension-decision calibration, decision trace index, heuristic influence map, entity no-tick matrix, suppression ledger, robustness gate, R3 migration plan, authority migration ledger, R3 authority projection, adversarial validation, maturity, attestation and semantic consistency can be regenerated without stable-field drift.
+PNVA evidence becomes stronger when reports are not only internally consistent, but reproducible from the repository commands. This checks that replay, no-tick invariants, native emission, policy, proof-chain, graph, schema contract, chronology, tension-decision calibration, decision trace index, heuristic influence map, entity no-tick matrix, suppression ledger, robustness gate, R3 migration plan, authority migration ledger, R3 authority projection, R3 cutover gate, adversarial validation, maturity, attestation and semantic consistency can be regenerated without stable-field drift.
 
 The reproducibility report is not included in the attestation hash seed because it consumes the attestation. This keeps the evidence graph acyclic.
 
-## 30. Public Safety
+## 31. Public Safety
 
 Public repositories should expose:
 
@@ -1073,7 +1114,7 @@ wallets
 host-specific automation
 ```
 
-## 31. Principle
+## 32. Principle
 
 PNVA becomes sovereign when every action can answer:
 

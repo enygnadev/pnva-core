@@ -191,6 +191,12 @@ jobs:
           python3 -m json.tool /tmp/pnva-r3-authority-projection-replay.json >/dev/null
           python3 -m json.tool /tmp/pnva-r3-authority-projection-policy.json >/dev/null
           python3 -m json.tool /tmp/pnva-r3-authority-projection-no-tick.json >/dev/null
+      - name: Run R3 cutover gate
+        run: |
+          python3 tools/pnva_r3_cutover_gate.py \
+            --write /tmp/pnva-r3-cutover-gate.json \
+            >/dev/null
+          python3 -m json.tool /tmp/pnva-r3-cutover-gate.json >/dev/null
       - name: Run evidence attestor
         run: |
           python3 tools/pnva_evidence_attestor.py \

@@ -1,5 +1,5 @@
 {
-  "artifact_count": 35,
+  "artifact_count": 36,
   "artifacts": [
     {
       "entry_count": 9,
@@ -320,6 +320,19 @@
       "size_bytes": 6974
     },
     {
+      "classification": "R3_CUTOVER_GATE_READY_RUNTIME_REQUIRED",
+      "expected": "R3_CUTOVER_GATE_READY_RUNTIME_REQUIRED",
+      "id": "r3_cutover_gate",
+      "kind": "json_classification",
+      "pass": true,
+      "path": "reports/pnva-r3-cutover-gate-2026-05-05.json",
+      "present": true,
+      "reported_pass": true,
+      "required": true,
+      "sha256": "d3875f5e64c56ea74ea4c1f4c101502b9e4a104040e2c39fac65f576c6d39566",
+      "size_bytes": 7421
+    },
+    {
       "classification": "NATIVE_EMITTER_READY",
       "expected": "NATIVE_EMITTER_READY",
       "id": "native_emitter",
@@ -470,13 +483,14 @@
     "R3 migration plan",
     "authority migration ledger",
     "R3 authority projection",
+    "R3 cutover gate",
     "adversarial negative controls",
     "entity and heuristic maturity",
     "sovereign audit consumes this attestation without being part of its hash seed"
   ],
-  "evidence_hash": "sha256:5f1b6f2bcffb5e60a8e0371964077507d32cce1422006b68a158ced0d4bdbbd0",
+  "evidence_hash": "sha256:126803fdc1459c2d7398027c54720812fd184c013fc0615f979d065345778ef0",
   "failure_count": 0,
-  "generated_at": "2026-05-05T08:47:18Z",
+  "generated_at": "2026-05-05T09:11:06Z",
   "interpretation": {
     "boundary": "This attests repository evidence integrity; it is not a universal proof of all possible PNVA deployments.",
     "hash_policy": "The evidence_hash changes when any tracked artifact hash, classification or pass flag changes.",
@@ -500,7 +514,8 @@
     "Run sovereign robustness gate before attestation so native cleanliness and legacy debt are collapsed into one readiness decision.",
     "Run R3 migration planner before attestation so the next legacy-free target is measurable.",
     "Run authority migration ledger before attestation so H0 strong decisions become entity/action-specific native targets.",
-    "Run R3 authority projection before attestation so mapped debt has replay, policy and no-tick native proof."
+    "Run R3 authority projection before attestation so mapped debt has replay, policy and no-tick native proof.",
+    "Run R3 cutover gate before attestation so projection readiness is separated from final runtime cutover approval."
   ],
   "schema_version": "pnva.evidence_attestation.v1"
 }

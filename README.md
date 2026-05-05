@@ -132,6 +132,7 @@ docs/
   PNVA_R3_MIGRATION_PLAN.md
   PNVA_AUTHORITY_MIGRATION_LEDGER.md
   PNVA_R3_AUTHORITY_PROJECTION.md
+  PNVA_R3_CUTOVER_GATE.md
   PNVA_SOVEREIGN_EVIDENCE_ATTESTATION.md
   PNVA_ADVERSARIAL_VALIDATION.md
   PNVA_ENTITY_HEURISTIC_MATURITY.md
@@ -359,15 +360,17 @@ The authority migration ledger maps the primary R3 authority debt to concrete en
 
 The R3 authority projection converts those `35` mapped candidates into a native hard-authority candidate sample before runtime replacement. The current package is `R3_AUTHORITY_PROJECTION_READY` with `70` projected native events, `35` no-tick prechecks, `35` collapse commits, `0` projected low-authority strong decisions, replay `REPLAY_VALID`, policy `SOVEREIGN_POLICY_READY` and no-tick `SOVEREIGN_NO_TICK_READY`.
 
+The R3 cutover gate separates native contract readiness from final runtime approval. The current package is `R3_CUTOVER_GATE_READY_RUNTIME_REQUIRED` with `contract_ready=true`, `cutover_approved=false`, `legacy_free_claim_allowed=false`, `35` remaining runtime replacements, `3` runtime blockers and contract score `100`; this prevents projected evidence from being mislabeled as final R3 runtime evidence.
+
 The adversarial validator runs negative controls against the public validators. The current package is `ADVERSARIAL_VALIDATION_PASS` with `7` detections over `7` controlled mutations.
 
 The entity and heuristic maturity auditor scores actor/rule readiness across entity coverage, proof coverage, no-tick suppression, authority and causal relations. The current package is `ENTITY_HEURISTIC_MATURITY_READY_WITH_LEGACY_WARNINGS` with score `94.59`, `0` errors and `35` preserved legacy warnings.
 
-The semantic consistency guard checks cross-report agreement across Manifest, replay, no-tick, policy, proof-chain, graph, schema contract, causal chronology, tension-decision calibration, decision trace index, heuristic influence map, entity no-tick matrix, suppression ledger, robustness gate, R3 migration plan, authority migration ledger, R3 authority projection, maturity, adversarial validation, attestation and audit. The current package is `SEMANTIC_CONSISTENCY_READY` with `217` checks, `0` errors and `0` warnings.
+The semantic consistency guard checks cross-report agreement across Manifest, replay, no-tick, policy, proof-chain, graph, schema contract, causal chronology, tension-decision calibration, decision trace index, heuristic influence map, entity no-tick matrix, suppression ledger, robustness gate, R3 migration plan, authority migration ledger, R3 authority projection, R3 cutover gate, maturity, adversarial validation, attestation and audit. The current package is `SEMANTIC_CONSISTENCY_READY` with `232` checks, `0` errors and `0` warnings.
 
-The reproducibility guard reruns the current evidence commands and compares stable fields against the published reports. The current package is `REPRODUCIBILITY_READY` with `29` commands, `275` stable-field comparisons and `0` failures.
+The reproducibility guard reruns the current evidence commands and compares stable fields against the published reports. The current package is `REPRODUCIBILITY_READY` with `30` commands, `292` stable-field comparisons and `0` failures.
 
-The sovereign evidence attestor binds the public evidence base into one machine-readable attestation. The current package is `PNVA_SOVEREIGN_EVIDENCE_ATTESTED` with `35` tracked artifacts and `0` failures; the sovereign audit consumes this attestation without being included in its hash seed.
+The sovereign evidence attestor binds the public evidence base into one machine-readable attestation. The current package is `PNVA_SOVEREIGN_EVIDENCE_ATTESTED` with `36` tracked artifacts and `0` failures; the sovereign audit consumes this attestation without being included in its hash seed.
 
 ## Citation
 

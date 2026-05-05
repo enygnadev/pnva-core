@@ -31,8 +31,8 @@ REPRODUCIBILITY_READY
 Current result:
 
 ```text
-command_count: 29
-comparison_count: 275
+command_count: 30
+comparison_count: 292
 failure_count: 0
 command_failure_count: 0
 comparison_failure_count: 0
@@ -65,6 +65,7 @@ sovereign robustness gate
 R3 migration plan
 authority migration ledger
 R3 authority projection
+R3 cutover gate
 adversarial validation
 entity and heuristic maturity
 evidence attestation
@@ -101,6 +102,7 @@ sovereign robustness score and native clean signal count
 R3 current readiness, target readiness, migration action count and primary debt
 authority migration candidate count, native debt, mapping coverage and proof coverage
 R3 authority projection event count, precheck count, commit count, no-tick suppression, proof coverage, replay, policy and no-tick classifications
+R3 cutover contract readiness, approval block, remaining runtime replacement count and runtime blocker count
 ```
 
 The guard intentionally ignores:

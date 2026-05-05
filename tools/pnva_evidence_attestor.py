@@ -180,6 +180,13 @@ EXPECTED_ARTIFACTS = [
         "required": True,
     },
     {
+        "id": "r3_cutover_gate",
+        "path": "reports/pnva-r3-cutover-gate-2026-05-05.json",
+        "kind": "json_classification",
+        "expected": "R3_CUTOVER_GATE_READY_RUNTIME_REQUIRED",
+        "required": True,
+    },
+    {
         "id": "native_emitter",
         "path": "reports/pnva-native-emitter-summary-2026-05-05.json",
         "kind": "json_classification",
@@ -388,10 +395,11 @@ def build_attestation(repo: Path) -> dict[str, Any]:
             "entity no-tick matrix",
             "suppression ledger",
         "sovereign robustness gate",
-        "R3 migration plan",
-        "authority migration ledger",
-        "R3 authority projection",
-        "adversarial negative controls",
+            "R3 migration plan",
+            "authority migration ledger",
+            "R3 authority projection",
+            "R3 cutover gate",
+            "adversarial negative controls",
         "entity and heuristic maturity",
         "sovereign audit consumes this attestation without being part of its hash seed",
         ],
@@ -415,9 +423,10 @@ def build_attestation(repo: Path) -> dict[str, Any]:
             "Run suppression ledger before attestation so avoided execution is proof-backed.",
             "Run sovereign robustness gate before attestation so native cleanliness and legacy debt are collapsed into one readiness decision.",
         "Run R3 migration planner before attestation so the next legacy-free target is measurable.",
-        "Run authority migration ledger before attestation so H0 strong decisions become entity/action-specific native targets.",
-        "Run R3 authority projection before attestation so mapped debt has replay, policy and no-tick native proof.",
-    ],
+            "Run authority migration ledger before attestation so H0 strong decisions become entity/action-specific native targets.",
+            "Run R3 authority projection before attestation so mapped debt has replay, policy and no-tick native proof.",
+            "Run R3 cutover gate before attestation so projection readiness is separated from final runtime cutover approval.",
+        ],
     }
 
 
