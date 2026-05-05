@@ -257,6 +257,40 @@ Production interpretation:
 
 PNVA/no-tick becomes stronger when it can prove not only why it acted, but also why it refused to act.
 
+## 10. Native Event Emission
+
+The bridge keeps legacy logs useful. The native emitter defines the production direction:
+
+```text
+runtime -> pnva.event.v1 -> replay -> no-tick invariants -> sovereign audit
+```
+
+Native events must include:
+
+```text
+source.format = native_pnva_event_v1
+proof.native = true
+schema_version = pnva.event.v1
+```
+
+Current native demo:
+
+```text
+reports/pnva-native-events-demo-2026-05-05.jsonl
+reports/pnva-native-entity-catalog-demo-2026-05-05.json
+reports/pnva-native-emitter-summary-2026-05-05.json
+```
+
+Current classification:
+
+```text
+NATIVE_EMITTER_READY
+```
+
+Production interpretation:
+
+New PNVA runtimes should not wait for post-processing to become auditable. They should emit canonical events at the moment of observation, collapse, block, proof or suppression.
+
 ## 9. Public Safety
 
 Public repositories should expose:

@@ -117,6 +117,7 @@ docs/
   PNVA_CANONICAL_EVENT_BRIDGE.md
   PNVA_REPLAY_VALIDATION.md
   PNVA_NO_TICK_INVARIANTS.md
+  PNVA_NATIVE_EVENT_EMITTER.md
   PNVA_ROBUSTNESS_EVOLUTION_REPORT_2026-05-05.md
   VEON_MODEL_VALIDATION.md
   PNVA_POST_TEMPORAL_CIVILIZATION.md
@@ -143,6 +144,11 @@ reports/
   pnva-canonical-bridge-summary-2026-05-05.json
   pnva-replay-validation-2026-05-05.json
   pnva-no-tick-invariants-2026-05-05.json
+  pnva-native-events-demo-2026-05-05.jsonl
+  pnva-native-entity-catalog-demo-2026-05-05.json
+  pnva-native-emitter-summary-2026-05-05.json
+  pnva-native-replay-validation-2026-05-05.json
+  pnva-native-no-tick-invariants-2026-05-05.json
 
 release/
   final production closure note
@@ -154,6 +160,7 @@ tools/
   pnva_canonical_bridge.py
   pnva_replay_validator.py
   pnva_no_tick_invariant_analyzer.py
+  pnva_native_event_emitter.py
 ```
 
 ## Public Launch
@@ -221,6 +228,7 @@ python3 tools/pnva_sovereign_audit.py --repo . --strict-public --min-score 80 >/
 python3 tools/pnva_canonical_bridge.py --demo --output /tmp/pnva-events.jsonl --entity-catalog /tmp/pnva-entities.json --summary /tmp/pnva-bridge.json
 python3 tools/pnva_replay_validator.py --events reports/pnva-canonical-events-sample-2026-05-05.jsonl --entity-catalog reports/pnva-entity-catalog-2026-05-05.json >/tmp/pnva-replay.json
 python3 tools/pnva_no_tick_invariant_analyzer.py --events reports/pnva-canonical-events-sample-2026-05-05.jsonl --entity-catalog reports/pnva-entity-catalog-2026-05-05.json --replay-report reports/pnva-replay-validation-2026-05-05.json >/tmp/pnva-no-tick-invariants.json
+python3 tools/pnva_native_event_emitter.py --events /tmp/pnva-native-events.jsonl --entity-catalog /tmp/pnva-native-entities.json --summary /tmp/pnva-native-summary.json
 ```
 
 ## Sovereign Robustness Layer
@@ -240,6 +248,8 @@ The canonical bridge converts legacy PNVA JSONL logs into `pnva.event.v1` envelo
 The replay validator checks that the canonical event sequence is internally consistent, proof-hash stable and guard-aware.
 
 The no-tick invariant analyzer proves the stronger PNVA claim: execution and non-execution are both causal, entity-aware, heuristic-visible and proof-backed. The current public report classifies the sample as `SOVEREIGN_NO_TICK_READY` with `246` causal suppressions over `512` events.
+
+The native event emitter shows the production direction: new PNVA runtimes can emit `pnva.event.v1` directly, before any legacy bridge is needed. The current native demo is `NATIVE_EMITTER_READY`, replay-valid and no-tick-invariant-valid.
 
 ## Citation
 

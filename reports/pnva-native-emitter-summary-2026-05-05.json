@@ -1,0 +1,74 @@
+{
+  "author": "Gustavo de Aguiar Martins",
+  "classification": "NATIVE_EMITTER_READY",
+  "decision_mix": [
+    [
+      "observe",
+      2
+    ],
+    [
+      "collapse",
+      2
+    ],
+    [
+      "block",
+      2
+    ],
+    [
+      "prove",
+      1
+    ]
+  ],
+  "entity_catalog_ref": "reports/pnva-native-entity-catalog-demo-2026-05-05.json",
+  "entity_count": 6,
+  "event_count": 7,
+  "events_ref": "reports/pnva-native-events-demo-2026-05-05.jsonl",
+  "generated_at": "2026-05-05T04:45:12Z",
+  "native_event_count": 7,
+  "pass": true,
+  "project": "PNVA-Core",
+  "proof_policy": "proof_hash is deterministic over native source, line, timestamp, entity, event type, decision and tension",
+  "risk_flags": [
+    [
+      "STALE_PRESSURE",
+      2
+    ],
+    [
+      "THERMAL_PRESSURE",
+      1
+    ]
+  ],
+  "runtime_policy": "new PNVA runtimes should emit this envelope directly before any legacy bridge is needed",
+  "schema_version": "pnva.native_emitter_summary.v1",
+  "suppressed_count": 4,
+  "top_event_types": [
+    [
+      "FIELD_OBSERVED",
+      1
+    ],
+    [
+      "ETEV_GUARD_PASS",
+      1
+    ],
+    [
+      "RUNTIME_COLLAPSE",
+      1
+    ],
+    [
+      "THERMAL_PRESSURE",
+      1
+    ],
+    [
+      "ETEV_GUARD_BLOCK",
+      1
+    ],
+    [
+      "STALE_JOB_PRESSURE",
+      1
+    ],
+    [
+      "PROOF_SEALED",
+      1
+    ]
+  ]
+}

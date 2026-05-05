@@ -1,0 +1,522 @@
+{
+  "author": "Gustavo de Aguiar Martins",
+  "classification": "SOVEREIGN_NO_TICK_READY",
+  "entity_catalog_ref": "reports/pnva-native-entity-catalog-demo-2026-05-05.json",
+  "entity_health": [
+    {
+      "attention": [
+        "HIGH_BLOCK_RATIO"
+      ],
+      "block_ratio": 0.5,
+      "decision_mix": [
+        [
+          "collapse",
+          1
+        ],
+        [
+          "block",
+          1
+        ]
+      ],
+      "entity_id": "pnva-etev-guard",
+      "entity_type": "guard",
+      "event_count": 2,
+      "risk_flag_density": 0.5,
+      "risk_flags": [
+        [
+          "STALE_PRESSURE",
+          1
+        ]
+      ],
+      "status": "guarded",
+      "top_actions": [
+        [
+          "AUTHORIZE_COLLAPSE",
+          1
+        ],
+        [
+          "BLOCK_EXECUTION",
+          1
+        ]
+      ],
+      "top_rules": [
+        [
+          "adaptive_threshold",
+          2
+        ],
+        [
+          "etev_guard",
+          2
+        ],
+        [
+          "native_event_emitter",
+          2
+        ]
+      ]
+    },
+    {
+      "attention": [],
+      "block_ratio": 0.0,
+      "decision_mix": [
+        [
+          "observe",
+          1
+        ]
+      ],
+      "entity_id": "pnva-field-demo",
+      "entity_type": "field",
+      "event_count": 1,
+      "risk_flag_density": 0.0,
+      "risk_flags": [],
+      "status": "observed",
+      "top_actions": [
+        [
+          "NO_ACTION",
+          1
+        ]
+      ],
+      "top_rules": [
+        [
+          "legacy_observer",
+          1
+        ],
+        [
+          "native_event_emitter",
+          1
+        ]
+      ]
+    },
+    {
+      "attention": [],
+      "block_ratio": 0.0,
+      "decision_mix": [
+        [
+          "prove",
+          1
+        ]
+      ],
+      "entity_id": "pnva-proof-native-demo",
+      "entity_type": "proof",
+      "event_count": 1,
+      "risk_flag_density": 0.0,
+      "risk_flags": [],
+      "status": "observed",
+      "top_actions": [
+        [
+          "SEAL_PROOF",
+          1
+        ]
+      ],
+      "top_rules": [
+        [
+          "native_event_emitter",
+          1
+        ]
+      ]
+    },
+    {
+      "attention": [
+        "HIGH_RISK_FLAG_DENSITY"
+      ],
+      "block_ratio": 0.0,
+      "decision_mix": [
+        [
+          "observe",
+          1
+        ]
+      ],
+      "entity_id": "pnva-thermal-guard",
+      "entity_type": "guard",
+      "event_count": 1,
+      "risk_flag_density": 1.0,
+      "risk_flags": [
+        [
+          "THERMAL_PRESSURE",
+          1
+        ]
+      ],
+      "status": "pressure_visible",
+      "top_actions": [
+        [
+          "HOLD_PRESSURE",
+          1
+        ]
+      ],
+      "top_rules": [
+        [
+          "native_event_emitter",
+          1
+        ],
+        [
+          "power_orchestrator",
+          1
+        ]
+      ]
+    },
+    {
+      "attention": [],
+      "block_ratio": 0.0,
+      "decision_mix": [
+        [
+          "collapse",
+          1
+        ]
+      ],
+      "entity_id": "zano-entity-00",
+      "entity_type": "worker",
+      "event_count": 1,
+      "risk_flag_density": 0.0,
+      "risk_flags": [],
+      "status": "observed",
+      "top_actions": [
+        [
+          "EXECUTE",
+          1
+        ]
+      ],
+      "top_rules": [
+        [
+          "field_scheduler",
+          1
+        ],
+        [
+          "memory4d",
+          1
+        ],
+        [
+          "native_event_emitter",
+          1
+        ]
+      ]
+    },
+    {
+      "attention": [
+        "HIGH_BLOCK_RATIO",
+        "HIGH_RISK_FLAG_DENSITY"
+      ],
+      "block_ratio": 1.0,
+      "decision_mix": [
+        [
+          "block",
+          1
+        ]
+      ],
+      "entity_id": "zano-entity-01",
+      "entity_type": "worker",
+      "event_count": 1,
+      "risk_flag_density": 1.0,
+      "risk_flags": [
+        [
+          "STALE_PRESSURE",
+          1
+        ]
+      ],
+      "status": "pressure_visible",
+      "top_actions": [
+        [
+          "DROP_STALE",
+          1
+        ]
+      ],
+      "top_rules": [
+        [
+          "field_scheduler",
+          1
+        ],
+        [
+          "native_event_emitter",
+          1
+        ]
+      ]
+    }
+  ],
+  "events_ref": "reports/pnva-native-events-demo-2026-05-05.jsonl",
+  "failed_invariants": [],
+  "generated_at": "2026-05-05T04:45:12Z",
+  "heuristic_classes": {
+    "adaptive_threshold": {
+      "class": "H2_GUARDED_THRESHOLD",
+      "count": 2
+    },
+    "etev_guard": {
+      "class": "H3_SOVEREIGN_GUARD",
+      "count": 2
+    },
+    "field_scheduler": {
+      "class": "H2_GUARDED_ACTION",
+      "count": 2
+    },
+    "legacy_observer": {
+      "class": "H0_OBSERVATION_ONLY",
+      "count": 1
+    },
+    "memory4d": {
+      "class": "H1_ADVISORY_MEMORY",
+      "count": 1
+    },
+    "native_event_emitter": {
+      "class": "H1_ADVISORY_SIGNAL",
+      "count": 7
+    },
+    "power_orchestrator": {
+      "class": "H2_GUARDED_ACTION",
+      "count": 1
+    }
+  },
+  "interpretation": {
+    "entities": "Entity health is derived from canonical event evidence and does not expose raw local identifiers.",
+    "heuristics": "Heuristics are not treated as magic intelligence; each rule is classified by allowed authority level.",
+    "no_tick": "Observe and block decisions are counted as causal suppression because the runtime records why it did not execute."
+  },
+  "invariants": [
+    {
+      "evidence": {
+        "event_count": 7,
+        "parse_errors": 0,
+        "replay_classification": "REPLAY_VALID"
+      },
+      "name": "CANONICAL_SCHEMA_REPLAYED",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "proof_hash_bad": 0,
+        "proof_hash_ok": 7
+      },
+      "name": "PROOF_HASH_STABLE",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "suppressed_count": 4,
+        "suppression_ratio": 0.5714
+      },
+      "name": "NO_TICK_SUPPRESSION_OBSERVED",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "guard_event_count": 2,
+        "guard_validated": 2
+      },
+      "name": "GUARD_COLLAPSE_BLOCK_CONSISTENT",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "catalog_entity_count": 6,
+        "missing_entities": [],
+        "observed_entity_count": 6
+      },
+      "name": "ENTITY_CATALOG_COVERS_EVENTS",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "risk_flag_count": 3,
+        "rule_count": 16,
+        "top_risks": [
+          [
+            "STALE_PRESSURE",
+            2
+          ],
+          [
+            "THERMAL_PRESSURE",
+            1
+          ]
+        ],
+        "top_rules": [
+          [
+            "native_event_emitter",
+            7
+          ],
+          [
+            "adaptive_threshold",
+            2
+          ],
+          [
+            "etev_guard",
+            2
+          ],
+          [
+            "field_scheduler",
+            2
+          ],
+          [
+            "legacy_observer",
+            1
+          ],
+          [
+            "memory4d",
+            1
+          ],
+          [
+            "power_orchestrator",
+            1
+          ]
+        ]
+      },
+      "name": "HEURISTIC_VISIBILITY_PRESENT",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "checked_events": 7,
+        "policy": "source.file_name must be basename only"
+      },
+      "name": "PUBLIC_SAFE_EVENT_REFERENCES",
+      "pass": true
+    }
+  ],
+  "no_tick_efficiency": {
+    "block_count": 2,
+    "causal_execution_ratio": 0.2857,
+    "collapse_count": 2,
+    "event_count": 7,
+    "guard_consistency_ratio": 1.0,
+    "no_tick_suppression_ratio": 0.5714,
+    "observe_count": 2,
+    "proof_integrity_ratio": 1.0,
+    "suppressed_count": 4
+  },
+  "parse_errors": [],
+  "pass": true,
+  "project": "PNVA-Core",
+  "recommendations": [
+    "Emit pnva.event.v1 directly from the runtime so replay validation does not depend on a legacy bridge.",
+    "Promote guard and thermal pressure into explicit runtime entities when sensor provenance is available.",
+    "Keep observe/block records; they are the audit trail that proves no-tick suppression without hiding decisions."
+  ],
+  "replay_report_ref": "reports/pnva-native-replay-validation-2026-05-05.json",
+  "schema_version": "pnva.no_tick_invariants.v1",
+  "summary": {
+    "causal_chain_count": 1,
+    "entity_count_catalog": 6,
+    "entity_count_observed": 6,
+    "event_count": 7,
+    "top_actions": [
+      [
+        "NO_ACTION",
+        1
+      ],
+      [
+        "AUTHORIZE_COLLAPSE",
+        1
+      ],
+      [
+        "EXECUTE",
+        1
+      ],
+      [
+        "HOLD_PRESSURE",
+        1
+      ],
+      [
+        "BLOCK_EXECUTION",
+        1
+      ],
+      [
+        "DROP_STALE",
+        1
+      ],
+      [
+        "SEAL_PROOF",
+        1
+      ]
+    ],
+    "top_chains": [
+      [
+        "chain_native_runtime_demo",
+        7
+      ]
+    ],
+    "top_decisions": [
+      [
+        "observe",
+        2
+      ],
+      [
+        "collapse",
+        2
+      ],
+      [
+        "block",
+        2
+      ],
+      [
+        "prove",
+        1
+      ]
+    ],
+    "top_event_types": [
+      [
+        "FIELD_OBSERVED",
+        1
+      ],
+      [
+        "ETEV_GUARD_PASS",
+        1
+      ],
+      [
+        "RUNTIME_COLLAPSE",
+        1
+      ],
+      [
+        "THERMAL_PRESSURE",
+        1
+      ],
+      [
+        "ETEV_GUARD_BLOCK",
+        1
+      ],
+      [
+        "STALE_JOB_PRESSURE",
+        1
+      ],
+      [
+        "PROOF_SEALED",
+        1
+      ]
+    ],
+    "top_heuristic_rules": [
+      [
+        "native_event_emitter",
+        7
+      ],
+      [
+        "adaptive_threshold",
+        2
+      ],
+      [
+        "etev_guard",
+        2
+      ],
+      [
+        "field_scheduler",
+        2
+      ],
+      [
+        "legacy_observer",
+        1
+      ],
+      [
+        "memory4d",
+        1
+      ],
+      [
+        "power_orchestrator",
+        1
+      ]
+    ],
+    "top_risk_flags": [
+      [
+        "STALE_PRESSURE",
+        2
+      ],
+      [
+        "THERMAL_PRESSURE",
+        1
+      ]
+    ]
+  }
+}

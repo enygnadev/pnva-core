@@ -165,6 +165,27 @@
         },
         "canonical": {
           "type": "boolean"
+        },
+        "native": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": true
+    },
+    "source": {
+      "type": "object",
+      "properties": {
+        "format": {
+          "type": "string"
+        },
+        "file_name": {
+          "type": "string"
+        },
+        "line": {
+          "type": "integer"
+        },
+        "sanitized": {
+          "type": "boolean"
         }
       },
       "additionalProperties": true

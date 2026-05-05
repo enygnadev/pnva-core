@@ -41,6 +41,10 @@
     <lastmod>2026-05-05</lastmod>
   </url>
   <url>
+    <loc>https://enygnadev.github.io/pnva-core/docs/PNVA_NATIVE_EVENT_EMITTER.md</loc>
+    <lastmod>2026-05-05</lastmod>
+  </url>
+  <url>
     <loc>https://enygnadev.github.io/pnva-core/docs/PNVA_ROBUSTNESS_EVOLUTION_REPORT_2026-05-05.md</loc>
     <lastmod>2026-05-05</lastmod>
   </url>
@@ -74,6 +78,26 @@
   </url>
   <url>
     <loc>https://enygnadev.github.io/pnva-core/reports/pnva-no-tick-invariants-2026-05-05.json</loc>
+    <lastmod>2026-05-05</lastmod>
+  </url>
+  <url>
+    <loc>https://enygnadev.github.io/pnva-core/reports/pnva-native-events-demo-2026-05-05.jsonl</loc>
+    <lastmod>2026-05-05</lastmod>
+  </url>
+  <url>
+    <loc>https://enygnadev.github.io/pnva-core/reports/pnva-native-entity-catalog-demo-2026-05-05.json</loc>
+    <lastmod>2026-05-05</lastmod>
+  </url>
+  <url>
+    <loc>https://enygnadev.github.io/pnva-core/reports/pnva-native-emitter-summary-2026-05-05.json</loc>
+    <lastmod>2026-05-05</lastmod>
+  </url>
+  <url>
+    <loc>https://enygnadev.github.io/pnva-core/reports/pnva-native-replay-validation-2026-05-05.json</loc>
+    <lastmod>2026-05-05</lastmod>
+  </url>
+  <url>
+    <loc>https://enygnadev.github.io/pnva-core/reports/pnva-native-no-tick-invariants-2026-05-05.json</loc>
     <lastmod>2026-05-05</lastmod>
   </url>
 </urlset>

@@ -32,7 +32,7 @@
     "robots_missing_tokens": [],
     "robots_ok": true,
     "sitemap_ok": true,
-    "sitemap_url_count": 19,
+    "sitemap_url_count": 25,
     "sitemap_urls": [
       "https://enygnadev.github.io/pnva-core/",
       "https://enygnadev.github.io/pnva-core/author.html",
@@ -44,6 +44,7 @@
       "https://enygnadev.github.io/pnva-core/docs/PNVA_CANONICAL_EVENT_BRIDGE.md",
       "https://enygnadev.github.io/pnva-core/docs/PNVA_REPLAY_VALIDATION.md",
       "https://enygnadev.github.io/pnva-core/docs/PNVA_NO_TICK_INVARIANTS.md",
+      "https://enygnadev.github.io/pnva-core/docs/PNVA_NATIVE_EVENT_EMITTER.md",
       "https://enygnadev.github.io/pnva-core/docs/PNVA_ROBUSTNESS_EVOLUTION_REPORT_2026-05-05.md",
       "https://enygnadev.github.io/pnva-core/schemas/pnva-event.schema.json",
       "https://enygnadev.github.io/pnva-core/schemas/pnva-entity.schema.json",
@@ -52,10 +53,15 @@
       "https://enygnadev.github.io/pnva-core/reports/pnva-entity-catalog-2026-05-05.json",
       "https://enygnadev.github.io/pnva-core/reports/pnva-canonical-bridge-summary-2026-05-05.json",
       "https://enygnadev.github.io/pnva-core/reports/pnva-replay-validation-2026-05-05.json",
-      "https://enygnadev.github.io/pnva-core/reports/pnva-no-tick-invariants-2026-05-05.json"
+      "https://enygnadev.github.io/pnva-core/reports/pnva-no-tick-invariants-2026-05-05.json",
+      "https://enygnadev.github.io/pnva-core/reports/pnva-native-events-demo-2026-05-05.jsonl",
+      "https://enygnadev.github.io/pnva-core/reports/pnva-native-entity-catalog-demo-2026-05-05.json",
+      "https://enygnadev.github.io/pnva-core/reports/pnva-native-emitter-summary-2026-05-05.json",
+      "https://enygnadev.github.io/pnva-core/reports/pnva-native-replay-validation-2026-05-05.json",
+      "https://enygnadev.github.io/pnva-core/reports/pnva-native-no-tick-invariants-2026-05-05.json"
     ]
   },
-  "generated_at": "2026-05-05T04:35:42Z",
+  "generated_at": "2026-05-05T04:45:13Z",
   "local_logs": {
     "available": true,
     "bad_json_ratio": 0.0,
@@ -710,6 +716,20 @@
       }
     ]
   },
+  "native_emitter": {
+    "classification": "NATIVE_EMITTER_READY",
+    "entity_count": 6,
+    "event_count": 7,
+    "guard_consistency_ratio": 1.0,
+    "invariant_classification": "SOVEREIGN_NO_TICK_READY",
+    "missing": [],
+    "native_event_count": 7,
+    "native_ok": true,
+    "no_tick_suppression_ratio": 0.5714,
+    "proof_integrity_ratio": 1.0,
+    "replay_classification": "REPLAY_VALID",
+    "suppressed_count": 4
+  },
   "no_tick_invariants": {
     "classification": "SOVEREIGN_NO_TICK_READY",
     "event_count": 512,
@@ -789,6 +809,7 @@
   "recommendations": [
     "Add schema_version, entity_id and causal_chain_id to every new JSONL event.",
     "Normalize legacy event/kind payloads into pnva.event.v1 before publishing.",
+    "Prefer native pnva.event.v1 emission for new runtimes; use the bridge only for legacy evidence.",
     "Run no-tick invariant analysis after replay validation to prove causal suppression, not only execution.",
     "Keep raw local logs private and publish only sanitized proof summaries.",
     "Track thermal pressure provenance when thermal pressure is high but sensor temperature/power are unavailable.",

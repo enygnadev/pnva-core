@@ -1,0 +1,124 @@
+{
+  "author": "Gustavo de Aguiar Martins",
+  "classification": "REPLAY_VALID",
+  "entity_catalog_ref": "reports/pnva-native-entity-catalog-demo-2026-05-05.json",
+  "errors": [],
+  "events_ref": "reports/pnva-native-events-demo-2026-05-05.jsonl",
+  "generated_at": "2026-05-05T04:45:12Z",
+  "interpretation": {
+    "no_tick_meaning": "The canonical sequence can be replay-validated without rewriting runtime history.",
+    "proof_meaning": "Each event proof hash is deterministic over sanitized canonical content.",
+    "warning_policy": "Timestamp disorder is a warning in sampled multi-source logs unless strict ordering is requested."
+  },
+  "pass": true,
+  "project": "PNVA-Core",
+  "schema_version": "pnva.replay_validation.v1",
+  "strict_order": false,
+  "summary": {
+    "chain_count": 1,
+    "chain_timestamp_disorder": 0,
+    "event_count": 7,
+    "global_timestamp_disorder": 0,
+    "guard_block_ok": 1,
+    "guard_pass_ok": 1,
+    "largest_chains": [
+      [
+        "chain_native_runtime_demo",
+        7
+      ]
+    ],
+    "proof_hash_bad": 0,
+    "proof_hash_ok": 7,
+    "relation_count": 2,
+    "risk_flags": [
+      [
+        "STALE_PRESSURE",
+        2
+      ],
+      [
+        "THERMAL_PRESSURE",
+        1
+      ]
+    ],
+    "top_actions": [
+      [
+        "NO_ACTION",
+        1
+      ],
+      [
+        "AUTHORIZE_COLLAPSE",
+        1
+      ],
+      [
+        "EXECUTE",
+        1
+      ],
+      [
+        "HOLD_PRESSURE",
+        1
+      ],
+      [
+        "BLOCK_EXECUTION",
+        1
+      ],
+      [
+        "DROP_STALE",
+        1
+      ],
+      [
+        "SEAL_PROOF",
+        1
+      ]
+    ],
+    "top_decision_kinds": [
+      [
+        "observe",
+        2
+      ],
+      [
+        "collapse",
+        2
+      ],
+      [
+        "block",
+        2
+      ],
+      [
+        "prove",
+        1
+      ]
+    ],
+    "top_event_types": [
+      [
+        "FIELD_OBSERVED",
+        1
+      ],
+      [
+        "ETEV_GUARD_PASS",
+        1
+      ],
+      [
+        "RUNTIME_COLLAPSE",
+        1
+      ],
+      [
+        "THERMAL_PRESSURE",
+        1
+      ],
+      [
+        "ETEV_GUARD_BLOCK",
+        1
+      ],
+      [
+        "STALE_JOB_PRESSURE",
+        1
+      ],
+      [
+        "PROOF_SEALED",
+        1
+      ]
+    ],
+    "unique_event_ids": 7
+  },
+  "warnings": []
+}

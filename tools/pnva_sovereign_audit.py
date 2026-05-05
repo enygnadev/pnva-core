@@ -43,6 +43,7 @@ PUBLIC_DOCS = [
     "docs/PNVA_CANONICAL_EVENT_BRIDGE.md",
     "docs/PNVA_ROBUSTNESS_EVOLUTION_REPORT_2026-05-05.md",
     "docs/PNVA_NO_TICK_INVARIANTS.md",
+    "docs/PNVA_NATIVE_EVENT_EMITTER.md",
     "paper/PNVA_CORE_OPEN_RESEARCH_PAPER.md",
 ]
 
@@ -68,6 +69,16 @@ NO_TICK_INVARIANT_FILES = [
     "tools/pnva_no_tick_invariant_analyzer.py",
     "reports/pnva-no-tick-invariants-2026-05-05.json",
     "docs/PNVA_NO_TICK_INVARIANTS.md",
+]
+
+NATIVE_EMITTER_FILES = [
+    "tools/pnva_native_event_emitter.py",
+    "docs/PNVA_NATIVE_EVENT_EMITTER.md",
+    "reports/pnva-native-events-demo-2026-05-05.jsonl",
+    "reports/pnva-native-entity-catalog-demo-2026-05-05.json",
+    "reports/pnva-native-emitter-summary-2026-05-05.json",
+    "reports/pnva-native-replay-validation-2026-05-05.json",
+    "reports/pnva-native-no-tick-invariants-2026-05-05.json",
 ]
 
 LOCAL_LOG_CANDIDATES = [
@@ -322,6 +333,47 @@ def audit_no_tick_invariants(repo: Path) -> dict[str, Any]:
     }
 
 
+def audit_native_emitter(repo: Path) -> dict[str, Any]:
+    missing = [rel for rel in NATIVE_EMITTER_FILES if not (repo / rel).exists()]
+    summary_path = repo / "reports" / "pnva-native-emitter-summary-2026-05-05.json"
+    replay_path = repo / "reports" / "pnva-native-replay-validation-2026-05-05.json"
+    invariants_path = repo / "reports" / "pnva-native-no-tick-invariants-2026-05-05.json"
+    if not summary_path.exists():
+        return {
+            "native_ok": False,
+            "missing": missing,
+            "classification": "NATIVE_EMITTER_MISSING",
+            "errors": ["missing native emitter summary"],
+        }
+    summary = _read_json(summary_path)
+    replay = _read_json(replay_path) if replay_path.exists() else {}
+    invariants = _read_json(invariants_path) if invariants_path.exists() else {}
+    efficiency = invariants.get("no_tick_efficiency", {}) if isinstance(invariants, dict) else {}
+    native_ok = (
+        not missing
+        and summary.get("pass") is True
+        and summary.get("classification") == "NATIVE_EMITTER_READY"
+        and replay.get("pass") is True
+        and replay.get("classification") == "REPLAY_VALID"
+        and invariants.get("pass") is True
+        and invariants.get("classification") == "SOVEREIGN_NO_TICK_READY"
+    )
+    return {
+        "native_ok": native_ok,
+        "missing": missing,
+        "classification": summary.get("classification"),
+        "replay_classification": replay.get("classification"),
+        "invariant_classification": invariants.get("classification"),
+        "event_count": int(summary.get("event_count", 0)),
+        "native_event_count": int(summary.get("native_event_count", 0)),
+        "entity_count": int(summary.get("entity_count", 0)),
+        "suppressed_count": int(summary.get("suppressed_count", 0)),
+        "no_tick_suppression_ratio": float(efficiency.get("no_tick_suppression_ratio", 0.0)),
+        "guard_consistency_ratio": float(efficiency.get("guard_consistency_ratio", 0.0)),
+        "proof_integrity_ratio": float(efficiency.get("proof_integrity_ratio", 0.0)),
+    }
+
+
 def sample_jsonl(path: Path, *, max_lines: int = 50000) -> dict[str, Any]:
     events: Counter[str] = Counter()
     decisions: Counter[str] = Counter()
@@ -507,11 +559,13 @@ def score_report(report: dict[str, Any]) -> dict[str, Any]:
     if report["sovereignty"].get("docs_ok"):
         scores["log_contract"] += 5
     if report.get("canonical_bridge", {}).get("bridge_ok"):
-        scores["actionability"] += 4
+        scores["actionability"] += 3
     if report.get("replay_validation", {}).get("replay_ok"):
         scores["actionability"] += 3
     if report.get("no_tick_invariants", {}).get("invariants_ok"):
-        scores["actionability"] += 3
+        scores["actionability"] += 2
+    if report.get("native_emitter", {}).get("native_ok"):
+        scores["actionability"] += 2
 
     local = report["local_logs"]
     if local.get("mode") == "strict_public":
@@ -565,11 +619,13 @@ def build_report(repo: Path, *, strict_public: bool = False) -> dict[str, Any]:
         "canonical_bridge": audit_canonical_bridge(repo),
         "replay_validation": audit_replay_validation(repo),
         "no_tick_invariants": audit_no_tick_invariants(repo),
+        "native_emitter": audit_native_emitter(repo),
         "local_logs": audit_local_logs(strict_public),
         "sovereignty": audit_sovereignty(repo),
         "recommendations": [
             "Add schema_version, entity_id and causal_chain_id to every new JSONL event.",
             "Normalize legacy event/kind payloads into pnva.event.v1 before publishing.",
+            "Prefer native pnva.event.v1 emission for new runtimes; use the bridge only for legacy evidence.",
             "Run no-tick invariant analysis after replay validation to prove causal suppression, not only execution.",
             "Keep raw local logs private and publish only sanitized proof summaries.",
             "Track thermal pressure provenance when thermal pressure is high but sensor temperature/power are unavailable.",

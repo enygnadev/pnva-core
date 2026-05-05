@@ -41,5 +41,24 @@ jobs:
         run: python3 tools/pnva_replay_validator.py --events reports/pnva-canonical-events-sample-2026-05-05.jsonl --entity-catalog reports/pnva-entity-catalog-2026-05-05.json >/tmp/pnva-replay-validation.json
       - name: Run no-tick invariant analyzer
         run: python3 tools/pnva_no_tick_invariant_analyzer.py --events reports/pnva-canonical-events-sample-2026-05-05.jsonl --entity-catalog reports/pnva-entity-catalog-2026-05-05.json --replay-report reports/pnva-replay-validation-2026-05-05.json >/tmp/pnva-no-tick-invariants.json
+      - name: Run native event emitter demo
+        run: |
+          python3 tools/pnva_native_event_emitter.py \
+            --events /tmp/pnva-native-events.jsonl \
+            --entity-catalog /tmp/pnva-native-entities.json \
+            --summary /tmp/pnva-native-summary.json
+          python3 tools/pnva_replay_validator.py \
+            --events /tmp/pnva-native-events.jsonl \
+            --entity-catalog /tmp/pnva-native-entities.json \
+            --write /tmp/pnva-native-replay.json >/dev/null
+          python3 tools/pnva_no_tick_invariant_analyzer.py \
+            --events /tmp/pnva-native-events.jsonl \
+            --entity-catalog /tmp/pnva-native-entities.json \
+            --replay-report /tmp/pnva-native-replay.json \
+            --write /tmp/pnva-native-invariants.json >/dev/null
+          python3 -m json.tool /tmp/pnva-native-summary.json >/dev/null
+          python3 -m json.tool /tmp/pnva-native-entities.json >/dev/null
+          python3 -m json.tool /tmp/pnva-native-replay.json >/dev/null
+          python3 -m json.tool /tmp/pnva-native-invariants.json >/dev/null
       - name: Check release checksums
         run: sha256sum -c SHA256SUMS.txt

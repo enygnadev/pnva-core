@@ -1,0 +1,199 @@
+{
+  "author": "Gustavo de Aguiar Martins",
+  "entities": [
+    {
+      "capabilities": [
+        "emit_native_pnva_event",
+        "guard_decision"
+      ],
+      "entity_id": "pnva-etev-guard",
+      "entity_type": "guard",
+      "evidence": {
+        "confidence": 0.96,
+        "last_seen": "2026-05-05T04:40:08Z",
+        "notes": "Native PNVA event emitter demo entity.",
+        "proof_ref": "reports/pnva-native-events-demo-2026-05-05.jsonl"
+      },
+      "schema_version": "pnva.entity.v1",
+      "sovereignty_domain": "runtime",
+      "state": "blocked",
+      "stats": {
+        "decision_mix": [
+          [
+            "collapse",
+            1
+          ],
+          [
+            "block",
+            1
+          ]
+        ],
+        "event_count": 2,
+        "first_seen": "2026-05-05T04:40:02Z",
+        "last_seen": "2026-05-05T04:40:08Z",
+        "risk_flags": [
+          [
+            "STALE_PRESSURE",
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "capabilities": [
+        "emit_native_pnva_event"
+      ],
+      "entity_id": "pnva-field-demo",
+      "entity_type": "field",
+      "evidence": {
+        "confidence": 0.88,
+        "last_seen": "2026-05-05T04:40:00Z",
+        "notes": "Native PNVA event emitter demo entity.",
+        "proof_ref": "reports/pnva-native-events-demo-2026-05-05.jsonl"
+      },
+      "schema_version": "pnva.entity.v1",
+      "sovereignty_domain": "runtime",
+      "state": "observing",
+      "stats": {
+        "decision_mix": [
+          [
+            "observe",
+            1
+          ]
+        ],
+        "event_count": 1,
+        "first_seen": "2026-05-05T04:40:00Z",
+        "last_seen": "2026-05-05T04:40:00Z",
+        "risk_flags": []
+      }
+    },
+    {
+      "capabilities": [
+        "emit_native_pnva_event"
+      ],
+      "entity_id": "pnva-proof-native-demo",
+      "entity_type": "proof",
+      "evidence": {
+        "confidence": 0.88,
+        "last_seen": "2026-05-05T04:40:12Z",
+        "notes": "Native PNVA event emitter demo entity.",
+        "proof_ref": "reports/pnva-native-events-demo-2026-05-05.jsonl"
+      },
+      "schema_version": "pnva.entity.v1",
+      "sovereignty_domain": "runtime",
+      "state": "observing",
+      "stats": {
+        "decision_mix": [
+          [
+            "prove",
+            1
+          ]
+        ],
+        "event_count": 1,
+        "first_seen": "2026-05-05T04:40:12Z",
+        "last_seen": "2026-05-05T04:40:12Z",
+        "risk_flags": []
+      }
+    },
+    {
+      "capabilities": [
+        "emit_native_pnva_event"
+      ],
+      "entity_id": "pnva-thermal-guard",
+      "entity_type": "guard",
+      "evidence": {
+        "confidence": 0.88,
+        "last_seen": "2026-05-05T04:40:06Z",
+        "notes": "Native PNVA event emitter demo entity.",
+        "proof_ref": "reports/pnva-native-events-demo-2026-05-05.jsonl"
+      },
+      "schema_version": "pnva.entity.v1",
+      "sovereignty_domain": "runtime",
+      "state": "observing",
+      "stats": {
+        "decision_mix": [
+          [
+            "observe",
+            1
+          ]
+        ],
+        "event_count": 1,
+        "first_seen": "2026-05-05T04:40:06Z",
+        "last_seen": "2026-05-05T04:40:06Z",
+        "risk_flags": [
+          [
+            "THERMAL_PRESSURE",
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "capabilities": [
+        "emit_native_pnva_event",
+        "receive_guard_decision"
+      ],
+      "entity_id": "zano-entity-00",
+      "entity_type": "worker",
+      "evidence": {
+        "confidence": 0.88,
+        "last_seen": "2026-05-05T04:40:04Z",
+        "notes": "Native PNVA event emitter demo entity.",
+        "proof_ref": "reports/pnva-native-events-demo-2026-05-05.jsonl"
+      },
+      "schema_version": "pnva.entity.v1",
+      "sovereignty_domain": "runtime",
+      "state": "active",
+      "stats": {
+        "decision_mix": [
+          [
+            "collapse",
+            1
+          ]
+        ],
+        "event_count": 1,
+        "first_seen": "2026-05-05T04:40:04Z",
+        "last_seen": "2026-05-05T04:40:04Z",
+        "risk_flags": []
+      }
+    },
+    {
+      "capabilities": [
+        "emit_native_pnva_event",
+        "receive_guard_decision"
+      ],
+      "entity_id": "zano-entity-01",
+      "entity_type": "worker",
+      "evidence": {
+        "confidence": 0.88,
+        "last_seen": "2026-05-05T04:40:10Z",
+        "notes": "Native PNVA event emitter demo entity.",
+        "proof_ref": "reports/pnva-native-events-demo-2026-05-05.jsonl"
+      },
+      "schema_version": "pnva.entity.v1",
+      "sovereignty_domain": "runtime",
+      "state": "blocked",
+      "stats": {
+        "decision_mix": [
+          [
+            "block",
+            1
+          ]
+        ],
+        "event_count": 1,
+        "first_seen": "2026-05-05T04:40:10Z",
+        "last_seen": "2026-05-05T04:40:10Z",
+        "risk_flags": [
+          [
+            "STALE_PRESSURE",
+            1
+          ]
+        ]
+      }
+    }
+  ],
+  "entity_count": 6,
+  "generated_at": "2026-05-05T04:45:12Z",
+  "project": "PNVA-Core",
+  "schema_version": "pnva.entity_catalog.v1"
+}
