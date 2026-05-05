@@ -112,5 +112,11 @@ jobs:
             --write /tmp/pnva-evidence-attestation.json \
             >/dev/null
           python3 -m json.tool /tmp/pnva-evidence-attestation.json >/dev/null
+      - name: Run semantic consistency guard
+        run: |
+          python3 tools/pnva_semantic_consistency_guard.py \
+            --write /tmp/pnva-semantic-consistency.json \
+            >/dev/null
+          python3 -m json.tool /tmp/pnva-semantic-consistency.json >/dev/null
       - name: Check release checksums
         run: sha256sum -c SHA256SUMS.txt

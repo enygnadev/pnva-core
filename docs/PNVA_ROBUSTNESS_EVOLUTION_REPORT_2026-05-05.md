@@ -44,6 +44,7 @@ docs/PNVA_CAUSAL_GRAPH_AUDIT.md
 docs/PNVA_SOVEREIGN_EVIDENCE_ATTESTATION.md
 docs/PNVA_ADVERSARIAL_VALIDATION.md
 docs/PNVA_ENTITY_HEURISTIC_MATURITY.md
+docs/PNVA_SEMANTIC_CONSISTENCY_GUARD.md
 tools/pnva_sovereign_audit.py
 tools/pnva_canonical_bridge.py
 tools/pnva_replay_validator.py
@@ -55,6 +56,7 @@ tools/pnva_causal_graph_auditor.py
 tools/pnva_evidence_attestor.py
 tools/pnva_adversarial_validator.py
 tools/pnva_entity_heuristic_maturity.py
+tools/pnva_semantic_consistency_guard.py
 reports/pnva-sovereign-audit-2026-05-05.json
 reports/pnva-canonical-events-sample-2026-05-05.jsonl
 reports/pnva-entity-catalog-2026-05-05.json
@@ -75,6 +77,7 @@ reports/pnva-native-causal-graph-2026-05-05.json
 reports/pnva-sovereign-evidence-attestation-2026-05-05.json
 reports/pnva-adversarial-validation-2026-05-05.json
 reports/pnva-entity-heuristic-maturity-2026-05-05.json
+reports/pnva-semantic-consistency-2026-05-05.json
 ```
 
 ## Technical Diagnosis
@@ -420,6 +423,33 @@ warnings: 0
 
 This makes the next no-tick evolution concrete: reduce legacy authority in future runtime events while preserving old evidence honestly.
 
+### 14. Semantic consistency guard
+
+The semantic consistency guard checks whether public reports agree with each other.
+
+Current result:
+
+```text
+classification: SEMANTIC_CONSISTENCY_READY
+check_count: 67
+error_count: 0
+warning_count: 0
+```
+
+Consistency checks include:
+
+```text
+Manifest summary vs source reports
+canonical event counts across bridge, replay, no-tick, policy, graph and proof-chain
+native event counts across emitter, no-tick, policy, graph and proof-chain
+maturity aggregate math
+attestation artifact count
+audit summary vs attestation and maturity
+Manifest file list existence
+```
+
+This closes a publication risk: reports can no longer drift silently while still appearing valid individually.
+
 ## Next Engineering Recommendations
 
 1. Add schema version to every new JSONL event.
@@ -440,6 +470,7 @@ This makes the next no-tick evolution concrete: reduce legacy authority in futur
 16. Use `tools/pnva_evidence_attestor.py` to publish one aggregate evidence hash for each release.
 17. Use `tools/pnva_adversarial_validator.py` before release so validator failures are proven, not assumed.
 18. Use `tools/pnva_entity_heuristic_maturity.py` to choose hardening targets by entity, heuristic and authority.
+19. Use `tools/pnva_semantic_consistency_guard.py` after attestation to block cross-report drift.
 
 ## Sovereign Rule
 

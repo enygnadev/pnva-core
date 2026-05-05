@@ -523,7 +523,41 @@ Production interpretation:
 
 The canonical legacy bridge preserves 35 low-authority strong decisions as warnings. The native runtime path has zero low-authority legacy warnings. This creates a clean migration rule: old evidence stays honest; new PNVA runtimes must emit native events with H2/H3 authority.
 
-## 17. Public Safety
+## 17. Semantic Consistency Guard
+
+After all evidence reports are generated, check whether they agree as a system:
+
+```text
+manifest + reports + audit + attestation -> semantic consistency
+```
+
+Current report:
+
+```text
+reports/pnva-semantic-consistency-2026-05-05.json
+```
+
+Current classification:
+
+```text
+SEMANTIC_CONSISTENCY_READY
+```
+
+Current result:
+
+```text
+check_count: 67
+error_count: 0
+warning_count: 0
+```
+
+Production interpretation:
+
+PNVA evidence should not pass only as isolated files. The release is stronger when event counts, suppression counts, strong-decision counts, graph counts, maturity math, Manifest metadata, audit summaries and attestation hashes all agree.
+
+The semantic consistency report is not included in the attestation hash seed because it consumes the attestation.
+
+## 18. Public Safety
 
 Public repositories should expose:
 
@@ -550,7 +584,7 @@ wallets
 host-specific automation
 ```
 
-## 18. Principle
+## 19. Principle
 
 PNVA becomes sovereign when every action can answer:
 

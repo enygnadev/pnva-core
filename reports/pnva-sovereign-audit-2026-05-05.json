@@ -72,7 +72,7 @@
     "robots_missing_tokens": [],
     "robots_ok": true,
     "sitemap_ok": true,
-    "sitemap_url_count": 40,
+    "sitemap_url_count": 42,
     "sitemap_urls": [
       "https://enygnadev.github.io/pnva-core/",
       "https://enygnadev.github.io/pnva-core/author.html",
@@ -91,6 +91,7 @@
       "https://enygnadev.github.io/pnva-core/docs/PNVA_SOVEREIGN_EVIDENCE_ATTESTATION.md",
       "https://enygnadev.github.io/pnva-core/docs/PNVA_ADVERSARIAL_VALIDATION.md",
       "https://enygnadev.github.io/pnva-core/docs/PNVA_ENTITY_HEURISTIC_MATURITY.md",
+      "https://enygnadev.github.io/pnva-core/docs/PNVA_SEMANTIC_CONSISTENCY_GUARD.md",
       "https://enygnadev.github.io/pnva-core/docs/PNVA_ROBUSTNESS_EVOLUTION_REPORT_2026-05-05.md",
       "https://enygnadev.github.io/pnva-core/schemas/pnva-event.schema.json",
       "https://enygnadev.github.io/pnva-core/schemas/pnva-entity.schema.json",
@@ -113,6 +114,7 @@
       "https://enygnadev.github.io/pnva-core/reports/pnva-native-causal-graph-2026-05-05.json",
       "https://enygnadev.github.io/pnva-core/reports/pnva-adversarial-validation-2026-05-05.json",
       "https://enygnadev.github.io/pnva-core/reports/pnva-entity-heuristic-maturity-2026-05-05.json",
+      "https://enygnadev.github.io/pnva-core/reports/pnva-semantic-consistency-2026-05-05.json",
       "https://enygnadev.github.io/pnva-core/reports/pnva-sovereign-evidence-attestation-2026-05-05.json"
     ]
   },
@@ -141,7 +143,7 @@
     "missing": [],
     "tracked_artifacts": 19
   },
-  "generated_at": "2026-05-05T05:36:32Z",
+  "generated_at": "2026-05-05T05:47:23Z",
   "local_logs": {
     "available": true,
     "bad_json_ratio": 0.0,
@@ -914,6 +916,7 @@
     "Publish one sovereign evidence attestation hash with every evidence release.",
     "Run adversarial validation so validators prove tamper detection, not only green-path acceptance.",
     "Track entity and heuristic maturity so no-tick suppression stays attributable to actors and authority.",
+    "Run semantic consistency guard after attestation so cross-report drift blocks publication.",
     "Keep raw local logs private and publish only sanitized proof summaries.",
     "Track thermal pressure provenance when thermal pressure is high but sensor temperature/power are unavailable.",
     "Treat high RESIZE_BATCH ratio as pressure intelligence, not as a proof failure by itself."
@@ -945,6 +948,15 @@
       "sovereignty_hygiene": 15
     },
     "total": 100
+  },
+  "semantic_consistency": {
+    "check_count": 67,
+    "classification": "SEMANTIC_CONSISTENCY_READY",
+    "consistency_ok": true,
+    "error_count": 0,
+    "errors": [],
+    "missing": [],
+    "warning_count": 0
   },
   "sovereign_policy": {
     "canonical_event_count": 512,

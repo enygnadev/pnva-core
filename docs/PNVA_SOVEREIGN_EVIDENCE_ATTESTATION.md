@@ -76,6 +76,8 @@ This turns the public evidence package into a stable citation anchor.
 
 The sovereign audit report is intentionally not part of the attestation hash seed. The audit consumes the attestation; including the audit inside the attestation would create a circular hash dependency.
 
+The semantic consistency guard is also outside this hash seed for the same reason: it consumes the attestation and verifies that all public reports agree after the attestation exists.
+
 ## Boundary
 
 This attestation does not claim universal proof for every PNVA deployment. It attests the integrity and consistency of this public repository evidence package.

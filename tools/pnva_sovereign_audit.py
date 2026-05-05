@@ -50,6 +50,7 @@ PUBLIC_DOCS = [
     "docs/PNVA_SOVEREIGN_EVIDENCE_ATTESTATION.md",
     "docs/PNVA_ADVERSARIAL_VALIDATION.md",
     "docs/PNVA_ENTITY_HEURISTIC_MATURITY.md",
+    "docs/PNVA_SEMANTIC_CONSISTENCY_GUARD.md",
     "paper/PNVA_CORE_OPEN_RESEARCH_PAPER.md",
 ]
 
@@ -124,6 +125,12 @@ ENTITY_HEURISTIC_MATURITY_FILES = [
     "tools/pnva_entity_heuristic_maturity.py",
     "docs/PNVA_ENTITY_HEURISTIC_MATURITY.md",
     "reports/pnva-entity-heuristic-maturity-2026-05-05.json",
+]
+
+SEMANTIC_CONSISTENCY_FILES = [
+    "tools/pnva_semantic_consistency_guard.py",
+    "docs/PNVA_SEMANTIC_CONSISTENCY_GUARD.md",
+    "reports/pnva-semantic-consistency-2026-05-05.json",
 ]
 
 LOCAL_LOG_CANDIDATES = [
@@ -630,6 +637,33 @@ def audit_entity_heuristic_maturity(repo: Path) -> dict[str, Any]:
     }
 
 
+def audit_semantic_consistency(repo: Path) -> dict[str, Any]:
+    missing = [rel for rel in SEMANTIC_CONSISTENCY_FILES if not (repo / rel).exists()]
+    report_path = repo / "reports" / "pnva-semantic-consistency-2026-05-05.json"
+    if not report_path.exists():
+        return {
+            "consistency_ok": False,
+            "missing": missing,
+            "classification": "SEMANTIC_CONSISTENCY_MISSING",
+            "errors": ["missing semantic consistency report"],
+        }
+    data = _read_json(report_path)
+    return {
+        "consistency_ok": (
+            not missing
+            and data.get("pass") is True
+            and data.get("classification") == "SEMANTIC_CONSISTENCY_READY"
+            and int(data.get("error_count", 0)) == 0
+        ),
+        "missing": missing,
+        "classification": data.get("classification"),
+        "check_count": int(data.get("check_count", 0)),
+        "error_count": int(data.get("error_count", 0)),
+        "warning_count": int(data.get("warning_count", 0)),
+        "errors": [] if isinstance(data, dict) and data.get("pass") is True else ["semantic consistency failed"],
+    }
+
+
 def sample_jsonl(path: Path, *, max_lines: int = 50000) -> dict[str, Any]:
     events: Counter[str] = Counter()
     decisions: Counter[str] = Counter()
@@ -890,6 +924,7 @@ def build_report(repo: Path, *, strict_public: bool = False) -> dict[str, Any]:
         "evidence_attestation": audit_evidence_attestation(repo),
         "adversarial_validation": audit_adversarial_validation(repo),
         "entity_heuristic_maturity": audit_entity_heuristic_maturity(repo),
+        "semantic_consistency": audit_semantic_consistency(repo),
         "local_logs": audit_local_logs(strict_public),
         "sovereignty": audit_sovereignty(repo),
         "recommendations": [
@@ -903,6 +938,7 @@ def build_report(repo: Path, *, strict_public: bool = False) -> dict[str, Any]:
             "Publish one sovereign evidence attestation hash with every evidence release.",
             "Run adversarial validation so validators prove tamper detection, not only green-path acceptance.",
             "Track entity and heuristic maturity so no-tick suppression stays attributable to actors and authority.",
+            "Run semantic consistency guard after attestation so cross-report drift blocks publication.",
             "Keep raw local logs private and publish only sanitized proof summaries.",
             "Track thermal pressure provenance when thermal pressure is high but sensor temperature/power are unavailable.",
             "Treat high RESIZE_BATCH ratio as pressure intelligence, not as a proof failure by itself.",

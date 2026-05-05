@@ -1,0 +1,729 @@
+{
+  "author": "Gustavo de Aguiar Martins",
+  "check_count": 67,
+  "checks": [
+    {
+      "group": "classification",
+      "left": "REPLAY_VALID",
+      "left_ref": "reports/pnva-replay-validation-2026-05-05.json:classification",
+      "name": "replay_classification",
+      "pass": true,
+      "right": "REPLAY_VALID",
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "classification",
+      "left": true,
+      "left_ref": "reports/pnva-replay-validation-2026-05-05.json:pass",
+      "name": "replay_pass_flag",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "classification",
+      "left": "SOVEREIGN_NO_TICK_READY",
+      "left_ref": "reports/pnva-no-tick-invariants-2026-05-05.json:classification",
+      "name": "no_tick_classification",
+      "pass": true,
+      "right": "SOVEREIGN_NO_TICK_READY",
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "classification",
+      "left": true,
+      "left_ref": "reports/pnva-no-tick-invariants-2026-05-05.json:pass",
+      "name": "no_tick_pass_flag",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "classification",
+      "left": "NATIVE_EMITTER_READY",
+      "left_ref": "reports/pnva-native-emitter-summary-2026-05-05.json:classification",
+      "name": "native_emitter_classification",
+      "pass": true,
+      "right": "NATIVE_EMITTER_READY",
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "classification",
+      "left": true,
+      "left_ref": "reports/pnva-native-emitter-summary-2026-05-05.json:pass",
+      "name": "native_emitter_pass_flag",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "classification",
+      "left": "SOVEREIGN_NO_TICK_READY",
+      "left_ref": "reports/pnva-native-no-tick-invariants-2026-05-05.json:classification",
+      "name": "native_no_tick_classification",
+      "pass": true,
+      "right": "SOVEREIGN_NO_TICK_READY",
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "classification",
+      "left": true,
+      "left_ref": "reports/pnva-native-no-tick-invariants-2026-05-05.json:pass",
+      "name": "native_no_tick_pass_flag",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "classification",
+      "left": "SOVEREIGN_POLICY_READY_WITH_LEGACY_WARNINGS",
+      "left_ref": "reports/pnva-sovereign-policy-2026-05-05.json:classification",
+      "name": "policy_classification",
+      "pass": true,
+      "right": "SOVEREIGN_POLICY_READY_WITH_LEGACY_WARNINGS",
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "classification",
+      "left": true,
+      "left_ref": "reports/pnva-sovereign-policy-2026-05-05.json:pass",
+      "name": "policy_pass_flag",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "classification",
+      "left": "SOVEREIGN_POLICY_READY",
+      "left_ref": "reports/pnva-native-sovereign-policy-2026-05-05.json:classification",
+      "name": "native_policy_classification",
+      "pass": true,
+      "right": "SOVEREIGN_POLICY_READY",
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "classification",
+      "left": true,
+      "left_ref": "reports/pnva-native-sovereign-policy-2026-05-05.json:pass",
+      "name": "native_policy_pass_flag",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "classification",
+      "left": "PROOF_CHAIN_SEALED",
+      "left_ref": "reports/pnva-proof-chain-2026-05-05.json:classification",
+      "name": "proof_chain_classification",
+      "pass": true,
+      "right": "PROOF_CHAIN_SEALED",
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "classification",
+      "left": true,
+      "left_ref": "reports/pnva-proof-chain-2026-05-05.json:pass",
+      "name": "proof_chain_pass_flag",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "classification",
+      "left": "PROOF_CHAIN_SEALED",
+      "left_ref": "reports/pnva-native-proof-chain-2026-05-05.json:classification",
+      "name": "native_proof_chain_classification",
+      "pass": true,
+      "right": "PROOF_CHAIN_SEALED",
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "classification",
+      "left": true,
+      "left_ref": "reports/pnva-native-proof-chain-2026-05-05.json:pass",
+      "name": "native_proof_chain_pass_flag",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "classification",
+      "left": "CAUSAL_GRAPH_READY",
+      "left_ref": "reports/pnva-causal-graph-2026-05-05.json:classification",
+      "name": "causal_graph_classification",
+      "pass": true,
+      "right": "CAUSAL_GRAPH_READY",
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "classification",
+      "left": true,
+      "left_ref": "reports/pnva-causal-graph-2026-05-05.json:pass",
+      "name": "causal_graph_pass_flag",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "classification",
+      "left": "CAUSAL_GRAPH_READY",
+      "left_ref": "reports/pnva-native-causal-graph-2026-05-05.json:classification",
+      "name": "native_causal_graph_classification",
+      "pass": true,
+      "right": "CAUSAL_GRAPH_READY",
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "classification",
+      "left": true,
+      "left_ref": "reports/pnva-native-causal-graph-2026-05-05.json:pass",
+      "name": "native_causal_graph_pass_flag",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "classification",
+      "left": "ADVERSARIAL_VALIDATION_PASS",
+      "left_ref": "reports/pnva-adversarial-validation-2026-05-05.json:classification",
+      "name": "adversarial_classification",
+      "pass": true,
+      "right": "ADVERSARIAL_VALIDATION_PASS",
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "classification",
+      "left": true,
+      "left_ref": "reports/pnva-adversarial-validation-2026-05-05.json:pass",
+      "name": "adversarial_pass_flag",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "classification",
+      "left": "ENTITY_HEURISTIC_MATURITY_READY_WITH_LEGACY_WARNINGS",
+      "left_ref": "reports/pnva-entity-heuristic-maturity-2026-05-05.json:classification",
+      "name": "maturity_classification",
+      "pass": true,
+      "right": "ENTITY_HEURISTIC_MATURITY_READY_WITH_LEGACY_WARNINGS",
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "classification",
+      "left": true,
+      "left_ref": "reports/pnva-entity-heuristic-maturity-2026-05-05.json:pass",
+      "name": "maturity_pass_flag",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "classification",
+      "left": "PNVA_SOVEREIGN_EVIDENCE_ATTESTED",
+      "left_ref": "reports/pnva-sovereign-evidence-attestation-2026-05-05.json:classification",
+      "name": "attestation_classification",
+      "pass": true,
+      "right": "PNVA_SOVEREIGN_EVIDENCE_ATTESTED",
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "classification",
+      "left": true,
+      "left_ref": "reports/pnva-sovereign-evidence-attestation-2026-05-05.json:pass",
+      "name": "attestation_pass_flag",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "manifest",
+      "left": 512,
+      "left_ref": "MANIFEST:canonical_event_bridge.event_count",
+      "name": "manifest_bridge_event_count",
+      "pass": true,
+      "right": 512,
+      "right_ref": "bridge:event_count",
+      "severity": "error"
+    },
+    {
+      "group": "manifest",
+      "left": 6,
+      "left_ref": "MANIFEST:canonical_event_bridge.entity_count",
+      "name": "manifest_bridge_entity_count",
+      "pass": true,
+      "right": 6,
+      "right_ref": "bridge:entity_count",
+      "severity": "error"
+    },
+    {
+      "group": "manifest",
+      "left": 512,
+      "left_ref": "MANIFEST:replay_validation.event_count",
+      "name": "manifest_replay_event_count",
+      "pass": true,
+      "right": 512,
+      "right_ref": "replay:summary.event_count",
+      "severity": "error"
+    },
+    {
+      "group": "manifest",
+      "left": 512,
+      "left_ref": "MANIFEST:no_tick_invariants.event_count",
+      "name": "manifest_no_tick_event_count",
+      "pass": true,
+      "right": 512,
+      "right_ref": "no_tick:summary.event_count",
+      "severity": "error"
+    },
+    {
+      "group": "manifest",
+      "left": 246,
+      "left_ref": "MANIFEST:no_tick_invariants.suppressed_count",
+      "name": "manifest_no_tick_suppressed_count",
+      "pass": true,
+      "right": 246,
+      "right_ref": "no_tick:no_tick_efficiency.suppressed_count",
+      "severity": "error"
+    },
+    {
+      "group": "manifest",
+      "left": 7,
+      "left_ref": "MANIFEST:native_event_emitter.event_count",
+      "name": "manifest_native_event_count",
+      "pass": true,
+      "right": 7,
+      "right_ref": "native_no_tick:summary.event_count",
+      "severity": "error"
+    },
+    {
+      "group": "manifest",
+      "left": 4,
+      "left_ref": "MANIFEST:native_event_emitter.suppressed_count",
+      "name": "manifest_native_suppressed_count",
+      "pass": true,
+      "right": 4,
+      "right_ref": "native_no_tick:no_tick_efficiency.suppressed_count",
+      "severity": "error"
+    },
+    {
+      "group": "manifest",
+      "left": 299,
+      "left_ref": "MANIFEST:sovereign_policy_validation.canonical_strong_decision_count",
+      "name": "manifest_policy_canonical_strong_count",
+      "pass": true,
+      "right": 299,
+      "right_ref": "policy:summary.strong_decision_count",
+      "severity": "error"
+    },
+    {
+      "group": "manifest",
+      "left": 5,
+      "left_ref": "MANIFEST:sovereign_policy_validation.native_strong_decision_count",
+      "name": "manifest_policy_native_strong_count",
+      "pass": true,
+      "right": 5,
+      "right_ref": "native_policy:summary.strong_decision_count",
+      "severity": "error"
+    },
+    {
+      "group": "manifest",
+      "left": 7,
+      "left_ref": "MANIFEST:adversarial_validation.detected_count",
+      "name": "manifest_adversarial_detected_count",
+      "pass": true,
+      "right": 7,
+      "right_ref": "adversarial:detected_count",
+      "severity": "error"
+    },
+    {
+      "group": "manifest",
+      "left": 94.59,
+      "left_ref": "MANIFEST:entity_heuristic_maturity.maturity_score",
+      "name": "manifest_maturity_score",
+      "pass": true,
+      "right": 94.59,
+      "right_ref": "maturity:maturity_score",
+      "severity": "error",
+      "tolerance": 1e-06
+    },
+    {
+      "group": "manifest",
+      "left": 19,
+      "left_ref": "MANIFEST:sovereign_evidence_attestation.artifact_count",
+      "name": "manifest_attestation_artifact_count",
+      "pass": true,
+      "right": 19,
+      "right_ref": "attestation:artifact_count",
+      "severity": "error"
+    },
+    {
+      "group": "manifest",
+      "left": "sha256:a622b1aa24661c9d76344de08d00823ad9b4f4e4271b9a953c918263b13e23b3",
+      "left_ref": "MANIFEST:sovereign_evidence_attestation.evidence_hash",
+      "name": "manifest_attestation_hash",
+      "pass": true,
+      "right": "sha256:a622b1aa24661c9d76344de08d00823ad9b4f4e4271b9a953c918263b13e23b3",
+      "right_ref": "attestation:evidence_hash",
+      "severity": "error"
+    },
+    {
+      "group": "canonical",
+      "left": 512,
+      "left_ref": "reports/pnva-replay-validation-2026-05-05.json:event_count",
+      "name": "canonical_event_count_matches_replay",
+      "pass": true,
+      "right": 512,
+      "right_ref": "bridge:event_count",
+      "severity": "error"
+    },
+    {
+      "group": "canonical",
+      "left": 512,
+      "left_ref": "reports/pnva-sovereign-policy-2026-05-05.json:event_count",
+      "name": "canonical_event_count_matches_policy",
+      "pass": true,
+      "right": 512,
+      "right_ref": "bridge:event_count",
+      "severity": "error"
+    },
+    {
+      "group": "canonical",
+      "left": 512,
+      "left_ref": "reports/pnva-proof-chain-2026-05-05.json:event_count",
+      "name": "canonical_event_count_matches_proof_chain",
+      "pass": true,
+      "right": 512,
+      "right_ref": "bridge:event_count",
+      "severity": "error"
+    },
+    {
+      "group": "canonical",
+      "left": 512,
+      "left_ref": "reports/pnva-causal-graph-2026-05-05.json:event_count",
+      "name": "canonical_event_count_matches_causal_graph",
+      "pass": true,
+      "right": 512,
+      "right_ref": "bridge:event_count",
+      "severity": "error"
+    },
+    {
+      "group": "canonical",
+      "left": 6,
+      "left_ref": "bridge:entity_count",
+      "name": "bridge_entity_count_matches_graph_catalog",
+      "pass": true,
+      "right": 6,
+      "right_ref": "causal_graph:summary.catalog_entity_count",
+      "severity": "error"
+    },
+    {
+      "group": "canonical",
+      "left": 512,
+      "left_ref": "replay:summary.proof_hash_ok",
+      "name": "replay_proofs_match_event_count",
+      "pass": true,
+      "right": 512,
+      "right_ref": "replay:summary.event_count",
+      "severity": "error"
+    },
+    {
+      "group": "canonical",
+      "left": 512,
+      "left_ref": "proof_chain:seal.unique_event_ids",
+      "name": "proof_chain_unique_ids_match_event_count",
+      "pass": true,
+      "right": 512,
+      "right_ref": "proof_chain:seal.event_count",
+      "severity": "error"
+    },
+    {
+      "group": "native",
+      "left": 7,
+      "left_ref": "reports/pnva-native-emitter-summary-2026-05-05.json:event_count",
+      "name": "native_event_count_matches_native_emitter",
+      "pass": true,
+      "right": 7,
+      "right_ref": "native_no_tick:summary.event_count",
+      "severity": "error"
+    },
+    {
+      "group": "native",
+      "left": 7,
+      "left_ref": "reports/pnva-native-sovereign-policy-2026-05-05.json:event_count",
+      "name": "native_event_count_matches_native_policy",
+      "pass": true,
+      "right": 7,
+      "right_ref": "native_no_tick:summary.event_count",
+      "severity": "error"
+    },
+    {
+      "group": "native",
+      "left": 7,
+      "left_ref": "reports/pnva-native-proof-chain-2026-05-05.json:event_count",
+      "name": "native_event_count_matches_native_proof_chain",
+      "pass": true,
+      "right": 7,
+      "right_ref": "native_no_tick:summary.event_count",
+      "severity": "error"
+    },
+    {
+      "group": "native",
+      "left": 7,
+      "left_ref": "reports/pnva-native-causal-graph-2026-05-05.json:event_count",
+      "name": "native_event_count_matches_native_causal_graph",
+      "pass": true,
+      "right": 7,
+      "right_ref": "native_no_tick:summary.event_count",
+      "severity": "error"
+    },
+    {
+      "group": "native",
+      "left": 6,
+      "left_ref": "native_emitter:entity_count",
+      "name": "native_entity_count_matches_graph_catalog",
+      "pass": true,
+      "right": 6,
+      "right_ref": "native_causal_graph:summary.catalog_entity_count",
+      "severity": "error"
+    },
+    {
+      "group": "native",
+      "left": 7,
+      "left_ref": "native_proof_chain:seal.unique_event_ids",
+      "name": "native_proof_chain_unique_ids_match_event_count",
+      "pass": true,
+      "right": 7,
+      "right_ref": "native_proof_chain:seal.event_count",
+      "severity": "error"
+    },
+    {
+      "group": "maturity_math",
+      "left": 519,
+      "left_ref": "maturity:summary.total_event_count",
+      "name": "maturity_total_events",
+      "pass": true,
+      "right": 519,
+      "right_ref": "canonical_events+native_events",
+      "severity": "error"
+    },
+    {
+      "group": "maturity_math",
+      "left": 250,
+      "left_ref": "maturity:summary.total_suppressed_count",
+      "name": "maturity_total_suppressed",
+      "pass": true,
+      "right": 250,
+      "right_ref": "canonical_suppressed+native_suppressed",
+      "severity": "error"
+    },
+    {
+      "group": "maturity_math",
+      "left": 304,
+      "left_ref": "maturity:summary.total_strong_decision_count",
+      "name": "maturity_total_strong",
+      "pass": true,
+      "right": 304,
+      "right_ref": "policy_strong+native_policy_strong",
+      "severity": "error"
+    },
+    {
+      "group": "maturity_math",
+      "left": 269,
+      "left_ref": "maturity:summary.total_strong_with_hard_authority",
+      "name": "maturity_total_hard_authority",
+      "pass": true,
+      "right": 269,
+      "right_ref": "strong-low_authority",
+      "severity": "error"
+    },
+    {
+      "group": "maturity_math",
+      "left": 0.481696,
+      "left_ref": "maturity:summary.aggregate_no_tick_suppression_ratio",
+      "name": "maturity_suppression_ratio",
+      "pass": true,
+      "right": 0.481696,
+      "right_ref": "total_suppressed/total_events",
+      "severity": "error",
+      "tolerance": 1e-06
+    },
+    {
+      "group": "maturity_math",
+      "left": 0.884868,
+      "left_ref": "maturity:summary.aggregate_hard_authority_ratio",
+      "name": "maturity_hard_authority_ratio",
+      "pass": true,
+      "right": 0.884868,
+      "right_ref": "total_hard/total_strong",
+      "severity": "error",
+      "tolerance": 1e-06
+    },
+    {
+      "group": "attestation",
+      "left": 19,
+      "left_ref": "attestation:artifact_count",
+      "name": "artifact_count_matches_list",
+      "pass": true,
+      "right": 19,
+      "right_ref": "len(attestation.artifacts)",
+      "severity": "error"
+    },
+    {
+      "group": "attestation",
+      "left": 0,
+      "left_ref": "attestation:failure_count",
+      "name": "failure_count_zero",
+      "pass": true,
+      "right": 0,
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "attestation",
+      "left": true,
+      "left_ref": "attestation:artifact_ids",
+      "name": "attestation_contains_adversarial_validation",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "attestation",
+      "left": true,
+      "left_ref": "attestation:artifact_ids",
+      "name": "attestation_contains_entity_heuristic_maturity",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "audit",
+      "left": "SOVEREIGN_READY",
+      "left_ref": "audit:score.classification",
+      "name": "audit_score_ready",
+      "pass": true,
+      "right": "SOVEREIGN_READY",
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "audit",
+      "left": "sha256:a622b1aa24661c9d76344de08d00823ad9b4f4e4271b9a953c918263b13e23b3",
+      "left_ref": "audit:evidence_attestation.evidence_hash",
+      "name": "audit_attestation_hash_matches",
+      "pass": true,
+      "right": "sha256:a622b1aa24661c9d76344de08d00823ad9b4f4e4271b9a953c918263b13e23b3",
+      "right_ref": "attestation:evidence_hash",
+      "severity": "error"
+    },
+    {
+      "group": "audit",
+      "left": 94.59,
+      "left_ref": "audit:entity_heuristic_maturity.maturity_score",
+      "name": "audit_maturity_score_matches",
+      "pass": true,
+      "right": 94.59,
+      "right_ref": "maturity:maturity_score",
+      "severity": "error",
+      "tolerance": 1e-06
+    },
+    {
+      "group": "manifest_hygiene",
+      "left": [],
+      "left_ref": "MANIFEST:files duplicates",
+      "name": "manifest_file_list_has_no_duplicates",
+      "pass": true,
+      "right": [],
+      "right_ref": "expected",
+      "severity": "warning"
+    },
+    {
+      "group": "manifest_hygiene",
+      "left": [],
+      "left_ref": "MANIFEST:files missing",
+      "name": "manifest_files_exist",
+      "pass": true,
+      "right": [],
+      "right_ref": "expected",
+      "severity": "error"
+    }
+  ],
+  "classification": "SEMANTIC_CONSISTENCY_READY",
+  "error_count": 0,
+  "errors": [],
+  "generated_at": "2026-05-05T05:47:23Z",
+  "interpretation": {
+    "boundary": "This guard checks semantic consistency of the public evidence package; it does not replace runtime execution tests.",
+    "purpose": "Detect drift between PNVA public evidence reports, manifest metadata, attestation and audit summaries.",
+    "sovereignty": "A PNVA release is stronger when independent reports agree on event counts, suppression, authority, graph coverage, hashes and classifications."
+  },
+  "pass": true,
+  "project": "PNVA-Core",
+  "recommendations": [
+    "Run this guard after regenerating reports and before publishing checksums.",
+    "Treat any semantic mismatch as a release-blocking error unless explicitly documented.",
+    "Keep this guard outside the evidence attestation hash seed because it consumes the attestation."
+  ],
+  "reports_checked": {
+    "adversarial": "reports/pnva-adversarial-validation-2026-05-05.json",
+    "attestation": "reports/pnva-sovereign-evidence-attestation-2026-05-05.json",
+    "audit": "reports/pnva-sovereign-audit-2026-05-05.json",
+    "bridge": "reports/pnva-canonical-bridge-summary-2026-05-05.json",
+    "causal_graph": "reports/pnva-causal-graph-2026-05-05.json",
+    "manifest": "MANIFEST.json",
+    "maturity": "reports/pnva-entity-heuristic-maturity-2026-05-05.json",
+    "native_causal_graph": "reports/pnva-native-causal-graph-2026-05-05.json",
+    "native_emitter": "reports/pnva-native-emitter-summary-2026-05-05.json",
+    "native_no_tick": "reports/pnva-native-no-tick-invariants-2026-05-05.json",
+    "native_policy": "reports/pnva-native-sovereign-policy-2026-05-05.json",
+    "native_proof_chain": "reports/pnva-native-proof-chain-2026-05-05.json",
+    "no_tick": "reports/pnva-no-tick-invariants-2026-05-05.json",
+    "policy": "reports/pnva-sovereign-policy-2026-05-05.json",
+    "proof_chain": "reports/pnva-proof-chain-2026-05-05.json",
+    "replay": "reports/pnva-replay-validation-2026-05-05.json"
+  },
+  "schema_version": "pnva.semantic_consistency.v1",
+  "summary": {
+    "attestation_artifact_count": 19,
+    "audit_score": 100,
+    "canonical_event_count": 512,
+    "canonical_suppressed_count": 246,
+    "native_event_count": 7,
+    "native_suppressed_count": 4,
+    "total_event_count": 519,
+    "total_strong_decision_count": 304,
+    "total_strong_with_hard_authority": 269,
+    "total_suppressed_count": 250
+  },
+  "warning_count": 0,
+  "warnings": []
+}
