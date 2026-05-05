@@ -46,6 +46,7 @@ Gustavo de Aguiar Martins. PNVA-Core: A Post-Temporal Causal Architecture for St
 - docs/PNVA_SOVEREIGN_LOGS_ENTITIES_HEURISTICS.md
 - docs/PNVA_CANONICAL_EVENT_BRIDGE.md
 - docs/PNVA_REPLAY_VALIDATION.md
+- docs/PNVA_NO_TICK_INVARIANTS.md
 - docs/PNVA_ROBUSTNESS_EVOLUTION_REPORT_2026-05-05.md
 - docs/VEON_MODEL_VALIDATION.md
 - docs/PNVA_POST_TEMPORAL_CIVILIZATION.md
@@ -56,11 +57,13 @@ Gustavo de Aguiar Martins. PNVA-Core: A Post-Temporal Causal Architecture for St
 - tools/pnva_sovereign_audit.py
 - tools/pnva_canonical_bridge.py
 - tools/pnva_replay_validator.py
+- tools/pnva_no_tick_invariant_analyzer.py
 - reports/pnva-sovereign-audit-2026-05-05.json
 - reports/pnva-canonical-events-sample-2026-05-05.jsonl
 - reports/pnva-entity-catalog-2026-05-05.json
 - reports/pnva-canonical-bridge-summary-2026-05-05.json
 - reports/pnva-replay-validation-2026-05-05.json
+- reports/pnva-no-tick-invariants-2026-05-05.json
 
 ## Sovereign Robustness
 
@@ -69,6 +72,8 @@ PNVA-Core defines canonical schemas for PNVA entities and PNVA event envelopes. 
 The canonical event bridge converts legacy PNVA JSONL records into sanitized `pnva.event.v1` envelopes. This allows old no-tick, heuristic and veonic traces to become comparable public evidence without exposing raw local logs.
 
 The replay validator checks canonical event sequences for deterministic proof hashes, unique event IDs, guard pass/block consistency, entity relations and causal chain structure.
+
+The no-tick invariant analyzer checks that execution and suppression are both causal, proof-backed and entity-aware. The current public classification is SOVEREIGN_NO_TICK_READY.
 
 ## Boundaries
 

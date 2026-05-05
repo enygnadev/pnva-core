@@ -1,0 +1,720 @@
+{
+  "author": "Gustavo de Aguiar Martins",
+  "classification": "SOVEREIGN_NO_TICK_READY",
+  "entity_catalog_ref": "reports/pnva-entity-catalog-2026-05-05.json",
+  "entity_health": [
+    {
+      "attention": [
+        "HIGH_RISK_FLAG_DENSITY"
+      ],
+      "block_ratio": 0.0,
+      "decision_mix": [
+        [
+          "collapse",
+          128
+        ],
+        [
+          "observe",
+          84
+        ]
+      ],
+      "entity_id": "zano-entity-00",
+      "entity_type": "field",
+      "event_count": 212,
+      "risk_flag_density": 1.4151,
+      "risk_flags": [
+        [
+          "VEONIC_TRACE",
+          128
+        ],
+        [
+          "RESIZE_BATCH_PRESSURE",
+          86
+        ],
+        [
+          "THERMAL_PRESSURE",
+          86
+        ]
+      ],
+      "status": "pressure_visible",
+      "top_actions": [
+        [
+          "RESIZE_BATCH",
+          86
+        ],
+        [
+          "pnva_engine_evaluated",
+          37
+        ],
+        [
+          "EXECUTE",
+          35
+        ],
+        [
+          "assigned",
+          18
+        ],
+        [
+          "entity_range_assigned",
+          11
+        ],
+        [
+          "kernel_completed",
+          9
+        ],
+        [
+          "kernel_launched",
+          9
+        ],
+        [
+          "SWITCH_INTENSITY",
+          7
+        ]
+      ],
+      "top_rules": [
+        [
+          "adaptive_threshold",
+          165
+        ],
+        [
+          "field_scheduler",
+          128
+        ],
+        [
+          "veonic_layer",
+          128
+        ],
+        [
+          "legacy_observer",
+          47
+        ],
+        [
+          "affinity_router",
+          37
+        ],
+        [
+          "memory4d",
+          37
+        ],
+        [
+          "power_orchestrator",
+          37
+        ]
+      ]
+    },
+    {
+      "attention": [
+        "HIGH_RISK_FLAG_DENSITY"
+      ],
+      "block_ratio": 0.0,
+      "decision_mix": [
+        [
+          "collapse",
+          103
+        ],
+        [
+          "observe",
+          29
+        ]
+      ],
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "field",
+      "event_count": 132,
+      "risk_flag_density": 1.0758,
+      "risk_flags": [
+        [
+          "RESIZE_BATCH_PRESSURE",
+          90
+        ],
+        [
+          "THERMAL_PRESSURE",
+          52
+        ]
+      ],
+      "status": "pressure_visible",
+      "top_actions": [
+        [
+          "RESIZE_BATCH",
+          90
+        ],
+        [
+          "scan_ranges=2",
+          10
+        ],
+        [
+          "EXECUTE",
+          7
+        ],
+        [
+          "COOLDOWN_GPU",
+          4
+        ],
+        [
+          "eth_getWork_sent",
+          2
+        ],
+        [
+          "eth_getWork_response",
+          2
+        ],
+        [
+          "STRATUM_JOB",
+          2
+        ],
+        [
+          "pool_authorized",
+          2
+        ]
+      ],
+      "top_rules": [
+        [
+          "field_scheduler",
+          86
+        ],
+        [
+          "legacy_observer",
+          46
+        ]
+      ]
+    },
+    {
+      "attention": [],
+      "block_ratio": 0.0,
+      "decision_mix": [
+        [
+          "observe",
+          87
+        ]
+      ],
+      "entity_id": "zano-entity-01",
+      "entity_type": "field",
+      "event_count": 87,
+      "risk_flag_density": 0.0,
+      "risk_flags": [],
+      "status": "sovereign_active",
+      "top_actions": [
+        [
+          "pnva_engine_evaluated",
+          41
+        ],
+        [
+          "assigned",
+          18
+        ],
+        [
+          "entity_range_assigned",
+          11
+        ],
+        [
+          "kernel_launched",
+          9
+        ],
+        [
+          "kernel_completed",
+          8
+        ]
+      ],
+      "top_rules": [
+        [
+          "legacy_observer",
+          46
+        ],
+        [
+          "adaptive_threshold",
+          41
+        ],
+        [
+          "affinity_router",
+          41
+        ],
+        [
+          "memory4d",
+          41
+        ],
+        [
+          "power_orchestrator",
+          41
+        ]
+      ]
+    },
+    {
+      "attention": [],
+      "block_ratio": 0.0,
+      "decision_mix": [
+        [
+          "collapse",
+          35
+        ]
+      ],
+      "entity_id": "entity_9ad2a10c30be",
+      "entity_type": "guard",
+      "event_count": 35,
+      "risk_flag_density": 0.0,
+      "risk_flags": [],
+      "status": "sovereign_active",
+      "top_actions": [
+        [
+          "ETEV_GUARD_PASS",
+          35
+        ]
+      ],
+      "top_rules": [
+        [
+          "adaptive_threshold",
+          35
+        ],
+        [
+          "etev_guard",
+          35
+        ],
+        [
+          "field_scheduler",
+          25
+        ]
+      ]
+    },
+    {
+      "attention": [
+        "HIGH_BLOCK_RATIO"
+      ],
+      "block_ratio": 1.0,
+      "decision_mix": [
+        [
+          "block",
+          33
+        ]
+      ],
+      "entity_id": "entity_9030cf1aa9f6",
+      "entity_type": "guard",
+      "event_count": 33,
+      "risk_flag_density": 0.0,
+      "risk_flags": [],
+      "status": "guarded",
+      "top_actions": [
+        [
+          "ETEV_GUARD_BLOCK",
+          33
+        ]
+      ],
+      "top_rules": [
+        [
+          "adaptive_threshold",
+          33
+        ],
+        [
+          "etev_guard",
+          33
+        ],
+        [
+          "field_scheduler",
+          25
+        ]
+      ]
+    },
+    {
+      "attention": [],
+      "block_ratio": 0.0,
+      "decision_mix": [
+        [
+          "observe",
+          13
+        ]
+      ],
+      "entity_id": "entity_8ba8a9970d6a",
+      "entity_type": "field",
+      "event_count": 13,
+      "risk_flag_density": 0.0,
+      "risk_flags": [],
+      "status": "sovereign_active",
+      "top_actions": [
+        [
+          "runtime_snapshot",
+          10
+        ],
+        [
+          "job_received",
+          3
+        ]
+      ],
+      "top_rules": [
+        [
+          "legacy_observer",
+          13
+        ]
+      ]
+    }
+  ],
+  "events_ref": "reports/pnva-canonical-events-sample-2026-05-05.jsonl",
+  "failed_invariants": [],
+  "generated_at": "2026-05-05T04:35:42Z",
+  "heuristic_classes": {
+    "adaptive_threshold": {
+      "class": "H2_GUARDED_THRESHOLD",
+      "count": 274
+    },
+    "affinity_router": {
+      "class": "H2_GUARDED_ROUTING",
+      "count": 78
+    },
+    "etev_guard": {
+      "class": "H3_SOVEREIGN_GUARD",
+      "count": 68
+    },
+    "field_scheduler": {
+      "class": "H2_GUARDED_ACTION",
+      "count": 264
+    },
+    "legacy_observer": {
+      "class": "H0_OBSERVATION_ONLY",
+      "count": 152
+    },
+    "memory4d": {
+      "class": "H1_ADVISORY_MEMORY",
+      "count": 78
+    },
+    "power_orchestrator": {
+      "class": "H2_GUARDED_ACTION",
+      "count": 78
+    },
+    "veonic_layer": {
+      "class": "H1_ADVISORY_SIGNAL",
+      "count": 128
+    }
+  },
+  "interpretation": {
+    "entities": "Entity health is derived from canonical event evidence and does not expose raw local identifiers.",
+    "heuristics": "Heuristics are not treated as magic intelligence; each rule is classified by allowed authority level.",
+    "no_tick": "Observe and block decisions are counted as causal suppression because the runtime records why it did not execute."
+  },
+  "invariants": [
+    {
+      "evidence": {
+        "event_count": 512,
+        "parse_errors": 0,
+        "replay_classification": "REPLAY_VALID"
+      },
+      "name": "CANONICAL_SCHEMA_REPLAYED",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "proof_hash_bad": 0,
+        "proof_hash_ok": 512
+      },
+      "name": "PROOF_HASH_STABLE",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "suppressed_count": 246,
+        "suppression_ratio": 0.4805
+      },
+      "name": "NO_TICK_SUPPRESSION_OBSERVED",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "guard_event_count": 68,
+        "guard_validated": 68
+      },
+      "name": "GUARD_COLLAPSE_BLOCK_CONSISTENT",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "catalog_entity_count": 6,
+        "missing_entities": [],
+        "observed_entity_count": 6
+      },
+      "name": "ENTITY_CATALOG_COVERS_EVENTS",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "risk_flag_count": 442,
+        "rule_count": 1120,
+        "top_risks": [
+          [
+            "RESIZE_BATCH_PRESSURE",
+            176
+          ],
+          [
+            "THERMAL_PRESSURE",
+            138
+          ],
+          [
+            "VEONIC_TRACE",
+            128
+          ]
+        ],
+        "top_rules": [
+          [
+            "adaptive_threshold",
+            274
+          ],
+          [
+            "field_scheduler",
+            264
+          ],
+          [
+            "legacy_observer",
+            152
+          ],
+          [
+            "veonic_layer",
+            128
+          ],
+          [
+            "affinity_router",
+            78
+          ],
+          [
+            "memory4d",
+            78
+          ],
+          [
+            "power_orchestrator",
+            78
+          ],
+          [
+            "etev_guard",
+            68
+          ]
+        ]
+      },
+      "name": "HEURISTIC_VISIBILITY_PRESENT",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "checked_events": 512,
+        "policy": "source.file_name must be basename only"
+      },
+      "name": "PUBLIC_SAFE_EVENT_REFERENCES",
+      "pass": true
+    }
+  ],
+  "no_tick_efficiency": {
+    "block_count": 33,
+    "causal_execution_ratio": 0.5195,
+    "collapse_count": 266,
+    "event_count": 512,
+    "guard_consistency_ratio": 1.0,
+    "no_tick_suppression_ratio": 0.4805,
+    "observe_count": 213,
+    "proof_integrity_ratio": 1.0,
+    "suppressed_count": 246
+  },
+  "parse_errors": [],
+  "pass": true,
+  "project": "PNVA-Core",
+  "recommendations": [
+    "Emit pnva.event.v1 directly from the runtime so replay validation does not depend on a legacy bridge.",
+    "Promote guard and thermal pressure into explicit runtime entities when sensor provenance is available.",
+    "Keep observe/block records; they are the audit trail that proves no-tick suppression without hiding decisions."
+  ],
+  "replay_report_ref": "reports/pnva-replay-validation-2026-05-05.json",
+  "schema_version": "pnva.no_tick_invariants.v1",
+  "summary": {
+    "causal_chain_count": 14,
+    "entity_count_catalog": 6,
+    "entity_count_observed": 6,
+    "event_count": 512,
+    "top_actions": [
+      [
+        "RESIZE_BATCH",
+        176
+      ],
+      [
+        "pnva_engine_evaluated",
+        78
+      ],
+      [
+        "EXECUTE",
+        42
+      ],
+      [
+        "assigned",
+        36
+      ],
+      [
+        "ETEV_GUARD_PASS",
+        35
+      ],
+      [
+        "ETEV_GUARD_BLOCK",
+        33
+      ],
+      [
+        "entity_range_assigned",
+        22
+      ],
+      [
+        "kernel_launched",
+        18
+      ],
+      [
+        "kernel_completed",
+        17
+      ],
+      [
+        "runtime_snapshot",
+        10
+      ],
+      [
+        "scan_ranges=2",
+        10
+      ],
+      [
+        "SWITCH_INTENSITY",
+        9
+      ]
+    ],
+    "top_chains": [
+      [
+        "chain_021c088f7853",
+        128
+      ],
+      [
+        "chain_9ce61292fa5a",
+        71
+      ],
+      [
+        "chain_08fb2e218d52",
+        64
+      ],
+      [
+        "chain_482433f85efe",
+        64
+      ],
+      [
+        "chain_92287533f69d",
+        52
+      ],
+      [
+        "chain_1988457c3d12",
+        29
+      ],
+      [
+        "chain_8bfdbf9faf43",
+        23
+      ],
+      [
+        "chain_6709c2ff5904",
+        20
+      ]
+    ],
+    "top_decisions": [
+      [
+        "collapse",
+        266
+      ],
+      [
+        "observe",
+        213
+      ],
+      [
+        "block",
+        33
+      ]
+    ],
+    "top_event_types": [
+      [
+        "range_plan_built",
+        123
+      ],
+      [
+        "pnva_engine_evaluated",
+        78
+      ],
+      [
+        "pnva_decision",
+        53
+      ],
+      [
+        "range_ledger",
+        38
+      ],
+      [
+        "ETEV_GUARD_PASS",
+        35
+      ],
+      [
+        "cuda_slot_scan",
+        35
+      ],
+      [
+        "ETEV_GUARD_BLOCK",
+        33
+      ],
+      [
+        "entity_range_assigned",
+        22
+      ],
+      [
+        "network_state_changed",
+        19
+      ],
+      [
+        "kernel_launched",
+        18
+      ],
+      [
+        "kernel_completed",
+        17
+      ],
+      [
+        "runtime_status",
+        15
+      ]
+    ],
+    "top_heuristic_rules": [
+      [
+        "adaptive_threshold",
+        274
+      ],
+      [
+        "field_scheduler",
+        264
+      ],
+      [
+        "legacy_observer",
+        152
+      ],
+      [
+        "veonic_layer",
+        128
+      ],
+      [
+        "affinity_router",
+        78
+      ],
+      [
+        "memory4d",
+        78
+      ],
+      [
+        "power_orchestrator",
+        78
+      ],
+      [
+        "etev_guard",
+        68
+      ]
+    ],
+    "top_risk_flags": [
+      [
+        "RESIZE_BATCH_PRESSURE",
+        176
+      ],
+      [
+        "THERMAL_PRESSURE",
+        138
+      ],
+      [
+        "VEONIC_TRACE",
+        128
+      ]
+    ]
+  }
+}

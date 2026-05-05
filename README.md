@@ -116,6 +116,7 @@ docs/
   PNVA_SOVEREIGN_LOGS_ENTITIES_HEURISTICS.md
   PNVA_CANONICAL_EVENT_BRIDGE.md
   PNVA_REPLAY_VALIDATION.md
+  PNVA_NO_TICK_INVARIANTS.md
   PNVA_ROBUSTNESS_EVOLUTION_REPORT_2026-05-05.md
   VEON_MODEL_VALIDATION.md
   PNVA_POST_TEMPORAL_CIVILIZATION.md
@@ -141,6 +142,7 @@ reports/
   pnva-entity-catalog-2026-05-05.json
   pnva-canonical-bridge-summary-2026-05-05.json
   pnva-replay-validation-2026-05-05.json
+  pnva-no-tick-invariants-2026-05-05.json
 
 release/
   final production closure note
@@ -151,6 +153,7 @@ tools/
   pnva_sovereign_audit.py
   pnva_canonical_bridge.py
   pnva_replay_validator.py
+  pnva_no_tick_invariant_analyzer.py
 ```
 
 ## Public Launch
@@ -217,6 +220,7 @@ for f in proofs/sanitized/*.json; do python3 -m json.tool "$f" >/dev/null; done
 python3 tools/pnva_sovereign_audit.py --repo . --strict-public --min-score 80 >/tmp/pnva-sovereign-audit.json
 python3 tools/pnva_canonical_bridge.py --demo --output /tmp/pnva-events.jsonl --entity-catalog /tmp/pnva-entities.json --summary /tmp/pnva-bridge.json
 python3 tools/pnva_replay_validator.py --events reports/pnva-canonical-events-sample-2026-05-05.jsonl --entity-catalog reports/pnva-entity-catalog-2026-05-05.json >/tmp/pnva-replay.json
+python3 tools/pnva_no_tick_invariant_analyzer.py --events reports/pnva-canonical-events-sample-2026-05-05.jsonl --entity-catalog reports/pnva-entity-catalog-2026-05-05.json --replay-report reports/pnva-replay-validation-2026-05-05.json >/tmp/pnva-no-tick-invariants.json
 ```
 
 ## Sovereign Robustness Layer
@@ -234,6 +238,8 @@ The audit checks proof integrity, AI/search discovery, log contract readiness, p
 The canonical bridge converts legacy PNVA JSONL logs into `pnva.event.v1` envelopes, producing sanitized event samples and entity catalogs without exposing raw local logs.
 
 The replay validator checks that the canonical event sequence is internally consistent, proof-hash stable and guard-aware.
+
+The no-tick invariant analyzer proves the stronger PNVA claim: execution and non-execution are both causal, entity-aware, heuristic-visible and proof-backed. The current public report classifies the sample as `SOVEREIGN_NO_TICK_READY` with `246` causal suppressions over `512` events.
 
 ## Citation
 

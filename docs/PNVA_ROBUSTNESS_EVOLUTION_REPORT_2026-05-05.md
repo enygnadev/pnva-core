@@ -36,14 +36,17 @@ schemas/pnva-entity.schema.json
 docs/PNVA_SOVEREIGN_LOGS_ENTITIES_HEURISTICS.md
 docs/PNVA_CANONICAL_EVENT_BRIDGE.md
 docs/PNVA_REPLAY_VALIDATION.md
+docs/PNVA_NO_TICK_INVARIANTS.md
 tools/pnva_sovereign_audit.py
 tools/pnva_canonical_bridge.py
 tools/pnva_replay_validator.py
+tools/pnva_no_tick_invariant_analyzer.py
 reports/pnva-sovereign-audit-2026-05-05.json
 reports/pnva-canonical-events-sample-2026-05-05.jsonl
 reports/pnva-entity-catalog-2026-05-05.json
 reports/pnva-canonical-bridge-summary-2026-05-05.json
 reports/pnva-replay-validation-2026-05-05.json
+reports/pnva-no-tick-invariants-2026-05-05.json
 ```
 
 ## Technical Diagnosis
@@ -171,6 +174,27 @@ errors: 0
 
 This means the public sample is not only formatted. It is internally checkable.
 
+### 6. No-tick invariant analysis
+
+The no-tick invariant analyzer checks the stronger claim: PNVA records both execution and causal suppression.
+
+Current invariant result:
+
+```text
+classification: SOVEREIGN_NO_TICK_READY
+event_count: 512
+collapse_count: 266
+observe_count: 213
+block_count: 33
+suppressed_count: 246
+no_tick_suppression_ratio: 0.4805
+guard_consistency_ratio: 1.0
+proof_integrity_ratio: 1.0
+failed_invariants: 0
+```
+
+This means the public sample contains proof-backed non-execution. In PNVA terms, the system does not simply sleep; it records why it did not collapse.
+
 ## Next Engineering Recommendations
 
 1. Add schema version to every new JSONL event.
@@ -183,6 +207,7 @@ This means the public sample is not only formatted. It is internally checkable.
 8. Use `tools/pnva_canonical_bridge.py` before publishing any future event sample.
 9. Compare future runtimes against `pnva.event.v1`, not against ad hoc log keys.
 10. Use `tools/pnva_replay_validator.py` to validate every canonical event sample before release.
+11. Use `tools/pnva_no_tick_invariant_analyzer.py` to prove causal suppression, entity coverage and heuristic visibility after replay.
 
 ## Sovereign Rule
 

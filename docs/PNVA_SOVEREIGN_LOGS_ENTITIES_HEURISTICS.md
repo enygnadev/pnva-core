@@ -218,6 +218,45 @@ legacy log -> canonical pnva.event.v1 envelope -> sovereign audit report
 
 This makes old logs useful without rewriting the validated runtime.
 
+## 9. No-Tick Invariant Layer
+
+After canonicalization and replay, run the no-tick invariant analyzer:
+
+```text
+canonical pnva.event.v1 -> replay validation -> no-tick invariant report
+```
+
+This layer proves that PNVA is not merely executing less. It proves that suppressed actions are also represented as auditable decisions.
+
+Current public invariant report:
+
+```text
+reports/pnva-no-tick-invariants-2026-05-05.json
+```
+
+Current classification:
+
+```text
+SOVEREIGN_NO_TICK_READY
+```
+
+Core numbers:
+
+```text
+event_count: 512
+collapse_count: 266
+observe_count: 213
+block_count: 33
+suppressed_count: 246
+no_tick_suppression_ratio: 0.4805
+guard_consistency_ratio: 1.0
+proof_integrity_ratio: 1.0
+```
+
+Production interpretation:
+
+PNVA/no-tick becomes stronger when it can prove not only why it acted, but also why it refused to act.
+
 ## 9. Public Safety
 
 Public repositories should expose:

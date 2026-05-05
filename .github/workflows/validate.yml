@@ -39,5 +39,7 @@ jobs:
           python3 -m json.tool /tmp/pnva-bridge-summary.json >/dev/null
       - name: Run replay validator
         run: python3 tools/pnva_replay_validator.py --events reports/pnva-canonical-events-sample-2026-05-05.jsonl --entity-catalog reports/pnva-entity-catalog-2026-05-05.json >/tmp/pnva-replay-validation.json
+      - name: Run no-tick invariant analyzer
+        run: python3 tools/pnva_no_tick_invariant_analyzer.py --events reports/pnva-canonical-events-sample-2026-05-05.jsonl --entity-catalog reports/pnva-entity-catalog-2026-05-05.json --replay-report reports/pnva-replay-validation-2026-05-05.json >/tmp/pnva-no-tick-invariants.json
       - name: Check release checksums
         run: sha256sum -c SHA256SUMS.txt

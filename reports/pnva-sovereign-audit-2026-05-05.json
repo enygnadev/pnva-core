@@ -32,7 +32,7 @@
     "robots_missing_tokens": [],
     "robots_ok": true,
     "sitemap_ok": true,
-    "sitemap_url_count": 17,
+    "sitemap_url_count": 19,
     "sitemap_urls": [
       "https://enygnadev.github.io/pnva-core/",
       "https://enygnadev.github.io/pnva-core/author.html",
@@ -43,6 +43,7 @@
       "https://enygnadev.github.io/pnva-core/docs/PNVA_SOVEREIGN_LOGS_ENTITIES_HEURISTICS.md",
       "https://enygnadev.github.io/pnva-core/docs/PNVA_CANONICAL_EVENT_BRIDGE.md",
       "https://enygnadev.github.io/pnva-core/docs/PNVA_REPLAY_VALIDATION.md",
+      "https://enygnadev.github.io/pnva-core/docs/PNVA_NO_TICK_INVARIANTS.md",
       "https://enygnadev.github.io/pnva-core/docs/PNVA_ROBUSTNESS_EVOLUTION_REPORT_2026-05-05.md",
       "https://enygnadev.github.io/pnva-core/schemas/pnva-event.schema.json",
       "https://enygnadev.github.io/pnva-core/schemas/pnva-entity.schema.json",
@@ -50,10 +51,11 @@
       "https://enygnadev.github.io/pnva-core/reports/pnva-canonical-events-sample-2026-05-05.jsonl",
       "https://enygnadev.github.io/pnva-core/reports/pnva-entity-catalog-2026-05-05.json",
       "https://enygnadev.github.io/pnva-core/reports/pnva-canonical-bridge-summary-2026-05-05.json",
-      "https://enygnadev.github.io/pnva-core/reports/pnva-replay-validation-2026-05-05.json"
+      "https://enygnadev.github.io/pnva-core/reports/pnva-replay-validation-2026-05-05.json",
+      "https://enygnadev.github.io/pnva-core/reports/pnva-no-tick-invariants-2026-05-05.json"
     ]
   },
-  "generated_at": "2026-05-05T04:27:05Z",
+  "generated_at": "2026-05-05T04:35:42Z",
   "local_logs": {
     "available": true,
     "bad_json_ratio": 0.0,
@@ -708,6 +710,17 @@
       }
     ]
   },
+  "no_tick_invariants": {
+    "classification": "SOVEREIGN_NO_TICK_READY",
+    "event_count": 512,
+    "failed_invariants": [],
+    "guard_consistency_ratio": 1.0,
+    "invariants_ok": true,
+    "missing": [],
+    "no_tick_suppression_ratio": 0.4805,
+    "proof_integrity_ratio": 1.0,
+    "suppressed_count": 246
+  },
   "project": "PNVA-Core",
   "proofs": {
     "failed": [],
@@ -776,6 +789,7 @@
   "recommendations": [
     "Add schema_version, entity_id and causal_chain_id to every new JSONL event.",
     "Normalize legacy event/kind payloads into pnva.event.v1 before publishing.",
+    "Run no-tick invariant analysis after replay validation to prove causal suppression, not only execution.",
     "Keep raw local logs private and publish only sanitized proof summaries.",
     "Track thermal pressure provenance when thermal pressure is high but sensor temperature/power are unavailable.",
     "Treat high RESIZE_BATCH ratio as pressure intelligence, not as a proof failure by itself."

@@ -42,6 +42,7 @@ PUBLIC_DOCS = [
     "docs/PNVA_SOVEREIGN_LOGS_ENTITIES_HEURISTICS.md",
     "docs/PNVA_CANONICAL_EVENT_BRIDGE.md",
     "docs/PNVA_ROBUSTNESS_EVOLUTION_REPORT_2026-05-05.md",
+    "docs/PNVA_NO_TICK_INVARIANTS.md",
     "paper/PNVA_CORE_OPEN_RESEARCH_PAPER.md",
 ]
 
@@ -61,6 +62,12 @@ REPLAY_FILES = [
     "tools/pnva_replay_validator.py",
     "reports/pnva-replay-validation-2026-05-05.json",
     "docs/PNVA_REPLAY_VALIDATION.md",
+]
+
+NO_TICK_INVARIANT_FILES = [
+    "tools/pnva_no_tick_invariant_analyzer.py",
+    "reports/pnva-no-tick-invariants-2026-05-05.json",
+    "docs/PNVA_NO_TICK_INVARIANTS.md",
 ]
 
 LOCAL_LOG_CANDIDATES = [
@@ -289,6 +296,32 @@ def audit_replay_validation(repo: Path) -> dict[str, Any]:
     }
 
 
+def audit_no_tick_invariants(repo: Path) -> dict[str, Any]:
+    missing = [rel for rel in NO_TICK_INVARIANT_FILES if not (repo / rel).exists()]
+    report_path = repo / "reports" / "pnva-no-tick-invariants-2026-05-05.json"
+    if not report_path.exists():
+        return {
+            "invariants_ok": False,
+            "missing": missing,
+            "classification": "NO_TICK_INVARIANTS_MISSING",
+            "errors": ["missing no-tick invariant report"],
+        }
+    data = _read_json(report_path)
+    failed = data.get("failed_invariants", []) if isinstance(data, dict) else ["invalid no-tick invariant report"]
+    efficiency = data.get("no_tick_efficiency", {}) if isinstance(data, dict) else {}
+    return {
+        "invariants_ok": not missing and data.get("pass") is True and not failed,
+        "missing": missing,
+        "classification": data.get("classification"),
+        "failed_invariants": failed,
+        "event_count": int(efficiency.get("event_count", 0)),
+        "suppressed_count": int(efficiency.get("suppressed_count", 0)),
+        "no_tick_suppression_ratio": float(efficiency.get("no_tick_suppression_ratio", 0.0)),
+        "guard_consistency_ratio": float(efficiency.get("guard_consistency_ratio", 0.0)),
+        "proof_integrity_ratio": float(efficiency.get("proof_integrity_ratio", 0.0)),
+    }
+
+
 def sample_jsonl(path: Path, *, max_lines: int = 50000) -> dict[str, Any]:
     events: Counter[str] = Counter()
     decisions: Counter[str] = Counter()
@@ -474,9 +507,11 @@ def score_report(report: dict[str, Any]) -> dict[str, Any]:
     if report["sovereignty"].get("docs_ok"):
         scores["log_contract"] += 5
     if report.get("canonical_bridge", {}).get("bridge_ok"):
-        scores["actionability"] += 5
+        scores["actionability"] += 4
     if report.get("replay_validation", {}).get("replay_ok"):
-        scores["actionability"] += 5
+        scores["actionability"] += 3
+    if report.get("no_tick_invariants", {}).get("invariants_ok"):
+        scores["actionability"] += 3
 
     local = report["local_logs"]
     if local.get("mode") == "strict_public":
@@ -529,11 +564,13 @@ def build_report(repo: Path, *, strict_public: bool = False) -> dict[str, Any]:
         "contract": audit_contract(repo),
         "canonical_bridge": audit_canonical_bridge(repo),
         "replay_validation": audit_replay_validation(repo),
+        "no_tick_invariants": audit_no_tick_invariants(repo),
         "local_logs": audit_local_logs(strict_public),
         "sovereignty": audit_sovereignty(repo),
         "recommendations": [
             "Add schema_version, entity_id and causal_chain_id to every new JSONL event.",
             "Normalize legacy event/kind payloads into pnva.event.v1 before publishing.",
+            "Run no-tick invariant analysis after replay validation to prove causal suppression, not only execution.",
             "Keep raw local logs private and publish only sanitized proof summaries.",
             "Track thermal pressure provenance when thermal pressure is high but sensor temperature/power are unavailable.",
             "Treat high RESIZE_BATCH ratio as pressure intelligence, not as a proof failure by itself.",
