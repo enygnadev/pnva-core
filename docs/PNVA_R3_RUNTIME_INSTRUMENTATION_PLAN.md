@@ -46,7 +46,7 @@ required_no_tick_precheck_count: 35
 required_collapse_commit_count: 35
 event_template_count: 6
 mandatory_field_count: 28
-negative_control_detected_count: 55
+negative_control_detected_count: 56
 positive_control_passed_count: 6
 ```
 
@@ -69,6 +69,7 @@ proof.projection=false
 proof.native=true
 source.format=native_pnva_event_v1
 source.sanitized=true
+source.file_name public basename only
 unique source.file_name + source.line values
 source.line monotonic inside each source.file_name stream
 commit authority >= H2
@@ -154,7 +155,7 @@ Current result:
 
 ```text
 R3_RUNTIME_CONTRACT_VALIDATED_READY
-287 contract checks
+291 contract checks
 0 failures
 ```
 

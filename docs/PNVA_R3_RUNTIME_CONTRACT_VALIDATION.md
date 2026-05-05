@@ -41,10 +41,10 @@ action_contract_count: 3
 required_runtime_event_count: 70
 event_template_count: 6
 mandatory_field_count: 28
-negative_control_detected_count: 55
+negative_control_detected_count: 56
 positive_control_passed_count: 6
-enforced_control_count: 52
-contract_check_count: 287
+enforced_control_count: 53
+contract_check_count: 291
 failure_count: 0
 ```
 
@@ -61,7 +61,7 @@ runtime approval remains false
 70 required runtime events remain paired
 6 templates remain two per action contract
 28 mandatory runtime fields are present
-55 negative controls are detected
+56 negative controls are detected
 6 positive controls are accepted as fixture-only guard controls
 guard enforced controls match the runtime contract
 contract slot IDs cover the matrix
@@ -77,6 +77,7 @@ commit event_type matches the slot commit contract
 proof.projection=false
 proof.native=true
 source.file_name is present
+source.file_name is a public basename, not a local path
 source.format=native_pnva_event_v1
 source.line is present
 source.file_name + source.line is unique in the runtime stream

@@ -95,11 +95,11 @@
     },
     {
       "group": "controls",
-      "left": 55,
+      "left": 56,
       "left_ref": "negative_controls_complete",
       "name": "negative_controls_complete",
       "pass": true,
-      "right": 55,
+      "right": 56,
       "right_ref": "expected"
     },
     {
@@ -444,6 +444,15 @@
       "left": true,
       "left_ref": "enforced_source_file_name_required",
       "name": "enforced_source_file_name_required",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "enforced_controls",
+      "left": true,
+      "left_ref": "enforced_source_file_name_public_basename_required",
+      "name": "enforced_source_file_name_public_basename_required",
       "pass": true,
       "right": true,
       "right_ref": "expected"
@@ -1058,6 +1067,15 @@
       "left": true,
       "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_causal_chain_unique_per_slot_required",
       "name": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_causal_chain_unique_per_slot_required",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "pairing",
+      "left": true,
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_source_file_name_public_basename_required",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_source_file_name_public_basename_required",
       "pass": true,
       "right": true,
       "right_ref": "expected"
@@ -1716,6 +1734,15 @@
     {
       "group": "pairing",
       "left": true,
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_source_file_name_public_basename_required",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_source_file_name_public_basename_required",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "pairing",
+      "left": true,
       "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_source_location_unique_required",
       "name": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_source_location_unique_required",
       "pass": true,
@@ -2367,6 +2394,15 @@
     {
       "group": "pairing",
       "left": true,
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-execute_source_file_name_public_basename_required",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-execute_source_file_name_public_basename_required",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "pairing",
+      "left": true,
       "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-execute_source_location_unique_required",
       "name": "r3-runtime-instrument-entity_4c3ade60ea78-execute_source_location_unique_required",
       "pass": true,
@@ -2834,21 +2870,21 @@
     }
   ],
   "classification": "R3_RUNTIME_CONTRACT_VALIDATED_READY",
-  "contract_check_count": 287,
+  "contract_check_count": 291,
   "contract_validation_ready": true,
-  "enforced_control_count": 52,
+  "enforced_control_count": 53,
   "event_template_count": 6,
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-05-05T14:13:19Z",
+  "generated_at": "2026-05-05T14:35:49Z",
   "interpretation": {
     "boundary": "This is a contract validator, not runtime evidence and not final R3 cutover approval.",
     "purpose": "Validate that the R3 runtime capture matrix, evidence guard and instrumentation plan form one coherent runtime contract.",
     "sovereignty": "The final runtime path becomes harder to mislabel because the contract itself is checked before fresh runtime evidence is accepted."
   },
   "mandatory_field_count": 28,
-  "negative_control_count": 55,
-  "negative_control_detected_count": 55,
+  "negative_control_count": 56,
+  "negative_control_detected_count": 56,
   "pass": true,
   "positive_control_count": 6,
   "positive_control_passed_count": 6,
@@ -2876,11 +2912,11 @@
   "summary": {
     "action_contract_count": 3,
     "capture_slot_count": 35,
-    "contract_check_count": 287,
+    "contract_check_count": 291,
     "contract_validation_ready": true,
     "failure_count": 0,
     "mandatory_field_count": 28,
-    "negative_control_detected_count": 55,
+    "negative_control_detected_count": 56,
     "positive_control_passed_count": 6,
     "required_runtime_event_count": 70
   }

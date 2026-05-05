@@ -49,6 +49,7 @@
     "risk_flags_unique_required": true,
     "runtime_event_count_exact_required": true,
     "schema_version_required": "pnva.event.v1",
+    "source_file_name_public_basename_required": true,
     "source_file_name_required": true,
     "source_format_required": "native_pnva_event_v1",
     "source_line_monotonic_per_file_required": true,
@@ -63,16 +64,16 @@
     "timestamp_iso8601_required": true,
     "timestamp_required": true
   },
-  "generated_at": "2026-05-05T14:13:19Z",
+  "generated_at": "2026-05-05T14:35:49Z",
   "intake_guard_ready": true,
   "interpretation": {
     "boundary": "Without a runtime-events file this guard certifies the intake contract only; it does not claim final runtime completion.",
     "purpose": "Protect the R3 runtime intake boundary before fresh events are accepted as legacy-free evidence.",
-    "sovereignty": "PNVA becomes harder to fake when projected proofs, malformed, duplicated or content-unbound proof hashes, wrong proof-ref slot roles, wrong event types, wrong decision reasons, wrong role state transitions, malformed or inconsistent tension values, invalid gate signs, duplicate events, duplicated source locations, reused causal chains across different slots, regressed source lines, entity or slot mismatches, missing or reversed log/source location order, unsanitized sources, unknown heuristic rules, invalid risk flags, weak authority, missing target rules, missing precheck or commit target risk flags, extra runtime events and causally broken no-tick pairs are rejected before cutover."
+    "sovereignty": "PNVA becomes harder to fake when projected proofs, malformed, duplicated or content-unbound proof hashes, wrong proof-ref slot roles, wrong event types, wrong decision reasons, wrong role state transitions, malformed or inconsistent tension values, invalid gate signs, duplicate events, duplicated source locations, reused causal chains across different slots, unsafe source file names, regressed source lines, entity or slot mismatches, missing or reversed log/source location order, unsanitized sources, unknown heuristic rules, invalid risk flags, weak authority, missing target rules, missing precheck or commit target risk flags, extra runtime events and causally broken no-tick pairs are rejected before cutover."
   },
   "matrix_classification": "R3_RUNTIME_CAPTURE_MATRIX_READY_PENDING_RUNTIME",
-  "negative_control_count": 55,
-  "negative_control_detected_count": 55,
+  "negative_control_count": 56,
+  "negative_control_detected_count": 56,
   "negative_controls": [
     {
       "codes": [
@@ -459,6 +460,14 @@
     },
     {
       "codes": [
+        "SOURCE_FILE_NAME_UNSAFE"
+      ],
+      "detected": true,
+      "expected_detection": "SOURCE_FILE_NAME_UNSAFE",
+      "name": "reject_unsafe_source_file_name"
+    },
+    {
+      "codes": [
         "PROOF_HASH_BINDING_INVALID",
         "SOURCE_LINE_REQUIRED"
       ],
@@ -644,6 +653,7 @@
     "Require field.state_after to prove no-tick precheck suppression and commit completion.",
     "Reject duplicate event_id, proof_hash and proof_ref values before accepting runtime coverage.",
     "Reject causal_chain_id reuse across different original_event_id or r3_runtime_slot_id values.",
+    "Reject source.file_name values that expose local paths or path traversal markers.",
     "Reject duplicate source.file_name plus source.line locations before accepting runtime coverage.",
     "Reject source.line regression inside the same source.file_name before accepting runtime coverage.",
     "Reject runtime events whose proof_hash does not bind to the canonical event identity and source-location payload.",
@@ -1388,8 +1398,8 @@
     "duplicate_proof_ref_rejection_count": 0,
     "duplicate_source_location_rejection_count": 0,
     "intake_guard_ready": true,
-    "negative_control_count": 55,
-    "negative_control_detected_count": 55,
+    "negative_control_count": 56,
+    "negative_control_detected_count": 56,
     "no_tick_pair_failure_count": 0,
     "no_tick_pair_integrity_count": 0,
     "pending_slot_count": 35,

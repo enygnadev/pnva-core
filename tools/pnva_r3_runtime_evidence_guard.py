@@ -40,6 +40,7 @@ PRECHECK_STATE_AFTER = "suppressed"
 COMMIT_STATE_AFTER = "committed"
 PROOF_HASH_RE = re.compile(r"^sha256:[0-9a-f]{64}$")
 RUNTIME_PROOF_REF_RE = re.compile(r"^runtime:[A-Za-z0-9_.:-]+:(precheck|commit)$")
+PUBLIC_SOURCE_FILE_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9_.-]{0,127}$")
 
 
 def _read_json(path: Path) -> Any:
@@ -160,6 +161,20 @@ def _proof_hash_valid(value: Any) -> bool:
 def _source(event: dict[str, Any]) -> dict[str, Any]:
     value = event.get("source")
     return value if isinstance(value, dict) else {}
+
+
+def _source_file_name_public(value: Any) -> bool:
+    if not isinstance(value, str):
+        return False
+    name = value.strip()
+    return (
+        bool(PUBLIC_SOURCE_FILE_RE.fullmatch(name))
+        and ".." not in name
+        and "/" not in name
+        and "\\" not in name
+        and "~" not in name
+        and ":" not in name
+    )
 
 
 def _proof_hash_payload(event: dict[str, Any]) -> dict[str, Any]:
@@ -362,6 +377,8 @@ def _event_codes(event: dict[str, Any], slot: dict[str, Any]) -> list[str]:
     source_file_name = _source(event).get("file_name")
     if not isinstance(source_file_name, str) or not source_file_name.strip():
         codes.append("SOURCE_FILE_NAME_REQUIRED")
+    elif not _source_file_name_public(source_file_name):
+        codes.append("SOURCE_FILE_NAME_UNSAFE")
     source_line = _source(event).get("line")
     if not isinstance(source_line, int) or isinstance(source_line, bool) or source_line <= 0:
         codes.append("SOURCE_LINE_REQUIRED")
@@ -825,6 +842,7 @@ def _negative_controls(matrix: dict[str, Any]) -> dict[str, Any]:
     run_control("reject_missing_native_proof", "commit", lambda event: event["proof"].pop("native", None), "PROOF_NATIVE_REQUIRED")
     run_control("reject_invalid_source_format", "commit", lambda event: event["source"].update({"format": "legacy_bridge"}), "SOURCE_FORMAT_INVALID")
     run_control("reject_missing_source_file_name", "commit", lambda event: event["source"].pop("file_name", None), "SOURCE_FILE_NAME_REQUIRED")
+    run_control("reject_unsafe_source_file_name", "commit", lambda event: (event["source"].update({"file_name": "../private/pnva-runtime.jsonl"}), rebind_proof_hash(event)), "SOURCE_FILE_NAME_UNSAFE")
     run_control("reject_missing_source_line", "commit", lambda event: event["source"].pop("line", None), "SOURCE_LINE_REQUIRED")
     run_control("reject_source_location_hash_tamper", "commit", lambda event: event["source"].update({"file_name": "tampered-source"}), "PROOF_HASH_BINDING_INVALID")
     run_control("reject_unsanitized_source", "commit", lambda event: event["source"].update({"sanitized": False}), "SOURCE_SANITIZED_REQUIRED")
@@ -1064,6 +1082,7 @@ def build_report(repo: Path, runtime_events_path: Path | None = None) -> dict[st
             "proof_projection_forbidden": True,
             "source_format_required": "native_pnva_event_v1",
             "source_file_name_required": True,
+            "source_file_name_public_basename_required": True,
             "source_line_required": True,
             "source_location_unique_required": True,
             "source_line_monotonic_per_file_required": True,
@@ -1129,7 +1148,7 @@ def build_report(repo: Path, runtime_events_path: Path | None = None) -> dict[st
         },
         "interpretation": {
             "purpose": "Protect the R3 runtime intake boundary before fresh events are accepted as legacy-free evidence.",
-            "sovereignty": "PNVA becomes harder to fake when projected proofs, malformed, duplicated or content-unbound proof hashes, wrong proof-ref slot roles, wrong event types, wrong decision reasons, wrong role state transitions, malformed or inconsistent tension values, invalid gate signs, duplicate events, duplicated source locations, reused causal chains across different slots, regressed source lines, entity or slot mismatches, missing or reversed log/source location order, unsanitized sources, unknown heuristic rules, invalid risk flags, weak authority, missing target rules, missing precheck or commit target risk flags, extra runtime events and causally broken no-tick pairs are rejected before cutover.",
+            "sovereignty": "PNVA becomes harder to fake when projected proofs, malformed, duplicated or content-unbound proof hashes, wrong proof-ref slot roles, wrong event types, wrong decision reasons, wrong role state transitions, malformed or inconsistent tension values, invalid gate signs, duplicate events, duplicated source locations, reused causal chains across different slots, unsafe source file names, regressed source lines, entity or slot mismatches, missing or reversed log/source location order, unsanitized sources, unknown heuristic rules, invalid risk flags, weak authority, missing target rules, missing precheck or commit target risk flags, extra runtime events and causally broken no-tick pairs are rejected before cutover.",
             "boundary": "Without a runtime-events file this guard certifies the intake contract only; it does not claim final runtime completion.",
         },
         "recommendations": [
@@ -1143,6 +1162,7 @@ def build_report(repo: Path, runtime_events_path: Path | None = None) -> dict[st
             "Require field.state_after to prove no-tick precheck suppression and commit completion.",
             "Reject duplicate event_id, proof_hash and proof_ref values before accepting runtime coverage.",
             "Reject causal_chain_id reuse across different original_event_id or r3_runtime_slot_id values.",
+            "Reject source.file_name values that expose local paths or path traversal markers.",
             "Reject duplicate source.file_name plus source.line locations before accepting runtime coverage.",
             "Reject source.line regression inside the same source.file_name before accepting runtime coverage.",
             "Reject runtime events whose proof_hash does not bind to the canonical event identity and source-location payload.",

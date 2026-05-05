@@ -51,8 +51,8 @@ source_line_monotonicity_rejection_count: 0
 causal_chain_slot_collision_rejection_count: 0
 no_tick_pair_integrity_count: 0
 no_tick_pair_failure_count: 0
-negative_control_detected_count: 55
-negative_control_count: 55
+negative_control_detected_count: 56
+negative_control_count: 56
 positive_control_passed_count: 6
 positive_control_count: 6
 positive_controls_fixture_only: true
@@ -80,6 +80,7 @@ invalid proof_hash format
 duplicate proof_hash
 duplicate proof_ref
 duplicate source.file_name + source.line
+unsafe source.file_name with path separators, traversal or local-path markers
 source.line regression inside the same source.file_name stream
 missing proof.native=true
 invalid source.format
@@ -126,6 +127,7 @@ unique event_id values
 unique proof_hash values
 unique proof_ref values
 unique source.file_name + source.line values
+public-basename source.file_name values
 monotonic source.line values inside each source.file_name stream
 known and unique heuristic rules
 proof_ref in runtime:<slot-id>:<role> form
@@ -191,6 +193,7 @@ reject_original_event_mismatch
 reject_missing_native_proof
 reject_invalid_source_format
 reject_missing_source_file_name
+reject_unsafe_source_file_name
 reject_missing_source_line
 reject_source_location_hash_tamper
 reject_unsanitized_source
@@ -214,7 +217,7 @@ reject_precheck_missing_target_risk_flags
 Current result:
 
 ```text
-55/55 detected
+56/56 detected
 ```
 
 ## Positive Controls
@@ -256,7 +259,7 @@ R3_RUNTIME_INSTRUMENTATION_PLAN_READY
 6 event templates
 70 required runtime events
 28 mandatory event fields
-55 negative controls
+56 negative controls
 6 positive controls
 ```
 

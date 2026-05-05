@@ -82,6 +82,7 @@ REQUIRED_ENFORCED_CONTROLS = {
     "proof_projection_forbidden": True,
     "source_format_required": "native_pnva_event_v1",
     "source_file_name_required": True,
+    "source_file_name_public_basename_required": True,
     "source_line_required": True,
     "source_location_unique_required": True,
     "source_line_monotonic_per_file_required": True,
@@ -200,6 +201,7 @@ def _template_checks(checks: list[dict[str, Any]], contract: dict[str, Any]) -> 
     _add_check(checks, "pairing", f"{contract_id}_timestamp_iso8601_required", pairing.get("timestamp_iso8601_required"), True)
     _add_check(checks, "pairing", f"{contract_id}_duplicate_event_id_forbidden", pairing.get("duplicate_event_id_forbidden"), True)
     _add_check(checks, "pairing", f"{contract_id}_causal_chain_unique_per_slot_required", pairing.get("causal_chain_unique_per_slot_required"), True)
+    _add_check(checks, "pairing", f"{contract_id}_source_file_name_public_basename_required", pairing.get("source_file_name_public_basename_required"), True)
     _add_check(checks, "pairing", f"{contract_id}_source_location_unique_required", pairing.get("source_location_unique_required"), True)
     _add_check(checks, "pairing", f"{contract_id}_source_line_monotonic_per_file_required", pairing.get("source_line_monotonic_per_file_required"), True)
     _add_check(checks, "pairing", f"{contract_id}_same_causal_chain_id_required", pairing.get("same_causal_chain_id_required"), True)
