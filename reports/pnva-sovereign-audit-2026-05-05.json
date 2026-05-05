@@ -29,6 +29,18 @@
     "public_safety_ok": true,
     "summary_ok": true
   },
+  "causal_chronology": {
+    "chain_count": 15,
+    "chronology_ok": true,
+    "classification": "CAUSAL_CHRONOLOGY_READY_WITH_LEGACY_WARNINGS",
+    "error_count": 0,
+    "errors": [],
+    "event_count": 519,
+    "global_backward_count": 1,
+    "missing": [],
+    "native_chronology_clean": true,
+    "warning_count": 2
+  },
   "causal_graph": {
     "canonical_catalog_entity_count": 6,
     "canonical_chain_count": 14,
@@ -72,7 +84,7 @@
     "robots_missing_tokens": [],
     "robots_ok": true,
     "sitemap_ok": true,
-    "sitemap_url_count": 46,
+    "sitemap_url_count": 48,
     "sitemap_urls": [
       "https://enygnadev.github.io/pnva-core/",
       "https://enygnadev.github.io/pnva-core/author.html",
@@ -89,6 +101,7 @@
       "https://enygnadev.github.io/pnva-core/docs/PNVA_PROOF_CHAIN_SEALING.md",
       "https://enygnadev.github.io/pnva-core/docs/PNVA_CAUSAL_GRAPH_AUDIT.md",
       "https://enygnadev.github.io/pnva-core/docs/PNVA_SCHEMA_CONTRACT_VALIDATION.md",
+      "https://enygnadev.github.io/pnva-core/docs/PNVA_CAUSAL_CHRONOLOGY_GUARD.md",
       "https://enygnadev.github.io/pnva-core/docs/PNVA_SOVEREIGN_EVIDENCE_ATTESTATION.md",
       "https://enygnadev.github.io/pnva-core/docs/PNVA_ADVERSARIAL_VALIDATION.md",
       "https://enygnadev.github.io/pnva-core/docs/PNVA_ENTITY_HEURISTIC_MATURITY.md",
@@ -115,6 +128,7 @@
       "https://enygnadev.github.io/pnva-core/reports/pnva-causal-graph-2026-05-05.json",
       "https://enygnadev.github.io/pnva-core/reports/pnva-native-causal-graph-2026-05-05.json",
       "https://enygnadev.github.io/pnva-core/reports/pnva-schema-contract-validation-2026-05-05.json",
+      "https://enygnadev.github.io/pnva-core/reports/pnva-causal-chronology-2026-05-05.json",
       "https://enygnadev.github.io/pnva-core/reports/pnva-adversarial-validation-2026-05-05.json",
       "https://enygnadev.github.io/pnva-core/reports/pnva-entity-heuristic-maturity-2026-05-05.json",
       "https://enygnadev.github.io/pnva-core/reports/pnva-semantic-consistency-2026-05-05.json",
@@ -138,16 +152,16 @@
     "warning_count": 35
   },
   "evidence_attestation": {
-    "artifact_count": 20,
+    "artifact_count": 21,
     "attestation_ok": true,
     "classification": "PNVA_SOVEREIGN_EVIDENCE_ATTESTED",
     "errors": [],
-    "evidence_hash": "sha256:5b0ec810a219f8328ed6d400468fe79fec92a8d6ad9917e88c5ee5fb45fc9e9d",
+    "evidence_hash": "sha256:faacc59e0cdcf3fc5df6b57fb58ba22f24fc5714ac04f4992705b0a7469fa870",
     "failure_count": 0,
     "missing": [],
-    "tracked_artifacts": 20
+    "tracked_artifacts": 21
   },
-  "generated_at": "2026-05-05T06:15:42Z",
+  "generated_at": "2026-05-05T06:28:04Z",
   "local_logs": {
     "available": true,
     "bad_json_ratio": 0.0,
@@ -918,6 +932,7 @@
     "Seal canonical and native event sequences with proof-chain hashes before public release.",
     "Audit causal graphs so entity topology is visible, not implicit.",
     "Run schema contract validation so event and entity envelopes are checked before attestation.",
+    "Run causal chronology guard so time remains an audited trace, not a blind execution driver.",
     "Publish one sovereign evidence attestation hash with every evidence release.",
     "Run adversarial validation so validators prove tamper detection, not only green-path acceptance.",
     "Track entity and heuristic maturity so no-tick suppression stays attributable to actors and authority.",
@@ -943,9 +958,9 @@
   "repo_path": "<REPO>",
   "reproducibility": {
     "classification": "REPRODUCIBILITY_READY",
-    "command_count": 16,
+    "command_count": 17,
     "command_failure_count": 0,
-    "comparison_count": 128,
+    "comparison_count": 137,
     "comparison_failure_count": 0,
     "errors": [],
     "failure_count": 0,
@@ -979,7 +994,7 @@
     "total": 100
   },
   "semantic_consistency": {
-    "check_count": 74,
+    "check_count": 83,
     "classification": "SEMANTIC_CONSISTENCY_READY",
     "consistency_ok": true,
     "error_count": 0,

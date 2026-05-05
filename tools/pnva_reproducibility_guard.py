@@ -31,6 +31,7 @@ PUBLISHED_REPORTS = {
     "causal_graph": "reports/pnva-causal-graph-2026-05-05.json",
     "native_causal_graph": "reports/pnva-native-causal-graph-2026-05-05.json",
     "schema_contract": "reports/pnva-schema-contract-validation-2026-05-05.json",
+    "causal_chronology": "reports/pnva-causal-chronology-2026-05-05.json",
     "adversarial": "reports/pnva-adversarial-validation-2026-05-05.json",
     "maturity": "reports/pnva-entity-heuristic-maturity-2026-05-05.json",
     "attestation": "reports/pnva-sovereign-evidence-attestation-2026-05-05.json",
@@ -162,6 +163,17 @@ STABLE_PATHS = {
         ["heuristic_rule_count"],
         ["error_count"],
         ["warning_count"],
+    ],
+    "causal_chronology": [
+        ["classification"],
+        ["pass"],
+        ["scope_count"],
+        ["event_count"],
+        ["chain_count"],
+        ["global_backward_count"],
+        ["error_count"],
+        ["warning_count"],
+        ["native_chronology_clean"],
     ],
     "adversarial": [
         ["classification"],
@@ -297,6 +309,7 @@ def build_report(repo: Path) -> dict[str, Any]:
             "causal_graph": tmp / "causal-graph.json",
             "native_causal_graph": tmp / "native-causal-graph.json",
             "schema_contract": tmp / "schema-contract.json",
+            "causal_chronology": tmp / "causal-chronology.json",
             "adversarial": tmp / "adversarial.json",
             "maturity": tmp / "maturity.json",
             "attestation": tmp / "attestation.json",
@@ -328,6 +341,7 @@ def build_report(repo: Path) -> dict[str, Any]:
         commands["causal_graph"] = _run(repo, ["tools/pnva_causal_graph_auditor.py", "--events", CANONICAL_EVENTS, "--entity-catalog", CANONICAL_ENTITIES], outputs["causal_graph"])
         commands["native_causal_graph"] = _run(repo, ["tools/pnva_causal_graph_auditor.py", "--events", NATIVE_EVENTS, "--entity-catalog", NATIVE_ENTITIES], outputs["native_causal_graph"])
         commands["schema_contract"] = _run(repo, ["tools/pnva_schema_contract_validator.py"], outputs["schema_contract"])
+        commands["causal_chronology"] = _run(repo, ["tools/pnva_causal_chronology_guard.py"], outputs["causal_chronology"])
         commands["adversarial"] = _run(repo, ["tools/pnva_adversarial_validator.py"], outputs["adversarial"])
         commands["maturity"] = _run(repo, ["tools/pnva_entity_heuristic_maturity.py"], outputs["maturity"])
         commands["attestation"] = _run(repo, ["tools/pnva_evidence_attestor.py"], outputs["attestation"])

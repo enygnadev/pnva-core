@@ -48,6 +48,7 @@ PUBLIC_DOCS = [
     "docs/PNVA_PROOF_CHAIN_SEALING.md",
     "docs/PNVA_CAUSAL_GRAPH_AUDIT.md",
     "docs/PNVA_SCHEMA_CONTRACT_VALIDATION.md",
+    "docs/PNVA_CAUSAL_CHRONOLOGY_GUARD.md",
     "docs/PNVA_SOVEREIGN_EVIDENCE_ATTESTATION.md",
     "docs/PNVA_ADVERSARIAL_VALIDATION.md",
     "docs/PNVA_ENTITY_HEURISTIC_MATURITY.md",
@@ -115,6 +116,12 @@ SCHEMA_CONTRACT_FILES = [
     "tools/pnva_schema_contract_validator.py",
     "docs/PNVA_SCHEMA_CONTRACT_VALIDATION.md",
     "reports/pnva-schema-contract-validation-2026-05-05.json",
+]
+
+CAUSAL_CHRONOLOGY_FILES = [
+    "tools/pnva_causal_chronology_guard.py",
+    "docs/PNVA_CAUSAL_CHRONOLOGY_GUARD.md",
+    "reports/pnva-causal-chronology-2026-05-05.json",
 ]
 
 EVIDENCE_ATTESTATION_FILES = [
@@ -708,6 +715,37 @@ def audit_schema_contract_validation(repo: Path) -> dict[str, Any]:
     }
 
 
+def audit_causal_chronology(repo: Path) -> dict[str, Any]:
+    missing = [rel for rel in CAUSAL_CHRONOLOGY_FILES if not (repo / rel).exists()]
+    report_path = repo / "reports" / "pnva-causal-chronology-2026-05-05.json"
+    if not report_path.exists():
+        return {
+            "chronology_ok": False,
+            "missing": missing,
+            "classification": "CAUSAL_CHRONOLOGY_MISSING",
+            "errors": ["missing causal chronology report"],
+        }
+    data = _read_json(report_path)
+    return {
+        "chronology_ok": (
+            not missing
+            and data.get("pass") is True
+            and str(data.get("classification", "")).startswith("CAUSAL_CHRONOLOGY_READY")
+            and int(data.get("error_count", 0)) == 0
+            and data.get("native_chronology_clean") is True
+        ),
+        "missing": missing,
+        "classification": data.get("classification"),
+        "event_count": int(data.get("event_count", 0)),
+        "chain_count": int(data.get("chain_count", 0)),
+        "global_backward_count": int(data.get("global_backward_count", 0)),
+        "error_count": int(data.get("error_count", 0)),
+        "warning_count": int(data.get("warning_count", 0)),
+        "native_chronology_clean": bool(data.get("native_chronology_clean")),
+        "errors": [] if isinstance(data, dict) and data.get("pass") is True else ["causal chronology failed"],
+    }
+
+
 def audit_reproducibility(repo: Path) -> dict[str, Any]:
     missing = [rel for rel in REPRODUCIBILITY_FILES if not (repo / rel).exists()]
     report_path = repo / "reports" / "pnva-reproducibility-2026-05-05.json"
@@ -928,8 +966,10 @@ def score_report(report: dict[str, Any]) -> dict[str, Any]:
     if report.get("no_tick_invariants", {}).get("invariants_ok"):
         scores["actionability"] += 2
     if report.get("native_emitter", {}).get("native_ok"):
-        scores["actionability"] += 1
+        scores["actionability"] += 0
     if report.get("schema_contract_validation", {}).get("contract_validation_ok"):
+        scores["actionability"] += 1
+    if report.get("causal_chronology", {}).get("chronology_ok"):
         scores["actionability"] += 1
     if report.get("sovereign_policy", {}).get("policy_ok"):
         scores["actionability"] += 0
@@ -999,6 +1039,7 @@ def build_report(repo: Path, *, strict_public: bool = False) -> dict[str, Any]:
         "proof_chain": audit_proof_chain(repo),
         "causal_graph": audit_causal_graph(repo),
         "schema_contract_validation": audit_schema_contract_validation(repo),
+        "causal_chronology": audit_causal_chronology(repo),
         "evidence_attestation": audit_evidence_attestation(repo),
         "adversarial_validation": audit_adversarial_validation(repo),
         "entity_heuristic_maturity": audit_entity_heuristic_maturity(repo),
@@ -1015,6 +1056,7 @@ def build_report(repo: Path, *, strict_public: bool = False) -> dict[str, Any]:
             "Seal canonical and native event sequences with proof-chain hashes before public release.",
             "Audit causal graphs so entity topology is visible, not implicit.",
             "Run schema contract validation so event and entity envelopes are checked before attestation.",
+            "Run causal chronology guard so time remains an audited trace, not a blind execution driver.",
             "Publish one sovereign evidence attestation hash with every evidence release.",
             "Run adversarial validation so validators prove tamper detection, not only green-path acceptance.",
             "Track entity and heuristic maturity so no-tick suppression stays attributable to actors and authority.",

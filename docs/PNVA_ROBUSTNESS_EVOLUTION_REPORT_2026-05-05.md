@@ -42,6 +42,7 @@ docs/PNVA_SOVEREIGN_POLICY_VALIDATION.md
 docs/PNVA_PROOF_CHAIN_SEALING.md
 docs/PNVA_CAUSAL_GRAPH_AUDIT.md
 docs/PNVA_SCHEMA_CONTRACT_VALIDATION.md
+docs/PNVA_CAUSAL_CHRONOLOGY_GUARD.md
 docs/PNVA_SOVEREIGN_EVIDENCE_ATTESTATION.md
 docs/PNVA_ADVERSARIAL_VALIDATION.md
 docs/PNVA_ENTITY_HEURISTIC_MATURITY.md
@@ -56,6 +57,7 @@ tools/pnva_sovereign_policy_validator.py
 tools/pnva_proof_chain_sealer.py
 tools/pnva_causal_graph_auditor.py
 tools/pnva_schema_contract_validator.py
+tools/pnva_causal_chronology_guard.py
 tools/pnva_evidence_attestor.py
 tools/pnva_adversarial_validator.py
 tools/pnva_entity_heuristic_maturity.py
@@ -79,6 +81,7 @@ reports/pnva-native-proof-chain-2026-05-05.json
 reports/pnva-causal-graph-2026-05-05.json
 reports/pnva-native-causal-graph-2026-05-05.json
 reports/pnva-schema-contract-validation-2026-05-05.json
+reports/pnva-causal-chronology-2026-05-05.json
 reports/pnva-sovereign-evidence-attestation-2026-05-05.json
 reports/pnva-adversarial-validation-2026-05-05.json
 reports/pnva-entity-heuristic-maturity-2026-05-05.json
@@ -364,7 +367,32 @@ native: 7 events, 6 entities, 0 errors, 0 warnings
 
 This hardens the evidence package at the log/entity boundary. The canonical bridge remains honest about legacy type-consolidation warnings, while the native path proves the production direction can be clean.
 
-### 12. Sovereign evidence attestation
+### 12. Causal chronology guard
+
+The causal chronology guard checks timestamp order, chain chronology and time-gap evidence.
+
+Current result:
+
+```text
+classification: CAUSAL_CHRONOLOGY_READY_WITH_LEGACY_WARNINGS
+event_count: 519
+chain_count: 15
+global_backward_count: 1
+error_count: 0
+warning_count: 2
+native_chronology_clean: true
+```
+
+Scope result:
+
+```text
+canonical: 512 events, 14 chains, 1 backward-time warning, 316 zero-gap batch records
+native: 7 events, 1 chain, 0 backward time, 0 zero-gap records, 0 warnings
+```
+
+This strengthens the post-temporal claim. PNVA does not use the clock as the blind execution driver, but it still preserves time as an auditable trace dimension.
+
+### 13. Sovereign evidence attestation
 
 The evidence attestor binds the public package into one machine-readable record.
 
@@ -372,7 +400,7 @@ Current result:
 
 ```text
 classification: PNVA_SOVEREIGN_EVIDENCE_ATTESTED
-artifact_count: 20
+artifact_count: 21
 failure_count: 0
 ```
 
@@ -386,7 +414,7 @@ This hash changes if any tracked artifact changes its file hash, classification 
 
 The sovereign audit consumes this attestation and is intentionally kept outside the attestation hash seed to avoid circular evidence hashing.
 
-### 13. Adversarial validation
+### 14. Adversarial validation
 
 The adversarial validator adds negative controls.
 
@@ -413,7 +441,7 @@ JSON_PARSE_ERROR
 
 This closes a critical proof gap. PNVA validators now demonstrate not only that valid evidence passes, but also that corrupted proof, weak authority, invalid topology, duplicate identity, order tampering and malformed JSON are rejected or exposed.
 
-### 14. Entity and heuristic maturity
+### 15. Entity and heuristic maturity
 
 The entity/heuristic maturity auditor scores whether PNVA decisions are attributable to actors and rules.
 
@@ -454,7 +482,7 @@ warnings: 0
 
 This makes the next no-tick evolution concrete: reduce legacy authority in future runtime events while preserving old evidence honestly.
 
-### 15. Semantic consistency guard
+### 16. Semantic consistency guard
 
 The semantic consistency guard checks whether public reports agree with each other.
 
@@ -462,7 +490,7 @@ Current result:
 
 ```text
 classification: SEMANTIC_CONSISTENCY_READY
-check_count: 74
+check_count: 83
 error_count: 0
 warning_count: 0
 ```
@@ -481,7 +509,7 @@ Manifest file list existence
 
 This closes a publication risk: reports can no longer drift silently while still appearing valid individually.
 
-### 16. Reproducibility guard
+### 17. Reproducibility guard
 
 The reproducibility guard reruns the evidence commands and compares stable fields against the published package.
 
@@ -489,8 +517,8 @@ Current result:
 
 ```text
 classification: REPRODUCIBILITY_READY
-command_count: 16
-comparison_count: 128
+command_count: 17
+comparison_count: 137
 failure_count: 0
 command_failure_count: 0
 comparison_failure_count: 0
@@ -531,11 +559,12 @@ This closes the method gap: the public evidence is now not only stored and cross
 14. Use `tools/pnva_proof_chain_sealer.py` to seal event sequence order before publication.
 15. Use `tools/pnva_causal_graph_auditor.py` to audit entity topology and causal relation flow.
 16. Use `tools/pnva_schema_contract_validator.py` before attestation so event/entity envelope defects become release blockers.
-17. Use `tools/pnva_evidence_attestor.py` to publish one aggregate evidence hash for each release.
-18. Use `tools/pnva_adversarial_validator.py` before release so validator failures are proven, not assumed.
-19. Use `tools/pnva_entity_heuristic_maturity.py` to choose hardening targets by entity, heuristic and authority.
-20. Use `tools/pnva_semantic_consistency_guard.py` after attestation to block cross-report drift.
-21. Use `tools/pnva_reproducibility_guard.py` after semantic consistency to prove source-command reproducibility.
+17. Use `tools/pnva_causal_chronology_guard.py` before attestation so time remains an audited trace, not a blind driver.
+18. Use `tools/pnva_evidence_attestor.py` to publish one aggregate evidence hash for each release.
+19. Use `tools/pnva_adversarial_validator.py` before release so validator failures are proven, not assumed.
+20. Use `tools/pnva_entity_heuristic_maturity.py` to choose hardening targets by entity, heuristic and authority.
+21. Use `tools/pnva_semantic_consistency_guard.py` after attestation to block cross-report drift.
+22. Use `tools/pnva_reproducibility_guard.py` after semantic consistency to prove source-command reproducibility.
 
 ## Sovereign Rule
 

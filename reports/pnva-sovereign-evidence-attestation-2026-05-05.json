@@ -1,5 +1,5 @@
 {
-  "artifact_count": 20,
+  "artifact_count": 21,
   "artifacts": [
     {
       "entry_count": 9,
@@ -125,6 +125,19 @@
       "required": true,
       "sha256": "ed2c8df0e3d653f4e3833b3c4eea3263d4028b6251760ed7b7d6f51b62adb462",
       "size_bytes": 78513
+    },
+    {
+      "classification": "CAUSAL_CHRONOLOGY_READY_WITH_LEGACY_WARNINGS",
+      "expected": "CAUSAL_CHRONOLOGY_READY_WITH_LEGACY_WARNINGS",
+      "id": "causal_chronology",
+      "kind": "json_classification",
+      "pass": true,
+      "path": "reports/pnva-causal-chronology-2026-05-05.json",
+      "present": true,
+      "reported_pass": true,
+      "required": true,
+      "sha256": "0c2e6b1edbeb9b5207deb075c61ef8646588905da5042a9d68cb7dc70962740a",
+      "size_bytes": 15553
     },
     {
       "classification": "NATIVE_EMITTER_READY",
@@ -267,13 +280,14 @@
     "proof-chain sealing",
     "causal graph audit",
     "schema contract validation",
+    "causal chronology guard",
     "adversarial negative controls",
     "entity and heuristic maturity",
     "sovereign audit consumes this attestation without being part of its hash seed"
   ],
-  "evidence_hash": "sha256:5b0ec810a219f8328ed6d400468fe79fec92a8d6ad9917e88c5ee5fb45fc9e9d",
+  "evidence_hash": "sha256:faacc59e0cdcf3fc5df6b57fb58ba22f24fc5714ac04f4992705b0a7469fa870",
   "failure_count": 0,
-  "generated_at": "2026-05-05T06:13:55Z",
+  "generated_at": "2026-05-05T06:26:42Z",
   "interpretation": {
     "boundary": "This attests repository evidence integrity; it is not a universal proof of all possible PNVA deployments.",
     "hash_policy": "The evidence_hash changes when any tracked artifact hash, classification or pass flag changes.",
@@ -287,7 +301,8 @@
     "Keep legacy warnings visible while requiring native clean policy for new runtime events.",
     "Run adversarial negative controls so bad evidence is rejected or exposed before publication.",
     "Use entity and heuristic maturity scores to guide the next no-tick runtime hardening step.",
-    "Run schema contract validation before attestation so event/entity shape defects become release blockers."
+    "Run schema contract validation before attestation so event/entity shape defects become release blockers.",
+    "Run causal chronology before attestation so timestamp regressions and batch compaction are explicit."
   ],
   "schema_version": "pnva.evidence_attestation.v1"
 }

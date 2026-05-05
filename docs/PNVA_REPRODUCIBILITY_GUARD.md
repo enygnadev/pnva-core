@@ -31,8 +31,8 @@ REPRODUCIBILITY_READY
 Current result:
 
 ```text
-command_count: 16
-comparison_count: 128
+command_count: 17
+comparison_count: 137
 failure_count: 0
 command_failure_count: 0
 comparison_failure_count: 0
@@ -55,6 +55,7 @@ native proof-chain
 canonical causal graph
 native causal graph
 schema contract validation
+causal chronology guard
 adversarial validation
 entity and heuristic maturity
 evidence attestation

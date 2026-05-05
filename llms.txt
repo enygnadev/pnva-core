@@ -52,6 +52,7 @@ Gustavo de Aguiar Martins. PNVA-Core: A Post-Temporal Causal Architecture for St
 - docs/PNVA_PROOF_CHAIN_SEALING.md
 - docs/PNVA_CAUSAL_GRAPH_AUDIT.md
 - docs/PNVA_SCHEMA_CONTRACT_VALIDATION.md
+- docs/PNVA_CAUSAL_CHRONOLOGY_GUARD.md
 - docs/PNVA_SOVEREIGN_EVIDENCE_ATTESTATION.md
 - docs/PNVA_ADVERSARIAL_VALIDATION.md
 - docs/PNVA_ENTITY_HEURISTIC_MATURITY.md
@@ -73,6 +74,7 @@ Gustavo de Aguiar Martins. PNVA-Core: A Post-Temporal Causal Architecture for St
 - tools/pnva_proof_chain_sealer.py
 - tools/pnva_causal_graph_auditor.py
 - tools/pnva_schema_contract_validator.py
+- tools/pnva_causal_chronology_guard.py
 - tools/pnva_evidence_attestor.py
 - tools/pnva_adversarial_validator.py
 - tools/pnva_entity_heuristic_maturity.py
@@ -96,6 +98,7 @@ Gustavo de Aguiar Martins. PNVA-Core: A Post-Temporal Causal Architecture for St
 - reports/pnva-causal-graph-2026-05-05.json
 - reports/pnva-native-causal-graph-2026-05-05.json
 - reports/pnva-schema-contract-validation-2026-05-05.json
+- reports/pnva-causal-chronology-2026-05-05.json
 - reports/pnva-sovereign-evidence-attestation-2026-05-05.json
 - reports/pnva-adversarial-validation-2026-05-05.json
 - reports/pnva-entity-heuristic-maturity-2026-05-05.json
@@ -121,6 +124,8 @@ The proof-chain sealer creates sequence-level tamper evidence for canonical and 
 The causal graph auditor exposes entity topology and relation flow. Both current public graphs are classified CAUSAL_GRAPH_READY.
 
 The schema contract validator checks public pnva.event.v1 logs and pnva.entity.v1 catalogs. The current public classification is SCHEMA_CONTRACT_READY_WITH_LEGACY_WARNINGS, with zero errors and a clean native scope.
+
+The causal chronology guard checks timestamp order, causal-chain chronology and time-gap evidence. The current public classification is CAUSAL_CHRONOLOGY_READY_WITH_LEGACY_WARNINGS, with zero errors and a clean native scope.
 
 The adversarial validator runs negative controls against proof, policy, graph, proof-chain and JSON parsing validators. The current public classification is ADVERSARIAL_VALIDATION_PASS.
 

@@ -445,12 +445,47 @@ Production interpretation:
 
 PNVA evidence becomes stronger when every public event and entity can be checked for schema version, identity, causal chain, tension, decision, heuristic context, proof and sanitized source. The canonical legacy sample keeps its type-consolidation warnings visible. The native emitter scope has zero contract warnings.
 
-## 15. Sovereign Evidence Attestation
+## 15. Causal Chronology Guard
+
+After structure validation, audit time as evidence:
+
+```text
+pnva.event.v1 timestamps + causal_chain_id -> causal chronology
+```
+
+Current report:
+
+```text
+reports/pnva-causal-chronology-2026-05-05.json
+```
+
+Current classification:
+
+```text
+CAUSAL_CHRONOLOGY_READY_WITH_LEGACY_WARNINGS
+```
+
+Current result:
+
+```text
+event_count: 519
+chain_count: 15
+global_backward_count: 1
+error_count: 0
+warning_count: 2
+native_chronology_clean: true
+```
+
+Production interpretation:
+
+PNVA/no-tick does not ignore time. It refuses to let time be the blind execution motor. Time remains a proof dimension: event order, chain order, gaps and batch compaction must be visible. The canonical legacy bridge keeps one temporal reset and timestamp compaction as warnings. The native path is monotonic and clean.
+
+## 16. Sovereign Evidence Attestation
 
 After all validators run, bind the evidence package:
 
 ```text
-proofs + events + replay + invariants + policy + chains + graphs + schema contract -> evidence_hash
+proofs + events + replay + invariants + policy + chains + graphs + schema contract + chronology -> evidence_hash
 ```
 
 The attestation lists each tracked artifact with:
@@ -472,7 +507,7 @@ PNVA_SOVEREIGN_EVIDENCE_ATTESTED
 Current package:
 
 ```text
-20 tracked artifacts
+21 tracked artifacts
 0 failures
 ```
 
@@ -482,7 +517,7 @@ PNVA evidence should be cited by a single aggregate hash, while still preserving
 
 The sovereign audit is not included inside that aggregate hash because it consumes the attestation. This avoids circular hashing.
 
-## 16. Adversarial Validation
+## 17. Adversarial Validation
 
 A sovereign validator must prove that it rejects bad evidence, not only that it accepts clean evidence.
 
@@ -520,7 +555,7 @@ Production interpretation:
 
 PNVA evidence becomes more sovereign when validators have negative controls. A `PASS` is stronger when the same tooling can also show why corrupted proof, weak authority, invalid topology, duplicate identity, reordered sequence or malformed JSON does not pass silently.
 
-## 17. Entity And Heuristic Maturity
+## 18. Entity And Heuristic Maturity
 
 After validation and adversarial controls, score the maturity of the actors and rules:
 
@@ -558,7 +593,7 @@ Production interpretation:
 
 The canonical legacy bridge preserves 35 low-authority strong decisions as warnings. The native runtime path has zero low-authority legacy warnings. This creates a clean migration rule: old evidence stays honest; new PNVA runtimes must emit native events with H2/H3 authority.
 
-## 18. Semantic Consistency Guard
+## 19. Semantic Consistency Guard
 
 After all evidence reports are generated, check whether they agree as a system:
 
@@ -581,7 +616,7 @@ SEMANTIC_CONSISTENCY_READY
 Current result:
 
 ```text
-check_count: 74
+check_count: 83
 error_count: 0
 warning_count: 0
 ```
@@ -592,7 +627,7 @@ PNVA evidence should not pass only as isolated files. The release is stronger wh
 
 The semantic consistency report is not included in the attestation hash seed because it consumes the attestation.
 
-## 19. Reproducibility Guard
+## 20. Reproducibility Guard
 
 After semantic consistency, rerun the current tools and compare stable fields against published reports:
 
@@ -615,8 +650,8 @@ REPRODUCIBILITY_READY
 Current result:
 
 ```text
-command_count: 16
-comparison_count: 128
+command_count: 17
+comparison_count: 137
 failure_count: 0
 command_failure_count: 0
 comparison_failure_count: 0
@@ -628,7 +663,7 @@ PNVA evidence becomes stronger when reports are not only internally consistent, 
 
 The reproducibility report is not included in the attestation hash seed because it consumes the attestation. This keeps the evidence graph acyclic.
 
-## 20. Public Safety
+## 21. Public Safety
 
 Public repositories should expose:
 
@@ -655,7 +690,7 @@ wallets
 host-specific automation
 ```
 
-## 21. Principle
+## 22. Principle
 
 PNVA becomes sovereign when every action can answer:
 

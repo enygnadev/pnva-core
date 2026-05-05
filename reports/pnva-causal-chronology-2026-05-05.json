@@ -1,0 +1,490 @@
+{
+  "author": "Gustavo de Aguiar Martins",
+  "chain_count": 15,
+  "classification": "CAUSAL_CHRONOLOGY_READY_WITH_LEGACY_WARNINGS",
+  "error_count": 0,
+  "event_count": 519,
+  "generated_at": "2026-05-05T06:26:42Z",
+  "global_backward_count": 1,
+  "interpretation": {
+    "boundary": "This guard checks chronology and cadence evidence; replay, policy, graph, schema and proof-chain validators remain responsible for their own layers.",
+    "purpose": "Validate timestamp order, causal-chain chronology and time-gap evidence for public PNVA event logs.",
+    "sovereignty": "PNVA/no-tick does not use time as a blind execution motor, but it must still preserve time as an auditable trace dimension."
+  },
+  "native_chronology_clean": true,
+  "pass": true,
+  "project": "PNVA-Core",
+  "recommendations": [
+    "Treat native backward time as release-blocking.",
+    "Keep canonical legacy chronology warnings explicit instead of rewriting historical sample order.",
+    "Prefer native event emission for future proof logs so timestamp order is monotonic by construction."
+  ],
+  "schema_version": "pnva.causal_chronology.v1",
+  "scope_count": 2,
+  "scopes": [
+    {
+      "chain_backward_count": 1,
+      "chain_count": 14,
+      "chain_gap_stats": {
+        "count": 498,
+        "max_seconds": 620.0,
+        "mean_seconds": -20.735,
+        "median_seconds": 0.0,
+        "min_seconds": -17191.0,
+        "most_common_gap_count": 311,
+        "most_common_gap_ratio": 0.624498,
+        "most_common_gap_seconds": 0.0
+      },
+      "chain_summaries": {
+        "chain_021c088f7853": {
+          "backward_count": 0,
+          "event_count": 128,
+          "first_timestamp": "2026-05-02T13:19:00Z",
+          "gap_stats": {
+            "count": 127,
+            "max_seconds": 31.0,
+            "mean_seconds": 5.78,
+            "median_seconds": 0.0,
+            "min_seconds": 0.0,
+            "most_common_gap_count": 90,
+            "most_common_gap_ratio": 0.708661,
+            "most_common_gap_seconds": 0.0
+          },
+          "last_timestamp": "2026-05-02T13:31:14Z",
+          "zero_gap_count": 90
+        },
+        "chain_08fb2e218d52": {
+          "backward_count": 0,
+          "event_count": 64,
+          "first_timestamp": "2026-05-03T06:32:27Z",
+          "gap_stats": {
+            "count": 63,
+            "max_seconds": 21.0,
+            "mean_seconds": 2.413,
+            "median_seconds": 0.0,
+            "min_seconds": 0.0,
+            "most_common_gap_count": 54,
+            "most_common_gap_ratio": 0.857143,
+            "most_common_gap_seconds": 0.0
+          },
+          "last_timestamp": "2026-05-03T06:34:59Z",
+          "zero_gap_count": 54
+        },
+        "chain_1988457c3d12": {
+          "backward_count": 0,
+          "event_count": 29,
+          "first_timestamp": "2026-05-03T03:36:24Z",
+          "gap_stats": {
+            "count": 28,
+            "max_seconds": 32.0,
+            "mean_seconds": 18.286,
+            "median_seconds": 18.5,
+            "min_seconds": 6.0,
+            "most_common_gap_count": 3,
+            "most_common_gap_ratio": 0.107143,
+            "most_common_gap_seconds": 21.0
+          },
+          "last_timestamp": "2026-05-03T03:44:56Z",
+          "zero_gap_count": 0
+        },
+        "chain_482433f85efe": {
+          "backward_count": 0,
+          "event_count": 64,
+          "first_timestamp": "2026-05-03T06:36:07Z",
+          "gap_stats": {
+            "count": 63,
+            "max_seconds": 22.0,
+            "mean_seconds": 2.556,
+            "median_seconds": 0.0,
+            "min_seconds": 0.0,
+            "most_common_gap_count": 52,
+            "most_common_gap_ratio": 0.825397,
+            "most_common_gap_seconds": 0.0
+          },
+          "last_timestamp": "2026-05-03T06:38:48Z",
+          "zero_gap_count": 52
+        },
+        "chain_5eb925c72f32": {
+          "backward_count": 0,
+          "event_count": 16,
+          "first_timestamp": "2026-05-03T04:14:43Z",
+          "gap_stats": {
+            "count": 15,
+            "max_seconds": 33.0,
+            "mean_seconds": 18.733,
+            "median_seconds": 20.0,
+            "min_seconds": 7.0,
+            "most_common_gap_count": 4,
+            "most_common_gap_ratio": 0.266667,
+            "most_common_gap_seconds": 9.0
+          },
+          "last_timestamp": "2026-05-03T04:19:24Z",
+          "zero_gap_count": 0
+        },
+        "chain_6709c2ff5904": {
+          "backward_count": 0,
+          "event_count": 20,
+          "first_timestamp": "2026-05-03T03:54:31Z",
+          "gap_stats": {
+            "count": 19,
+            "max_seconds": 34.0,
+            "mean_seconds": 14.737,
+            "median_seconds": 12.0,
+            "min_seconds": 9.0,
+            "most_common_gap_count": 6,
+            "most_common_gap_ratio": 0.315789,
+            "most_common_gap_seconds": 12.0
+          },
+          "last_timestamp": "2026-05-03T03:59:11Z",
+          "zero_gap_count": 0
+        },
+        "chain_8bfdbf9faf43": {
+          "backward_count": 0,
+          "event_count": 23,
+          "first_timestamp": "2026-05-03T03:46:48Z",
+          "gap_stats": {
+            "count": 22,
+            "max_seconds": 34.0,
+            "mean_seconds": 15.727,
+            "median_seconds": 13.0,
+            "min_seconds": 9.0,
+            "most_common_gap_count": 8,
+            "most_common_gap_ratio": 0.363636,
+            "most_common_gap_seconds": 13.0
+          },
+          "last_timestamp": "2026-05-03T03:52:34Z",
+          "zero_gap_count": 0
+        },
+        "chain_92287533f69d": {
+          "backward_count": 0,
+          "event_count": 52,
+          "first_timestamp": "2026-05-03T08:22:08Z",
+          "gap_stats": {
+            "count": 51,
+            "max_seconds": 18.0,
+            "mean_seconds": 0.784,
+            "median_seconds": 0.0,
+            "min_seconds": 0.0,
+            "most_common_gap_count": 47,
+            "most_common_gap_ratio": 0.921569,
+            "most_common_gap_seconds": 0.0
+          },
+          "last_timestamp": "2026-05-03T08:22:48Z",
+          "zero_gap_count": 47
+        },
+        "chain_9ce61292fa5a": {
+          "backward_count": 0,
+          "event_count": 71,
+          "first_timestamp": "2026-05-03T08:18:53Z",
+          "gap_stats": {
+            "count": 70,
+            "max_seconds": 25.0,
+            "mean_seconds": 1.771,
+            "median_seconds": 0.0,
+            "min_seconds": 0.0,
+            "most_common_gap_count": 64,
+            "most_common_gap_ratio": 0.914286,
+            "most_common_gap_seconds": 0.0
+          },
+          "last_timestamp": "2026-05-03T08:20:57Z",
+          "zero_gap_count": 64
+        },
+        "chain_b62a4fa8414b": {
+          "backward_count": 0,
+          "event_count": 6,
+          "first_timestamp": "2026-05-03T04:08:14Z",
+          "gap_stats": {
+            "count": 5,
+            "max_seconds": 25.0,
+            "mean_seconds": 14.8,
+            "median_seconds": 9.0,
+            "min_seconds": 8.0,
+            "most_common_gap_count": 2,
+            "most_common_gap_ratio": 0.4,
+            "most_common_gap_seconds": 8.0
+          },
+          "last_timestamp": "2026-05-03T04:09:28Z",
+          "zero_gap_count": 0
+        },
+        "chain_d5823b382ff9": {
+          "backward_count": 0,
+          "event_count": 15,
+          "first_timestamp": "2026-05-03T04:01:38Z",
+          "gap_stats": {
+            "count": 14,
+            "max_seconds": 29.0,
+            "mean_seconds": 15.286,
+            "median_seconds": 11.0,
+            "min_seconds": 8.0,
+            "most_common_gap_count": 3,
+            "most_common_gap_ratio": 0.214286,
+            "most_common_gap_seconds": 10.0
+          },
+          "last_timestamp": "2026-05-03T04:05:12Z",
+          "zero_gap_count": 0
+        },
+        "chain_db1f2986d74b": {
+          "backward_count": 1,
+          "event_count": 10,
+          "first_timestamp": "2026-05-03T08:21:08Z",
+          "gap_stats": {
+            "count": 9,
+            "max_seconds": 619.0,
+            "mean_seconds": -1699.556,
+            "median_seconds": 0.0,
+            "min_seconds": -17191.0,
+            "most_common_gap_count": 4,
+            "most_common_gap_ratio": 0.444444,
+            "most_common_gap_seconds": 0.0
+          },
+          "last_timestamp": "2026-05-03T04:06:12Z",
+          "zero_gap_count": 4
+        },
+        "chain_f0b08ea5ba08": {
+          "backward_count": 0,
+          "event_count": 5,
+          "first_timestamp": "2026-05-03T03:34:37Z",
+          "gap_stats": {
+            "count": 4,
+            "max_seconds": 620.0,
+            "mean_seconds": 473.75,
+            "median_seconds": 451.5,
+            "min_seconds": 372.0,
+            "most_common_gap_count": 1,
+            "most_common_gap_ratio": 0.25,
+            "most_common_gap_seconds": 620.0
+          },
+          "last_timestamp": "2026-05-03T04:06:12Z",
+          "zero_gap_count": 0
+        },
+        "chain_fb758c5cf4a9": {
+          "backward_count": 0,
+          "event_count": 9,
+          "first_timestamp": "2026-05-03T03:32:07Z",
+          "gap_stats": {
+            "count": 8,
+            "max_seconds": 31.0,
+            "mean_seconds": 19.625,
+            "median_seconds": 24.5,
+            "min_seconds": 7.0,
+            "most_common_gap_count": 2,
+            "most_common_gap_ratio": 0.25,
+            "most_common_gap_seconds": 25.0
+          },
+          "last_timestamp": "2026-05-03T03:34:44Z",
+          "zero_gap_count": 0
+        }
+      },
+      "chain_zero_gap_count": 311,
+      "decision_counts": {
+        "block": 33,
+        "collapse": 266,
+        "observe": 213
+      },
+      "error_count": 0,
+      "errors": [],
+      "event_count": 512,
+      "event_file": "reports/pnva-canonical-events-sample-2026-05-05.jsonl",
+      "event_type_counts": {
+        "ETEV_GUARD_BLOCK": 33,
+        "ETEV_GUARD_PASS": 35,
+        "cuda_slot_scan": 35,
+        "entity_range_assigned": 22,
+        "kernel_completed": 17,
+        "kernel_launched": 18,
+        "network_state_changed": 19,
+        "pnva_decision": 53,
+        "pnva_engine_evaluated": 78,
+        "range_ledger": 38,
+        "range_plan_built": 123,
+        "runtime_status": 15
+      },
+      "first_timestamp": "2026-05-02T13:19:00Z",
+      "global_backward_count": 1,
+      "global_gap_stats": {
+        "count": 511,
+        "max_seconds": 67659.0,
+        "mean_seconds": 122.09,
+        "median_seconds": 0.0,
+        "min_seconds": -17441.0,
+        "most_common_gap_count": 316,
+        "most_common_gap_ratio": 0.618395,
+        "most_common_gap_seconds": 0.0
+      },
+      "global_zero_gap_count": 316,
+      "global_zero_gap_ratio": 0.618395,
+      "last_timestamp": "2026-05-03T06:38:48Z",
+      "parsed_timestamp_count": 512,
+      "positive_gap_stats": {
+        "count": 194,
+        "max_seconds": 67659.0,
+        "mean_seconds": 411.49,
+        "median_seconds": 18.0,
+        "min_seconds": 1.0,
+        "most_common_gap_count": 18,
+        "most_common_gap_ratio": 0.092784,
+        "most_common_gap_seconds": 29.0
+      },
+      "scope": "canonical",
+      "span_seconds": 62388.0,
+      "top_chains": [
+        {
+          "causal_chain_id": "chain_021c088f7853",
+          "event_count": 128
+        },
+        {
+          "causal_chain_id": "chain_9ce61292fa5a",
+          "event_count": 71
+        },
+        {
+          "causal_chain_id": "chain_08fb2e218d52",
+          "event_count": 64
+        },
+        {
+          "causal_chain_id": "chain_482433f85efe",
+          "event_count": 64
+        },
+        {
+          "causal_chain_id": "chain_92287533f69d",
+          "event_count": 52
+        },
+        {
+          "causal_chain_id": "chain_1988457c3d12",
+          "event_count": 29
+        },
+        {
+          "causal_chain_id": "chain_8bfdbf9faf43",
+          "event_count": 23
+        },
+        {
+          "causal_chain_id": "chain_6709c2ff5904",
+          "event_count": 20
+        },
+        {
+          "causal_chain_id": "chain_5eb925c72f32",
+          "event_count": 16
+        },
+        {
+          "causal_chain_id": "chain_d5823b382ff9",
+          "event_count": 15
+        }
+      ],
+      "warning_count": 2,
+      "warnings": [
+        {
+          "code": "LEGACY_BACKWARD_TIME",
+          "detail": "gap_seconds=-17441.0",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000001_6fae5dcf"
+        },
+        {
+          "code": "LEGACY_BATCH_TIMESTAMP_COMPACTION",
+          "detail": "zero_gap_count=316",
+          "scope": "canonical",
+          "subject": "global"
+        }
+      ]
+    },
+    {
+      "chain_backward_count": 0,
+      "chain_count": 1,
+      "chain_gap_stats": {
+        "count": 6,
+        "max_seconds": 2.0,
+        "mean_seconds": 2.0,
+        "median_seconds": 2.0,
+        "min_seconds": 2.0,
+        "most_common_gap_count": 6,
+        "most_common_gap_ratio": 1.0,
+        "most_common_gap_seconds": 2.0
+      },
+      "chain_summaries": {
+        "chain_native_runtime_demo": {
+          "backward_count": 0,
+          "event_count": 7,
+          "first_timestamp": "2026-05-05T04:40:00Z",
+          "gap_stats": {
+            "count": 6,
+            "max_seconds": 2.0,
+            "mean_seconds": 2.0,
+            "median_seconds": 2.0,
+            "min_seconds": 2.0,
+            "most_common_gap_count": 6,
+            "most_common_gap_ratio": 1.0,
+            "most_common_gap_seconds": 2.0
+          },
+          "last_timestamp": "2026-05-05T04:40:12Z",
+          "zero_gap_count": 0
+        }
+      },
+      "chain_zero_gap_count": 0,
+      "decision_counts": {
+        "block": 2,
+        "collapse": 2,
+        "observe": 2,
+        "prove": 1
+      },
+      "error_count": 0,
+      "errors": [],
+      "event_count": 7,
+      "event_file": "reports/pnva-native-events-demo-2026-05-05.jsonl",
+      "event_type_counts": {
+        "ETEV_GUARD_BLOCK": 1,
+        "ETEV_GUARD_PASS": 1,
+        "FIELD_OBSERVED": 1,
+        "PROOF_SEALED": 1,
+        "RUNTIME_COLLAPSE": 1,
+        "STALE_JOB_PRESSURE": 1,
+        "THERMAL_PRESSURE": 1
+      },
+      "first_timestamp": "2026-05-05T04:40:00Z",
+      "global_backward_count": 0,
+      "global_gap_stats": {
+        "count": 6,
+        "max_seconds": 2.0,
+        "mean_seconds": 2.0,
+        "median_seconds": 2.0,
+        "min_seconds": 2.0,
+        "most_common_gap_count": 6,
+        "most_common_gap_ratio": 1.0,
+        "most_common_gap_seconds": 2.0
+      },
+      "global_zero_gap_count": 0,
+      "global_zero_gap_ratio": 0.0,
+      "last_timestamp": "2026-05-05T04:40:12Z",
+      "parsed_timestamp_count": 7,
+      "positive_gap_stats": {
+        "count": 6,
+        "max_seconds": 2.0,
+        "mean_seconds": 2.0,
+        "median_seconds": 2.0,
+        "min_seconds": 2.0,
+        "most_common_gap_count": 6,
+        "most_common_gap_ratio": 1.0,
+        "most_common_gap_seconds": 2.0
+      },
+      "scope": "native",
+      "span_seconds": 12.0,
+      "top_chains": [
+        {
+          "causal_chain_id": "chain_native_runtime_demo",
+          "event_count": 7
+        }
+      ],
+      "warning_count": 0,
+      "warnings": []
+    }
+  ],
+  "summary": {
+    "legacy_warning_policy": "canonical bridge chronology warnings are preserved as legacy migration evidence; native events are expected to be monotonic and clean",
+    "native_chronology_clean": true,
+    "total_chain_count": 15,
+    "total_event_count": 519,
+    "total_global_backward_count": 1,
+    "validated_scopes": [
+      "canonical",
+      "native"
+    ]
+  },
+  "warning_count": 2
+}

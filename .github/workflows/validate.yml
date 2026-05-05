@@ -112,6 +112,12 @@ jobs:
             --write /tmp/pnva-schema-contract-validation.json \
             >/dev/null
           python3 -m json.tool /tmp/pnva-schema-contract-validation.json >/dev/null
+      - name: Run causal chronology guard
+        run: |
+          python3 tools/pnva_causal_chronology_guard.py \
+            --write /tmp/pnva-causal-chronology.json \
+            >/dev/null
+          python3 -m json.tool /tmp/pnva-causal-chronology.json >/dev/null
       - name: Run evidence attestor
         run: |
           python3 tools/pnva_evidence_attestor.py \

@@ -77,6 +77,13 @@ EXPECTED_ARTIFACTS = [
         "required": True,
     },
     {
+        "id": "causal_chronology",
+        "path": "reports/pnva-causal-chronology-2026-05-05.json",
+        "kind": "json_classification",
+        "expected": "CAUSAL_CHRONOLOGY_READY_WITH_LEGACY_WARNINGS",
+        "required": True,
+    },
+    {
         "id": "native_emitter",
         "path": "reports/pnva-native-emitter-summary-2026-05-05.json",
         "kind": "json_classification",
@@ -278,6 +285,7 @@ def build_attestation(repo: Path) -> dict[str, Any]:
             "proof-chain sealing",
             "causal graph audit",
             "schema contract validation",
+            "causal chronology guard",
             "adversarial negative controls",
             "entity and heuristic maturity",
             "sovereign audit consumes this attestation without being part of its hash seed",
@@ -294,6 +302,7 @@ def build_attestation(repo: Path) -> dict[str, Any]:
             "Run adversarial negative controls so bad evidence is rejected or exposed before publication.",
             "Use entity and heuristic maturity scores to guide the next no-tick runtime hardening step.",
             "Run schema contract validation before attestation so event/entity shape defects become release blockers.",
+            "Run causal chronology before attestation so timestamp regressions and batch compaction are explicit.",
         ],
     }
 
