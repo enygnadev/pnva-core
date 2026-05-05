@@ -979,8 +979,8 @@ required_runtime_event_count: 70
 accepted_slot_count: 0
 pending_slot_count: 35
 rejected_event_count: 0
-negative_control_detected_count: 13
-negative_control_count: 13
+negative_control_detected_count: 19
+negative_control_count: 19
 positive_control_passed_count: 6
 positive_control_count: 6
 positive_controls_fixture_only: true
@@ -988,7 +988,7 @@ positive_controls_fixture_only: true
 
 Production interpretation:
 
-The guard makes the future R3 runtime harder to fake. It rejects projected proofs, missing timestamps, missing field state, missing gate delta, missing entities, missing causal chains, missing proof hashes, missing native proof flags, invalid native source format, missing R3 slot identity, low-authority commits, action mismatches and prechecks that execute instead of proving no-tick suppression. It also proves six fixture-only positive controls so the intake boundary is strict without becoming unusable. This improves robustness without disturbing the current 24h and production PASS evidence.
+The guard makes the future R3 runtime harder to fake. It rejects projected proofs, missing timestamps, missing field state, missing gate delta, non-finite tension values, missing or mismatched entities, missing causal chains, missing proof hashes, missing native proof flags, invalid native source format, missing or mismatched R3 slot identity, original-event mismatches, low-authority commits, missing target heuristic rules, action mismatches and prechecks that execute instead of proving no-tick suppression. It also proves six fixture-only positive controls so the intake boundary is strict without becoming unusable. This improves robustness without disturbing the current 24h and production PASS evidence.
 
 ## 28. R3 Runtime Instrumentation Plan
 
@@ -1024,7 +1024,7 @@ required_no_tick_precheck_count: 35
 required_collapse_commit_count: 35
 event_template_count: 6
 mandatory_field_count: 24
-negative_control_detected_count: 13
+negative_control_detected_count: 19
 positive_control_passed_count: 6
 ```
 
@@ -1063,7 +1063,7 @@ action_contract_count: 3
 required_runtime_event_count: 70
 event_template_count: 6
 mandatory_field_count: 24
-negative_control_detected_count: 13
+negative_control_detected_count: 19
 positive_control_passed_count: 6
 enforced_control_count: 15
 contract_check_count: 106

@@ -395,13 +395,19 @@ def _negative_controls(matrix: dict[str, Any]) -> dict[str, Any]:
     run_control("reject_missing_timestamp", "commit", lambda event: event.pop("timestamp", None), "MISSING_TIMESTAMP")
     run_control("reject_missing_field_state", "commit", lambda event: event.pop("field", None), "FIELD_STATE_INVALID")
     run_control("reject_missing_gate_delta", "commit", lambda event: event["tension"].pop("gate_delta", None), "TENSION_GATE_DELTA_INVALID")
+    run_control("reject_nonfinite_tension_score", "commit", lambda event: event["tension"].update({"score": float("nan")}), "TENSION_SCORE_INVALID")
+    run_control("reject_nonfinite_tension_threshold", "commit", lambda event: event["tension"].update({"threshold": float("inf")}), "TENSION_THRESHOLD_INVALID")
     run_control("reject_missing_entity", "commit", lambda event: event.pop("entity_id", None), "MISSING_ENTITY_ID")
+    run_control("reject_entity_mismatch", "commit", lambda event: event.update({"entity_id": "entity_wrong"}), "ENTITY_MISMATCH")
     run_control("reject_missing_chain", "commit", lambda event: event.pop("causal_chain_id", None), "MISSING_CAUSAL_CHAIN_ID")
     run_control("reject_missing_hash", "commit", lambda event: event["proof"].pop("proof_hash", None), "PROOF_HASH_OR_VALIDITY_INVALID")
     run_control("reject_low_authority_commit", "commit", lambda event: event["heuristics"].update({"rules": ["legacy_observer"]}), "COMMIT_AUTHORITY_BELOW_H2")
+    run_control("reject_missing_target_rules", "commit", lambda event: event["heuristics"].update({"rules": ["native_event_emitter"]}), "COMMIT_TARGET_RULES_MISSING")
     run_control("reject_wrong_action", "commit", lambda event: event["decision"].update({"action": "WRONG_ACTION"}), "COMMIT_ACTION_MISMATCH")
     run_control("reject_precheck_execution_action", "precheck", lambda event: event["decision"].update({"action": slot.get("decision_action")}), "PRECHECK_ACTION_INVALID")
     run_control("reject_missing_slot_id", "commit", lambda event: event["tension"]["components"].pop("r3_runtime_slot_id", None), "MISSING_R3_RUNTIME_SLOT_ID")
+    run_control("reject_slot_id_mismatch", "commit", lambda event: event["tension"]["components"].update({"r3_runtime_slot_id": "r3-runtime-slot-wrong"}), "R3_RUNTIME_SLOT_MISMATCH")
+    run_control("reject_original_event_mismatch", "commit", lambda event: event["tension"]["components"].update({"original_event_id": "evt_wrong"}), "ORIGINAL_EVENT_MISMATCH")
     run_control("reject_missing_native_proof", "commit", lambda event: event["proof"].pop("native", None), "PROOF_NATIVE_REQUIRED")
     run_control("reject_invalid_source_format", "commit", lambda event: event["source"].update({"format": "legacy_bridge"}), "SOURCE_FORMAT_INVALID")
 
@@ -562,12 +568,13 @@ def build_report(repo: Path, runtime_events_path: Path | None = None) -> dict[st
         },
         "interpretation": {
             "purpose": "Protect the R3 runtime intake boundary before fresh events are accepted as legacy-free evidence.",
-            "sovereignty": "PNVA becomes harder to fake when projected proofs, missing entities, weak authority, missing timestamps, missing field state and incomplete no-tick pairs are rejected before cutover.",
+            "sovereignty": "PNVA becomes harder to fake when projected proofs, malformed tension values, entity or slot mismatches, weak authority, missing target rules and incomplete no-tick pairs are rejected before cutover.",
             "boundary": "Without a runtime-events file this guard certifies the intake contract only; it does not claim final runtime completion.",
         },
         "recommendations": [
             "Feed fresh runtime JSONL through this guard before rerunning R3 cutover approval.",
             "Reject any event with proof.projection=true in final runtime evidence.",
+            "Reject any event with non-finite tension values, entity mismatch, slot mismatch or original-event mismatch.",
             "Require every slot to contain one native no-tick precheck and one H2+ commit.",
             "Keep entity_id, causal_chain_id and proof_hash mandatory for every runtime event.",
         ],

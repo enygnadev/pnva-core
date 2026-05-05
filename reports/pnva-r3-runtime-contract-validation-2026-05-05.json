@@ -95,11 +95,11 @@
     },
     {
       "group": "controls",
-      "left": 13,
+      "left": 19,
       "left_ref": "negative_controls_complete",
       "name": "negative_controls_complete",
       "pass": true,
-      "right": 13,
+      "right": 19,
       "right_ref": "expected"
     },
     {
@@ -1195,15 +1195,15 @@
   "event_template_count": 6,
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-05-05T11:08:08Z",
+  "generated_at": "2026-05-05T11:23:50Z",
   "interpretation": {
     "boundary": "This is a contract validator, not runtime evidence and not final R3 cutover approval.",
     "purpose": "Validate that the R3 runtime capture matrix, evidence guard and instrumentation plan form one coherent runtime contract.",
     "sovereignty": "The final runtime path becomes harder to mislabel because the contract itself is checked before fresh runtime evidence is accepted."
   },
   "mandatory_field_count": 24,
-  "negative_control_count": 13,
-  "negative_control_detected_count": 13,
+  "negative_control_count": 19,
+  "negative_control_detected_count": 19,
   "pass": true,
   "positive_control_count": 6,
   "positive_control_passed_count": 6,
@@ -1235,7 +1235,7 @@
     "contract_validation_ready": true,
     "failure_count": 0,
     "mandatory_field_count": 24,
-    "negative_control_detected_count": 13,
+    "negative_control_detected_count": 19,
     "positive_control_passed_count": 6,
     "required_runtime_event_count": 70
   }

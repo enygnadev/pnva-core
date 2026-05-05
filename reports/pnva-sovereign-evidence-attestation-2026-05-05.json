@@ -355,8 +355,8 @@
       "present": true,
       "reported_pass": true,
       "required": true,
-      "sha256": "bf890e70760e2726e2e98fa8fa75dadef8f312cd13994a7d512570458566937a",
-      "size_bytes": 19547
+      "sha256": "7cd1af16549f49e3441db9ce43acac10e5120153463186975079e69bc954b8ec",
+      "size_bytes": 20852
     },
     {
       "classification": "R3_RUNTIME_INSTRUMENTATION_PLAN_READY",
@@ -368,7 +368,7 @@
       "present": true,
       "reported_pass": true,
       "required": true,
-      "sha256": "b5c0523e0ad215e668824e15e400745b124015d5d89be5c2ae817b1695aa9a64",
+      "sha256": "37b449aec05191db1569431ec600fa4fd91222cb10b057b41950191059696a6b",
       "size_bytes": 14718
     },
     {
@@ -381,7 +381,7 @@
       "present": true,
       "reported_pass": true,
       "required": true,
-      "sha256": "528788c11aa1969ea259435aa523c8e6de36a46df1cda121703f3cfd42f2b117",
+      "sha256": "f63e579d4d6bccec085aee78780a4bd51bd0421fa7717c477b87c9c6be29f1ca",
       "size_bytes": 40919
     },
     {
@@ -394,7 +394,7 @@
       "present": true,
       "reported_pass": true,
       "required": true,
-      "sha256": "7953a1b930718d2aa94a7ef85f68699e019cd064668de07bbce114730b3825dd",
+      "sha256": "08f40ab0fb1646a79d6ad7b76090f7ed7cb628a4e65f53554defcf5365d35ca8",
       "size_bytes": 9641
     },
     {
@@ -558,9 +558,9 @@
     "entity and heuristic maturity",
     "sovereign audit consumes this attestation without being part of its hash seed"
   ],
-  "evidence_hash": "sha256:0d46fbbce51beac952e6c610e61e8f760ee8c98ca63e11d67193a64f373d3447",
+  "evidence_hash": "sha256:a001c9ee16fb65e15a2ff453b8ddce8765d8dceafd8e1951db7e0e8020ec2edc",
   "failure_count": 0,
-  "generated_at": "2026-05-05T11:11:57Z",
+  "generated_at": "2026-05-05T11:26:34Z",
   "interpretation": {
     "boundary": "This attests repository evidence integrity; it is not a universal proof of all possible PNVA deployments.",
     "hash_policy": "The evidence_hash changes when any tracked artifact hash, classification or pass flag changes.",

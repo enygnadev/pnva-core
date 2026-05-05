@@ -21,16 +21,16 @@
     "tension_gate_delta_required": true,
     "timestamp_required": true
   },
-  "generated_at": "2026-05-05T11:07:56Z",
+  "generated_at": "2026-05-05T11:23:50Z",
   "intake_guard_ready": true,
   "interpretation": {
     "boundary": "Without a runtime-events file this guard certifies the intake contract only; it does not claim final runtime completion.",
     "purpose": "Protect the R3 runtime intake boundary before fresh events are accepted as legacy-free evidence.",
-    "sovereignty": "PNVA becomes harder to fake when projected proofs, missing entities, weak authority, missing timestamps, missing field state and incomplete no-tick pairs are rejected before cutover."
+    "sovereignty": "PNVA becomes harder to fake when projected proofs, malformed tension values, entity or slot mismatches, weak authority, missing target rules and incomplete no-tick pairs are rejected before cutover."
   },
   "matrix_classification": "R3_RUNTIME_CAPTURE_MATRIX_READY_PENDING_RUNTIME",
-  "negative_control_count": 13,
-  "negative_control_detected_count": 13,
+  "negative_control_count": 19,
+  "negative_control_detected_count": 19,
   "negative_controls": [
     {
       "codes": [
@@ -67,12 +67,36 @@
     },
     {
       "codes": [
+        "TENSION_SCORE_INVALID"
+      ],
+      "detected": true,
+      "expected_detection": "TENSION_SCORE_INVALID",
+      "name": "reject_nonfinite_tension_score"
+    },
+    {
+      "codes": [
+        "TENSION_THRESHOLD_INVALID"
+      ],
+      "detected": true,
+      "expected_detection": "TENSION_THRESHOLD_INVALID",
+      "name": "reject_nonfinite_tension_threshold"
+    },
+    {
+      "codes": [
         "MISSING_ENTITY_ID",
         "ENTITY_MISMATCH"
       ],
       "detected": true,
       "expected_detection": "MISSING_ENTITY_ID",
       "name": "reject_missing_entity"
+    },
+    {
+      "codes": [
+        "ENTITY_MISMATCH"
+      ],
+      "detected": true,
+      "expected_detection": "ENTITY_MISMATCH",
+      "name": "reject_entity_mismatch"
     },
     {
       "codes": [
@@ -101,6 +125,14 @@
     },
     {
       "codes": [
+        "COMMIT_TARGET_RULES_MISSING"
+      ],
+      "detected": true,
+      "expected_detection": "COMMIT_TARGET_RULES_MISSING",
+      "name": "reject_missing_target_rules"
+    },
+    {
+      "codes": [
         "COMMIT_ACTION_MISMATCH",
         "RUNTIME_ROLE_UNKNOWN"
       ],
@@ -123,6 +155,22 @@
       "detected": true,
       "expected_detection": "MISSING_R3_RUNTIME_SLOT_ID",
       "name": "reject_missing_slot_id"
+    },
+    {
+      "codes": [
+        "R3_RUNTIME_SLOT_MISMATCH"
+      ],
+      "detected": true,
+      "expected_detection": "R3_RUNTIME_SLOT_MISMATCH",
+      "name": "reject_slot_id_mismatch"
+    },
+    {
+      "codes": [
+        "ORIGINAL_EVENT_MISMATCH"
+      ],
+      "detected": true,
+      "expected_detection": "ORIGINAL_EVENT_MISMATCH",
+      "name": "reject_original_event_mismatch"
     },
     {
       "codes": [
@@ -196,6 +244,7 @@
   "recommendations": [
     "Feed fresh runtime JSONL through this guard before rerunning R3 cutover approval.",
     "Reject any event with proof.projection=true in final runtime evidence.",
+    "Reject any event with non-finite tension values, entity mismatch, slot mismatch or original-event mismatch.",
     "Require every slot to contain one native no-tick precheck and one H2+ commit.",
     "Keep entity_id, causal_chain_id and proof_hash mandatory for every runtime event."
   ],
@@ -645,8 +694,8 @@
     "accepted_slot_count": 0,
     "capture_slot_count": 35,
     "intake_guard_ready": true,
-    "negative_control_count": 13,
-    "negative_control_detected_count": 13,
+    "negative_control_count": 19,
+    "negative_control_detected_count": 19,
     "pending_slot_count": 35,
     "positive_control_count": 6,
     "positive_control_passed_count": 6,

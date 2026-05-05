@@ -41,7 +41,7 @@ action_contract_count: 3
 required_runtime_event_count: 70
 event_template_count: 6
 mandatory_field_count: 24
-negative_control_detected_count: 13
+negative_control_detected_count: 19
 positive_control_passed_count: 6
 enforced_control_count: 15
 contract_check_count: 106
@@ -61,7 +61,7 @@ runtime approval remains false
 70 required runtime events remain paired
 6 templates remain two per action contract
 24 mandatory runtime fields are present
-13 negative controls are detected
+19 negative controls are detected
 6 positive controls are accepted as fixture-only guard controls
 guard enforced controls match the runtime contract
 contract slot IDs cover the matrix

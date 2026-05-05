@@ -46,7 +46,7 @@ required_no_tick_precheck_count: 35
 required_collapse_commit_count: 35
 event_template_count: 6
 mandatory_field_count: 24
-negative_control_detected_count: 13
+negative_control_detected_count: 19
 positive_control_passed_count: 6
 ```
 

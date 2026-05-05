@@ -44,8 +44,8 @@ required_collapse_commit_count: 35
 accepted_slot_count: 0
 pending_slot_count: 35
 rejected_event_count: 0
-negative_control_detected_count: 13
-negative_control_count: 13
+negative_control_detected_count: 19
+negative_control_count: 19
 positive_control_passed_count: 6
 positive_control_count: 6
 positive_controls_fixture_only: true
@@ -70,8 +70,11 @@ invalid source.format
 missing or invalid tension.score
 missing or invalid tension.threshold
 missing or invalid tension.gate_delta
+non-finite tension.score or tension.threshold
 unknown original_event_id
 missing r3_runtime_slot_id
+original event mismatch
+R3 runtime slot mismatch
 entity mismatch
 commit authority below H2
 commit action mismatch
@@ -101,13 +104,19 @@ reject_projection_true
 reject_missing_timestamp
 reject_missing_field_state
 reject_missing_gate_delta
+reject_nonfinite_tension_score
+reject_nonfinite_tension_threshold
 reject_missing_entity
+reject_entity_mismatch
 reject_missing_chain
 reject_missing_hash
 reject_low_authority_commit
+reject_missing_target_rules
 reject_wrong_action
 reject_precheck_execution_action
 reject_missing_slot_id
+reject_slot_id_mismatch
+reject_original_event_mismatch
 reject_missing_native_proof
 reject_invalid_source_format
 ```
@@ -115,7 +124,7 @@ reject_invalid_source_format
 Current result:
 
 ```text
-13/13 detected
+19/19 detected
 ```
 
 ## Positive Controls
@@ -157,7 +166,7 @@ R3_RUNTIME_INSTRUMENTATION_PLAN_READY
 6 event templates
 70 required runtime events
 24 mandatory event fields
-13 negative controls
+19 negative controls
 6 positive controls
 ```
 
