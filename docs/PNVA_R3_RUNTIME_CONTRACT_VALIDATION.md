@@ -41,10 +41,10 @@ action_contract_count: 3
 required_runtime_event_count: 70
 event_template_count: 6
 mandatory_field_count: 28
-negative_control_detected_count: 56
+negative_control_detected_count: 57
 positive_control_passed_count: 6
-enforced_control_count: 53
-contract_check_count: 291
+enforced_control_count: 54
+contract_check_count: 295
 failure_count: 0
 ```
 
@@ -61,7 +61,7 @@ runtime approval remains false
 70 required runtime events remain paired
 6 templates remain two per action contract
 28 mandatory runtime fields are present
-56 negative controls are detected
+57 negative controls are detected
 6 positive controls are accepted as fixture-only guard controls
 guard enforced controls match the runtime contract
 contract slot IDs cover the matrix
@@ -100,7 +100,7 @@ heuristic rules must be known and unique
 risk_flags must be lists, known, unique and present on prechecks and commits when the slot declares target risk
 precheck and commit must share causal_chain_id
 causal_chain_id must not be reused across different slots
-commit timestamp must be at or after precheck timestamp
+commit timestamp must be strictly after precheck timestamp
 commit JSONL line must be after precheck JSONL line
 commit source.line must be after precheck source.line
 each slot must have exactly one precheck and one commit

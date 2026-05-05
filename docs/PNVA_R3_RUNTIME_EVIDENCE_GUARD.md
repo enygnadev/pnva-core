@@ -51,8 +51,8 @@ source_line_monotonicity_rejection_count: 0
 causal_chain_slot_collision_rejection_count: 0
 no_tick_pair_integrity_count: 0
 no_tick_pair_failure_count: 0
-negative_control_detected_count: 56
-negative_control_count: 56
+negative_control_detected_count: 57
+negative_control_count: 57
 positive_control_passed_count: 6
 positive_control_count: 6
 positive_controls_fixture_only: true
@@ -96,7 +96,7 @@ original event mismatch
 R3 runtime slot mismatch
 entity mismatch
 precheck and commit without shared causal_chain_id
-commit timestamp before precheck timestamp
+commit timestamp before or equal to precheck timestamp
 commit JSONL line before or equal to precheck JSONL line
 commit source.line before or equal to precheck source.line
 commit authority below H2
@@ -120,7 +120,7 @@ Every R3 slot must contain:
 1 native collapse commit event
 same causal_chain_id
 causal_chain_id not reused across different slots
-commit timestamp >= precheck timestamp
+commit timestamp > precheck timestamp
 commit JSONL line > precheck JSONL line
 commit source.line > precheck source.line
 unique event_id values
@@ -217,7 +217,7 @@ reject_precheck_missing_target_risk_flags
 Current result:
 
 ```text
-56/56 detected
+57/57 detected
 ```
 
 ## Positive Controls
@@ -259,7 +259,7 @@ R3_RUNTIME_INSTRUMENTATION_PLAN_READY
 6 event templates
 70 required runtime events
 28 mandatory event fields
-56 negative controls
+57 negative controls
 6 positive controls
 ```
 

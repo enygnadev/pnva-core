@@ -457,6 +457,7 @@ def _event_codes(event: dict[str, Any], slot: dict[str, Any]) -> list[str]:
 def _pair_evidence(prechecks: list[dict[str, Any]], commits: list[dict[str, Any]]) -> dict[str, Any]:
     matching_chain_count = 0
     ordered_pair_count = 0
+    equal_timestamp_pair_count = 0
     log_line_ordered_pair_count = 0
     source_line_ordered_pair_count = 0
     shared_chains: set[str] = set()
@@ -473,8 +474,11 @@ def _pair_evidence(prechecks: list[dict[str, Any]], commits: list[dict[str, Any]
             matching_chain_count += 1
             shared_chains.add(precheck_chain)
             commit_time = _timestamp_epoch(commit)
-            if precheck_time is not None and commit_time is not None and commit_time >= precheck_time:
-                ordered_pair_count += 1
+            if precheck_time is not None and commit_time is not None:
+                if commit_time > precheck_time:
+                    ordered_pair_count += 1
+                elif commit_time == precheck_time:
+                    equal_timestamp_pair_count += 1
             commit_log_line = commit.get("_line")
             if (
                 isinstance(precheck_log_line, int)
@@ -504,6 +508,8 @@ def _pair_evidence(prechecks: list[dict[str, Any]], commits: list[dict[str, Any]
         reason = "NO_TICK_PAIR_LOG_LINE_ORDER_INVALID"
     elif ordered_pair_count > 0 and source_line_ordered_pair_count == 0:
         reason = "NO_TICK_PAIR_SOURCE_LINE_ORDER_INVALID"
+    elif equal_timestamp_pair_count > 0:
+        reason = "NO_TICK_PAIR_TIMESTAMP_NOT_STRICT_AFTER"
     elif prechecks and commits:
         reason = "NO_TICK_PAIR_ORDER_INVALID"
     else:
@@ -514,6 +520,7 @@ def _pair_evidence(prechecks: list[dict[str, Any]], commits: list[dict[str, Any]
         "exact_cardinality": exact_cardinality,
         "matching_chain_count": matching_chain_count,
         "ordered_pair_count": ordered_pair_count,
+        "equal_timestamp_pair_count": equal_timestamp_pair_count,
         "log_line_ordered_pair_count": log_line_ordered_pair_count,
         "source_line_ordered_pair_count": source_line_ordered_pair_count,
         "shared_causal_chain_count": len(shared_chains),
@@ -652,6 +659,7 @@ def _validate_runtime_events(matrix: dict[str, Any], events: list[dict[str, Any]
                 "exact_no_tick_pair_cardinality": pair["exact_cardinality"],
                 "matching_causal_chain_pair_count": pair["matching_chain_count"],
                 "ordered_no_tick_pair_count": pair["ordered_pair_count"],
+                "equal_timestamp_no_tick_pair_count": pair["equal_timestamp_pair_count"],
                 "log_line_ordered_no_tick_pair_count": pair["log_line_ordered_pair_count"],
                 "source_line_ordered_no_tick_pair_count": pair["source_line_ordered_pair_count"],
                 "shared_causal_chain_count": pair["shared_causal_chain_count"],
@@ -698,10 +706,11 @@ def _sample_event(slot: dict[str, Any], *, role: str, control: str = "negative")
     threshold = 0.5
     event_id = f"evt_{control}_control_{role}_{slot.get('slot_id')}"
     proof_ref = f"runtime:{slot.get('slot_id')}:{role}"
+    timestamp = "2026-05-05T00:00:00Z" if role == "precheck" else "2026-05-05T00:00:01Z"
     event = {
         "schema_version": "pnva.event.v1",
         "event_id": event_id,
-        "timestamp": "2026-05-05T00:00:00Z",
+        "timestamp": timestamp,
         "entity_id": slot.get("entity_id"),
         "entity_type": slot.get("entity_type"),
         "causal_chain_id": f"chain_{control}_control_{slot.get('slot_id')}",
@@ -919,6 +928,12 @@ def _negative_controls(matrix: dict[str, Any]) -> dict[str, Any]:
     rebind_proof_hash(order_commit)
     run_stream_control("reject_commit_before_precheck", [order_precheck, order_commit], "NO_TICK_PAIR_ORDER_INVALID")
 
+    equal_timestamp_precheck = _sample_event(slot, role="precheck", control="equal_timestamp")
+    equal_timestamp_commit = _sample_event(slot, role="commit", control="equal_timestamp")
+    equal_timestamp_commit["timestamp"] = equal_timestamp_precheck["timestamp"]
+    rebind_proof_hash(equal_timestamp_commit)
+    run_stream_control("reject_equal_no_tick_pair_timestamp", [equal_timestamp_precheck, equal_timestamp_commit], "NO_TICK_PAIR_TIMESTAMP_NOT_STRICT_AFTER")
+
     log_line_precheck = _sample_event(slot, role="precheck", control="log_line_order")
     log_line_commit = _sample_event(slot, role="commit", control="log_line_order")
     log_line_precheck["source"]["file_name"] = "pnva-r3-runtime-guard-fixture-log-precheck"
@@ -1096,6 +1111,7 @@ def build_report(repo: Path, runtime_events_path: Path | None = None) -> dict[st
             "commit_state_after_required": COMMIT_STATE_AFTER,
             "no_tick_pair_causal_chain_required": True,
             "no_tick_pair_commit_after_precheck_required": True,
+            "no_tick_pair_commit_strictly_after_precheck_required": True,
             "no_tick_pair_log_line_order_required": True,
             "no_tick_pair_source_line_order_required": True,
             "no_tick_pair_exactly_one_precheck_commit_required": True,
@@ -1148,14 +1164,14 @@ def build_report(repo: Path, runtime_events_path: Path | None = None) -> dict[st
         },
         "interpretation": {
             "purpose": "Protect the R3 runtime intake boundary before fresh events are accepted as legacy-free evidence.",
-            "sovereignty": "PNVA becomes harder to fake when projected proofs, malformed, duplicated or content-unbound proof hashes, wrong proof-ref slot roles, wrong event types, wrong decision reasons, wrong role state transitions, malformed or inconsistent tension values, invalid gate signs, duplicate events, duplicated source locations, reused causal chains across different slots, unsafe source file names, regressed source lines, entity or slot mismatches, missing or reversed log/source location order, unsanitized sources, unknown heuristic rules, invalid risk flags, weak authority, missing target rules, missing precheck or commit target risk flags, extra runtime events and causally broken no-tick pairs are rejected before cutover.",
+            "sovereignty": "PNVA becomes harder to fake when projected proofs, malformed, duplicated or content-unbound proof hashes, wrong proof-ref slot roles, wrong event types, wrong decision reasons, wrong role state transitions, malformed or inconsistent tension values, invalid gate signs, duplicate events, duplicated source locations, reused causal chains across different slots, unsafe source file names, regressed source lines, entity or slot mismatches, missing, equal or reversed pair timestamps, missing or reversed log/source location order, unsanitized sources, unknown heuristic rules, invalid risk flags, weak authority, missing target rules, missing precheck or commit target risk flags, extra runtime events and causally broken no-tick pairs are rejected before cutover.",
             "boundary": "Without a runtime-events file this guard certifies the intake contract only; it does not claim final runtime completion.",
         },
         "recommendations": [
             "Feed fresh runtime JSONL through this guard before rerunning R3 cutover approval.",
             "Reject any event with proof.projection=true in final runtime evidence.",
             "Reject any event with non-finite tension values, entity mismatch, slot mismatch or original-event mismatch.",
-            "Require every slot to contain exactly one native no-tick precheck and exactly one H2+ commit in the same causal_chain_id, with commit timestamp, JSONL line and source.line after the precheck.",
+            "Require every slot to contain exactly one native no-tick precheck and exactly one H2+ commit in the same causal_chain_id, with commit timestamp strictly after the precheck and JSONL line plus source.line after the precheck.",
             "Require the runtime event count to equal the declared R3 requirement instead of allowing extra events.",
             "Require precheck and commit event_type values to match the capture slot contract.",
             "Require decision.reason to distinguish native no-tick prechecks from native runtime commits.",
@@ -1167,6 +1183,7 @@ def build_report(repo: Path, runtime_events_path: Path | None = None) -> dict[st
             "Reject source.line regression inside the same source.file_name before accepting runtime coverage.",
             "Reject runtime events whose proof_hash does not bind to the canonical event identity and source-location payload.",
             "Reject no-tick pairs whose commit JSONL line appears before the precheck line.",
+            "Reject no-tick pairs whose commit timestamp is equal to the precheck timestamp.",
             "Reject no-tick pairs whose commit source.line does not follow the precheck source.line.",
             "Require proof_ref to match runtime:<slot-id>:precheck or runtime:<slot-id>:commit.",
             "Require gate_delta to equal score minus threshold, with nonpositive prechecks and nonnegative commits.",
