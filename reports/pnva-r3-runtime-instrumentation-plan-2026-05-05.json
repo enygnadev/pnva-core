@@ -39,6 +39,10 @@
       },
       "contract_id": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch",
       "decision_action": "RESIZE_BATCH",
+      "decision_reason_policy": {
+        "commit_reason_required": "native_runtime_commit",
+        "precheck_reason_required": "native_authority_precheck_no_tick"
+      },
       "entity_id": "entity_4c3ade60ea78",
       "entity_type": "event_source",
       "event_type_mix": [
@@ -237,6 +241,10 @@
       },
       "contract_id": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu",
       "decision_action": "COOLDOWN_GPU",
+      "decision_reason_policy": {
+        "commit_reason_required": "native_runtime_commit",
+        "precheck_reason_required": "native_authority_precheck_no_tick"
+      },
       "entity_id": "entity_4c3ade60ea78",
       "entity_type": "event_source",
       "event_type_mix": [
@@ -369,6 +377,10 @@
       },
       "contract_id": "r3-runtime-instrument-entity_4c3ade60ea78-execute",
       "decision_action": "EXECUTE",
+      "decision_reason_policy": {
+        "commit_reason_required": "native_runtime_commit",
+        "precheck_reason_required": "native_authority_precheck_no_tick"
+      },
       "entity_id": "entity_4c3ade60ea78",
       "entity_type": "event_source",
       "event_type_mix": [
@@ -467,7 +479,7 @@
   "classification": "R3_RUNTIME_INSTRUMENTATION_PLAN_READY",
   "entity_target_count": 1,
   "event_template_count": 6,
-  "generated_at": "2026-05-05T12:48:51Z",
+  "generated_at": "2026-05-05T12:57:47Z",
   "instrumentation_plan_ready": true,
   "interpretation": {
     "boundary": "This plan is not runtime evidence and does not approve R3 cutover; it defines how fresh runtime evidence must be emitted and validated.",
@@ -505,8 +517,8 @@
     "source.sanitized"
   ],
   "mandatory_field_count": 28,
-  "negative_control_count": 46,
-  "negative_control_detected_count": 46,
+  "negative_control_count": 48,
+  "negative_control_detected_count": 48,
   "pass": true,
   "positive_control_count": 6,
   "positive_control_passed_count": 6,
@@ -515,6 +527,7 @@
     "Implement one emitter path per action contract before collecting final R3 runtime evidence.",
     "Keep proof.projection=false on all final runtime prechecks and commits.",
     "Emit original_event_id in tension.components so each runtime event maps back to a capture slot.",
+    "Emit fixed decision.reason values so no-tick prechecks and runtime commits remain semantically distinct.",
     "Run the runtime evidence guard before replay, policy, no-tick and proof-chain validators."
   ],
   "reports_checked": {
@@ -563,7 +576,7 @@
     "event_template_count": 6,
     "instrumentation_plan_ready": true,
     "mandatory_field_count": 28,
-    "negative_control_detected_count": 46,
+    "negative_control_detected_count": 48,
     "positive_control_passed_count": 6,
     "required_runtime_event_count": 70
   },

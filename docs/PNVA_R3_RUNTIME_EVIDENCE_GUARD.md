@@ -49,8 +49,8 @@ duplicate_proof_hash_rejection_count: 0
 duplicate_proof_ref_rejection_count: 0
 no_tick_pair_integrity_count: 0
 no_tick_pair_failure_count: 0
-negative_control_detected_count: 46
-negative_control_count: 46
+negative_control_detected_count: 48
+negative_control_count: 48
 positive_control_passed_count: 6
 positive_control_count: 6
 positive_controls_fixture_only: true
@@ -94,6 +94,8 @@ precheck and commit without shared causal_chain_id
 commit timestamp before precheck timestamp
 commit authority below H2
 commit action mismatch
+precheck decision.reason mismatch
+commit decision.reason mismatch
 missing native target rules
 unknown heuristic rule
 duplicate heuristic rule
@@ -118,6 +120,8 @@ proof_hash bound to the event identity and source-location payload
 source.file_name present
 source.line present
 source.sanitized=true
+precheck decision.reason=native_authority_precheck_no_tick
+commit decision.reason=native_runtime_commit
 gate_delta equal to score - threshold
 precheck gate_delta <= 0
 commit gate_delta >= 0
@@ -157,6 +161,8 @@ reject_missing_target_rules
 reject_unknown_heuristic_rule
 reject_duplicate_heuristic_rule
 reject_wrong_action
+reject_precheck_reason_mismatch
+reject_commit_reason_mismatch
 reject_precheck_event_type_mismatch
 reject_commit_event_type_mismatch
 reject_precheck_execution_action
@@ -186,7 +192,7 @@ reject_precheck_missing_target_risk_flags
 Current result:
 
 ```text
-46/46 detected
+48/48 detected
 ```
 
 ## Positive Controls
@@ -228,7 +234,7 @@ R3_RUNTIME_INSTRUMENTATION_PLAN_READY
 6 event templates
 70 required runtime events
 28 mandatory event fields
-46 negative controls
+48 negative controls
 6 positive controls
 ```
 

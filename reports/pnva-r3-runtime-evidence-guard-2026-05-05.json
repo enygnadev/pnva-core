@@ -12,6 +12,7 @@
     "commit_gate_delta_nonnegative_required": true,
     "commit_min_authority": "H2",
     "commit_must_match_slot_action": true,
+    "commit_reason_required": "native_runtime_commit",
     "duplicate_event_id_forbidden": true,
     "entity_id_required": true,
     "entity_type_must_match_slot": true,
@@ -25,6 +26,7 @@
     "no_tick_pair_exactly_one_precheck_commit_required": true,
     "precheck_gate_delta_nonpositive_required": true,
     "precheck_must_be_no_tick": true,
+    "precheck_reason_required": "native_authority_precheck_no_tick",
     "proof_hash_binds_event_identity": true,
     "proof_hash_binds_source_location": true,
     "proof_hash_required": true,
@@ -52,16 +54,16 @@
     "timestamp_iso8601_required": true,
     "timestamp_required": true
   },
-  "generated_at": "2026-05-05T12:48:51Z",
+  "generated_at": "2026-05-05T12:57:47Z",
   "intake_guard_ready": true,
   "interpretation": {
     "boundary": "Without a runtime-events file this guard certifies the intake contract only; it does not claim final runtime completion.",
     "purpose": "Protect the R3 runtime intake boundary before fresh events are accepted as legacy-free evidence.",
-    "sovereignty": "PNVA becomes harder to fake when projected proofs, malformed, duplicated or content-unbound proof hashes, wrong proof-ref slot roles, wrong event types, malformed or inconsistent tension values, invalid gate signs, duplicate events, entity or slot mismatches, missing source location, unsanitized sources, unknown heuristic rules, invalid risk flags, weak authority, missing target rules, missing precheck or commit target risk flags, extra runtime events and causally broken no-tick pairs are rejected before cutover."
+    "sovereignty": "PNVA becomes harder to fake when projected proofs, malformed, duplicated or content-unbound proof hashes, wrong proof-ref slot roles, wrong event types, wrong decision reasons, malformed or inconsistent tension values, invalid gate signs, duplicate events, entity or slot mismatches, missing source location, unsanitized sources, unknown heuristic rules, invalid risk flags, weak authority, missing target rules, missing precheck or commit target risk flags, extra runtime events and causally broken no-tick pairs are rejected before cutover."
   },
   "matrix_classification": "R3_RUNTIME_CAPTURE_MATRIX_READY_PENDING_RUNTIME",
-  "negative_control_count": 46,
-  "negative_control_detected_count": 46,
+  "negative_control_count": 48,
+  "negative_control_detected_count": 48,
   "negative_controls": [
     {
       "codes": [
@@ -315,6 +317,22 @@
     },
     {
       "codes": [
+        "PRECHECK_REASON_MISMATCH"
+      ],
+      "detected": true,
+      "expected_detection": "PRECHECK_REASON_MISMATCH",
+      "name": "reject_precheck_reason_mismatch"
+    },
+    {
+      "codes": [
+        "COMMIT_REASON_MISMATCH"
+      ],
+      "detected": true,
+      "expected_detection": "COMMIT_REASON_MISMATCH",
+      "name": "reject_commit_reason_mismatch"
+    },
+    {
+      "codes": [
         "PROOF_HASH_BINDING_INVALID",
         "PRECHECK_EVENT_TYPE_MISMATCH"
       ],
@@ -549,6 +567,7 @@
     "Require every slot to contain exactly one native no-tick precheck and exactly one H2+ commit in the same causal_chain_id, with commit timestamp at or after precheck timestamp.",
     "Require the runtime event count to equal the declared R3 requirement instead of allowing extra events.",
     "Require precheck and commit event_type values to match the capture slot contract.",
+    "Require decision.reason to distinguish native no-tick prechecks from native runtime commits.",
     "Reject duplicate event_id, proof_hash and proof_ref values before accepting runtime coverage.",
     "Reject runtime events whose proof_hash does not bind to the canonical event identity and source-location payload.",
     "Require proof_ref to match runtime:<slot-id>:precheck or runtime:<slot-id>:commit.",
@@ -1217,8 +1236,8 @@
     "duplicate_proof_hash_rejection_count": 0,
     "duplicate_proof_ref_rejection_count": 0,
     "intake_guard_ready": true,
-    "negative_control_count": 46,
-    "negative_control_detected_count": 46,
+    "negative_control_count": 48,
+    "negative_control_detected_count": 48,
     "no_tick_pair_failure_count": 0,
     "no_tick_pair_integrity_count": 0,
     "pending_slot_count": 35,

@@ -10,6 +10,8 @@ from typing import Any
 
 AUTHOR = "Gustavo de Aguiar Martins"
 PROJECT = "PNVA-Core"
+PRECHECK_REASON = "native_authority_precheck_no_tick"
+COMMIT_REASON = "native_runtime_commit"
 
 R3_RUNTIME_CAPTURE_MATRIX = "reports/pnva-r3-runtime-capture-matrix-2026-05-05.json"
 R3_RUNTIME_EVIDENCE_GUARD = "reports/pnva-r3-runtime-evidence-guard-2026-05-05.json"
@@ -82,6 +84,8 @@ REQUIRED_ENFORCED_CONTROLS = {
     "r3_runtime_slot_id_required": True,
     "commit_min_authority": "H2",
     "precheck_must_be_no_tick": True,
+    "precheck_reason_required": PRECHECK_REASON,
+    "commit_reason_required": COMMIT_REASON,
     "no_tick_pair_causal_chain_required": True,
     "no_tick_pair_commit_after_precheck_required": True,
     "no_tick_pair_exactly_one_precheck_commit_required": True,
@@ -143,6 +147,7 @@ def _template_checks(checks: list[dict[str, Any]], contract: dict[str, Any]) -> 
     pairing = contract.get("pairing_policy") if isinstance(contract.get("pairing_policy"), dict) else {}
     event_type_policy = contract.get("event_type_policy") if isinstance(contract.get("event_type_policy"), dict) else {}
     tension_policy = contract.get("tension_policy") if isinstance(contract.get("tension_policy"), dict) else {}
+    decision_reason_policy = contract.get("decision_reason_policy") if isinstance(contract.get("decision_reason_policy"), dict) else {}
     proof_policy = contract.get("proof_policy") if isinstance(contract.get("proof_policy"), dict) else {}
     heuristic_policy = contract.get("heuristic_policy") if isinstance(contract.get("heuristic_policy"), dict) else {}
     slot_ids = contract.get("slot_ids") if isinstance(contract.get("slot_ids"), list) else []
@@ -172,7 +177,9 @@ def _template_checks(checks: list[dict[str, Any]], contract: dict[str, Any]) -> 
 
     _add_check(checks, "template", f"{contract_id}_precheck_kind", _dig(precheck, ["decision", "kind"]), "observe")
     _add_check(checks, "template", f"{contract_id}_precheck_action", _dig(precheck, ["decision", "action"]), "NO_ACTION")
+    _add_check(checks, "template", f"{contract_id}_precheck_reason", _dig(precheck, ["decision", "reason"]), PRECHECK_REASON)
     _add_check(checks, "template", f"{contract_id}_commit_action", _dig(commit, ["decision", "action"]), action)
+    _add_check(checks, "template", f"{contract_id}_commit_reason", _dig(commit, ["decision", "reason"]), COMMIT_REASON)
     _add_check(checks, "event_type_policy", f"{contract_id}_commit_event_type_in_matrix", commit.get("event_type") in set(target_event_types), True)
     _add_check(checks, "event_type_policy", f"{contract_id}_precheck_event_type_binding", precheck.get("event_type"), f"{commit.get('event_type')}_authority_precheck")
     _add_check(checks, "template", f"{contract_id}_commit_min_authority", commit.get("min_authority"), "H2")
@@ -190,6 +197,8 @@ def _template_checks(checks: list[dict[str, Any]], contract: dict[str, Any]) -> 
     _add_check(checks, "tension_policy", f"{contract_id}_gate_delta_consistency", tension_policy.get("gate_delta_must_equal_score_minus_threshold"), True)
     _add_check(checks, "tension_policy", f"{contract_id}_precheck_gate_delta_nonpositive", tension_policy.get("precheck_gate_delta_nonpositive_required"), True)
     _add_check(checks, "tension_policy", f"{contract_id}_commit_gate_delta_nonnegative", tension_policy.get("commit_gate_delta_nonnegative_required"), True)
+    _add_check(checks, "decision_reason_policy", f"{contract_id}_precheck_reason_required", decision_reason_policy.get("precheck_reason_required"), PRECHECK_REASON)
+    _add_check(checks, "decision_reason_policy", f"{contract_id}_commit_reason_required", decision_reason_policy.get("commit_reason_required"), COMMIT_REASON)
     _add_check(checks, "proof_policy", f"{contract_id}_proof_hash_sha256_format_required", proof_policy.get("proof_hash_sha256_format_required"), True)
     _add_check(checks, "proof_policy", f"{contract_id}_proof_hash_binds_event_identity", proof_policy.get("proof_hash_binds_event_identity"), True)
     _add_check(checks, "proof_policy", f"{contract_id}_proof_hash_binds_source_location", proof_policy.get("proof_hash_binds_source_location"), True)
