@@ -99,6 +99,15 @@ def _action_contracts(slots: list[dict[str, Any]]) -> list[dict[str, Any]]:
                     "same_causal_chain_id_required": True,
                     "commit_timestamp_after_precheck_required": True,
                 },
+                "proof_policy": {
+                    "proof_hash_sha256_format_required": True,
+                    "proof_hash_unique_required": True,
+                    "proof_ref_unique_required": True,
+                },
+                "heuristic_policy": {
+                    "known_rules_only": True,
+                    "duplicate_rules_forbidden": True,
+                },
                 "precheck_template": {
                     "schema_version": "pnva.event.v1",
                     "event_type": f"{first.get('event_type')}_authority_precheck",

@@ -45,10 +45,12 @@ accepted_slot_count: 0
 pending_slot_count: 35
 rejected_event_count: 0
 duplicate_event_rejection_count: 0
+duplicate_proof_hash_rejection_count: 0
+duplicate_proof_ref_rejection_count: 0
 no_tick_pair_integrity_count: 0
 no_tick_pair_failure_count: 0
-negative_control_detected_count: 23
-negative_control_count: 23
+negative_control_detected_count: 30
+negative_control_count: 30
 positive_control_passed_count: 6
 positive_control_count: 6
 positive_controls_fixture_only: true
@@ -67,9 +69,14 @@ missing timestamp
 invalid timestamp
 duplicate event_id
 missing entity_id
+missing entity_type
+entity_type mismatch
 missing causal_chain_id
 missing field.state_before or field.state_after
 missing proof_hash
+invalid proof_hash format
+duplicate proof_hash
+duplicate proof_ref
 missing proof.native=true
 invalid source.format
 missing or invalid tension.score
@@ -86,6 +93,8 @@ commit timestamp before precheck timestamp
 commit authority below H2
 commit action mismatch
 missing native target rules
+unknown heuristic rule
+duplicate heuristic rule
 precheck that executes instead of suppressing
 ```
 
@@ -99,6 +108,9 @@ Every R3 slot must contain:
 same causal_chain_id
 commit timestamp >= precheck timestamp
 unique event_id values
+unique proof_hash values
+unique proof_ref values
+known and unique heuristic rules
 ```
 
 The precheck proves that PNVA can observe and suppress without waking blindly.
@@ -119,10 +131,15 @@ reject_nonfinite_tension_score
 reject_nonfinite_tension_threshold
 reject_missing_entity
 reject_entity_mismatch
+reject_missing_entity_type
+reject_entity_type_mismatch
 reject_missing_chain
 reject_missing_hash
+reject_invalid_proof_hash_format
 reject_low_authority_commit
 reject_missing_target_rules
+reject_unknown_heuristic_rule
+reject_duplicate_heuristic_rule
 reject_wrong_action
 reject_precheck_execution_action
 reject_missing_slot_id
@@ -131,6 +148,8 @@ reject_original_event_mismatch
 reject_missing_native_proof
 reject_invalid_source_format
 reject_duplicate_event_id
+reject_duplicate_proof_hash
+reject_duplicate_proof_ref
 reject_no_tick_pair_chain_mismatch
 reject_commit_before_precheck
 ```
@@ -138,7 +157,7 @@ reject_commit_before_precheck
 Current result:
 
 ```text
-23/23 detected
+30/30 detected
 ```
 
 ## Positive Controls
@@ -180,7 +199,7 @@ R3_RUNTIME_INSTRUMENTATION_PLAN_READY
 6 event templates
 70 required runtime events
 24 mandatory event fields
-23 negative controls
+30 negative controls
 6 positive controls
 ```
 

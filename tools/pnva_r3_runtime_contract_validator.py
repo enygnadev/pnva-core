@@ -54,9 +54,14 @@ REQUIRED_ENFORCED_CONTROLS = {
     "duplicate_event_id_forbidden": True,
     "field_state_required": True,
     "entity_id_required": True,
+    "entity_type_required": True,
+    "entity_type_must_match_slot": True,
     "causal_chain_id_required": True,
     "tension_gate_delta_required": True,
     "proof_hash_required": True,
+    "proof_hash_sha256_format_required": True,
+    "proof_hash_unique_required": True,
+    "proof_ref_unique_required": True,
     "proof_native_required": True,
     "proof_projection_forbidden": True,
     "source_format_required": "native_pnva_event_v1",
@@ -67,6 +72,8 @@ REQUIRED_ENFORCED_CONTROLS = {
     "no_tick_pair_commit_after_precheck_required": True,
     "commit_must_match_slot_action": True,
     "target_rules_required_on_commit": True,
+    "heuristic_rules_known_required": True,
+    "heuristic_rules_unique_required": True,
 }
 
 
@@ -113,6 +120,8 @@ def _template_checks(checks: list[dict[str, Any]], contract: dict[str, Any]) -> 
     precheck = contract.get("precheck_template") if isinstance(contract.get("precheck_template"), dict) else {}
     commit = contract.get("commit_template") if isinstance(contract.get("commit_template"), dict) else {}
     pairing = contract.get("pairing_policy") if isinstance(contract.get("pairing_policy"), dict) else {}
+    proof_policy = contract.get("proof_policy") if isinstance(contract.get("proof_policy"), dict) else {}
+    heuristic_policy = contract.get("heuristic_policy") if isinstance(contract.get("heuristic_policy"), dict) else {}
     slot_ids = contract.get("slot_ids") if isinstance(contract.get("slot_ids"), list) else []
     original_ids = contract.get("original_event_ids") if isinstance(contract.get("original_event_ids"), list) else []
 
@@ -140,6 +149,11 @@ def _template_checks(checks: list[dict[str, Any]], contract: dict[str, Any]) -> 
     _add_check(checks, "pairing", f"{contract_id}_duplicate_event_id_forbidden", pairing.get("duplicate_event_id_forbidden"), True)
     _add_check(checks, "pairing", f"{contract_id}_same_causal_chain_id_required", pairing.get("same_causal_chain_id_required"), True)
     _add_check(checks, "pairing", f"{contract_id}_commit_timestamp_after_precheck_required", pairing.get("commit_timestamp_after_precheck_required"), True)
+    _add_check(checks, "proof_policy", f"{contract_id}_proof_hash_sha256_format_required", proof_policy.get("proof_hash_sha256_format_required"), True)
+    _add_check(checks, "proof_policy", f"{contract_id}_proof_hash_unique_required", proof_policy.get("proof_hash_unique_required"), True)
+    _add_check(checks, "proof_policy", f"{contract_id}_proof_ref_unique_required", proof_policy.get("proof_ref_unique_required"), True)
+    _add_check(checks, "heuristic_policy", f"{contract_id}_known_rules_only", heuristic_policy.get("known_rules_only"), True)
+    _add_check(checks, "heuristic_policy", f"{contract_id}_duplicate_rules_forbidden", heuristic_policy.get("duplicate_rules_forbidden"), True)
 
 
 def build_report(repo: Path) -> dict[str, Any]:

@@ -41,10 +41,10 @@ action_contract_count: 3
 required_runtime_event_count: 70
 event_template_count: 6
 mandatory_field_count: 24
-negative_control_detected_count: 23
+negative_control_detected_count: 30
 positive_control_passed_count: 6
-enforced_control_count: 19
-contract_check_count: 122
+enforced_control_count: 26
+contract_check_count: 144
 failure_count: 0
 ```
 
@@ -61,7 +61,7 @@ runtime approval remains false
 70 required runtime events remain paired
 6 templates remain two per action contract
 24 mandatory runtime fields are present
-23 negative controls are detected
+30 negative controls are detected
 6 positive controls are accepted as fixture-only guard controls
 guard enforced controls match the runtime contract
 contract slot IDs cover the matrix
@@ -76,6 +76,10 @@ tension.gate_delta is required
 tension.components.r3_runtime_slot_id is required
 timestamps must be parseable ISO-8601 values
 duplicate event_id values are forbidden
+proof_hash must be strict sha256:64-hex
+proof_hash and proof_ref values must be unique in the runtime stream
+entity_type must be present and match the capture slot
+heuristic rules must be known and unique
 precheck and commit must share causal_chain_id
 commit timestamp must be at or after precheck timestamp
 ```

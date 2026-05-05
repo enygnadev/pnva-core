@@ -95,11 +95,11 @@
     },
     {
       "group": "controls",
-      "left": 23,
+      "left": 30,
       "left_ref": "negative_controls_complete",
       "name": "negative_controls_complete",
       "pass": true,
-      "right": 23,
+      "right": 30,
       "right_ref": "expected"
     },
     {
@@ -263,6 +263,24 @@
     {
       "group": "enforced_controls",
       "left": true,
+      "left_ref": "enforced_entity_type_required",
+      "name": "enforced_entity_type_required",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "enforced_controls",
+      "left": true,
+      "left_ref": "enforced_entity_type_must_match_slot",
+      "name": "enforced_entity_type_must_match_slot",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "enforced_controls",
+      "left": true,
       "left_ref": "enforced_causal_chain_id_required",
       "name": "enforced_causal_chain_id_required",
       "pass": true,
@@ -283,6 +301,33 @@
       "left": true,
       "left_ref": "enforced_proof_hash_required",
       "name": "enforced_proof_hash_required",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "enforced_controls",
+      "left": true,
+      "left_ref": "enforced_proof_hash_sha256_format_required",
+      "name": "enforced_proof_hash_sha256_format_required",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "enforced_controls",
+      "left": true,
+      "left_ref": "enforced_proof_hash_unique_required",
+      "name": "enforced_proof_hash_unique_required",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "enforced_controls",
+      "left": true,
+      "left_ref": "enforced_proof_ref_unique_required",
+      "name": "enforced_proof_ref_unique_required",
       "pass": true,
       "right": true,
       "right_ref": "expected"
@@ -373,6 +418,24 @@
       "left": true,
       "left_ref": "enforced_target_rules_required_on_commit",
       "name": "enforced_target_rules_required_on_commit",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "enforced_controls",
+      "left": true,
+      "left_ref": "enforced_heuristic_rules_known_required",
+      "name": "enforced_heuristic_rules_known_required",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "enforced_controls",
+      "left": true,
+      "left_ref": "enforced_heuristic_rules_unique_required",
+      "name": "enforced_heuristic_rules_unique_required",
       "pass": true,
       "right": true,
       "right_ref": "expected"
@@ -633,6 +696,51 @@
       "right_ref": "expected"
     },
     {
+      "group": "proof_policy",
+      "left": true,
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_proof_hash_sha256_format_required",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_proof_hash_sha256_format_required",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "proof_policy",
+      "left": true,
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_proof_hash_unique_required",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_proof_hash_unique_required",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "proof_policy",
+      "left": true,
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_proof_ref_unique_required",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_proof_ref_unique_required",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "heuristic_policy",
+      "left": true,
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_known_rules_only",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_known_rules_only",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "heuristic_policy",
+      "left": true,
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_duplicate_rules_forbidden",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_duplicate_rules_forbidden",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
       "group": "contract",
       "left": 2,
       "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_precheck_count",
@@ -883,6 +991,51 @@
       "left": true,
       "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_commit_timestamp_after_precheck_required",
       "name": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_commit_timestamp_after_precheck_required",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "proof_policy",
+      "left": true,
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_proof_hash_sha256_format_required",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_proof_hash_sha256_format_required",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "proof_policy",
+      "left": true,
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_proof_hash_unique_required",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_proof_hash_unique_required",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "proof_policy",
+      "left": true,
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_proof_ref_unique_required",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_proof_ref_unique_required",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "heuristic_policy",
+      "left": true,
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_known_rules_only",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_known_rules_only",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "heuristic_policy",
+      "left": true,
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_duplicate_rules_forbidden",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_duplicate_rules_forbidden",
       "pass": true,
       "right": true,
       "right_ref": "expected"
@@ -1143,6 +1296,51 @@
       "right_ref": "expected"
     },
     {
+      "group": "proof_policy",
+      "left": true,
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-execute_proof_hash_sha256_format_required",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-execute_proof_hash_sha256_format_required",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "proof_policy",
+      "left": true,
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-execute_proof_hash_unique_required",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-execute_proof_hash_unique_required",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "proof_policy",
+      "left": true,
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-execute_proof_ref_unique_required",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-execute_proof_ref_unique_required",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "heuristic_policy",
+      "left": true,
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-execute_known_rules_only",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-execute_known_rules_only",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "heuristic_policy",
+      "left": true,
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-execute_duplicate_rules_forbidden",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-execute_duplicate_rules_forbidden",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
       "group": "contract",
       "left": 3,
       "left_ref": "contract_count",
@@ -1333,21 +1531,21 @@
     }
   ],
   "classification": "R3_RUNTIME_CONTRACT_VALIDATED_READY",
-  "contract_check_count": 122,
+  "contract_check_count": 144,
   "contract_validation_ready": true,
-  "enforced_control_count": 19,
+  "enforced_control_count": 26,
   "event_template_count": 6,
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-05-05T11:35:43Z",
+  "generated_at": "2026-05-05T11:46:27Z",
   "interpretation": {
     "boundary": "This is a contract validator, not runtime evidence and not final R3 cutover approval.",
     "purpose": "Validate that the R3 runtime capture matrix, evidence guard and instrumentation plan form one coherent runtime contract.",
     "sovereignty": "The final runtime path becomes harder to mislabel because the contract itself is checked before fresh runtime evidence is accepted."
   },
   "mandatory_field_count": 24,
-  "negative_control_count": 23,
-  "negative_control_detected_count": 23,
+  "negative_control_count": 30,
+  "negative_control_detected_count": 30,
   "pass": true,
   "positive_control_count": 6,
   "positive_control_passed_count": 6,
@@ -1375,11 +1573,11 @@
   "summary": {
     "action_contract_count": 3,
     "capture_slot_count": 35,
-    "contract_check_count": 122,
+    "contract_check_count": 144,
     "contract_validation_ready": true,
     "failure_count": 0,
     "mandatory_field_count": 24,
-    "negative_control_detected_count": 23,
+    "negative_control_detected_count": 30,
     "positive_control_passed_count": 6,
     "required_runtime_event_count": 70
   }

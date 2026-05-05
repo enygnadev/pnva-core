@@ -3,8 +3,10 @@ from __future__ import annotations
 
 import argparse
 import copy
+import hashlib
 import json
 import math
+import re
 import time
 from collections import Counter, defaultdict
 from datetime import datetime
@@ -32,6 +34,7 @@ AUTHORITY_ORDER = {"H0": 0, "H1": 1, "H2": 2, "H3": 3, "H4": 4}
 HARD_AUTHORITIES = {"H2", "H3", "H4"}
 STRONG_DECISIONS = {"collapse", "block", "prove", "reclassify"}
 PRECHECK_DECISIONS = {"observe", "block"}
+PROOF_HASH_RE = re.compile(r"^sha256:[0-9a-f]{64}$")
 
 
 def _read_json(path: Path) -> Any:
@@ -112,7 +115,7 @@ def _proof_clean(event: dict[str, Any]) -> bool:
     return (
         proof.get("valid") is True
         and proof.get("projection") is not True
-        and str(proof.get("proof_hash") or "").startswith("sha256:")
+        and _proof_hash_valid(proof.get("proof_hash"))
         and bool(proof.get("proof_ref"))
     )
 
@@ -128,6 +131,14 @@ def _tension(event: dict[str, Any]) -> dict[str, Any]:
 
 def _finite_number(value: Any) -> bool:
     return isinstance(value, (int, float)) and not isinstance(value, bool) and math.isfinite(float(value))
+
+
+def _sha256_text(value: str) -> str:
+    return hashlib.sha256(value.encode("utf-8", errors="replace")).hexdigest()
+
+
+def _proof_hash_valid(value: Any) -> bool:
+    return isinstance(value, str) and bool(PROOF_HASH_RE.fullmatch(value))
 
 
 def _timestamp_epoch(event: dict[str, Any]) -> float | None:
@@ -149,6 +160,21 @@ def _timestamp_epoch(event: dict[str, Any]) -> float | None:
 def _field_state_valid(event: dict[str, Any]) -> bool:
     field = event.get("field")
     return isinstance(field, dict) and bool(field.get("state_before")) and bool(field.get("state_after"))
+
+
+def _heuristic_rule_codes(event: dict[str, Any]) -> list[str]:
+    value = _heuristics(event).get("rules")
+    if not isinstance(value, list) or not value:
+        return ["HEURISTICS_RULES_INVALID"]
+    rules = [str(item) for item in value if str(item)]
+    codes: list[str] = []
+    if len(rules) != len(value):
+        codes.append("HEURISTICS_RULES_INVALID")
+    if len(set(rules)) != len(rules):
+        codes.append("HEURISTIC_RULE_DUPLICATE")
+    if any(rule not in RULE_AUTHORITY for rule in rules):
+        codes.append("HEURISTIC_RULE_UNKNOWN")
+    return codes
 
 
 def _original_id(event: dict[str, Any]) -> str:
@@ -190,6 +216,8 @@ def _event_codes(event: dict[str, Any], slot: dict[str, Any]) -> list[str]:
         codes.append("TIMESTAMP_INVALID")
     if not event.get("entity_id"):
         codes.append("MISSING_ENTITY_ID")
+    if not event.get("entity_type"):
+        codes.append("MISSING_ENTITY_TYPE")
     if not event.get("causal_chain_id"):
         codes.append("MISSING_CAUSAL_CHAIN_ID")
     if not _field_state_valid(event):
@@ -205,6 +233,8 @@ def _event_codes(event: dict[str, Any], slot: dict[str, Any]) -> list[str]:
         codes.append("PROJECTED_PROOF_FORBIDDEN")
     if _proof(event).get("native") is not True:
         codes.append("PROOF_NATIVE_REQUIRED")
+    if not _proof_hash_valid(_proof(event).get("proof_hash")):
+        codes.append("PROOF_HASH_FORMAT_INVALID")
     if not _proof_clean(event):
         codes.append("PROOF_HASH_OR_VALIDITY_INVALID")
     if _dig(event, ["source", "format"]) != "native_pnva_event_v1":
@@ -221,6 +251,9 @@ def _event_codes(event: dict[str, Any], slot: dict[str, Any]) -> list[str]:
         codes.append("R3_RUNTIME_SLOT_MISMATCH")
     if str(event.get("entity_id") or "") != str(slot.get("entity_id") or ""):
         codes.append("ENTITY_MISMATCH")
+    if str(event.get("entity_type") or "") != str(slot.get("entity_type") or ""):
+        codes.append("ENTITY_TYPE_MISMATCH")
+    codes.extend(_heuristic_rule_codes(event))
 
     role = _role(event, slot)
     rules = set(_rules(event))
@@ -295,6 +328,8 @@ def _validate_runtime_events(matrix: dict[str, Any], events: list[dict[str, Any]
     action_mix: Counter[str] = Counter()
     rule_mix: Counter[str] = Counter()
     seen_event_lines: dict[str, int] = {}
+    seen_proof_hash_lines: dict[str, int] = {}
+    seen_proof_ref_lines: dict[str, int] = {}
 
     for event in events:
         event_id = str(event.get("event_id") or "")
@@ -304,6 +339,18 @@ def _validate_runtime_events(matrix: dict[str, Any], events: list[dict[str, Any]
                 stream_codes.append("DUPLICATE_EVENT_ID")
             else:
                 seen_event_lines[event_id] = int(event.get("_line", 0) or 0)
+        proof_hash = str(_proof(event).get("proof_hash") or "")
+        if proof_hash:
+            if proof_hash in seen_proof_hash_lines:
+                stream_codes.append("DUPLICATE_PROOF_HASH")
+            else:
+                seen_proof_hash_lines[proof_hash] = int(event.get("_line", 0) or 0)
+        proof_ref = str(_proof(event).get("proof_ref") or "")
+        if proof_ref:
+            if proof_ref in seen_proof_ref_lines:
+                stream_codes.append("DUPLICATE_PROOF_REF")
+            else:
+                seen_proof_ref_lines[proof_ref] = int(event.get("_line", 0) or 0)
         original = _original_id(event)
         if original not in slots:
             codes = [*stream_codes, "UNKNOWN_ORIGINAL_EVENT_ID"]
@@ -373,6 +420,8 @@ def _validate_runtime_events(matrix: dict[str, Any], events: list[dict[str, Any]
 
     pending_slot_count = len(slots) - accepted_slot_count
     duplicate_event_rejection_count = sum(1 for rejection in rejections if "DUPLICATE_EVENT_ID" in rejection.get("codes", []))
+    duplicate_proof_hash_rejection_count = sum(1 for rejection in rejections if "DUPLICATE_PROOF_HASH" in rejection.get("codes", []))
+    duplicate_proof_ref_rejection_count = sum(1 for rejection in rejections if "DUPLICATE_PROOF_REF" in rejection.get("codes", []))
     return {
         "runtime_event_count": len(events),
         "bad_json_line_count": len(bad_lines),
@@ -381,6 +430,8 @@ def _validate_runtime_events(matrix: dict[str, Any], events: list[dict[str, Any]
         "slot_failure_count": pending_slot_count,
         "rejected_event_count": len(rejections),
         "duplicate_event_rejection_count": duplicate_event_rejection_count,
+        "duplicate_proof_hash_rejection_count": duplicate_proof_hash_rejection_count,
+        "duplicate_proof_ref_rejection_count": duplicate_proof_ref_rejection_count,
         "no_tick_pair_integrity_count": no_tick_pair_integrity_count,
         "no_tick_pair_failure_count": no_tick_pair_failure_count,
         "event_type_mix": event_type_mix.most_common(),
@@ -397,9 +448,11 @@ def _sample_event(slot: dict[str, Any], *, role: str, control: str = "negative")
     event_type = f"{slot.get('event_type')}_authority_precheck" if role == "precheck" else str(slot.get("event_type") or "runtime_commit")
     score = 0.0 if role == "precheck" else 1.0
     threshold = 0.5
+    event_id = f"evt_{control}_control_{role}_{slot.get('slot_id')}"
+    proof_ref = f"{control}-control-fixture:{slot.get('slot_id')}:{role}"
     return {
         "schema_version": "pnva.event.v1",
-        "event_id": f"evt_{control}_control_{role}_{slot.get('slot_id')}",
+        "event_id": event_id,
         "timestamp": "2026-05-05T00:00:00Z",
         "entity_id": slot.get("entity_id"),
         "entity_type": slot.get("entity_type"),
@@ -433,8 +486,8 @@ def _sample_event(slot: dict[str, Any], *, role: str, control: str = "negative")
             "valid": True,
             "native": True,
             "projection": False,
-            "proof_hash": "sha256:" + ("a" * 64),
-            "proof_ref": f"{control}-control-fixture",
+            "proof_hash": "sha256:" + _sha256_text(f"{event_id}:{proof_ref}"),
+            "proof_ref": proof_ref,
         },
         "source": {
             "format": "native_pnva_event_v1",
@@ -498,10 +551,15 @@ def _negative_controls(matrix: dict[str, Any]) -> dict[str, Any]:
     run_control("reject_nonfinite_tension_threshold", "commit", lambda event: event["tension"].update({"threshold": float("inf")}), "TENSION_THRESHOLD_INVALID")
     run_control("reject_missing_entity", "commit", lambda event: event.pop("entity_id", None), "MISSING_ENTITY_ID")
     run_control("reject_entity_mismatch", "commit", lambda event: event.update({"entity_id": "entity_wrong"}), "ENTITY_MISMATCH")
+    run_control("reject_missing_entity_type", "commit", lambda event: event.pop("entity_type", None), "MISSING_ENTITY_TYPE")
+    run_control("reject_entity_type_mismatch", "commit", lambda event: event.update({"entity_type": "entity_type_wrong"}), "ENTITY_TYPE_MISMATCH")
     run_control("reject_missing_chain", "commit", lambda event: event.pop("causal_chain_id", None), "MISSING_CAUSAL_CHAIN_ID")
     run_control("reject_missing_hash", "commit", lambda event: event["proof"].pop("proof_hash", None), "PROOF_HASH_OR_VALIDITY_INVALID")
+    run_control("reject_invalid_proof_hash_format", "commit", lambda event: event["proof"].update({"proof_hash": "sha256:not-64-hex"}), "PROOF_HASH_FORMAT_INVALID")
     run_control("reject_low_authority_commit", "commit", lambda event: event["heuristics"].update({"rules": ["legacy_observer"]}), "COMMIT_AUTHORITY_BELOW_H2")
     run_control("reject_missing_target_rules", "commit", lambda event: event["heuristics"].update({"rules": ["native_event_emitter"]}), "COMMIT_TARGET_RULES_MISSING")
+    run_control("reject_unknown_heuristic_rule", "commit", lambda event: event["heuristics"].update({"rules": list(slot.get("target_rules") or []) + ["unknown_rule"]}), "HEURISTIC_RULE_UNKNOWN")
+    run_control("reject_duplicate_heuristic_rule", "commit", lambda event: event["heuristics"].update({"rules": list(slot.get("target_rules") or []) + [str((slot.get("target_rules") or ["native_event_emitter"])[0])]}), "HEURISTIC_RULE_DUPLICATE")
     run_control("reject_wrong_action", "commit", lambda event: event["decision"].update({"action": "WRONG_ACTION"}), "COMMIT_ACTION_MISMATCH")
     run_control("reject_precheck_execution_action", "precheck", lambda event: event["decision"].update({"action": slot.get("decision_action")}), "PRECHECK_ACTION_INVALID")
     run_control("reject_missing_slot_id", "commit", lambda event: event["tension"]["components"].pop("r3_runtime_slot_id", None), "MISSING_R3_RUNTIME_SLOT_ID")
@@ -514,6 +572,16 @@ def _negative_controls(matrix: dict[str, Any]) -> dict[str, Any]:
     duplicate_commit = _sample_event(slot, role="commit", control="duplicate")
     duplicate_commit["event_id"] = duplicate_precheck["event_id"]
     run_stream_control("reject_duplicate_event_id", [duplicate_precheck, duplicate_commit], "DUPLICATE_EVENT_ID")
+
+    duplicate_hash_precheck = _sample_event(slot, role="precheck", control="duplicate_hash")
+    duplicate_hash_commit = _sample_event(slot, role="commit", control="duplicate_hash")
+    duplicate_hash_commit["proof"]["proof_hash"] = duplicate_hash_precheck["proof"]["proof_hash"]
+    run_stream_control("reject_duplicate_proof_hash", [duplicate_hash_precheck, duplicate_hash_commit], "DUPLICATE_PROOF_HASH")
+
+    duplicate_ref_precheck = _sample_event(slot, role="precheck", control="duplicate_ref")
+    duplicate_ref_commit = _sample_event(slot, role="commit", control="duplicate_ref")
+    duplicate_ref_commit["proof"]["proof_ref"] = duplicate_ref_precheck["proof"]["proof_ref"]
+    run_stream_control("reject_duplicate_proof_ref", [duplicate_ref_precheck, duplicate_ref_commit], "DUPLICATE_PROOF_REF")
 
     chain_precheck = _sample_event(slot, role="precheck", control="chain")
     chain_commit = _sample_event(slot, role="commit", control="chain")
@@ -631,6 +699,8 @@ def build_report(repo: Path, runtime_events_path: Path | None = None) -> dict[st
         "rejected_event_count": runtime["rejected_event_count"],
         "bad_json_line_count": runtime["bad_json_line_count"],
         "duplicate_event_rejection_count": runtime["duplicate_event_rejection_count"],
+        "duplicate_proof_hash_rejection_count": runtime["duplicate_proof_hash_rejection_count"],
+        "duplicate_proof_ref_rejection_count": runtime["duplicate_proof_ref_rejection_count"],
         "no_tick_pair_integrity_count": runtime["no_tick_pair_integrity_count"],
         "no_tick_pair_failure_count": runtime["no_tick_pair_failure_count"],
         "negative_control_count": negative["negative_control_count"],
@@ -647,9 +717,14 @@ def build_report(repo: Path, runtime_events_path: Path | None = None) -> dict[st
             "duplicate_event_id_forbidden": True,
             "field_state_required": True,
             "entity_id_required": True,
+            "entity_type_required": True,
+            "entity_type_must_match_slot": True,
             "causal_chain_id_required": True,
             "tension_gate_delta_required": True,
             "proof_hash_required": True,
+            "proof_hash_sha256_format_required": True,
+            "proof_hash_unique_required": True,
+            "proof_ref_unique_required": True,
             "proof_native_required": True,
             "proof_projection_forbidden": True,
             "source_format_required": "native_pnva_event_v1",
@@ -660,6 +735,8 @@ def build_report(repo: Path, runtime_events_path: Path | None = None) -> dict[st
             "no_tick_pair_commit_after_precheck_required": True,
             "commit_must_match_slot_action": True,
             "target_rules_required_on_commit": True,
+            "heuristic_rules_known_required": True,
+            "heuristic_rules_unique_required": True,
         },
         "runtime_mix": {
             "event_type_mix": runtime["event_type_mix"],
@@ -684,6 +761,8 @@ def build_report(repo: Path, runtime_events_path: Path | None = None) -> dict[st
             "pending_slot_count": runtime["pending_slot_count"],
             "rejected_event_count": runtime["rejected_event_count"],
             "duplicate_event_rejection_count": runtime["duplicate_event_rejection_count"],
+            "duplicate_proof_hash_rejection_count": runtime["duplicate_proof_hash_rejection_count"],
+            "duplicate_proof_ref_rejection_count": runtime["duplicate_proof_ref_rejection_count"],
             "no_tick_pair_integrity_count": runtime["no_tick_pair_integrity_count"],
             "no_tick_pair_failure_count": runtime["no_tick_pair_failure_count"],
             "negative_control_detected_count": negative["detected_count"],
@@ -693,7 +772,7 @@ def build_report(repo: Path, runtime_events_path: Path | None = None) -> dict[st
         },
         "interpretation": {
             "purpose": "Protect the R3 runtime intake boundary before fresh events are accepted as legacy-free evidence.",
-            "sovereignty": "PNVA becomes harder to fake when projected proofs, malformed tension values, duplicate events, entity or slot mismatches, weak authority, missing target rules and causally broken no-tick pairs are rejected before cutover.",
+            "sovereignty": "PNVA becomes harder to fake when projected proofs, malformed or duplicated proof hashes, malformed tension values, duplicate events, entity or slot mismatches, unknown heuristic rules, weak authority, missing target rules and causally broken no-tick pairs are rejected before cutover.",
             "boundary": "Without a runtime-events file this guard certifies the intake contract only; it does not claim final runtime completion.",
         },
         "recommendations": [
@@ -701,7 +780,8 @@ def build_report(repo: Path, runtime_events_path: Path | None = None) -> dict[st
             "Reject any event with proof.projection=true in final runtime evidence.",
             "Reject any event with non-finite tension values, entity mismatch, slot mismatch or original-event mismatch.",
             "Require every slot to contain one native no-tick precheck and one H2+ commit in the same causal_chain_id, with commit timestamp at or after precheck timestamp.",
-            "Reject duplicate event_id values before accepting runtime coverage.",
+            "Reject duplicate event_id, proof_hash and proof_ref values before accepting runtime coverage.",
+            "Reject unknown or duplicated heuristic rules before accepting runtime coverage.",
             "Keep entity_id, causal_chain_id and proof_hash mandatory for every runtime event.",
         ],
     }

@@ -46,7 +46,7 @@ required_no_tick_precheck_count: 35
 required_collapse_commit_count: 35
 event_template_count: 6
 mandatory_field_count: 24
-negative_control_detected_count: 23
+negative_control_detected_count: 30
 positive_control_passed_count: 6
 ```
 
@@ -135,7 +135,7 @@ Current result:
 
 ```text
 R3_RUNTIME_CONTRACT_VALIDATED_READY
-122 contract checks
+144 contract checks
 0 failures
 ```
 
