@@ -47,6 +47,7 @@ PUBLISHED_REPORTS = {
     "r3_cutover_gate": "reports/pnva-r3-cutover-gate-2026-05-05.json",
     "r3_runtime_capture_matrix": "reports/pnva-r3-runtime-capture-matrix-2026-05-05.json",
     "r3_runtime_evidence_guard": "reports/pnva-r3-runtime-evidence-guard-2026-05-05.json",
+    "r3_runtime_instrumentation_plan": "reports/pnva-r3-runtime-instrumentation-plan-2026-05-05.json",
     "adversarial": "reports/pnva-adversarial-validation-2026-05-05.json",
     "maturity": "reports/pnva-entity-heuristic-maturity-2026-05-05.json",
     "attestation": "reports/pnva-sovereign-evidence-attestation-2026-05-05.json",
@@ -411,6 +412,26 @@ STABLE_PATHS = {
         ["negative_control_detected_count"],
         ["negative_controls_pass"],
     ],
+    "r3_runtime_instrumentation_plan": [
+        ["classification"],
+        ["pass"],
+        ["instrumentation_plan_ready"],
+        ["runtime_evidence_present"],
+        ["runtime_evidence_approved"],
+        ["source_matrix_classification"],
+        ["source_guard_classification"],
+        ["capture_slot_count"],
+        ["entity_target_count"],
+        ["action_contract_count"],
+        ["required_runtime_event_count"],
+        ["required_no_tick_precheck_count"],
+        ["required_collapse_commit_count"],
+        ["event_template_count"],
+        ["mandatory_field_count"],
+        ["target_rule_count"],
+        ["negative_control_count"],
+        ["negative_control_detected_count"],
+    ],
     "adversarial": [
         ["classification"],
         ["pass"],
@@ -563,6 +584,7 @@ def build_report(repo: Path) -> dict[str, Any]:
             "r3_cutover_gate": tmp / "r3-cutover-gate.json",
             "r3_runtime_capture_matrix": tmp / "r3-runtime-capture-matrix.json",
             "r3_runtime_evidence_guard": tmp / "r3-runtime-evidence-guard.json",
+            "r3_runtime_instrumentation_plan": tmp / "r3-runtime-instrumentation-plan.json",
             "adversarial": tmp / "adversarial.json",
             "maturity": tmp / "maturity.json",
             "attestation": tmp / "attestation.json",
@@ -655,6 +677,7 @@ def build_report(repo: Path) -> dict[str, Any]:
         commands["r3_cutover_gate"] = _run(repo, ["tools/pnva_r3_cutover_gate.py"], outputs["r3_cutover_gate"])
         commands["r3_runtime_capture_matrix"] = _run(repo, ["tools/pnva_r3_runtime_capture_matrix.py"], outputs["r3_runtime_capture_matrix"])
         commands["r3_runtime_evidence_guard"] = _run(repo, ["tools/pnva_r3_runtime_evidence_guard.py"], outputs["r3_runtime_evidence_guard"])
+        commands["r3_runtime_instrumentation_plan"] = _run(repo, ["tools/pnva_r3_runtime_instrumentation_plan.py"], outputs["r3_runtime_instrumentation_plan"])
         commands["adversarial"] = _run(repo, ["tools/pnva_adversarial_validator.py"], outputs["adversarial"])
         commands["maturity"] = _run(repo, ["tools/pnva_entity_heuristic_maturity.py"], outputs["maturity"])
         commands["attestation"] = _run(repo, ["tools/pnva_evidence_attestor.py"], outputs["attestation"])

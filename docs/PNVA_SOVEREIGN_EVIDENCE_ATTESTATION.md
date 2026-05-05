@@ -31,6 +31,7 @@ R3 authority projection
 R3 cutover gate
 R3 runtime capture matrix
 R3 runtime evidence guard
+R3 runtime instrumentation plan
 adversarial validation
 entity and heuristic maturity
 sovereign audit
@@ -72,7 +73,7 @@ Current result:
 ```text
 classification: PNVA_SOVEREIGN_EVIDENCE_ATTESTED
 pass: true
-artifact_count: 38
+artifact_count: 39
 failure_count: 0
 ```
 

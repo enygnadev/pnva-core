@@ -42,6 +42,7 @@ R3 authority projection
 R3 cutover gate
 R3 runtime capture matrix
 R3 runtime evidence guard
+R3 runtime instrumentation plan
 adversarial validation
 entity and heuristic maturity
 evidence attestation
@@ -67,7 +68,7 @@ SEMANTIC_CONSISTENCY_READY
 Current result:
 
 ```text
-check_count: 260
+check_count: 274
 error_count: 0
 warning_count: 0
 ```
@@ -94,6 +95,7 @@ R3 authority projection vs Manifest, authority migration ledger, replay, policy,
 R3 cutover gate vs Manifest, authority migration ledger, R3 authority projection, attestation and audit
 R3 runtime capture matrix vs Manifest, authority migration ledger, R3 cutover gate, attestation and audit
 R3 runtime evidence guard vs Manifest, R3 runtime capture matrix, attestation and audit
+R3 runtime instrumentation plan vs Manifest, R3 runtime capture matrix, R3 runtime evidence guard, attestation and audit
 maturity aggregate math vs canonical + native reports
 attestation artifact count vs artifact list
 audit summary vs attestation and maturity report
@@ -118,6 +120,7 @@ R3 migration starts at R2_NATIVE_CLEAN_LEGACY_QUARANTINED, targets R3_NATIVE_CLE
 R3 cutover must keep contract_ready=true, cutover_approved=false and legacy_free_claim_allowed=false until fresh native runtime evidence replaces the projected sample.
 R3 runtime capture must keep 35 pending slots explicit and require 70 fresh runtime events before the final cutover claim.
 R3 runtime evidence guard must keep intake_guard_ready=true, runtime_evidence_approved=false and 7/7 negative controls detected until fresh runtime JSONL is supplied.
+R3 runtime instrumentation must keep 35 capture slots mapped into 3 action contracts, 6 event templates and 70 required runtime events without claiming runtime approval.
 ```
 
 ## Attestation Boundary

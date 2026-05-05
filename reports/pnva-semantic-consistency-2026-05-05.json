@@ -1,6 +1,6 @@
 {
   "author": "Gustavo de Aguiar Martins",
-  "check_count": 260,
+  "check_count": 274,
   "checks": [
     {
       "group": "classification",
@@ -544,6 +544,26 @@
     },
     {
       "group": "classification",
+      "left": "R3_RUNTIME_INSTRUMENTATION_PLAN_READY",
+      "left_ref": "reports/pnva-r3-runtime-instrumentation-plan-2026-05-05.json:classification",
+      "name": "r3_runtime_instrumentation_plan_classification",
+      "pass": true,
+      "right": "R3_RUNTIME_INSTRUMENTATION_PLAN_READY",
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "classification",
+      "left": true,
+      "left_ref": "reports/pnva-r3-runtime-instrumentation-plan-2026-05-05.json:pass",
+      "name": "r3_runtime_instrumentation_plan_pass_flag",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "classification",
       "left": "ADVERSARIAL_VALIDATION_PASS",
       "left_ref": "reports/pnva-adversarial-validation-2026-05-05.json:classification",
       "name": "adversarial_classification",
@@ -715,21 +735,21 @@
     },
     {
       "group": "manifest",
-      "left": 38,
+      "left": 39,
       "left_ref": "MANIFEST:sovereign_evidence_attestation.artifact_count",
       "name": "manifest_attestation_artifact_count",
       "pass": true,
-      "right": 38,
+      "right": 39,
       "right_ref": "attestation:artifact_count",
       "severity": "error"
     },
     {
       "group": "manifest",
-      "left": "sha256:ddc58f842130732939ac867a0fa70d7765458e5e026c90cdf52d820c4b6954e7",
+      "left": "sha256:79e7f025cae66642dcfb0986040bee9517eb2851d593ab9f35e5594d4ac7513f",
       "left_ref": "MANIFEST:sovereign_evidence_attestation.evidence_hash",
       "name": "manifest_attestation_hash",
       "pass": true,
-      "right": "sha256:ddc58f842130732939ac867a0fa70d7765458e5e026c90cdf52d820c4b6954e7",
+      "right": "sha256:79e7f025cae66642dcfb0986040bee9517eb2851d593ab9f35e5594d4ac7513f",
       "right_ref": "attestation:evidence_hash",
       "severity": "error"
     },
@@ -1263,6 +1283,46 @@
       "pass": true,
       "right": 7,
       "right_ref": "r3_runtime_evidence_guard:negative_control_detected_count",
+      "severity": "error"
+    },
+    {
+      "group": "manifest",
+      "left": true,
+      "left_ref": "MANIFEST:r3_runtime_instrumentation_plan.instrumentation_plan_ready",
+      "name": "manifest_r3_instrumentation_plan_ready",
+      "pass": true,
+      "right": true,
+      "right_ref": "r3_runtime_instrumentation_plan:instrumentation_plan_ready",
+      "severity": "error"
+    },
+    {
+      "group": "manifest",
+      "left": 3,
+      "left_ref": "MANIFEST:r3_runtime_instrumentation_plan.action_contract_count",
+      "name": "manifest_r3_instrumentation_action_contract_count",
+      "pass": true,
+      "right": 3,
+      "right_ref": "r3_runtime_instrumentation_plan:action_contract_count",
+      "severity": "error"
+    },
+    {
+      "group": "manifest",
+      "left": 70,
+      "left_ref": "MANIFEST:r3_runtime_instrumentation_plan.required_runtime_event_count",
+      "name": "manifest_r3_instrumentation_required_runtime_event_count",
+      "pass": true,
+      "right": 70,
+      "right_ref": "r3_runtime_instrumentation_plan:required_runtime_event_count",
+      "severity": "error"
+    },
+    {
+      "group": "manifest",
+      "left": 6,
+      "left_ref": "MANIFEST:r3_runtime_instrumentation_plan.event_template_count",
+      "name": "manifest_r3_instrumentation_template_count",
+      "pass": true,
+      "right": 6,
+      "right_ref": "r3_runtime_instrumentation_plan:event_template_count",
       "severity": "error"
     },
     {
@@ -2137,6 +2197,66 @@
       "severity": "error"
     },
     {
+      "group": "r3_runtime_instrumentation_plan",
+      "left": 35,
+      "left_ref": "r3_runtime_instrumentation_plan:capture_slot_count",
+      "name": "instrumentation_matches_capture_slots",
+      "pass": true,
+      "right": 35,
+      "right_ref": "r3_runtime_capture_matrix:capture_slot_count",
+      "severity": "error"
+    },
+    {
+      "group": "r3_runtime_instrumentation_plan",
+      "left": 70,
+      "left_ref": "r3_runtime_instrumentation_plan:required_runtime_event_count",
+      "name": "instrumentation_matches_required_runtime_events",
+      "pass": true,
+      "right": 70,
+      "right_ref": "r3_runtime_capture_matrix:required_runtime_event_count",
+      "severity": "error"
+    },
+    {
+      "group": "r3_runtime_instrumentation_plan",
+      "left": "R3_RUNTIME_EVIDENCE_GUARD_READY_AWAITING_CAPTURE",
+      "left_ref": "r3_runtime_instrumentation_plan:source_guard_classification",
+      "name": "instrumentation_uses_evidence_guard",
+      "pass": true,
+      "right": "R3_RUNTIME_EVIDENCE_GUARD_READY_AWAITING_CAPTURE",
+      "right_ref": "r3_runtime_evidence_guard:classification",
+      "severity": "error"
+    },
+    {
+      "group": "r3_runtime_instrumentation_plan",
+      "left": 3,
+      "left_ref": "r3_runtime_instrumentation_plan:action_contract_count",
+      "name": "instrumentation_action_contracts_match_matrix_actions",
+      "pass": true,
+      "right": 3,
+      "right_ref": "r3_runtime_capture_matrix:action_target_count",
+      "severity": "error"
+    },
+    {
+      "group": "r3_runtime_instrumentation_plan",
+      "left": 6,
+      "left_ref": "r3_runtime_instrumentation_plan:event_template_count",
+      "name": "instrumentation_templates_are_pairs",
+      "pass": true,
+      "right": 6,
+      "right_ref": "action_contract_count*2",
+      "severity": "error"
+    },
+    {
+      "group": "r3_runtime_instrumentation_plan",
+      "left": false,
+      "left_ref": "r3_runtime_instrumentation_plan:runtime_evidence_approved",
+      "name": "instrumentation_not_runtime_evidence",
+      "pass": true,
+      "right": false,
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
       "group": "maturity_math",
       "left": 519,
       "left_ref": "maturity:summary.total_event_count",
@@ -2200,11 +2320,11 @@
     },
     {
       "group": "attestation",
-      "left": 38,
+      "left": 39,
       "left_ref": "attestation:artifact_count",
       "name": "artifact_count_matches_list",
       "pass": true,
-      "right": 38,
+      "right": 39,
       "right_ref": "len(attestation.artifacts)",
       "severity": "error"
     },
@@ -2412,6 +2532,16 @@
       "group": "attestation",
       "left": true,
       "left_ref": "attestation:artifact_ids",
+      "name": "attestation_contains_r3_runtime_instrumentation_plan",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "attestation",
+      "left": true,
+      "left_ref": "attestation:artifact_ids",
       "name": "attestation_contains_adversarial_validation",
       "pass": true,
       "right": true,
@@ -2440,11 +2570,11 @@
     },
     {
       "group": "audit",
-      "left": "sha256:ddc58f842130732939ac867a0fa70d7765458e5e026c90cdf52d820c4b6954e7",
+      "left": "sha256:79e7f025cae66642dcfb0986040bee9517eb2851d593ab9f35e5594d4ac7513f",
       "left_ref": "audit:evidence_attestation.evidence_hash",
       "name": "audit_attestation_hash_matches",
       "pass": true,
-      "right": "sha256:ddc58f842130732939ac867a0fa70d7765458e5e026c90cdf52d820c4b6954e7",
+      "right": "sha256:79e7f025cae66642dcfb0986040bee9517eb2851d593ab9f35e5594d4ac7513f",
       "right_ref": "attestation:evidence_hash",
       "severity": "error"
     },
@@ -2600,6 +2730,16 @@
       "severity": "error"
     },
     {
+      "group": "audit",
+      "left": "R3_RUNTIME_INSTRUMENTATION_PLAN_READY",
+      "left_ref": "audit:r3_runtime_instrumentation_plan.classification",
+      "name": "audit_r3_runtime_instrumentation_plan_matches",
+      "pass": true,
+      "right": "R3_RUNTIME_INSTRUMENTATION_PLAN_READY",
+      "right_ref": "r3_runtime_instrumentation_plan:classification",
+      "severity": "error"
+    },
+    {
       "group": "manifest_hygiene",
       "left": [],
       "left_ref": "MANIFEST:files duplicates",
@@ -2623,7 +2763,7 @@
   "classification": "SEMANTIC_CONSISTENCY_READY",
   "error_count": 0,
   "errors": [],
-  "generated_at": "2026-05-05T09:46:42Z",
+  "generated_at": "2026-05-05T09:59:40Z",
   "interpretation": {
     "boundary": "This guard checks semantic consistency of the public evidence package; it does not replace runtime execution tests.",
     "purpose": "Detect drift between PNVA public evidence reports, manifest metadata, attestation and audit summaries.",
@@ -2665,6 +2805,7 @@
     "r3_migration_plan": "reports/pnva-r3-migration-plan-2026-05-05.json",
     "r3_runtime_capture_matrix": "reports/pnva-r3-runtime-capture-matrix-2026-05-05.json",
     "r3_runtime_evidence_guard": "reports/pnva-r3-runtime-evidence-guard-2026-05-05.json",
+    "r3_runtime_instrumentation_plan": "reports/pnva-r3-runtime-instrumentation-plan-2026-05-05.json",
     "replay": "reports/pnva-replay-validation-2026-05-05.json",
     "schema_contract": "reports/pnva-schema-contract-validation-2026-05-05.json",
     "sovereign_robustness_gate": "reports/pnva-sovereign-robustness-gate-2026-05-05.json",
@@ -2673,7 +2814,7 @@
   },
   "schema_version": "pnva.semantic_consistency.v1",
   "summary": {
-    "attestation_artifact_count": 38,
+    "attestation_artifact_count": 39,
     "audit_score": 100,
     "authority_migration_action_candidate_count": 3,
     "authority_migration_candidate_count": 35,
@@ -2716,6 +2857,10 @@
     "r3_runtime_evidence_negative_controls": 7,
     "r3_runtime_evidence_present": false,
     "r3_runtime_evidence_required_event_count": 70,
+    "r3_runtime_instrumentation_action_contract_count": 3,
+    "r3_runtime_instrumentation_plan_ready": true,
+    "r3_runtime_instrumentation_required_event_count": 70,
+    "r3_runtime_instrumentation_template_count": 6,
     "schema_contract_event_count": 519,
     "schema_contract_warning_count": 341,
     "sovereign_robustness_event_count": 519,

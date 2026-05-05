@@ -101,6 +101,32 @@ Current result:
 7/7 detected
 ```
 
+## Instrumentation Plan Link
+
+The next layer turns these guard rules into concrete emitter contracts:
+
+```text
+docs/PNVA_R3_RUNTIME_INSTRUMENTATION_PLAN.md
+reports/pnva-r3-runtime-instrumentation-plan-2026-05-05.json
+```
+
+Current result:
+
+```text
+R3_RUNTIME_INSTRUMENTATION_PLAN_READY
+35 capture slots
+3 action contracts
+6 event templates
+70 required runtime events
+18 mandatory event fields
+```
+
+This keeps the workflow explicit:
+
+```text
+capture matrix -> evidence guard -> instrumentation plan -> fresh runtime JSONL -> final guard acceptance
+```
+
 ## Command
 
 Guard contract only:

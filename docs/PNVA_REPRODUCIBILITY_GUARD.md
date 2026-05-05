@@ -31,8 +31,8 @@ REPRODUCIBILITY_READY
 Current result:
 
 ```text
-command_count: 32
-comparison_count: 328
+command_count: 33
+comparison_count: 346
 failure_count: 0
 command_failure_count: 0
 comparison_failure_count: 0
@@ -68,6 +68,7 @@ R3 authority projection
 R3 cutover gate
 R3 runtime capture matrix
 R3 runtime evidence guard
+R3 runtime instrumentation plan
 adversarial validation
 entity and heuristic maturity
 evidence attestation
@@ -107,6 +108,7 @@ R3 authority projection event count, precheck count, commit count, no-tick suppr
 R3 cutover contract readiness, approval block, remaining runtime replacement count and runtime blocker count
 R3 runtime capture slot count, pending count, required runtime event count, projection-pair coverage and target entity/action counts
 R3 runtime evidence guard readiness, pending slot count, required runtime event count and negative-control detections
+R3 runtime instrumentation plan readiness, action contract count, template count, mandatory field count and required runtime event count
 ```
 
 The guard intentionally ignores:

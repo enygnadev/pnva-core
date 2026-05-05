@@ -1,5 +1,5 @@
 {
-  "artifact_count": 38,
+  "artifact_count": 39,
   "artifacts": [
     {
       "entry_count": 9,
@@ -359,6 +359,19 @@
       "size_bytes": 16870
     },
     {
+      "classification": "R3_RUNTIME_INSTRUMENTATION_PLAN_READY",
+      "expected": "R3_RUNTIME_INSTRUMENTATION_PLAN_READY",
+      "id": "r3_runtime_instrumentation_plan",
+      "kind": "json_classification",
+      "pass": true,
+      "path": "reports/pnva-r3-runtime-instrumentation-plan-2026-05-05.json",
+      "present": true,
+      "reported_pass": true,
+      "required": true,
+      "sha256": "51e1a18619b8fc328532d7c757c390d93013722a2c2dc92255049a23dc7bd756",
+      "size_bytes": 13399
+    },
+    {
       "classification": "NATIVE_EMITTER_READY",
       "expected": "NATIVE_EMITTER_READY",
       "id": "native_emitter",
@@ -512,13 +525,14 @@
     "R3 cutover gate",
     "R3 runtime capture matrix",
     "R3 runtime evidence guard",
+    "R3 runtime instrumentation plan",
     "adversarial negative controls",
     "entity and heuristic maturity",
     "sovereign audit consumes this attestation without being part of its hash seed"
   ],
-  "evidence_hash": "sha256:ddc58f842130732939ac867a0fa70d7765458e5e026c90cdf52d820c4b6954e7",
+  "evidence_hash": "sha256:79e7f025cae66642dcfb0986040bee9517eb2851d593ab9f35e5594d4ac7513f",
   "failure_count": 0,
-  "generated_at": "2026-05-05T09:46:38Z",
+  "generated_at": "2026-05-05T09:58:57Z",
   "interpretation": {
     "boundary": "This attests repository evidence integrity; it is not a universal proof of all possible PNVA deployments.",
     "hash_policy": "The evidence_hash changes when any tracked artifact hash, classification or pass flag changes.",
@@ -545,7 +559,8 @@
     "Run R3 authority projection before attestation so mapped debt has replay, policy and no-tick native proof.",
     "Run R3 cutover gate before attestation so projection readiness is separated from final runtime cutover approval.",
     "Run R3 runtime capture matrix before attestation so every pending runtime replacement has an entity/action/no-tick acceptance slot.",
-    "Run R3 runtime evidence guard before attestation so projected or weak runtime evidence is rejected before cutover."
+    "Run R3 runtime evidence guard before attestation so projected or weak runtime evidence is rejected before cutover.",
+    "Run R3 runtime instrumentation plan before attestation so each remaining slot has an emitter contract and validation command."
   ],
   "schema_version": "pnva.evidence_attestation.v1"
 }

@@ -1,0 +1,396 @@
+{
+  "action_contract_count": 3,
+  "action_contracts": [
+    {
+      "commit_template": {
+        "decision": {
+          "action": "RESIZE_BATCH",
+          "kind": "collapse",
+          "reason": "native_runtime_commit"
+        },
+        "event_type": "cuda_slot_scan",
+        "min_authority": "H2",
+        "proof": {
+          "projection": false,
+          "proof_hash": "sha256:<runtime-proof-hash>",
+          "proof_ref": "runtime:<slot-id>:commit",
+          "valid": true
+        },
+        "required_component": "tension.components.original_event_id",
+        "required_rules": [
+          "native_event_emitter",
+          "adaptive_threshold",
+          "field_scheduler"
+        ],
+        "schema_version": "pnva.event.v1"
+      },
+      "contract_id": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch",
+      "decision_action": "RESIZE_BATCH",
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_type_mix": [
+        [
+          "cuda_slot_scan",
+          32
+        ]
+      ],
+      "original_event_ids": [
+        "evt_276e496e_000001_5f5d2586",
+        "evt_276e496e_000003_392d3b13",
+        "evt_276e496e_000008_597a2713",
+        "evt_276e496e_000010_54e369e9",
+        "evt_276e496e_000015_ddd7919f",
+        "evt_276e496e_000017_b19df11f",
+        "evt_276e496e_000022_460f742b",
+        "evt_276e496e_000024_b9380e24",
+        "evt_276e496e_000029_e115771c",
+        "evt_276e496e_000031_f7f54e57",
+        "evt_276e496e_000038_704394c1",
+        "evt_276e496e_000040_456190e1",
+        "evt_276e496e_000045_044db479",
+        "evt_276e496e_000047_2f09ade1",
+        "evt_276e496e_000052_18bf554d",
+        "evt_276e496e_000054_3898d4c2",
+        "evt_276e496e_000059_01f7a41e",
+        "evt_276e496e_000061_1a9c106c",
+        "evt_276e496e_000080_7f5c085d",
+        "evt_276e496e_000085_2950be7a",
+        "evt_276e496e_000087_2b862356",
+        "evt_276e496e_000092_7c509ec7",
+        "evt_276e496e_000094_7cdd1632",
+        "evt_276e496e_000099_a59ef6d5",
+        "evt_276e496e_000101_8ad59514",
+        "evt_276e496e_000106_d4230bdb",
+        "evt_276e496e_000108_25063b2d",
+        "evt_276e496e_000113_4a44cb7a",
+        "evt_276e496e_000115_cba9a5dc",
+        "evt_276e496e_000120_ef36629d",
+        "evt_276e496e_000122_197aa047",
+        "evt_276e496e_000127_2ae25618"
+      ],
+      "precheck_template": {
+        "decision": {
+          "action": "NO_ACTION",
+          "kind": "observe",
+          "reason": "native_authority_precheck_no_tick"
+        },
+        "event_type": "cuda_slot_scan_authority_precheck",
+        "proof": {
+          "projection": false,
+          "proof_hash": "sha256:<runtime-proof-hash>",
+          "proof_ref": "runtime:<slot-id>:precheck",
+          "valid": true
+        },
+        "required_component": "tension.components.original_event_id",
+        "required_rules": [
+          "adaptive_threshold",
+          "field_scheduler",
+          "native_event_emitter"
+        ],
+        "schema_version": "pnva.event.v1"
+      },
+      "required_commit_count": 32,
+      "required_precheck_count": 32,
+      "required_runtime_event_count": 64,
+      "risk_flags": [
+        [
+          "RESIZE_BATCH_PRESSURE",
+          32
+        ]
+      ],
+      "slot_count": 32,
+      "slot_ids": [
+        "r3-runtime-slot-001",
+        "r3-runtime-slot-002",
+        "r3-runtime-slot-003",
+        "r3-runtime-slot-004",
+        "r3-runtime-slot-005",
+        "r3-runtime-slot-006",
+        "r3-runtime-slot-007",
+        "r3-runtime-slot-008",
+        "r3-runtime-slot-009",
+        "r3-runtime-slot-010",
+        "r3-runtime-slot-011",
+        "r3-runtime-slot-012",
+        "r3-runtime-slot-013",
+        "r3-runtime-slot-014",
+        "r3-runtime-slot-015",
+        "r3-runtime-slot-016",
+        "r3-runtime-slot-017",
+        "r3-runtime-slot-018",
+        "r3-runtime-slot-022",
+        "r3-runtime-slot-023",
+        "r3-runtime-slot-024",
+        "r3-runtime-slot-025",
+        "r3-runtime-slot-026",
+        "r3-runtime-slot-027",
+        "r3-runtime-slot-028",
+        "r3-runtime-slot-029",
+        "r3-runtime-slot-030",
+        "r3-runtime-slot-031",
+        "r3-runtime-slot-032",
+        "r3-runtime-slot-033",
+        "r3-runtime-slot-034",
+        "r3-runtime-slot-035"
+      ],
+      "target_rules": [
+        "native_event_emitter",
+        "adaptive_threshold",
+        "field_scheduler"
+      ]
+    },
+    {
+      "commit_template": {
+        "decision": {
+          "action": "COOLDOWN_GPU",
+          "kind": "collapse",
+          "reason": "native_runtime_commit"
+        },
+        "event_type": "cuda_slot_scan",
+        "min_authority": "H2",
+        "proof": {
+          "projection": false,
+          "proof_hash": "sha256:<runtime-proof-hash>",
+          "proof_ref": "runtime:<slot-id>:commit",
+          "valid": true
+        },
+        "required_component": "tension.components.original_event_id",
+        "required_rules": [
+          "native_event_emitter",
+          "power_orchestrator",
+          "field_scheduler",
+          "adaptive_threshold"
+        ],
+        "schema_version": "pnva.event.v1"
+      },
+      "contract_id": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu",
+      "decision_action": "COOLDOWN_GPU",
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_type_mix": [
+        [
+          "cuda_slot_scan",
+          2
+        ]
+      ],
+      "original_event_ids": [
+        "evt_276e496e_000071_4bf4fe50",
+        "evt_276e496e_000078_933bffc6"
+      ],
+      "precheck_template": {
+        "decision": {
+          "action": "NO_ACTION",
+          "kind": "observe",
+          "reason": "native_authority_precheck_no_tick"
+        },
+        "event_type": "cuda_slot_scan_authority_precheck",
+        "proof": {
+          "projection": false,
+          "proof_hash": "sha256:<runtime-proof-hash>",
+          "proof_ref": "runtime:<slot-id>:precheck",
+          "valid": true
+        },
+        "required_component": "tension.components.original_event_id",
+        "required_rules": [
+          "adaptive_threshold",
+          "field_scheduler",
+          "native_event_emitter",
+          "power_orchestrator"
+        ],
+        "schema_version": "pnva.event.v1"
+      },
+      "required_commit_count": 2,
+      "required_precheck_count": 2,
+      "required_runtime_event_count": 4,
+      "risk_flags": [],
+      "slot_count": 2,
+      "slot_ids": [
+        "r3-runtime-slot-019",
+        "r3-runtime-slot-021"
+      ],
+      "target_rules": [
+        "native_event_emitter",
+        "power_orchestrator",
+        "field_scheduler",
+        "adaptive_threshold"
+      ]
+    },
+    {
+      "commit_template": {
+        "decision": {
+          "action": "EXECUTE",
+          "kind": "collapse",
+          "reason": "native_runtime_commit"
+        },
+        "event_type": "cuda_slot_scan",
+        "min_authority": "H2",
+        "proof": {
+          "projection": false,
+          "proof_hash": "sha256:<runtime-proof-hash>",
+          "proof_ref": "runtime:<slot-id>:commit",
+          "valid": true
+        },
+        "required_component": "tension.components.original_event_id",
+        "required_rules": [
+          "native_event_emitter",
+          "adaptive_threshold",
+          "field_scheduler"
+        ],
+        "schema_version": "pnva.event.v1"
+      },
+      "contract_id": "r3-runtime-instrument-entity_4c3ade60ea78-execute",
+      "decision_action": "EXECUTE",
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_type_mix": [
+        [
+          "cuda_slot_scan",
+          1
+        ]
+      ],
+      "original_event_ids": [
+        "evt_276e496e_000073_bc920d9e"
+      ],
+      "precheck_template": {
+        "decision": {
+          "action": "NO_ACTION",
+          "kind": "observe",
+          "reason": "native_authority_precheck_no_tick"
+        },
+        "event_type": "cuda_slot_scan_authority_precheck",
+        "proof": {
+          "projection": false,
+          "proof_hash": "sha256:<runtime-proof-hash>",
+          "proof_ref": "runtime:<slot-id>:precheck",
+          "valid": true
+        },
+        "required_component": "tension.components.original_event_id",
+        "required_rules": [
+          "adaptive_threshold",
+          "field_scheduler",
+          "native_event_emitter"
+        ],
+        "schema_version": "pnva.event.v1"
+      },
+      "required_commit_count": 1,
+      "required_precheck_count": 1,
+      "required_runtime_event_count": 2,
+      "risk_flags": [],
+      "slot_count": 1,
+      "slot_ids": [
+        "r3-runtime-slot-020"
+      ],
+      "target_rules": [
+        "native_event_emitter",
+        "adaptive_threshold",
+        "field_scheduler"
+      ]
+    }
+  ],
+  "author": "Gustavo de Aguiar Martins",
+  "capture_slot_count": 35,
+  "classification": "R3_RUNTIME_INSTRUMENTATION_PLAN_READY",
+  "entity_target_count": 1,
+  "event_template_count": 6,
+  "generated_at": "2026-05-05T09:58:47Z",
+  "instrumentation_plan_ready": true,
+  "interpretation": {
+    "boundary": "This plan is not runtime evidence and does not approve R3 cutover; it defines how fresh runtime evidence must be emitted and validated.",
+    "purpose": "Convert R3 runtime capture slots into concrete emitter contracts, required fields and validation commands.",
+    "sovereignty": "PNVA becomes easier to execute safely when the next runtime step is an explicit instrumentation plan instead of an informal instruction."
+  },
+  "mandatory_event_fields": [
+    "schema_version",
+    "event_id",
+    "timestamp",
+    "entity_id",
+    "entity_type",
+    "causal_chain_id",
+    "event_type",
+    "decision.kind",
+    "decision.action",
+    "decision.reason",
+    "heuristics.rules",
+    "tension.score",
+    "tension.threshold",
+    "tension.components.original_event_id",
+    "proof.valid",
+    "proof.projection",
+    "proof.proof_hash",
+    "proof.proof_ref"
+  ],
+  "mandatory_field_count": 18,
+  "negative_control_count": 7,
+  "negative_control_detected_count": 7,
+  "pass": true,
+  "project": "PNVA-Core",
+  "recommendations": [
+    "Implement one emitter path per action contract before collecting final R3 runtime evidence.",
+    "Keep proof.projection=false on all final runtime prechecks and commits.",
+    "Emit original_event_id in tension.components so each runtime event maps back to a capture slot.",
+    "Run the runtime evidence guard before replay, policy, no-tick and proof-chain validators."
+  ],
+  "reports_checked": {
+    "r3_runtime_capture_matrix": "reports/pnva-r3-runtime-capture-matrix-2026-05-05.json",
+    "r3_runtime_evidence_guard": "reports/pnva-r3-runtime-evidence-guard-2026-05-05.json"
+  },
+  "required_collapse_commit_count": 35,
+  "required_no_tick_precheck_count": 35,
+  "required_runtime_event_count": 70,
+  "runtime_capture_phases": [
+    {
+      "exit_criteria": "Every target action can emit pnva.event.v1 precheck and commit events with original_event_id.",
+      "name": "instrument_native_emitters",
+      "phase": 1
+    },
+    {
+      "exit_criteria": "Collect at least 70 fresh events covering 35 slots without proof.projection=true.",
+      "name": "capture_fresh_runtime_jsonl",
+      "phase": 2
+    },
+    {
+      "exit_criteria": "R3_RUNTIME_EVIDENCE_ACCEPTED with 35 accepted slots and 0 rejected events.",
+      "name": "run_runtime_evidence_guard",
+      "phase": 3
+    },
+    {
+      "exit_criteria": "Replay, policy, no-tick and proof-chain validation pass over the fresh runtime sample.",
+      "name": "run_runtime_validators",
+      "phase": 4
+    },
+    {
+      "exit_criteria": "Only after fresh runtime evidence replaces projection evidence.",
+      "name": "request_cutover",
+      "phase": 5
+    }
+  ],
+  "runtime_evidence_approved": false,
+  "runtime_evidence_present": false,
+  "schema_version": "pnva.r3_runtime_instrumentation_plan.v1",
+  "source_guard_classification": "R3_RUNTIME_EVIDENCE_GUARD_READY_AWAITING_CAPTURE",
+  "source_matrix_classification": "R3_RUNTIME_CAPTURE_MATRIX_READY_PENDING_RUNTIME",
+  "summary": {
+    "action_contract_count": 3,
+    "capture_slot_count": 35,
+    "entity_target_count": 1,
+    "event_template_count": 6,
+    "instrumentation_plan_ready": true,
+    "mandatory_field_count": 18,
+    "negative_control_detected_count": 7,
+    "required_runtime_event_count": 70
+  },
+  "target_rule_count": 4,
+  "target_rules": [
+    "adaptive_threshold",
+    "field_scheduler",
+    "native_event_emitter",
+    "power_orchestrator"
+  ],
+  "validation_commands": [
+    "python3 tools/pnva_r3_runtime_evidence_guard.py --runtime-events <fresh-runtime-events.jsonl> --write /tmp/pnva-r3-runtime-evidence-guard.json",
+    "python3 tools/pnva_replay_validator.py --events <fresh-runtime-events.jsonl> --entity-catalog <fresh-runtime-entities.json> --write /tmp/pnva-r3-runtime-replay.json",
+    "python3 tools/pnva_sovereign_policy_validator.py --events <fresh-runtime-events.jsonl> --entity-catalog <fresh-runtime-entities.json> --write /tmp/pnva-r3-runtime-policy.json",
+    "python3 tools/pnva_no_tick_invariant_analyzer.py --events <fresh-runtime-events.jsonl> --entity-catalog <fresh-runtime-entities.json> --replay-report /tmp/pnva-r3-runtime-replay.json --write /tmp/pnva-r3-runtime-no-tick.json",
+    "python3 tools/pnva_proof_chain_sealer.py --events <fresh-runtime-events.jsonl> --write /tmp/pnva-r3-runtime-proof-chain.json"
+  ]
+}

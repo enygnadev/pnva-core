@@ -1,7 +1,7 @@
 {
   "author": "Gustavo de Aguiar Martins",
   "classification": "REPRODUCIBILITY_READY",
-  "command_count": 32,
+  "command_count": 33,
   "command_failure_count": 0,
   "command_failures": [],
   "commands": {
@@ -187,6 +187,13 @@
       "parse_error": "",
       "pass": true
     },
+    "r3_runtime_instrumentation_plan": {
+      "classification": "R3_RUNTIME_INSTRUMENTATION_PLAN_READY",
+      "command": "tools/pnva_r3_runtime_instrumentation_plan.py --write <TEMP>/r3-runtime-instrumentation-plan.json",
+      "exit_code": 0,
+      "parse_error": "",
+      "pass": true
+    },
     "replay": {
       "classification": "REPLAY_VALID",
       "command": "tools/pnva_replay_validator.py --events reports/pnva-canonical-events-sample-2026-05-05.jsonl --entity-catalog reports/pnva-entity-catalog-2026-05-05.json --write <TEMP>/replay.json",
@@ -230,7 +237,7 @@
       "pass": true
     }
   },
-  "comparison_count": 328,
+  "comparison_count": 346,
   "comparison_failure_count": 0,
   "comparison_failures": [],
   "comparisons": [
@@ -2337,6 +2344,132 @@
     {
       "field": "classification",
       "pass": true,
+      "published": "R3_RUNTIME_INSTRUMENTATION_PLAN_READY",
+      "report": "r3_runtime_instrumentation_plan",
+      "reproduced": "R3_RUNTIME_INSTRUMENTATION_PLAN_READY"
+    },
+    {
+      "field": "pass",
+      "pass": true,
+      "published": true,
+      "report": "r3_runtime_instrumentation_plan",
+      "reproduced": true
+    },
+    {
+      "field": "instrumentation_plan_ready",
+      "pass": true,
+      "published": true,
+      "report": "r3_runtime_instrumentation_plan",
+      "reproduced": true
+    },
+    {
+      "field": "runtime_evidence_present",
+      "pass": true,
+      "published": false,
+      "report": "r3_runtime_instrumentation_plan",
+      "reproduced": false
+    },
+    {
+      "field": "runtime_evidence_approved",
+      "pass": true,
+      "published": false,
+      "report": "r3_runtime_instrumentation_plan",
+      "reproduced": false
+    },
+    {
+      "field": "source_matrix_classification",
+      "pass": true,
+      "published": "R3_RUNTIME_CAPTURE_MATRIX_READY_PENDING_RUNTIME",
+      "report": "r3_runtime_instrumentation_plan",
+      "reproduced": "R3_RUNTIME_CAPTURE_MATRIX_READY_PENDING_RUNTIME"
+    },
+    {
+      "field": "source_guard_classification",
+      "pass": true,
+      "published": "R3_RUNTIME_EVIDENCE_GUARD_READY_AWAITING_CAPTURE",
+      "report": "r3_runtime_instrumentation_plan",
+      "reproduced": "R3_RUNTIME_EVIDENCE_GUARD_READY_AWAITING_CAPTURE"
+    },
+    {
+      "field": "capture_slot_count",
+      "pass": true,
+      "published": 35,
+      "report": "r3_runtime_instrumentation_plan",
+      "reproduced": 35
+    },
+    {
+      "field": "entity_target_count",
+      "pass": true,
+      "published": 1,
+      "report": "r3_runtime_instrumentation_plan",
+      "reproduced": 1
+    },
+    {
+      "field": "action_contract_count",
+      "pass": true,
+      "published": 3,
+      "report": "r3_runtime_instrumentation_plan",
+      "reproduced": 3
+    },
+    {
+      "field": "required_runtime_event_count",
+      "pass": true,
+      "published": 70,
+      "report": "r3_runtime_instrumentation_plan",
+      "reproduced": 70
+    },
+    {
+      "field": "required_no_tick_precheck_count",
+      "pass": true,
+      "published": 35,
+      "report": "r3_runtime_instrumentation_plan",
+      "reproduced": 35
+    },
+    {
+      "field": "required_collapse_commit_count",
+      "pass": true,
+      "published": 35,
+      "report": "r3_runtime_instrumentation_plan",
+      "reproduced": 35
+    },
+    {
+      "field": "event_template_count",
+      "pass": true,
+      "published": 6,
+      "report": "r3_runtime_instrumentation_plan",
+      "reproduced": 6
+    },
+    {
+      "field": "mandatory_field_count",
+      "pass": true,
+      "published": 18,
+      "report": "r3_runtime_instrumentation_plan",
+      "reproduced": 18
+    },
+    {
+      "field": "target_rule_count",
+      "pass": true,
+      "published": 4,
+      "report": "r3_runtime_instrumentation_plan",
+      "reproduced": 4
+    },
+    {
+      "field": "negative_control_count",
+      "pass": true,
+      "published": 7,
+      "report": "r3_runtime_instrumentation_plan",
+      "reproduced": 7
+    },
+    {
+      "field": "negative_control_detected_count",
+      "pass": true,
+      "published": 7,
+      "report": "r3_runtime_instrumentation_plan",
+      "reproduced": 7
+    },
+    {
+      "field": "classification",
+      "pass": true,
       "published": "ADVERSARIAL_VALIDATION_PASS",
       "report": "adversarial",
       "reproduced": "ADVERSARIAL_VALIDATION_PASS"
@@ -2463,9 +2596,9 @@
     {
       "field": "artifact_count",
       "pass": true,
-      "published": 38,
+      "published": 39,
       "report": "attestation",
-      "reproduced": 38
+      "reproduced": 39
     },
     {
       "field": "failure_count",
@@ -2477,9 +2610,9 @@
     {
       "field": "evidence_hash",
       "pass": true,
-      "published": "sha256:ddc58f842130732939ac867a0fa70d7765458e5e026c90cdf52d820c4b6954e7",
+      "published": "sha256:79e7f025cae66642dcfb0986040bee9517eb2851d593ab9f35e5594d4ac7513f",
       "report": "attestation",
-      "reproduced": "sha256:ddc58f842130732939ac867a0fa70d7765458e5e026c90cdf52d820c4b6954e7"
+      "reproduced": "sha256:79e7f025cae66642dcfb0986040bee9517eb2851d593ab9f35e5594d4ac7513f"
     },
     {
       "field": "classification",
@@ -2498,9 +2631,9 @@
     {
       "field": "check_count",
       "pass": true,
-      "published": 260,
+      "published": 274,
       "report": "semantic",
-      "reproduced": 260
+      "reproduced": 274
     },
     {
       "field": "error_count",
@@ -2532,7 +2665,7 @@
     }
   ],
   "failure_count": 0,
-  "generated_at": "2026-05-05T09:46:46Z",
+  "generated_at": "2026-05-05T09:59:44Z",
   "interpretation": {
     "boundary": "Generated timestamps, temporary paths and non-semantic ordering are intentionally excluded from comparison.",
     "purpose": "Regenerate PNVA evidence reports with current tools and compare stable fields against the published evidence package.",
@@ -2547,7 +2680,7 @@
   ],
   "schema_version": "pnva.reproducibility_guard.v1",
   "summary": {
-    "published_attestation_hash": "sha256:ddc58f842130732939ac867a0fa70d7765458e5e026c90cdf52d820c4b6954e7",
+    "published_attestation_hash": "sha256:79e7f025cae66642dcfb0986040bee9517eb2851d593ab9f35e5594d4ac7513f",
     "reports_reproduced": [
       "adversarial",
       "attestation",
@@ -2575,6 +2708,7 @@
       "r3_migration_plan",
       "r3_runtime_capture_matrix",
       "r3_runtime_evidence_guard",
+      "r3_runtime_instrumentation_plan",
       "replay",
       "schema_contract",
       "semantic",
@@ -2582,7 +2716,7 @@
       "suppression_ledger",
       "tension_decision"
     ],
-    "reproduced_attestation_hash": "sha256:ddc58f842130732939ac867a0fa70d7765458e5e026c90cdf52d820c4b6954e7",
-    "stable_fields_compared": 328
+    "reproduced_attestation_hash": "sha256:79e7f025cae66642dcfb0986040bee9517eb2851d593ab9f35e5594d4ac7513f",
+    "stable_fields_compared": 346
   }
 }

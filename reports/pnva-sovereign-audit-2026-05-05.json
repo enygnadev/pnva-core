@@ -120,7 +120,7 @@
     "robots_missing_tokens": [],
     "robots_ok": true,
     "sitemap_ok": true,
-    "sitemap_url_count": 77,
+    "sitemap_url_count": 79,
     "sitemap_urls": [
       "https://enygnadev.github.io/pnva-core/",
       "https://enygnadev.github.io/pnva-core/author.html",
@@ -150,6 +150,7 @@
       "https://enygnadev.github.io/pnva-core/docs/PNVA_R3_CUTOVER_GATE.md",
       "https://enygnadev.github.io/pnva-core/docs/PNVA_R3_RUNTIME_CAPTURE_MATRIX.md",
       "https://enygnadev.github.io/pnva-core/docs/PNVA_R3_RUNTIME_EVIDENCE_GUARD.md",
+      "https://enygnadev.github.io/pnva-core/docs/PNVA_R3_RUNTIME_INSTRUMENTATION_PLAN.md",
       "https://enygnadev.github.io/pnva-core/docs/PNVA_SOVEREIGN_EVIDENCE_ATTESTATION.md",
       "https://enygnadev.github.io/pnva-core/docs/PNVA_ADVERSARIAL_VALIDATION.md",
       "https://enygnadev.github.io/pnva-core/docs/PNVA_ENTITY_HEURISTIC_MATURITY.md",
@@ -196,6 +197,7 @@
       "https://enygnadev.github.io/pnva-core/reports/pnva-r3-cutover-gate-2026-05-05.json",
       "https://enygnadev.github.io/pnva-core/reports/pnva-r3-runtime-capture-matrix-2026-05-05.json",
       "https://enygnadev.github.io/pnva-core/reports/pnva-r3-runtime-evidence-guard-2026-05-05.json",
+      "https://enygnadev.github.io/pnva-core/reports/pnva-r3-runtime-instrumentation-plan-2026-05-05.json",
       "https://enygnadev.github.io/pnva-core/reports/pnva-semantic-consistency-2026-05-05.json",
       "https://enygnadev.github.io/pnva-core/reports/pnva-reproducibility-2026-05-05.json",
       "https://enygnadev.github.io/pnva-core/reports/pnva-sovereign-evidence-attestation-2026-05-05.json"
@@ -232,16 +234,16 @@
     "warning_count": 35
   },
   "evidence_attestation": {
-    "artifact_count": 38,
+    "artifact_count": 39,
     "attestation_ok": true,
     "classification": "PNVA_SOVEREIGN_EVIDENCE_ATTESTED",
     "errors": [],
-    "evidence_hash": "sha256:ddc58f842130732939ac867a0fa70d7765458e5e026c90cdf52d820c4b6954e7",
+    "evidence_hash": "sha256:79e7f025cae66642dcfb0986040bee9517eb2851d593ab9f35e5594d4ac7513f",
     "failure_count": 0,
     "missing": [],
-    "tracked_artifacts": 38
+    "tracked_artifacts": 39
   },
-  "generated_at": "2026-05-05T09:46:46Z",
+  "generated_at": "2026-05-05T10:04:07Z",
   "heuristic_influence_map": {
     "classification": "HEURISTIC_INFLUENCE_MAP_READY_WITH_LEGACY_WARNINGS",
     "error_count": 0,
@@ -1117,6 +1119,24 @@
     "runtime_evidence_approved": false,
     "runtime_evidence_present": false
   },
+  "r3_runtime_instrumentation_plan": {
+    "action_contract_count": 3,
+    "capture_slot_count": 35,
+    "classification": "R3_RUNTIME_INSTRUMENTATION_PLAN_READY",
+    "entity_target_count": 1,
+    "errors": [],
+    "event_template_count": 6,
+    "instrumentation_plan_ready": true,
+    "mandatory_field_count": 18,
+    "missing": [],
+    "negative_control_count": 7,
+    "negative_control_detected_count": 7,
+    "r3_runtime_instrumentation_plan_ok": true,
+    "required_runtime_event_count": 70,
+    "runtime_evidence_approved": false,
+    "runtime_evidence_present": false,
+    "target_rule_count": 4
+  },
   "recommendations": [
     "Add schema_version, entity_id and causal_chain_id to every new JSONL event.",
     "Normalize legacy event/kind payloads into pnva.event.v1 before publishing.",
@@ -1139,6 +1159,7 @@
     "Run R3 cutover gate so contract readiness and final runtime approval remain separate.",
     "Run R3 runtime capture matrix so remaining runtime replacements are explicit by entity, action, heuristic and no-tick precheck.",
     "Run R3 runtime evidence guard so projected or weak runtime logs are rejected before final cutover.",
+    "Run R3 runtime instrumentation plan so emitter contracts and validation commands are explicit before capture.",
     "Publish one sovereign evidence attestation hash with every evidence release.",
     "Run adversarial validation so validators prove tamper detection, not only green-path acceptance.",
     "Track entity and heuristic maturity so no-tick suppression stays attributable to actors and authority.",
@@ -1164,9 +1185,9 @@
   "repo_path": "<REPO>",
   "reproducibility": {
     "classification": "REPRODUCIBILITY_READY",
-    "command_count": 32,
+    "command_count": 33,
     "command_failure_count": 0,
-    "comparison_count": 328,
+    "comparison_count": 346,
     "comparison_failure_count": 0,
     "errors": [],
     "failure_count": 0,
@@ -1200,7 +1221,7 @@
     "total": 100
   },
   "semantic_consistency": {
-    "check_count": 260,
+    "check_count": 274,
     "classification": "SEMANTIC_CONSISTENCY_READY",
     "consistency_ok": true,
     "error_count": 0,
