@@ -60,6 +60,7 @@ PUBLIC_DOCS = [
     "docs/PNVA_R3_AUTHORITY_PROJECTION.md",
     "docs/PNVA_R3_CUTOVER_GATE.md",
     "docs/PNVA_R3_RUNTIME_CAPTURE_MATRIX.md",
+    "docs/PNVA_R3_RUNTIME_EVIDENCE_GUARD.md",
     "docs/PNVA_SOVEREIGN_EVIDENCE_ATTESTATION.md",
     "docs/PNVA_ADVERSARIAL_VALIDATION.md",
     "docs/PNVA_ENTITY_HEURISTIC_MATURITY.md",
@@ -204,6 +205,12 @@ R3_RUNTIME_CAPTURE_MATRIX_FILES = [
     "tools/pnva_r3_runtime_capture_matrix.py",
     "docs/PNVA_R3_RUNTIME_CAPTURE_MATRIX.md",
     "reports/pnva-r3-runtime-capture-matrix-2026-05-05.json",
+]
+
+R3_RUNTIME_EVIDENCE_GUARD_FILES = [
+    "tools/pnva_r3_runtime_evidence_guard.py",
+    "docs/PNVA_R3_RUNTIME_EVIDENCE_GUARD.md",
+    "reports/pnva-r3-runtime-evidence-guard-2026-05-05.json",
 ]
 
 EVIDENCE_ATTESTATION_FILES = [
@@ -1259,6 +1266,48 @@ def audit_r3_runtime_capture_matrix(repo: Path) -> dict[str, Any]:
     }
 
 
+def audit_r3_runtime_evidence_guard(repo: Path) -> dict[str, Any]:
+    missing = [rel for rel in R3_RUNTIME_EVIDENCE_GUARD_FILES if not (repo / rel).exists()]
+    report_path = repo / "reports" / "pnva-r3-runtime-evidence-guard-2026-05-05.json"
+    if not report_path.exists():
+        return {
+            "r3_runtime_evidence_guard_ok": False,
+            "missing": missing,
+            "classification": "R3_RUNTIME_EVIDENCE_GUARD_MISSING",
+            "errors": ["missing R3 runtime evidence guard report"],
+        }
+    data = _read_json(report_path)
+    ok = (
+        not missing
+        and data.get("pass") is True
+        and data.get("classification") == "R3_RUNTIME_EVIDENCE_GUARD_READY_AWAITING_CAPTURE"
+        and data.get("intake_guard_ready") is True
+        and data.get("runtime_evidence_present") is False
+        and data.get("runtime_evidence_approved") is False
+        and data.get("runtime_acceptance_complete") is False
+        and int(data.get("capture_slot_count", -1)) == int(data.get("pending_slot_count", 0))
+        and int(data.get("required_runtime_event_count", 0)) == int(data.get("capture_slot_count", 0)) * 2
+        and int(data.get("negative_control_detected_count", 0)) == int(data.get("negative_control_count", -1))
+    )
+    return {
+        "r3_runtime_evidence_guard_ok": ok,
+        "missing": missing,
+        "classification": data.get("classification"),
+        "intake_guard_ready": bool(data.get("intake_guard_ready", False)),
+        "runtime_evidence_present": bool(data.get("runtime_evidence_present", False)),
+        "runtime_evidence_approved": bool(data.get("runtime_evidence_approved", False)),
+        "runtime_acceptance_complete": bool(data.get("runtime_acceptance_complete", False)),
+        "capture_slot_count": int(data.get("capture_slot_count", 0)),
+        "required_runtime_event_count": int(data.get("required_runtime_event_count", 0)),
+        "accepted_slot_count": int(data.get("accepted_slot_count", 0)),
+        "pending_slot_count": int(data.get("pending_slot_count", 0)),
+        "rejected_event_count": int(data.get("rejected_event_count", 0)),
+        "negative_control_count": int(data.get("negative_control_count", 0)),
+        "negative_control_detected_count": int(data.get("negative_control_detected_count", 0)),
+        "errors": [] if ok else ["R3 runtime evidence guard failed"],
+    }
+
+
 def audit_reproducibility(repo: Path) -> dict[str, Any]:
     missing = [rel for rel in REPRODUCIBILITY_FILES if not (repo / rel).exists()]
     report_path = repo / "reports" / "pnva-reproducibility-2026-05-05.json"
@@ -1582,6 +1631,7 @@ def build_report(repo: Path, *, strict_public: bool = False) -> dict[str, Any]:
         "r3_authority_projection": audit_r3_authority_projection(repo),
         "r3_cutover_gate": audit_r3_cutover_gate(repo),
         "r3_runtime_capture_matrix": audit_r3_runtime_capture_matrix(repo),
+        "r3_runtime_evidence_guard": audit_r3_runtime_evidence_guard(repo),
         "evidence_attestation": audit_evidence_attestation(repo),
         "adversarial_validation": audit_adversarial_validation(repo),
         "entity_heuristic_maturity": audit_entity_heuristic_maturity(repo),
@@ -1610,6 +1660,7 @@ def build_report(repo: Path, *, strict_public: bool = False) -> dict[str, Any]:
             "Run R3 authority projection so mapped H0 debt has native replay, policy and no-tick validation before runtime replacement.",
             "Run R3 cutover gate so contract readiness and final runtime approval remain separate.",
             "Run R3 runtime capture matrix so remaining runtime replacements are explicit by entity, action, heuristic and no-tick precheck.",
+            "Run R3 runtime evidence guard so projected or weak runtime logs are rejected before final cutover.",
             "Publish one sovereign evidence attestation hash with every evidence release.",
             "Run adversarial validation so validators prove tamper detection, not only green-path acceptance.",
             "Track entity and heuristic maturity so no-tick suppression stays attributable to actors and authority.",

@@ -203,6 +203,12 @@ jobs:
             --write /tmp/pnva-r3-runtime-capture-matrix.json \
             >/dev/null
           python3 -m json.tool /tmp/pnva-r3-runtime-capture-matrix.json >/dev/null
+      - name: Run R3 runtime evidence guard
+        run: |
+          python3 tools/pnva_r3_runtime_evidence_guard.py \
+            --write /tmp/pnva-r3-runtime-evidence-guard.json \
+            >/dev/null
+          python3 -m json.tool /tmp/pnva-r3-runtime-evidence-guard.json >/dev/null
       - name: Run evidence attestor
         run: |
           python3 tools/pnva_evidence_attestor.py \

@@ -194,6 +194,13 @@ EXPECTED_ARTIFACTS = [
         "required": True,
     },
     {
+        "id": "r3_runtime_evidence_guard",
+        "path": "reports/pnva-r3-runtime-evidence-guard-2026-05-05.json",
+        "kind": "json_classification",
+        "expected": "R3_RUNTIME_EVIDENCE_GUARD_READY_AWAITING_CAPTURE",
+        "required": True,
+    },
+    {
         "id": "native_emitter",
         "path": "reports/pnva-native-emitter-summary-2026-05-05.json",
         "kind": "json_classification",
@@ -407,6 +414,7 @@ def build_attestation(repo: Path) -> dict[str, Any]:
             "R3 authority projection",
             "R3 cutover gate",
             "R3 runtime capture matrix",
+            "R3 runtime evidence guard",
             "adversarial negative controls",
             "entity and heuristic maturity",
             "sovereign audit consumes this attestation without being part of its hash seed",
@@ -435,6 +443,7 @@ def build_attestation(repo: Path) -> dict[str, Any]:
             "Run R3 authority projection before attestation so mapped debt has replay, policy and no-tick native proof.",
             "Run R3 cutover gate before attestation so projection readiness is separated from final runtime cutover approval.",
             "Run R3 runtime capture matrix before attestation so every pending runtime replacement has an entity/action/no-tick acceptance slot.",
+            "Run R3 runtime evidence guard before attestation so projected or weak runtime evidence is rejected before cutover.",
         ],
     }
 

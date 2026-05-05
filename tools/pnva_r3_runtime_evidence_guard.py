@@ -1,0 +1,490 @@
+#!/usr/bin/env python3
+from __future__ import annotations
+
+import argparse
+import copy
+import json
+import time
+from collections import Counter, defaultdict
+from pathlib import Path
+from typing import Any
+
+
+AUTHOR = "Gustavo de Aguiar Martins"
+PROJECT = "PNVA-Core"
+
+R3_RUNTIME_CAPTURE_MATRIX = "reports/pnva-r3-runtime-capture-matrix-2026-05-05.json"
+
+RULE_AUTHORITY = {
+    "legacy_observer": "H0",
+    "veonic_layer": "H1",
+    "memory4d": "H1",
+    "native_event_emitter": "H2",
+    "adaptive_threshold": "H2",
+    "affinity_router": "H2",
+    "field_scheduler": "H2",
+    "power_orchestrator": "H2",
+    "etev_guard": "H3",
+}
+AUTHORITY_ORDER = {"H0": 0, "H1": 1, "H2": 2, "H3": 3, "H4": 4}
+HARD_AUTHORITIES = {"H2", "H3", "H4"}
+STRONG_DECISIONS = {"collapse", "block", "prove", "reclassify"}
+PRECHECK_DECISIONS = {"observe", "block"}
+
+
+def _read_json(path: Path) -> Any:
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def _load_jsonl(path: Path) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
+    events: list[dict[str, Any]] = []
+    bad_lines: list[dict[str, Any]] = []
+    with path.open(encoding="utf-8", errors="replace") as handle:
+        for line_no, line in enumerate(handle, 1):
+            if not line.strip():
+                continue
+            try:
+                value = json.loads(line)
+            except Exception as exc:
+                bad_lines.append({"line": line_no, "code": "JSON_PARSE_ERROR", "detail": str(exc)})
+                continue
+            if not isinstance(value, dict):
+                bad_lines.append({"line": line_no, "code": "JSON_EVENT_NOT_OBJECT", "detail": "event is not an object"})
+                continue
+            value["_line"] = line_no
+            events.append(value)
+    return events, bad_lines
+
+
+def _dig(data: Any, path: list[str], default: Any = None) -> Any:
+    current = data
+    for key in path:
+        if not isinstance(current, dict):
+            return default
+        current = current.get(key)
+    return current if current is not None else default
+
+
+def _decision(event: dict[str, Any]) -> dict[str, Any]:
+    value = event.get("decision")
+    return value if isinstance(value, dict) else {}
+
+
+def _decision_kind(event: dict[str, Any]) -> str:
+    return str(_decision(event).get("kind") or "unknown")
+
+
+def _decision_action(event: dict[str, Any]) -> str:
+    return str(_decision(event).get("action") or "unknown")
+
+
+def _heuristics(event: dict[str, Any]) -> dict[str, Any]:
+    value = event.get("heuristics")
+    return value if isinstance(value, dict) else {}
+
+
+def _rules(event: dict[str, Any]) -> list[str]:
+    value = _heuristics(event).get("rules")
+    if not isinstance(value, list):
+        return []
+    return [str(item) for item in value if str(item)]
+
+
+def _authority(rule: str) -> str:
+    return RULE_AUTHORITY.get(rule, "H1")
+
+
+def _max_authority(rules: list[str]) -> str:
+    if not rules:
+        return "H0"
+    return max((_authority(rule) for rule in rules), key=lambda level: AUTHORITY_ORDER[level])
+
+
+def _proof(event: dict[str, Any]) -> dict[str, Any]:
+    value = event.get("proof")
+    return value if isinstance(value, dict) else {}
+
+
+def _proof_clean(event: dict[str, Any]) -> bool:
+    proof = _proof(event)
+    return (
+        proof.get("valid") is True
+        and proof.get("projection") is not True
+        and str(proof.get("proof_hash") or "").startswith("sha256:")
+        and bool(proof.get("proof_ref"))
+    )
+
+
+def _components(event: dict[str, Any]) -> dict[str, Any]:
+    return _dig(event, ["tension", "components"], {}) if isinstance(_dig(event, ["tension", "components"], {}), dict) else {}
+
+
+def _original_id(event: dict[str, Any]) -> str:
+    return str(_components(event).get("original_event_id") or "")
+
+
+def _slot_map(matrix: dict[str, Any]) -> dict[str, dict[str, Any]]:
+    slots = matrix.get("capture_slots")
+    if not isinstance(slots, list):
+        return {}
+    return {str(slot.get("original_event_id") or ""): slot for slot in slots if isinstance(slot, dict) and slot.get("original_event_id")}
+
+
+def _role(event: dict[str, Any], slot: dict[str, Any]) -> str:
+    event_type = str(event.get("event_type") or "")
+    reason = str(_decision(event).get("reason") or "")
+    action = _decision_action(event)
+    kind = _decision_kind(event)
+    if "precheck" in event_type or "precheck" in reason or (kind in PRECHECK_DECISIONS and action == "NO_ACTION"):
+        return "precheck"
+    if kind == str(slot.get("decision_kind") or "") and action == str(slot.get("decision_action") or ""):
+        return "commit"
+    return "unknown"
+
+
+def _event_codes(event: dict[str, Any], slot: dict[str, Any]) -> list[str]:
+    codes: list[str] = []
+    if event.get("schema_version") != "pnva.event.v1":
+        codes.append("SCHEMA_VERSION_INVALID")
+    if not event.get("event_id"):
+        codes.append("MISSING_EVENT_ID")
+    if not event.get("entity_id"):
+        codes.append("MISSING_ENTITY_ID")
+    if not event.get("causal_chain_id"):
+        codes.append("MISSING_CAUSAL_CHAIN_ID")
+    if _proof(event).get("projection") is True:
+        codes.append("PROJECTED_PROOF_FORBIDDEN")
+    if not _proof_clean(event):
+        codes.append("PROOF_HASH_OR_VALIDITY_INVALID")
+    original = _original_id(event)
+    if not original:
+        codes.append("MISSING_ORIGINAL_EVENT_ID")
+    if original and original != str(slot.get("original_event_id") or ""):
+        codes.append("ORIGINAL_EVENT_MISMATCH")
+    if str(event.get("entity_id") or "") != str(slot.get("entity_id") or ""):
+        codes.append("ENTITY_MISMATCH")
+
+    role = _role(event, slot)
+    rules = set(_rules(event))
+    target_rules = set(str(rule) for rule in slot.get("target_rules", []) if str(rule))
+    if role == "precheck":
+        if _decision_kind(event) not in PRECHECK_DECISIONS:
+            codes.append("PRECHECK_DECISION_INVALID")
+        if _decision_action(event) != "NO_ACTION":
+            codes.append("PRECHECK_ACTION_INVALID")
+        if "native_event_emitter" not in rules:
+            codes.append("PRECHECK_NATIVE_RULE_MISSING")
+    elif role == "commit":
+        if _decision_kind(event) not in STRONG_DECISIONS:
+            codes.append("COMMIT_DECISION_NOT_STRONG")
+        if _decision_action(event) != str(slot.get("decision_action") or ""):
+            codes.append("COMMIT_ACTION_MISMATCH")
+        if _max_authority(_rules(event)) not in HARD_AUTHORITIES:
+            codes.append("COMMIT_AUTHORITY_BELOW_H2")
+        missing_target_rules = sorted(target_rules - rules)
+        if missing_target_rules:
+            codes.append("COMMIT_TARGET_RULES_MISSING")
+    else:
+        if _decision_kind(event) == str(slot.get("decision_kind") or "") and _decision_action(event) != str(slot.get("decision_action") or ""):
+            codes.append("COMMIT_ACTION_MISMATCH")
+        codes.append("RUNTIME_ROLE_UNKNOWN")
+    return codes
+
+
+def _validate_runtime_events(matrix: dict[str, Any], events: list[dict[str, Any]], bad_lines: list[dict[str, Any]]) -> dict[str, Any]:
+    slots = _slot_map(matrix)
+    by_slot: dict[str, dict[str, list[dict[str, Any]]]] = {
+        original: {"precheck": [], "commit": [], "rejected": []}
+        for original in slots
+    }
+    rejections: list[dict[str, Any]] = list(bad_lines)
+    event_type_mix: Counter[str] = Counter()
+    action_mix: Counter[str] = Counter()
+    rule_mix: Counter[str] = Counter()
+
+    for event in events:
+        original = _original_id(event)
+        if original not in slots:
+            rejections.append(
+                {
+                    "line": event.get("_line", 0),
+                    "event_id": event.get("event_id"),
+                    "code": "UNKNOWN_ORIGINAL_EVENT_ID",
+                    "original_event_id": original,
+                }
+            )
+            continue
+        slot = slots[original]
+        codes = _event_codes(event, slot)
+        role = _role(event, slot)
+        event_type_mix[str(event.get("event_type") or "unknown")] += 1
+        action_mix[_decision_action(event)] += 1
+        for rule in _rules(event):
+            rule_mix[rule] += 1
+        if codes:
+            rejection = {
+                "line": event.get("_line", 0),
+                "event_id": event.get("event_id"),
+                "original_event_id": original,
+                "role": role,
+                "codes": codes,
+            }
+            rejections.append(rejection)
+            by_slot[original]["rejected"].append(rejection)
+            continue
+        by_slot[original][role].append(event)
+
+    slot_rows = []
+    accepted_slot_count = 0
+    for original, slot in slots.items():
+        row = by_slot[original]
+        precheck_count = len(row["precheck"])
+        commit_count = len(row["commit"])
+        rejected_count = len(row["rejected"])
+        accepted = precheck_count >= 1 and commit_count >= 1 and rejected_count == 0
+        accepted_slot_count += 1 if accepted else 0
+        slot_rows.append(
+            {
+                "slot_id": slot.get("slot_id"),
+                "original_event_id": original,
+                "entity_id": slot.get("entity_id"),
+                "decision_action": slot.get("decision_action"),
+                "accepted": accepted,
+                "precheck_count": precheck_count,
+                "commit_count": commit_count,
+                "rejected_count": rejected_count,
+                "missing_precheck": precheck_count == 0,
+                "missing_commit": commit_count == 0,
+            }
+        )
+
+    pending_slot_count = len(slots) - accepted_slot_count
+    return {
+        "runtime_event_count": len(events),
+        "bad_json_line_count": len(bad_lines),
+        "accepted_slot_count": accepted_slot_count,
+        "pending_slot_count": pending_slot_count,
+        "slot_failure_count": pending_slot_count,
+        "rejected_event_count": len(rejections),
+        "event_type_mix": event_type_mix.most_common(),
+        "decision_action_mix": action_mix.most_common(),
+        "heuristic_rule_mix": rule_mix.most_common(),
+        "slot_rows": slot_rows,
+        "rejections": rejections,
+    }
+
+
+def _sample_event(slot: dict[str, Any], *, role: str) -> dict[str, Any]:
+    action = "NO_ACTION" if role == "precheck" else str(slot.get("decision_action") or "unknown")
+    kind = "observe" if role == "precheck" else str(slot.get("decision_kind") or "collapse")
+    event_type = f"{slot.get('event_type')}_authority_precheck" if role == "precheck" else str(slot.get("event_type") or "runtime_commit")
+    return {
+        "schema_version": "pnva.event.v1",
+        "event_id": f"evt_negative_control_{role}",
+        "entity_id": slot.get("entity_id"),
+        "entity_type": slot.get("entity_type"),
+        "causal_chain_id": f"chain_negative_control_{role}",
+        "event_type": event_type,
+        "decision": {
+            "kind": kind,
+            "action": action,
+            "reason": "native_authority_precheck_no_tick" if role == "precheck" else "native_runtime_commit",
+        },
+        "heuristics": {
+            "rules": list(slot.get("target_rules") or ["native_event_emitter", "adaptive_threshold", "field_scheduler"]),
+            "risk_flags": list(slot.get("risk_flags") or []),
+        },
+        "tension": {
+            "score": 0.0 if role == "precheck" else 1.0,
+            "threshold": 0.5,
+            "components": {
+                "original_event_id": slot.get("original_event_id"),
+            },
+        },
+        "proof": {
+            "valid": True,
+            "projection": False,
+            "proof_hash": "sha256:" + ("a" * 64),
+            "proof_ref": "negative-control-fixture",
+        },
+    }
+
+
+def _negative_controls(matrix: dict[str, Any]) -> dict[str, Any]:
+    slots = list(_slot_map(matrix).values())
+    if not slots:
+        return {
+            "negative_control_count": 0,
+            "detected_count": 0,
+            "pass": False,
+            "controls": [],
+        }
+    slot = slots[0]
+    controls = []
+
+    def run_control(name: str, role: str, mutate: Any, expected_code: str) -> None:
+        event = _sample_event(slot, role=role)
+        mutate(event)
+        codes = _event_codes(event, slot)
+        detected = expected_code in codes
+        controls.append(
+            {
+                "name": name,
+                "expected_detection": expected_code,
+                "detected": detected,
+                "codes": codes,
+            }
+        )
+
+    run_control("reject_projection_true", "commit", lambda event: event["proof"].update({"projection": True}), "PROJECTED_PROOF_FORBIDDEN")
+    run_control("reject_missing_entity", "commit", lambda event: event.pop("entity_id", None), "MISSING_ENTITY_ID")
+    run_control("reject_missing_chain", "commit", lambda event: event.pop("causal_chain_id", None), "MISSING_CAUSAL_CHAIN_ID")
+    run_control("reject_missing_hash", "commit", lambda event: event["proof"].pop("proof_hash", None), "PROOF_HASH_OR_VALIDITY_INVALID")
+    run_control("reject_low_authority_commit", "commit", lambda event: event["heuristics"].update({"rules": ["legacy_observer"]}), "COMMIT_AUTHORITY_BELOW_H2")
+    run_control("reject_wrong_action", "commit", lambda event: event["decision"].update({"action": "WRONG_ACTION"}), "COMMIT_ACTION_MISMATCH")
+    run_control("reject_precheck_execution_action", "precheck", lambda event: event["decision"].update({"action": slot.get("decision_action")}), "PRECHECK_ACTION_INVALID")
+
+    detected_count = sum(1 for item in controls if item["detected"])
+    return {
+        "negative_control_count": len(controls),
+        "detected_count": detected_count,
+        "pass": detected_count == len(controls),
+        "controls": controls,
+    }
+
+
+def build_report(repo: Path, runtime_events_path: Path | None = None) -> dict[str, Any]:
+    repo = repo.resolve()
+    matrix_path = repo / R3_RUNTIME_CAPTURE_MATRIX
+    matrix = _read_json(matrix_path)
+    slots = _slot_map(matrix)
+    runtime_events: list[dict[str, Any]] = []
+    bad_lines: list[dict[str, Any]] = []
+    if runtime_events_path:
+        runtime_events, bad_lines = _load_jsonl(runtime_events_path)
+
+    runtime = _validate_runtime_events(matrix, runtime_events, bad_lines)
+    negative = _negative_controls(matrix)
+    guard_ready = (
+        matrix.get("pass") is True
+        and matrix.get("classification") == "R3_RUNTIME_CAPTURE_MATRIX_READY_PENDING_RUNTIME"
+        and matrix.get("capture_contract_ready") is True
+        and int(matrix.get("capture_slot_count", 0)) == len(slots)
+        and int(matrix.get("required_runtime_event_count", 0)) == len(slots) * 2
+        and negative["pass"] is True
+    )
+    runtime_present = runtime_events_path is not None
+    runtime_complete = (
+        runtime_present
+        and runtime["accepted_slot_count"] == len(slots)
+        and runtime["rejected_event_count"] == 0
+        and runtime["runtime_event_count"] >= len(slots) * 2
+    )
+
+    if not guard_ready:
+        classification = "R3_RUNTIME_EVIDENCE_GUARD_FAIL"
+    elif runtime_complete:
+        classification = "R3_RUNTIME_EVIDENCE_ACCEPTED"
+    elif runtime_present:
+        classification = "R3_RUNTIME_EVIDENCE_REJECTED"
+    else:
+        classification = "R3_RUNTIME_EVIDENCE_GUARD_READY_AWAITING_CAPTURE"
+
+    report = {
+        "schema_version": "pnva.r3_runtime_evidence_guard.v1",
+        "generated_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+        "author": AUTHOR,
+        "project": PROJECT,
+        "classification": classification,
+        "pass": guard_ready if not runtime_present else runtime_complete,
+        "intake_guard_ready": guard_ready,
+        "runtime_evidence_present": runtime_present,
+        "runtime_evidence_approved": runtime_complete,
+        "runtime_acceptance_complete": runtime_complete,
+        "matrix_classification": matrix.get("classification"),
+        "capture_slot_count": len(slots),
+        "required_runtime_event_count": len(slots) * 2,
+        "required_no_tick_precheck_count": len(slots),
+        "required_collapse_commit_count": len(slots),
+        "runtime_event_count": runtime["runtime_event_count"],
+        "accepted_slot_count": runtime["accepted_slot_count"],
+        "pending_slot_count": runtime["pending_slot_count"],
+        "slot_failure_count": runtime["slot_failure_count"],
+        "rejected_event_count": runtime["rejected_event_count"],
+        "bad_json_line_count": runtime["bad_json_line_count"],
+        "negative_control_count": negative["negative_control_count"],
+        "negative_control_detected_count": negative["detected_count"],
+        "negative_controls_pass": negative["pass"],
+        "enforced_controls": {
+            "schema_version_required": "pnva.event.v1",
+            "entity_id_required": True,
+            "causal_chain_id_required": True,
+            "proof_hash_required": True,
+            "proof_projection_forbidden": True,
+            "commit_min_authority": "H2",
+            "precheck_must_be_no_tick": True,
+            "commit_must_match_slot_action": True,
+            "target_rules_required_on_commit": True,
+        },
+        "runtime_mix": {
+            "event_type_mix": runtime["event_type_mix"],
+            "decision_action_mix": runtime["decision_action_mix"],
+            "heuristic_rule_mix": runtime["heuristic_rule_mix"],
+        },
+        "slot_rows": runtime["slot_rows"],
+        "rejections": runtime["rejections"],
+        "negative_controls": negative["controls"],
+        "reports_checked": {
+            "r3_runtime_capture_matrix": R3_RUNTIME_CAPTURE_MATRIX,
+            "runtime_events": str(runtime_events_path) if runtime_events_path else "",
+        },
+        "summary": {
+            "intake_guard_ready": guard_ready,
+            "runtime_evidence_present": runtime_present,
+            "runtime_evidence_approved": runtime_complete,
+            "capture_slot_count": len(slots),
+            "required_runtime_event_count": len(slots) * 2,
+            "accepted_slot_count": runtime["accepted_slot_count"],
+            "pending_slot_count": runtime["pending_slot_count"],
+            "rejected_event_count": runtime["rejected_event_count"],
+            "negative_control_detected_count": negative["detected_count"],
+            "negative_control_count": negative["negative_control_count"],
+        },
+        "interpretation": {
+            "purpose": "Protect the R3 runtime intake boundary before fresh events are accepted as legacy-free evidence.",
+            "sovereignty": "PNVA becomes harder to fake when projected proofs, missing entities, weak authority and incomplete no-tick pairs are rejected before cutover.",
+            "boundary": "Without a runtime-events file this guard certifies the intake contract only; it does not claim final runtime completion.",
+        },
+        "recommendations": [
+            "Feed fresh runtime JSONL through this guard before rerunning R3 cutover approval.",
+            "Reject any event with proof.projection=true in final runtime evidence.",
+            "Require every slot to contain one native no-tick precheck and one H2+ commit.",
+            "Keep entity_id, causal_chain_id and proof_hash mandatory for every runtime event.",
+        ],
+    }
+    return report
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description="Validate PNVA R3 runtime evidence intake before cutover.")
+    parser.add_argument("--repo", default=str(Path(__file__).resolve().parents[1]))
+    parser.add_argument("--runtime-events", default="")
+    parser.add_argument("--write", default="")
+    args = parser.parse_args()
+
+    repo = Path(args.repo).resolve()
+    runtime_events = Path(args.runtime_events).resolve() if args.runtime_events else None
+    report = build_report(repo, runtime_events)
+    raw = json.dumps(report, indent=2, ensure_ascii=True, sort_keys=True) + "\n"
+    if args.write:
+        out = Path(args.write)
+        if not out.is_absolute():
+            out = repo / out
+        out.parent.mkdir(parents=True, exist_ok=True)
+        out.write_text(raw, encoding="utf-8")
+    print(raw, end="")
+    return 0 if report["pass"] else 1
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

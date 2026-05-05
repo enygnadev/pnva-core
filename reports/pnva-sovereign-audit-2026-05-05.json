@@ -120,7 +120,7 @@
     "robots_missing_tokens": [],
     "robots_ok": true,
     "sitemap_ok": true,
-    "sitemap_url_count": 75,
+    "sitemap_url_count": 77,
     "sitemap_urls": [
       "https://enygnadev.github.io/pnva-core/",
       "https://enygnadev.github.io/pnva-core/author.html",
@@ -149,6 +149,7 @@
       "https://enygnadev.github.io/pnva-core/docs/PNVA_R3_AUTHORITY_PROJECTION.md",
       "https://enygnadev.github.io/pnva-core/docs/PNVA_R3_CUTOVER_GATE.md",
       "https://enygnadev.github.io/pnva-core/docs/PNVA_R3_RUNTIME_CAPTURE_MATRIX.md",
+      "https://enygnadev.github.io/pnva-core/docs/PNVA_R3_RUNTIME_EVIDENCE_GUARD.md",
       "https://enygnadev.github.io/pnva-core/docs/PNVA_SOVEREIGN_EVIDENCE_ATTESTATION.md",
       "https://enygnadev.github.io/pnva-core/docs/PNVA_ADVERSARIAL_VALIDATION.md",
       "https://enygnadev.github.io/pnva-core/docs/PNVA_ENTITY_HEURISTIC_MATURITY.md",
@@ -194,6 +195,7 @@
       "https://enygnadev.github.io/pnva-core/reports/pnva-r3-authority-projection-no-tick-2026-05-05.json",
       "https://enygnadev.github.io/pnva-core/reports/pnva-r3-cutover-gate-2026-05-05.json",
       "https://enygnadev.github.io/pnva-core/reports/pnva-r3-runtime-capture-matrix-2026-05-05.json",
+      "https://enygnadev.github.io/pnva-core/reports/pnva-r3-runtime-evidence-guard-2026-05-05.json",
       "https://enygnadev.github.io/pnva-core/reports/pnva-semantic-consistency-2026-05-05.json",
       "https://enygnadev.github.io/pnva-core/reports/pnva-reproducibility-2026-05-05.json",
       "https://enygnadev.github.io/pnva-core/reports/pnva-sovereign-evidence-attestation-2026-05-05.json"
@@ -230,16 +232,16 @@
     "warning_count": 35
   },
   "evidence_attestation": {
-    "artifact_count": 37,
+    "artifact_count": 38,
     "attestation_ok": true,
     "classification": "PNVA_SOVEREIGN_EVIDENCE_ATTESTED",
     "errors": [],
-    "evidence_hash": "sha256:ab39ebb438c96e62fd11262122e635cbbefab5aa983b40e6768f7d2d60ced493",
+    "evidence_hash": "sha256:ddc58f842130732939ac867a0fa70d7765458e5e026c90cdf52d820c4b6954e7",
     "failure_count": 0,
     "missing": [],
-    "tracked_artifacts": 37
+    "tracked_artifacts": 38
   },
-  "generated_at": "2026-05-05T09:28:32Z",
+  "generated_at": "2026-05-05T09:46:46Z",
   "heuristic_influence_map": {
     "classification": "HEURISTIC_INFLUENCE_MAP_READY_WITH_LEGACY_WARNINGS",
     "error_count": 0,
@@ -1098,6 +1100,23 @@
     "target_rule_count": 4,
     "verified_runtime_slot_count": 0
   },
+  "r3_runtime_evidence_guard": {
+    "accepted_slot_count": 0,
+    "capture_slot_count": 35,
+    "classification": "R3_RUNTIME_EVIDENCE_GUARD_READY_AWAITING_CAPTURE",
+    "errors": [],
+    "intake_guard_ready": true,
+    "missing": [],
+    "negative_control_count": 7,
+    "negative_control_detected_count": 7,
+    "pending_slot_count": 35,
+    "r3_runtime_evidence_guard_ok": true,
+    "rejected_event_count": 0,
+    "required_runtime_event_count": 70,
+    "runtime_acceptance_complete": false,
+    "runtime_evidence_approved": false,
+    "runtime_evidence_present": false
+  },
   "recommendations": [
     "Add schema_version, entity_id and causal_chain_id to every new JSONL event.",
     "Normalize legacy event/kind payloads into pnva.event.v1 before publishing.",
@@ -1119,6 +1138,7 @@
     "Run R3 authority projection so mapped H0 debt has native replay, policy and no-tick validation before runtime replacement.",
     "Run R3 cutover gate so contract readiness and final runtime approval remain separate.",
     "Run R3 runtime capture matrix so remaining runtime replacements are explicit by entity, action, heuristic and no-tick precheck.",
+    "Run R3 runtime evidence guard so projected or weak runtime logs are rejected before final cutover.",
     "Publish one sovereign evidence attestation hash with every evidence release.",
     "Run adversarial validation so validators prove tamper detection, not only green-path acceptance.",
     "Track entity and heuristic maturity so no-tick suppression stays attributable to actors and authority.",
@@ -1144,9 +1164,9 @@
   "repo_path": "<REPO>",
   "reproducibility": {
     "classification": "REPRODUCIBILITY_READY",
-    "command_count": 31,
+    "command_count": 32,
     "command_failure_count": 0,
-    "comparison_count": 310,
+    "comparison_count": 328,
     "comparison_failure_count": 0,
     "errors": [],
     "failure_count": 0,
@@ -1180,7 +1200,7 @@
     "total": 100
   },
   "semantic_consistency": {
-    "check_count": 246,
+    "check_count": 260,
     "classification": "SEMANTIC_CONSISTENCY_READY",
     "consistency_ok": true,
     "error_count": 0,

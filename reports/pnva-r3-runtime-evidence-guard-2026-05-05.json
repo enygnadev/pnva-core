@@ -1,0 +1,554 @@
+{
+  "accepted_slot_count": 0,
+  "author": "Gustavo de Aguiar Martins",
+  "bad_json_line_count": 0,
+  "capture_slot_count": 35,
+  "classification": "R3_RUNTIME_EVIDENCE_GUARD_READY_AWAITING_CAPTURE",
+  "enforced_controls": {
+    "causal_chain_id_required": true,
+    "commit_min_authority": "H2",
+    "commit_must_match_slot_action": true,
+    "entity_id_required": true,
+    "precheck_must_be_no_tick": true,
+    "proof_hash_required": true,
+    "proof_projection_forbidden": true,
+    "schema_version_required": "pnva.event.v1",
+    "target_rules_required_on_commit": true
+  },
+  "generated_at": "2026-05-05T09:37:38Z",
+  "intake_guard_ready": true,
+  "interpretation": {
+    "boundary": "Without a runtime-events file this guard certifies the intake contract only; it does not claim final runtime completion.",
+    "purpose": "Protect the R3 runtime intake boundary before fresh events are accepted as legacy-free evidence.",
+    "sovereignty": "PNVA becomes harder to fake when projected proofs, missing entities, weak authority and incomplete no-tick pairs are rejected before cutover."
+  },
+  "matrix_classification": "R3_RUNTIME_CAPTURE_MATRIX_READY_PENDING_RUNTIME",
+  "negative_control_count": 7,
+  "negative_control_detected_count": 7,
+  "negative_controls": [
+    {
+      "codes": [
+        "PROJECTED_PROOF_FORBIDDEN",
+        "PROOF_HASH_OR_VALIDITY_INVALID"
+      ],
+      "detected": true,
+      "expected_detection": "PROJECTED_PROOF_FORBIDDEN",
+      "name": "reject_projection_true"
+    },
+    {
+      "codes": [
+        "MISSING_ENTITY_ID",
+        "ENTITY_MISMATCH"
+      ],
+      "detected": true,
+      "expected_detection": "MISSING_ENTITY_ID",
+      "name": "reject_missing_entity"
+    },
+    {
+      "codes": [
+        "MISSING_CAUSAL_CHAIN_ID"
+      ],
+      "detected": true,
+      "expected_detection": "MISSING_CAUSAL_CHAIN_ID",
+      "name": "reject_missing_chain"
+    },
+    {
+      "codes": [
+        "PROOF_HASH_OR_VALIDITY_INVALID"
+      ],
+      "detected": true,
+      "expected_detection": "PROOF_HASH_OR_VALIDITY_INVALID",
+      "name": "reject_missing_hash"
+    },
+    {
+      "codes": [
+        "COMMIT_AUTHORITY_BELOW_H2",
+        "COMMIT_TARGET_RULES_MISSING"
+      ],
+      "detected": true,
+      "expected_detection": "COMMIT_AUTHORITY_BELOW_H2",
+      "name": "reject_low_authority_commit"
+    },
+    {
+      "codes": [
+        "COMMIT_ACTION_MISMATCH",
+        "RUNTIME_ROLE_UNKNOWN"
+      ],
+      "detected": true,
+      "expected_detection": "COMMIT_ACTION_MISMATCH",
+      "name": "reject_wrong_action"
+    },
+    {
+      "codes": [
+        "PRECHECK_ACTION_INVALID"
+      ],
+      "detected": true,
+      "expected_detection": "PRECHECK_ACTION_INVALID",
+      "name": "reject_precheck_execution_action"
+    }
+  ],
+  "negative_controls_pass": true,
+  "pass": true,
+  "pending_slot_count": 35,
+  "project": "PNVA-Core",
+  "recommendations": [
+    "Feed fresh runtime JSONL through this guard before rerunning R3 cutover approval.",
+    "Reject any event with proof.projection=true in final runtime evidence.",
+    "Require every slot to contain one native no-tick precheck and one H2+ commit.",
+    "Keep entity_id, causal_chain_id and proof_hash mandatory for every runtime event."
+  ],
+  "rejected_event_count": 0,
+  "rejections": [],
+  "reports_checked": {
+    "r3_runtime_capture_matrix": "reports/pnva-r3-runtime-capture-matrix-2026-05-05.json",
+    "runtime_events": ""
+  },
+  "required_collapse_commit_count": 35,
+  "required_no_tick_precheck_count": 35,
+  "required_runtime_event_count": 70,
+  "runtime_acceptance_complete": false,
+  "runtime_event_count": 0,
+  "runtime_evidence_approved": false,
+  "runtime_evidence_present": false,
+  "runtime_mix": {
+    "decision_action_mix": [],
+    "event_type_mix": [],
+    "heuristic_rule_mix": []
+  },
+  "schema_version": "pnva.r3_runtime_evidence_guard.v1",
+  "slot_failure_count": 35,
+  "slot_rows": [
+    {
+      "accepted": false,
+      "commit_count": 0,
+      "decision_action": "RESIZE_BATCH",
+      "entity_id": "entity_4c3ade60ea78",
+      "missing_commit": true,
+      "missing_precheck": true,
+      "original_event_id": "evt_276e496e_000001_5f5d2586",
+      "precheck_count": 0,
+      "rejected_count": 0,
+      "slot_id": "r3-runtime-slot-001"
+    },
+    {
+      "accepted": false,
+      "commit_count": 0,
+      "decision_action": "RESIZE_BATCH",
+      "entity_id": "entity_4c3ade60ea78",
+      "missing_commit": true,
+      "missing_precheck": true,
+      "original_event_id": "evt_276e496e_000003_392d3b13",
+      "precheck_count": 0,
+      "rejected_count": 0,
+      "slot_id": "r3-runtime-slot-002"
+    },
+    {
+      "accepted": false,
+      "commit_count": 0,
+      "decision_action": "RESIZE_BATCH",
+      "entity_id": "entity_4c3ade60ea78",
+      "missing_commit": true,
+      "missing_precheck": true,
+      "original_event_id": "evt_276e496e_000008_597a2713",
+      "precheck_count": 0,
+      "rejected_count": 0,
+      "slot_id": "r3-runtime-slot-003"
+    },
+    {
+      "accepted": false,
+      "commit_count": 0,
+      "decision_action": "RESIZE_BATCH",
+      "entity_id": "entity_4c3ade60ea78",
+      "missing_commit": true,
+      "missing_precheck": true,
+      "original_event_id": "evt_276e496e_000010_54e369e9",
+      "precheck_count": 0,
+      "rejected_count": 0,
+      "slot_id": "r3-runtime-slot-004"
+    },
+    {
+      "accepted": false,
+      "commit_count": 0,
+      "decision_action": "RESIZE_BATCH",
+      "entity_id": "entity_4c3ade60ea78",
+      "missing_commit": true,
+      "missing_precheck": true,
+      "original_event_id": "evt_276e496e_000015_ddd7919f",
+      "precheck_count": 0,
+      "rejected_count": 0,
+      "slot_id": "r3-runtime-slot-005"
+    },
+    {
+      "accepted": false,
+      "commit_count": 0,
+      "decision_action": "RESIZE_BATCH",
+      "entity_id": "entity_4c3ade60ea78",
+      "missing_commit": true,
+      "missing_precheck": true,
+      "original_event_id": "evt_276e496e_000017_b19df11f",
+      "precheck_count": 0,
+      "rejected_count": 0,
+      "slot_id": "r3-runtime-slot-006"
+    },
+    {
+      "accepted": false,
+      "commit_count": 0,
+      "decision_action": "RESIZE_BATCH",
+      "entity_id": "entity_4c3ade60ea78",
+      "missing_commit": true,
+      "missing_precheck": true,
+      "original_event_id": "evt_276e496e_000022_460f742b",
+      "precheck_count": 0,
+      "rejected_count": 0,
+      "slot_id": "r3-runtime-slot-007"
+    },
+    {
+      "accepted": false,
+      "commit_count": 0,
+      "decision_action": "RESIZE_BATCH",
+      "entity_id": "entity_4c3ade60ea78",
+      "missing_commit": true,
+      "missing_precheck": true,
+      "original_event_id": "evt_276e496e_000024_b9380e24",
+      "precheck_count": 0,
+      "rejected_count": 0,
+      "slot_id": "r3-runtime-slot-008"
+    },
+    {
+      "accepted": false,
+      "commit_count": 0,
+      "decision_action": "RESIZE_BATCH",
+      "entity_id": "entity_4c3ade60ea78",
+      "missing_commit": true,
+      "missing_precheck": true,
+      "original_event_id": "evt_276e496e_000029_e115771c",
+      "precheck_count": 0,
+      "rejected_count": 0,
+      "slot_id": "r3-runtime-slot-009"
+    },
+    {
+      "accepted": false,
+      "commit_count": 0,
+      "decision_action": "RESIZE_BATCH",
+      "entity_id": "entity_4c3ade60ea78",
+      "missing_commit": true,
+      "missing_precheck": true,
+      "original_event_id": "evt_276e496e_000031_f7f54e57",
+      "precheck_count": 0,
+      "rejected_count": 0,
+      "slot_id": "r3-runtime-slot-010"
+    },
+    {
+      "accepted": false,
+      "commit_count": 0,
+      "decision_action": "RESIZE_BATCH",
+      "entity_id": "entity_4c3ade60ea78",
+      "missing_commit": true,
+      "missing_precheck": true,
+      "original_event_id": "evt_276e496e_000038_704394c1",
+      "precheck_count": 0,
+      "rejected_count": 0,
+      "slot_id": "r3-runtime-slot-011"
+    },
+    {
+      "accepted": false,
+      "commit_count": 0,
+      "decision_action": "RESIZE_BATCH",
+      "entity_id": "entity_4c3ade60ea78",
+      "missing_commit": true,
+      "missing_precheck": true,
+      "original_event_id": "evt_276e496e_000040_456190e1",
+      "precheck_count": 0,
+      "rejected_count": 0,
+      "slot_id": "r3-runtime-slot-012"
+    },
+    {
+      "accepted": false,
+      "commit_count": 0,
+      "decision_action": "RESIZE_BATCH",
+      "entity_id": "entity_4c3ade60ea78",
+      "missing_commit": true,
+      "missing_precheck": true,
+      "original_event_id": "evt_276e496e_000045_044db479",
+      "precheck_count": 0,
+      "rejected_count": 0,
+      "slot_id": "r3-runtime-slot-013"
+    },
+    {
+      "accepted": false,
+      "commit_count": 0,
+      "decision_action": "RESIZE_BATCH",
+      "entity_id": "entity_4c3ade60ea78",
+      "missing_commit": true,
+      "missing_precheck": true,
+      "original_event_id": "evt_276e496e_000047_2f09ade1",
+      "precheck_count": 0,
+      "rejected_count": 0,
+      "slot_id": "r3-runtime-slot-014"
+    },
+    {
+      "accepted": false,
+      "commit_count": 0,
+      "decision_action": "RESIZE_BATCH",
+      "entity_id": "entity_4c3ade60ea78",
+      "missing_commit": true,
+      "missing_precheck": true,
+      "original_event_id": "evt_276e496e_000052_18bf554d",
+      "precheck_count": 0,
+      "rejected_count": 0,
+      "slot_id": "r3-runtime-slot-015"
+    },
+    {
+      "accepted": false,
+      "commit_count": 0,
+      "decision_action": "RESIZE_BATCH",
+      "entity_id": "entity_4c3ade60ea78",
+      "missing_commit": true,
+      "missing_precheck": true,
+      "original_event_id": "evt_276e496e_000054_3898d4c2",
+      "precheck_count": 0,
+      "rejected_count": 0,
+      "slot_id": "r3-runtime-slot-016"
+    },
+    {
+      "accepted": false,
+      "commit_count": 0,
+      "decision_action": "RESIZE_BATCH",
+      "entity_id": "entity_4c3ade60ea78",
+      "missing_commit": true,
+      "missing_precheck": true,
+      "original_event_id": "evt_276e496e_000059_01f7a41e",
+      "precheck_count": 0,
+      "rejected_count": 0,
+      "slot_id": "r3-runtime-slot-017"
+    },
+    {
+      "accepted": false,
+      "commit_count": 0,
+      "decision_action": "RESIZE_BATCH",
+      "entity_id": "entity_4c3ade60ea78",
+      "missing_commit": true,
+      "missing_precheck": true,
+      "original_event_id": "evt_276e496e_000061_1a9c106c",
+      "precheck_count": 0,
+      "rejected_count": 0,
+      "slot_id": "r3-runtime-slot-018"
+    },
+    {
+      "accepted": false,
+      "commit_count": 0,
+      "decision_action": "COOLDOWN_GPU",
+      "entity_id": "entity_4c3ade60ea78",
+      "missing_commit": true,
+      "missing_precheck": true,
+      "original_event_id": "evt_276e496e_000071_4bf4fe50",
+      "precheck_count": 0,
+      "rejected_count": 0,
+      "slot_id": "r3-runtime-slot-019"
+    },
+    {
+      "accepted": false,
+      "commit_count": 0,
+      "decision_action": "EXECUTE",
+      "entity_id": "entity_4c3ade60ea78",
+      "missing_commit": true,
+      "missing_precheck": true,
+      "original_event_id": "evt_276e496e_000073_bc920d9e",
+      "precheck_count": 0,
+      "rejected_count": 0,
+      "slot_id": "r3-runtime-slot-020"
+    },
+    {
+      "accepted": false,
+      "commit_count": 0,
+      "decision_action": "COOLDOWN_GPU",
+      "entity_id": "entity_4c3ade60ea78",
+      "missing_commit": true,
+      "missing_precheck": true,
+      "original_event_id": "evt_276e496e_000078_933bffc6",
+      "precheck_count": 0,
+      "rejected_count": 0,
+      "slot_id": "r3-runtime-slot-021"
+    },
+    {
+      "accepted": false,
+      "commit_count": 0,
+      "decision_action": "RESIZE_BATCH",
+      "entity_id": "entity_4c3ade60ea78",
+      "missing_commit": true,
+      "missing_precheck": true,
+      "original_event_id": "evt_276e496e_000080_7f5c085d",
+      "precheck_count": 0,
+      "rejected_count": 0,
+      "slot_id": "r3-runtime-slot-022"
+    },
+    {
+      "accepted": false,
+      "commit_count": 0,
+      "decision_action": "RESIZE_BATCH",
+      "entity_id": "entity_4c3ade60ea78",
+      "missing_commit": true,
+      "missing_precheck": true,
+      "original_event_id": "evt_276e496e_000085_2950be7a",
+      "precheck_count": 0,
+      "rejected_count": 0,
+      "slot_id": "r3-runtime-slot-023"
+    },
+    {
+      "accepted": false,
+      "commit_count": 0,
+      "decision_action": "RESIZE_BATCH",
+      "entity_id": "entity_4c3ade60ea78",
+      "missing_commit": true,
+      "missing_precheck": true,
+      "original_event_id": "evt_276e496e_000087_2b862356",
+      "precheck_count": 0,
+      "rejected_count": 0,
+      "slot_id": "r3-runtime-slot-024"
+    },
+    {
+      "accepted": false,
+      "commit_count": 0,
+      "decision_action": "RESIZE_BATCH",
+      "entity_id": "entity_4c3ade60ea78",
+      "missing_commit": true,
+      "missing_precheck": true,
+      "original_event_id": "evt_276e496e_000092_7c509ec7",
+      "precheck_count": 0,
+      "rejected_count": 0,
+      "slot_id": "r3-runtime-slot-025"
+    },
+    {
+      "accepted": false,
+      "commit_count": 0,
+      "decision_action": "RESIZE_BATCH",
+      "entity_id": "entity_4c3ade60ea78",
+      "missing_commit": true,
+      "missing_precheck": true,
+      "original_event_id": "evt_276e496e_000094_7cdd1632",
+      "precheck_count": 0,
+      "rejected_count": 0,
+      "slot_id": "r3-runtime-slot-026"
+    },
+    {
+      "accepted": false,
+      "commit_count": 0,
+      "decision_action": "RESIZE_BATCH",
+      "entity_id": "entity_4c3ade60ea78",
+      "missing_commit": true,
+      "missing_precheck": true,
+      "original_event_id": "evt_276e496e_000099_a59ef6d5",
+      "precheck_count": 0,
+      "rejected_count": 0,
+      "slot_id": "r3-runtime-slot-027"
+    },
+    {
+      "accepted": false,
+      "commit_count": 0,
+      "decision_action": "RESIZE_BATCH",
+      "entity_id": "entity_4c3ade60ea78",
+      "missing_commit": true,
+      "missing_precheck": true,
+      "original_event_id": "evt_276e496e_000101_8ad59514",
+      "precheck_count": 0,
+      "rejected_count": 0,
+      "slot_id": "r3-runtime-slot-028"
+    },
+    {
+      "accepted": false,
+      "commit_count": 0,
+      "decision_action": "RESIZE_BATCH",
+      "entity_id": "entity_4c3ade60ea78",
+      "missing_commit": true,
+      "missing_precheck": true,
+      "original_event_id": "evt_276e496e_000106_d4230bdb",
+      "precheck_count": 0,
+      "rejected_count": 0,
+      "slot_id": "r3-runtime-slot-029"
+    },
+    {
+      "accepted": false,
+      "commit_count": 0,
+      "decision_action": "RESIZE_BATCH",
+      "entity_id": "entity_4c3ade60ea78",
+      "missing_commit": true,
+      "missing_precheck": true,
+      "original_event_id": "evt_276e496e_000108_25063b2d",
+      "precheck_count": 0,
+      "rejected_count": 0,
+      "slot_id": "r3-runtime-slot-030"
+    },
+    {
+      "accepted": false,
+      "commit_count": 0,
+      "decision_action": "RESIZE_BATCH",
+      "entity_id": "entity_4c3ade60ea78",
+      "missing_commit": true,
+      "missing_precheck": true,
+      "original_event_id": "evt_276e496e_000113_4a44cb7a",
+      "precheck_count": 0,
+      "rejected_count": 0,
+      "slot_id": "r3-runtime-slot-031"
+    },
+    {
+      "accepted": false,
+      "commit_count": 0,
+      "decision_action": "RESIZE_BATCH",
+      "entity_id": "entity_4c3ade60ea78",
+      "missing_commit": true,
+      "missing_precheck": true,
+      "original_event_id": "evt_276e496e_000115_cba9a5dc",
+      "precheck_count": 0,
+      "rejected_count": 0,
+      "slot_id": "r3-runtime-slot-032"
+    },
+    {
+      "accepted": false,
+      "commit_count": 0,
+      "decision_action": "RESIZE_BATCH",
+      "entity_id": "entity_4c3ade60ea78",
+      "missing_commit": true,
+      "missing_precheck": true,
+      "original_event_id": "evt_276e496e_000120_ef36629d",
+      "precheck_count": 0,
+      "rejected_count": 0,
+      "slot_id": "r3-runtime-slot-033"
+    },
+    {
+      "accepted": false,
+      "commit_count": 0,
+      "decision_action": "RESIZE_BATCH",
+      "entity_id": "entity_4c3ade60ea78",
+      "missing_commit": true,
+      "missing_precheck": true,
+      "original_event_id": "evt_276e496e_000122_197aa047",
+      "precheck_count": 0,
+      "rejected_count": 0,
+      "slot_id": "r3-runtime-slot-034"
+    },
+    {
+      "accepted": false,
+      "commit_count": 0,
+      "decision_action": "RESIZE_BATCH",
+      "entity_id": "entity_4c3ade60ea78",
+      "missing_commit": true,
+      "missing_precheck": true,
+      "original_event_id": "evt_276e496e_000127_2ae25618",
+      "precheck_count": 0,
+      "rejected_count": 0,
+      "slot_id": "r3-runtime-slot-035"
+    }
+  ],
+  "summary": {
+    "accepted_slot_count": 0,
+    "capture_slot_count": 35,
+    "intake_guard_ready": true,
+    "negative_control_count": 7,
+    "negative_control_detected_count": 7,
+    "pending_slot_count": 35,
+    "rejected_event_count": 0,
+    "required_runtime_event_count": 70,
+    "runtime_evidence_approved": false,
+    "runtime_evidence_present": false
+  }
+}

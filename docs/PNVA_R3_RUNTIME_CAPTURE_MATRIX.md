@@ -138,6 +138,18 @@ pending_slot_count: 35
 
 That makes the architecture stronger: the system now knows the exact shape of the remaining work instead of hiding it behind a broad statement.
 
+## Intake Guard
+
+The next layer is:
+
+```text
+docs/PNVA_R3_RUNTIME_EVIDENCE_GUARD.md
+reports/pnva-r3-runtime-evidence-guard-2026-05-05.json
+tools/pnva_r3_runtime_evidence_guard.py
+```
+
+The matrix defines what must be captured. The guard rejects runtime evidence that is projected, weak-authority, missing entity identity, missing causal chain, missing proof hash or missing the no-tick precheck plus commit pair.
+
 ## Command
 
 ```bash
