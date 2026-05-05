@@ -33,6 +33,7 @@ PUBLISHED_REPORTS = {
     "schema_contract": "reports/pnva-schema-contract-validation-2026-05-05.json",
     "causal_chronology": "reports/pnva-causal-chronology-2026-05-05.json",
     "tension_decision": "reports/pnva-tension-decision-calibration-2026-05-05.json",
+    "decision_trace_index": "reports/pnva-decision-trace-index-2026-05-05.json",
     "entity_no_tick_matrix": "reports/pnva-entity-no-tick-matrix-2026-05-05.json",
     "suppression_ledger": "reports/pnva-suppression-ledger-2026-05-05.json",
     "adversarial": "reports/pnva-adversarial-validation-2026-05-05.json",
@@ -187,6 +188,19 @@ STABLE_PATHS = {
         ["warning_count"],
         ["native_calibration_clean"],
         ["legacy_calibration_warning_count"],
+    ],
+    "decision_trace_index": [
+        ["classification"],
+        ["pass"],
+        ["scope_count"],
+        ["event_count"],
+        ["traced_event_count"],
+        ["trace_coverage_ratio"],
+        ["entity_coverage_ratio"],
+        ["proof_coverage_ratio"],
+        ["heuristic_coverage_ratio"],
+        ["warning_count"],
+        ["native_trace_clean"],
     ],
     "entity_no_tick_matrix": [
         ["classification"],
@@ -348,6 +362,7 @@ def build_report(repo: Path) -> dict[str, Any]:
             "schema_contract": tmp / "schema-contract.json",
             "causal_chronology": tmp / "causal-chronology.json",
             "tension_decision": tmp / "tension-decision.json",
+            "decision_trace_index": tmp / "decision-trace-index.json",
             "entity_no_tick_matrix": tmp / "entity-no-tick-matrix.json",
             "suppression_ledger": tmp / "suppression-ledger.json",
             "adversarial": tmp / "adversarial.json",
@@ -383,6 +398,7 @@ def build_report(repo: Path) -> dict[str, Any]:
         commands["schema_contract"] = _run(repo, ["tools/pnva_schema_contract_validator.py"], outputs["schema_contract"])
         commands["causal_chronology"] = _run(repo, ["tools/pnva_causal_chronology_guard.py"], outputs["causal_chronology"])
         commands["tension_decision"] = _run(repo, ["tools/pnva_tension_decision_calibrator.py"], outputs["tension_decision"])
+        commands["decision_trace_index"] = _run(repo, ["tools/pnva_decision_trace_index.py"], outputs["decision_trace_index"])
         commands["entity_no_tick_matrix"] = _run(repo, ["tools/pnva_entity_no_tick_matrix.py"], outputs["entity_no_tick_matrix"])
         commands["suppression_ledger"] = _run(repo, ["tools/pnva_suppression_ledger.py"], outputs["suppression_ledger"])
         commands["adversarial"] = _run(repo, ["tools/pnva_adversarial_validator.py"], outputs["adversarial"])

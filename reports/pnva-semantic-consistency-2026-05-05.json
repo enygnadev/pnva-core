@@ -1,6 +1,6 @@
 {
   "author": "Gustavo de Aguiar Martins",
-  "check_count": 113,
+  "check_count": 128,
   "checks": [
     {
       "group": "classification",
@@ -264,6 +264,26 @@
     },
     {
       "group": "classification",
+      "left": "DECISION_TRACE_INDEX_READY_WITH_LEGACY_WARNINGS",
+      "left_ref": "reports/pnva-decision-trace-index-2026-05-05.json:classification",
+      "name": "decision_trace_index_classification",
+      "pass": true,
+      "right": "DECISION_TRACE_INDEX_READY_WITH_LEGACY_WARNINGS",
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "classification",
+      "left": true,
+      "left_ref": "reports/pnva-decision-trace-index-2026-05-05.json:pass",
+      "name": "decision_trace_index_pass_flag",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "classification",
       "left": "ENTITY_NO_TICK_MATRIX_READY_WITH_LEGACY_WARNINGS",
       "left_ref": "reports/pnva-entity-no-tick-matrix-2026-05-05.json:classification",
       "name": "entity_no_tick_matrix_classification",
@@ -475,21 +495,21 @@
     },
     {
       "group": "manifest",
-      "left": 24,
+      "left": 25,
       "left_ref": "MANIFEST:sovereign_evidence_attestation.artifact_count",
       "name": "manifest_attestation_artifact_count",
       "pass": true,
-      "right": 24,
+      "right": 25,
       "right_ref": "attestation:artifact_count",
       "severity": "error"
     },
     {
       "group": "manifest",
-      "left": "sha256:ed7e956a027efd644668c0af9bcb5338c4cb06bbfcef429393f99e455c7ad0fb",
+      "left": "sha256:742f6febce6c156bb010219ca535915da9c7d44c335c2c2ccfaa8873aa9d96e6",
       "left_ref": "MANIFEST:sovereign_evidence_attestation.evidence_hash",
       "name": "manifest_attestation_hash",
       "pass": true,
-      "right": "sha256:ed7e956a027efd644668c0af9bcb5338c4cb06bbfcef429393f99e455c7ad0fb",
+      "right": "sha256:742f6febce6c156bb010219ca535915da9c7d44c335c2c2ccfaa8873aa9d96e6",
       "right_ref": "attestation:evidence_hash",
       "severity": "error"
     },
@@ -581,6 +601,47 @@
       "pass": true,
       "right": true,
       "right_ref": "tension_decision:native_calibration_clean",
+      "severity": "error"
+    },
+    {
+      "group": "manifest",
+      "left": 519,
+      "left_ref": "MANIFEST:decision_trace_index.event_count",
+      "name": "manifest_decision_trace_event_count",
+      "pass": true,
+      "right": 519,
+      "right_ref": "decision_trace_index:event_count",
+      "severity": "error"
+    },
+    {
+      "group": "manifest",
+      "left": 1.0,
+      "left_ref": "MANIFEST:decision_trace_index.trace_coverage_ratio",
+      "name": "manifest_decision_trace_trace_coverage",
+      "pass": true,
+      "right": 1.0,
+      "right_ref": "decision_trace_index:trace_coverage_ratio",
+      "severity": "error",
+      "tolerance": 1e-06
+    },
+    {
+      "group": "manifest",
+      "left": 152,
+      "left_ref": "MANIFEST:decision_trace_index.warning_count",
+      "name": "manifest_decision_trace_warning_count",
+      "pass": true,
+      "right": 152,
+      "right_ref": "decision_trace_index:warning_count",
+      "severity": "error"
+    },
+    {
+      "group": "manifest",
+      "left": true,
+      "left_ref": "MANIFEST:decision_trace_index.native_trace_clean",
+      "name": "manifest_decision_trace_native_clean",
+      "pass": true,
+      "right": true,
+      "right_ref": "decision_trace_index:native_trace_clean",
       "severity": "error"
     },
     {
@@ -814,6 +875,80 @@
       "severity": "error"
     },
     {
+      "group": "decision_trace_index",
+      "left": 519,
+      "left_ref": "decision_trace_index:event_count",
+      "name": "decision_trace_total_event_count",
+      "pass": true,
+      "right": 519,
+      "right_ref": "canonical_events+native_events",
+      "severity": "error"
+    },
+    {
+      "group": "decision_trace_index",
+      "left": 519,
+      "left_ref": "decision_trace_index:traced_event_count",
+      "name": "decision_trace_traced_count",
+      "pass": true,
+      "right": 519,
+      "right_ref": "decision_trace_index:event_count",
+      "severity": "error"
+    },
+    {
+      "group": "decision_trace_index",
+      "left": 1.0,
+      "left_ref": "decision_trace_index:trace_coverage_ratio",
+      "name": "decision_trace_trace_coverage",
+      "pass": true,
+      "right": 1.0,
+      "right_ref": "expected",
+      "severity": "error",
+      "tolerance": 1e-06
+    },
+    {
+      "group": "decision_trace_index",
+      "left": 1.0,
+      "left_ref": "decision_trace_index:entity_coverage_ratio",
+      "name": "decision_trace_entity_coverage",
+      "pass": true,
+      "right": 1.0,
+      "right_ref": "expected",
+      "severity": "error",
+      "tolerance": 1e-06
+    },
+    {
+      "group": "decision_trace_index",
+      "left": 1.0,
+      "left_ref": "decision_trace_index:proof_coverage_ratio",
+      "name": "decision_trace_proof_coverage",
+      "pass": true,
+      "right": 1.0,
+      "right_ref": "expected",
+      "severity": "error",
+      "tolerance": 1e-06
+    },
+    {
+      "group": "decision_trace_index",
+      "left": 1.0,
+      "left_ref": "decision_trace_index:heuristic_coverage_ratio",
+      "name": "decision_trace_heuristic_coverage",
+      "pass": true,
+      "right": 1.0,
+      "right_ref": "expected",
+      "severity": "error",
+      "tolerance": 1e-06
+    },
+    {
+      "group": "decision_trace_index",
+      "left": true,
+      "left_ref": "decision_trace_index:native_trace_clean",
+      "name": "decision_trace_native_clean",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
       "group": "entity_no_tick_matrix",
       "left": 519,
       "left_ref": "entity_no_tick_matrix:event_count",
@@ -947,11 +1082,11 @@
     },
     {
       "group": "attestation",
-      "left": 24,
+      "left": 25,
       "left_ref": "attestation:artifact_count",
       "name": "artifact_count_matches_list",
       "pass": true,
-      "right": 24,
+      "right": 25,
       "right_ref": "len(attestation.artifacts)",
       "severity": "error"
     },
@@ -990,6 +1125,16 @@
       "left": true,
       "left_ref": "attestation:artifact_ids",
       "name": "attestation_contains_tension_decision_calibration",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "attestation",
+      "left": true,
+      "left_ref": "attestation:artifact_ids",
+      "name": "attestation_contains_decision_trace_index",
       "pass": true,
       "right": true,
       "right_ref": "expected",
@@ -1047,11 +1192,11 @@
     },
     {
       "group": "audit",
-      "left": "sha256:ed7e956a027efd644668c0af9bcb5338c4cb06bbfcef429393f99e455c7ad0fb",
+      "left": "sha256:742f6febce6c156bb010219ca535915da9c7d44c335c2c2ccfaa8873aa9d96e6",
       "left_ref": "audit:evidence_attestation.evidence_hash",
       "name": "audit_attestation_hash_matches",
       "pass": true,
-      "right": "sha256:ed7e956a027efd644668c0af9bcb5338c4cb06bbfcef429393f99e455c7ad0fb",
+      "right": "sha256:742f6febce6c156bb010219ca535915da9c7d44c335c2c2ccfaa8873aa9d96e6",
       "right_ref": "attestation:evidence_hash",
       "severity": "error"
     },
@@ -1098,6 +1243,16 @@
     },
     {
       "group": "audit",
+      "left": "DECISION_TRACE_INDEX_READY_WITH_LEGACY_WARNINGS",
+      "left_ref": "audit:decision_trace_index.classification",
+      "name": "audit_decision_trace_matches",
+      "pass": true,
+      "right": "DECISION_TRACE_INDEX_READY_WITH_LEGACY_WARNINGS",
+      "right_ref": "decision_trace_index:classification",
+      "severity": "error"
+    },
+    {
+      "group": "audit",
       "left": "ENTITY_NO_TICK_MATRIX_READY_WITH_LEGACY_WARNINGS",
       "left_ref": "audit:entity_no_tick_matrix.classification",
       "name": "audit_entity_no_tick_matrix_matches",
@@ -1140,7 +1295,7 @@
   "classification": "SEMANTIC_CONSISTENCY_READY",
   "error_count": 0,
   "errors": [],
-  "generated_at": "2026-05-05T07:11:51Z",
+  "generated_at": "2026-05-05T07:26:45Z",
   "interpretation": {
     "boundary": "This guard checks semantic consistency of the public evidence package; it does not replace runtime execution tests.",
     "purpose": "Detect drift between PNVA public evidence reports, manifest metadata, attestation and audit summaries.",
@@ -1160,6 +1315,7 @@
     "bridge": "reports/pnva-canonical-bridge-summary-2026-05-05.json",
     "causal_chronology": "reports/pnva-causal-chronology-2026-05-05.json",
     "causal_graph": "reports/pnva-causal-graph-2026-05-05.json",
+    "decision_trace_index": "reports/pnva-decision-trace-index-2026-05-05.json",
     "entity_no_tick_matrix": "reports/pnva-entity-no-tick-matrix-2026-05-05.json",
     "manifest": "MANIFEST.json",
     "maturity": "reports/pnva-entity-heuristic-maturity-2026-05-05.json",
@@ -1178,12 +1334,15 @@
   },
   "schema_version": "pnva.semantic_consistency.v1",
   "summary": {
-    "attestation_artifact_count": 24,
+    "attestation_artifact_count": 25,
     "audit_score": 100,
     "canonical_event_count": 512,
     "canonical_suppressed_count": 246,
     "causal_chronology_event_count": 519,
     "causal_chronology_warning_count": 2,
+    "decision_trace_event_count": 519,
+    "decision_trace_trace_coverage_ratio": 1.0,
+    "decision_trace_warning_count": 152,
     "entity_no_tick_matrix_event_count": 519,
     "entity_no_tick_matrix_suppressed_count": 250,
     "entity_no_tick_matrix_warning_count": 35,

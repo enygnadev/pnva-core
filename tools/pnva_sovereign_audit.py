@@ -50,6 +50,7 @@ PUBLIC_DOCS = [
     "docs/PNVA_SCHEMA_CONTRACT_VALIDATION.md",
     "docs/PNVA_CAUSAL_CHRONOLOGY_GUARD.md",
     "docs/PNVA_TENSION_DECISION_CALIBRATION.md",
+    "docs/PNVA_DECISION_TRACE_INDEX.md",
     "docs/PNVA_ENTITY_NO_TICK_MATRIX.md",
     "docs/PNVA_SUPPRESSION_LEDGER.md",
     "docs/PNVA_SOVEREIGN_EVIDENCE_ATTESTATION.md",
@@ -131,6 +132,12 @@ TENSION_DECISION_FILES = [
     "tools/pnva_tension_decision_calibrator.py",
     "docs/PNVA_TENSION_DECISION_CALIBRATION.md",
     "reports/pnva-tension-decision-calibration-2026-05-05.json",
+]
+
+DECISION_TRACE_INDEX_FILES = [
+    "tools/pnva_decision_trace_index.py",
+    "docs/PNVA_DECISION_TRACE_INDEX.md",
+    "reports/pnva-decision-trace-index-2026-05-05.json",
 ]
 
 ENTITY_NO_TICK_MATRIX_FILES = [
@@ -797,6 +804,44 @@ def audit_tension_decision_calibration(repo: Path) -> dict[str, Any]:
     }
 
 
+def audit_decision_trace_index(repo: Path) -> dict[str, Any]:
+    missing = [rel for rel in DECISION_TRACE_INDEX_FILES if not (repo / rel).exists()]
+    report_path = repo / "reports" / "pnva-decision-trace-index-2026-05-05.json"
+    if not report_path.exists():
+        return {
+            "trace_index_ok": False,
+            "missing": missing,
+            "classification": "DECISION_TRACE_INDEX_MISSING",
+            "errors": ["missing decision trace index report"],
+        }
+    data = _read_json(report_path)
+    return {
+        "trace_index_ok": (
+            not missing
+            and data.get("pass") is True
+            and str(data.get("classification", "")).startswith("DECISION_TRACE_INDEX_READY")
+            and int(data.get("error_count", 0)) == 0
+            and data.get("native_trace_clean") is True
+            and float(data.get("trace_coverage_ratio", 0.0)) == 1.0
+            and float(data.get("proof_coverage_ratio", 0.0)) == 1.0
+        ),
+        "missing": missing,
+        "classification": data.get("classification"),
+        "event_count": int(data.get("event_count", 0)),
+        "traced_event_count": int(data.get("traced_event_count", 0)),
+        "trace_coverage_ratio": float(data.get("trace_coverage_ratio", 0.0)),
+        "entity_coverage_ratio": float(data.get("entity_coverage_ratio", 0.0)),
+        "proof_coverage_ratio": float(data.get("proof_coverage_ratio", 0.0)),
+        "heuristic_coverage_ratio": float(data.get("heuristic_coverage_ratio", 0.0)),
+        "low_authority_trace_count": int(data.get("low_authority_trace_count", 0)),
+        "hard_authority_ratio": float(data.get("hard_authority_ratio", 0.0)),
+        "error_count": int(data.get("error_count", 0)),
+        "warning_count": int(data.get("warning_count", 0)),
+        "native_trace_clean": bool(data.get("native_trace_clean")),
+        "errors": [] if isinstance(data, dict) and data.get("pass") is True else ["decision trace index failed"],
+    }
+
+
 def audit_entity_no_tick_matrix(repo: Path) -> dict[str, Any]:
     missing = [rel for rel in ENTITY_NO_TICK_MATRIX_FILES if not (repo / rel).exists()]
     report_path = repo / "reports" / "pnva-entity-no-tick-matrix-2026-05-05.json"
@@ -1092,6 +1137,8 @@ def score_report(report: dict[str, Any]) -> dict[str, Any]:
         scores["actionability"] += 1
     if report.get("tension_decision_calibration", {}).get("calibration_ok"):
         scores["actionability"] += 0
+    if report.get("decision_trace_index", {}).get("trace_index_ok"):
+        scores["actionability"] += 0
     if report.get("entity_no_tick_matrix", {}).get("matrix_ok"):
         scores["actionability"] += 0
     if report.get("suppression_ledger", {}).get("ledger_ok"):
@@ -1166,6 +1213,7 @@ def build_report(repo: Path, *, strict_public: bool = False) -> dict[str, Any]:
         "schema_contract_validation": audit_schema_contract_validation(repo),
         "causal_chronology": audit_causal_chronology(repo),
         "tension_decision_calibration": audit_tension_decision_calibration(repo),
+        "decision_trace_index": audit_decision_trace_index(repo),
         "entity_no_tick_matrix": audit_entity_no_tick_matrix(repo),
         "suppression_ledger": audit_suppression_ledger(repo),
         "evidence_attestation": audit_evidence_attestation(repo),
@@ -1186,6 +1234,7 @@ def build_report(repo: Path, *, strict_public: bool = False) -> dict[str, Any]:
             "Run schema contract validation so event and entity envelopes are checked before attestation.",
             "Run causal chronology guard so time remains an audited trace, not a blind execution driver.",
             "Run tension-decision calibration so threshold/decision drift remains explicit.",
+            "Run decision trace index so every public event is traceable to entity, heuristics, tension and proof.",
             "Run entity no-tick matrix so suppression and execution remain attributable by entity.",
             "Run suppression ledger so avoided execution is proof-backed.",
             "Publish one sovereign evidence attestation hash with every evidence release.",

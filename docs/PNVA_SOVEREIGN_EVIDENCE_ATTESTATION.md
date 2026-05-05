@@ -20,6 +20,7 @@ causal graph audit
 schema contract validation
 causal chronology guard
 tension-decision calibration
+decision trace index
 entity no-tick matrix
 suppression ledger
 adversarial validation
@@ -63,7 +64,7 @@ Current result:
 ```text
 classification: PNVA_SOVEREIGN_EVIDENCE_ATTESTED
 pass: true
-artifact_count: 24
+artifact_count: 25
 failure_count: 0
 ```
 

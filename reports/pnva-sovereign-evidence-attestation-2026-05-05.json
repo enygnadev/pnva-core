@@ -1,5 +1,5 @@
 {
-  "artifact_count": 24,
+  "artifact_count": 25,
   "artifacts": [
     {
       "entry_count": 9,
@@ -151,6 +151,19 @@
       "required": true,
       "sha256": "603c53bbb7ae776ecb5c38b0f84aaea8e4542e955006e6551c4c0f9535ec0d5c",
       "size_bytes": 93378
+    },
+    {
+      "classification": "DECISION_TRACE_INDEX_READY_WITH_LEGACY_WARNINGS",
+      "expected": "DECISION_TRACE_INDEX_READY_WITH_LEGACY_WARNINGS",
+      "id": "decision_trace_index",
+      "kind": "json_classification",
+      "pass": true,
+      "path": "reports/pnva-decision-trace-index-2026-05-05.json",
+      "present": true,
+      "reported_pass": true,
+      "required": true,
+      "sha256": "8c76f188a2fe2c8506130b9ee34475da5df54e8b072d82b4e09efa614859c2a0",
+      "size_bytes": 536905
     },
     {
       "classification": "ENTITY_NO_TICK_MATRIX_READY_WITH_LEGACY_WARNINGS",
@@ -321,15 +334,16 @@
     "schema contract validation",
     "causal chronology guard",
     "tension-decision calibration",
+    "decision trace index",
     "entity no-tick matrix",
     "suppression ledger",
     "adversarial negative controls",
     "entity and heuristic maturity",
     "sovereign audit consumes this attestation without being part of its hash seed"
   ],
-  "evidence_hash": "sha256:ed7e956a027efd644668c0af9bcb5338c4cb06bbfcef429393f99e455c7ad0fb",
+  "evidence_hash": "sha256:742f6febce6c156bb010219ca535915da9c7d44c335c2c2ccfaa8873aa9d96e6",
   "failure_count": 0,
-  "generated_at": "2026-05-05T07:11:22Z",
+  "generated_at": "2026-05-05T07:26:26Z",
   "interpretation": {
     "boundary": "This attests repository evidence integrity; it is not a universal proof of all possible PNVA deployments.",
     "hash_policy": "The evidence_hash changes when any tracked artifact hash, classification or pass flag changes.",
@@ -346,6 +360,7 @@
     "Run schema contract validation before attestation so event/entity shape defects become release blockers.",
     "Run causal chronology before attestation so timestamp regressions and batch compaction are explicit.",
     "Run tension-decision calibration before attestation so threshold/decision drift is explicit.",
+    "Run decision trace index before attestation so every event remains linked to entity, heuristics, tension and proof.",
     "Run entity no-tick matrix before attestation so suppression and execution are attributable by entity.",
     "Run suppression ledger before attestation so avoided execution is proof-backed."
   ],

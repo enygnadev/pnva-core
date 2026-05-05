@@ -31,8 +31,8 @@ REPRODUCIBILITY_READY
 Current result:
 
 ```text
-command_count: 20
-comparison_count: 165
+command_count: 21
+comparison_count: 176
 failure_count: 0
 command_failure_count: 0
 comparison_failure_count: 0
@@ -57,6 +57,7 @@ native causal graph
 schema contract validation
 causal chronology guard
 tension-decision calibration
+decision trace index
 entity no-tick matrix
 suppression ledger
 adversarial validation
@@ -87,6 +88,7 @@ maturity score
 attestation evidence hash
 semantic consistency count
 tension-decision warning count
+decision trace coverage
 entity no-tick matrix suppression count
 suppression ledger avoided execution count
 ```

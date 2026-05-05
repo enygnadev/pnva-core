@@ -44,6 +44,7 @@ docs/PNVA_CAUSAL_GRAPH_AUDIT.md
 docs/PNVA_SCHEMA_CONTRACT_VALIDATION.md
 docs/PNVA_CAUSAL_CHRONOLOGY_GUARD.md
 docs/PNVA_TENSION_DECISION_CALIBRATION.md
+docs/PNVA_DECISION_TRACE_INDEX.md
 docs/PNVA_ENTITY_NO_TICK_MATRIX.md
 docs/PNVA_SUPPRESSION_LEDGER.md
 docs/PNVA_SOVEREIGN_EVIDENCE_ATTESTATION.md
@@ -62,6 +63,7 @@ tools/pnva_causal_graph_auditor.py
 tools/pnva_schema_contract_validator.py
 tools/pnva_causal_chronology_guard.py
 tools/pnva_tension_decision_calibrator.py
+tools/pnva_decision_trace_index.py
 tools/pnva_entity_no_tick_matrix.py
 tools/pnva_suppression_ledger.py
 tools/pnva_evidence_attestor.py
@@ -89,6 +91,7 @@ reports/pnva-native-causal-graph-2026-05-05.json
 reports/pnva-schema-contract-validation-2026-05-05.json
 reports/pnva-causal-chronology-2026-05-05.json
 reports/pnva-tension-decision-calibration-2026-05-05.json
+reports/pnva-decision-trace-index-2026-05-05.json
 reports/pnva-entity-no-tick-matrix-2026-05-05.json
 reports/pnva-suppression-ledger-2026-05-05.json
 reports/pnva-sovereign-evidence-attestation-2026-05-05.json
@@ -425,7 +428,41 @@ native: 7 events, 0 errors, 0 warnings, calibrated clean
 
 This hardens the no-tick claim at the decision layer. The native path now proves that collapse/block/observe/prove decisions are coherent with the tension field, while legacy bridge drift remains visible as warning evidence.
 
-### 14. Entity no-tick matrix
+### 14. Decision trace index
+
+The decision trace index maps every public event to entity, heuristic rules, authority, tension and proof.
+
+Current result:
+
+```text
+classification: DECISION_TRACE_INDEX_READY_WITH_LEGACY_WARNINGS
+event_count: 519
+traced_event_count: 519
+trace_complete_count: 519
+trace_coverage_ratio: 1.0
+entity_coverage_ratio: 1.0
+proof_coverage_ratio: 1.0
+heuristic_coverage_ratio: 1.0
+causal_chain_coverage_ratio: 1.0
+tension_coverage_ratio: 1.0
+hard_authority_event_count: 367
+low_authority_trace_count: 152
+hard_authority_ratio: 0.707129
+error_count: 0
+warning_count: 152
+native_trace_clean: true
+```
+
+Scope result:
+
+```text
+canonical: 512 events, trace coverage 1.0, 152 legacy low-authority trace warnings
+native: 7 events, trace coverage 1.0, 0 warnings, clean
+```
+
+This hardens the log and heuristic surface. Every public event now has a reviewer-facing trace path from event ID to actor, rule, authority, tension and proof.
+
+### 15. Entity no-tick matrix
 
 The entity no-tick matrix attributes suppression and execution to concrete entities and heuristic rules.
 
@@ -454,7 +491,7 @@ native: 7 events, 6 entity rows, 4 suppressions, 0 warnings, clean
 
 This hardens no-tick at the actor layer. The system no longer only claims suppression globally; it shows which entities suppressed, which entities executed, which rules were involved and whether the proof/authority path was clean.
 
-### 15. Suppression ledger
+### 16. Suppression ledger
 
 The suppression ledger treats every non-execution as proof-backed avoided work.
 
@@ -484,7 +521,7 @@ native: 7 events, 4 suppressions, 0 warnings, clean
 
 This hardens the efficiency claim. PNVA now distinguishes execution, suppression and avoided execution as auditable ledger entries. Legacy above-threshold suppressions remain visible as migration warnings; native suppression must remain proof-backed and below threshold.
 
-### 16. Sovereign evidence attestation
+### 17. Sovereign evidence attestation
 
 The evidence attestor binds the public package into one machine-readable record.
 
@@ -492,7 +529,7 @@ Current result:
 
 ```text
 classification: PNVA_SOVEREIGN_EVIDENCE_ATTESTED
-artifact_count: 24
+artifact_count: 25
 failure_count: 0
 ```
 
@@ -506,7 +543,7 @@ This hash changes if any tracked artifact changes its file hash, classification 
 
 The sovereign audit consumes this attestation and is intentionally kept outside the attestation hash seed to avoid circular evidence hashing.
 
-### 17. Adversarial validation
+### 18. Adversarial validation
 
 The adversarial validator adds negative controls.
 
@@ -533,7 +570,7 @@ JSON_PARSE_ERROR
 
 This closes a critical proof gap. PNVA validators now demonstrate not only that valid evidence passes, but also that corrupted proof, weak authority, invalid topology, duplicate identity, order tampering and malformed JSON are rejected or exposed.
 
-### 18. Entity and heuristic maturity
+### 19. Entity and heuristic maturity
 
 The entity/heuristic maturity auditor scores whether PNVA decisions are attributable to actors and rules.
 
@@ -574,7 +611,7 @@ warnings: 0
 
 This makes the next no-tick evolution concrete: reduce legacy authority in future runtime events while preserving old evidence honestly.
 
-### 19. Semantic consistency guard
+### 20. Semantic consistency guard
 
 The semantic consistency guard checks whether public reports agree with each other.
 
@@ -582,7 +619,7 @@ Current result:
 
 ```text
 classification: SEMANTIC_CONSISTENCY_READY
-check_count: 113
+check_count: 128
 error_count: 0
 warning_count: 0
 ```
@@ -597,6 +634,7 @@ maturity aggregate math
 attestation artifact count
 audit summary vs attestation and maturity
 threshold/decision calibration vs Manifest and audit
+decision trace index vs Manifest and audit
 entity no-tick matrix vs Manifest and audit
 suppression ledger vs Manifest and audit
 Manifest file list existence
@@ -604,7 +642,7 @@ Manifest file list existence
 
 This closes a publication risk: reports can no longer drift silently while still appearing valid individually.
 
-### 20. Reproducibility guard
+### 21. Reproducibility guard
 
 The reproducibility guard reruns the evidence commands and compares stable fields against the published package.
 
@@ -612,8 +650,8 @@ Current result:
 
 ```text
 classification: REPRODUCIBILITY_READY
-command_count: 20
-comparison_count: 165
+command_count: 21
+comparison_count: 176
 failure_count: 0
 command_failure_count: 0
 comparison_failure_count: 0
@@ -631,6 +669,7 @@ causal graph audit
 schema contract validation
 causal chronology guard
 tension-decision calibration
+decision trace index
 entity no-tick matrix
 suppression ledger
 adversarial validation
@@ -661,13 +700,14 @@ This closes the method gap: the public evidence is now not only stored and cross
 16. Use `tools/pnva_schema_contract_validator.py` before attestation so event/entity envelope defects become release blockers.
 17. Use `tools/pnva_causal_chronology_guard.py` before attestation so time remains an audited trace, not a blind driver.
 18. Use `tools/pnva_tension_decision_calibrator.py` before attestation so threshold/decision drift is explicit.
-19. Use `tools/pnva_entity_no_tick_matrix.py` before attestation so no-tick suppression is attributable by entity.
-20. Use `tools/pnva_suppression_ledger.py` before attestation so avoided execution is proof-backed.
-21. Use `tools/pnva_evidence_attestor.py` to publish one aggregate evidence hash for each release.
-22. Use `tools/pnva_adversarial_validator.py` before release so validator failures are proven, not assumed.
-23. Use `tools/pnva_entity_heuristic_maturity.py` to choose hardening targets by entity, heuristic and authority.
-24. Use `tools/pnva_semantic_consistency_guard.py` after attestation to block cross-report drift.
-25. Use `tools/pnva_reproducibility_guard.py` after semantic consistency to prove source-command reproducibility.
+19. Use `tools/pnva_decision_trace_index.py` before attestation so every event maps to entity, heuristics, tension and proof.
+20. Use `tools/pnva_entity_no_tick_matrix.py` before attestation so no-tick suppression is attributable by entity.
+21. Use `tools/pnva_suppression_ledger.py` before attestation so avoided execution is proof-backed.
+22. Use `tools/pnva_evidence_attestor.py` to publish one aggregate evidence hash for each release.
+23. Use `tools/pnva_adversarial_validator.py` before release so validator failures are proven, not assumed.
+24. Use `tools/pnva_entity_heuristic_maturity.py` to choose hardening targets by entity, heuristic and authority.
+25. Use `tools/pnva_semantic_consistency_guard.py` after attestation to block cross-report drift.
+26. Use `tools/pnva_reproducibility_guard.py` after semantic consistency to prove source-command reproducibility.
 
 ## Sovereign Rule
 

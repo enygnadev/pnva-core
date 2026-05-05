@@ -1,7 +1,7 @@
 {
   "author": "Gustavo de Aguiar Martins",
   "classification": "REPRODUCIBILITY_READY",
-  "command_count": 20,
+  "command_count": 21,
   "command_failure_count": 0,
   "command_failures": [],
   "commands": {
@@ -29,6 +29,13 @@
     "causal_graph": {
       "classification": "CAUSAL_GRAPH_READY",
       "command": "tools/pnva_causal_graph_auditor.py --events reports/pnva-canonical-events-sample-2026-05-05.jsonl --entity-catalog reports/pnva-entity-catalog-2026-05-05.json --write <TEMP>/causal-graph.json",
+      "exit_code": 0,
+      "parse_error": "",
+      "pass": true
+    },
+    "decision_trace_index": {
+      "classification": "DECISION_TRACE_INDEX_READY_WITH_LEGACY_WARNINGS",
+      "command": "tools/pnva_decision_trace_index.py --write <TEMP>/decision-trace-index.json",
       "exit_code": 0,
       "parse_error": "",
       "pass": true
@@ -146,7 +153,7 @@
       "pass": true
     }
   },
-  "comparison_count": 165,
+  "comparison_count": 176,
   "comparison_failure_count": 0,
   "comparison_failures": [],
   "comparisons": [
@@ -972,6 +979,83 @@
     {
       "field": "classification",
       "pass": true,
+      "published": "DECISION_TRACE_INDEX_READY_WITH_LEGACY_WARNINGS",
+      "report": "decision_trace_index",
+      "reproduced": "DECISION_TRACE_INDEX_READY_WITH_LEGACY_WARNINGS"
+    },
+    {
+      "field": "pass",
+      "pass": true,
+      "published": true,
+      "report": "decision_trace_index",
+      "reproduced": true
+    },
+    {
+      "field": "scope_count",
+      "pass": true,
+      "published": 2,
+      "report": "decision_trace_index",
+      "reproduced": 2
+    },
+    {
+      "field": "event_count",
+      "pass": true,
+      "published": 519,
+      "report": "decision_trace_index",
+      "reproduced": 519
+    },
+    {
+      "field": "traced_event_count",
+      "pass": true,
+      "published": 519,
+      "report": "decision_trace_index",
+      "reproduced": 519
+    },
+    {
+      "field": "trace_coverage_ratio",
+      "pass": true,
+      "published": 1.0,
+      "report": "decision_trace_index",
+      "reproduced": 1.0
+    },
+    {
+      "field": "entity_coverage_ratio",
+      "pass": true,
+      "published": 1.0,
+      "report": "decision_trace_index",
+      "reproduced": 1.0
+    },
+    {
+      "field": "proof_coverage_ratio",
+      "pass": true,
+      "published": 1.0,
+      "report": "decision_trace_index",
+      "reproduced": 1.0
+    },
+    {
+      "field": "heuristic_coverage_ratio",
+      "pass": true,
+      "published": 1.0,
+      "report": "decision_trace_index",
+      "reproduced": 1.0
+    },
+    {
+      "field": "warning_count",
+      "pass": true,
+      "published": 152,
+      "report": "decision_trace_index",
+      "reproduced": 152
+    },
+    {
+      "field": "native_trace_clean",
+      "pass": true,
+      "published": true,
+      "report": "decision_trace_index",
+      "reproduced": true
+    },
+    {
+      "field": "classification",
+      "pass": true,
       "published": "ENTITY_NO_TICK_MATRIX_READY_WITH_LEGACY_WARNINGS",
       "report": "entity_no_tick_matrix",
       "reproduced": "ENTITY_NO_TICK_MATRIX_READY_WITH_LEGACY_WARNINGS"
@@ -1238,9 +1322,9 @@
     {
       "field": "artifact_count",
       "pass": true,
-      "published": 24,
+      "published": 25,
       "report": "attestation",
-      "reproduced": 24
+      "reproduced": 25
     },
     {
       "field": "failure_count",
@@ -1252,9 +1336,9 @@
     {
       "field": "evidence_hash",
       "pass": true,
-      "published": "sha256:ed7e956a027efd644668c0af9bcb5338c4cb06bbfcef429393f99e455c7ad0fb",
+      "published": "sha256:742f6febce6c156bb010219ca535915da9c7d44c335c2c2ccfaa8873aa9d96e6",
       "report": "attestation",
-      "reproduced": "sha256:ed7e956a027efd644668c0af9bcb5338c4cb06bbfcef429393f99e455c7ad0fb"
+      "reproduced": "sha256:742f6febce6c156bb010219ca535915da9c7d44c335c2c2ccfaa8873aa9d96e6"
     },
     {
       "field": "classification",
@@ -1273,9 +1357,9 @@
     {
       "field": "check_count",
       "pass": true,
-      "published": 113,
+      "published": 128,
       "report": "semantic",
-      "reproduced": 113
+      "reproduced": 128
     },
     {
       "field": "error_count",
@@ -1307,7 +1391,7 @@
     }
   ],
   "failure_count": 0,
-  "generated_at": "2026-05-05T07:11:54Z",
+  "generated_at": "2026-05-05T07:26:49Z",
   "interpretation": {
     "boundary": "Generated timestamps, temporary paths and non-semantic ordering are intentionally excluded from comparison.",
     "purpose": "Regenerate PNVA evidence reports with current tools and compare stable fields against the published evidence package.",
@@ -1322,12 +1406,13 @@
   ],
   "schema_version": "pnva.reproducibility_guard.v1",
   "summary": {
-    "published_attestation_hash": "sha256:ed7e956a027efd644668c0af9bcb5338c4cb06bbfcef429393f99e455c7ad0fb",
+    "published_attestation_hash": "sha256:742f6febce6c156bb010219ca535915da9c7d44c335c2c2ccfaa8873aa9d96e6",
     "reports_reproduced": [
       "adversarial",
       "attestation",
       "causal_chronology",
       "causal_graph",
+      "decision_trace_index",
       "entity_no_tick_matrix",
       "maturity",
       "native_causal_graph",
@@ -1345,7 +1430,7 @@
       "suppression_ledger",
       "tension_decision"
     ],
-    "reproduced_attestation_hash": "sha256:ed7e956a027efd644668c0af9bcb5338c4cb06bbfcef429393f99e455c7ad0fb",
-    "stable_fields_compared": 165
+    "reproduced_attestation_hash": "sha256:742f6febce6c156bb010219ca535915da9c7d44c335c2c2ccfaa8873aa9d96e6",
+    "stable_fields_compared": 176
   }
 }
