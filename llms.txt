@@ -43,10 +43,20 @@ Gustavo de Aguiar Martins. PNVA-Core: A Post-Temporal Causal Architecture for St
 - docs/PNVA_ARCHITECTURE.md
 - docs/VALIDATION_PROTOCOL.md
 - docs/PROOF_MATRIX.md
+- docs/PNVA_SOVEREIGN_LOGS_ENTITIES_HEURISTICS.md
+- docs/PNVA_ROBUSTNESS_EVOLUTION_REPORT_2026-05-05.md
 - docs/VEON_MODEL_VALIDATION.md
 - docs/PNVA_POST_TEMPORAL_CIVILIZATION.md
 - paper/PNVA_CORE_OPEN_RESEARCH_PAPER.md
 - proofs/sanitized/INDEX.json
+- schemas/pnva-event.schema.json
+- schemas/pnva-entity.schema.json
+- tools/pnva_sovereign_audit.py
+- reports/pnva-sovereign-audit-2026-05-05.json
+
+## Sovereign Robustness
+
+PNVA-Core defines canonical schemas for PNVA entities and PNVA event envelopes. The sovereign audit tool checks proof integrity, AI/search discovery, log contract readiness, publication hygiene and local private log health when available.
 
 ## Boundaries
 

@@ -1,0 +1,785 @@
+{
+  "author": "Gustavo de Aguiar Martins",
+  "contract": {
+    "invalid": [],
+    "missing": [],
+    "schemas": {
+      "schemas/pnva-entity.schema.json": {
+        "id": "https://enygnadev.github.io/pnva-core/schemas/pnva-entity.schema.json",
+        "ok": true,
+        "required_count": 7
+      },
+      "schemas/pnva-event.schema.json": {
+        "id": "https://enygnadev.github.io/pnva-core/schemas/pnva-event.schema.json",
+        "ok": true,
+        "required_count": 10
+      }
+    },
+    "schemas_ok": true
+  },
+  "discovery": {
+    "llms_ok": true,
+    "robots_missing_tokens": [],
+    "robots_ok": true,
+    "sitemap_ok": true,
+    "sitemap_url_count": 6,
+    "sitemap_urls": [
+      "https://enygnadev.github.io/pnva-core/",
+      "https://enygnadev.github.io/pnva-core/author.html",
+      "https://enygnadev.github.io/pnva-core/pnva-core.html",
+      "https://enygnadev.github.io/pnva-core/proofs.html",
+      "https://enygnadev.github.io/pnva-core/veonic-model.html",
+      "https://enygnadev.github.io/pnva-core/llms.txt"
+    ]
+  },
+  "generated_at": "2026-05-05T04:10:28Z",
+  "local_logs": {
+    "available": true,
+    "bad_json_ratio": 0.0,
+    "bad_json_total": 0,
+    "mode": "local_private_summary",
+    "risk_flags": [
+      "HIGH_RESIZE_BATCH_RATIO",
+      "THERMAL_PRESSURE_DOMINANT"
+    ],
+    "sample_count": 4,
+    "sampled_lines_total": 41532,
+    "samples": [
+      {
+        "available": true,
+        "bad_json": 0,
+        "bad_json_ratio": 0.0,
+        "field_tension": {
+          "count": 0
+        },
+        "file": "pnva_decisions.jsonl",
+        "hash4d_score": {
+          "count": 0
+        },
+        "job_freshness": {
+          "count": 0
+        },
+        "sampled_lines": 17525,
+        "sealed_records": 0,
+        "top_decisions": [
+          [
+            "",
+            17525
+          ]
+        ],
+        "top_events": [
+          [
+            "pnva_engine_evaluated",
+            11076
+          ],
+          [
+            "ETEV_GUARD_PASS",
+            3369
+          ],
+          [
+            "ETEV_GUARD_BLOCK",
+            3080
+          ]
+        ],
+        "top_keys": [
+          [
+            "event",
+            17525
+          ],
+          [
+            "session_id",
+            17525
+          ],
+          [
+            "ts",
+            17525
+          ],
+          [
+            "ts_epoch",
+            17525
+          ],
+          [
+            "guard",
+            11076
+          ],
+          [
+            "memory",
+            11076
+          ],
+          [
+            "power",
+            11076
+          ],
+          [
+            "route",
+            11076
+          ],
+          [
+            "threshold",
+            11076
+          ],
+          [
+            "entity_id",
+            6449
+          ],
+          [
+            "event_type",
+            6449
+          ],
+          [
+            "gate_delta",
+            6449
+          ],
+          [
+            "margin",
+            6449
+          ],
+          [
+            "orbital_id",
+            6449
+          ],
+          [
+            "passed",
+            6449
+          ],
+          [
+            "reason",
+            6449
+          ],
+          [
+            "signal",
+            6449
+          ],
+          [
+            "theta",
+            6449
+          ]
+        ],
+        "top_reasons": [
+          [
+            "",
+            11076
+          ],
+          [
+            "zano-entity-00",
+            3322
+          ],
+          [
+            "zano-entity-01",
+            3086
+          ],
+          [
+            "zano-entity-02",
+            26
+          ],
+          [
+            "zano-entity-03",
+            15
+          ]
+        ],
+        "top_states": [
+          [
+            "",
+            17525
+          ]
+        ],
+        "veon_records": 0
+      },
+      {
+        "available": true,
+        "bad_json": 0,
+        "bad_json_ratio": 0.0,
+        "field_tension": {
+          "count": 0
+        },
+        "file": "pnva_causal_events.jsonl",
+        "hash4d_score": {
+          "count": 0
+        },
+        "job_freshness": {
+          "count": 0
+        },
+        "sampled_lines": 12735,
+        "sealed_records": 12735,
+        "top_decisions": [
+          [
+            "",
+            12735
+          ]
+        ],
+        "top_events": [
+          [
+            "entity_range_assigned",
+            2016
+          ],
+          [
+            "kernel_launched",
+            1894
+          ],
+          [
+            "kernel_completed",
+            1830
+          ],
+          [
+            "network_state_changed",
+            1774
+          ],
+          [
+            "runtime_status",
+            1568
+          ],
+          [
+            "runtime_snapshot",
+            980
+          ],
+          [
+            "ETEV_GUARD_PASS",
+            894
+          ],
+          [
+            "ETEV_GUARD_BLOCK",
+            777
+          ]
+        ],
+        "top_keys": [
+          [
+            "cause",
+            12735
+          ],
+          [
+            "kind",
+            12735
+          ],
+          [
+            "payload",
+            12735
+          ],
+          [
+            "seal",
+            12735
+          ],
+          [
+            "seq",
+            12735
+          ],
+          [
+            "ts",
+            12735
+          ]
+        ],
+        "top_reasons": [
+          [
+            "",
+            12735
+          ]
+        ],
+        "top_states": [
+          [
+            "",
+            12735
+          ]
+        ],
+        "veon_records": 0
+      },
+      {
+        "available": true,
+        "bad_json": 0,
+        "bad_json_ratio": 0.0,
+        "field_tension": {
+          "count": 0
+        },
+        "file": "zano_pnva_heuristics.jsonl",
+        "hash4d_score": {
+          "count": 1845,
+          "max": 1.0,
+          "median": 0.7797,
+          "min": 0.0
+        },
+        "job_freshness": {
+          "count": 0
+        },
+        "sampled_lines": 1845,
+        "sealed_records": 0,
+        "top_decisions": [
+          [
+            "",
+            1845
+          ]
+        ],
+        "top_events": [
+          [
+            "range_plan_built",
+            1772
+          ],
+          [
+            "serialized_cohort_fragile_hold",
+            73
+          ]
+        ],
+        "top_keys": [
+          [
+            "component",
+            1845
+          ],
+          [
+            "effective_batch_target",
+            1845
+          ],
+          [
+            "event",
+            1845
+          ],
+          [
+            "fixed_intensity_mode",
+            1845
+          ],
+          [
+            "fixed_intensity_range_size",
+            1845
+          ],
+          [
+            "gate_open_entities",
+            1845
+          ],
+          [
+            "hot_worker_entity_id",
+            1845
+          ],
+          [
+            "hot_worker_min_overhead",
+            1845
+          ],
+          [
+            "job_id",
+            1845
+          ],
+          [
+            "job_seal",
+            1845
+          ],
+          [
+            "logical_parallelism",
+            1845
+          ],
+          [
+            "physical_parallelism",
+            1845
+          ],
+          [
+            "planned_ranges",
+            1845
+          ],
+          [
+            "pnva_chi",
+            1845
+          ],
+          [
+            "pnva_gate_margin",
+            1845
+          ],
+          [
+            "pnva_mu",
+            1845
+          ],
+          [
+            "pnva_phi",
+            1845
+          ],
+          [
+            "pnva_quality_mad",
+            1845
+          ],
+          [
+            "pnva_quality_median",
+            1845
+          ],
+          [
+            "pnva_theta",
+            1845
+          ],
+          [
+            "range_size_base",
+            1845
+          ],
+          [
+            "runtime_batch_target",
+            1845
+          ],
+          [
+            "runtime_decision_action",
+            1845
+          ],
+          [
+            "runtime_decision_reason",
+            1845
+          ]
+        ],
+        "top_reasons": [
+          [
+            "cpu_host_thermal_taper",
+            929
+          ],
+          [
+            "cpu_host_thermal_nanoparallel_taper",
+            322
+          ],
+          [
+            "safe_mode_hold",
+            213
+          ],
+          [
+            "low_occupancy_with_clean_feedback",
+            155
+          ],
+          [
+            "cpu_clean_precrest_hold",
+            86
+          ],
+          [
+            "not_evaluated",
+            73
+          ],
+          [
+            "cpu_clean_aged_parallel_hold",
+            42
+          ],
+          [
+            "cpu_host_thermal_collapse_taper",
+            18
+          ]
+        ],
+        "top_states": [
+          [
+            "",
+            1845
+          ]
+        ],
+        "veon_records": 1845
+      },
+      {
+        "available": true,
+        "bad_json": 0,
+        "bad_json_ratio": 0.0,
+        "field_tension": {
+          "count": 3821,
+          "max": 0.0461,
+          "median": -37.477,
+          "min": -302.0464
+        },
+        "file": "pnva-miner-events.jsonl",
+        "hash4d_score": {
+          "count": 9163,
+          "max": 1.0,
+          "median": 0.7591,
+          "min": 0.0
+        },
+        "job_freshness": {
+          "count": 3821,
+          "max": 1.0,
+          "median": 0.4679,
+          "min": 0.0
+        },
+        "sampled_lines": 9427,
+        "sealed_records": 0,
+        "top_decisions": [
+          [
+            "RESIZE_BATCH",
+            4880
+          ],
+          [
+            "assigned",
+            2650
+          ],
+          [
+            "EXECUTE",
+            878
+          ],
+          [
+            "COOLDOWN_GPU",
+            358
+          ],
+          [
+            "",
+            264
+          ],
+          [
+            "job_reset",
+            264
+          ],
+          [
+            "SWITCH_INTENSITY",
+            133
+          ]
+        ],
+        "top_events": [
+          [
+            "pnva_decision",
+            3821
+          ],
+          [
+            "range_ledger",
+            2914
+          ],
+          [
+            "cuda_slot_scan",
+            2428
+          ],
+          [
+            "job_received",
+            264
+          ]
+        ],
+        "top_keys": [
+          [
+            "component",
+            9427
+          ],
+          [
+            "event",
+            9427
+          ],
+          [
+            "job_id",
+            9427
+          ],
+          [
+            "profile",
+            9427
+          ],
+          [
+            "session_id",
+            9427
+          ],
+          [
+            "ts",
+            9427
+          ],
+          [
+            "ts_epoch",
+            9427
+          ],
+          [
+            "hash4d_score",
+            9163
+          ],
+          [
+            "decision",
+            6735
+          ],
+          [
+            "accepted_mhs",
+            6249
+          ],
+          [
+            "cuda_max_nonces",
+            6249
+          ],
+          [
+            "pool_reported_mhs",
+            6249
+          ],
+          [
+            "raw_mhs",
+            6249
+          ],
+          [
+            "nonce_count",
+            5342
+          ],
+          [
+            "nonce_start",
+            5342
+          ],
+          [
+            "pnva_phi",
+            5342
+          ],
+          [
+            "acceptance_score",
+            3821
+          ],
+          [
+            "accepted_effective_rate_hps",
+            3821
+          ],
+          [
+            "active_entity_target",
+            3821
+          ],
+          [
+            "batch_size",
+            3821
+          ],
+          [
+            "efficiency_mh_w",
+            3821
+          ],
+          [
+            "field_tension",
+            3821
+          ],
+          [
+            "freshness_window_ms",
+            3821
+          ],
+          [
+            "gpu_power_w",
+            3821
+          ]
+        ],
+        "top_reasons": [
+          [
+            "",
+            5606
+          ],
+          [
+            "cpu_host_thermal_taper",
+            2687
+          ],
+          [
+            "safe_mode_hold",
+            377
+          ],
+          [
+            "cpu_host_thermal_nanoparallel_taper",
+            198
+          ],
+          [
+            "seismic_thermal_power_guard",
+            179
+          ],
+          [
+            "cpu_clean_precrest_hold",
+            150
+          ],
+          [
+            "low_occupancy_with_clean_feedback",
+            133
+          ],
+          [
+            "cpu_clean_aged_parallel_hold",
+            48
+          ]
+        ],
+        "top_states": [
+          [
+            "",
+            5606
+          ],
+          [
+            "CRUISE",
+            3484
+          ],
+          [
+            "COOLDOWN",
+            179
+          ],
+          [
+            "AGGRESSIVE",
+            133
+          ],
+          [
+            "STALE_PROTECTION",
+            25
+          ]
+        ],
+        "veon_records": 0
+      }
+    ]
+  },
+  "project": "PNVA-Core",
+  "proofs": {
+    "failed": [],
+    "gates": {
+      "12h": {
+        "classification": "",
+        "file": "proofs/sanitized/prove-long-run-stability-12h-live.json",
+        "pass": true,
+        "sha256": "d2d7ea1d4779a0f2aa9b7a74c19c51bd84be5187c43ebcf41e4b5c71c31fc7ec"
+      },
+      "15m": {
+        "classification": "",
+        "file": "proofs/sanitized/prove-long-run-stability-15m-live.json",
+        "pass": true,
+        "sha256": "a412cfc98433e0003eb504d4eb67f850bdc8da96b851988f372b958ee456cf15"
+      },
+      "24h": {
+        "classification": "PASS_EVENT_AWARE_24H_FINAL_TRANSIENT_STABLE_WINDOW",
+        "file": "proofs/sanitized/prove-long-run-stability-24h-live.json",
+        "pass": true,
+        "sha256": "ce51bef95b3c830657e50c51d2565467cee07d737aed08f55d21bb260a0f78e0"
+      },
+      "8h": {
+        "classification": "",
+        "file": "proofs/sanitized/prove-long-run-stability-8h-live.json",
+        "pass": true,
+        "sha256": "a71c46b5ccb08be46e93836e6caae463c34b8f8d2cd0f49a752e746285c45700"
+      },
+      "distribution_gate": {
+        "classification": "",
+        "file": "proofs/sanitized/prove-distribution-gate.json",
+        "pass": true,
+        "sha256": "b91399923d8c8201604043cb09ee9ba7f673e0554086896ed901d22676fb0fb8"
+      },
+      "g1": {
+        "classification": "PASS_DETECTOR_VALIDATED_NO_REAL_OPPORTUNITY_SEEN",
+        "file": "proofs/sanitized/prove-real-stable-opportunity-capture.json",
+        "pass": true,
+        "sha256": "f8106cd32427bb0275178123bd39b9e115956b3a09c014e8ecc9d7893a16e2ff"
+      },
+      "guard_rails": {
+        "classification": "PASS_GUARD_RAILS_ALL_ITEMS_PASS",
+        "file": "proofs/sanitized/guard-rail-report.json",
+        "pass": true,
+        "sha256": "e414c0c43bed8375509d4affee41072f68c372e7e83fe94c71b46fb18edba458"
+      },
+      "long_run_live_gate": {
+        "classification": "",
+        "file": "proofs/sanitized/prove-long-run-live-gate.json",
+        "pass": true,
+        "sha256": "76edc034e390e24d92566af8ea468fd0a7e894f627efa48c95683c6efc0c2413"
+      },
+      "production_candidate": {
+        "classification": "",
+        "file": "proofs/sanitized/prove-production-candidate.json",
+        "pass": true,
+        "sha256": "50ed5dc9ad1201649206b27c457de54611688fcbcc3e9f89e8847f96f5d71a62"
+      }
+    },
+    "h24_canonical_pass_ok": true,
+    "index_ok": true,
+    "missing": [],
+    "proof_count": 9,
+    "required_count": 9
+  },
+  "recommendations": [
+    "Add schema_version, entity_id and causal_chain_id to every new JSONL event.",
+    "Normalize legacy event/kind payloads into pnva.event.v1 before publishing.",
+    "Keep raw local logs private and publish only sanitized proof summaries.",
+    "Track thermal pressure provenance when thermal pressure is high but sensor temperature/power are unavailable.",
+    "Treat high RESIZE_BATCH ratio as pressure intelligence, not as a proof failure by itself."
+  ],
+  "repo_path": "<REPO>",
+  "schema_version": "pnva.sovereign_audit.v1",
+  "score": {
+    "classification": "SOVEREIGN_READY",
+    "max": 100,
+    "sections": {
+      "actionability": 10,
+      "ai_search_discovery": 15,
+      "local_log_health": 15,
+      "log_contract": 15,
+      "proof_integrity": 30,
+      "sovereignty_hygiene": 15
+    },
+    "total": 100
+  },
+  "sovereignty": {
+    "citation_ok": true,
+    "docs_ok": true,
+    "licenses_ok": true,
+    "missing_docs": [],
+    "path_leaks": [],
+    "raw_proofs_absent": true
+  }
+}

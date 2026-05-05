@@ -113,6 +113,8 @@ docs/
   PNVA_ARCHITECTURE.md
   VALIDATION_PROTOCOL.md
   PROOF_MATRIX.md
+  PNVA_SOVEREIGN_LOGS_ENTITIES_HEURISTICS.md
+  PNVA_ROBUSTNESS_EVOLUTION_REPORT_2026-05-05.md
   VEON_MODEL_VALIDATION.md
   PNVA_POST_TEMPORAL_CIVILIZATION.md
   PNVA_SOVEREIGNTY_PUBLICATION_SCALE.md
@@ -127,12 +129,20 @@ paper/
 proofs/sanitized/
   JSON proof summaries suitable for public review
 
+schemas/
+  pnva-event.schema.json
+  pnva-entity.schema.json
+
+reports/
+  pnva-sovereign-audit-2026-05-05.json
+
 release/
   final production closure note
   professional public announcement draft
 
 tools/
   sanitize_proofs.py
+  pnva_sovereign_audit.py
 ```
 
 ## Public Launch
@@ -196,7 +206,20 @@ Not evidence that a Veon is a physical particle.
 sha256sum -c SHA256SUMS.txt
 python3 -m json.tool MANIFEST.json >/dev/null
 for f in proofs/sanitized/*.json; do python3 -m json.tool "$f" >/dev/null; done
+python3 tools/pnva_sovereign_audit.py --repo . --strict-public --min-score 80 >/tmp/pnva-sovereign-audit.json
 ```
+
+## Sovereign Robustness Layer
+
+PNVA-Core now includes a canonical event/entity contract and an audit tool:
+
+```text
+schemas/pnva-event.schema.json
+schemas/pnva-entity.schema.json
+tools/pnva_sovereign_audit.py
+```
+
+The audit checks proof integrity, AI/search discovery, log contract readiness, publication hygiene and local log health when run inside the PNVA lab.
 
 ## Citation
 

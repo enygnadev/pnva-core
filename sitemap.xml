@@ -24,4 +24,24 @@
     <loc>https://enygnadev.github.io/pnva-core/llms.txt</loc>
     <lastmod>2026-05-05</lastmod>
   </url>
+  <url>
+    <loc>https://enygnadev.github.io/pnva-core/docs/PNVA_SOVEREIGN_LOGS_ENTITIES_HEURISTICS.md</loc>
+    <lastmod>2026-05-05</lastmod>
+  </url>
+  <url>
+    <loc>https://enygnadev.github.io/pnva-core/docs/PNVA_ROBUSTNESS_EVOLUTION_REPORT_2026-05-05.md</loc>
+    <lastmod>2026-05-05</lastmod>
+  </url>
+  <url>
+    <loc>https://enygnadev.github.io/pnva-core/schemas/pnva-event.schema.json</loc>
+    <lastmod>2026-05-05</lastmod>
+  </url>
+  <url>
+    <loc>https://enygnadev.github.io/pnva-core/schemas/pnva-entity.schema.json</loc>
+    <lastmod>2026-05-05</lastmod>
+  </url>
+  <url>
+    <loc>https://enygnadev.github.io/pnva-core/reports/pnva-sovereign-audit-2026-05-05.json</loc>
+    <lastmod>2026-05-05</lastmod>
+  </url>
 </urlset>

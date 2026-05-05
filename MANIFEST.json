@@ -71,6 +71,16 @@
         "PerplexityBot",
         "ClaudeBot"
       ]
+    },
+    "sovereign_robustness_layer": {
+      "status": "ADDED",
+      "schemas": [
+        "schemas/pnva-event.schema.json",
+        "schemas/pnva-entity.schema.json"
+      ],
+      "audit_tool": "tools/pnva_sovereign_audit.py",
+      "audit_report": "reports/pnva-sovereign-audit-2026-05-05.json",
+      "classification": "SOVEREIGN_READY"
     }
   },
   "files": [
@@ -98,7 +108,9 @@
     "docs/ONLINE_PUBLICATION.md",
     "docs/PNVA_ARCHITECTURE.md",
     "docs/PNVA_POST_TEMPORAL_CIVILIZATION.md",
+    "docs/PNVA_ROBUSTNESS_EVOLUTION_REPORT_2026-05-05.md",
     "docs/PNVA_SOVEREIGNTY_PUBLICATION_SCALE.md",
+    "docs/PNVA_SOVEREIGN_LOGS_ENTITIES_HEURISTICS.md",
     "docs/PROOF_MATRIX.md",
     "docs/PUBLIC_POSITIONING.md",
     "docs/REPOSITORY_PUBLISHING_CHECKLIST.md",
@@ -122,9 +134,13 @@
     "release/PNVA_FECHAMENTO_PRODUCAO_PASS_FINAL_2026-05-04.md",
     "release/POST_01_HOJE_PNVA_CORE.md",
     "release/POST_01_PROFISSIONAL_AUTORAL.md",
+    "reports/pnva-sovereign-audit-2026-05-05.json",
     "robots.txt",
+    "schemas/pnva-entity.schema.json",
+    "schemas/pnva-event.schema.json",
     "sitemap.xml",
     "styles.css",
+    "tools/pnva_sovereign_audit.py",
     "tools/sanitize_proofs.py",
     "veonic-model.html"
   ],

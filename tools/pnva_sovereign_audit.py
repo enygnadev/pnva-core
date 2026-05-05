@@ -1,0 +1,459 @@
+#!/usr/bin/env python3
+from __future__ import annotations
+
+import argparse
+import hashlib
+import json
+import statistics
+import time
+import xml.etree.ElementTree as ET
+from collections import Counter
+from pathlib import Path
+from typing import Any
+
+
+REQUIRED_PROOFS = {
+    "guard-rail-report.json": "guard_rails",
+    "prove-distribution-gate.json": "distribution_gate",
+    "prove-long-run-live-gate.json": "long_run_live_gate",
+    "prove-long-run-stability-12h-live.json": "12h",
+    "prove-long-run-stability-15m-live.json": "15m",
+    "prove-long-run-stability-24h-live.json": "24h",
+    "prove-long-run-stability-8h-live.json": "8h",
+    "prove-production-candidate.json": "production_candidate",
+    "prove-real-stable-opportunity-capture.json": "g1",
+}
+
+DISCOVERY_TOKENS = [
+    "OAI-SearchBot",
+    "GPTBot",
+    "ChatGPT-User",
+    "Googlebot",
+    "Bingbot",
+    "Sitemap:",
+]
+
+PUBLIC_DOCS = [
+    "docs/PNVA_ARCHITECTURE.md",
+    "docs/VALIDATION_PROTOCOL.md",
+    "docs/PROOF_MATRIX.md",
+    "docs/LIMITATIONS.md",
+    "docs/VEON_MODEL_VALIDATION.md",
+    "docs/PNVA_SOVEREIGN_LOGS_ENTITIES_HEURISTICS.md",
+    "docs/PNVA_ROBUSTNESS_EVOLUTION_REPORT_2026-05-05.md",
+    "paper/PNVA_CORE_OPEN_RESEARCH_PAPER.md",
+]
+
+SCHEMAS = [
+    "schemas/pnva-event.schema.json",
+    "schemas/pnva-entity.schema.json",
+]
+
+LOCAL_LOG_CANDIDATES = [
+    Path.home() / ".local" / "state" / "miniggpueny" / "pnva_decisions.jsonl",
+    Path.home() / ".local" / "state" / "miniggpueny" / "pnva_causal_events.jsonl",
+    Path.home() / ".local" / "state" / "miniggpueny" / "zano_pnva_heuristics.jsonl",
+    Path.home() / "logs" / "pnva-miner-events.jsonl",
+]
+
+
+def _read_json(path: Path) -> Any:
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def _sha256(path: Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def _proof_pass(data: Any) -> bool:
+    if not isinstance(data, dict):
+        return False
+    if data.get("pass") is True:
+        return True
+    if data.get("canonical_pass") is True:
+        return True
+    if data.get("overall_status") == "PASS":
+        return True
+    return False
+
+
+def _safe_ratio(part: int | float, total: int | float) -> float:
+    return float(part) / max(1.0, float(total))
+
+
+def _round(value: float, digits: int = 4) -> float:
+    return round(float(value), digits)
+
+
+def audit_proofs(repo: Path) -> dict[str, Any]:
+    proof_dir = repo / "proofs" / "sanitized"
+    found: dict[str, Any] = {}
+    missing: list[str] = []
+    failed: list[str] = []
+    classifications: dict[str, str] = {}
+    for file_name, gate_name in REQUIRED_PROOFS.items():
+        path = proof_dir / file_name
+        if not path.exists():
+            missing.append(file_name)
+            continue
+        data = _read_json(path)
+        passed = _proof_pass(data)
+        if not passed:
+            failed.append(file_name)
+        classification = ""
+        if isinstance(data, dict):
+            classification = str(data.get("classification") or "")
+        classifications[gate_name] = classification
+        found[gate_name] = {
+            "file": str(path.relative_to(repo)),
+            "pass": passed,
+            "classification": classification,
+            "sha256": _sha256(path),
+        }
+    index_path = proof_dir / "INDEX.json"
+    index_ok = False
+    if index_path.exists():
+        index = _read_json(index_path)
+        if isinstance(index, list):
+            indexed = {str(item.get("artifact", "")) for item in index if isinstance(item, dict)}
+            index_ok = set(REQUIRED_PROOFS).issubset(indexed)
+    h24 = found.get("24h", {})
+    h24_canonical = bool(h24.get("pass")) and h24.get("classification") == "PASS_EVENT_AWARE_24H_FINAL_TRANSIENT_STABLE_WINDOW"
+    return {
+        "proof_count": len(found),
+        "required_count": len(REQUIRED_PROOFS),
+        "missing": missing,
+        "failed": failed,
+        "index_ok": index_ok,
+        "h24_canonical_pass_ok": h24_canonical,
+        "gates": found,
+    }
+
+
+def audit_discovery(repo: Path) -> dict[str, Any]:
+    robots_path = repo / "robots.txt"
+    llms_path = repo / "llms.txt"
+    sitemap_path = repo / "sitemap.xml"
+    robots = robots_path.read_text(encoding="utf-8") if robots_path.exists() else ""
+    llms = llms_path.read_text(encoding="utf-8") if llms_path.exists() else ""
+    missing_tokens = [token for token in DISCOVERY_TOKENS if token not in robots]
+    sitemap_ok = False
+    sitemap_urls: list[str] = []
+    if sitemap_path.exists():
+        root = ET.parse(sitemap_path).getroot()
+        sitemap_ok = root.tag.endswith("urlset")
+        for node in root.iter():
+            if node.tag.endswith("loc") and node.text:
+                sitemap_urls.append(node.text.strip())
+    return {
+        "robots_ok": robots_path.exists() and not missing_tokens,
+        "robots_missing_tokens": missing_tokens,
+        "llms_ok": llms_path.exists() and "Gustavo de Aguiar Martins" in llms and "PNVA-Core" in llms,
+        "sitemap_ok": sitemap_ok,
+        "sitemap_url_count": len(sitemap_urls),
+        "sitemap_urls": sitemap_urls,
+    }
+
+
+def audit_contract(repo: Path) -> dict[str, Any]:
+    schema_results: dict[str, Any] = {}
+    missing = []
+    invalid = []
+    for rel in SCHEMAS:
+        path = repo / rel
+        if not path.exists():
+            missing.append(rel)
+            continue
+        try:
+            data = _read_json(path)
+            schema_results[rel] = {
+                "ok": bool(data.get("$schema")) and bool(data.get("title")),
+                "id": data.get("$id"),
+                "required_count": len(data.get("required", [])),
+            }
+            if not schema_results[rel]["ok"]:
+                invalid.append(rel)
+        except Exception as exc:
+            schema_results[rel] = {"ok": False, "error": str(exc)}
+            invalid.append(rel)
+    return {
+        "schemas_ok": not missing and not invalid,
+        "missing": missing,
+        "invalid": invalid,
+        "schemas": schema_results,
+    }
+
+
+def sample_jsonl(path: Path, *, max_lines: int = 50000) -> dict[str, Any]:
+    events: Counter[str] = Counter()
+    decisions: Counter[str] = Counter()
+    reasons: Counter[str] = Counter()
+    states: Counter[str] = Counter()
+    keys: Counter[str] = Counter()
+    tensions: list[float] = []
+    freshness: list[float] = []
+    hash4d: list[float] = []
+    veon_records = 0
+    sealed_records = 0
+    bad_json = 0
+    lines = 0
+    with path.open(encoding="utf-8", errors="replace") as handle:
+        for line in handle:
+            if lines >= max_lines:
+                break
+            if not line.strip():
+                continue
+            lines += 1
+            try:
+                data = json.loads(line)
+            except Exception:
+                bad_json += 1
+                continue
+            if not isinstance(data, dict):
+                continue
+            keys.update(data.keys())
+            event_name = str(data.get("event") or data.get("kind") or "")
+            decision_name = str(data.get("decision") or data.get("pnva_decision") or data.get("action") or "")
+            reason_name = str(data.get("reason") or data.get("runtime_decision_reason") or "")
+            state_name = str(data.get("state") or data.get("state_label") or "")
+            events[event_name] += 1
+            decisions[decision_name] += 1
+            reasons[reason_name] += 1
+            states[state_name] += 1
+            if "seal" in data:
+                sealed_records += 1
+            if any(str(key).startswith("veon_") for key in data):
+                veon_records += 1
+            for key, bucket in (
+                ("field_tension", tensions),
+                ("job_freshness", freshness),
+                ("hash4d_score", hash4d),
+                ("runtime_hash4d_score", hash4d),
+            ):
+                if key in data:
+                    try:
+                        bucket.append(float(data[key]))
+                    except Exception:
+                        pass
+
+    def stats(values: list[float]) -> dict[str, Any]:
+        if not values:
+            return {"count": 0}
+        return {
+            "count": len(values),
+            "min": _round(min(values)),
+            "median": _round(statistics.median(values)),
+            "max": _round(max(values)),
+        }
+
+    return {
+        "file": path.name,
+        "available": True,
+        "sampled_lines": lines,
+        "bad_json": bad_json,
+        "bad_json_ratio": _round(_safe_ratio(bad_json, lines)),
+        "top_events": events.most_common(8),
+        "top_decisions": decisions.most_common(8),
+        "top_reasons": reasons.most_common(8),
+        "top_states": states.most_common(8),
+        "top_keys": keys.most_common(24),
+        "sealed_records": sealed_records,
+        "veon_records": veon_records,
+        "field_tension": stats(tensions),
+        "job_freshness": stats(freshness),
+        "hash4d_score": stats(hash4d),
+    }
+
+
+def audit_local_logs(strict_public: bool) -> dict[str, Any]:
+    if strict_public:
+        return {
+            "mode": "strict_public",
+            "available": False,
+            "note": "Local private logs intentionally skipped."
+        }
+    samples = []
+    for path in LOCAL_LOG_CANDIDATES:
+        if path.exists():
+            samples.append(sample_jsonl(path))
+    total_bad = sum(item.get("bad_json", 0) for item in samples)
+    total_lines = sum(item.get("sampled_lines", 0) for item in samples)
+    thermal_reason_count = 0
+    resize_count = 0
+    decision_total = 0
+    for item in samples:
+        for reason, count in item.get("top_reasons", []):
+            if "thermal" in reason:
+                thermal_reason_count += int(count)
+        for decision, count in item.get("top_decisions", []):
+            if decision == "RESIZE_BATCH":
+                resize_count += int(count)
+            if decision:
+                decision_total += int(count)
+    flags = []
+    if total_bad:
+        flags.append("LOCAL_JSON_PARSE_ERRORS")
+    if _safe_ratio(resize_count, decision_total) > 0.45:
+        flags.append("HIGH_RESIZE_BATCH_RATIO")
+    if thermal_reason_count > 0:
+        flags.append("THERMAL_PRESSURE_DOMINANT")
+    return {
+        "mode": "local_private_summary",
+        "available": bool(samples),
+        "sample_count": len(samples),
+        "sampled_lines_total": total_lines,
+        "bad_json_total": total_bad,
+        "bad_json_ratio": _round(_safe_ratio(total_bad, total_lines)),
+        "risk_flags": flags,
+        "samples": samples,
+    }
+
+
+def audit_sovereignty(repo: Path) -> dict[str, Any]:
+    missing_docs = [rel for rel in PUBLIC_DOCS if not (repo / rel).exists()]
+    raw_dir_exists = (repo / "proofs" / "raw").exists()
+    path_leaks = []
+    personal_home_marker = "/" + "home" + "/" + "enyos"
+    personal_desktop_marker = "Desktop/" + "document"
+    for path in repo.rglob("*"):
+        if path.is_dir() or ".git" in path.parts:
+            continue
+        if path.suffix.lower() in {".png", ".jpg", ".jpeg", ".gif", ".tar", ".gz"}:
+            continue
+        try:
+            text = path.read_text(encoding="utf-8", errors="ignore")
+        except Exception:
+            continue
+        if personal_home_marker in text or personal_desktop_marker in text:
+            path_leaks.append(str(path.relative_to(repo)))
+    return {
+        "docs_ok": not missing_docs,
+        "missing_docs": missing_docs,
+        "raw_proofs_absent": not raw_dir_exists,
+        "path_leaks": path_leaks,
+        "citation_ok": (repo / "CITATION.cff").exists(),
+        "licenses_ok": (repo / "LICENSE").exists() and (repo / "LICENSE-DOCS").exists(),
+    }
+
+
+def score_report(report: dict[str, Any]) -> dict[str, Any]:
+    scores = {
+        "proof_integrity": 0,
+        "ai_search_discovery": 0,
+        "log_contract": 0,
+        "local_log_health": 0,
+        "sovereignty_hygiene": 0,
+        "actionability": 0,
+    }
+    proofs = report["proofs"]
+    if proofs["proof_count"] == proofs["required_count"] and not proofs["missing"]:
+        scores["proof_integrity"] += 10
+    if not proofs["failed"]:
+        scores["proof_integrity"] += 10
+    if proofs["index_ok"]:
+        scores["proof_integrity"] += 4
+    if proofs["h24_canonical_pass_ok"]:
+        scores["proof_integrity"] += 6
+
+    discovery = report["discovery"]
+    if discovery["robots_ok"]:
+        scores["ai_search_discovery"] += 7
+    if discovery["llms_ok"]:
+        scores["ai_search_discovery"] += 5
+    if discovery["sitemap_ok"] and discovery["sitemap_url_count"] >= 5:
+        scores["ai_search_discovery"] += 3
+
+    contract = report["contract"]
+    if contract["schemas_ok"]:
+        scores["log_contract"] += 10
+    if report["sovereignty"].get("docs_ok"):
+        scores["log_contract"] += 5
+
+    local = report["local_logs"]
+    if local.get("mode") == "strict_public":
+        scores["local_log_health"] += 6
+    elif local.get("available"):
+        if local.get("bad_json_total") == 0:
+            scores["local_log_health"] += 6
+        if local.get("sampled_lines_total", 0) >= 1000:
+            scores["local_log_health"] += 4
+        if any(item.get("veon_records", 0) > 0 for item in local.get("samples", [])):
+            scores["local_log_health"] += 3
+        if any(item.get("sealed_records", 0) > 0 for item in local.get("samples", [])):
+            scores["local_log_health"] += 2
+
+    sovereignty = report["sovereignty"]
+    if sovereignty["raw_proofs_absent"]:
+        scores["sovereignty_hygiene"] += 5
+    if not sovereignty["path_leaks"]:
+        scores["sovereignty_hygiene"] += 5
+    if sovereignty["citation_ok"]:
+        scores["sovereignty_hygiene"] += 2
+    if sovereignty["licenses_ok"]:
+        scores["sovereignty_hygiene"] += 3
+
+    if (report["repo"] / ".github" / "workflows" / "validate.yml").exists():
+        scores["actionability"] += 5
+    if (report["repo"] / "tools" / "pnva_sovereign_audit.py").exists():
+        scores["actionability"] += 5
+
+    total = sum(scores.values())
+    return {
+        "sections": scores,
+        "total": total,
+        "max": 100,
+        "classification": "SOVEREIGN_READY" if total >= 90 else "ROBUST" if total >= 80 else "NEEDS_HARDENING",
+    }
+
+
+def build_report(repo: Path, *, strict_public: bool = False) -> dict[str, Any]:
+    repo = repo.resolve()
+    report: dict[str, Any] = {
+        "schema_version": "pnva.sovereign_audit.v1",
+        "generated_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+        "author": "Gustavo de Aguiar Martins",
+        "project": "PNVA-Core",
+        "repo_path": str(repo),
+        "repo": repo,
+        "proofs": audit_proofs(repo),
+        "discovery": audit_discovery(repo),
+        "contract": audit_contract(repo),
+        "local_logs": audit_local_logs(strict_public),
+        "sovereignty": audit_sovereignty(repo),
+        "recommendations": [
+            "Add schema_version, entity_id and causal_chain_id to every new JSONL event.",
+            "Normalize legacy event/kind payloads into pnva.event.v1 before publishing.",
+            "Keep raw local logs private and publish only sanitized proof summaries.",
+            "Track thermal pressure provenance when thermal pressure is high but sensor temperature/power are unavailable.",
+            "Treat high RESIZE_BATCH ratio as pressure intelligence, not as a proof failure by itself.",
+        ],
+    }
+    score = score_report(report)
+    report["score"] = score
+    report.pop("repo", None)
+    report["repo_path"] = "<REPO>"
+    return report
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description="Audit PNVA-Core proof, discovery, log contract and sovereignty readiness.")
+    parser.add_argument("--repo", default=str(Path(__file__).resolve().parents[1]), help="Repository root.")
+    parser.add_argument("--write", default="", help="Write JSON report to this path.")
+    parser.add_argument("--strict-public", action="store_true", help="Skip private local log sampling.")
+    parser.add_argument("--min-score", type=int, default=80, help="Minimum acceptable score.")
+    args = parser.parse_args()
+
+    report = build_report(Path(args.repo), strict_public=bool(args.strict_public))
+    raw = json.dumps(report, indent=2, ensure_ascii=True, sort_keys=True) + "\n"
+    if args.write:
+        out = Path(args.write)
+        if not out.is_absolute():
+            out = Path(args.repo) / out
+        out.parent.mkdir(parents=True, exist_ok=True)
+        out.write_text(raw, encoding="utf-8")
+    print(raw, end="")
+    return 0 if int(report["score"]["total"]) >= int(args.min_score) else 1
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

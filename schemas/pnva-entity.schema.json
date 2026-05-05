@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://enygnadev.github.io/pnva-core/schemas/pnva-entity.schema.json",
+  "title": "PNVA Entity",
+  "description": "Canonical entity contract for PNVA-Core field, worker, gate, guard, proof and publication actors.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "entity_id",
+    "entity_type",
+    "sovereignty_domain",
+    "state",
+    "capabilities",
+    "evidence"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "pnva.entity.v1"
+    },
+    "entity_id": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 128,
+      "pattern": "^[a-zA-Z0-9_.:-]+$"
+    },
+    "entity_type": {
+      "type": "string",
+      "enum": [
+        "field",
+        "event_source",
+        "worker",
+        "gate",
+        "guard",
+        "proof",
+        "memory",
+        "heuristic",
+        "publication",
+        "author"
+      ]
+    },
+    "sovereignty_domain": {
+      "type": "string",
+      "enum": [
+        "runtime",
+        "validation",
+        "publication",
+        "human_author",
+        "external"
+      ]
+    },
+    "state": {
+      "type": "string",
+      "enum": [
+        "idle",
+        "observing",
+        "candidate",
+        "active",
+        "blocked",
+        "passed",
+        "failed",
+        "retired"
+      ]
+    },
+    "capabilities": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "evidence": {
+      "type": "object",
+      "required": [
+        "proof_ref",
+        "confidence"
+      ],
+      "properties": {
+        "proof_ref": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "last_seen": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

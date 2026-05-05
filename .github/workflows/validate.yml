@@ -26,5 +26,7 @@ jobs:
           if missing:
               raise SystemExit(f"robots.txt missing: {missing}")
           PY
+      - name: Run sovereign audit
+        run: python3 tools/pnva_sovereign_audit.py --repo . --strict-public --min-score 80 >/tmp/pnva-sovereign-audit.json
       - name: Check release checksums
         run: sha256sum -c SHA256SUMS.txt
