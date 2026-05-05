@@ -35,11 +35,11 @@ r3_preparation_ready: true
 r3_runtime_capture_coverage_percent: 0.0
 runtime_pending_slot_count: 35
 runtime_required_event_count: 70
-runtime_contract_check_count: 279
+runtime_contract_check_count: 283
 runtime_contract_failure_count: 0
 runtime_positive_control_passed_count: 6
 runtime_mandatory_field_count: 28
-runtime_enforced_control_count: 50
+runtime_enforced_control_count: 51
 ```
 
 ## What This Proves

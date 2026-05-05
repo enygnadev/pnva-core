@@ -49,6 +49,7 @@
     "schema_version_required": "pnva.event.v1",
     "source_file_name_required": true,
     "source_format_required": "native_pnva_event_v1",
+    "source_line_monotonic_per_file_required": true,
     "source_line_required": true,
     "source_location_unique_required": true,
     "source_sanitized_required": true,
@@ -60,16 +61,16 @@
     "timestamp_iso8601_required": true,
     "timestamp_required": true
   },
-  "generated_at": "2026-05-05T13:44:32Z",
+  "generated_at": "2026-05-05T13:59:10Z",
   "intake_guard_ready": true,
   "interpretation": {
     "boundary": "Without a runtime-events file this guard certifies the intake contract only; it does not claim final runtime completion.",
     "purpose": "Protect the R3 runtime intake boundary before fresh events are accepted as legacy-free evidence.",
-    "sovereignty": "PNVA becomes harder to fake when projected proofs, malformed, duplicated or content-unbound proof hashes, wrong proof-ref slot roles, wrong event types, wrong decision reasons, wrong role state transitions, malformed or inconsistent tension values, invalid gate signs, duplicate events, duplicated source locations, entity or slot mismatches, missing or reversed log/source location order, unsanitized sources, unknown heuristic rules, invalid risk flags, weak authority, missing target rules, missing precheck or commit target risk flags, extra runtime events and causally broken no-tick pairs are rejected before cutover."
+    "sovereignty": "PNVA becomes harder to fake when projected proofs, malformed, duplicated or content-unbound proof hashes, wrong proof-ref slot roles, wrong event types, wrong decision reasons, wrong role state transitions, malformed or inconsistent tension values, invalid gate signs, duplicate events, duplicated source locations, regressed source lines, entity or slot mismatches, missing or reversed log/source location order, unsanitized sources, unknown heuristic rules, invalid risk flags, weak authority, missing target rules, missing precheck or commit target risk flags, extra runtime events and causally broken no-tick pairs are rejected before cutover."
   },
   "matrix_classification": "R3_RUNTIME_CAPTURE_MATRIX_READY_PENDING_RUNTIME",
-  "negative_control_count": 53,
-  "negative_control_detected_count": 53,
+  "negative_control_count": 54,
+  "negative_control_detected_count": 54,
   "negative_controls": [
     {
       "codes": [
@@ -514,11 +515,21 @@
     {
       "codes": [
         "DUPLICATE_SOURCE_LOCATION",
-        "NO_TICK_PAIR_INCOMPLETE"
+        "NO_TICK_PAIR_INCOMPLETE",
+        "SOURCE_LINE_MONOTONICITY_INVALID"
       ],
       "detected": true,
       "expected_detection": "DUPLICATE_SOURCE_LOCATION",
       "name": "reject_duplicate_source_location"
+    },
+    {
+      "codes": [
+        "NO_TICK_PAIR_INCOMPLETE",
+        "SOURCE_LINE_MONOTONICITY_INVALID"
+      ],
+      "detected": true,
+      "expected_detection": "SOURCE_LINE_MONOTONICITY_INVALID",
+      "name": "reject_source_line_regression"
     },
     {
       "codes": [
@@ -622,6 +633,7 @@
     "Require field.state_after to prove no-tick precheck suppression and commit completion.",
     "Reject duplicate event_id, proof_hash and proof_ref values before accepting runtime coverage.",
     "Reject duplicate source.file_name plus source.line locations before accepting runtime coverage.",
+    "Reject source.line regression inside the same source.file_name before accepting runtime coverage.",
     "Reject runtime events whose proof_hash does not bind to the canonical event identity and source-location payload.",
     "Reject no-tick pairs whose commit JSONL line appears before the precheck line.",
     "Reject no-tick pairs whose commit source.line does not follow the precheck source.line.",
@@ -1354,6 +1366,7 @@
       "source_line_ordered_no_tick_pair_count": 0
     }
   ],
+  "source_line_monotonicity_rejection_count": 0,
   "summary": {
     "accepted_slot_count": 0,
     "capture_slot_count": 35,
@@ -1362,8 +1375,8 @@
     "duplicate_proof_ref_rejection_count": 0,
     "duplicate_source_location_rejection_count": 0,
     "intake_guard_ready": true,
-    "negative_control_count": 53,
-    "negative_control_detected_count": 53,
+    "negative_control_count": 54,
+    "negative_control_detected_count": 54,
     "no_tick_pair_failure_count": 0,
     "no_tick_pair_integrity_count": 0,
     "pending_slot_count": 35,
@@ -1372,6 +1385,7 @@
     "rejected_event_count": 0,
     "required_runtime_event_count": 70,
     "runtime_evidence_approved": false,
-    "runtime_evidence_present": false
+    "runtime_evidence_present": false,
+    "source_line_monotonicity_rejection_count": 0
   }
 }

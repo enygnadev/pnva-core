@@ -114,6 +114,7 @@
         "exactly_one_precheck_per_slot_required": true,
         "runtime_event_count_must_equal_required": true,
         "same_causal_chain_id_required": true,
+        "source_line_monotonic_per_file_required": true,
         "source_location_unique_required": true,
         "timestamp_iso8601_required": true
       },
@@ -299,6 +300,7 @@
         "exactly_one_precheck_per_slot_required": true,
         "runtime_event_count_must_equal_required": true,
         "same_causal_chain_id_required": true,
+        "source_line_monotonic_per_file_required": true,
         "source_location_unique_required": true,
         "timestamp_iso8601_required": true
       },
@@ -447,6 +449,7 @@
         "exactly_one_precheck_per_slot_required": true,
         "runtime_event_count_must_equal_required": true,
         "same_causal_chain_id_required": true,
+        "source_line_monotonic_per_file_required": true,
         "source_location_unique_required": true,
         "timestamp_iso8601_required": true
       },
@@ -518,7 +521,7 @@
   "classification": "R3_RUNTIME_INSTRUMENTATION_PLAN_READY",
   "entity_target_count": 1,
   "event_template_count": 6,
-  "generated_at": "2026-05-05T13:44:32Z",
+  "generated_at": "2026-05-05T13:59:10Z",
   "instrumentation_plan_ready": true,
   "interpretation": {
     "boundary": "This plan is not runtime evidence and does not approve R3 cutover; it defines how fresh runtime evidence must be emitted and validated.",
@@ -556,8 +559,8 @@
     "source.sanitized"
   ],
   "mandatory_field_count": 28,
-  "negative_control_count": 53,
-  "negative_control_detected_count": 53,
+  "negative_control_count": 54,
+  "negative_control_detected_count": 54,
   "pass": true,
   "positive_control_count": 6,
   "positive_control_passed_count": 6,
@@ -571,6 +574,7 @@
     "Write the fresh runtime JSONL in causal pair order so each commit record appears after its precheck record.",
     "Emit source.line as a monotonic runtime sequence so each commit follows its no-tick precheck physically in the log.",
     "Keep each source.file_name plus source.line pair unique across the final runtime JSONL.",
+    "Never let source.line regress inside the same source.file_name stream.",
     "Run the runtime evidence guard before replay, policy, no-tick and proof-chain validators."
   ],
   "reports_checked": {
@@ -619,7 +623,7 @@
     "event_template_count": 6,
     "instrumentation_plan_ready": true,
     "mandatory_field_count": 28,
-    "negative_control_detected_count": 53,
+    "negative_control_detected_count": 54,
     "positive_control_passed_count": 6,
     "required_runtime_event_count": 70
   },

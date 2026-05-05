@@ -47,10 +47,11 @@ rejected_event_count: 0
 duplicate_event_rejection_count: 0
 duplicate_proof_hash_rejection_count: 0
 duplicate_proof_ref_rejection_count: 0
+source_line_monotonicity_rejection_count: 0
 no_tick_pair_integrity_count: 0
 no_tick_pair_failure_count: 0
-negative_control_detected_count: 53
-negative_control_count: 53
+negative_control_detected_count: 54
+negative_control_count: 54
 positive_control_passed_count: 6
 positive_control_count: 6
 positive_controls_fixture_only: true
@@ -78,6 +79,7 @@ invalid proof_hash format
 duplicate proof_hash
 duplicate proof_ref
 duplicate source.file_name + source.line
+source.line regression inside the same source.file_name stream
 missing proof.native=true
 invalid source.format
 missing source.file_name
@@ -122,6 +124,7 @@ unique event_id values
 unique proof_hash values
 unique proof_ref values
 unique source.file_name + source.line values
+monotonic source.line values inside each source.file_name stream
 known and unique heuristic rules
 proof_ref in runtime:<slot-id>:<role> form
 proof_hash bound to the event identity and source-location payload
@@ -193,6 +196,7 @@ reject_duplicate_event_id
 reject_duplicate_proof_hash
 reject_duplicate_proof_ref
 reject_duplicate_source_location
+reject_source_line_regression
 reject_no_tick_pair_chain_mismatch
 reject_commit_before_precheck
 reject_commit_log_line_before_precheck
@@ -207,7 +211,7 @@ reject_precheck_missing_target_risk_flags
 Current result:
 
 ```text
-53/53 detected
+54/54 detected
 ```
 
 ## Positive Controls
@@ -249,7 +253,7 @@ R3_RUNTIME_INSTRUMENTATION_PLAN_READY
 6 event templates
 70 required runtime events
 28 mandatory event fields
-53 negative controls
+54 negative controls
 6 positive controls
 ```
 

@@ -105,6 +105,7 @@ def _action_contracts(slots: list[dict[str, Any]]) -> list[dict[str, Any]]:
                     "timestamp_iso8601_required": True,
                     "duplicate_event_id_forbidden": True,
                     "source_location_unique_required": True,
+                    "source_line_monotonic_per_file_required": True,
                     "same_causal_chain_id_required": True,
                     "commit_timestamp_after_precheck_required": True,
                     "commit_log_line_after_precheck_required": True,
@@ -327,6 +328,7 @@ def build_report(repo: Path) -> dict[str, Any]:
             "Write the fresh runtime JSONL in causal pair order so each commit record appears after its precheck record.",
             "Emit source.line as a monotonic runtime sequence so each commit follows its no-tick precheck physically in the log.",
             "Keep each source.file_name plus source.line pair unique across the final runtime JSONL.",
+            "Never let source.line regress inside the same source.file_name stream.",
             "Run the runtime evidence guard before replay, policy, no-tick and proof-chain validators.",
         ],
     }
