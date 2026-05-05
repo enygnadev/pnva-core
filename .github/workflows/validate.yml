@@ -282,6 +282,8 @@ jobs:
             --write /tmp/pnva-root-traceability-matrix.json \
             >/dev/null
           python3 -m json.tool /tmp/pnva-root-traceability-matrix.json >/dev/null
+      - name: Clean Python bytecode cache before root guard
+        run: find tools -type d -name __pycache__ -prune -exec rm -rf {} +
       - name: Run root sovereignty guard
         run: |
           python3 tools/pnva_root_sovereignty_guard.py \
