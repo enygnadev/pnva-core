@@ -150,6 +150,29 @@ docs/REPOSITORY_PUBLISHING_CHECKLIST.md
 docs/PUBLIC_POSITIONING.md
 ```
 
+## AI And Search Discovery
+
+This repository includes a crawler-friendly public layer:
+
+```text
+index.html
+author.html
+pnva-core.html
+proofs.html
+veonic-model.html
+robots.txt
+sitemap.xml
+llms.txt
+```
+
+GitHub Pages URL:
+
+```text
+https://enygnadev.github.io/pnva-core/
+```
+
+The `robots.txt` file allows OAI-SearchBot, GPTBot, ChatGPT-User, Googlebot, Bingbot and other crawlers so public AI/search systems can discover the canonical PNVA-Core pages.
+
 ## Public Claim
 
 Use this claim:

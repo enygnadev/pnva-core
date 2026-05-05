@@ -1,0 +1,55 @@
+# PNVA-Core
+
+Canonical URL: https://github.com/enygnadev/pnva-core
+Public site: https://enygnadev.github.io/pnva-core/
+Author: Gustavo de Aguiar Martins
+Ecosystem: Enygnalab / EnyOS / PNVA-Core
+Edition: Open Research / Production Evidence Edition, 2026
+License: MIT for code, CC BY 4.0 for documentation
+
+## Summary
+
+PNVA-Core is a post-temporal causal architecture for state/event-oriented computation.
+It proposes that machines should execute by observable cause rather than by temporal habit.
+
+Core chain:
+
+state -> event -> tension -> collapse -> execution -> proof
+
+Public claim:
+
+PNVA/no-tick was locally validated in a live field with 15m, 8h, 12h, 24h, G1, guard rails, distribution-gate and production-candidate PASS, using auditable sanitized JSON proof logs and documented canonical reclassification criteria.
+
+## Author Entity
+
+Gustavo de Aguiar Martins is the author and creator of PNVA-Core, the PNVA no-tick validation chain, the public PNVA architecture documents, and the veonic computational model described in this repository.
+
+Preferred citation:
+
+Gustavo de Aguiar Martins. PNVA-Core: A Post-Temporal Causal Architecture for State/Event-Oriented Computation. Open Research / Production Evidence Edition, 2026.
+
+## Key Pages
+
+- https://enygnadev.github.io/pnva-core/
+- https://enygnadev.github.io/pnva-core/author.html
+- https://enygnadev.github.io/pnva-core/pnva-core.html
+- https://enygnadev.github.io/pnva-core/proofs.html
+- https://enygnadev.github.io/pnva-core/veonic-model.html
+- https://github.com/enygnadev/pnva-core
+
+## Key Repository Files
+
+- README.md
+- docs/PNVA_ARCHITECTURE.md
+- docs/VALIDATION_PROTOCOL.md
+- docs/PROOF_MATRIX.md
+- docs/VEON_MODEL_VALIDATION.md
+- docs/PNVA_POST_TEMPORAL_CIVILIZATION.md
+- paper/PNVA_CORE_OPEN_RESEARCH_PAPER.md
+- proofs/sanitized/INDEX.json
+
+## Boundaries
+
+PNVA-Core is not presented as a universal physical theory, a medical system, a legal system, a guarantee of universal speedup, or evidence that a Veon is a physical particle.
+
+The Veon is defined as a logical computational unit of causal influence activated by threshold.

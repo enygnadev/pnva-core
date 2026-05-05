@@ -8,6 +8,7 @@
   "claim": "Local live-field PNVA/no-tick validation with production-candidate PASS and auditable sanitized proof logs.",
   "final_status": "PRODUCTION_CANDIDATE_PASS",
   "publication_post": "release/POST_01_PROFISSIONAL_AUTORAL.md",
+  "public_site": "https://enygnadev.github.io/pnva-core/",
   "summary": {
     "long_run_live_gate": {
       "pass": true,
@@ -54,6 +55,22 @@
       "launch_post": "release/POST_01_PROFISSIONAL_AUTORAL.md",
       "publishing_checklist": "docs/REPOSITORY_PUBLISHING_CHECKLIST.md",
       "positioning": "docs/PUBLIC_POSITIONING.md"
+    },
+    "ai_search_discovery_layer": {
+      "status": "ADDED",
+      "public_site": "https://enygnadev.github.io/pnva-core/",
+      "robots": "robots.txt",
+      "sitemap": "sitemap.xml",
+      "llms": "llms.txt",
+      "allowed_crawlers": [
+        "OAI-SearchBot",
+        "GPTBot",
+        "ChatGPT-User",
+        "Googlebot",
+        "Bingbot",
+        "PerplexityBot",
+        "ClaudeBot"
+      ]
     }
   },
   "files": [
@@ -76,6 +93,7 @@
     "SECURITY.md",
     "SHA256SUMS.txt",
     "assets/pnva-core-mark.svg",
+    "author.html",
     "docs/LIMITATIONS.md",
     "docs/ONLINE_PUBLICATION.md",
     "docs/PNVA_ARCHITECTURE.md",
@@ -86,7 +104,11 @@
     "docs/REPOSITORY_PUBLISHING_CHECKLIST.md",
     "docs/VALIDATION_PROTOCOL.md",
     "docs/VEON_MODEL_VALIDATION.md",
+    "index.html",
+    "llms.txt",
     "paper/PNVA_CORE_OPEN_RESEARCH_PAPER.md",
+    "pnva-core.html",
+    "proofs.html",
     "proofs/sanitized/INDEX.json",
     "proofs/sanitized/guard-rail-report.json",
     "proofs/sanitized/prove-distribution-gate.json",
@@ -100,7 +122,11 @@
     "release/PNVA_FECHAMENTO_PRODUCAO_PASS_FINAL_2026-05-04.md",
     "release/POST_01_HOJE_PNVA_CORE.md",
     "release/POST_01_PROFISSIONAL_AUTORAL.md",
-    "tools/sanitize_proofs.py"
+    "robots.txt",
+    "sitemap.xml",
+    "styles.css",
+    "tools/sanitize_proofs.py",
+    "veonic-model.html"
   ],
   "checksums": "SHA256SUMS.txt",
   "public_data_policy": {

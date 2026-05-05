@@ -15,6 +15,16 @@ jobs:
           for f in proofs/sanitized/*.json; do
             python3 -m json.tool "$f" >/dev/null
           done
+      - name: Validate discovery files
+        run: |
+          python3 - <<'PY'
+          import xml.etree.ElementTree as ET
+          ET.parse("sitemap.xml")
+          required = ["OAI-SearchBot", "GPTBot", "ChatGPT-User", "Sitemap:"]
+          robots = open("robots.txt", encoding="utf-8").read()
+          missing = [item for item in required if item not in robots]
+          if missing:
+              raise SystemExit(f"robots.txt missing: {missing}")
+          PY
       - name: Check release checksums
         run: sha256sum -c SHA256SUMS.txt
-

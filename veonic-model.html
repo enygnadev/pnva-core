@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PNVA Veonic Model</title>
+  <meta name="description" content="The PNVA veonic model defines the Veon as a logical computational unit of causal influence activated by threshold.">
+  <meta name="author" content="Gustavo de Aguiar Martins">
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
+  <link rel="canonical" href="https://enygnadev.github.io/pnva-core/veonic-model.html">
+  <link rel="stylesheet" href="styles.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "name": "PNVA Veonic Model",
+    "headline": "Veon as a logical computational unit in PNVA-Core",
+    "author": {
+      "@type": "Person",
+      "name": "Gustavo de Aguiar Martins",
+      "url": "https://github.com/enygnadev"
+    },
+    "datePublished": "2026-05-05",
+    "about": ["Veon", "veonic unit", "PNVA-Core", "causal influence", "threshold activation"],
+    "url": "https://enygnadev.github.io/pnva-core/veonic-model.html"
+  }
+  </script>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="shell nav">
+      <a class="brand" href="./"><img src="assets/pnva-core-mark.svg" alt="">PNVA-Core</a>
+      <div class="links">
+        <a href="author.html">Author</a>
+        <a href="pnva-core.html">Architecture</a>
+        <a href="proofs.html">Proofs</a>
+        <a href="veonic-model.html">Veonic Model</a>
+        <a href="https://github.com/enygnadev/pnva-core">GitHub</a>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <section class="hero">
+      <div class="shell">
+        <div class="eyebrow">Veonic Layer</div>
+        <h1>Veon</h1>
+        <p class="lead">In PNVA-Core, a Veon is the minimal logical unit of causal influence activated by threshold. It is computational, not a physical particle claim.</p>
+      </div>
+    </section>
+    <section class="section">
+      <div class="shell">
+        <h2>Definition</h2>
+        <pre class="code">Veon = minimal logical unit of causal influence activated by threshold.</pre>
+      </div>
+    </section>
+    <section class="section band">
+      <div class="shell">
+        <h2>Formal Sketch</h2>
+        <pre class="code">S_t = { i | G_i(Phi_t) > theta_t }
+
+nu_i,t = 1[G_i(Phi_t) > theta_t] * G_tilde_i(Phi_t)
+
+D_i,t = alpha * grad(I_i) + beta * K_i(M_i) - gamma * A_i * u_i
+
+V_i,t = nu_i,t * D_i,t
+
+Phi_t+1 = Phi_t
+        + eta_t * (sum G_tilde_j(Phi_t) + delta * sum V_i,t)
+        + mu_t * (Phi_t - Phi_t-1)</pre>
+      </div>
+    </section>
+    <section class="section">
+      <div class="shell grid">
+        <article class="card">
+          <h2>Veonic Collapse</h2>
+          <p>The moment a local possibility crosses threshold and enters the state update.</p>
+        </article>
+        <article class="card">
+          <h2>Veonic Density</h2>
+          <p>The aggregate magnitude of active Veons in a step.</p>
+        </article>
+        <article class="card">
+          <h2>Boundary</h2>
+          <p>PNVA does not claim that Veons create matter or prove new physics. The Veon is a logical computational unit.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="shell">Gustavo de Aguiar Martins - Enygnalab / EnyOS / PNVA-Core</div>
+  </footer>
+</body>
+</html>

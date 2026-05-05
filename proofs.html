@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PNVA-Core Proofs and Validation Gates</title>
+  <meta name="description" content="Sanitized PNVA-Core proof summary: 15m, 8h, 12h, 24h, G1, guard rails, distribution-gate and production-candidate PASS.">
+  <meta name="author" content="Gustavo de Aguiar Martins">
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
+  <link rel="canonical" href="https://enygnadev.github.io/pnva-core/proofs.html">
+  <link rel="stylesheet" href="styles.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    "name": "PNVA-Core Sanitized Proof Logs",
+    "creator": {
+      "@type": "Person",
+      "name": "Gustavo de Aguiar Martins",
+      "url": "https://github.com/enygnadev"
+    },
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "url": "https://github.com/enygnadev/pnva-core/tree/main/proofs/sanitized",
+    "description": "Sanitized JSON proof summaries for PNVA-Core local live-field validation gates.",
+    "keywords": ["PNVA", "proof logs", "no-tick", "validation", "production-candidate"]
+  }
+  </script>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="shell nav">
+      <a class="brand" href="./"><img src="assets/pnva-core-mark.svg" alt="">PNVA-Core</a>
+      <div class="links">
+        <a href="author.html">Author</a>
+        <a href="pnva-core.html">Architecture</a>
+        <a href="proofs.html">Proofs</a>
+        <a href="veonic-model.html">Veonic Model</a>
+        <a href="https://github.com/enygnadev/pnva-core">GitHub</a>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <section class="hero">
+      <div class="shell">
+        <div class="eyebrow">Validation Evidence</div>
+        <h1>Auditable Proof Logs</h1>
+        <p class="lead">The public PNVA-Core release exposes sanitized JSON proof summaries for local live-field validation. Raw local logs are intentionally not published.</p>
+      </div>
+    </section>
+    <section class="section">
+      <div class="shell proof-list">
+        <div class="proof"><span>15m live gate</span><span class="pass">PASS</span></div>
+        <div class="proof"><span>8h live gate</span><span class="pass">PASS</span></div>
+        <div class="proof"><span>12h live gate</span><span class="pass">PASS</span></div>
+        <div class="proof"><span>24h live gate</span><span class="pass">PASS canonical</span></div>
+        <div class="proof"><span>G1 stable opportunity</span><span class="pass">PASS</span></div>
+        <div class="proof"><span>Long-run live gate</span><span class="pass">PASS</span></div>
+        <div class="proof"><span>Guard rails</span><span class="pass">PASS</span></div>
+        <div class="proof"><span>Distribution gate</span><span class="pass">PASS</span></div>
+        <div class="proof"><span>Production candidate</span><span class="pass">PASS</span></div>
+      </div>
+    </section>
+    <section class="section band">
+      <div class="shell">
+        <h2>24h Canonical Pass</h2>
+        <p>The 24h artifact is documented as canonical PASS because the raw final sample captured a WARMUP/selective-recompose transient after a stable long-run window. The distinction is preserved in the public evidence instead of being hidden.</p>
+      </div>
+    </section>
+    <section class="section">
+      <div class="shell">
+        <h2>Public Proof Directory</h2>
+        <p>Proof files: <a href="https://github.com/enygnadev/pnva-core/tree/main/proofs/sanitized">proofs/sanitized</a>.</p>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="shell">Gustavo de Aguiar Martins - Enygnalab / EnyOS / PNVA-Core</div>
+  </footer>
+</body>
+</html>
