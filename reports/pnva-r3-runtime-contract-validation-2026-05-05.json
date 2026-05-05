@@ -95,11 +95,11 @@
     },
     {
       "group": "controls",
-      "left": 48,
+      "left": 50,
       "left_ref": "negative_controls_complete",
       "name": "negative_controls_complete",
       "pass": true,
-      "right": 48,
+      "right": 50,
       "right_ref": "expected"
     },
     {
@@ -504,6 +504,24 @@
     },
     {
       "group": "enforced_controls",
+      "left": "suppressed",
+      "left_ref": "enforced_precheck_state_after_required",
+      "name": "enforced_precheck_state_after_required",
+      "pass": true,
+      "right": "suppressed",
+      "right_ref": "expected"
+    },
+    {
+      "group": "enforced_controls",
+      "left": "committed",
+      "left_ref": "enforced_commit_state_after_required",
+      "name": "enforced_commit_state_after_required",
+      "pass": true,
+      "right": "committed",
+      "right_ref": "expected"
+    },
+    {
+      "group": "enforced_controls",
       "left": true,
       "left_ref": "enforced_no_tick_pair_causal_chain_required",
       "name": "enforced_no_tick_pair_causal_chain_required",
@@ -893,6 +911,15 @@
     },
     {
       "group": "template",
+      "left": "suppressed",
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_precheck_state_after",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_precheck_state_after",
+      "pass": true,
+      "right": "suppressed",
+      "right_ref": "expected"
+    },
+    {
+      "group": "template",
       "left": "RESIZE_BATCH",
       "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_commit_action",
       "name": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_commit_action",
@@ -907,6 +934,15 @@
       "name": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_commit_reason",
       "pass": true,
       "right": "native_runtime_commit",
+      "right_ref": "expected"
+    },
+    {
+      "group": "template",
+      "left": "committed",
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_commit_state_after",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_commit_state_after",
+      "pass": true,
+      "right": "committed",
       "right_ref": "expected"
     },
     {
@@ -1078,6 +1114,24 @@
       "name": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_commit_reason_required",
       "pass": true,
       "right": "native_runtime_commit",
+      "right_ref": "expected"
+    },
+    {
+      "group": "field_state_policy",
+      "left": "suppressed",
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_precheck_state_after_required",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_precheck_state_after_required",
+      "pass": true,
+      "right": "suppressed",
+      "right_ref": "expected"
+    },
+    {
+      "group": "field_state_policy",
+      "left": "committed",
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_commit_state_after_required",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_commit_state_after_required",
+      "pass": true,
+      "right": "committed",
       "right_ref": "expected"
     },
     {
@@ -1463,6 +1517,15 @@
     },
     {
       "group": "template",
+      "left": "suppressed",
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_precheck_state_after",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_precheck_state_after",
+      "pass": true,
+      "right": "suppressed",
+      "right_ref": "expected"
+    },
+    {
+      "group": "template",
       "left": "COOLDOWN_GPU",
       "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_commit_action",
       "name": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_commit_action",
@@ -1477,6 +1540,15 @@
       "name": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_commit_reason",
       "pass": true,
       "right": "native_runtime_commit",
+      "right_ref": "expected"
+    },
+    {
+      "group": "template",
+      "left": "committed",
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_commit_state_after",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_commit_state_after",
+      "pass": true,
+      "right": "committed",
       "right_ref": "expected"
     },
     {
@@ -1648,6 +1720,24 @@
       "name": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_commit_reason_required",
       "pass": true,
       "right": "native_runtime_commit",
+      "right_ref": "expected"
+    },
+    {
+      "group": "field_state_policy",
+      "left": "suppressed",
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_precheck_state_after_required",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_precheck_state_after_required",
+      "pass": true,
+      "right": "suppressed",
+      "right_ref": "expected"
+    },
+    {
+      "group": "field_state_policy",
+      "left": "committed",
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_commit_state_after_required",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_commit_state_after_required",
+      "pass": true,
+      "right": "committed",
       "right_ref": "expected"
     },
     {
@@ -2033,6 +2123,15 @@
     },
     {
       "group": "template",
+      "left": "suppressed",
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-execute_precheck_state_after",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-execute_precheck_state_after",
+      "pass": true,
+      "right": "suppressed",
+      "right_ref": "expected"
+    },
+    {
+      "group": "template",
       "left": "EXECUTE",
       "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-execute_commit_action",
       "name": "r3-runtime-instrument-entity_4c3ade60ea78-execute_commit_action",
@@ -2047,6 +2146,15 @@
       "name": "r3-runtime-instrument-entity_4c3ade60ea78-execute_commit_reason",
       "pass": true,
       "right": "native_runtime_commit",
+      "right_ref": "expected"
+    },
+    {
+      "group": "template",
+      "left": "committed",
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-execute_commit_state_after",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-execute_commit_state_after",
+      "pass": true,
+      "right": "committed",
       "right_ref": "expected"
     },
     {
@@ -2218,6 +2326,24 @@
       "name": "r3-runtime-instrument-entity_4c3ade60ea78-execute_commit_reason_required",
       "pass": true,
       "right": "native_runtime_commit",
+      "right_ref": "expected"
+    },
+    {
+      "group": "field_state_policy",
+      "left": "suppressed",
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-execute_precheck_state_after_required",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-execute_precheck_state_after_required",
+      "pass": true,
+      "right": "suppressed",
+      "right_ref": "expected"
+    },
+    {
+      "group": "field_state_policy",
+      "left": "committed",
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-execute_commit_state_after_required",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-execute_commit_state_after_required",
+      "pass": true,
+      "right": "committed",
       "right_ref": "expected"
     },
     {
@@ -2528,21 +2654,21 @@
     }
   ],
   "classification": "R3_RUNTIME_CONTRACT_VALIDATED_READY",
-  "contract_check_count": 253,
+  "contract_check_count": 267,
   "contract_validation_ready": true,
-  "enforced_control_count": 45,
+  "enforced_control_count": 47,
   "event_template_count": 6,
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-05-05T12:57:47Z",
+  "generated_at": "2026-05-05T13:06:32Z",
   "interpretation": {
     "boundary": "This is a contract validator, not runtime evidence and not final R3 cutover approval.",
     "purpose": "Validate that the R3 runtime capture matrix, evidence guard and instrumentation plan form one coherent runtime contract.",
     "sovereignty": "The final runtime path becomes harder to mislabel because the contract itself is checked before fresh runtime evidence is accepted."
   },
   "mandatory_field_count": 28,
-  "negative_control_count": 48,
-  "negative_control_detected_count": 48,
+  "negative_control_count": 50,
+  "negative_control_detected_count": 50,
   "pass": true,
   "positive_control_count": 6,
   "positive_control_passed_count": 6,
@@ -2570,11 +2696,11 @@
   "summary": {
     "action_contract_count": 3,
     "capture_slot_count": 35,
-    "contract_check_count": 253,
+    "contract_check_count": 267,
     "contract_validation_ready": true,
     "failure_count": 0,
     "mandatory_field_count": 28,
-    "negative_control_detected_count": 48,
+    "negative_control_detected_count": 50,
     "positive_control_passed_count": 6,
     "required_runtime_event_count": 70
   }

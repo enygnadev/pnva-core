@@ -13,6 +13,8 @@ AUTHOR = "Gustavo de Aguiar Martins"
 PROJECT = "PNVA-Core"
 PRECHECK_REASON = "native_authority_precheck_no_tick"
 COMMIT_REASON = "native_runtime_commit"
+PRECHECK_STATE_AFTER = "suppressed"
+COMMIT_STATE_AFTER = "committed"
 
 R3_RUNTIME_CAPTURE_MATRIX = "reports/pnva-r3-runtime-capture-matrix-2026-05-05.json"
 R3_RUNTIME_EVIDENCE_GUARD = "reports/pnva-r3-runtime-evidence-guard-2026-05-05.json"
@@ -121,6 +123,10 @@ def _action_contracts(slots: list[dict[str, Any]]) -> list[dict[str, Any]]:
                     "precheck_reason_required": PRECHECK_REASON,
                     "commit_reason_required": COMMIT_REASON,
                 },
+                "field_state_policy": {
+                    "precheck_state_after_required": PRECHECK_STATE_AFTER,
+                    "commit_state_after_required": COMMIT_STATE_AFTER,
+                },
                 "proof_policy": {
                     "proof_hash_sha256_format_required": True,
                     "proof_hash_binds_event_identity": True,
@@ -145,6 +151,9 @@ def _action_contracts(slots: list[dict[str, Any]]) -> list[dict[str, Any]]:
                         "kind": "observe",
                         "action": "NO_ACTION",
                         "reason": PRECHECK_REASON,
+                    },
+                    "field": {
+                        "state_after": PRECHECK_STATE_AFTER,
                     },
                     "proof": {
                         "projection": False,
@@ -173,6 +182,9 @@ def _action_contracts(slots: list[dict[str, Any]]) -> list[dict[str, Any]]:
                         "kind": str(first.get("decision_kind") or "collapse"),
                         "action": action,
                         "reason": COMMIT_REASON,
+                    },
+                    "field": {
+                        "state_after": COMMIT_STATE_AFTER,
                     },
                     "proof": {
                         "projection": False,
@@ -308,6 +320,7 @@ def build_report(repo: Path) -> dict[str, Any]:
             "Keep proof.projection=false on all final runtime prechecks and commits.",
             "Emit original_event_id in tension.components so each runtime event maps back to a capture slot.",
             "Emit fixed decision.reason values so no-tick prechecks and runtime commits remain semantically distinct.",
+            "Emit fixed field.state_after values so prechecks prove suppression and commits prove completion.",
             "Run the runtime evidence guard before replay, policy, no-tick and proof-chain validators.",
         ],
     }

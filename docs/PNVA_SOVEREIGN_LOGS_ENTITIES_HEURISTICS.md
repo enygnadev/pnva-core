@@ -984,8 +984,8 @@ duplicate_proof_hash_rejection_count: 0
 duplicate_proof_ref_rejection_count: 0
 no_tick_pair_integrity_count: 0
 no_tick_pair_failure_count: 0
-negative_control_detected_count: 48
-negative_control_count: 48
+negative_control_detected_count: 50
+negative_control_count: 50
 positive_control_passed_count: 6
 positive_control_count: 6
 positive_controls_fixture_only: true
@@ -1029,13 +1029,13 @@ required_no_tick_precheck_count: 35
 required_collapse_commit_count: 35
 event_template_count: 6
 mandatory_field_count: 28
-negative_control_detected_count: 48
+negative_control_detected_count: 50
 positive_control_passed_count: 6
 ```
 
 Production interpretation:
 
-The plan turns R3 from an abstract backlog into explicit runtime engineering. The current targets are `RESIZE_BATCH`, `COOLDOWN_GPU` and `EXECUTE`, each requiring native no-tick precheck and native commit events with `timestamp`, parseable ISO-8601 time, `field.state_before`, `field.state_after`, `heuristics.risk_flags`, `tension.gate_delta`, `gate_delta = score - threshold`, exact event type binding, exactly one precheck and one commit per slot, exact runtime event count, `proof.projection=false`, `proof.native=true`, `source.format=native_pnva_event_v1`, `source.sanitized=true`, `tension.components.original_event_id`, `tension.components.r3_runtime_slot_id`, entity identity and type, causal chain identity, strict proof hash bound to event identity, runtime proof refs, unique proof refs, unique event IDs, known heuristic rules, known/unique risk flags on prechecks and commits and same-chain precheck/commit ordering. This makes PNVA more sovereign because final evidence must be emitted by the runtime contract, not inferred from projection.
+The plan turns R3 from an abstract backlog into explicit runtime engineering. The current targets are `RESIZE_BATCH`, `COOLDOWN_GPU` and `EXECUTE`, each requiring native no-tick precheck and native commit events with `timestamp`, parseable ISO-8601 time, `field.state_before`, `field.state_after`, precheck `field.state_after=suppressed`, commit `field.state_after=committed`, `heuristics.risk_flags`, `tension.gate_delta`, `gate_delta = score - threshold`, exact event type binding, exactly one precheck and one commit per slot, exact runtime event count, `proof.projection=false`, `proof.native=true`, `source.format=native_pnva_event_v1`, `source.sanitized=true`, `tension.components.original_event_id`, `tension.components.r3_runtime_slot_id`, entity identity and type, causal chain identity, strict proof hash bound to event identity, runtime proof refs, unique proof refs, unique event IDs, known heuristic rules, known/unique risk flags on prechecks and commits and same-chain precheck/commit ordering. This makes PNVA more sovereign because final evidence must be emitted by the runtime contract, not inferred from projection.
 
 ## 29. R3 Runtime Contract Validation
 
@@ -1068,10 +1068,10 @@ action_contract_count: 3
 required_runtime_event_count: 70
 event_template_count: 6
 mandatory_field_count: 28
-negative_control_detected_count: 48
+negative_control_detected_count: 50
 positive_control_passed_count: 6
-enforced_control_count: 45
-contract_check_count: 253
+enforced_control_count: 47
+contract_check_count: 267
 failure_count: 0
 ```
 
@@ -1115,11 +1115,11 @@ r3_cutover_approved: false
 r3_runtime_capture_coverage_percent: 0.0
 runtime_pending_slot_count: 35
 runtime_required_event_count: 70
-runtime_contract_check_count: 253
+runtime_contract_check_count: 267
 runtime_contract_failure_count: 0
 runtime_positive_control_passed_count: 6
 runtime_mandatory_field_count: 28
-runtime_enforced_control_count: 45
+runtime_enforced_control_count: 47
 controlled_warning_count: 1232
 blocker_count: 2
 priority_action_count: 4

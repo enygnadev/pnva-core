@@ -769,8 +769,8 @@ duplicate_proof_hash_rejection_count: 0
 duplicate_proof_ref_rejection_count: 0
 no_tick_pair_integrity_count: 0
 no_tick_pair_failure_count: 0
-negative_control_detected_count: 48
-negative_control_count: 48
+negative_control_detected_count: 50
+negative_control_count: 50
 positive_control_passed_count: 6
 positive_control_count: 6
 positive_controls_fixture_only: true
@@ -797,7 +797,7 @@ required_no_tick_precheck_count: 35
 required_collapse_commit_count: 35
 event_template_count: 6
 mandatory_field_count: 28
-negative_control_detected_count: 48
+negative_control_detected_count: 50
 positive_control_passed_count: 6
 ```
 
@@ -827,14 +827,14 @@ action_contract_count: 3
 required_runtime_event_count: 70
 event_template_count: 6
 mandatory_field_count: 28
-negative_control_detected_count: 48
+negative_control_detected_count: 50
 positive_control_passed_count: 6
-enforced_control_count: 45
-contract_check_count: 253
+enforced_control_count: 47
+contract_check_count: 267
 failure_count: 0
 ```
 
-This closes a contract drift risk. Before PNVA accepts final runtime JSONL, the R3 slot IDs, original event IDs, guard controls, no-tick precheck templates, commit templates, exact event-type binding, exact pair cardinality, exact runtime event count, native proof markers, source location, source sanitization, proof identity binding and native source format must agree as one validated contract.
+This closes a contract drift risk. Before PNVA accepts final runtime JSONL, the R3 slot IDs, original event IDs, guard controls, no-tick precheck templates, commit templates, exact role state transitions, exact event-type binding, exact pair cardinality, exact runtime event count, native proof markers, source location, source sanitization, proof identity binding and native source format must agree as one validated contract.
 
 ### 27. Sovereign evolution ledger
 
@@ -856,11 +856,11 @@ r3_cutover_approved: false
 r3_runtime_capture_coverage_percent: 0.0
 runtime_pending_slot_count: 35
 runtime_required_event_count: 70
-runtime_contract_check_count: 253
+runtime_contract_check_count: 267
 runtime_contract_failure_count: 0
 runtime_positive_control_passed_count: 6
 runtime_mandatory_field_count: 28
-runtime_enforced_control_count: 45
+runtime_enforced_control_count: 47
 controlled_warning_count: 1232
 blocker_count: 2
 priority_action_count: 4

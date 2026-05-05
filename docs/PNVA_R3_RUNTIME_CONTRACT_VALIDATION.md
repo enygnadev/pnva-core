@@ -41,10 +41,10 @@ action_contract_count: 3
 required_runtime_event_count: 70
 event_template_count: 6
 mandatory_field_count: 28
-negative_control_detected_count: 48
+negative_control_detected_count: 50
 positive_control_passed_count: 6
-enforced_control_count: 45
-contract_check_count: 253
+enforced_control_count: 47
+contract_check_count: 267
 failure_count: 0
 ```
 
@@ -61,7 +61,7 @@ runtime approval remains false
 70 required runtime events remain paired
 6 templates remain two per action contract
 28 mandatory runtime fields are present
-48 negative controls are detected
+50 negative controls are detected
 6 positive controls are accepted as fixture-only guard controls
 guard enforced controls match the runtime contract
 contract slot IDs cover the matrix
@@ -70,6 +70,8 @@ precheck templates are no-tick observe/NO_ACTION
 commit templates match their action
 precheck decision.reason is native_authority_precheck_no_tick
 commit decision.reason is native_runtime_commit
+precheck field.state_after is suppressed
+commit field.state_after is committed
 precheck event_type matches the slot precheck contract
 commit event_type matches the slot commit contract
 proof.projection=false

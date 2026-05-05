@@ -36,6 +36,8 @@ STRONG_DECISIONS = {"collapse", "block", "prove", "reclassify"}
 PRECHECK_DECISIONS = {"observe", "block"}
 PRECHECK_REASON = "native_authority_precheck_no_tick"
 COMMIT_REASON = "native_runtime_commit"
+PRECHECK_STATE_AFTER = "suppressed"
+COMMIT_STATE_AFTER = "committed"
 PROOF_HASH_RE = re.compile(r"^sha256:[0-9a-f]{64}$")
 RUNTIME_PROOF_REF_RE = re.compile(r"^runtime:[A-Za-z0-9_.:-]+:(precheck|commit)$")
 
@@ -249,6 +251,10 @@ def _field_state_valid(event: dict[str, Any]) -> bool:
     return isinstance(field, dict) and bool(field.get("state_before")) and bool(field.get("state_after"))
 
 
+def _field_state_after(event: dict[str, Any]) -> str:
+    return str(_dig(event, ["field", "state_after"]) or "")
+
+
 def _heuristic_rule_codes(event: dict[str, Any]) -> list[str]:
     value = _heuristics(event).get("rules")
     if not isinstance(value, list) or not value:
@@ -394,6 +400,8 @@ def _event_codes(event: dict[str, Any], slot: dict[str, Any]) -> list[str]:
             codes.append("PRECHECK_ACTION_INVALID")
         if _decision_reason(event) != PRECHECK_REASON:
             codes.append("PRECHECK_REASON_MISMATCH")
+        if _field_state_after(event) != PRECHECK_STATE_AFTER:
+            codes.append("PRECHECK_STATE_AFTER_MISMATCH")
         if _finite_number(tension.get("gate_delta")) and float(tension.get("gate_delta")) > 0:
             codes.append("PRECHECK_GATE_DELTA_POSITIVE")
         if "native_event_emitter" not in rules:
@@ -410,6 +418,8 @@ def _event_codes(event: dict[str, Any], slot: dict[str, Any]) -> list[str]:
             codes.append("COMMIT_ACTION_MISMATCH")
         if _decision_reason(event) != COMMIT_REASON:
             codes.append("COMMIT_REASON_MISMATCH")
+        if _field_state_after(event) != COMMIT_STATE_AFTER:
+            codes.append("COMMIT_STATE_AFTER_MISMATCH")
         if _finite_number(tension.get("gate_delta")) and float(tension.get("gate_delta")) < 0:
             codes.append("COMMIT_GATE_DELTA_NEGATIVE")
         if _max_authority(_rules(event)) not in HARD_AUTHORITIES:
@@ -614,7 +624,7 @@ def _sample_event(slot: dict[str, Any], *, role: str, control: str = "negative")
         "event_type": event_type,
         "field": {
             "state_before": "observed",
-            "state_after": "suppressed" if role == "precheck" else "committed",
+            "state_after": PRECHECK_STATE_AFTER if role == "precheck" else COMMIT_STATE_AFTER,
             "phi": score,
             "gradient": 0.0 if role == "precheck" else 1.0,
         },
@@ -732,6 +742,8 @@ def _negative_controls(matrix: dict[str, Any]) -> dict[str, Any]:
     run_control("reject_wrong_action", "commit", lambda event: event["decision"].update({"action": "WRONG_ACTION"}), "COMMIT_ACTION_MISMATCH")
     run_control("reject_precheck_reason_mismatch", "precheck", lambda event: (event["decision"].update({"reason": "wrong_precheck_reason"}), rebind_proof_hash(event)), "PRECHECK_REASON_MISMATCH")
     run_control("reject_commit_reason_mismatch", "commit", lambda event: (event["decision"].update({"reason": "wrong_commit_reason"}), rebind_proof_hash(event)), "COMMIT_REASON_MISMATCH")
+    run_control("reject_precheck_state_after_mismatch", "precheck", lambda event: (event["field"].update({"state_after": "wrong_precheck_state"}), rebind_proof_hash(event)), "PRECHECK_STATE_AFTER_MISMATCH")
+    run_control("reject_commit_state_after_mismatch", "commit", lambda event: (event["field"].update({"state_after": "wrong_commit_state"}), rebind_proof_hash(event)), "COMMIT_STATE_AFTER_MISMATCH")
     run_control("reject_precheck_event_type_mismatch", "precheck", lambda event: event.update({"event_type": "wrong_precheck_event_type"}), "PRECHECK_EVENT_TYPE_MISMATCH")
     run_control("reject_commit_event_type_mismatch", "commit", lambda event: event.update({"event_type": "wrong_commit_event_type"}), "COMMIT_EVENT_TYPE_MISMATCH")
     run_control("reject_precheck_execution_action", "precheck", lambda event: event["decision"].update({"action": slot.get("decision_action")}), "PRECHECK_ACTION_INVALID")
@@ -925,6 +937,8 @@ def build_report(repo: Path, runtime_events_path: Path | None = None) -> dict[st
             "precheck_must_be_no_tick": True,
             "precheck_reason_required": PRECHECK_REASON,
             "commit_reason_required": COMMIT_REASON,
+            "precheck_state_after_required": PRECHECK_STATE_AFTER,
+            "commit_state_after_required": COMMIT_STATE_AFTER,
             "no_tick_pair_causal_chain_required": True,
             "no_tick_pair_commit_after_precheck_required": True,
             "no_tick_pair_exactly_one_precheck_commit_required": True,
@@ -974,7 +988,7 @@ def build_report(repo: Path, runtime_events_path: Path | None = None) -> dict[st
         },
         "interpretation": {
             "purpose": "Protect the R3 runtime intake boundary before fresh events are accepted as legacy-free evidence.",
-            "sovereignty": "PNVA becomes harder to fake when projected proofs, malformed, duplicated or content-unbound proof hashes, wrong proof-ref slot roles, wrong event types, wrong decision reasons, malformed or inconsistent tension values, invalid gate signs, duplicate events, entity or slot mismatches, missing source location, unsanitized sources, unknown heuristic rules, invalid risk flags, weak authority, missing target rules, missing precheck or commit target risk flags, extra runtime events and causally broken no-tick pairs are rejected before cutover.",
+            "sovereignty": "PNVA becomes harder to fake when projected proofs, malformed, duplicated or content-unbound proof hashes, wrong proof-ref slot roles, wrong event types, wrong decision reasons, wrong role state transitions, malformed or inconsistent tension values, invalid gate signs, duplicate events, entity or slot mismatches, missing source location, unsanitized sources, unknown heuristic rules, invalid risk flags, weak authority, missing target rules, missing precheck or commit target risk flags, extra runtime events and causally broken no-tick pairs are rejected before cutover.",
             "boundary": "Without a runtime-events file this guard certifies the intake contract only; it does not claim final runtime completion.",
         },
         "recommendations": [
@@ -985,6 +999,7 @@ def build_report(repo: Path, runtime_events_path: Path | None = None) -> dict[st
             "Require the runtime event count to equal the declared R3 requirement instead of allowing extra events.",
             "Require precheck and commit event_type values to match the capture slot contract.",
             "Require decision.reason to distinguish native no-tick prechecks from native runtime commits.",
+            "Require field.state_after to prove no-tick precheck suppression and commit completion.",
             "Reject duplicate event_id, proof_hash and proof_ref values before accepting runtime coverage.",
             "Reject runtime events whose proof_hash does not bind to the canonical event identity and source-location payload.",
             "Require proof_ref to match runtime:<slot-id>:precheck or runtime:<slot-id>:commit.",
