@@ -26,6 +26,7 @@ entity no-tick matrix
 suppression ledger
 sovereign robustness gate
 R3 migration plan
+authority migration ledger
 adversarial validation
 entity and heuristic maturity
 sovereign audit
@@ -67,7 +68,7 @@ Current result:
 ```text
 classification: PNVA_SOVEREIGN_EVIDENCE_ATTESTED
 pass: true
-artifact_count: 28
+artifact_count: 29
 failure_count: 0
 ```
 

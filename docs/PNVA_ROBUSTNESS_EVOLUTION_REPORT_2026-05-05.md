@@ -50,6 +50,7 @@ docs/PNVA_ENTITY_NO_TICK_MATRIX.md
 docs/PNVA_SUPPRESSION_LEDGER.md
 docs/PNVA_SOVEREIGN_ROBUSTNESS_GATE.md
 docs/PNVA_R3_MIGRATION_PLAN.md
+docs/PNVA_AUTHORITY_MIGRATION_LEDGER.md
 docs/PNVA_SOVEREIGN_EVIDENCE_ATTESTATION.md
 docs/PNVA_ADVERSARIAL_VALIDATION.md
 docs/PNVA_ENTITY_HEURISTIC_MATURITY.md
@@ -72,6 +73,7 @@ tools/pnva_entity_no_tick_matrix.py
 tools/pnva_suppression_ledger.py
 tools/pnva_sovereign_robustness_gate.py
 tools/pnva_r3_migration_planner.py
+tools/pnva_authority_migration_ledger.py
 tools/pnva_evidence_attestor.py
 tools/pnva_adversarial_validator.py
 tools/pnva_entity_heuristic_maturity.py
@@ -103,6 +105,7 @@ reports/pnva-entity-no-tick-matrix-2026-05-05.json
 reports/pnva-suppression-ledger-2026-05-05.json
 reports/pnva-sovereign-robustness-gate-2026-05-05.json
 reports/pnva-r3-migration-plan-2026-05-05.json
+reports/pnva-authority-migration-ledger-2026-05-05.json
 reports/pnva-sovereign-evidence-attestation-2026-05-05.json
 reports/pnva-adversarial-validation-2026-05-05.json
 reports/pnva-entity-heuristic-maturity-2026-05-05.json
@@ -606,7 +609,42 @@ blocker_count: 0
 
 The plan is intentionally honest: it does not rename R2 as R3. It says the native path is clean today, then lists the precise work needed before claiming a legacy-free R3 release.
 
-### 20. Sovereign evidence attestation
+### 20. Authority migration ledger
+
+The authority migration ledger converts the primary R3 authority debt into concrete entity/action targets.
+
+Current result:
+
+```text
+classification: AUTHORITY_MIGRATION_LEDGER_READY_WITH_LEGACY_WARNINGS
+source_event_count: 519
+candidate_event_count: 35
+canonical_low_authority_strong_count: 35
+native_low_authority_strong_count: 0
+entity_candidate_count: 1
+action_candidate_count: 3
+event_type_candidate_count: 1
+mapped_candidate_count: 35
+unmapped_candidate_count: 0
+migration_coverage_ratio: 1.0
+proof_coverage_ratio: 1.0
+warning_count: 35
+error_count: 0
+```
+
+Dominant target:
+
+```text
+entity_id: entity_4c3ade60ea78
+event_type: cuda_slot_scan
+dominant_action: RESIZE_BATCH
+dominant_action_count: 32
+native_target_rules: adaptive_threshold, field_scheduler, power_orchestrator
+```
+
+This makes R3-A1 executable. The remaining H0 strong legacy decisions are no longer a vague warning; they are a bounded migration ledger with full proof coverage and zero native low-authority strong debt.
+
+### 21. Sovereign evidence attestation
 
 The evidence attestor binds the public package into one machine-readable record.
 
@@ -614,7 +652,7 @@ Current result:
 
 ```text
 classification: PNVA_SOVEREIGN_EVIDENCE_ATTESTED
-artifact_count: 28
+artifact_count: 29
 failure_count: 0
 ```
 
@@ -628,7 +666,7 @@ This hash changes if any tracked artifact changes its file hash, classification 
 
 The sovereign audit consumes this attestation and is intentionally kept outside the attestation hash seed to avoid circular evidence hashing.
 
-### 21. Adversarial validation
+### 22. Adversarial validation
 
 The adversarial validator adds negative controls.
 
@@ -655,7 +693,7 @@ JSON_PARSE_ERROR
 
 This closes a critical proof gap. PNVA validators now demonstrate not only that valid evidence passes, but also that corrupted proof, weak authority, invalid topology, duplicate identity, order tampering and malformed JSON are rejected or exposed.
 
-### 22. Entity and heuristic maturity
+### 23. Entity and heuristic maturity
 
 The entity/heuristic maturity auditor scores whether PNVA decisions are attributable to actors and rules.
 
@@ -696,7 +734,7 @@ warnings: 0
 
 This makes the next no-tick evolution concrete: reduce legacy authority in future runtime events while preserving old evidence honestly.
 
-### 23. Semantic consistency guard
+### 24. Semantic consistency guard
 
 The semantic consistency guard checks whether public reports agree with each other.
 
@@ -704,7 +742,7 @@ Current result:
 
 ```text
 classification: SEMANTIC_CONSISTENCY_READY
-check_count: 173
+check_count: 188
 error_count: 0
 warning_count: 0
 ```
@@ -725,12 +763,13 @@ entity no-tick matrix vs Manifest and audit
 suppression ledger vs Manifest and audit
 sovereign robustness gate vs Manifest and audit
 R3 migration plan vs Manifest and audit
+authority migration ledger vs Manifest, R3 plan, policy, heuristic influence, attestation and audit
 Manifest file list existence
 ```
 
 This closes a publication risk: reports can no longer drift silently while still appearing valid individually.
 
-### 24. Reproducibility guard
+### 25. Reproducibility guard
 
 The reproducibility guard reruns the evidence commands and compares stable fields against the published package.
 
@@ -738,8 +777,8 @@ Current result:
 
 ```text
 classification: REPRODUCIBILITY_READY
-command_count: 24
-comparison_count: 220
+command_count: 25
+comparison_count: 237
 failure_count: 0
 command_failure_count: 0
 comparison_failure_count: 0
@@ -763,6 +802,7 @@ entity no-tick matrix
 suppression ledger
 sovereign robustness gate
 R3 migration plan
+authority migration ledger
 adversarial validation
 entity and heuristic maturity
 evidence attestation
@@ -797,11 +837,12 @@ This closes the method gap: the public evidence is now not only stored and cross
 22. Use `tools/pnva_suppression_ledger.py` before attestation so avoided execution is proof-backed.
 23. Use `tools/pnva_sovereign_robustness_gate.py` before attestation so native cleanliness and legacy debt collapse into one readiness decision.
 24. Use `tools/pnva_r3_migration_planner.py` before attestation so R2 debt becomes a measurable R3 backlog.
-25. Use `tools/pnva_evidence_attestor.py` to publish one aggregate evidence hash for each release.
-26. Use `tools/pnva_adversarial_validator.py` before release so validator failures are proven, not assumed.
-27. Use `tools/pnva_entity_heuristic_maturity.py` to choose hardening targets by entity, heuristic and authority.
-28. Use `tools/pnva_semantic_consistency_guard.py` after attestation to block cross-report drift.
-29. Use `tools/pnva_reproducibility_guard.py` after semantic consistency to prove source-command reproducibility.
+25. Use `tools/pnva_authority_migration_ledger.py` before attestation so H0 strong legacy decisions become entity/action-specific native migration targets.
+26. Use `tools/pnva_evidence_attestor.py` to publish one aggregate evidence hash for each release.
+27. Use `tools/pnva_adversarial_validator.py` before release so validator failures are proven, not assumed.
+28. Use `tools/pnva_entity_heuristic_maturity.py` to choose hardening targets by entity, heuristic and authority.
+29. Use `tools/pnva_semantic_consistency_guard.py` after attestation to block cross-report drift.
+30. Use `tools/pnva_reproducibility_guard.py` after semantic consistency to prove source-command reproducibility.
 
 ## Sovereign Rule
 

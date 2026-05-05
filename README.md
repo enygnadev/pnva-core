@@ -130,6 +130,7 @@ docs/
   PNVA_SUPPRESSION_LEDGER.md
   PNVA_SOVEREIGN_ROBUSTNESS_GATE.md
   PNVA_R3_MIGRATION_PLAN.md
+  PNVA_AUTHORITY_MIGRATION_LEDGER.md
   PNVA_SOVEREIGN_EVIDENCE_ATTESTATION.md
   PNVA_ADVERSARIAL_VALIDATION.md
   PNVA_ENTITY_HEURISTIC_MATURITY.md
@@ -181,6 +182,7 @@ reports/
   pnva-suppression-ledger-2026-05-05.json
   pnva-sovereign-robustness-gate-2026-05-05.json
   pnva-r3-migration-plan-2026-05-05.json
+  pnva-authority-migration-ledger-2026-05-05.json
   pnva-sovereign-evidence-attestation-2026-05-05.json
   pnva-adversarial-validation-2026-05-05.json
   pnva-entity-heuristic-maturity-2026-05-05.json
@@ -210,6 +212,7 @@ tools/
   pnva_suppression_ledger.py
   pnva_sovereign_robustness_gate.py
   pnva_r3_migration_planner.py
+  pnva_authority_migration_ledger.py
   pnva_evidence_attestor.py
   pnva_adversarial_validator.py
   pnva_entity_heuristic_maturity.py
@@ -344,15 +347,17 @@ The sovereign robustness gate collapses no-tick, trace coverage, heuristic influ
 
 The R3 migration plan turns the remaining legacy debt into a measurable engineering backlog. The current package is `R3_MIGRATION_PLAN_READY`, moving from `R2_NATIVE_CLEAN_LEGACY_QUARANTINED` toward `R3_NATIVE_CLEAN_LEGACY_FREE`, with `6` migration actions, `35` primary blocking legacy decisions, `903` overlapping migration signals and `0` blockers in the planner.
 
+The authority migration ledger maps the primary R3 authority debt to concrete entity/action targets. The current package is `AUTHORITY_MIGRATION_LEDGER_READY_WITH_LEGACY_WARNINGS` with `35` H0 strong candidates, `1` affected entity, `3` affected actions, native low-authority strong debt `0`, migration coverage `1.0` and proof coverage `1.0`.
+
 The adversarial validator runs negative controls against the public validators. The current package is `ADVERSARIAL_VALIDATION_PASS` with `7` detections over `7` controlled mutations.
 
 The entity and heuristic maturity auditor scores actor/rule readiness across entity coverage, proof coverage, no-tick suppression, authority and causal relations. The current package is `ENTITY_HEURISTIC_MATURITY_READY_WITH_LEGACY_WARNINGS` with score `94.59`, `0` errors and `35` preserved legacy warnings.
 
-The semantic consistency guard checks cross-report agreement across Manifest, replay, no-tick, policy, proof-chain, graph, schema contract, causal chronology, tension-decision calibration, decision trace index, heuristic influence map, entity no-tick matrix, suppression ledger, robustness gate, R3 migration plan, maturity, adversarial validation, attestation and audit. The current package is `SEMANTIC_CONSISTENCY_READY` with the public report's check count, `0` errors and `0` warnings.
+The semantic consistency guard checks cross-report agreement across Manifest, replay, no-tick, policy, proof-chain, graph, schema contract, causal chronology, tension-decision calibration, decision trace index, heuristic influence map, entity no-tick matrix, suppression ledger, robustness gate, R3 migration plan, authority migration ledger, maturity, adversarial validation, attestation and audit. The current package is `SEMANTIC_CONSISTENCY_READY` with `188` checks, `0` errors and `0` warnings.
 
-The reproducibility guard reruns the current evidence commands and compares stable fields against the published reports. The current package is `REPRODUCIBILITY_READY` with the public report's command/comparison counts and `0` failures.
+The reproducibility guard reruns the current evidence commands and compares stable fields against the published reports. The current package is `REPRODUCIBILITY_READY` with `25` commands, `237` stable-field comparisons and `0` failures.
 
-The sovereign evidence attestor binds the public evidence base into one machine-readable attestation. The current package is `PNVA_SOVEREIGN_EVIDENCE_ATTESTED` with the public report's tracked artifact count and `0` failures; the sovereign audit consumes this attestation without being included in its hash seed.
+The sovereign evidence attestor binds the public evidence base into one machine-readable attestation. The current package is `PNVA_SOVEREIGN_EVIDENCE_ATTESTED` with `29` tracked artifacts and `0` failures; the sovereign audit consumes this attestation without being included in its hash seed.
 
 ## Citation
 

@@ -1,5 +1,5 @@
 {
-  "artifact_count": 28,
+  "artifact_count": 29,
   "artifacts": [
     {
       "entry_count": 9,
@@ -231,6 +231,19 @@
       "size_bytes": 7209
     },
     {
+      "classification": "AUTHORITY_MIGRATION_LEDGER_READY_WITH_LEGACY_WARNINGS",
+      "expected": "AUTHORITY_MIGRATION_LEDGER_READY_WITH_LEGACY_WARNINGS",
+      "id": "authority_migration_ledger",
+      "kind": "json_classification",
+      "pass": true,
+      "path": "reports/pnva-authority-migration-ledger-2026-05-05.json",
+      "present": true,
+      "reported_pass": true,
+      "required": true,
+      "sha256": "6601094895650a8773ffd35731ea78f27cbc78ca626a36893d1ba8d514b0b8bb",
+      "size_bytes": 15853
+    },
+    {
       "classification": "NATIVE_EMITTER_READY",
       "expected": "NATIVE_EMITTER_READY",
       "id": "native_emitter",
@@ -379,13 +392,14 @@
     "suppression ledger",
     "sovereign robustness gate",
     "R3 migration plan",
+    "authority migration ledger",
     "adversarial negative controls",
     "entity and heuristic maturity",
     "sovereign audit consumes this attestation without being part of its hash seed"
   ],
-  "evidence_hash": "sha256:c92a8d126e658c88731dda90ce33b5d1105983ea4c28ac1ae23c788512657865",
+  "evidence_hash": "sha256:9373cde170c630fadbbc53fe3c46b877df05c80f0575720e97b26bda6460b93b",
   "failure_count": 0,
-  "generated_at": "2026-05-05T08:11:58Z",
+  "generated_at": "2026-05-05T08:29:02Z",
   "interpretation": {
     "boundary": "This attests repository evidence integrity; it is not a universal proof of all possible PNVA deployments.",
     "hash_policy": "The evidence_hash changes when any tracked artifact hash, classification or pass flag changes.",
@@ -407,7 +421,8 @@
     "Run entity no-tick matrix before attestation so suppression and execution are attributable by entity.",
     "Run suppression ledger before attestation so avoided execution is proof-backed.",
     "Run sovereign robustness gate before attestation so native cleanliness and legacy debt are collapsed into one readiness decision.",
-    "Run R3 migration planner before attestation so the next legacy-free target is measurable."
+    "Run R3 migration planner before attestation so the next legacy-free target is measurable.",
+    "Run authority migration ledger before attestation so H0 strong decisions become entity/action-specific native targets."
   ],
   "schema_version": "pnva.evidence_attestation.v1"
 }

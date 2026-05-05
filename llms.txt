@@ -60,6 +60,7 @@ Gustavo de Aguiar Martins. PNVA-Core: A Post-Temporal Causal Architecture for St
 - docs/PNVA_SUPPRESSION_LEDGER.md
 - docs/PNVA_SOVEREIGN_ROBUSTNESS_GATE.md
 - docs/PNVA_R3_MIGRATION_PLAN.md
+- docs/PNVA_AUTHORITY_MIGRATION_LEDGER.md
 - docs/PNVA_SOVEREIGN_EVIDENCE_ATTESTATION.md
 - docs/PNVA_ADVERSARIAL_VALIDATION.md
 - docs/PNVA_ENTITY_HEURISTIC_MATURITY.md
@@ -89,6 +90,7 @@ Gustavo de Aguiar Martins. PNVA-Core: A Post-Temporal Causal Architecture for St
 - tools/pnva_suppression_ledger.py
 - tools/pnva_sovereign_robustness_gate.py
 - tools/pnva_r3_migration_planner.py
+- tools/pnva_authority_migration_ledger.py
 - tools/pnva_evidence_attestor.py
 - tools/pnva_adversarial_validator.py
 - tools/pnva_entity_heuristic_maturity.py
@@ -120,6 +122,7 @@ Gustavo de Aguiar Martins. PNVA-Core: A Post-Temporal Causal Architecture for St
 - reports/pnva-suppression-ledger-2026-05-05.json
 - reports/pnva-sovereign-robustness-gate-2026-05-05.json
 - reports/pnva-r3-migration-plan-2026-05-05.json
+- reports/pnva-authority-migration-ledger-2026-05-05.json
 - reports/pnva-sovereign-evidence-attestation-2026-05-05.json
 - reports/pnva-adversarial-validation-2026-05-05.json
 - reports/pnva-entity-heuristic-maturity-2026-05-05.json
@@ -162,15 +165,17 @@ The sovereign robustness gate collapses no-tick, trace coverage, heuristic influ
 
 The R3 migration plan turns the remaining legacy debt into an explicit backlog. The current public classification is R3_MIGRATION_PLAN_READY, with current readiness R2_NATIVE_CLEAN_LEGACY_QUARANTINED, target readiness R3_NATIVE_CLEAN_LEGACY_FREE, 6 migration actions, 35 primary blocking legacy decisions and zero planner blockers.
 
+The authority migration ledger maps the primary R3 authority debt to concrete entity/action targets. The current public classification is AUTHORITY_MIGRATION_LEDGER_READY_WITH_LEGACY_WARNINGS, with 35 H0 strong candidates, 1 affected entity, 3 affected actions, native low-authority strong debt 0 and full migration/proof coverage.
+
 The adversarial validator runs negative controls against proof, policy, graph, proof-chain and JSON parsing validators. The current public classification is ADVERSARIAL_VALIDATION_PASS.
 
 The entity and heuristic maturity auditor scores actor/rule readiness across entity coverage, authority, proof coverage, no-tick suppression and causal relations. The current public classification is ENTITY_HEURISTIC_MATURITY_READY_WITH_LEGACY_WARNINGS.
 
-The semantic consistency guard checks cross-report agreement across Manifest, replay, no-tick, policy, proof-chain, graph, schema contract, causal chronology, tension-decision calibration, decision trace index, heuristic influence map, entity no-tick matrix, suppression ledger, robustness gate, R3 migration plan, maturity, adversarial validation, attestation and audit. The current public classification is SEMANTIC_CONSISTENCY_READY.
+The semantic consistency guard checks cross-report agreement across Manifest, replay, no-tick, policy, proof-chain, graph, schema contract, causal chronology, tension-decision calibration, decision trace index, heuristic influence map, entity no-tick matrix, suppression ledger, robustness gate, R3 migration plan, authority migration ledger, maturity, adversarial validation, attestation and audit. The current public classification is SEMANTIC_CONSISTENCY_READY with 188 checks and zero errors/warnings.
 
-The reproducibility guard reruns the evidence commands and compares stable fields against the published reports. The current public classification is REPRODUCIBILITY_READY.
+The reproducibility guard reruns 25 evidence commands and compares 237 stable fields against the published reports. The current public classification is REPRODUCIBILITY_READY with zero failures.
 
-The sovereign evidence attestor aggregates the public evidence package into one hashable attestation. The current classification is PNVA_SOVEREIGN_EVIDENCE_ATTESTED.
+The sovereign evidence attestor aggregates the public evidence package into one hashable attestation. The current classification is PNVA_SOVEREIGN_EVIDENCE_ATTESTED with 29 tracked artifacts.
 
 ## Boundaries
 

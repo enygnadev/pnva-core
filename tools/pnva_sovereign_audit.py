@@ -56,6 +56,7 @@ PUBLIC_DOCS = [
     "docs/PNVA_SUPPRESSION_LEDGER.md",
     "docs/PNVA_SOVEREIGN_ROBUSTNESS_GATE.md",
     "docs/PNVA_R3_MIGRATION_PLAN.md",
+    "docs/PNVA_AUTHORITY_MIGRATION_LEDGER.md",
     "docs/PNVA_SOVEREIGN_EVIDENCE_ATTESTATION.md",
     "docs/PNVA_ADVERSARIAL_VALIDATION.md",
     "docs/PNVA_ENTITY_HEURISTIC_MATURITY.md",
@@ -171,6 +172,12 @@ R3_MIGRATION_PLAN_FILES = [
     "tools/pnva_r3_migration_planner.py",
     "docs/PNVA_R3_MIGRATION_PLAN.md",
     "reports/pnva-r3-migration-plan-2026-05-05.json",
+]
+
+AUTHORITY_MIGRATION_LEDGER_FILES = [
+    "tools/pnva_authority_migration_ledger.py",
+    "docs/PNVA_AUTHORITY_MIGRATION_LEDGER.md",
+    "reports/pnva-authority-migration-ledger-2026-05-05.json",
 ]
 
 EVIDENCE_ATTESTATION_FILES = [
@@ -1043,6 +1050,47 @@ def audit_r3_migration_plan(repo: Path) -> dict[str, Any]:
     }
 
 
+def audit_authority_migration_ledger(repo: Path) -> dict[str, Any]:
+    missing = [rel for rel in AUTHORITY_MIGRATION_LEDGER_FILES if not (repo / rel).exists()]
+    report_path = repo / "reports" / "pnva-authority-migration-ledger-2026-05-05.json"
+    if not report_path.exists():
+        return {
+            "authority_migration_ledger_ok": False,
+            "missing": missing,
+            "classification": "AUTHORITY_MIGRATION_LEDGER_MISSING",
+            "errors": ["missing authority migration ledger report"],
+        }
+    data = _read_json(report_path)
+    return {
+        "authority_migration_ledger_ok": (
+            not missing
+            and data.get("pass") is True
+            and str(data.get("classification", "")).startswith("AUTHORITY_MIGRATION_LEDGER_READY")
+            and int(data.get("error_count", 1)) == 0
+            and int(data.get("native_low_authority_strong_count", 1)) == 0
+            and int(data.get("unmapped_candidate_count", 1)) == 0
+            and float(data.get("migration_coverage_ratio", 0.0)) == 1.0
+            and float(data.get("proof_coverage_ratio", 0.0)) == 1.0
+        ),
+        "missing": missing,
+        "classification": data.get("classification"),
+        "source_event_count": int(data.get("source_event_count", 0)),
+        "candidate_event_count": int(data.get("candidate_event_count", 0)),
+        "canonical_low_authority_strong_count": int(data.get("canonical_low_authority_strong_count", 0)),
+        "native_low_authority_strong_count": int(data.get("native_low_authority_strong_count", 0)),
+        "r3_primary_blocking_debt_count": int(data.get("r3_primary_blocking_debt_count", 0)),
+        "entity_candidate_count": int(data.get("entity_candidate_count", 0)),
+        "action_candidate_count": int(data.get("action_candidate_count", 0)),
+        "mapped_candidate_count": int(data.get("mapped_candidate_count", 0)),
+        "unmapped_candidate_count": int(data.get("unmapped_candidate_count", 0)),
+        "migration_coverage_ratio": float(data.get("migration_coverage_ratio", 0.0)),
+        "proof_coverage_ratio": float(data.get("proof_coverage_ratio", 0.0)),
+        "warning_count": int(data.get("warning_count", 0)),
+        "error_count": int(data.get("error_count", 0)),
+        "errors": [] if isinstance(data, dict) and data.get("pass") is True else ["authority migration ledger failed"],
+    }
+
+
 def audit_reproducibility(repo: Path) -> dict[str, Any]:
     missing = [rel for rel in REPRODUCIBILITY_FILES if not (repo / rel).exists()]
     report_path = repo / "reports" / "pnva-reproducibility-2026-05-05.json"
@@ -1282,6 +1330,8 @@ def score_report(report: dict[str, Any]) -> dict[str, Any]:
         scores["actionability"] += 0
     if report.get("r3_migration_plan", {}).get("r3_migration_plan_ok"):
         scores["actionability"] += 0
+    if report.get("authority_migration_ledger", {}).get("authority_migration_ledger_ok"):
+        scores["actionability"] += 0
     if report.get("sovereign_policy", {}).get("policy_ok"):
         scores["actionability"] += 0
     if report.get("proof_chain", {}).get("chain_ok"):
@@ -1358,6 +1408,7 @@ def build_report(repo: Path, *, strict_public: bool = False) -> dict[str, Any]:
         "suppression_ledger": audit_suppression_ledger(repo),
         "sovereign_robustness_gate": audit_sovereign_robustness_gate(repo),
         "r3_migration_plan": audit_r3_migration_plan(repo),
+        "authority_migration_ledger": audit_authority_migration_ledger(repo),
         "evidence_attestation": audit_evidence_attestation(repo),
         "adversarial_validation": audit_adversarial_validation(repo),
         "entity_heuristic_maturity": audit_entity_heuristic_maturity(repo),
@@ -1382,6 +1433,7 @@ def build_report(repo: Path, *, strict_public: bool = False) -> dict[str, Any]:
             "Run suppression ledger so avoided execution is proof-backed.",
             "Run sovereign robustness gate so native cleanliness and legacy debt collapse into one readiness decision.",
             "Run R3 migration planner so the path from R2 quarantined legacy to R3 legacy-free is measurable.",
+            "Run authority migration ledger so H0 strong decisions become entity/action-specific native targets.",
             "Publish one sovereign evidence attestation hash with every evidence release.",
             "Run adversarial validation so validators prove tamper detection, not only green-path acceptance.",
             "Track entity and heuristic maturity so no-tick suppression stays attributable to actors and authority.",

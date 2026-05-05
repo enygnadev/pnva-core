@@ -160,6 +160,12 @@ jobs:
             --write /tmp/pnva-r3-migration-plan.json \
             >/dev/null
           python3 -m json.tool /tmp/pnva-r3-migration-plan.json >/dev/null
+      - name: Run authority migration ledger
+        run: |
+          python3 tools/pnva_authority_migration_ledger.py \
+            --write /tmp/pnva-authority-migration-ledger.json \
+            >/dev/null
+          python3 -m json.tool /tmp/pnva-authority-migration-ledger.json >/dev/null
       - name: Run evidence attestor
         run: |
           python3 tools/pnva_evidence_attestor.py \

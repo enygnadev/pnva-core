@@ -133,6 +133,13 @@ EXPECTED_ARTIFACTS = [
         "required": True,
     },
     {
+        "id": "authority_migration_ledger",
+        "path": "reports/pnva-authority-migration-ledger-2026-05-05.json",
+        "kind": "json_classification",
+        "expected": "AUTHORITY_MIGRATION_LEDGER_READY_WITH_LEGACY_WARNINGS",
+        "required": True,
+    },
+    {
         "id": "native_emitter",
         "path": "reports/pnva-native-emitter-summary-2026-05-05.json",
         "kind": "json_classification",
@@ -342,6 +349,7 @@ def build_attestation(repo: Path) -> dict[str, Any]:
             "suppression ledger",
             "sovereign robustness gate",
             "R3 migration plan",
+            "authority migration ledger",
             "adversarial negative controls",
             "entity and heuristic maturity",
             "sovereign audit consumes this attestation without being part of its hash seed",
@@ -366,6 +374,7 @@ def build_attestation(repo: Path) -> dict[str, Any]:
             "Run suppression ledger before attestation so avoided execution is proof-backed.",
             "Run sovereign robustness gate before attestation so native cleanliness and legacy debt are collapsed into one readiness decision.",
             "Run R3 migration planner before attestation so the next legacy-free target is measurable.",
+            "Run authority migration ledger before attestation so H0 strong decisions become entity/action-specific native targets.",
         ],
     }
 

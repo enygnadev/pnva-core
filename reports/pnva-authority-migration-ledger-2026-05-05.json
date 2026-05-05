@@ -1,0 +1,586 @@
+{
+  "action_candidate_count": 3,
+  "action_rows": [
+    {
+      "candidate_count": 32,
+      "decision_action": "RESIZE_BATCH",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_types": [
+        [
+          "cuda_slot_scan",
+          32
+        ]
+      ],
+      "implementation_target": "native pnva.event.v1 emission with calibrated threshold, entity_id, causal_chain_id and proof hash",
+      "risk_flags": [
+        [
+          "RESIZE_BATCH_PRESSURE",
+          32
+        ]
+      ],
+      "target_max_authority": "H2",
+      "target_rules": [
+        [
+          "adaptive_threshold",
+          32
+        ],
+        [
+          "field_scheduler",
+          32
+        ]
+      ]
+    },
+    {
+      "candidate_count": 2,
+      "decision_action": "COOLDOWN_GPU",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_types": [
+        [
+          "cuda_slot_scan",
+          2
+        ]
+      ],
+      "implementation_target": "native pnva.event.v1 emission with calibrated threshold, entity_id, causal_chain_id and proof hash",
+      "risk_flags": [],
+      "target_max_authority": "H2",
+      "target_rules": [
+        [
+          "power_orchestrator",
+          2
+        ],
+        [
+          "field_scheduler",
+          2
+        ],
+        [
+          "adaptive_threshold",
+          2
+        ]
+      ]
+    },
+    {
+      "candidate_count": 1,
+      "decision_action": "EXECUTE",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_types": [
+        [
+          "cuda_slot_scan",
+          1
+        ]
+      ],
+      "implementation_target": "native pnva.event.v1 emission with calibrated threshold, entity_id, causal_chain_id and proof hash",
+      "risk_flags": [],
+      "target_max_authority": "H2",
+      "target_rules": [
+        [
+          "adaptive_threshold",
+          1
+        ],
+        [
+          "field_scheduler",
+          1
+        ]
+      ]
+    }
+  ],
+  "author": "Gustavo de Aguiar Martins",
+  "candidate_event_count": 35,
+  "candidate_event_count_matches_r3": true,
+  "candidate_samples": [
+    {
+      "current_max_authority": "H0",
+      "current_rules": [
+        "legacy_observer"
+      ],
+      "decision_action": "RESIZE_BATCH",
+      "decision_kind": "collapse",
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_id": "evt_276e496e_000001_5f5d2586",
+      "event_type": "cuda_slot_scan",
+      "gate_delta": -22.40780054,
+      "hash4d_score": 0.739819649037297,
+      "line": 385,
+      "proof_valid": true,
+      "raw_mhs": 0.00045768221538300885,
+      "risk_flags": [
+        "RESIZE_BATCH_PRESSURE"
+      ],
+      "score": -22.40780054,
+      "source_file": "pnva-miner-events.jsonl",
+      "target_max_authority": "H2",
+      "target_rules": [
+        "adaptive_threshold",
+        "field_scheduler"
+      ],
+      "threshold": 0.0
+    },
+    {
+      "current_max_authority": "H0",
+      "current_rules": [
+        "legacy_observer"
+      ],
+      "decision_action": "RESIZE_BATCH",
+      "decision_kind": "collapse",
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_id": "evt_276e496e_000003_392d3b13",
+      "event_type": "cuda_slot_scan",
+      "gate_delta": -24.24524466,
+      "hash4d_score": 0.7359642742143186,
+      "line": 387,
+      "proof_valid": true,
+      "raw_mhs": 0.00045672049582503086,
+      "risk_flags": [
+        "RESIZE_BATCH_PRESSURE"
+      ],
+      "score": -24.24524466,
+      "source_file": "pnva-miner-events.jsonl",
+      "target_max_authority": "H2",
+      "target_rules": [
+        "adaptive_threshold",
+        "field_scheduler"
+      ],
+      "threshold": 0.0
+    },
+    {
+      "current_max_authority": "H0",
+      "current_rules": [
+        "legacy_observer"
+      ],
+      "decision_action": "RESIZE_BATCH",
+      "decision_kind": "collapse",
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_id": "evt_276e496e_000008_597a2713",
+      "event_type": "cuda_slot_scan",
+      "gate_delta": -28.07419177,
+      "hash4d_score": 0.7177409340895291,
+      "line": 392,
+      "proof_valid": true,
+      "raw_mhs": 0.00047050414156809027,
+      "risk_flags": [
+        "RESIZE_BATCH_PRESSURE"
+      ],
+      "score": -28.07419177,
+      "source_file": "pnva-miner-events.jsonl",
+      "target_max_authority": "H2",
+      "target_rules": [
+        "adaptive_threshold",
+        "field_scheduler"
+      ],
+      "threshold": 0.0
+    },
+    {
+      "current_max_authority": "H0",
+      "current_rules": [
+        "legacy_observer"
+      ],
+      "decision_action": "RESIZE_BATCH",
+      "decision_kind": "collapse",
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_id": "evt_276e496e_000010_54e369e9",
+      "event_type": "cuda_slot_scan",
+      "gate_delta": -30.06577137,
+      "hash4d_score": 0.7183202189134018,
+      "line": 394,
+      "proof_valid": true,
+      "raw_mhs": 0.0004622515653469443,
+      "risk_flags": [
+        "RESIZE_BATCH_PRESSURE"
+      ],
+      "score": -30.06577137,
+      "source_file": "pnva-miner-events.jsonl",
+      "target_max_authority": "H2",
+      "target_rules": [
+        "adaptive_threshold",
+        "field_scheduler"
+      ],
+      "threshold": 0.0
+    },
+    {
+      "current_max_authority": "H0",
+      "current_rules": [
+        "legacy_observer"
+      ],
+      "decision_action": "RESIZE_BATCH",
+      "decision_kind": "collapse",
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_id": "evt_276e496e_000015_ddd7919f",
+      "event_type": "cuda_slot_scan",
+      "gate_delta": -34.21313407,
+      "hash4d_score": 0.6989121443367927,
+      "line": 399,
+      "proof_valid": true,
+      "raw_mhs": 0.0004559621956447832,
+      "risk_flags": [
+        "RESIZE_BATCH_PRESSURE"
+      ],
+      "score": -34.21313407,
+      "source_file": "pnva-miner-events.jsonl",
+      "target_max_authority": "H2",
+      "target_rules": [
+        "adaptive_threshold",
+        "field_scheduler"
+      ],
+      "threshold": 0.0
+    },
+    {
+      "current_max_authority": "H0",
+      "current_rules": [
+        "legacy_observer"
+      ],
+      "decision_action": "RESIZE_BATCH",
+      "decision_kind": "collapse",
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_id": "evt_276e496e_000017_b19df11f",
+      "event_type": "cuda_slot_scan",
+      "gate_delta": -36.38802327,
+      "hash4d_score": 0.6981210913122513,
+      "line": 401,
+      "proof_valid": true,
+      "raw_mhs": 0.0004556169803944149,
+      "risk_flags": [
+        "RESIZE_BATCH_PRESSURE"
+      ],
+      "score": -36.38802327,
+      "source_file": "pnva-miner-events.jsonl",
+      "target_max_authority": "H2",
+      "target_rules": [
+        "adaptive_threshold",
+        "field_scheduler"
+      ],
+      "threshold": 0.0
+    },
+    {
+      "current_max_authority": "H0",
+      "current_rules": [
+        "legacy_observer"
+      ],
+      "decision_action": "RESIZE_BATCH",
+      "decision_kind": "collapse",
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_id": "evt_276e496e_000022_460f742b",
+      "event_type": "cuda_slot_scan",
+      "gate_delta": -40.89884015,
+      "hash4d_score": 0.678563815219014,
+      "line": 406,
+      "proof_valid": true,
+      "raw_mhs": 0.0004625373897889844,
+      "risk_flags": [
+        "RESIZE_BATCH_PRESSURE"
+      ],
+      "score": -40.89884015,
+      "source_file": "pnva-miner-events.jsonl",
+      "target_max_authority": "H2",
+      "target_rules": [
+        "adaptive_threshold",
+        "field_scheduler"
+      ],
+      "threshold": 0.0
+    },
+    {
+      "current_max_authority": "H0",
+      "current_rules": [
+        "legacy_observer"
+      ],
+      "decision_action": "RESIZE_BATCH",
+      "decision_kind": "collapse",
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_id": "evt_276e496e_000024_b9380e24",
+      "event_type": "cuda_slot_scan",
+      "gate_delta": -43.2183602,
+      "hash4d_score": 0.6788911964970268,
+      "line": 408,
+      "proof_valid": true,
+      "raw_mhs": 0.0004602286565900701,
+      "risk_flags": [
+        "RESIZE_BATCH_PRESSURE"
+      ],
+      "score": -43.2183602,
+      "source_file": "pnva-miner-events.jsonl",
+      "target_max_authority": "H2",
+      "target_rules": [
+        "adaptive_threshold",
+        "field_scheduler"
+      ],
+      "threshold": 0.0
+    },
+    {
+      "current_max_authority": "H0",
+      "current_rules": [
+        "legacy_observer"
+      ],
+      "decision_action": "RESIZE_BATCH",
+      "decision_kind": "collapse",
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_id": "evt_276e496e_000029_e115771c",
+      "event_type": "cuda_slot_scan",
+      "gate_delta": -47.98796555,
+      "hash4d_score": 0.65489591980098,
+      "line": 413,
+      "proof_valid": true,
+      "raw_mhs": 0.0004378547707708734,
+      "risk_flags": [
+        "RESIZE_BATCH_PRESSURE"
+      ],
+      "score": -47.98796555,
+      "source_file": "pnva-miner-events.jsonl",
+      "target_max_authority": "H2",
+      "target_rules": [
+        "adaptive_threshold",
+        "field_scheduler"
+      ],
+      "threshold": 0.0
+    },
+    {
+      "current_max_authority": "H0",
+      "current_rules": [
+        "legacy_observer"
+      ],
+      "decision_action": "RESIZE_BATCH",
+      "decision_kind": "collapse",
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_id": "evt_276e496e_000031_f7f54e57",
+      "event_type": "cuda_slot_scan",
+      "gate_delta": -50.44952287,
+      "hash4d_score": 0.6488540638162112,
+      "line": 415,
+      "proof_valid": true,
+      "raw_mhs": 0.00042734634876790306,
+      "risk_flags": [
+        "RESIZE_BATCH_PRESSURE"
+      ],
+      "score": -50.44952287,
+      "source_file": "pnva-miner-events.jsonl",
+      "target_max_authority": "H2",
+      "target_rules": [
+        "adaptive_threshold",
+        "field_scheduler"
+      ],
+      "threshold": 0.0
+    },
+    {
+      "current_max_authority": "H0",
+      "current_rules": [
+        "legacy_observer"
+      ],
+      "decision_action": "RESIZE_BATCH",
+      "decision_kind": "collapse",
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_id": "evt_276e496e_000038_704394c1",
+      "event_type": "cuda_slot_scan",
+      "gate_delta": -55.53818641,
+      "hash4d_score": 0.6328954692466827,
+      "line": 422,
+      "proof_valid": true,
+      "raw_mhs": 0.0004474355725876738,
+      "risk_flags": [
+        "RESIZE_BATCH_PRESSURE"
+      ],
+      "score": -55.53818641,
+      "source_file": "pnva-miner-events.jsonl",
+      "target_max_authority": "H2",
+      "target_rules": [
+        "adaptive_threshold",
+        "field_scheduler"
+      ],
+      "threshold": 0.0
+    },
+    {
+      "current_max_authority": "H0",
+      "current_rules": [
+        "legacy_observer"
+      ],
+      "decision_action": "RESIZE_BATCH",
+      "decision_kind": "collapse",
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_id": "evt_276e496e_000040_456190e1",
+      "event_type": "cuda_slot_scan",
+      "gate_delta": -58.19041132,
+      "hash4d_score": 0.6338143808366552,
+      "line": 424,
+      "proof_valid": true,
+      "raw_mhs": 0.00044306488877425565,
+      "risk_flags": [
+        "RESIZE_BATCH_PRESSURE"
+      ],
+      "score": -58.19041132,
+      "source_file": "pnva-miner-events.jsonl",
+      "target_max_authority": "H2",
+      "target_rules": [
+        "adaptive_threshold",
+        "field_scheduler"
+      ],
+      "threshold": 0.0
+    }
+  ],
+  "canonical_event_count": 512,
+  "canonical_low_authority_strong_count": 35,
+  "classification": "AUTHORITY_MIGRATION_LEDGER_READY_WITH_LEGACY_WARNINGS",
+  "entity_candidate_count": 1,
+  "entity_rows": [
+    {
+      "candidate_count": 35,
+      "decision_actions": [
+        [
+          "RESIZE_BATCH",
+          32
+        ],
+        [
+          "COOLDOWN_GPU",
+          2
+        ],
+        [
+          "EXECUTE",
+          1
+        ]
+      ],
+      "entity_id": "entity_4c3ade60ea78",
+      "event_types": [
+        [
+          "cuda_slot_scan",
+          35
+        ]
+      ],
+      "gate_delta_mean": -30.573695,
+      "proof_coverage_ratio": 1.0,
+      "proof_valid_count": 35,
+      "risk_flags": [
+        [
+          "RESIZE_BATCH_PRESSURE",
+          32
+        ]
+      ],
+      "score_mean": -30.573695,
+      "source_files": [
+        [
+          "pnva-miner-events.jsonl",
+          35
+        ]
+      ],
+      "target_rules": [
+        [
+          "adaptive_threshold",
+          35
+        ],
+        [
+          "field_scheduler",
+          35
+        ],
+        [
+          "power_orchestrator",
+          2
+        ]
+      ]
+    }
+  ],
+  "error_count": 0,
+  "errors": [],
+  "event_type_candidate_count": 1,
+  "generated_at": "2026-05-05T08:28:58Z",
+  "influence_uncompensated_low_authority_strong_event_count": 35,
+  "interpretation": {
+    "boundary": "This ledger does not rewrite historical evidence; it defines the exact native emission targets for future R3 evidence.",
+    "purpose": "Convert PNVA low-authority strong legacy decisions into entity/action-specific native authority migration targets.",
+    "sovereignty": "A no-tick system becomes more robust when every remaining H0 strong decision has a hard-authority replacement path."
+  },
+  "mapped_candidate_count": 35,
+  "migration_coverage_ratio": 1.0,
+  "native_event_count": 7,
+  "native_low_authority_strong_count": 0,
+  "pass": true,
+  "policy_low_authority_legacy_count": 35,
+  "project": "PNVA-Core",
+  "proof_coverage_ratio": 1.0,
+  "proof_valid_count": 35,
+  "r3_primary_blocking_debt_count": 35,
+  "recommendations": [
+    "Migrate the dominant entity/action pair first because it carries the entire primary R3 authority debt.",
+    "For future native runtime samples, emit RESIZE_BATCH through adaptive_threshold plus field_scheduler instead of legacy_observer.",
+    "Keep legacy evidence preserved, but require H2/H3 authority and proof hash for every new strong decision."
+  ],
+  "reports_checked": {
+    "canonical_events": "reports/pnva-canonical-events-sample-2026-05-05.jsonl",
+    "heuristic_influence_map": "reports/pnva-heuristic-influence-map-2026-05-05.json",
+    "native_events": "reports/pnva-native-events-demo-2026-05-05.jsonl",
+    "r3_migration_plan": "reports/pnva-r3-migration-plan-2026-05-05.json",
+    "sovereign_policy": "reports/pnva-sovereign-policy-2026-05-05.json"
+  },
+  "schema_version": "pnva.authority_migration_ledger.v1",
+  "source_event_count": 519,
+  "source_file_candidate_count": 1,
+  "summary": {
+    "action_candidate_count": 3,
+    "candidate_event_count": 35,
+    "dominant_action": "RESIZE_BATCH",
+    "dominant_action_count": 32,
+    "dominant_entity": "entity_4c3ade60ea78",
+    "dominant_entity_candidate_count": 35,
+    "dominant_event_type": "cuda_slot_scan",
+    "dominant_event_type_count": 35,
+    "entity_candidate_count": 1,
+    "gate_delta_mean": -30.573695,
+    "migration_coverage_ratio": 1.0,
+    "native_low_authority_strong_count": 0,
+    "proof_coverage_ratio": 1.0,
+    "score_mean": -30.573695
+  },
+  "target_rule_mix": [
+    [
+      "adaptive_threshold",
+      35
+    ],
+    [
+      "field_scheduler",
+      35
+    ],
+    [
+      "power_orchestrator",
+      2
+    ]
+  ],
+  "top_decision_actions": [
+    [
+      "RESIZE_BATCH",
+      32
+    ],
+    [
+      "COOLDOWN_GPU",
+      2
+    ],
+    [
+      "EXECUTE",
+      1
+    ]
+  ],
+  "top_event_types": [
+    [
+      "cuda_slot_scan",
+      35
+    ]
+  ],
+  "top_risk_flags": [
+    [
+      "RESIZE_BATCH_PRESSURE",
+      32
+    ]
+  ],
+  "top_source_files": [
+    [
+      "pnva-miner-events.jsonl",
+      35
+    ]
+  ],
+  "unmapped_candidate_count": 0,
+  "warning_count": 35
+}
