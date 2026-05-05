@@ -40,9 +40,11 @@ capture_slot_count: 35
 action_contract_count: 3
 required_runtime_event_count: 70
 event_template_count: 6
-mandatory_field_count: 21
-negative_control_detected_count: 10
-contract_check_count: 100
+mandatory_field_count: 24
+negative_control_detected_count: 13
+positive_control_passed_count: 6
+enforced_control_count: 15
+contract_check_count: 106
 failure_count: 0
 ```
 
@@ -58,8 +60,9 @@ runtime approval remains false
 35 capture slots remain explicit
 70 required runtime events remain paired
 6 templates remain two per action contract
-21 mandatory runtime fields are present
-10 negative controls are detected
+24 mandatory runtime fields are present
+13 negative controls are detected
+6 positive controls are accepted as fixture-only guard controls
 guard enforced controls match the runtime contract
 contract slot IDs cover the matrix
 contract original event IDs cover the matrix
@@ -68,6 +71,8 @@ commit templates match their action
 proof.projection=false
 proof.native=true
 source.format=native_pnva_event_v1
+field.state_before and field.state_after are required
+tension.gate_delta is required
 tension.components.r3_runtime_slot_id is required
 ```
 

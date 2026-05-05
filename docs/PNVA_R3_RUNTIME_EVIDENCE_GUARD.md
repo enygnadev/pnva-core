@@ -44,8 +44,11 @@ required_collapse_commit_count: 35
 accepted_slot_count: 0
 pending_slot_count: 35
 rejected_event_count: 0
-negative_control_detected_count: 10
-negative_control_count: 10
+negative_control_detected_count: 13
+negative_control_count: 13
+positive_control_passed_count: 6
+positive_control_count: 6
+positive_controls_fixture_only: true
 ```
 
 ## What It Adds
@@ -57,11 +60,16 @@ It rejects final runtime evidence when any event has:
 ```text
 proof.projection=true
 missing schema_version
+missing timestamp
 missing entity_id
 missing causal_chain_id
+missing field.state_before or field.state_after
 missing proof_hash
 missing proof.native=true
 invalid source.format
+missing or invalid tension.score
+missing or invalid tension.threshold
+missing or invalid tension.gate_delta
 unknown original_event_id
 missing r3_runtime_slot_id
 entity mismatch
@@ -90,6 +98,9 @@ The guard runs internal rejection controls before it claims readiness:
 
 ```text
 reject_projection_true
+reject_missing_timestamp
+reject_missing_field_state
+reject_missing_gate_delta
 reject_missing_entity
 reject_missing_chain
 reject_missing_hash
@@ -104,7 +115,28 @@ reject_invalid_source_format
 Current result:
 
 ```text
-10/10 detected
+13/13 detected
+```
+
+## Positive Controls
+
+The guard also runs fixture-only acceptance controls before it claims intake readiness:
+
+```text
+accept_cooldown_gpu_precheck
+accept_cooldown_gpu_commit
+accept_execute_precheck
+accept_execute_commit
+accept_resize_batch_precheck
+accept_resize_batch_commit
+```
+
+Current result:
+
+```text
+6/6 accepted
+fixture_only: true
+runtime_evidence: false
 ```
 
 ## Instrumentation Plan Link
@@ -124,7 +156,9 @@ R3_RUNTIME_INSTRUMENTATION_PLAN_READY
 3 action contracts
 6 event templates
 70 required runtime events
-21 mandatory event fields
+24 mandatory event fields
+13 negative controls
+6 positive controls
 ```
 
 This keeps the workflow explicit:

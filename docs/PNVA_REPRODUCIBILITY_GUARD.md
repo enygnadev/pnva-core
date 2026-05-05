@@ -32,7 +32,7 @@ Current result:
 
 ```text
 command_count: 35
-comparison_count: 391
+comparison_count: 406
 failure_count: 0
 command_failure_count: 0
 comparison_failure_count: 0

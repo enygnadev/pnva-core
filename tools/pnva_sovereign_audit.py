@@ -1309,6 +1309,10 @@ def audit_r3_runtime_evidence_guard(repo: Path) -> dict[str, Any]:
         and int(data.get("capture_slot_count", -1)) == int(data.get("pending_slot_count", 0))
         and int(data.get("required_runtime_event_count", 0)) == int(data.get("capture_slot_count", 0)) * 2
         and int(data.get("negative_control_detected_count", 0)) == int(data.get("negative_control_count", -1))
+        and int(data.get("positive_control_passed_count", 0)) == int(data.get("positive_control_count", -1))
+        and int(data.get("positive_control_count", 0)) > 0
+        and data.get("positive_controls_pass") is True
+        and data.get("positive_controls_fixture_only") is True
     )
     return {
         "r3_runtime_evidence_guard_ok": ok,
@@ -1325,6 +1329,9 @@ def audit_r3_runtime_evidence_guard(repo: Path) -> dict[str, Any]:
         "rejected_event_count": int(data.get("rejected_event_count", 0)),
         "negative_control_count": int(data.get("negative_control_count", 0)),
         "negative_control_detected_count": int(data.get("negative_control_detected_count", 0)),
+        "positive_control_count": int(data.get("positive_control_count", 0)),
+        "positive_control_passed_count": int(data.get("positive_control_passed_count", 0)),
+        "positive_controls_fixture_only": bool(data.get("positive_controls_fixture_only", False)),
         "errors": [] if ok else ["R3 runtime evidence guard failed"],
     }
 
@@ -1351,8 +1358,10 @@ def audit_r3_runtime_instrumentation_plan(repo: Path) -> dict[str, Any]:
         and int(data.get("required_runtime_event_count", 0)) == 70
         and int(data.get("action_contract_count", 0)) == 3
         and int(data.get("event_template_count", 0)) == 6
-        and int(data.get("mandatory_field_count", 0)) >= 21
+        and int(data.get("mandatory_field_count", 0)) >= 24
         and int(data.get("negative_control_detected_count", 0)) == int(data.get("negative_control_count", -1))
+        and int(data.get("positive_control_passed_count", 0)) == int(data.get("positive_control_count", -1))
+        and int(data.get("positive_control_count", 0)) > 0
     )
     return {
         "r3_runtime_instrumentation_plan_ok": ok,
@@ -1370,6 +1379,8 @@ def audit_r3_runtime_instrumentation_plan(repo: Path) -> dict[str, Any]:
         "target_rule_count": int(data.get("target_rule_count", 0)),
         "negative_control_count": int(data.get("negative_control_count", 0)),
         "negative_control_detected_count": int(data.get("negative_control_detected_count", 0)),
+        "positive_control_count": int(data.get("positive_control_count", 0)),
+        "positive_control_passed_count": int(data.get("positive_control_passed_count", 0)),
         "errors": [] if ok else ["R3 runtime instrumentation plan failed"],
     }
 
@@ -1396,8 +1407,12 @@ def audit_r3_runtime_contract_validation(repo: Path) -> dict[str, Any]:
         and int(data.get("action_contract_count", 0)) == 3
         and int(data.get("required_runtime_event_count", 0)) == 70
         and int(data.get("event_template_count", 0)) == 6
-        and int(data.get("mandatory_field_count", 0)) >= 21
+        and int(data.get("mandatory_field_count", 0)) >= 24
+        and int(data.get("enforced_control_count", 0)) >= 15
         and int(data.get("negative_control_detected_count", 0)) == int(data.get("negative_control_count", -1))
+        and int(data.get("positive_control_passed_count", 0)) == int(data.get("positive_control_count", -1))
+        and int(data.get("positive_control_count", 0)) > 0
+        and data.get("positive_controls_fixture_only") is True
         and int(data.get("contract_check_count", 0)) >= 100
         and int(data.get("failure_count", -1)) == 0
     )
@@ -1413,8 +1428,12 @@ def audit_r3_runtime_contract_validation(repo: Path) -> dict[str, Any]:
         "required_runtime_event_count": int(data.get("required_runtime_event_count", 0)),
         "event_template_count": int(data.get("event_template_count", 0)),
         "mandatory_field_count": int(data.get("mandatory_field_count", 0)),
+        "enforced_control_count": int(data.get("enforced_control_count", 0)),
         "negative_control_count": int(data.get("negative_control_count", 0)),
         "negative_control_detected_count": int(data.get("negative_control_detected_count", 0)),
+        "positive_control_count": int(data.get("positive_control_count", 0)),
+        "positive_control_passed_count": int(data.get("positive_control_passed_count", 0)),
+        "positive_controls_fixture_only": bool(data.get("positive_controls_fixture_only", False)),
         "contract_check_count": int(data.get("contract_check_count", 0)),
         "failure_count": int(data.get("failure_count", 0)),
         "errors": [] if ok else ["R3 runtime contract validation failed"],

@@ -1,6 +1,6 @@
 {
   "author": "Gustavo de Aguiar Martins",
-  "check_count": 303,
+  "check_count": 331,
   "checks": [
     {
       "group": "classification",
@@ -785,11 +785,11 @@
     },
     {
       "group": "manifest",
-      "left": "sha256:cce27e8a5bb3591ff392d7dbc812b9bc43fe82e2b7b2ce57c4bfdf9e5ffb65c8",
+      "left": "sha256:0d46fbbce51beac952e6c610e61e8f760ee8c98ca63e11d67193a64f373d3447",
       "left_ref": "MANIFEST:sovereign_evidence_attestation.evidence_hash",
       "name": "manifest_attestation_hash",
       "pass": true,
-      "right": "sha256:cce27e8a5bb3591ff392d7dbc812b9bc43fe82e2b7b2ce57c4bfdf9e5ffb65c8",
+      "right": "sha256:0d46fbbce51beac952e6c610e61e8f760ee8c98ca63e11d67193a64f373d3447",
       "right_ref": "attestation:evidence_hash",
       "severity": "error"
     },
@@ -1317,12 +1317,52 @@
     },
     {
       "group": "manifest",
-      "left": 10,
+      "left": 13,
+      "left_ref": "MANIFEST:r3_runtime_evidence_guard.negative_control_count",
+      "name": "manifest_r3_evidence_guard_negative_control_total",
+      "pass": true,
+      "right": 13,
+      "right_ref": "r3_runtime_evidence_guard:negative_control_count",
+      "severity": "error"
+    },
+    {
+      "group": "manifest",
+      "left": 13,
       "left_ref": "MANIFEST:r3_runtime_evidence_guard.negative_control_detected_count",
       "name": "manifest_r3_evidence_guard_negative_control_count",
       "pass": true,
-      "right": 10,
+      "right": 13,
       "right_ref": "r3_runtime_evidence_guard:negative_control_detected_count",
+      "severity": "error"
+    },
+    {
+      "group": "manifest",
+      "left": 6,
+      "left_ref": "MANIFEST:r3_runtime_evidence_guard.positive_control_count",
+      "name": "manifest_r3_evidence_guard_positive_control_count",
+      "pass": true,
+      "right": 6,
+      "right_ref": "r3_runtime_evidence_guard:positive_control_count",
+      "severity": "error"
+    },
+    {
+      "group": "manifest",
+      "left": 6,
+      "left_ref": "MANIFEST:r3_runtime_evidence_guard.positive_control_passed_count",
+      "name": "manifest_r3_evidence_guard_positive_control_passed_count",
+      "pass": true,
+      "right": 6,
+      "right_ref": "r3_runtime_evidence_guard:positive_control_passed_count",
+      "severity": "error"
+    },
+    {
+      "group": "manifest",
+      "left": true,
+      "left_ref": "MANIFEST:r3_runtime_evidence_guard.positive_controls_fixture_only",
+      "name": "manifest_r3_evidence_guard_positive_fixture_only",
+      "pass": true,
+      "right": true,
+      "right_ref": "r3_runtime_evidence_guard:positive_controls_fixture_only",
       "severity": "error"
     },
     {
@@ -1367,6 +1407,36 @@
     },
     {
       "group": "manifest",
+      "left": 24,
+      "left_ref": "MANIFEST:r3_runtime_instrumentation_plan.mandatory_field_count",
+      "name": "manifest_r3_instrumentation_mandatory_field_count",
+      "pass": true,
+      "right": 24,
+      "right_ref": "r3_runtime_instrumentation_plan:mandatory_field_count",
+      "severity": "error"
+    },
+    {
+      "group": "manifest",
+      "left": 6,
+      "left_ref": "MANIFEST:r3_runtime_instrumentation_plan.positive_control_count",
+      "name": "manifest_r3_instrumentation_positive_control_count",
+      "pass": true,
+      "right": 6,
+      "right_ref": "r3_runtime_instrumentation_plan:positive_control_count",
+      "severity": "error"
+    },
+    {
+      "group": "manifest",
+      "left": 6,
+      "left_ref": "MANIFEST:r3_runtime_instrumentation_plan.positive_control_passed_count",
+      "name": "manifest_r3_instrumentation_positive_control_passed_count",
+      "pass": true,
+      "right": 6,
+      "right_ref": "r3_runtime_instrumentation_plan:positive_control_passed_count",
+      "severity": "error"
+    },
+    {
+      "group": "manifest",
       "left": true,
       "left_ref": "MANIFEST:r3_runtime_contract_validation.contract_validation_ready",
       "name": "manifest_r3_contract_validation_ready",
@@ -1377,11 +1447,11 @@
     },
     {
       "group": "manifest",
-      "left": 100,
+      "left": 106,
       "left_ref": "MANIFEST:r3_runtime_contract_validation.contract_check_count",
       "name": "manifest_r3_contract_validation_check_count",
       "pass": true,
-      "right": 100,
+      "right": 106,
       "right_ref": "r3_runtime_contract_validation:contract_check_count",
       "severity": "error"
     },
@@ -1393,6 +1463,46 @@
       "pass": true,
       "right": 0,
       "right_ref": "r3_runtime_contract_validation:failure_count",
+      "severity": "error"
+    },
+    {
+      "group": "manifest",
+      "left": 24,
+      "left_ref": "MANIFEST:r3_runtime_contract_validation.mandatory_field_count",
+      "name": "manifest_r3_contract_validation_mandatory_field_count",
+      "pass": true,
+      "right": 24,
+      "right_ref": "r3_runtime_contract_validation:mandatory_field_count",
+      "severity": "error"
+    },
+    {
+      "group": "manifest",
+      "left": 15,
+      "left_ref": "MANIFEST:r3_runtime_contract_validation.enforced_control_count",
+      "name": "manifest_r3_contract_validation_enforced_control_count",
+      "pass": true,
+      "right": 15,
+      "right_ref": "r3_runtime_contract_validation:enforced_control_count",
+      "severity": "error"
+    },
+    {
+      "group": "manifest",
+      "left": 6,
+      "left_ref": "MANIFEST:r3_runtime_contract_validation.positive_control_count",
+      "name": "manifest_r3_contract_validation_positive_control_count",
+      "pass": true,
+      "right": 6,
+      "right_ref": "r3_runtime_contract_validation:positive_control_count",
+      "severity": "error"
+    },
+    {
+      "group": "manifest",
+      "left": 6,
+      "left_ref": "MANIFEST:r3_runtime_contract_validation.positive_control_passed_count",
+      "name": "manifest_r3_contract_validation_positive_control_passed_count",
+      "pass": true,
+      "right": 6,
+      "right_ref": "r3_runtime_contract_validation:positive_control_passed_count",
       "severity": "error"
     },
     {
@@ -1424,6 +1534,46 @@
       "pass": true,
       "right": 70,
       "right_ref": "sovereign_evolution_ledger:runtime_required_event_count",
+      "severity": "error"
+    },
+    {
+      "group": "manifest",
+      "left": 106,
+      "left_ref": "MANIFEST:sovereign_evolution_ledger.runtime_contract_check_count",
+      "name": "manifest_sovereign_evolution_contract_checks",
+      "pass": true,
+      "right": 106,
+      "right_ref": "sovereign_evolution_ledger:runtime_contract_check_count",
+      "severity": "error"
+    },
+    {
+      "group": "manifest",
+      "left": 6,
+      "left_ref": "MANIFEST:sovereign_evolution_ledger.runtime_positive_control_passed_count",
+      "name": "manifest_sovereign_evolution_positive_controls",
+      "pass": true,
+      "right": 6,
+      "right_ref": "sovereign_evolution_ledger:runtime_positive_control_passed_count",
+      "severity": "error"
+    },
+    {
+      "group": "manifest",
+      "left": 24,
+      "left_ref": "MANIFEST:sovereign_evolution_ledger.runtime_mandatory_field_count",
+      "name": "manifest_sovereign_evolution_mandatory_fields",
+      "pass": true,
+      "right": 24,
+      "right_ref": "sovereign_evolution_ledger:runtime_mandatory_field_count",
+      "severity": "error"
+    },
+    {
+      "group": "manifest",
+      "left": 15,
+      "left_ref": "MANIFEST:sovereign_evolution_ledger.runtime_enforced_control_count",
+      "name": "manifest_sovereign_evolution_enforced_controls",
+      "pass": true,
+      "right": 15,
+      "right_ref": "sovereign_evolution_ledger:runtime_enforced_control_count",
       "severity": "error"
     },
     {
@@ -2299,12 +2449,42 @@
     },
     {
       "group": "r3_runtime_evidence_guard",
-      "left": 10,
+      "left": 13,
       "left_ref": "r3_runtime_evidence_guard:negative_control_detected_count",
       "name": "evidence_guard_negative_controls_complete",
       "pass": true,
-      "right": 10,
+      "right": 13,
       "right_ref": "r3_runtime_evidence_guard:negative_control_count",
+      "severity": "error"
+    },
+    {
+      "group": "r3_runtime_evidence_guard",
+      "left": 6,
+      "left_ref": "r3_runtime_evidence_guard:positive_control_passed_count",
+      "name": "evidence_guard_positive_controls_complete",
+      "pass": true,
+      "right": 6,
+      "right_ref": "r3_runtime_evidence_guard:positive_control_count",
+      "severity": "error"
+    },
+    {
+      "group": "r3_runtime_evidence_guard",
+      "left": true,
+      "left_ref": "r3_runtime_evidence_guard:positive_controls_pass",
+      "name": "evidence_guard_positive_controls_pass",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "r3_runtime_evidence_guard",
+      "left": true,
+      "left_ref": "r3_runtime_evidence_guard:positive_controls_fixture_only",
+      "name": "evidence_guard_positive_controls_fixture_only",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected",
       "severity": "error"
     },
     {
@@ -2368,6 +2548,36 @@
       "severity": "error"
     },
     {
+      "group": "r3_runtime_instrumentation_plan",
+      "left": 13,
+      "left_ref": "r3_runtime_instrumentation_plan:negative_control_detected_count",
+      "name": "instrumentation_negative_controls_match_guard",
+      "pass": true,
+      "right": 13,
+      "right_ref": "r3_runtime_evidence_guard:negative_control_detected_count",
+      "severity": "error"
+    },
+    {
+      "group": "r3_runtime_instrumentation_plan",
+      "left": 6,
+      "left_ref": "r3_runtime_instrumentation_plan:positive_control_passed_count",
+      "name": "instrumentation_positive_controls_match_guard",
+      "pass": true,
+      "right": 6,
+      "right_ref": "r3_runtime_evidence_guard:positive_control_passed_count",
+      "severity": "error"
+    },
+    {
+      "group": "r3_runtime_instrumentation_plan",
+      "left": 6,
+      "left_ref": "r3_runtime_instrumentation_plan:positive_control_passed_count",
+      "name": "instrumentation_positive_controls_complete",
+      "pass": true,
+      "right": 6,
+      "right_ref": "r3_runtime_instrumentation_plan:positive_control_count",
+      "severity": "error"
+    },
+    {
       "group": "r3_runtime_contract_validation",
       "left": 35,
       "left_ref": "r3_runtime_contract_validation:capture_slot_count",
@@ -2399,22 +2609,52 @@
     },
     {
       "group": "r3_runtime_contract_validation",
-      "left": 21,
+      "left": 24,
       "left_ref": "r3_runtime_contract_validation:mandatory_field_count",
       "name": "contract_validation_matches_mandatory_fields",
       "pass": true,
-      "right": 21,
+      "right": 24,
       "right_ref": "r3_runtime_instrumentation_plan:mandatory_field_count",
       "severity": "error"
     },
     {
       "group": "r3_runtime_contract_validation",
-      "left": 10,
+      "left": 13,
       "left_ref": "r3_runtime_contract_validation:negative_control_detected_count",
       "name": "contract_validation_negative_controls_match_guard",
       "pass": true,
-      "right": 10,
+      "right": 13,
       "right_ref": "r3_runtime_evidence_guard:negative_control_detected_count",
+      "severity": "error"
+    },
+    {
+      "group": "r3_runtime_contract_validation",
+      "left": 6,
+      "left_ref": "r3_runtime_contract_validation:positive_control_passed_count",
+      "name": "contract_validation_positive_controls_match_guard",
+      "pass": true,
+      "right": 6,
+      "right_ref": "r3_runtime_evidence_guard:positive_control_passed_count",
+      "severity": "error"
+    },
+    {
+      "group": "r3_runtime_contract_validation",
+      "left": 6,
+      "left_ref": "r3_runtime_contract_validation:positive_control_passed_count",
+      "name": "contract_validation_positive_controls_complete",
+      "pass": true,
+      "right": 6,
+      "right_ref": "r3_runtime_contract_validation:positive_control_count",
+      "severity": "error"
+    },
+    {
+      "group": "r3_runtime_contract_validation",
+      "left": 15,
+      "left_ref": "r3_runtime_contract_validation:enforced_control_count",
+      "name": "contract_validation_enforced_controls_match_guard",
+      "pass": true,
+      "right": 15,
+      "right_ref": "len(r3_runtime_evidence_guard.enforced_controls)",
       "severity": "error"
     },
     {
@@ -2459,12 +2699,52 @@
     },
     {
       "group": "sovereign_evolution_ledger",
-      "left": 100,
+      "left": 106,
       "left_ref": "sovereign_evolution_ledger:runtime_contract_check_count",
       "name": "evolution_contract_checks_match_validator",
       "pass": true,
-      "right": 100,
+      "right": 106,
       "right_ref": "r3_runtime_contract_validation:contract_check_count",
+      "severity": "error"
+    },
+    {
+      "group": "sovereign_evolution_ledger",
+      "left": 13,
+      "left_ref": "sovereign_evolution_ledger:runtime_negative_control_detected_count",
+      "name": "evolution_negative_controls_match_guard",
+      "pass": true,
+      "right": 13,
+      "right_ref": "r3_runtime_evidence_guard:negative_control_detected_count",
+      "severity": "error"
+    },
+    {
+      "group": "sovereign_evolution_ledger",
+      "left": 6,
+      "left_ref": "sovereign_evolution_ledger:runtime_positive_control_passed_count",
+      "name": "evolution_positive_controls_match_guard",
+      "pass": true,
+      "right": 6,
+      "right_ref": "r3_runtime_evidence_guard:positive_control_passed_count",
+      "severity": "error"
+    },
+    {
+      "group": "sovereign_evolution_ledger",
+      "left": 24,
+      "left_ref": "sovereign_evolution_ledger:runtime_mandatory_field_count",
+      "name": "evolution_mandatory_fields_match_contract",
+      "pass": true,
+      "right": 24,
+      "right_ref": "r3_runtime_contract_validation:mandatory_field_count",
+      "severity": "error"
+    },
+    {
+      "group": "sovereign_evolution_ledger",
+      "left": 15,
+      "left_ref": "sovereign_evolution_ledger:runtime_enforced_control_count",
+      "name": "evolution_enforced_controls_match_contract",
+      "pass": true,
+      "right": 15,
+      "right_ref": "r3_runtime_contract_validation:enforced_control_count",
       "severity": "error"
     },
     {
@@ -2842,11 +3122,11 @@
     },
     {
       "group": "audit",
-      "left": "sha256:cce27e8a5bb3591ff392d7dbc812b9bc43fe82e2b7b2ce57c4bfdf9e5ffb65c8",
+      "left": "sha256:0d46fbbce51beac952e6c610e61e8f760ee8c98ca63e11d67193a64f373d3447",
       "left_ref": "audit:evidence_attestation.evidence_hash",
       "name": "audit_attestation_hash_matches",
       "pass": true,
-      "right": "sha256:cce27e8a5bb3591ff392d7dbc812b9bc43fe82e2b7b2ce57c4bfdf9e5ffb65c8",
+      "right": "sha256:0d46fbbce51beac952e6c610e61e8f760ee8c98ca63e11d67193a64f373d3447",
       "right_ref": "attestation:evidence_hash",
       "severity": "error"
     },
@@ -3055,7 +3335,7 @@
   "classification": "SEMANTIC_CONSISTENCY_READY",
   "error_count": 0,
   "errors": [],
-  "generated_at": "2026-05-05T10:52:23Z",
+  "generated_at": "2026-05-05T11:14:50Z",
   "interpretation": {
     "boundary": "This guard checks semantic consistency of the public evidence package; it does not replace runtime execution tests.",
     "purpose": "Detect drift between PNVA public evidence reports, manifest metadata, attestation and audit summaries.",
@@ -3109,7 +3389,7 @@
   "schema_version": "pnva.semantic_consistency.v1",
   "summary": {
     "attestation_artifact_count": 41,
-    "audit_score": 100,
+    "audit_score": 91,
     "authority_migration_action_candidate_count": 3,
     "authority_migration_candidate_count": 35,
     "authority_migration_coverage_ratio": 1.0,
@@ -3146,15 +3426,18 @@
     "r3_runtime_capture_pending_slot_count": 35,
     "r3_runtime_capture_required_event_count": 70,
     "r3_runtime_capture_slot_count": 35,
-    "r3_runtime_contract_validation_check_count": 100,
+    "r3_runtime_contract_validation_check_count": 106,
+    "r3_runtime_contract_validation_enforced_control_count": 15,
     "r3_runtime_contract_validation_failure_count": 0,
     "r3_runtime_contract_validation_ready": true,
     "r3_runtime_evidence_approved": false,
     "r3_runtime_evidence_guard_ready": true,
-    "r3_runtime_evidence_negative_controls": 10,
+    "r3_runtime_evidence_negative_controls": 13,
+    "r3_runtime_evidence_positive_controls": 6,
     "r3_runtime_evidence_present": false,
     "r3_runtime_evidence_required_event_count": 70,
     "r3_runtime_instrumentation_action_contract_count": 3,
+    "r3_runtime_instrumentation_mandatory_field_count": 24,
     "r3_runtime_instrumentation_plan_ready": true,
     "r3_runtime_instrumentation_required_event_count": 70,
     "r3_runtime_instrumentation_template_count": 6,

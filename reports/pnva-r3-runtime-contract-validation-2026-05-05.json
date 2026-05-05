@@ -95,11 +95,11 @@
     },
     {
       "group": "controls",
-      "left": 10,
+      "left": 13,
       "left_ref": "negative_controls_complete",
       "name": "negative_controls_complete",
       "pass": true,
-      "right": 10,
+      "right": 13,
       "right_ref": "expected"
     },
     {
@@ -112,12 +112,39 @@
       "right_ref": "expected"
     },
     {
+      "group": "controls",
+      "left": 6,
+      "left_ref": "positive_controls_complete",
+      "name": "positive_controls_complete",
+      "pass": true,
+      "right": 6,
+      "right_ref": "expected"
+    },
+    {
+      "group": "controls",
+      "left": true,
+      "left_ref": "positive_controls_strong_enough",
+      "name": "positive_controls_strong_enough",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "controls",
+      "left": true,
+      "left_ref": "positive_controls_fixture_only",
+      "name": "positive_controls_fixture_only",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
       "group": "fields",
-      "left": 21,
+      "left": 24,
       "left_ref": "mandatory_field_count",
       "name": "mandatory_field_count",
       "pass": true,
-      "right": 21,
+      "right": 24,
       "right_ref": "expected"
     },
     {
@@ -131,6 +158,8 @@
         "entity_type",
         "event_id",
         "event_type",
+        "field.state_after",
+        "field.state_before",
         "heuristics.rules",
         "proof.native",
         "proof.projection",
@@ -141,6 +170,7 @@
         "source.format",
         "tension.components.original_event_id",
         "tension.components.r3_runtime_slot_id",
+        "tension.gate_delta",
         "tension.score",
         "tension.threshold",
         "timestamp"
@@ -157,6 +187,8 @@
         "entity_type",
         "event_id",
         "event_type",
+        "field.state_after",
+        "field.state_before",
         "heuristics.rules",
         "proof.native",
         "proof.projection",
@@ -167,6 +199,7 @@
         "source.format",
         "tension.components.original_event_id",
         "tension.components.r3_runtime_slot_id",
+        "tension.gate_delta",
         "tension.score",
         "tension.threshold",
         "timestamp"
@@ -185,6 +218,24 @@
     {
       "group": "enforced_controls",
       "left": true,
+      "left_ref": "enforced_timestamp_required",
+      "name": "enforced_timestamp_required",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "enforced_controls",
+      "left": true,
+      "left_ref": "enforced_field_state_required",
+      "name": "enforced_field_state_required",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "enforced_controls",
+      "left": true,
       "left_ref": "enforced_entity_id_required",
       "name": "enforced_entity_id_required",
       "pass": true,
@@ -196,6 +247,15 @@
       "left": true,
       "left_ref": "enforced_causal_chain_id_required",
       "name": "enforced_causal_chain_id_required",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "enforced_controls",
+      "left": true,
+      "left_ref": "enforced_tension_gate_delta_required",
+      "name": "enforced_tension_gate_delta_required",
       "pass": true,
       "right": true,
       "right_ref": "expected"
@@ -1129,22 +1189,25 @@
     }
   ],
   "classification": "R3_RUNTIME_CONTRACT_VALIDATED_READY",
-  "contract_check_count": 100,
+  "contract_check_count": 106,
   "contract_validation_ready": true,
-  "enforced_control_count": 12,
+  "enforced_control_count": 15,
   "event_template_count": 6,
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-05-05T10:18:42Z",
+  "generated_at": "2026-05-05T11:08:08Z",
   "interpretation": {
     "boundary": "This is a contract validator, not runtime evidence and not final R3 cutover approval.",
     "purpose": "Validate that the R3 runtime capture matrix, evidence guard and instrumentation plan form one coherent runtime contract.",
     "sovereignty": "The final runtime path becomes harder to mislabel because the contract itself is checked before fresh runtime evidence is accepted."
   },
-  "mandatory_field_count": 21,
-  "negative_control_count": 10,
-  "negative_control_detected_count": 10,
+  "mandatory_field_count": 24,
+  "negative_control_count": 13,
+  "negative_control_detected_count": 13,
   "pass": true,
+  "positive_control_count": 6,
+  "positive_control_passed_count": 6,
+  "positive_controls_fixture_only": true,
   "project": "PNVA-Core",
   "recommendations": [
     "Run this contract validator after changing any R3 capture, guard or instrumentation logic.",
@@ -1168,11 +1231,12 @@
   "summary": {
     "action_contract_count": 3,
     "capture_slot_count": 35,
-    "contract_check_count": 100,
+    "contract_check_count": 106,
     "contract_validation_ready": true,
     "failure_count": 0,
-    "mandatory_field_count": 21,
-    "negative_control_detected_count": 10,
+    "mandatory_field_count": 24,
+    "negative_control_detected_count": 13,
+    "positive_control_passed_count": 6,
     "required_runtime_event_count": 70
   }
 }

@@ -23,12 +23,15 @@ REQUIRED_MANDATORY_FIELDS = [
     "entity_type",
     "causal_chain_id",
     "event_type",
+    "field.state_before",
+    "field.state_after",
     "decision.kind",
     "decision.action",
     "decision.reason",
     "heuristics.rules",
     "tension.score",
     "tension.threshold",
+    "tension.gate_delta",
     "tension.components.original_event_id",
     "tension.components.r3_runtime_slot_id",
     "proof.valid",
@@ -46,8 +49,11 @@ REQUIRED_COMPONENTS = [
 
 REQUIRED_ENFORCED_CONTROLS = {
     "schema_version_required": "pnva.event.v1",
+    "timestamp_required": True,
+    "field_state_required": True,
     "entity_id_required": True,
     "causal_chain_id_required": True,
+    "tension_gate_delta_required": True,
     "proof_hash_required": True,
     "proof_native_required": True,
     "proof_projection_forbidden": True,
@@ -148,6 +154,9 @@ def build_report(repo: Path) -> dict[str, Any]:
     _add_check(checks, "counts", "event_templates_are_pairs", int(plan.get("event_template_count", 0)), int(plan.get("action_contract_count", 0)) * 2)
     _add_check(checks, "controls", "negative_controls_complete", int(guard.get("negative_control_detected_count", 0)), int(guard.get("negative_control_count", -1)))
     _add_check(checks, "controls", "negative_controls_strong_enough", int(guard.get("negative_control_count", 0)) >= 10, True)
+    _add_check(checks, "controls", "positive_controls_complete", int(guard.get("positive_control_passed_count", 0)), int(guard.get("positive_control_count", -1)))
+    _add_check(checks, "controls", "positive_controls_strong_enough", int(guard.get("positive_control_count", 0)) >= 6, True)
+    _add_check(checks, "controls", "positive_controls_fixture_only", guard.get("positive_controls_fixture_only"), True)
     _add_check(checks, "fields", "mandatory_field_count", int(plan.get("mandatory_field_count", 0)), len(REQUIRED_MANDATORY_FIELDS))
     _add_check(checks, "fields", "mandatory_fields_complete", sorted(plan.get("mandatory_event_fields", [])), sorted(REQUIRED_MANDATORY_FIELDS))
 
@@ -202,6 +211,9 @@ def build_report(repo: Path) -> dict[str, Any]:
         "enforced_control_count": len(REQUIRED_ENFORCED_CONTROLS),
         "negative_control_count": int(guard.get("negative_control_count", 0)),
         "negative_control_detected_count": int(guard.get("negative_control_detected_count", 0)),
+        "positive_control_count": int(guard.get("positive_control_count", 0)),
+        "positive_control_passed_count": int(guard.get("positive_control_passed_count", 0)),
+        "positive_controls_fixture_only": bool(guard.get("positive_controls_fixture_only", False)),
         "contract_check_count": len(checks),
         "failure_count": len(failures),
         "checks": checks,
@@ -218,6 +230,7 @@ def build_report(repo: Path) -> dict[str, Any]:
             "required_runtime_event_count": int(plan.get("required_runtime_event_count", 0)),
             "mandatory_field_count": int(plan.get("mandatory_field_count", 0)),
             "negative_control_detected_count": int(guard.get("negative_control_detected_count", 0)),
+            "positive_control_passed_count": int(guard.get("positive_control_passed_count", 0)),
             "contract_check_count": len(checks),
             "failure_count": len(failures),
         },

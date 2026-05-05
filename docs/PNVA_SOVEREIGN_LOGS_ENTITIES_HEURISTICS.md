@@ -979,13 +979,16 @@ required_runtime_event_count: 70
 accepted_slot_count: 0
 pending_slot_count: 35
 rejected_event_count: 0
-negative_control_detected_count: 10
-negative_control_count: 10
+negative_control_detected_count: 13
+negative_control_count: 13
+positive_control_passed_count: 6
+positive_control_count: 6
+positive_controls_fixture_only: true
 ```
 
 Production interpretation:
 
-The guard makes the future R3 runtime harder to fake. It rejects projected proofs, missing entities, missing causal chains, missing proof hashes, missing native proof flags, invalid native source format, missing R3 slot identity, low-authority commits, action mismatches and prechecks that execute instead of proving no-tick suppression. This improves robustness without disturbing the current 24h and production PASS evidence.
+The guard makes the future R3 runtime harder to fake. It rejects projected proofs, missing timestamps, missing field state, missing gate delta, missing entities, missing causal chains, missing proof hashes, missing native proof flags, invalid native source format, missing R3 slot identity, low-authority commits, action mismatches and prechecks that execute instead of proving no-tick suppression. It also proves six fixture-only positive controls so the intake boundary is strict without becoming unusable. This improves robustness without disturbing the current 24h and production PASS evidence.
 
 ## 28. R3 Runtime Instrumentation Plan
 
@@ -1020,13 +1023,14 @@ required_runtime_event_count: 70
 required_no_tick_precheck_count: 35
 required_collapse_commit_count: 35
 event_template_count: 6
-mandatory_field_count: 21
-negative_control_detected_count: 10
+mandatory_field_count: 24
+negative_control_detected_count: 13
+positive_control_passed_count: 6
 ```
 
 Production interpretation:
 
-The plan turns R3 from an abstract backlog into explicit runtime engineering. The current targets are `RESIZE_BATCH`, `COOLDOWN_GPU` and `EXECUTE`, each requiring native no-tick precheck and native commit events with `proof.projection=false`, `proof.native=true`, `source.format=native_pnva_event_v1`, `tension.components.original_event_id`, `tension.components.r3_runtime_slot_id`, entity identity, causal chain identity and proof hash. This makes PNVA more sovereign because final evidence must be emitted by the runtime contract, not inferred from projection.
+The plan turns R3 from an abstract backlog into explicit runtime engineering. The current targets are `RESIZE_BATCH`, `COOLDOWN_GPU` and `EXECUTE`, each requiring native no-tick precheck and native commit events with `timestamp`, `field.state_before`, `field.state_after`, `tension.gate_delta`, `proof.projection=false`, `proof.native=true`, `source.format=native_pnva_event_v1`, `tension.components.original_event_id`, `tension.components.r3_runtime_slot_id`, entity identity, causal chain identity and proof hash. This makes PNVA more sovereign because final evidence must be emitted by the runtime contract, not inferred from projection.
 
 ## 29. R3 Runtime Contract Validation
 
@@ -1058,9 +1062,11 @@ capture_slot_count: 35
 action_contract_count: 3
 required_runtime_event_count: 70
 event_template_count: 6
-mandatory_field_count: 21
-negative_control_detected_count: 10
-contract_check_count: 100
+mandatory_field_count: 24
+negative_control_detected_count: 13
+positive_control_passed_count: 6
+enforced_control_count: 15
+contract_check_count: 106
 failure_count: 0
 ```
 
@@ -1104,8 +1110,11 @@ r3_cutover_approved: false
 r3_runtime_capture_coverage_percent: 0.0
 runtime_pending_slot_count: 35
 runtime_required_event_count: 70
-runtime_contract_check_count: 100
+runtime_contract_check_count: 106
 runtime_contract_failure_count: 0
+runtime_positive_control_passed_count: 6
+runtime_mandatory_field_count: 24
+runtime_enforced_control_count: 15
 controlled_warning_count: 1232
 blocker_count: 2
 priority_action_count: 4
@@ -1251,7 +1260,7 @@ SEMANTIC_CONSISTENCY_READY
 Current result:
 
 ```text
-check_count: 303
+check_count: 331
 error_count: 0
 warning_count: 0
 ```
@@ -1286,7 +1295,7 @@ Current result:
 
 ```text
 command_count: 35
-comparison_count: 391
+comparison_count: 406
 failure_count: 0
 command_failure_count: 0
 comparison_failure_count: 0

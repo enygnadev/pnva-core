@@ -4,6 +4,7 @@ from __future__ import annotations
 import argparse
 import copy
 import json
+import math
 import time
 from collections import Counter, defaultdict
 from pathlib import Path
@@ -119,6 +120,20 @@ def _components(event: dict[str, Any]) -> dict[str, Any]:
     return _dig(event, ["tension", "components"], {}) if isinstance(_dig(event, ["tension", "components"], {}), dict) else {}
 
 
+def _tension(event: dict[str, Any]) -> dict[str, Any]:
+    value = event.get("tension")
+    return value if isinstance(value, dict) else {}
+
+
+def _finite_number(value: Any) -> bool:
+    return isinstance(value, (int, float)) and not isinstance(value, bool) and math.isfinite(float(value))
+
+
+def _field_state_valid(event: dict[str, Any]) -> bool:
+    field = event.get("field")
+    return isinstance(field, dict) and bool(field.get("state_before")) and bool(field.get("state_after"))
+
+
 def _original_id(event: dict[str, Any]) -> str:
     return str(_components(event).get("original_event_id") or "")
 
@@ -152,10 +167,21 @@ def _event_codes(event: dict[str, Any], slot: dict[str, Any]) -> list[str]:
         codes.append("SCHEMA_VERSION_INVALID")
     if not event.get("event_id"):
         codes.append("MISSING_EVENT_ID")
+    if not event.get("timestamp"):
+        codes.append("MISSING_TIMESTAMP")
     if not event.get("entity_id"):
         codes.append("MISSING_ENTITY_ID")
     if not event.get("causal_chain_id"):
         codes.append("MISSING_CAUSAL_CHAIN_ID")
+    if not _field_state_valid(event):
+        codes.append("FIELD_STATE_INVALID")
+    tension = _tension(event)
+    if not _finite_number(tension.get("score")):
+        codes.append("TENSION_SCORE_INVALID")
+    if not _finite_number(tension.get("threshold")):
+        codes.append("TENSION_THRESHOLD_INVALID")
+    if not _finite_number(tension.get("gate_delta")):
+        codes.append("TENSION_GATE_DELTA_INVALID")
     if _proof(event).get("projection") is True:
         codes.append("PROJECTED_PROOF_FORBIDDEN")
     if _proof(event).get("native") is not True:
@@ -287,17 +313,26 @@ def _validate_runtime_events(matrix: dict[str, Any], events: list[dict[str, Any]
     }
 
 
-def _sample_event(slot: dict[str, Any], *, role: str) -> dict[str, Any]:
+def _sample_event(slot: dict[str, Any], *, role: str, control: str = "negative") -> dict[str, Any]:
     action = "NO_ACTION" if role == "precheck" else str(slot.get("decision_action") or "unknown")
     kind = "observe" if role == "precheck" else str(slot.get("decision_kind") or "collapse")
     event_type = f"{slot.get('event_type')}_authority_precheck" if role == "precheck" else str(slot.get("event_type") or "runtime_commit")
+    score = 0.0 if role == "precheck" else 1.0
+    threshold = 0.5
     return {
         "schema_version": "pnva.event.v1",
-        "event_id": f"evt_negative_control_{role}",
+        "event_id": f"evt_{control}_control_{role}_{slot.get('slot_id')}",
+        "timestamp": "2026-05-05T00:00:00Z",
         "entity_id": slot.get("entity_id"),
         "entity_type": slot.get("entity_type"),
-        "causal_chain_id": f"chain_negative_control_{role}",
+        "causal_chain_id": f"chain_{control}_control_{slot.get('slot_id')}",
         "event_type": event_type,
+        "field": {
+            "state_before": "observed",
+            "state_after": "suppressed" if role == "precheck" else "committed",
+            "phi": score,
+            "gradient": 0.0 if role == "precheck" else 1.0,
+        },
         "decision": {
             "kind": kind,
             "action": action,
@@ -308,8 +343,9 @@ def _sample_event(slot: dict[str, Any], *, role: str) -> dict[str, Any]:
             "risk_flags": list(slot.get("risk_flags") or []),
         },
         "tension": {
-            "score": 0.0 if role == "precheck" else 1.0,
-            "threshold": 0.5,
+            "score": score,
+            "threshold": threshold,
+            "gate_delta": round(score - threshold, 6),
             "components": {
                 "original_event_id": slot.get("original_event_id"),
                 "r3_runtime_slot_id": slot.get("slot_id"),
@@ -320,7 +356,7 @@ def _sample_event(slot: dict[str, Any], *, role: str) -> dict[str, Any]:
             "native": True,
             "projection": False,
             "proof_hash": "sha256:" + ("a" * 64),
-            "proof_ref": "negative-control-fixture",
+            "proof_ref": f"{control}-control-fixture",
         },
         "source": {
             "format": "native_pnva_event_v1",
@@ -356,6 +392,9 @@ def _negative_controls(matrix: dict[str, Any]) -> dict[str, Any]:
         )
 
     run_control("reject_projection_true", "commit", lambda event: event["proof"].update({"projection": True}), "PROJECTED_PROOF_FORBIDDEN")
+    run_control("reject_missing_timestamp", "commit", lambda event: event.pop("timestamp", None), "MISSING_TIMESTAMP")
+    run_control("reject_missing_field_state", "commit", lambda event: event.pop("field", None), "FIELD_STATE_INVALID")
+    run_control("reject_missing_gate_delta", "commit", lambda event: event["tension"].pop("gate_delta", None), "TENSION_GATE_DELTA_INVALID")
     run_control("reject_missing_entity", "commit", lambda event: event.pop("entity_id", None), "MISSING_ENTITY_ID")
     run_control("reject_missing_chain", "commit", lambda event: event.pop("causal_chain_id", None), "MISSING_CAUSAL_CHAIN_ID")
     run_control("reject_missing_hash", "commit", lambda event: event["proof"].pop("proof_hash", None), "PROOF_HASH_OR_VALIDITY_INVALID")
@@ -375,6 +414,40 @@ def _negative_controls(matrix: dict[str, Any]) -> dict[str, Any]:
     }
 
 
+def _positive_controls(matrix: dict[str, Any]) -> dict[str, Any]:
+    slots_by_action: dict[str, dict[str, Any]] = {}
+    for slot in _slot_map(matrix).values():
+        action = str(slot.get("decision_action") or "unknown")
+        slots_by_action.setdefault(action, slot)
+
+    controls: list[dict[str, Any]] = []
+    for action, slot in sorted(slots_by_action.items()):
+        for role in ("precheck", "commit"):
+            event = _sample_event(slot, role=role, control="positive")
+            codes = _event_codes(event, slot)
+            detected_role = _role(event, slot)
+            accepted = not codes and detected_role == role
+            controls.append(
+                {
+                    "name": f"accept_{action.lower()}_{role}",
+                    "expected_role": role,
+                    "detected_role": detected_role,
+                    "accepted": accepted,
+                    "codes": codes,
+                }
+            )
+
+    passed_count = sum(1 for item in controls if item["accepted"])
+    return {
+        "positive_control_count": len(controls),
+        "passed_count": passed_count,
+        "pass": bool(controls) and passed_count == len(controls),
+        "controls": controls,
+        "fixture_only": True,
+        "runtime_evidence": False,
+    }
+
+
 def build_report(repo: Path, runtime_events_path: Path | None = None) -> dict[str, Any]:
     repo = repo.resolve()
     matrix_path = repo / R3_RUNTIME_CAPTURE_MATRIX
@@ -387,6 +460,7 @@ def build_report(repo: Path, runtime_events_path: Path | None = None) -> dict[st
 
     runtime = _validate_runtime_events(matrix, runtime_events, bad_lines)
     negative = _negative_controls(matrix)
+    positive = _positive_controls(matrix)
     guard_ready = (
         matrix.get("pass") is True
         and matrix.get("classification") == "R3_RUNTIME_CAPTURE_MATRIX_READY_PENDING_RUNTIME"
@@ -394,6 +468,7 @@ def build_report(repo: Path, runtime_events_path: Path | None = None) -> dict[st
         and int(matrix.get("capture_slot_count", 0)) == len(slots)
         and int(matrix.get("required_runtime_event_count", 0)) == len(slots) * 2
         and negative["pass"] is True
+        and positive["pass"] is True
     )
     runtime_present = runtime_events_path is not None
     runtime_complete = (
@@ -437,10 +512,17 @@ def build_report(repo: Path, runtime_events_path: Path | None = None) -> dict[st
         "negative_control_count": negative["negative_control_count"],
         "negative_control_detected_count": negative["detected_count"],
         "negative_controls_pass": negative["pass"],
+        "positive_control_count": positive["positive_control_count"],
+        "positive_control_passed_count": positive["passed_count"],
+        "positive_controls_pass": positive["pass"],
+        "positive_controls_fixture_only": True,
         "enforced_controls": {
             "schema_version_required": "pnva.event.v1",
+            "timestamp_required": True,
+            "field_state_required": True,
             "entity_id_required": True,
             "causal_chain_id_required": True,
+            "tension_gate_delta_required": True,
             "proof_hash_required": True,
             "proof_native_required": True,
             "proof_projection_forbidden": True,
@@ -459,6 +541,7 @@ def build_report(repo: Path, runtime_events_path: Path | None = None) -> dict[st
         "slot_rows": runtime["slot_rows"],
         "rejections": runtime["rejections"],
         "negative_controls": negative["controls"],
+        "positive_controls": positive["controls"],
         "reports_checked": {
             "r3_runtime_capture_matrix": R3_RUNTIME_CAPTURE_MATRIX,
             "runtime_events": str(runtime_events_path) if runtime_events_path else "",
@@ -474,10 +557,12 @@ def build_report(repo: Path, runtime_events_path: Path | None = None) -> dict[st
             "rejected_event_count": runtime["rejected_event_count"],
             "negative_control_detected_count": negative["detected_count"],
             "negative_control_count": negative["negative_control_count"],
+            "positive_control_passed_count": positive["passed_count"],
+            "positive_control_count": positive["positive_control_count"],
         },
         "interpretation": {
             "purpose": "Protect the R3 runtime intake boundary before fresh events are accepted as legacy-free evidence.",
-            "sovereignty": "PNVA becomes harder to fake when projected proofs, missing entities, weak authority and incomplete no-tick pairs are rejected before cutover.",
+            "sovereignty": "PNVA becomes harder to fake when projected proofs, missing entities, weak authority, missing timestamps, missing field state and incomplete no-tick pairs are rejected before cutover.",
             "boundary": "Without a runtime-events file this guard certifies the intake contract only; it does not claim final runtime completion.",
         },
         "recommendations": [

@@ -45,8 +45,9 @@ required_runtime_event_count: 70
 required_no_tick_precheck_count: 35
 required_collapse_commit_count: 35
 event_template_count: 6
-mandatory_field_count: 21
-negative_control_detected_count: 10
+mandatory_field_count: 24
+negative_control_detected_count: 13
+positive_control_passed_count: 6
 ```
 
 ## Action Contracts
@@ -87,12 +88,15 @@ entity_id
 entity_type
 causal_chain_id
 event_type
+field.state_before
+field.state_after
 decision.kind
 decision.action
 decision.reason
 heuristics.rules
 tension.score
 tension.threshold
+tension.gate_delta
 tension.components.original_event_id
 tension.components.r3_runtime_slot_id
 proof.valid
@@ -128,7 +132,7 @@ Current result:
 
 ```text
 R3_RUNTIME_CONTRACT_VALIDATED_READY
-100 contract checks
+106 contract checks
 0 failures
 ```
 

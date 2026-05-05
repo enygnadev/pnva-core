@@ -9,6 +9,7 @@
     "commit_min_authority": "H2",
     "commit_must_match_slot_action": true,
     "entity_id_required": true,
+    "field_state_required": true,
     "precheck_must_be_no_tick": true,
     "proof_hash_required": true,
     "proof_native_required": true,
@@ -16,18 +17,20 @@
     "r3_runtime_slot_id_required": true,
     "schema_version_required": "pnva.event.v1",
     "source_format_required": "native_pnva_event_v1",
-    "target_rules_required_on_commit": true
+    "target_rules_required_on_commit": true,
+    "tension_gate_delta_required": true,
+    "timestamp_required": true
   },
-  "generated_at": "2026-05-05T10:10:44Z",
+  "generated_at": "2026-05-05T11:07:56Z",
   "intake_guard_ready": true,
   "interpretation": {
     "boundary": "Without a runtime-events file this guard certifies the intake contract only; it does not claim final runtime completion.",
     "purpose": "Protect the R3 runtime intake boundary before fresh events are accepted as legacy-free evidence.",
-    "sovereignty": "PNVA becomes harder to fake when projected proofs, missing entities, weak authority and incomplete no-tick pairs are rejected before cutover."
+    "sovereignty": "PNVA becomes harder to fake when projected proofs, missing entities, weak authority, missing timestamps, missing field state and incomplete no-tick pairs are rejected before cutover."
   },
   "matrix_classification": "R3_RUNTIME_CAPTURE_MATRIX_READY_PENDING_RUNTIME",
-  "negative_control_count": 10,
-  "negative_control_detected_count": 10,
+  "negative_control_count": 13,
+  "negative_control_detected_count": 13,
   "negative_controls": [
     {
       "codes": [
@@ -37,6 +40,30 @@
       "detected": true,
       "expected_detection": "PROJECTED_PROOF_FORBIDDEN",
       "name": "reject_projection_true"
+    },
+    {
+      "codes": [
+        "MISSING_TIMESTAMP"
+      ],
+      "detected": true,
+      "expected_detection": "MISSING_TIMESTAMP",
+      "name": "reject_missing_timestamp"
+    },
+    {
+      "codes": [
+        "FIELD_STATE_INVALID"
+      ],
+      "detected": true,
+      "expected_detection": "FIELD_STATE_INVALID",
+      "name": "reject_missing_field_state"
+    },
+    {
+      "codes": [
+        "TENSION_GATE_DELTA_INVALID"
+      ],
+      "detected": true,
+      "expected_detection": "TENSION_GATE_DELTA_INVALID",
+      "name": "reject_missing_gate_delta"
     },
     {
       "codes": [
@@ -117,6 +144,54 @@
   "negative_controls_pass": true,
   "pass": true,
   "pending_slot_count": 35,
+  "positive_control_count": 6,
+  "positive_control_passed_count": 6,
+  "positive_controls": [
+    {
+      "accepted": true,
+      "codes": [],
+      "detected_role": "precheck",
+      "expected_role": "precheck",
+      "name": "accept_cooldown_gpu_precheck"
+    },
+    {
+      "accepted": true,
+      "codes": [],
+      "detected_role": "commit",
+      "expected_role": "commit",
+      "name": "accept_cooldown_gpu_commit"
+    },
+    {
+      "accepted": true,
+      "codes": [],
+      "detected_role": "precheck",
+      "expected_role": "precheck",
+      "name": "accept_execute_precheck"
+    },
+    {
+      "accepted": true,
+      "codes": [],
+      "detected_role": "commit",
+      "expected_role": "commit",
+      "name": "accept_execute_commit"
+    },
+    {
+      "accepted": true,
+      "codes": [],
+      "detected_role": "precheck",
+      "expected_role": "precheck",
+      "name": "accept_resize_batch_precheck"
+    },
+    {
+      "accepted": true,
+      "codes": [],
+      "detected_role": "commit",
+      "expected_role": "commit",
+      "name": "accept_resize_batch_commit"
+    }
+  ],
+  "positive_controls_fixture_only": true,
+  "positive_controls_pass": true,
   "project": "PNVA-Core",
   "recommendations": [
     "Feed fresh runtime JSONL through this guard before rerunning R3 cutover approval.",
@@ -570,9 +645,11 @@
     "accepted_slot_count": 0,
     "capture_slot_count": 35,
     "intake_guard_ready": true,
-    "negative_control_count": 10,
-    "negative_control_detected_count": 10,
+    "negative_control_count": 13,
+    "negative_control_detected_count": 13,
     "pending_slot_count": 35,
+    "positive_control_count": 6,
+    "positive_control_passed_count": 6,
     "rejected_event_count": 0,
     "required_runtime_event_count": 70,
     "runtime_evidence_approved": false,

@@ -126,6 +126,27 @@ def build_report(repo: Path) -> dict[str, Any]:
     pending_slots = _safe_int(data["r3_runtime_capture_matrix"].get("pending_slot_count"))
     required_runtime_events = _safe_int(data["r3_runtime_capture_matrix"].get("required_runtime_event_count"))
     runtime_coverage_ratio = _safe_float(data["r3_runtime_capture_matrix"].get("runtime_capture_coverage_ratio"))
+    guard_positive_control_count = _safe_int(data["r3_runtime_evidence_guard"].get("positive_control_count"))
+    guard_positive_control_passed_count = _safe_int(data["r3_runtime_evidence_guard"].get("positive_control_passed_count"))
+    guard_positive_controls_ok = (
+        guard_positive_control_count > 0
+        and guard_positive_control_passed_count == guard_positive_control_count
+        and data["r3_runtime_evidence_guard"].get("positive_controls_pass") is True
+        and data["r3_runtime_evidence_guard"].get("positive_controls_fixture_only") is True
+    )
+    instrumentation_positive_control_count = _safe_int(data["r3_runtime_instrumentation_plan"].get("positive_control_count"))
+    instrumentation_positive_control_passed_count = _safe_int(data["r3_runtime_instrumentation_plan"].get("positive_control_passed_count"))
+    instrumentation_positive_controls_ok = (
+        instrumentation_positive_control_count > 0
+        and instrumentation_positive_control_passed_count == instrumentation_positive_control_count
+    )
+    contract_positive_control_count = _safe_int(data["r3_runtime_contract_validation"].get("positive_control_count"))
+    contract_positive_control_passed_count = _safe_int(data["r3_runtime_contract_validation"].get("positive_control_passed_count"))
+    contract_positive_controls_ok = (
+        contract_positive_control_count > 0
+        and contract_positive_control_passed_count == contract_positive_control_count
+        and data["r3_runtime_contract_validation"].get("positive_controls_fixture_only") is True
+    )
 
     r3_contract_ready = (
         data["r3_runtime_capture_matrix"].get("capture_contract_ready") is True
@@ -133,6 +154,9 @@ def build_report(repo: Path) -> dict[str, Any]:
         and data["r3_runtime_instrumentation_plan"].get("instrumentation_plan_ready") is True
         and data["r3_runtime_contract_validation"].get("contract_validation_ready") is True
         and _safe_int(data["r3_runtime_contract_validation"].get("failure_count"), -1) == 0
+        and guard_positive_controls_ok
+        and instrumentation_positive_controls_ok
+        and contract_positive_controls_ok
     )
     runtime_approved = data["r3_runtime_evidence_guard"].get("runtime_evidence_approved") is True
     cutover_approved = data["r3_cutover_gate"].get("cutover_approved") is True
@@ -307,6 +331,12 @@ def build_report(repo: Path) -> dict[str, Any]:
         "runtime_required_commit_count": _safe_int(data["r3_runtime_capture_matrix"].get("required_collapse_commit_count")),
         "runtime_contract_check_count": _safe_int(data["r3_runtime_contract_validation"].get("contract_check_count")),
         "runtime_contract_failure_count": _safe_int(data["r3_runtime_contract_validation"].get("failure_count")),
+        "runtime_negative_control_count": _safe_int(data["r3_runtime_evidence_guard"].get("negative_control_count")),
+        "runtime_negative_control_detected_count": _safe_int(data["r3_runtime_evidence_guard"].get("negative_control_detected_count")),
+        "runtime_positive_control_count": guard_positive_control_count,
+        "runtime_positive_control_passed_count": guard_positive_control_passed_count,
+        "runtime_mandatory_field_count": _safe_int(data["r3_runtime_contract_validation"].get("mandatory_field_count")),
+        "runtime_enforced_control_count": _safe_int(data["r3_runtime_contract_validation"].get("enforced_control_count")),
         "legacy_debt_count": _safe_int(data["sovereign_robustness_gate"].get("legacy_debt_count")),
         "low_authority_legacy_count": _safe_int(data["policy"].get("canonical_low_authority_legacy_count", _dig(data["policy"], ["summary", "low_authority_legacy_count"]))),
         "low_authority_influence_edge_count": _safe_int(data["heuristic_influence_map"].get("low_authority_strong_edge_count")),

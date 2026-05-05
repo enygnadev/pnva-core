@@ -23,12 +23,15 @@ MANDATORY_EVENT_FIELDS = [
     "entity_type",
     "causal_chain_id",
     "event_type",
+    "field.state_before",
+    "field.state_after",
     "decision.kind",
     "decision.action",
     "decision.reason",
     "heuristics.rules",
     "tension.score",
     "tension.threshold",
+    "tension.gate_delta",
     "tension.components.original_event_id",
     "tension.components.r3_runtime_slot_id",
     "proof.valid",
@@ -167,6 +170,7 @@ def build_report(repo: Path) -> dict[str, Any]:
         and int(matrix.get("required_runtime_event_count", 0)) == contract_runtime_events
         and int(guard.get("required_runtime_event_count", 0)) == contract_runtime_events
         and int(guard.get("negative_control_detected_count", -1)) == int(guard.get("negative_control_count", 0))
+        and int(guard.get("positive_control_passed_count", -1)) == int(guard.get("positive_control_count", 0))
     )
     classification = "R3_RUNTIME_INSTRUMENTATION_PLAN_READY" if plan_ready else "R3_RUNTIME_INSTRUMENTATION_PLAN_FAIL"
 
@@ -194,6 +198,8 @@ def build_report(repo: Path) -> dict[str, Any]:
         "target_rules": target_rules,
         "negative_control_count": int(guard.get("negative_control_count", 0)),
         "negative_control_detected_count": int(guard.get("negative_control_detected_count", 0)),
+        "positive_control_count": int(guard.get("positive_control_count", 0)),
+        "positive_control_passed_count": int(guard.get("positive_control_passed_count", 0)),
         "action_contracts": contracts,
         "mandatory_event_fields": MANDATORY_EVENT_FIELDS,
         "validation_commands": VALIDATION_COMMANDS,
@@ -237,6 +243,7 @@ def build_report(repo: Path) -> dict[str, Any]:
             "event_template_count": len(contracts) * 2,
             "mandatory_field_count": len(MANDATORY_EVENT_FIELDS),
             "negative_control_detected_count": int(guard.get("negative_control_detected_count", 0)),
+            "positive_control_passed_count": int(guard.get("positive_control_passed_count", 0)),
         },
         "interpretation": {
             "purpose": "Convert R3 runtime capture slots into concrete emitter contracts, required fields and validation commands.",

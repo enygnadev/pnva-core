@@ -251,7 +251,7 @@
       "pass": true
     }
   },
-  "comparison_count": 391,
+  "comparison_count": 406,
   "comparison_failure_count": 0,
   "comparison_failures": [],
   "comparisons": [
@@ -2337,19 +2337,47 @@
     {
       "field": "negative_control_count",
       "pass": true,
-      "published": 10,
+      "published": 13,
       "report": "r3_runtime_evidence_guard",
-      "reproduced": 10
+      "reproduced": 13
     },
     {
       "field": "negative_control_detected_count",
       "pass": true,
-      "published": 10,
+      "published": 13,
       "report": "r3_runtime_evidence_guard",
-      "reproduced": 10
+      "reproduced": 13
     },
     {
       "field": "negative_controls_pass",
+      "pass": true,
+      "published": true,
+      "report": "r3_runtime_evidence_guard",
+      "reproduced": true
+    },
+    {
+      "field": "positive_control_count",
+      "pass": true,
+      "published": 6,
+      "report": "r3_runtime_evidence_guard",
+      "reproduced": 6
+    },
+    {
+      "field": "positive_control_passed_count",
+      "pass": true,
+      "published": 6,
+      "report": "r3_runtime_evidence_guard",
+      "reproduced": 6
+    },
+    {
+      "field": "positive_controls_pass",
+      "pass": true,
+      "published": true,
+      "report": "r3_runtime_evidence_guard",
+      "reproduced": true
+    },
+    {
+      "field": "positive_controls_fixture_only",
       "pass": true,
       "published": true,
       "report": "r3_runtime_evidence_guard",
@@ -2456,9 +2484,9 @@
     {
       "field": "mandatory_field_count",
       "pass": true,
-      "published": 21,
+      "published": 24,
       "report": "r3_runtime_instrumentation_plan",
-      "reproduced": 21
+      "reproduced": 24
     },
     {
       "field": "target_rule_count",
@@ -2470,16 +2498,30 @@
     {
       "field": "negative_control_count",
       "pass": true,
-      "published": 10,
+      "published": 13,
       "report": "r3_runtime_instrumentation_plan",
-      "reproduced": 10
+      "reproduced": 13
     },
     {
       "field": "negative_control_detected_count",
       "pass": true,
-      "published": 10,
+      "published": 13,
       "report": "r3_runtime_instrumentation_plan",
-      "reproduced": 10
+      "reproduced": 13
+    },
+    {
+      "field": "positive_control_count",
+      "pass": true,
+      "published": 6,
+      "report": "r3_runtime_instrumentation_plan",
+      "reproduced": 6
+    },
+    {
+      "field": "positive_control_passed_count",
+      "pass": true,
+      "published": 6,
+      "report": "r3_runtime_instrumentation_plan",
+      "reproduced": 6
     },
     {
       "field": "classification",
@@ -2568,9 +2610,9 @@
     {
       "field": "mandatory_field_count",
       "pass": true,
-      "published": 21,
+      "published": 24,
       "report": "r3_runtime_contract_validation",
-      "reproduced": 21
+      "reproduced": 24
     },
     {
       "field": "required_component_count",
@@ -2582,30 +2624,51 @@
     {
       "field": "enforced_control_count",
       "pass": true,
-      "published": 12,
+      "published": 15,
       "report": "r3_runtime_contract_validation",
-      "reproduced": 12
+      "reproduced": 15
     },
     {
       "field": "negative_control_count",
       "pass": true,
-      "published": 10,
+      "published": 13,
       "report": "r3_runtime_contract_validation",
-      "reproduced": 10
+      "reproduced": 13
     },
     {
       "field": "negative_control_detected_count",
       "pass": true,
-      "published": 10,
+      "published": 13,
       "report": "r3_runtime_contract_validation",
-      "reproduced": 10
+      "reproduced": 13
+    },
+    {
+      "field": "positive_control_count",
+      "pass": true,
+      "published": 6,
+      "report": "r3_runtime_contract_validation",
+      "reproduced": 6
+    },
+    {
+      "field": "positive_control_passed_count",
+      "pass": true,
+      "published": 6,
+      "report": "r3_runtime_contract_validation",
+      "reproduced": 6
+    },
+    {
+      "field": "positive_controls_fixture_only",
+      "pass": true,
+      "published": true,
+      "report": "r3_runtime_contract_validation",
+      "reproduced": true
     },
     {
       "field": "contract_check_count",
       "pass": true,
-      "published": 100,
+      "published": 106,
       "report": "r3_runtime_contract_validation",
-      "reproduced": 100
+      "reproduced": 106
     },
     {
       "field": "failure_count",
@@ -2715,9 +2778,9 @@
     {
       "field": "runtime_contract_check_count",
       "pass": true,
-      "published": 100,
+      "published": 106,
       "report": "sovereign_evolution_ledger",
-      "reproduced": 100
+      "reproduced": 106
     },
     {
       "field": "runtime_contract_failure_count",
@@ -2725,6 +2788,48 @@
       "published": 0,
       "report": "sovereign_evolution_ledger",
       "reproduced": 0
+    },
+    {
+      "field": "runtime_negative_control_count",
+      "pass": true,
+      "published": 13,
+      "report": "sovereign_evolution_ledger",
+      "reproduced": 13
+    },
+    {
+      "field": "runtime_negative_control_detected_count",
+      "pass": true,
+      "published": 13,
+      "report": "sovereign_evolution_ledger",
+      "reproduced": 13
+    },
+    {
+      "field": "runtime_positive_control_count",
+      "pass": true,
+      "published": 6,
+      "report": "sovereign_evolution_ledger",
+      "reproduced": 6
+    },
+    {
+      "field": "runtime_positive_control_passed_count",
+      "pass": true,
+      "published": 6,
+      "report": "sovereign_evolution_ledger",
+      "reproduced": 6
+    },
+    {
+      "field": "runtime_mandatory_field_count",
+      "pass": true,
+      "published": 24,
+      "report": "sovereign_evolution_ledger",
+      "reproduced": 24
+    },
+    {
+      "field": "runtime_enforced_control_count",
+      "pass": true,
+      "published": 15,
+      "report": "sovereign_evolution_ledger",
+      "reproduced": 15
     },
     {
       "field": "legacy_debt_count",
@@ -2939,9 +3044,9 @@
     {
       "field": "evidence_hash",
       "pass": true,
-      "published": "sha256:cce27e8a5bb3591ff392d7dbc812b9bc43fe82e2b7b2ce57c4bfdf9e5ffb65c8",
+      "published": "sha256:0d46fbbce51beac952e6c610e61e8f760ee8c98ca63e11d67193a64f373d3447",
       "report": "attestation",
-      "reproduced": "sha256:cce27e8a5bb3591ff392d7dbc812b9bc43fe82e2b7b2ce57c4bfdf9e5ffb65c8"
+      "reproduced": "sha256:0d46fbbce51beac952e6c610e61e8f760ee8c98ca63e11d67193a64f373d3447"
     },
     {
       "field": "classification",
@@ -2960,9 +3065,9 @@
     {
       "field": "check_count",
       "pass": true,
-      "published": 303,
+      "published": 331,
       "report": "semantic",
-      "reproduced": 303
+      "reproduced": 331
     },
     {
       "field": "error_count",
@@ -2994,7 +3099,7 @@
     }
   ],
   "failure_count": 0,
-  "generated_at": "2026-05-05T10:52:07Z",
+  "generated_at": "2026-05-05T11:13:28Z",
   "interpretation": {
     "boundary": "Generated timestamps, temporary paths and non-semantic ordering are intentionally excluded from comparison.",
     "purpose": "Regenerate PNVA evidence reports with current tools and compare stable fields against the published evidence package.",
@@ -3009,7 +3114,7 @@
   ],
   "schema_version": "pnva.reproducibility_guard.v1",
   "summary": {
-    "published_attestation_hash": "sha256:cce27e8a5bb3591ff392d7dbc812b9bc43fe82e2b7b2ce57c4bfdf9e5ffb65c8",
+    "published_attestation_hash": "sha256:0d46fbbce51beac952e6c610e61e8f760ee8c98ca63e11d67193a64f373d3447",
     "reports_reproduced": [
       "adversarial",
       "attestation",
@@ -3047,7 +3152,7 @@
       "suppression_ledger",
       "tension_decision"
     ],
-    "reproduced_attestation_hash": "sha256:cce27e8a5bb3591ff392d7dbc812b9bc43fe82e2b7b2ce57c4bfdf9e5ffb65c8",
-    "stable_fields_compared": 391
+    "reproduced_attestation_hash": "sha256:0d46fbbce51beac952e6c610e61e8f760ee8c98ca63e11d67193a64f373d3447",
+    "stable_fields_compared": 406
   }
 }

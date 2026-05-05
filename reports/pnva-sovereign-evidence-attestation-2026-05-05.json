@@ -355,8 +355,8 @@
       "present": true,
       "reported_pass": true,
       "required": true,
-      "sha256": "516e5adb1cae5dd138b694e088a9a526f37ffd9cbc48d578163d1ccd392fe519",
-      "size_bytes": 17586
+      "sha256": "bf890e70760e2726e2e98fa8fa75dadef8f312cd13994a7d512570458566937a",
+      "size_bytes": 19547
     },
     {
       "classification": "R3_RUNTIME_INSTRUMENTATION_PLAN_READY",
@@ -368,8 +368,8 @@
       "present": true,
       "reported_pass": true,
       "required": true,
-      "sha256": "075e625cc3315d297cd6a326658afd5f98b79afc143e179e7dd956d358de43f0",
-      "size_bytes": 14532
+      "sha256": "b5c0523e0ad215e668824e15e400745b124015d5d89be5c2ae817b1695aa9a64",
+      "size_bytes": 14718
     },
     {
       "classification": "R3_RUNTIME_CONTRACT_VALIDATED_READY",
@@ -381,8 +381,8 @@
       "present": true,
       "reported_pass": true,
       "required": true,
-      "sha256": "2c1ba209c40947c90000822a4bba8e5c9df3eb756b124e9d63ffe86e05661316",
-      "size_bytes": 39185
+      "sha256": "528788c11aa1969ea259435aa523c8e6de36a46df1cda121703f3cfd42f2b117",
+      "size_bytes": 40919
     },
     {
       "classification": "PNVA_SOVEREIGN_EVOLUTION_LEDGER_READY_R3_RUNTIME_REQUIRED",
@@ -394,8 +394,8 @@
       "present": true,
       "reported_pass": true,
       "required": true,
-      "sha256": "40cafc313f22143db493d8c10356b893c42d7f75cd99201dc1a943cff4b12afd",
-      "size_bytes": 9388
+      "sha256": "7953a1b930718d2aa94a7ef85f68699e019cd064668de07bbce114730b3825dd",
+      "size_bytes": 9641
     },
     {
       "classification": "NATIVE_EMITTER_READY",
@@ -558,9 +558,9 @@
     "entity and heuristic maturity",
     "sovereign audit consumes this attestation without being part of its hash seed"
   ],
-  "evidence_hash": "sha256:cce27e8a5bb3591ff392d7dbc812b9bc43fe82e2b7b2ce57c4bfdf9e5ffb65c8",
+  "evidence_hash": "sha256:0d46fbbce51beac952e6c610e61e8f760ee8c98ca63e11d67193a64f373d3447",
   "failure_count": 0,
-  "generated_at": "2026-05-05T10:51:24Z",
+  "generated_at": "2026-05-05T11:11:57Z",
   "interpretation": {
     "boundary": "This attests repository evidence integrity; it is not a universal proof of all possible PNVA deployments.",
     "hash_policy": "The evidence_hash changes when any tracked artifact hash, classification or pass flag changes.",

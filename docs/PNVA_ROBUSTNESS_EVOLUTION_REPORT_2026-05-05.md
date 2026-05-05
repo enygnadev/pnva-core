@@ -764,8 +764,11 @@ required_runtime_event_count: 70
 accepted_slot_count: 0
 pending_slot_count: 35
 rejected_event_count: 0
-negative_control_detected_count: 10
-negative_control_count: 10
+negative_control_detected_count: 13
+negative_control_count: 13
+positive_control_passed_count: 6
+positive_control_count: 6
+positive_controls_fixture_only: true
 ```
 
 This prevents a weak R3 completion claim. Final runtime evidence must be fresh, native, no-tick paired, entity-bound, slot-bound, source-format-bound, proof-clean and H2+ authorized before it can be accepted by the cutover path.
@@ -788,8 +791,9 @@ required_runtime_event_count: 70
 required_no_tick_precheck_count: 35
 required_collapse_commit_count: 35
 event_template_count: 6
-mandatory_field_count: 21
-negative_control_detected_count: 10
+mandatory_field_count: 24
+negative_control_detected_count: 13
+positive_control_passed_count: 6
 ```
 
 Action contracts:
@@ -817,9 +821,11 @@ capture_slot_count: 35
 action_contract_count: 3
 required_runtime_event_count: 70
 event_template_count: 6
-mandatory_field_count: 21
-negative_control_detected_count: 10
-contract_check_count: 100
+mandatory_field_count: 24
+negative_control_detected_count: 13
+positive_control_passed_count: 6
+enforced_control_count: 15
+contract_check_count: 106
 failure_count: 0
 ```
 
@@ -845,8 +851,11 @@ r3_cutover_approved: false
 r3_runtime_capture_coverage_percent: 0.0
 runtime_pending_slot_count: 35
 runtime_required_event_count: 70
-runtime_contract_check_count: 100
+runtime_contract_check_count: 106
 runtime_contract_failure_count: 0
+runtime_positive_control_passed_count: 6
+runtime_mandatory_field_count: 24
+runtime_enforced_control_count: 15
 controlled_warning_count: 1232
 blocker_count: 2
 priority_action_count: 4
@@ -952,7 +961,7 @@ Current result:
 
 ```text
 classification: SEMANTIC_CONSISTENCY_READY
-check_count: 303
+check_count: 331
 error_count: 0
 warning_count: 0
 ```
@@ -995,7 +1004,7 @@ Current result:
 ```text
 classification: REPRODUCIBILITY_READY
 command_count: 35
-comparison_count: 391
+comparison_count: 406
 failure_count: 0
 command_failure_count: 0
 comparison_failure_count: 0
