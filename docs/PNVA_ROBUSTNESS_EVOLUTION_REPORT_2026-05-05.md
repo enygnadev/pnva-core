@@ -769,14 +769,14 @@ duplicate_proof_hash_rejection_count: 0
 duplicate_proof_ref_rejection_count: 0
 no_tick_pair_integrity_count: 0
 no_tick_pair_failure_count: 0
-negative_control_detected_count: 42
-negative_control_count: 42
+negative_control_detected_count: 43
+negative_control_count: 43
 positive_control_passed_count: 6
 positive_control_count: 6
 positive_controls_fixture_only: true
 ```
 
-This prevents a weak R3 completion claim. Final runtime evidence must be fresh, native, no-tick paired, same-chain ordered, exact event-type bound, exact-cardinality per slot, exact-count by declared runtime requirement, duplicate-free across events/proof hashes/proof refs, entity-bound by ID and type, slot-bound, source-format-bound, source-sanitized, proof-clean, proof-hash bound to event identity, proof-ref bound to slot/role, gate-delta consistent, heuristic-clean, risk-flag clean and H2+ authorized before it can be accepted by the cutover path.
+This prevents a weak R3 completion claim. Final runtime evidence must be fresh, native, no-tick paired, same-chain ordered, exact event-type bound, exact-cardinality per slot, exact-count by declared runtime requirement, duplicate-free across events/proof hashes/proof refs, entity-bound by ID and type, slot-bound, source-format-bound, source-sanitized, proof-clean, proof-hash bound to event identity, proof-ref bound to slot/role, gate-delta consistent, heuristic-clean, risk-flag clean on prechecks and commits, and H2+ authorized before it can be accepted by the cutover path.
 
 ### 25. R3 runtime instrumentation plan
 
@@ -797,7 +797,7 @@ required_no_tick_precheck_count: 35
 required_collapse_commit_count: 35
 event_template_count: 6
 mandatory_field_count: 26
-negative_control_detected_count: 42
+negative_control_detected_count: 43
 positive_control_passed_count: 6
 ```
 
@@ -809,7 +809,7 @@ COOLDOWN_GPU: 2 slots, 4 runtime events
 EXECUTE: 1 slot, 2 runtime events
 ```
 
-This makes R3 operational instead of informal. The final runtime must emit native no-tick prechecks and native commits with entity identity and type, same-chain causal pair identity, original event mapping, R3 runtime slot identity, exact event types, exactly one precheck and one commit per slot, strict proof hashes bound to event identity, runtime proof refs bound to slot/role, known heuristic rules, known and unique risk flags, unique event IDs, ordered timestamps, `proof.native=true`, `source.format=native_pnva_event_v1`, `source.sanitized=true` and `proof.projection=false`.
+This makes R3 operational instead of informal. The final runtime must emit native no-tick prechecks and native commits with entity identity and type, same-chain causal pair identity, original event mapping, R3 runtime slot identity, exact event types, exactly one precheck and one commit per slot, strict proof hashes bound to event identity, runtime proof refs bound to slot/role, known heuristic rules, known and unique risk flags on both prechecks and commits, unique event IDs, ordered timestamps, `proof.native=true`, `source.format=native_pnva_event_v1`, `source.sanitized=true` and `proof.projection=false`.
 
 ### 26. R3 runtime contract validation
 
@@ -827,10 +827,10 @@ action_contract_count: 3
 required_runtime_event_count: 70
 event_template_count: 6
 mandatory_field_count: 26
-negative_control_detected_count: 42
+negative_control_detected_count: 43
 positive_control_passed_count: 6
-enforced_control_count: 39
-contract_check_count: 217
+enforced_control_count: 40
+contract_check_count: 221
 failure_count: 0
 ```
 
@@ -856,11 +856,11 @@ r3_cutover_approved: false
 r3_runtime_capture_coverage_percent: 0.0
 runtime_pending_slot_count: 35
 runtime_required_event_count: 70
-runtime_contract_check_count: 217
+runtime_contract_check_count: 221
 runtime_contract_failure_count: 0
 runtime_positive_control_passed_count: 6
 runtime_mandatory_field_count: 26
-runtime_enforced_control_count: 39
+runtime_enforced_control_count: 40
 controlled_warning_count: 1232
 blocker_count: 2
 priority_action_count: 4

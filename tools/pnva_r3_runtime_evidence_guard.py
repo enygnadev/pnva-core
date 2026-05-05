@@ -382,6 +382,9 @@ def _event_codes(event: dict[str, Any], slot: dict[str, Any]) -> list[str]:
             codes.append("PRECHECK_GATE_DELTA_POSITIVE")
         if "native_event_emitter" not in rules:
             codes.append("PRECHECK_NATIVE_RULE_MISSING")
+        missing_precheck_risk_flags = sorted(target_risk_flags - risk_flags)
+        if missing_precheck_risk_flags:
+            codes.append("PRECHECK_TARGET_RISK_FLAGS_MISSING")
     elif role == "commit":
         if str(event.get("event_type") or "") != _expected_event_type(slot, "commit"):
             codes.append("COMMIT_EVENT_TYPE_MISMATCH")
@@ -455,6 +458,7 @@ def _validate_runtime_events(matrix: dict[str, Any], events: list[dict[str, Any]
     event_type_mix: Counter[str] = Counter()
     action_mix: Counter[str] = Counter()
     rule_mix: Counter[str] = Counter()
+    risk_flag_mix: Counter[str] = Counter()
     seen_event_lines: dict[str, int] = {}
     seen_proof_hash_lines: dict[str, int] = {}
     seen_proof_ref_lines: dict[str, int] = {}
@@ -499,6 +503,8 @@ def _validate_runtime_events(matrix: dict[str, Any], events: list[dict[str, Any]
         action_mix[_decision_action(event)] += 1
         for rule in _rules(event):
             rule_mix[rule] += 1
+        for flag in _risk_flags(event):
+            risk_flag_mix[flag] += 1
         if codes:
             rejection = {
                 "line": event.get("_line", 0),
@@ -566,6 +572,7 @@ def _validate_runtime_events(matrix: dict[str, Any], events: list[dict[str, Any]
         "event_type_mix": event_type_mix.most_common(),
         "decision_action_mix": action_mix.most_common(),
         "heuristic_rule_mix": rule_mix.most_common(),
+        "heuristic_risk_flag_mix": risk_flag_mix.most_common(),
         "slot_rows": slot_rows,
         "rejections": rejections,
     }
@@ -701,6 +708,7 @@ def _negative_controls(matrix: dict[str, Any]) -> dict[str, Any]:
     run_control("reject_duplicate_risk_flag", "commit", lambda event: event["heuristics"].update({"risk_flags": list(slot.get("risk_flags") or []) + [str((slot.get("risk_flags") or ["RESIZE_BATCH_PRESSURE"])[0])]}), "RISK_FLAG_DUPLICATE")
     run_control("reject_unknown_risk_flag", "commit", lambda event: event["heuristics"].update({"risk_flags": list(slot.get("risk_flags") or []) + ["UNKNOWN_RISK_FLAG"]}), "RISK_FLAG_UNKNOWN")
     run_control("reject_missing_target_risk_flags", "commit", lambda event: event["heuristics"].update({"risk_flags": []}), "COMMIT_TARGET_RISK_FLAGS_MISSING")
+    run_control("reject_precheck_missing_target_risk_flags", "precheck", lambda event: event["heuristics"].update({"risk_flags": []}), "PRECHECK_TARGET_RISK_FLAGS_MISSING")
     run_control("reject_wrong_action", "commit", lambda event: event["decision"].update({"action": "WRONG_ACTION"}), "COMMIT_ACTION_MISMATCH")
     run_control("reject_precheck_event_type_mismatch", "precheck", lambda event: event.update({"event_type": "wrong_precheck_event_type"}), "PRECHECK_EVENT_TYPE_MISMATCH")
     run_control("reject_commit_event_type_mismatch", "commit", lambda event: event.update({"event_type": "wrong_commit_event_type"}), "COMMIT_EVENT_TYPE_MISMATCH")
@@ -898,12 +906,14 @@ def build_report(repo: Path, runtime_events_path: Path | None = None) -> dict[st
             "risk_flags_list_required": True,
             "risk_flags_known_required": True,
             "risk_flags_unique_required": True,
+            "target_risk_flags_required_on_precheck": True,
             "target_risk_flags_required_on_commit": True,
         },
         "runtime_mix": {
             "event_type_mix": runtime["event_type_mix"],
             "decision_action_mix": runtime["decision_action_mix"],
             "heuristic_rule_mix": runtime["heuristic_rule_mix"],
+            "heuristic_risk_flag_mix": runtime["heuristic_risk_flag_mix"],
         },
         "slot_rows": runtime["slot_rows"],
         "rejections": runtime["rejections"],
@@ -934,7 +944,7 @@ def build_report(repo: Path, runtime_events_path: Path | None = None) -> dict[st
         },
         "interpretation": {
             "purpose": "Protect the R3 runtime intake boundary before fresh events are accepted as legacy-free evidence.",
-            "sovereignty": "PNVA becomes harder to fake when projected proofs, malformed, duplicated or content-unbound proof hashes, wrong proof-ref slot roles, wrong event types, malformed or inconsistent tension values, invalid gate signs, duplicate events, entity or slot mismatches, unsanitized sources, unknown heuristic rules, invalid risk flags, weak authority, missing target rules, missing target risk flags, extra runtime events and causally broken no-tick pairs are rejected before cutover.",
+            "sovereignty": "PNVA becomes harder to fake when projected proofs, malformed, duplicated or content-unbound proof hashes, wrong proof-ref slot roles, wrong event types, malformed or inconsistent tension values, invalid gate signs, duplicate events, entity or slot mismatches, unsanitized sources, unknown heuristic rules, invalid risk flags, weak authority, missing target rules, missing precheck or commit target risk flags, extra runtime events and causally broken no-tick pairs are rejected before cutover.",
             "boundary": "Without a runtime-events file this guard certifies the intake contract only; it does not claim final runtime completion.",
         },
         "recommendations": [
@@ -949,7 +959,7 @@ def build_report(repo: Path, runtime_events_path: Path | None = None) -> dict[st
             "Require proof_ref to match runtime:<slot-id>:precheck or runtime:<slot-id>:commit.",
             "Require gate_delta to equal score minus threshold, with nonpositive prechecks and nonnegative commits.",
             "Reject unknown or duplicated heuristic rules before accepting runtime coverage.",
-            "Reject malformed, unknown, duplicated or missing target risk flags before accepting runtime coverage.",
+            "Reject malformed, unknown, duplicated or missing target risk flags on no-tick prechecks and commits before accepting runtime coverage.",
             "Keep entity_id, causal_chain_id, source.sanitized and proof_hash mandatory for every runtime event.",
         ],
     }

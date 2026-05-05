@@ -126,6 +126,7 @@ def _action_contracts(slots: list[dict[str, Any]]) -> list[dict[str, Any]]:
                     "risk_flags_list_required": True,
                     "known_risk_flags_only": True,
                     "duplicate_risk_flags_forbidden": True,
+                    "precheck_target_risk_flags_required": True,
                     "commit_target_risk_flags_required": True,
                 },
                 "precheck_template": {

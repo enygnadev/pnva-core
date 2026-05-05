@@ -42,22 +42,23 @@
     "source_format_required": "native_pnva_event_v1",
     "source_sanitized_required": true,
     "target_risk_flags_required_on_commit": true,
+    "target_risk_flags_required_on_precheck": true,
     "target_rules_required_on_commit": true,
     "tension_gate_delta_consistency_required": true,
     "tension_gate_delta_required": true,
     "timestamp_iso8601_required": true,
     "timestamp_required": true
   },
-  "generated_at": "2026-05-05T12:26:14Z",
+  "generated_at": "2026-05-05T12:37:51Z",
   "intake_guard_ready": true,
   "interpretation": {
     "boundary": "Without a runtime-events file this guard certifies the intake contract only; it does not claim final runtime completion.",
     "purpose": "Protect the R3 runtime intake boundary before fresh events are accepted as legacy-free evidence.",
-    "sovereignty": "PNVA becomes harder to fake when projected proofs, malformed, duplicated or content-unbound proof hashes, wrong proof-ref slot roles, wrong event types, malformed or inconsistent tension values, invalid gate signs, duplicate events, entity or slot mismatches, unsanitized sources, unknown heuristic rules, invalid risk flags, weak authority, missing target rules, missing target risk flags, extra runtime events and causally broken no-tick pairs are rejected before cutover."
+    "sovereignty": "PNVA becomes harder to fake when projected proofs, malformed, duplicated or content-unbound proof hashes, wrong proof-ref slot roles, wrong event types, malformed or inconsistent tension values, invalid gate signs, duplicate events, entity or slot mismatches, unsanitized sources, unknown heuristic rules, invalid risk flags, weak authority, missing target rules, missing precheck or commit target risk flags, extra runtime events and causally broken no-tick pairs are rejected before cutover."
   },
   "matrix_classification": "R3_RUNTIME_CAPTURE_MATRIX_READY_PENDING_RUNTIME",
-  "negative_control_count": 42,
-  "negative_control_detected_count": 42,
+  "negative_control_count": 43,
+  "negative_control_detected_count": 43,
   "negative_controls": [
     {
       "codes": [
@@ -293,6 +294,15 @@
     {
       "codes": [
         "PROOF_HASH_BINDING_INVALID",
+        "PRECHECK_TARGET_RISK_FLAGS_MISSING"
+      ],
+      "detected": true,
+      "expected_detection": "PRECHECK_TARGET_RISK_FLAGS_MISSING",
+      "name": "reject_precheck_missing_target_risk_flags"
+    },
+    {
+      "codes": [
+        "PROOF_HASH_BINDING_INVALID",
         "COMMIT_ACTION_MISMATCH",
         "RUNTIME_ROLE_UNKNOWN"
       ],
@@ -515,7 +525,7 @@
     "Require proof_ref to match runtime:<slot-id>:precheck or runtime:<slot-id>:commit.",
     "Require gate_delta to equal score minus threshold, with nonpositive prechecks and nonnegative commits.",
     "Reject unknown or duplicated heuristic rules before accepting runtime coverage.",
-    "Reject malformed, unknown, duplicated or missing target risk flags before accepting runtime coverage.",
+    "Reject malformed, unknown, duplicated or missing target risk flags on no-tick prechecks and commits before accepting runtime coverage.",
     "Keep entity_id, causal_chain_id, source.sanitized and proof_hash mandatory for every runtime event."
   ],
   "rejected_event_count": 0,
@@ -534,6 +544,7 @@
   "runtime_mix": {
     "decision_action_mix": [],
     "event_type_mix": [],
+    "heuristic_risk_flag_mix": [],
     "heuristic_rule_mix": []
   },
   "schema_version": "pnva.r3_runtime_evidence_guard.v1",
@@ -1177,8 +1188,8 @@
     "duplicate_proof_hash_rejection_count": 0,
     "duplicate_proof_ref_rejection_count": 0,
     "intake_guard_ready": true,
-    "negative_control_count": 42,
-    "negative_control_detected_count": 42,
+    "negative_control_count": 43,
+    "negative_control_detected_count": 43,
     "no_tick_pair_failure_count": 0,
     "no_tick_pair_integrity_count": 0,
     "pending_slot_count": 35,
