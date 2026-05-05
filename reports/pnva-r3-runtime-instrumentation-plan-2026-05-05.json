@@ -31,7 +31,9 @@
         ],
         "schema_version": "pnva.event.v1",
         "source": {
+          "file_name": "<runtime-emitter-name>",
           "format": "native_pnva_event_v1",
+          "line": "<runtime-event-sequence>",
           "sanitized": true
         }
       },
@@ -129,12 +131,15 @@
         ],
         "schema_version": "pnva.event.v1",
         "source": {
+          "file_name": "<runtime-emitter-name>",
           "format": "native_pnva_event_v1",
+          "line": "<runtime-event-sequence>",
           "sanitized": true
         }
       },
       "proof_policy": {
         "proof_hash_binds_event_identity": true,
+        "proof_hash_binds_source_location": true,
         "proof_hash_sha256_format_required": true,
         "proof_hash_unique_required": true,
         "proof_ref_runtime_slot_role_required": true,
@@ -224,7 +229,9 @@
         ],
         "schema_version": "pnva.event.v1",
         "source": {
+          "file_name": "<runtime-emitter-name>",
           "format": "native_pnva_event_v1",
+          "line": "<runtime-event-sequence>",
           "sanitized": true
         }
       },
@@ -291,12 +298,15 @@
         ],
         "schema_version": "pnva.event.v1",
         "source": {
+          "file_name": "<runtime-emitter-name>",
           "format": "native_pnva_event_v1",
+          "line": "<runtime-event-sequence>",
           "sanitized": true
         }
       },
       "proof_policy": {
         "proof_hash_binds_event_identity": true,
+        "proof_hash_binds_source_location": true,
         "proof_hash_sha256_format_required": true,
         "proof_hash_unique_required": true,
         "proof_ref_runtime_slot_role_required": true,
@@ -351,7 +361,9 @@
         ],
         "schema_version": "pnva.event.v1",
         "source": {
+          "file_name": "<runtime-emitter-name>",
           "format": "native_pnva_event_v1",
+          "line": "<runtime-event-sequence>",
           "sanitized": true
         }
       },
@@ -416,12 +428,15 @@
         ],
         "schema_version": "pnva.event.v1",
         "source": {
+          "file_name": "<runtime-emitter-name>",
           "format": "native_pnva_event_v1",
+          "line": "<runtime-event-sequence>",
           "sanitized": true
         }
       },
       "proof_policy": {
         "proof_hash_binds_event_identity": true,
+        "proof_hash_binds_source_location": true,
         "proof_hash_sha256_format_required": true,
         "proof_hash_unique_required": true,
         "proof_ref_runtime_slot_role_required": true,
@@ -452,7 +467,7 @@
   "classification": "R3_RUNTIME_INSTRUMENTATION_PLAN_READY",
   "entity_target_count": 1,
   "event_template_count": 6,
-  "generated_at": "2026-05-05T12:37:59Z",
+  "generated_at": "2026-05-05T12:48:51Z",
   "instrumentation_plan_ready": true,
   "interpretation": {
     "boundary": "This plan is not runtime evidence and does not approve R3 cutover; it defines how fresh runtime evidence must be emitted and validated.",
@@ -484,12 +499,14 @@
     "proof.native",
     "proof.proof_hash",
     "proof.proof_ref",
+    "source.file_name",
     "source.format",
+    "source.line",
     "source.sanitized"
   ],
-  "mandatory_field_count": 26,
-  "negative_control_count": 43,
-  "negative_control_detected_count": 43,
+  "mandatory_field_count": 28,
+  "negative_control_count": 46,
+  "negative_control_detected_count": 46,
   "pass": true,
   "positive_control_count": 6,
   "positive_control_passed_count": 6,
@@ -514,7 +531,7 @@
       "phase": 1
     },
     {
-      "exit_criteria": "Collect at least 70 fresh events covering 35 slots without proof.projection=true.",
+      "exit_criteria": "Collect exactly 70 fresh events covering 35 slots with source.file_name, source.line and without proof.projection=true.",
       "name": "capture_fresh_runtime_jsonl",
       "phase": 2
     },
@@ -545,8 +562,8 @@
     "entity_target_count": 1,
     "event_template_count": 6,
     "instrumentation_plan_ready": true,
-    "mandatory_field_count": 26,
-    "negative_control_detected_count": 43,
+    "mandatory_field_count": 28,
+    "negative_control_detected_count": 46,
     "positive_control_passed_count": 6,
     "required_runtime_event_count": 70
   },

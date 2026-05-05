@@ -40,7 +40,9 @@ MANDATORY_EVENT_FIELDS = [
     "proof.native",
     "proof.proof_hash",
     "proof.proof_ref",
+    "source.file_name",
     "source.format",
+    "source.line",
     "source.sanitized",
 ]
 
@@ -116,6 +118,7 @@ def _action_contracts(slots: list[dict[str, Any]]) -> list[dict[str, Any]]:
                 "proof_policy": {
                     "proof_hash_sha256_format_required": True,
                     "proof_hash_binds_event_identity": True,
+                    "proof_hash_binds_source_location": True,
                     "proof_hash_unique_required": True,
                     "proof_ref_unique_required": True,
                     "proof_ref_runtime_slot_role_required": True,
@@ -145,7 +148,9 @@ def _action_contracts(slots: list[dict[str, Any]]) -> list[dict[str, Any]]:
                         "proof_ref": "runtime:<slot-id>:precheck",
                     },
                     "source": {
+                        "file_name": "<runtime-emitter-name>",
                         "format": "native_pnva_event_v1",
+                        "line": "<runtime-event-sequence>",
                         "sanitized": True,
                     },
                     "required_rules": sorted(set(["native_event_emitter", *rules])),
@@ -171,7 +176,9 @@ def _action_contracts(slots: list[dict[str, Any]]) -> list[dict[str, Any]]:
                         "proof_ref": "runtime:<slot-id>:commit",
                     },
                     "source": {
+                        "file_name": "<runtime-emitter-name>",
                         "format": "native_pnva_event_v1",
+                        "line": "<runtime-event-sequence>",
                         "sanitized": True,
                     },
                     "min_authority": "H2",
@@ -252,7 +259,7 @@ def build_report(repo: Path) -> dict[str, Any]:
             {
                 "phase": 2,
                 "name": "capture_fresh_runtime_jsonl",
-                "exit_criteria": "Collect at least 70 fresh events covering 35 slots without proof.projection=true.",
+                "exit_criteria": "Collect exactly 70 fresh events covering 35 slots with source.file_name, source.line and without proof.projection=true.",
             },
             {
                 "phase": 3,

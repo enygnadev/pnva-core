@@ -40,7 +40,9 @@ REQUIRED_MANDATORY_FIELDS = [
     "proof.native",
     "proof.proof_hash",
     "proof.proof_ref",
+    "source.file_name",
     "source.format",
+    "source.line",
     "source.sanitized",
 ]
 
@@ -67,12 +69,15 @@ REQUIRED_ENFORCED_CONTROLS = {
     "proof_hash_required": True,
     "proof_hash_sha256_format_required": True,
     "proof_hash_binds_event_identity": True,
+    "proof_hash_binds_source_location": True,
     "proof_hash_unique_required": True,
     "proof_ref_unique_required": True,
     "proof_ref_runtime_slot_role_required": True,
     "proof_native_required": True,
     "proof_projection_forbidden": True,
     "source_format_required": "native_pnva_event_v1",
+    "source_file_name_required": True,
+    "source_line_required": True,
     "source_sanitized_required": True,
     "r3_runtime_slot_id_required": True,
     "commit_min_authority": "H2",
@@ -158,7 +163,9 @@ def _template_checks(checks: list[dict[str, Any]], contract: dict[str, Any]) -> 
         _add_check(checks, "template", f"{contract_id}_{template_name}_proof_projection", _dig(template, ["proof", "projection"]), False)
         _add_check(checks, "template", f"{contract_id}_{template_name}_proof_native", _dig(template, ["proof", "native"]), True)
         _add_check(checks, "template", f"{contract_id}_{template_name}_proof_valid", _dig(template, ["proof", "valid"]), True)
+        _add_check(checks, "template", f"{contract_id}_{template_name}_source_file_name_present", bool(_dig(template, ["source", "file_name"])), True)
         _add_check(checks, "template", f"{contract_id}_{template_name}_source_format", _dig(template, ["source", "format"]), "native_pnva_event_v1")
+        _add_check(checks, "template", f"{contract_id}_{template_name}_source_line_present", bool(_dig(template, ["source", "line"])), True)
         _add_check(checks, "template", f"{contract_id}_{template_name}_source_sanitized", _dig(template, ["source", "sanitized"]), True)
         _add_check(checks, "template", f"{contract_id}_{template_name}_components", sorted(template.get("required_components", [])), sorted(REQUIRED_COMPONENTS))
         _add_check(checks, "template", f"{contract_id}_{template_name}_risk_flags", sorted(template.get("required_risk_flags", [])), target_risk_flags)
@@ -185,6 +192,7 @@ def _template_checks(checks: list[dict[str, Any]], contract: dict[str, Any]) -> 
     _add_check(checks, "tension_policy", f"{contract_id}_commit_gate_delta_nonnegative", tension_policy.get("commit_gate_delta_nonnegative_required"), True)
     _add_check(checks, "proof_policy", f"{contract_id}_proof_hash_sha256_format_required", proof_policy.get("proof_hash_sha256_format_required"), True)
     _add_check(checks, "proof_policy", f"{contract_id}_proof_hash_binds_event_identity", proof_policy.get("proof_hash_binds_event_identity"), True)
+    _add_check(checks, "proof_policy", f"{contract_id}_proof_hash_binds_source_location", proof_policy.get("proof_hash_binds_source_location"), True)
     _add_check(checks, "proof_policy", f"{contract_id}_proof_hash_unique_required", proof_policy.get("proof_hash_unique_required"), True)
     _add_check(checks, "proof_policy", f"{contract_id}_proof_ref_unique_required", proof_policy.get("proof_ref_unique_required"), True)
     _add_check(checks, "proof_policy", f"{contract_id}_proof_ref_runtime_slot_role_required", proof_policy.get("proof_ref_runtime_slot_role_required"), True)

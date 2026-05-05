@@ -40,11 +40,11 @@ capture_slot_count: 35
 action_contract_count: 3
 required_runtime_event_count: 70
 event_template_count: 6
-mandatory_field_count: 26
-negative_control_detected_count: 43
+mandatory_field_count: 28
+negative_control_detected_count: 46
 positive_control_passed_count: 6
-enforced_control_count: 40
-contract_check_count: 221
+enforced_control_count: 43
+contract_check_count: 239
 failure_count: 0
 ```
 
@@ -60,8 +60,8 @@ runtime approval remains false
 35 capture slots remain explicit
 70 required runtime events remain paired
 6 templates remain two per action contract
-26 mandatory runtime fields are present
-43 negative controls are detected
+28 mandatory runtime fields are present
+46 negative controls are detected
 6 positive controls are accepted as fixture-only guard controls
 guard enforced controls match the runtime contract
 contract slot IDs cover the matrix
@@ -72,7 +72,9 @@ precheck event_type matches the slot precheck contract
 commit event_type matches the slot commit contract
 proof.projection=false
 proof.native=true
+source.file_name is present
 source.format=native_pnva_event_v1
+source.line is present
 source.sanitized=true
 field.state_before and field.state_after are required
 tension.gate_delta is required
@@ -83,7 +85,7 @@ tension.components.r3_runtime_slot_id is required
 timestamps must be parseable ISO-8601 values
 duplicate event_id values are forbidden
 proof_hash must be strict sha256:64-hex
-proof_hash must bind to the event identity payload
+proof_hash must bind to the event identity and source-location payload
 proof_hash and proof_ref values must be unique in the runtime stream
 proof_ref must match runtime:<slot-id>:<role>
 entity_type must be present and match the capture slot

@@ -26,6 +26,7 @@
     "precheck_gate_delta_nonpositive_required": true,
     "precheck_must_be_no_tick": true,
     "proof_hash_binds_event_identity": true,
+    "proof_hash_binds_source_location": true,
     "proof_hash_required": true,
     "proof_hash_sha256_format_required": true,
     "proof_hash_unique_required": true,
@@ -39,7 +40,9 @@
     "risk_flags_unique_required": true,
     "runtime_event_count_exact_required": true,
     "schema_version_required": "pnva.event.v1",
+    "source_file_name_required": true,
     "source_format_required": "native_pnva_event_v1",
+    "source_line_required": true,
     "source_sanitized_required": true,
     "target_risk_flags_required_on_commit": true,
     "target_risk_flags_required_on_precheck": true,
@@ -49,16 +52,16 @@
     "timestamp_iso8601_required": true,
     "timestamp_required": true
   },
-  "generated_at": "2026-05-05T12:37:51Z",
+  "generated_at": "2026-05-05T12:48:51Z",
   "intake_guard_ready": true,
   "interpretation": {
     "boundary": "Without a runtime-events file this guard certifies the intake contract only; it does not claim final runtime completion.",
     "purpose": "Protect the R3 runtime intake boundary before fresh events are accepted as legacy-free evidence.",
-    "sovereignty": "PNVA becomes harder to fake when projected proofs, malformed, duplicated or content-unbound proof hashes, wrong proof-ref slot roles, wrong event types, malformed or inconsistent tension values, invalid gate signs, duplicate events, entity or slot mismatches, unsanitized sources, unknown heuristic rules, invalid risk flags, weak authority, missing target rules, missing precheck or commit target risk flags, extra runtime events and causally broken no-tick pairs are rejected before cutover."
+    "sovereignty": "PNVA becomes harder to fake when projected proofs, malformed, duplicated or content-unbound proof hashes, wrong proof-ref slot roles, wrong event types, malformed or inconsistent tension values, invalid gate signs, duplicate events, entity or slot mismatches, missing source location, unsanitized sources, unknown heuristic rules, invalid risk flags, weak authority, missing target rules, missing precheck or commit target risk flags, extra runtime events and causally broken no-tick pairs are rejected before cutover."
   },
   "matrix_classification": "R3_RUNTIME_CAPTURE_MATRIX_READY_PENDING_RUNTIME",
-  "negative_control_count": 43,
-  "negative_control_detected_count": 43,
+  "negative_control_count": 46,
+  "negative_control_detected_count": 46,
   "negative_controls": [
     {
       "codes": [
@@ -403,6 +406,32 @@
     {
       "codes": [
         "PROOF_HASH_BINDING_INVALID",
+        "SOURCE_FILE_NAME_REQUIRED"
+      ],
+      "detected": true,
+      "expected_detection": "SOURCE_FILE_NAME_REQUIRED",
+      "name": "reject_missing_source_file_name"
+    },
+    {
+      "codes": [
+        "PROOF_HASH_BINDING_INVALID",
+        "SOURCE_LINE_REQUIRED"
+      ],
+      "detected": true,
+      "expected_detection": "SOURCE_LINE_REQUIRED",
+      "name": "reject_missing_source_line"
+    },
+    {
+      "codes": [
+        "PROOF_HASH_BINDING_INVALID"
+      ],
+      "detected": true,
+      "expected_detection": "PROOF_HASH_BINDING_INVALID",
+      "name": "reject_source_location_hash_tamper"
+    },
+    {
+      "codes": [
+        "PROOF_HASH_BINDING_INVALID",
         "SOURCE_SANITIZED_REQUIRED"
       ],
       "detected": true,
@@ -521,12 +550,12 @@
     "Require the runtime event count to equal the declared R3 requirement instead of allowing extra events.",
     "Require precheck and commit event_type values to match the capture slot contract.",
     "Reject duplicate event_id, proof_hash and proof_ref values before accepting runtime coverage.",
-    "Reject runtime events whose proof_hash does not bind to the canonical event identity payload.",
+    "Reject runtime events whose proof_hash does not bind to the canonical event identity and source-location payload.",
     "Require proof_ref to match runtime:<slot-id>:precheck or runtime:<slot-id>:commit.",
     "Require gate_delta to equal score minus threshold, with nonpositive prechecks and nonnegative commits.",
     "Reject unknown or duplicated heuristic rules before accepting runtime coverage.",
     "Reject malformed, unknown, duplicated or missing target risk flags on no-tick prechecks and commits before accepting runtime coverage.",
-    "Keep entity_id, causal_chain_id, source.sanitized and proof_hash mandatory for every runtime event."
+    "Keep entity_id, causal_chain_id, source.file_name, source.line, source.sanitized and proof_hash mandatory for every runtime event."
   ],
   "rejected_event_count": 0,
   "rejections": [],
@@ -1188,8 +1217,8 @@
     "duplicate_proof_hash_rejection_count": 0,
     "duplicate_proof_ref_rejection_count": 0,
     "intake_guard_ready": true,
-    "negative_control_count": 43,
-    "negative_control_detected_count": 43,
+    "negative_control_count": 46,
+    "negative_control_detected_count": 46,
     "no_tick_pair_failure_count": 0,
     "no_tick_pair_integrity_count": 0,
     "pending_slot_count": 35,

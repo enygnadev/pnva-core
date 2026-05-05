@@ -95,11 +95,11 @@
     },
     {
       "group": "controls",
-      "left": 43,
+      "left": 46,
       "left_ref": "negative_controls_complete",
       "name": "negative_controls_complete",
       "pass": true,
-      "right": 43,
+      "right": 46,
       "right_ref": "expected"
     },
     {
@@ -140,11 +140,11 @@
     },
     {
       "group": "fields",
-      "left": 26,
+      "left": 28,
       "left_ref": "mandatory_field_count",
       "name": "mandatory_field_count",
       "pass": true,
-      "right": 26,
+      "right": 28,
       "right_ref": "expected"
     },
     {
@@ -168,7 +168,9 @@
         "proof.proof_ref",
         "proof.valid",
         "schema_version",
+        "source.file_name",
         "source.format",
+        "source.line",
         "source.sanitized",
         "tension.components.original_event_id",
         "tension.components.r3_runtime_slot_id",
@@ -199,7 +201,9 @@
         "proof.proof_ref",
         "proof.valid",
         "schema_version",
+        "source.file_name",
         "source.format",
+        "source.line",
         "source.sanitized",
         "tension.components.original_event_id",
         "tension.components.r3_runtime_slot_id",
@@ -366,6 +370,15 @@
     {
       "group": "enforced_controls",
       "left": true,
+      "left_ref": "enforced_proof_hash_binds_source_location",
+      "name": "enforced_proof_hash_binds_source_location",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "enforced_controls",
+      "left": true,
       "left_ref": "enforced_proof_hash_unique_required",
       "name": "enforced_proof_hash_unique_required",
       "pass": true,
@@ -415,6 +428,24 @@
       "name": "enforced_source_format_required",
       "pass": true,
       "right": "native_pnva_event_v1",
+      "right_ref": "expected"
+    },
+    {
+      "group": "enforced_controls",
+      "left": true,
+      "left_ref": "enforced_source_file_name_required",
+      "name": "enforced_source_file_name_required",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "enforced_controls",
+      "left": true,
+      "left_ref": "enforced_source_line_required",
+      "name": "enforced_source_line_required",
+      "pass": true,
+      "right": true,
       "right_ref": "expected"
     },
     {
@@ -653,11 +684,29 @@
     },
     {
       "group": "template",
+      "left": true,
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_precheck_source_file_name_present",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_precheck_source_file_name_present",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "template",
       "left": "native_pnva_event_v1",
       "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_precheck_source_format",
       "name": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_precheck_source_format",
       "pass": true,
       "right": "native_pnva_event_v1",
+      "right_ref": "expected"
+    },
+    {
+      "group": "template",
+      "left": true,
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_precheck_source_line_present",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_precheck_source_line_present",
+      "pass": true,
+      "right": true,
       "right_ref": "expected"
     },
     {
@@ -735,11 +784,29 @@
     },
     {
       "group": "template",
+      "left": true,
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_commit_source_file_name_present",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_commit_source_file_name_present",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "template",
       "left": "native_pnva_event_v1",
       "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_commit_source_format",
       "name": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_commit_source_format",
       "pass": true,
       "right": "native_pnva_event_v1",
+      "right_ref": "expected"
+    },
+    {
+      "group": "template",
+      "left": true,
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_commit_source_line_present",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_commit_source_line_present",
+      "pass": true,
+      "right": true,
       "right_ref": "expected"
     },
     {
@@ -980,6 +1047,15 @@
     {
       "group": "proof_policy",
       "left": true,
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_proof_hash_binds_source_location",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_proof_hash_binds_source_location",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "proof_policy",
+      "left": true,
       "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_proof_hash_unique_required",
       "name": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_proof_hash_unique_required",
       "pass": true,
@@ -1150,11 +1226,29 @@
     },
     {
       "group": "template",
+      "left": true,
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_precheck_source_file_name_present",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_precheck_source_file_name_present",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "template",
       "left": "native_pnva_event_v1",
       "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_precheck_source_format",
       "name": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_precheck_source_format",
       "pass": true,
       "right": "native_pnva_event_v1",
+      "right_ref": "expected"
+    },
+    {
+      "group": "template",
+      "left": true,
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_precheck_source_line_present",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_precheck_source_line_present",
+      "pass": true,
+      "right": true,
       "right_ref": "expected"
     },
     {
@@ -1228,11 +1322,29 @@
     },
     {
       "group": "template",
+      "left": true,
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_commit_source_file_name_present",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_commit_source_file_name_present",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "template",
       "left": "native_pnva_event_v1",
       "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_commit_source_format",
       "name": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_commit_source_format",
       "pass": true,
       "right": "native_pnva_event_v1",
+      "right_ref": "expected"
+    },
+    {
+      "group": "template",
+      "left": true,
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_commit_source_line_present",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_commit_source_line_present",
+      "pass": true,
+      "right": true,
       "right_ref": "expected"
     },
     {
@@ -1469,6 +1581,15 @@
     {
       "group": "proof_policy",
       "left": true,
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_proof_hash_binds_source_location",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_proof_hash_binds_source_location",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "proof_policy",
+      "left": true,
       "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_proof_hash_unique_required",
       "name": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_proof_hash_unique_required",
       "pass": true,
@@ -1639,11 +1760,29 @@
     },
     {
       "group": "template",
+      "left": true,
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-execute_precheck_source_file_name_present",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-execute_precheck_source_file_name_present",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "template",
       "left": "native_pnva_event_v1",
       "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-execute_precheck_source_format",
       "name": "r3-runtime-instrument-entity_4c3ade60ea78-execute_precheck_source_format",
       "pass": true,
       "right": "native_pnva_event_v1",
+      "right_ref": "expected"
+    },
+    {
+      "group": "template",
+      "left": true,
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-execute_precheck_source_line_present",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-execute_precheck_source_line_present",
+      "pass": true,
+      "right": true,
       "right_ref": "expected"
     },
     {
@@ -1717,11 +1856,29 @@
     },
     {
       "group": "template",
+      "left": true,
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-execute_commit_source_file_name_present",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-execute_commit_source_file_name_present",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "template",
       "left": "native_pnva_event_v1",
       "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-execute_commit_source_format",
       "name": "r3-runtime-instrument-entity_4c3ade60ea78-execute_commit_source_format",
       "pass": true,
       "right": "native_pnva_event_v1",
+      "right_ref": "expected"
+    },
+    {
+      "group": "template",
+      "left": true,
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-execute_commit_source_line_present",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-execute_commit_source_line_present",
+      "pass": true,
+      "right": true,
       "right_ref": "expected"
     },
     {
@@ -1951,6 +2108,15 @@
       "left": true,
       "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-execute_proof_hash_binds_event_identity",
       "name": "r3-runtime-instrument-entity_4c3ade60ea78-execute_proof_hash_binds_event_identity",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "proof_policy",
+      "left": true,
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-execute_proof_hash_binds_source_location",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-execute_proof_hash_binds_source_location",
       "pass": true,
       "right": true,
       "right_ref": "expected"
@@ -2236,21 +2402,21 @@
     }
   ],
   "classification": "R3_RUNTIME_CONTRACT_VALIDATED_READY",
-  "contract_check_count": 221,
+  "contract_check_count": 239,
   "contract_validation_ready": true,
-  "enforced_control_count": 40,
+  "enforced_control_count": 43,
   "event_template_count": 6,
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-05-05T12:37:59Z",
+  "generated_at": "2026-05-05T12:48:51Z",
   "interpretation": {
     "boundary": "This is a contract validator, not runtime evidence and not final R3 cutover approval.",
     "purpose": "Validate that the R3 runtime capture matrix, evidence guard and instrumentation plan form one coherent runtime contract.",
     "sovereignty": "The final runtime path becomes harder to mislabel because the contract itself is checked before fresh runtime evidence is accepted."
   },
-  "mandatory_field_count": 26,
-  "negative_control_count": 43,
-  "negative_control_detected_count": 43,
+  "mandatory_field_count": 28,
+  "negative_control_count": 46,
+  "negative_control_detected_count": 46,
   "pass": true,
   "positive_control_count": 6,
   "positive_control_passed_count": 6,
@@ -2278,11 +2444,11 @@
   "summary": {
     "action_contract_count": 3,
     "capture_slot_count": 35,
-    "contract_check_count": 221,
+    "contract_check_count": 239,
     "contract_validation_ready": true,
     "failure_count": 0,
-    "mandatory_field_count": 26,
-    "negative_control_detected_count": 43,
+    "mandatory_field_count": 28,
+    "negative_control_detected_count": 46,
     "positive_control_passed_count": 6,
     "required_runtime_event_count": 70
   }

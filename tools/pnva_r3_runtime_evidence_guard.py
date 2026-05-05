@@ -192,7 +192,9 @@ def _proof_hash_payload(event: dict[str, Any]) -> dict[str, Any]:
             "valid": _proof(event).get("valid"),
         },
         "source": {
+            "file_name": _source(event).get("file_name"),
             "format": _source(event).get("format"),
+            "line": _source(event).get("line"),
             "sanitized": _source(event).get("sanitized"),
         },
     }
@@ -345,6 +347,12 @@ def _event_codes(event: dict[str, Any], slot: dict[str, Any]) -> list[str]:
         codes.append("PROOF_HASH_OR_VALIDITY_INVALID")
     if _source(event).get("format") != "native_pnva_event_v1":
         codes.append("SOURCE_FORMAT_INVALID")
+    source_file_name = _source(event).get("file_name")
+    if not isinstance(source_file_name, str) or not source_file_name.strip():
+        codes.append("SOURCE_FILE_NAME_REQUIRED")
+    source_line = _source(event).get("line")
+    if not isinstance(source_line, int) or isinstance(source_line, bool) or source_line <= 0:
+        codes.append("SOURCE_LINE_REQUIRED")
     if _source(event).get("sanitized") is not True:
         codes.append("SOURCE_SANITIZED_REQUIRED")
     original = _original_id(event)
@@ -626,7 +634,9 @@ def _sample_event(slot: dict[str, Any], *, role: str, control: str = "negative")
             "proof_ref": proof_ref,
         },
         "source": {
+            "file_name": "pnva-r3-runtime-guard-fixture",
             "format": "native_pnva_event_v1",
+            "line": 1 if role == "precheck" else 2,
             "sanitized": True,
         },
     }
@@ -720,6 +730,9 @@ def _negative_controls(matrix: dict[str, Any]) -> dict[str, Any]:
     run_control("reject_original_event_mismatch", "commit", lambda event: event["tension"]["components"].update({"original_event_id": "evt_wrong"}), "ORIGINAL_EVENT_MISMATCH")
     run_control("reject_missing_native_proof", "commit", lambda event: event["proof"].pop("native", None), "PROOF_NATIVE_REQUIRED")
     run_control("reject_invalid_source_format", "commit", lambda event: event["source"].update({"format": "legacy_bridge"}), "SOURCE_FORMAT_INVALID")
+    run_control("reject_missing_source_file_name", "commit", lambda event: event["source"].pop("file_name", None), "SOURCE_FILE_NAME_REQUIRED")
+    run_control("reject_missing_source_line", "commit", lambda event: event["source"].pop("line", None), "SOURCE_LINE_REQUIRED")
+    run_control("reject_source_location_hash_tamper", "commit", lambda event: event["source"].update({"file_name": "tampered-source"}), "PROOF_HASH_BINDING_INVALID")
     run_control("reject_unsanitized_source", "commit", lambda event: event["source"].update({"sanitized": False}), "SOURCE_SANITIZED_REQUIRED")
 
     duplicate_precheck = _sample_event(slot, role="precheck", control="duplicate")
@@ -885,12 +898,15 @@ def build_report(repo: Path, runtime_events_path: Path | None = None) -> dict[st
             "proof_hash_required": True,
             "proof_hash_sha256_format_required": True,
             "proof_hash_binds_event_identity": True,
+            "proof_hash_binds_source_location": True,
             "proof_hash_unique_required": True,
             "proof_ref_unique_required": True,
             "proof_ref_runtime_slot_role_required": True,
             "proof_native_required": True,
             "proof_projection_forbidden": True,
             "source_format_required": "native_pnva_event_v1",
+            "source_file_name_required": True,
+            "source_line_required": True,
             "source_sanitized_required": True,
             "r3_runtime_slot_id_required": True,
             "commit_min_authority": "H2",
@@ -944,7 +960,7 @@ def build_report(repo: Path, runtime_events_path: Path | None = None) -> dict[st
         },
         "interpretation": {
             "purpose": "Protect the R3 runtime intake boundary before fresh events are accepted as legacy-free evidence.",
-            "sovereignty": "PNVA becomes harder to fake when projected proofs, malformed, duplicated or content-unbound proof hashes, wrong proof-ref slot roles, wrong event types, malformed or inconsistent tension values, invalid gate signs, duplicate events, entity or slot mismatches, unsanitized sources, unknown heuristic rules, invalid risk flags, weak authority, missing target rules, missing precheck or commit target risk flags, extra runtime events and causally broken no-tick pairs are rejected before cutover.",
+            "sovereignty": "PNVA becomes harder to fake when projected proofs, malformed, duplicated or content-unbound proof hashes, wrong proof-ref slot roles, wrong event types, malformed or inconsistent tension values, invalid gate signs, duplicate events, entity or slot mismatches, missing source location, unsanitized sources, unknown heuristic rules, invalid risk flags, weak authority, missing target rules, missing precheck or commit target risk flags, extra runtime events and causally broken no-tick pairs are rejected before cutover.",
             "boundary": "Without a runtime-events file this guard certifies the intake contract only; it does not claim final runtime completion.",
         },
         "recommendations": [
@@ -955,12 +971,12 @@ def build_report(repo: Path, runtime_events_path: Path | None = None) -> dict[st
             "Require the runtime event count to equal the declared R3 requirement instead of allowing extra events.",
             "Require precheck and commit event_type values to match the capture slot contract.",
             "Reject duplicate event_id, proof_hash and proof_ref values before accepting runtime coverage.",
-            "Reject runtime events whose proof_hash does not bind to the canonical event identity payload.",
+            "Reject runtime events whose proof_hash does not bind to the canonical event identity and source-location payload.",
             "Require proof_ref to match runtime:<slot-id>:precheck or runtime:<slot-id>:commit.",
             "Require gate_delta to equal score minus threshold, with nonpositive prechecks and nonnegative commits.",
             "Reject unknown or duplicated heuristic rules before accepting runtime coverage.",
             "Reject malformed, unknown, duplicated or missing target risk flags on no-tick prechecks and commits before accepting runtime coverage.",
-            "Keep entity_id, causal_chain_id, source.sanitized and proof_hash mandatory for every runtime event.",
+            "Keep entity_id, causal_chain_id, source.file_name, source.line, source.sanitized and proof_hash mandatory for every runtime event.",
         ],
     }
     return report

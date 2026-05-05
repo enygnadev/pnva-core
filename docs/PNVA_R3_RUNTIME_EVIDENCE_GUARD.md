@@ -49,8 +49,8 @@ duplicate_proof_hash_rejection_count: 0
 duplicate_proof_ref_rejection_count: 0
 no_tick_pair_integrity_count: 0
 no_tick_pair_failure_count: 0
-negative_control_detected_count: 43
-negative_control_count: 43
+negative_control_detected_count: 46
+negative_control_count: 46
 positive_control_passed_count: 6
 positive_control_count: 6
 positive_controls_fixture_only: true
@@ -79,6 +79,8 @@ duplicate proof_hash
 duplicate proof_ref
 missing proof.native=true
 invalid source.format
+missing source.file_name
+missing source.line
 missing or invalid tension.score
 missing or invalid tension.threshold
 missing or invalid tension.gate_delta
@@ -112,7 +114,9 @@ unique proof_hash values
 unique proof_ref values
 known and unique heuristic rules
 proof_ref in runtime:<slot-id>:<role> form
-proof_hash bound to the event identity payload
+proof_hash bound to the event identity and source-location payload
+source.file_name present
+source.line present
 source.sanitized=true
 gate_delta equal to score - threshold
 precheck gate_delta <= 0
@@ -163,6 +167,9 @@ reject_slot_id_mismatch
 reject_original_event_mismatch
 reject_missing_native_proof
 reject_invalid_source_format
+reject_missing_source_file_name
+reject_missing_source_line
+reject_source_location_hash_tamper
 reject_unsanitized_source
 reject_duplicate_event_id
 reject_duplicate_proof_hash
@@ -179,7 +186,7 @@ reject_precheck_missing_target_risk_flags
 Current result:
 
 ```text
-43/43 detected
+46/46 detected
 ```
 
 ## Positive Controls
@@ -220,8 +227,8 @@ R3_RUNTIME_INSTRUMENTATION_PLAN_READY
 3 action contracts
 6 event templates
 70 required runtime events
-26 mandatory event fields
-43 negative controls
+28 mandatory event fields
+46 negative controls
 6 positive controls
 ```
 
