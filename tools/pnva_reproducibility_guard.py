@@ -1,0 +1,403 @@
+#!/usr/bin/env python3
+from __future__ import annotations
+
+import argparse
+import json
+import math
+import re
+import subprocess
+import sys
+import tempfile
+import time
+from pathlib import Path
+from typing import Any
+
+
+CANONICAL_EVENTS = "reports/pnva-canonical-events-sample-2026-05-05.jsonl"
+CANONICAL_ENTITIES = "reports/pnva-entity-catalog-2026-05-05.json"
+NATIVE_EVENTS = "reports/pnva-native-events-demo-2026-05-05.jsonl"
+NATIVE_ENTITIES = "reports/pnva-native-entity-catalog-demo-2026-05-05.json"
+
+PUBLISHED_REPORTS = {
+    "replay": "reports/pnva-replay-validation-2026-05-05.json",
+    "native_replay": "reports/pnva-native-replay-validation-2026-05-05.json",
+    "no_tick": "reports/pnva-no-tick-invariants-2026-05-05.json",
+    "native_no_tick": "reports/pnva-native-no-tick-invariants-2026-05-05.json",
+    "native_emitter": "reports/pnva-native-emitter-summary-2026-05-05.json",
+    "policy": "reports/pnva-sovereign-policy-2026-05-05.json",
+    "native_policy": "reports/pnva-native-sovereign-policy-2026-05-05.json",
+    "proof_chain": "reports/pnva-proof-chain-2026-05-05.json",
+    "native_proof_chain": "reports/pnva-native-proof-chain-2026-05-05.json",
+    "causal_graph": "reports/pnva-causal-graph-2026-05-05.json",
+    "native_causal_graph": "reports/pnva-native-causal-graph-2026-05-05.json",
+    "adversarial": "reports/pnva-adversarial-validation-2026-05-05.json",
+    "maturity": "reports/pnva-entity-heuristic-maturity-2026-05-05.json",
+    "attestation": "reports/pnva-sovereign-evidence-attestation-2026-05-05.json",
+    "semantic": "reports/pnva-semantic-consistency-2026-05-05.json",
+}
+
+
+STABLE_PATHS = {
+    "replay": [
+        ["classification"],
+        ["pass"],
+        ["summary", "event_count"],
+        ["summary", "unique_event_ids"],
+        ["summary", "proof_hash_ok"],
+        ["summary", "proof_hash_bad"],
+        ["summary", "guard_pass_ok"],
+        ["summary", "guard_block_ok"],
+        ["summary", "relation_count"],
+    ],
+    "native_replay": [
+        ["classification"],
+        ["pass"],
+        ["summary", "event_count"],
+        ["summary", "unique_event_ids"],
+        ["summary", "proof_hash_ok"],
+        ["summary", "proof_hash_bad"],
+        ["summary", "guard_pass_ok"],
+        ["summary", "guard_block_ok"],
+        ["summary", "relation_count"],
+    ],
+    "no_tick": [
+        ["classification"],
+        ["pass"],
+        ["no_tick_efficiency", "event_count"],
+        ["no_tick_efficiency", "collapse_count"],
+        ["no_tick_efficiency", "observe_count"],
+        ["no_tick_efficiency", "block_count"],
+        ["no_tick_efficiency", "suppressed_count"],
+        ["no_tick_efficiency", "no_tick_suppression_ratio"],
+        ["no_tick_efficiency", "proof_integrity_ratio"],
+        ["no_tick_efficiency", "guard_consistency_ratio"],
+    ],
+    "native_no_tick": [
+        ["classification"],
+        ["pass"],
+        ["no_tick_efficiency", "event_count"],
+        ["no_tick_efficiency", "collapse_count"],
+        ["no_tick_efficiency", "observe_count"],
+        ["no_tick_efficiency", "block_count"],
+        ["no_tick_efficiency", "suppressed_count"],
+        ["no_tick_efficiency", "no_tick_suppression_ratio"],
+        ["no_tick_efficiency", "proof_integrity_ratio"],
+        ["no_tick_efficiency", "guard_consistency_ratio"],
+    ],
+    "native_emitter": [
+        ["classification"],
+        ["pass"],
+        ["event_count"],
+        ["entity_count"],
+        ["native_event_count"],
+        ["suppressed_count"],
+        ["no_tick_suppression_ratio"],
+    ],
+    "policy": [
+        ["classification"],
+        ["pass"],
+        ["summary", "event_count"],
+        ["summary", "strong_decision_count"],
+        ["summary", "low_authority_legacy_count"],
+        ["summary", "entity_missing_count"],
+        ["summary", "guard_policy_bad"],
+        ["summary", "proof_policy_bad"],
+        ["summary", "relation_policy_bad"],
+    ],
+    "native_policy": [
+        ["classification"],
+        ["pass"],
+        ["summary", "event_count"],
+        ["summary", "strong_decision_count"],
+        ["summary", "low_authority_legacy_count"],
+        ["summary", "entity_missing_count"],
+        ["summary", "guard_policy_bad"],
+        ["summary", "proof_policy_bad"],
+        ["summary", "relation_policy_bad"],
+    ],
+    "proof_chain": [
+        ["classification"],
+        ["pass"],
+        ["seal", "event_count"],
+        ["seal", "unique_event_ids"],
+        ["seal", "proof_bad"],
+        ["seal", "final_chain_hash"],
+    ],
+    "native_proof_chain": [
+        ["classification"],
+        ["pass"],
+        ["seal", "event_count"],
+        ["seal", "unique_event_ids"],
+        ["seal", "proof_bad"],
+        ["seal", "final_chain_hash"],
+    ],
+    "causal_graph": [
+        ["classification"],
+        ["pass"],
+        ["summary", "event_count"],
+        ["summary", "catalog_entity_count"],
+        ["summary", "observed_entity_count"],
+        ["summary", "relation_edge_count"],
+        ["summary", "chain_edge_count"],
+        ["summary", "graph_hash"],
+    ],
+    "native_causal_graph": [
+        ["classification"],
+        ["pass"],
+        ["summary", "event_count"],
+        ["summary", "catalog_entity_count"],
+        ["summary", "observed_entity_count"],
+        ["summary", "relation_edge_count"],
+        ["summary", "chain_edge_count"],
+        ["summary", "graph_hash"],
+    ],
+    "adversarial": [
+        ["classification"],
+        ["pass"],
+        ["test_count"],
+        ["detected_count"],
+        ["failure_count"],
+    ],
+    "maturity": [
+        ["classification"],
+        ["pass"],
+        ["maturity_score"],
+        ["error_count"],
+        ["warning_count"],
+        ["summary", "total_event_count"],
+        ["summary", "total_suppressed_count"],
+        ["summary", "aggregate_no_tick_suppression_ratio"],
+        ["summary", "aggregate_hard_authority_ratio"],
+        ["summary", "canonical_low_authority_legacy_count"],
+        ["summary", "native_low_authority_legacy_count"],
+    ],
+    "attestation": [
+        ["classification"],
+        ["pass"],
+        ["artifact_count"],
+        ["failure_count"],
+        ["evidence_hash"],
+    ],
+    "semantic": [
+        ["classification"],
+        ["pass"],
+        ["check_count"],
+        ["error_count"],
+        ["warning_count"],
+        ["summary", "total_event_count"],
+        ["summary", "total_suppressed_count"],
+    ],
+}
+
+
+def _read_json(path: Path) -> Any:
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def _dig(data: Any, path: list[str]) -> Any:
+    current = data
+    for key in path:
+        if not isinstance(current, dict):
+            return None
+        current = current.get(key)
+    return current
+
+
+def _path_label(path: list[str]) -> str:
+    return ".".join(path)
+
+
+def _redact(value: str) -> str:
+    value = re.sub(r"/tmp/pnva-repro-[^/]+", "<TEMP>", value)
+    value = re.sub(r"/tmp/tmp[^/]+", "<TEMP>", value)
+    return value
+
+
+def _same(left: Any, right: Any) -> bool:
+    if isinstance(left, (int, float)) and isinstance(right, (int, float)):
+        return math.isclose(float(left), float(right), rel_tol=0.0, abs_tol=0.000001)
+    return left == right
+
+
+def _run(repo: Path, args: list[str], output: Path, *, write_flag: str | None = "--write") -> dict[str, Any]:
+    final_args = list(args)
+    if write_flag:
+        final_args.extend([write_flag, str(output)])
+    command = [sys.executable, *final_args]
+    completed = subprocess.run(command, cwd=repo, check=False, text=True, capture_output=True)
+    parsed: dict[str, Any] = {}
+    parse_error = ""
+    if output.exists():
+        try:
+            data = _read_json(output)
+            if isinstance(data, dict):
+                parsed = data
+        except Exception as exc:
+            parse_error = str(exc)
+    return {
+        "command": _redact(" ".join(final_args)),
+        "exit_code": completed.returncode,
+        "output": _redact(str(output)),
+        "stdout_tail": _redact(completed.stdout[-1200:]),
+        "stderr_tail": _redact(completed.stderr[-1200:]),
+        "parse_error": parse_error,
+        "report": parsed,
+    }
+
+
+def _compare_report(name: str, published: dict[str, Any], reproduced: dict[str, Any]) -> list[dict[str, Any]]:
+    comparisons: list[dict[str, Any]] = []
+    for path in STABLE_PATHS[name]:
+        expected = _dig(published, path)
+        observed = _dig(reproduced, path)
+        comparisons.append(
+            {
+                "report": name,
+                "field": _path_label(path),
+                "pass": _same(expected, observed),
+                "published": expected,
+                "reproduced": observed,
+            }
+        )
+    return comparisons
+
+
+def build_report(repo: Path) -> dict[str, Any]:
+    repo = repo.resolve()
+    published = {name: _read_json(repo / rel) for name, rel in PUBLISHED_REPORTS.items()}
+    commands: dict[str, dict[str, Any]] = {}
+    comparisons: list[dict[str, Any]] = []
+
+    with tempfile.TemporaryDirectory(prefix="pnva-repro-") as tmp_raw:
+        tmp = Path(tmp_raw)
+        outputs = {
+            "replay": tmp / "replay.json",
+            "native_replay": tmp / "native-replay.json",
+            "no_tick": tmp / "no-tick.json",
+            "native_no_tick": tmp / "native-no-tick.json",
+            "native_emitter": tmp / "native-emitter-summary.json",
+            "native_emitter_events": tmp / "native-emitter-events.jsonl",
+            "native_emitter_entities": tmp / "native-emitter-entities.json",
+            "policy": tmp / "policy.json",
+            "native_policy": tmp / "native-policy.json",
+            "proof_chain": tmp / "proof-chain.json",
+            "native_proof_chain": tmp / "native-proof-chain.json",
+            "causal_graph": tmp / "causal-graph.json",
+            "native_causal_graph": tmp / "native-causal-graph.json",
+            "adversarial": tmp / "adversarial.json",
+            "maturity": tmp / "maturity.json",
+            "attestation": tmp / "attestation.json",
+            "semantic": tmp / "semantic.json",
+        }
+
+        commands["replay"] = _run(repo, ["tools/pnva_replay_validator.py", "--events", CANONICAL_EVENTS, "--entity-catalog", CANONICAL_ENTITIES], outputs["replay"])
+        commands["native_replay"] = _run(repo, ["tools/pnva_replay_validator.py", "--events", NATIVE_EVENTS, "--entity-catalog", NATIVE_ENTITIES], outputs["native_replay"])
+        commands["no_tick"] = _run(repo, ["tools/pnva_no_tick_invariant_analyzer.py", "--events", CANONICAL_EVENTS, "--entity-catalog", CANONICAL_ENTITIES, "--replay-report", str(outputs["replay"])], outputs["no_tick"])
+        commands["native_no_tick"] = _run(repo, ["tools/pnva_no_tick_invariant_analyzer.py", "--events", NATIVE_EVENTS, "--entity-catalog", NATIVE_ENTITIES, "--replay-report", str(outputs["native_replay"])], outputs["native_no_tick"])
+        commands["native_emitter"] = _run(
+            repo,
+            [
+                "tools/pnva_native_event_emitter.py",
+                "--events",
+                str(outputs["native_emitter_events"]),
+                "--entity-catalog",
+                str(outputs["native_emitter_entities"]),
+                "--summary",
+                str(outputs["native_emitter"]),
+            ],
+            outputs["native_emitter"],
+            write_flag=None,
+        )
+        commands["policy"] = _run(repo, ["tools/pnva_sovereign_policy_validator.py", "--events", CANONICAL_EVENTS, "--entity-catalog", CANONICAL_ENTITIES], outputs["policy"])
+        commands["native_policy"] = _run(repo, ["tools/pnva_sovereign_policy_validator.py", "--events", NATIVE_EVENTS, "--entity-catalog", NATIVE_ENTITIES], outputs["native_policy"])
+        commands["proof_chain"] = _run(repo, ["tools/pnva_proof_chain_sealer.py", "--events", CANONICAL_EVENTS], outputs["proof_chain"])
+        commands["native_proof_chain"] = _run(repo, ["tools/pnva_proof_chain_sealer.py", "--events", NATIVE_EVENTS], outputs["native_proof_chain"])
+        commands["causal_graph"] = _run(repo, ["tools/pnva_causal_graph_auditor.py", "--events", CANONICAL_EVENTS, "--entity-catalog", CANONICAL_ENTITIES], outputs["causal_graph"])
+        commands["native_causal_graph"] = _run(repo, ["tools/pnva_causal_graph_auditor.py", "--events", NATIVE_EVENTS, "--entity-catalog", NATIVE_ENTITIES], outputs["native_causal_graph"])
+        commands["adversarial"] = _run(repo, ["tools/pnva_adversarial_validator.py"], outputs["adversarial"])
+        commands["maturity"] = _run(repo, ["tools/pnva_entity_heuristic_maturity.py"], outputs["maturity"])
+        commands["attestation"] = _run(repo, ["tools/pnva_evidence_attestor.py"], outputs["attestation"])
+        commands["semantic"] = _run(repo, ["tools/pnva_semantic_consistency_guard.py"], outputs["semantic"])
+
+    command_failures = [
+        {
+            "report": name,
+            "exit_code": item["exit_code"],
+            "parse_error": item["parse_error"],
+            "stderr_tail": item["stderr_tail"],
+        }
+        for name, item in commands.items()
+        if item["exit_code"] != 0 or item["parse_error"] or not item["report"]
+    ]
+    for name, item in commands.items():
+        if item["report"]:
+            comparisons.extend(_compare_report(name, published[name], item["report"]))
+
+    failed_comparisons = [item for item in comparisons if not item["pass"]]
+    classification = "REPRODUCIBILITY_READY" if not command_failures and not failed_comparisons else "REPRODUCIBILITY_FAIL"
+    command_summaries = {
+        name: {
+            "command": item["command"],
+            "exit_code": item["exit_code"],
+            "parse_error": item["parse_error"],
+            "classification": item["report"].get("classification") if isinstance(item["report"], dict) else None,
+            "pass": item["report"].get("pass") if isinstance(item["report"], dict) else None,
+        }
+        for name, item in commands.items()
+    }
+    return {
+        "schema_version": "pnva.reproducibility_guard.v1",
+        "generated_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+        "author": "Gustavo de Aguiar Martins",
+        "project": "PNVA-Core",
+        "classification": classification,
+        "pass": classification == "REPRODUCIBILITY_READY",
+        "command_count": len(commands),
+        "comparison_count": len(comparisons),
+        "failure_count": len(command_failures) + len(failed_comparisons),
+        "command_failure_count": len(command_failures),
+        "comparison_failure_count": len(failed_comparisons),
+        "commands": command_summaries,
+        "command_failures": command_failures,
+        "comparison_failures": failed_comparisons,
+        "comparisons": comparisons,
+        "summary": {
+            "reports_reproduced": sorted(commands),
+            "stable_fields_compared": len(comparisons),
+            "published_attestation_hash": published["attestation"].get("evidence_hash"),
+            "reproduced_attestation_hash": commands["attestation"]["report"].get("evidence_hash") if commands["attestation"]["report"] else None,
+        },
+        "interpretation": {
+            "purpose": "Regenerate PNVA evidence reports with current tools and compare stable fields against the published evidence package.",
+            "sovereignty": "A public PNVA release is stronger when its claims are reproducible from source commands, not only stored as static JSON.",
+            "boundary": "Generated timestamps, temporary paths and non-semantic ordering are intentionally excluded from comparison.",
+        },
+        "recommendations": [
+            "Run reproducibility after semantic consistency and before checksums.",
+            "Treat any command failure or stable-field drift as a release-blocking error.",
+            "Keep reproducibility outside the evidence attestation hash seed because it consumes the attestation.",
+        ],
+    }
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description="Reproduce PNVA public evidence reports and compare stable fields.")
+    parser.add_argument("--repo", default=str(Path(__file__).resolve().parents[1]))
+    parser.add_argument("--write", default="")
+    args = parser.parse_args()
+
+    repo = Path(args.repo).resolve()
+    report = build_report(repo)
+    raw = json.dumps(report, indent=2, ensure_ascii=True, sort_keys=True) + "\n"
+    if args.write:
+        out = Path(args.write)
+        if not out.is_absolute():
+            out = repo / out
+        out.parent.mkdir(parents=True, exist_ok=True)
+        out.write_text(raw, encoding="utf-8")
+    print(raw, end="")
+    return 0 if report["pass"] else 1
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

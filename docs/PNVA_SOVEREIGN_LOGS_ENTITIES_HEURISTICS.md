@@ -557,7 +557,43 @@ PNVA evidence should not pass only as isolated files. The release is stronger wh
 
 The semantic consistency report is not included in the attestation hash seed because it consumes the attestation.
 
-## 18. Public Safety
+## 18. Reproducibility Guard
+
+After semantic consistency, rerun the current tools and compare stable fields against published reports:
+
+```text
+source commands -> temporary reports -> stable-field comparison -> reproducibility result
+```
+
+Current report:
+
+```text
+reports/pnva-reproducibility-2026-05-05.json
+```
+
+Current classification:
+
+```text
+REPRODUCIBILITY_READY
+```
+
+Current result:
+
+```text
+command_count: 15
+comparison_count: 119
+failure_count: 0
+command_failure_count: 0
+comparison_failure_count: 0
+```
+
+Production interpretation:
+
+PNVA evidence becomes stronger when reports are not only internally consistent, but reproducible from the repository commands. This checks that replay, no-tick invariants, native emission, policy, proof-chain, graph, adversarial validation, maturity, attestation and semantic consistency can be regenerated without stable-field drift.
+
+The reproducibility report is not included in the attestation hash seed because it consumes the attestation. This keeps the evidence graph acyclic.
+
+## 19. Public Safety
 
 Public repositories should expose:
 
@@ -584,7 +620,7 @@ wallets
 host-specific automation
 ```
 
-## 19. Principle
+## 20. Principle
 
 PNVA becomes sovereign when every action can answer:
 

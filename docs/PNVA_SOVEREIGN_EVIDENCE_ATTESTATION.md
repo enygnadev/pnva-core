@@ -78,6 +78,8 @@ The sovereign audit report is intentionally not part of the attestation hash see
 
 The semantic consistency guard is also outside this hash seed for the same reason: it consumes the attestation and verifies that all public reports agree after the attestation exists.
 
+The reproducibility guard is outside this hash seed as well. It reruns the current evidence commands, including the attestor, and compares stable fields against the published reports; hashing it into the attestation would also create a circular dependency.
+
 ## Boundary
 
 This attestation does not claim universal proof for every PNVA deployment. It attests the integrity and consistency of this public repository evidence package.

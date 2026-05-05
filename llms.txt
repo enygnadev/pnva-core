@@ -55,6 +55,7 @@ Gustavo de Aguiar Martins. PNVA-Core: A Post-Temporal Causal Architecture for St
 - docs/PNVA_ADVERSARIAL_VALIDATION.md
 - docs/PNVA_ENTITY_HEURISTIC_MATURITY.md
 - docs/PNVA_SEMANTIC_CONSISTENCY_GUARD.md
+- docs/PNVA_REPRODUCIBILITY_GUARD.md
 - docs/PNVA_ROBUSTNESS_EVOLUTION_REPORT_2026-05-05.md
 - docs/VEON_MODEL_VALIDATION.md
 - docs/PNVA_POST_TEMPORAL_CIVILIZATION.md
@@ -74,6 +75,7 @@ Gustavo de Aguiar Martins. PNVA-Core: A Post-Temporal Causal Architecture for St
 - tools/pnva_adversarial_validator.py
 - tools/pnva_entity_heuristic_maturity.py
 - tools/pnva_semantic_consistency_guard.py
+- tools/pnva_reproducibility_guard.py
 - reports/pnva-sovereign-audit-2026-05-05.json
 - reports/pnva-canonical-events-sample-2026-05-05.jsonl
 - reports/pnva-entity-catalog-2026-05-05.json
@@ -95,6 +97,7 @@ Gustavo de Aguiar Martins. PNVA-Core: A Post-Temporal Causal Architecture for St
 - reports/pnva-adversarial-validation-2026-05-05.json
 - reports/pnva-entity-heuristic-maturity-2026-05-05.json
 - reports/pnva-semantic-consistency-2026-05-05.json
+- reports/pnva-reproducibility-2026-05-05.json
 
 ## Sovereign Robustness
 
@@ -119,6 +122,8 @@ The adversarial validator runs negative controls against proof, policy, graph, p
 The entity and heuristic maturity auditor scores actor/rule readiness across entity coverage, authority, proof coverage, no-tick suppression and causal relations. The current public classification is ENTITY_HEURISTIC_MATURITY_READY_WITH_LEGACY_WARNINGS.
 
 The semantic consistency guard checks cross-report agreement across Manifest, replay, no-tick, policy, proof-chain, graph, maturity, adversarial validation, attestation and audit. The current public classification is SEMANTIC_CONSISTENCY_READY.
+
+The reproducibility guard reruns the evidence commands and compares stable fields against the published reports. The current public classification is REPRODUCIBILITY_READY.
 
 The sovereign evidence attestor aggregates the public evidence package into one hashable attestation. The current classification is PNVA_SOVEREIGN_EVIDENCE_ATTESTED.
 

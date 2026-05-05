@@ -224,6 +224,19 @@
             "warning_count": 0,
             "hash_policy": "semantic guard consumes attestation and is excluded from the attestation seed to avoid circular hashing"
         },
+        "reproducibility_guard": {
+            "status": "ADDED",
+            "tool": "tools/pnva_reproducibility_guard.py",
+            "doc": "docs/PNVA_REPRODUCIBILITY_GUARD.md",
+            "report": "reports/pnva-reproducibility-2026-05-05.json",
+            "classification": "REPRODUCIBILITY_READY",
+            "command_count": 15,
+            "comparison_count": 119,
+            "failure_count": 0,
+            "command_failure_count": 0,
+            "comparison_failure_count": 0,
+            "hash_policy": "reproducibility guard consumes attestation and semantic consistency and is excluded from the attestation seed to avoid circular hashing"
+        },
         "sovereign_evidence_attestation": {
             "status": "ADDED",
             "tool": "tools/pnva_evidence_attestor.py",
@@ -269,6 +282,7 @@
     "docs/PNVA_POST_TEMPORAL_CIVILIZATION.md",
     "docs/PNVA_PROOF_CHAIN_SEALING.md",
     "docs/PNVA_REPLAY_VALIDATION.md",
+    "docs/PNVA_REPRODUCIBILITY_GUARD.md",
     "docs/PNVA_ROBUSTNESS_EVOLUTION_REPORT_2026-05-05.md",
     "docs/PNVA_SEMANTIC_CONSISTENCY_GUARD.md",
     "docs/PNVA_SOVEREIGNTY_PUBLICATION_SCALE.md",
@@ -315,6 +329,7 @@
     "reports/pnva-no-tick-invariants-2026-05-05.json",
     "reports/pnva-proof-chain-2026-05-05.json",
     "reports/pnva-replay-validation-2026-05-05.json",
+    "reports/pnva-reproducibility-2026-05-05.json",
     "reports/pnva-semantic-consistency-2026-05-05.json",
     "reports/pnva-sovereign-audit-2026-05-05.json",
     "reports/pnva-sovereign-evidence-attestation-2026-05-05.json",
@@ -333,6 +348,7 @@
     "tools/pnva_no_tick_invariant_analyzer.py",
     "tools/pnva_proof_chain_sealer.py",
     "tools/pnva_replay_validator.py",
+    "tools/pnva_reproducibility_guard.py",
     "tools/pnva_semantic_consistency_guard.py",
     "tools/pnva_sovereign_audit.py",
     "tools/pnva_sovereign_policy_validator.py",

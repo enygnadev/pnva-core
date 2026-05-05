@@ -125,6 +125,7 @@ docs/
   PNVA_ADVERSARIAL_VALIDATION.md
   PNVA_ENTITY_HEURISTIC_MATURITY.md
   PNVA_SEMANTIC_CONSISTENCY_GUARD.md
+  PNVA_REPRODUCIBILITY_GUARD.md
   PNVA_ROBUSTNESS_EVOLUTION_REPORT_2026-05-05.md
   VEON_MODEL_VALIDATION.md
   PNVA_POST_TEMPORAL_CIVILIZATION.md
@@ -166,6 +167,7 @@ reports/
   pnva-adversarial-validation-2026-05-05.json
   pnva-entity-heuristic-maturity-2026-05-05.json
   pnva-semantic-consistency-2026-05-05.json
+  pnva-reproducibility-2026-05-05.json
 
 release/
   final production closure note
@@ -185,6 +187,7 @@ tools/
   pnva_adversarial_validator.py
   pnva_entity_heuristic_maturity.py
   pnva_semantic_consistency_guard.py
+  pnva_reproducibility_guard.py
 ```
 
 ## Public Launch
@@ -260,6 +263,7 @@ python3 tools/pnva_adversarial_validator.py --write /tmp/pnva-adversarial-valida
 python3 tools/pnva_entity_heuristic_maturity.py --write /tmp/pnva-entity-heuristic-maturity.json
 python3 tools/pnva_evidence_attestor.py --write /tmp/pnva-evidence-attestation.json
 python3 tools/pnva_semantic_consistency_guard.py --write /tmp/pnva-semantic-consistency.json
+python3 tools/pnva_reproducibility_guard.py --write /tmp/pnva-reproducibility.json
 ```
 
 ## Sovereign Robustness Layer
@@ -293,6 +297,8 @@ The adversarial validator runs negative controls against the public validators. 
 The entity and heuristic maturity auditor scores actor/rule readiness across entity coverage, proof coverage, no-tick suppression, authority and causal relations. The current package is `ENTITY_HEURISTIC_MATURITY_READY_WITH_LEGACY_WARNINGS` with score `94.59`, `0` errors and `35` preserved legacy warnings.
 
 The semantic consistency guard checks cross-report agreement across Manifest, replay, no-tick, policy, proof-chain, graph, maturity, adversarial validation, attestation and audit. The current package is `SEMANTIC_CONSISTENCY_READY` with `67` checks, `0` errors and `0` warnings.
+
+The reproducibility guard reruns the current evidence commands and compares stable fields against the published reports. The current package is `REPRODUCIBILITY_READY` with `15` reproduced commands, `119` stable-field comparisons and `0` failures.
 
 The sovereign evidence attestor binds the public evidence base into one machine-readable attestation. The current package is `PNVA_SOVEREIGN_EVIDENCE_ATTESTED` with `19` tracked artifacts and `0` failures; the sovereign audit consumes this attestation without being included in its hash seed.
 

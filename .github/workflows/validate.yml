@@ -118,5 +118,11 @@ jobs:
             --write /tmp/pnva-semantic-consistency.json \
             >/dev/null
           python3 -m json.tool /tmp/pnva-semantic-consistency.json >/dev/null
+      - name: Run reproducibility guard
+        run: |
+          python3 tools/pnva_reproducibility_guard.py \
+            --write /tmp/pnva-reproducibility.json \
+            >/dev/null
+          python3 -m json.tool /tmp/pnva-reproducibility.json >/dev/null
       - name: Check release checksums
         run: sha256sum -c SHA256SUMS.txt

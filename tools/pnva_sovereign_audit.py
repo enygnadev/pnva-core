@@ -51,6 +51,7 @@ PUBLIC_DOCS = [
     "docs/PNVA_ADVERSARIAL_VALIDATION.md",
     "docs/PNVA_ENTITY_HEURISTIC_MATURITY.md",
     "docs/PNVA_SEMANTIC_CONSISTENCY_GUARD.md",
+    "docs/PNVA_REPRODUCIBILITY_GUARD.md",
     "paper/PNVA_CORE_OPEN_RESEARCH_PAPER.md",
 ]
 
@@ -131,6 +132,12 @@ SEMANTIC_CONSISTENCY_FILES = [
     "tools/pnva_semantic_consistency_guard.py",
     "docs/PNVA_SEMANTIC_CONSISTENCY_GUARD.md",
     "reports/pnva-semantic-consistency-2026-05-05.json",
+]
+
+REPRODUCIBILITY_FILES = [
+    "tools/pnva_reproducibility_guard.py",
+    "docs/PNVA_REPRODUCIBILITY_GUARD.md",
+    "reports/pnva-reproducibility-2026-05-05.json",
 ]
 
 LOCAL_LOG_CANDIDATES = [
@@ -664,6 +671,35 @@ def audit_semantic_consistency(repo: Path) -> dict[str, Any]:
     }
 
 
+def audit_reproducibility(repo: Path) -> dict[str, Any]:
+    missing = [rel for rel in REPRODUCIBILITY_FILES if not (repo / rel).exists()]
+    report_path = repo / "reports" / "pnva-reproducibility-2026-05-05.json"
+    if not report_path.exists():
+        return {
+            "reproducibility_ok": False,
+            "missing": missing,
+            "classification": "REPRODUCIBILITY_MISSING",
+            "errors": ["missing reproducibility report"],
+        }
+    data = _read_json(report_path)
+    return {
+        "reproducibility_ok": (
+            not missing
+            and data.get("pass") is True
+            and data.get("classification") == "REPRODUCIBILITY_READY"
+            and int(data.get("failure_count", 0)) == 0
+        ),
+        "missing": missing,
+        "classification": data.get("classification"),
+        "command_count": int(data.get("command_count", 0)),
+        "comparison_count": int(data.get("comparison_count", 0)),
+        "failure_count": int(data.get("failure_count", 0)),
+        "command_failure_count": int(data.get("command_failure_count", 0)),
+        "comparison_failure_count": int(data.get("comparison_failure_count", 0)),
+        "errors": [] if isinstance(data, dict) and data.get("pass") is True else ["reproducibility failed"],
+    }
+
+
 def sample_jsonl(path: Path, *, max_lines: int = 50000) -> dict[str, Any]:
     events: Counter[str] = Counter()
     decisions: Counter[str] = Counter()
@@ -855,7 +891,7 @@ def score_report(report: dict[str, Any]) -> dict[str, Any]:
     if report.get("no_tick_invariants", {}).get("invariants_ok"):
         scores["actionability"] += 2
     if report.get("native_emitter", {}).get("native_ok"):
-        scores["actionability"] += 1
+        scores["actionability"] += 0
     if report.get("sovereign_policy", {}).get("policy_ok"):
         scores["actionability"] += 0
     if report.get("proof_chain", {}).get("chain_ok"):
@@ -863,6 +899,8 @@ def score_report(report: dict[str, Any]) -> dict[str, Any]:
     if report.get("causal_graph", {}).get("graph_ok"):
         scores["actionability"] += 0
     if report.get("evidence_attestation", {}).get("attestation_ok"):
+        scores["actionability"] += 1
+    if report.get("reproducibility", {}).get("reproducibility_ok"):
         scores["actionability"] += 1
 
     local = report["local_logs"]
@@ -925,6 +963,7 @@ def build_report(repo: Path, *, strict_public: bool = False) -> dict[str, Any]:
         "adversarial_validation": audit_adversarial_validation(repo),
         "entity_heuristic_maturity": audit_entity_heuristic_maturity(repo),
         "semantic_consistency": audit_semantic_consistency(repo),
+        "reproducibility": audit_reproducibility(repo),
         "local_logs": audit_local_logs(strict_public),
         "sovereignty": audit_sovereignty(repo),
         "recommendations": [
@@ -939,6 +978,7 @@ def build_report(repo: Path, *, strict_public: bool = False) -> dict[str, Any]:
             "Run adversarial validation so validators prove tamper detection, not only green-path acceptance.",
             "Track entity and heuristic maturity so no-tick suppression stays attributable to actors and authority.",
             "Run semantic consistency guard after attestation so cross-report drift blocks publication.",
+            "Run reproducibility guard so current tools regenerate the stable public evidence fields.",
             "Keep raw local logs private and publish only sanitized proof summaries.",
             "Track thermal pressure provenance when thermal pressure is high but sensor temperature/power are unavailable.",
             "Treat high RESIZE_BATCH ratio as pressure intelligence, not as a proof failure by itself.",

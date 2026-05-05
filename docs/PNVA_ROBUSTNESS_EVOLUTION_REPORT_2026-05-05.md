@@ -45,6 +45,7 @@ docs/PNVA_SOVEREIGN_EVIDENCE_ATTESTATION.md
 docs/PNVA_ADVERSARIAL_VALIDATION.md
 docs/PNVA_ENTITY_HEURISTIC_MATURITY.md
 docs/PNVA_SEMANTIC_CONSISTENCY_GUARD.md
+docs/PNVA_REPRODUCIBILITY_GUARD.md
 tools/pnva_sovereign_audit.py
 tools/pnva_canonical_bridge.py
 tools/pnva_replay_validator.py
@@ -57,6 +58,7 @@ tools/pnva_evidence_attestor.py
 tools/pnva_adversarial_validator.py
 tools/pnva_entity_heuristic_maturity.py
 tools/pnva_semantic_consistency_guard.py
+tools/pnva_reproducibility_guard.py
 reports/pnva-sovereign-audit-2026-05-05.json
 reports/pnva-canonical-events-sample-2026-05-05.jsonl
 reports/pnva-entity-catalog-2026-05-05.json
@@ -78,6 +80,7 @@ reports/pnva-sovereign-evidence-attestation-2026-05-05.json
 reports/pnva-adversarial-validation-2026-05-05.json
 reports/pnva-entity-heuristic-maturity-2026-05-05.json
 reports/pnva-semantic-consistency-2026-05-05.json
+reports/pnva-reproducibility-2026-05-05.json
 ```
 
 ## Technical Diagnosis
@@ -450,6 +453,38 @@ Manifest file list existence
 
 This closes a publication risk: reports can no longer drift silently while still appearing valid individually.
 
+### 15. Reproducibility guard
+
+The reproducibility guard reruns the evidence commands and compares stable fields against the published package.
+
+Current result:
+
+```text
+classification: REPRODUCIBILITY_READY
+command_count: 15
+comparison_count: 119
+failure_count: 0
+command_failure_count: 0
+comparison_failure_count: 0
+```
+
+Reproduced areas:
+
+```text
+replay
+no-tick invariants
+native event emission
+sovereign policy
+proof-chain sealing
+causal graph audit
+adversarial validation
+entity and heuristic maturity
+evidence attestation
+semantic consistency
+```
+
+This closes the method gap: the public evidence is now not only stored and cross-consistent, but regenerable from source commands with zero stable-field drift.
+
 ## Next Engineering Recommendations
 
 1. Add schema version to every new JSONL event.
@@ -471,6 +506,7 @@ This closes a publication risk: reports can no longer drift silently while still
 17. Use `tools/pnva_adversarial_validator.py` before release so validator failures are proven, not assumed.
 18. Use `tools/pnva_entity_heuristic_maturity.py` to choose hardening targets by entity, heuristic and authority.
 19. Use `tools/pnva_semantic_consistency_guard.py` after attestation to block cross-report drift.
+20. Use `tools/pnva_reproducibility_guard.py` after semantic consistency to prove source-command reproducibility.
 
 ## Sovereign Rule
 
