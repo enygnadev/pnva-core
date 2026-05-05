@@ -432,6 +432,9 @@ def _event_codes(event: dict[str, Any], slot: dict[str, Any]) -> list[str]:
             codes.append("PRECHECK_GATE_DELTA_POSITIVE")
         if "native_event_emitter" not in rules:
             codes.append("PRECHECK_NATIVE_RULE_MISSING")
+        missing_precheck_rules = sorted(target_rules - rules)
+        if missing_precheck_rules:
+            codes.append("PRECHECK_TARGET_RULES_MISSING")
         missing_precheck_risk_flags = sorted(target_risk_flags - risk_flags)
         if missing_precheck_risk_flags:
             codes.append("PRECHECK_TARGET_RISK_FLAGS_MISSING")
@@ -888,6 +891,7 @@ def _negative_controls(matrix: dict[str, Any]) -> dict[str, Any]:
     run_control("reject_legacy_observer_mixed_rule", "commit", lambda event: (event["heuristics"].update({"rules": list(slot.get("target_rules") or []) + ["legacy_observer"]}), rebind_proof_hash(event)), "LEGACY_HEURISTIC_RULE_FORBIDDEN")
     run_control("reject_unknown_heuristic_rule", "commit", lambda event: event["heuristics"].update({"rules": list(slot.get("target_rules") or []) + ["unknown_rule"]}), "HEURISTIC_RULE_UNKNOWN")
     run_control("reject_duplicate_heuristic_rule", "commit", lambda event: event["heuristics"].update({"rules": list(slot.get("target_rules") or []) + [str((slot.get("target_rules") or ["native_event_emitter"])[0])]}), "HEURISTIC_RULE_DUPLICATE")
+    run_control("reject_precheck_missing_target_rules", "precheck", lambda event: (event["heuristics"].update({"rules": ["native_event_emitter"]}), rebind_proof_hash(event)), "PRECHECK_TARGET_RULES_MISSING")
     run_control("reject_invalid_risk_flags", "commit", lambda event: event["heuristics"].update({"risk_flags": "not-a-list"}), "RISK_FLAGS_INVALID")
     run_control("reject_duplicate_risk_flag", "commit", lambda event: event["heuristics"].update({"risk_flags": list(slot.get("risk_flags") or []) + [str((slot.get("risk_flags") or ["RESIZE_BATCH_PRESSURE"])[0])]}), "RISK_FLAG_DUPLICATE")
     run_control("reject_unknown_risk_flag", "commit", lambda event: event["heuristics"].update({"risk_flags": list(slot.get("risk_flags") or []) + ["UNKNOWN_RISK_FLAG"]}), "RISK_FLAG_UNKNOWN")
@@ -1197,6 +1201,7 @@ def build_report(repo: Path, runtime_events_path: Path | None = None) -> dict[st
             "runtime_event_count_exact_required": True,
             "commit_must_match_slot_action": True,
             "target_rules_required_on_commit": True,
+            "target_rules_required_on_precheck": True,
             "legacy_heuristic_rule_forbidden": True,
             "heuristic_rules_known_required": True,
             "heuristic_rules_unique_required": True,
@@ -1273,7 +1278,7 @@ def build_report(repo: Path, runtime_events_path: Path | None = None) -> dict[st
             "Require proof_ref to match runtime:<slot-id>:precheck or runtime:<slot-id>:commit.",
             "Require gate_delta to equal score minus threshold, with nonpositive prechecks and nonnegative commits.",
             "Reject legacy heuristic rules such as legacy_observer in final R3 runtime evidence.",
-            "Reject unknown or duplicated heuristic rules before accepting runtime coverage.",
+            "Reject unknown, duplicated or missing target heuristic rules on no-tick prechecks and commits before accepting runtime coverage.",
             "Reject malformed, unknown, duplicated or missing target risk flags on no-tick prechecks and commits before accepting runtime coverage.",
             "Keep entity_id, causal_chain_id, source.file_name, source.line, source.sanitized and proof_hash mandatory for every runtime event.",
         ],

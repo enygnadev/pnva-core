@@ -53,8 +53,8 @@ no_tick_pair_integrity_count: 0
 no_tick_pair_failure_count: 0
 same_source_file_no_tick_pair_count: 0
 state_continuity_no_tick_pair_count: 0
-negative_control_detected_count: 62
-negative_control_count: 62
+negative_control_detected_count: 63
+negative_control_count: 63
 positive_control_passed_count: 6
 positive_control_count: 6
 positive_controls_fixture_only: true
@@ -112,6 +112,7 @@ commit field.state_before equal to field.state_after
 precheck field.state_after mismatch
 commit field.state_after mismatch
 missing native target rules
+precheck missing target heuristic rules
 unknown heuristic rule
 duplicate heuristic rule
 precheck that executes instead of suppressing
@@ -138,6 +139,7 @@ unique source.file_name + source.line values
 public-basename source.file_name values
 monotonic source.line values inside each source.file_name stream
 known, non-legacy and unique heuristic rules
+precheck and commit include all target heuristic rules for the slot
 proof_ref in runtime:<slot-id>:<role> form
 proof_hash bound to the event identity and source-location payload
 source.file_name present
@@ -183,6 +185,7 @@ reject_proof_hash_binding_tamper
 reject_proof_ref_role_mismatch
 reject_low_authority_commit
 reject_missing_target_rules
+reject_precheck_missing_target_rules
 reject_unknown_heuristic_rule
 reject_duplicate_heuristic_rule
 reject_wrong_action
@@ -229,7 +232,7 @@ reject_precheck_missing_target_risk_flags
 Current result:
 
 ```text
-62/62 detected
+63/63 detected
 ```
 
 ## Positive Controls
@@ -271,7 +274,7 @@ R3_RUNTIME_INSTRUMENTATION_PLAN_READY
 6 event templates
 70 required runtime events
 28 mandatory event fields
-62 negative controls
+63 negative controls
 6 positive controls
 ```
 

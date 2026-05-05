@@ -71,6 +71,7 @@
         "known_rules_only": true,
         "legacy_observer_forbidden": true,
         "precheck_target_risk_flags_required": true,
+        "precheck_target_rules_required": true,
         "risk_flags_list_required": true
       },
       "original_event_ids": [
@@ -294,6 +295,7 @@
         "known_rules_only": true,
         "legacy_observer_forbidden": true,
         "precheck_target_risk_flags_required": true,
+        "precheck_target_rules_required": true,
         "risk_flags_list_required": true
       },
       "original_event_ids": [
@@ -451,6 +453,7 @@
         "known_rules_only": true,
         "legacy_observer_forbidden": true,
         "precheck_target_risk_flags_required": true,
+        "precheck_target_rules_required": true,
         "risk_flags_list_required": true
       },
       "original_event_ids": [
@@ -542,7 +545,7 @@
   "classification": "R3_RUNTIME_INSTRUMENTATION_PLAN_READY",
   "entity_target_count": 1,
   "event_template_count": 6,
-  "generated_at": "2026-05-05T15:32:31Z",
+  "generated_at": "2026-05-05T15:42:55Z",
   "instrumentation_plan_ready": true,
   "interpretation": {
     "boundary": "This plan is not runtime evidence and does not approve R3 cutover; it defines how fresh runtime evidence must be emitted and validated.",
@@ -580,8 +583,8 @@
     "source.sanitized"
   ],
   "mandatory_field_count": 28,
-  "negative_control_count": 62,
-  "negative_control_detected_count": 62,
+  "negative_control_count": 63,
+  "negative_control_detected_count": 63,
   "pass": true,
   "positive_control_count": 6,
   "positive_control_passed_count": 6,
@@ -598,6 +601,7 @@
     "Emit source.file_name as a public basename only, never as a local path.",
     "Emit commit.timestamp strictly after the no-tick precheck timestamp; equal timestamps are rejected.",
     "Do not emit legacy_observer in final R3 runtime heuristics.",
+    "Emit all target heuristic rules on no-tick prechecks as well as commits.",
     "Write the fresh runtime JSONL in causal pair order so each commit record appears after its precheck record.",
     "Emit each no-tick precheck and commit pair from the same source.file_name so source.line order proves one emitter stream.",
     "Emit source.line as a monotonic runtime sequence so each commit follows its no-tick precheck physically in the log.",
@@ -651,7 +655,7 @@
     "event_template_count": 6,
     "instrumentation_plan_ready": true,
     "mandatory_field_count": 28,
-    "negative_control_detected_count": 62,
+    "negative_control_detected_count": 63,
     "positive_control_passed_count": 6,
     "required_runtime_event_count": 70
   },
