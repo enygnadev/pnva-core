@@ -66,6 +66,7 @@ REQUIRED_ENFORCED_CONTROLS = {
     "entity_type_required": True,
     "entity_type_must_match_slot": True,
     "causal_chain_id_required": True,
+    "causal_chain_unique_per_slot_required": True,
     "tension_gate_delta_required": True,
     "tension_gate_delta_consistency_required": True,
     "precheck_gate_delta_nonpositive_required": True,
@@ -198,6 +199,7 @@ def _template_checks(checks: list[dict[str, Any]], contract: dict[str, Any]) -> 
     _add_check(checks, "template", f"{contract_id}_commit_rules_nonempty", bool(commit.get("required_rules")), True)
     _add_check(checks, "pairing", f"{contract_id}_timestamp_iso8601_required", pairing.get("timestamp_iso8601_required"), True)
     _add_check(checks, "pairing", f"{contract_id}_duplicate_event_id_forbidden", pairing.get("duplicate_event_id_forbidden"), True)
+    _add_check(checks, "pairing", f"{contract_id}_causal_chain_unique_per_slot_required", pairing.get("causal_chain_unique_per_slot_required"), True)
     _add_check(checks, "pairing", f"{contract_id}_source_location_unique_required", pairing.get("source_location_unique_required"), True)
     _add_check(checks, "pairing", f"{contract_id}_source_line_monotonic_per_file_required", pairing.get("source_line_monotonic_per_file_required"), True)
     _add_check(checks, "pairing", f"{contract_id}_same_causal_chain_id_required", pairing.get("same_causal_chain_id_required"), True)

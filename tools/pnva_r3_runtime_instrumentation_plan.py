@@ -104,6 +104,7 @@ def _action_contracts(slots: list[dict[str, Any]]) -> list[dict[str, Any]]:
                 "pairing_policy": {
                     "timestamp_iso8601_required": True,
                     "duplicate_event_id_forbidden": True,
+                    "causal_chain_unique_per_slot_required": True,
                     "source_location_unique_required": True,
                     "source_line_monotonic_per_file_required": True,
                     "same_causal_chain_id_required": True,
@@ -325,6 +326,7 @@ def build_report(repo: Path) -> dict[str, Any]:
             "Emit original_event_id in tension.components so each runtime event maps back to a capture slot.",
             "Emit fixed decision.reason values so no-tick prechecks and runtime commits remain semantically distinct.",
             "Emit fixed field.state_after values so prechecks prove suppression and commits prove completion.",
+            "Never reuse a causal_chain_id across different original_event_id or r3_runtime_slot_id values.",
             "Write the fresh runtime JSONL in causal pair order so each commit record appears after its precheck record.",
             "Emit source.line as a monotonic runtime sequence so each commit follows its no-tick precheck physically in the log.",
             "Keep each source.file_name plus source.line pair unique across the final runtime JSONL.",

@@ -520,9 +520,12 @@ def _validate_runtime_events(matrix: dict[str, Any], events: list[dict[str, Any]
     seen_proof_ref_lines: dict[str, int] = {}
     seen_source_location_lines: dict[tuple[str, int], int] = {}
     last_source_line_by_file: dict[str, int] = {}
+    seen_causal_chain_slots: dict[str, tuple[str, str]] = {}
 
     for event in events:
         event_id = str(event.get("event_id") or "")
+        original = _original_id(event)
+        slot_id = _r3_slot_id(event)
         stream_codes: list[str] = []
         if event_id:
             if event_id in seen_event_lines:
@@ -541,6 +544,14 @@ def _validate_runtime_events(matrix: dict[str, Any], events: list[dict[str, Any]
                 stream_codes.append("DUPLICATE_PROOF_REF")
             else:
                 seen_proof_ref_lines[proof_ref] = int(event.get("_line", 0) or 0)
+        causal_chain_id = str(event.get("causal_chain_id") or "").strip()
+        if causal_chain_id and original and slot_id:
+            chain_slot = (original, slot_id)
+            previous_chain_slot = seen_causal_chain_slots.get(causal_chain_id)
+            if previous_chain_slot is not None and previous_chain_slot != chain_slot:
+                stream_codes.append("CAUSAL_CHAIN_SLOT_COLLISION")
+            else:
+                seen_causal_chain_slots[causal_chain_id] = chain_slot
         source_file_name = _source(event).get("file_name")
         source_line = _source(event).get("line")
         if (
@@ -560,7 +571,6 @@ def _validate_runtime_events(matrix: dict[str, Any], events: list[dict[str, Any]
                 stream_codes.append("SOURCE_LINE_MONOTONICITY_INVALID")
             else:
                 last_source_line_by_file[source_file_name.strip()] = source_line
-        original = _original_id(event)
         if original not in slots:
             codes = [*stream_codes, "UNKNOWN_ORIGINAL_EVENT_ID"]
             rejections.append(
@@ -638,6 +648,7 @@ def _validate_runtime_events(matrix: dict[str, Any], events: list[dict[str, Any]
     duplicate_proof_ref_rejection_count = sum(1 for rejection in rejections if "DUPLICATE_PROOF_REF" in rejection.get("codes", []))
     duplicate_source_location_rejection_count = sum(1 for rejection in rejections if "DUPLICATE_SOURCE_LOCATION" in rejection.get("codes", []))
     source_line_monotonicity_rejection_count = sum(1 for rejection in rejections if "SOURCE_LINE_MONOTONICITY_INVALID" in rejection.get("codes", []))
+    causal_chain_slot_collision_rejection_count = sum(1 for rejection in rejections if "CAUSAL_CHAIN_SLOT_COLLISION" in rejection.get("codes", []))
     return {
         "runtime_event_count": len(events),
         "bad_json_line_count": len(bad_lines),
@@ -650,6 +661,7 @@ def _validate_runtime_events(matrix: dict[str, Any], events: list[dict[str, Any]
         "duplicate_proof_ref_rejection_count": duplicate_proof_ref_rejection_count,
         "duplicate_source_location_rejection_count": duplicate_source_location_rejection_count,
         "source_line_monotonicity_rejection_count": source_line_monotonicity_rejection_count,
+        "causal_chain_slot_collision_rejection_count": causal_chain_slot_collision_rejection_count,
         "no_tick_pair_integrity_count": no_tick_pair_integrity_count,
         "no_tick_pair_failure_count": no_tick_pair_failure_count,
         "event_type_mix": event_type_mix.most_common(),
@@ -854,6 +866,27 @@ def _negative_controls(matrix: dict[str, Any]) -> dict[str, Any]:
             rebind_proof_hash(event)
         run_stream_control("reject_source_line_regression", [first_precheck, first_commit, second_precheck, second_commit], "SOURCE_LINE_MONOTONICITY_INVALID")
 
+        collision_slot = slots[1]
+        chain_collision_precheck = _sample_event(slot, role="precheck", control="chain_collision_a")
+        chain_collision_commit = _sample_event(slot, role="commit", control="chain_collision_a")
+        chain_collision_second_precheck = _sample_event(collision_slot, role="precheck", control="chain_collision_b")
+        chain_collision_second_commit = _sample_event(collision_slot, role="commit", control="chain_collision_b")
+        shared_chain = "chain_collision_shared_across_slots"
+        for event, line in (
+            (chain_collision_precheck, 1),
+            (chain_collision_commit, 2),
+            (chain_collision_second_precheck, 3),
+            (chain_collision_second_commit, 4),
+        ):
+            event["causal_chain_id"] = shared_chain
+            event["source"]["line"] = line
+            rebind_proof_hash(event)
+        run_stream_control(
+            "reject_causal_chain_slot_collision",
+            [chain_collision_precheck, chain_collision_commit, chain_collision_second_precheck, chain_collision_second_commit],
+            "CAUSAL_CHAIN_SLOT_COLLISION",
+        )
+
     chain_precheck = _sample_event(slot, role="precheck", control="chain")
     chain_commit = _sample_event(slot, role="commit", control="chain")
     chain_commit["causal_chain_id"] = "chain_wrong_for_pair"
@@ -994,6 +1027,7 @@ def build_report(repo: Path, runtime_events_path: Path | None = None) -> dict[st
         "duplicate_proof_ref_rejection_count": runtime["duplicate_proof_ref_rejection_count"],
         "duplicate_source_location_rejection_count": runtime["duplicate_source_location_rejection_count"],
         "source_line_monotonicity_rejection_count": runtime["source_line_monotonicity_rejection_count"],
+        "causal_chain_slot_collision_rejection_count": runtime["causal_chain_slot_collision_rejection_count"],
         "no_tick_pair_integrity_count": runtime["no_tick_pair_integrity_count"],
         "no_tick_pair_failure_count": runtime["no_tick_pair_failure_count"],
         "negative_control_count": negative["negative_control_count"],
@@ -1014,6 +1048,7 @@ def build_report(repo: Path, runtime_events_path: Path | None = None) -> dict[st
             "entity_type_required": True,
             "entity_type_must_match_slot": True,
             "causal_chain_id_required": True,
+            "causal_chain_unique_per_slot_required": True,
             "tension_gate_delta_required": True,
             "tension_gate_delta_consistency_required": True,
             "precheck_gate_delta_nonpositive_required": True,
@@ -1084,6 +1119,7 @@ def build_report(repo: Path, runtime_events_path: Path | None = None) -> dict[st
             "duplicate_proof_ref_rejection_count": runtime["duplicate_proof_ref_rejection_count"],
             "duplicate_source_location_rejection_count": runtime["duplicate_source_location_rejection_count"],
             "source_line_monotonicity_rejection_count": runtime["source_line_monotonicity_rejection_count"],
+            "causal_chain_slot_collision_rejection_count": runtime["causal_chain_slot_collision_rejection_count"],
             "no_tick_pair_integrity_count": runtime["no_tick_pair_integrity_count"],
             "no_tick_pair_failure_count": runtime["no_tick_pair_failure_count"],
             "negative_control_detected_count": negative["detected_count"],
@@ -1093,7 +1129,7 @@ def build_report(repo: Path, runtime_events_path: Path | None = None) -> dict[st
         },
         "interpretation": {
             "purpose": "Protect the R3 runtime intake boundary before fresh events are accepted as legacy-free evidence.",
-            "sovereignty": "PNVA becomes harder to fake when projected proofs, malformed, duplicated or content-unbound proof hashes, wrong proof-ref slot roles, wrong event types, wrong decision reasons, wrong role state transitions, malformed or inconsistent tension values, invalid gate signs, duplicate events, duplicated source locations, regressed source lines, entity or slot mismatches, missing or reversed log/source location order, unsanitized sources, unknown heuristic rules, invalid risk flags, weak authority, missing target rules, missing precheck or commit target risk flags, extra runtime events and causally broken no-tick pairs are rejected before cutover.",
+            "sovereignty": "PNVA becomes harder to fake when projected proofs, malformed, duplicated or content-unbound proof hashes, wrong proof-ref slot roles, wrong event types, wrong decision reasons, wrong role state transitions, malformed or inconsistent tension values, invalid gate signs, duplicate events, duplicated source locations, reused causal chains across different slots, regressed source lines, entity or slot mismatches, missing or reversed log/source location order, unsanitized sources, unknown heuristic rules, invalid risk flags, weak authority, missing target rules, missing precheck or commit target risk flags, extra runtime events and causally broken no-tick pairs are rejected before cutover.",
             "boundary": "Without a runtime-events file this guard certifies the intake contract only; it does not claim final runtime completion.",
         },
         "recommendations": [
@@ -1106,6 +1142,7 @@ def build_report(repo: Path, runtime_events_path: Path | None = None) -> dict[st
             "Require decision.reason to distinguish native no-tick prechecks from native runtime commits.",
             "Require field.state_after to prove no-tick precheck suppression and commit completion.",
             "Reject duplicate event_id, proof_hash and proof_ref values before accepting runtime coverage.",
+            "Reject causal_chain_id reuse across different original_event_id or r3_runtime_slot_id values.",
             "Reject duplicate source.file_name plus source.line locations before accepting runtime coverage.",
             "Reject source.line regression inside the same source.file_name before accepting runtime coverage.",
             "Reject runtime events whose proof_hash does not bind to the canonical event identity and source-location payload.",

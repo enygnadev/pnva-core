@@ -48,10 +48,11 @@ duplicate_event_rejection_count: 0
 duplicate_proof_hash_rejection_count: 0
 duplicate_proof_ref_rejection_count: 0
 source_line_monotonicity_rejection_count: 0
+causal_chain_slot_collision_rejection_count: 0
 no_tick_pair_integrity_count: 0
 no_tick_pair_failure_count: 0
-negative_control_detected_count: 54
-negative_control_count: 54
+negative_control_detected_count: 55
+negative_control_count: 55
 positive_control_passed_count: 6
 positive_control_count: 6
 positive_controls_fixture_only: true
@@ -117,6 +118,7 @@ Every R3 slot must contain:
 1 native no-tick precheck event
 1 native collapse commit event
 same causal_chain_id
+causal_chain_id not reused across different slots
 commit timestamp >= precheck timestamp
 commit JSONL line > precheck JSONL line
 commit source.line > precheck source.line
@@ -197,6 +199,7 @@ reject_duplicate_proof_hash
 reject_duplicate_proof_ref
 reject_duplicate_source_location
 reject_source_line_regression
+reject_causal_chain_slot_collision
 reject_no_tick_pair_chain_mismatch
 reject_commit_before_precheck
 reject_commit_log_line_before_precheck
@@ -211,7 +214,7 @@ reject_precheck_missing_target_risk_flags
 Current result:
 
 ```text
-54/54 detected
+55/55 detected
 ```
 
 ## Positive Controls
@@ -253,7 +256,7 @@ R3_RUNTIME_INSTRUMENTATION_PLAN_READY
 6 event templates
 70 required runtime events
 28 mandatory event fields
-54 negative controls
+55 negative controls
 6 positive controls
 ```
 

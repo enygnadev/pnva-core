@@ -106,6 +106,7 @@
         "evt_276e496e_000127_2ae25618"
       ],
       "pairing_policy": {
+        "causal_chain_unique_per_slot_required": true,
         "commit_log_line_after_precheck_required": true,
         "commit_source_line_after_precheck_required": true,
         "commit_timestamp_after_precheck_required": true,
@@ -292,6 +293,7 @@
         "evt_276e496e_000078_933bffc6"
       ],
       "pairing_policy": {
+        "causal_chain_unique_per_slot_required": true,
         "commit_log_line_after_precheck_required": true,
         "commit_source_line_after_precheck_required": true,
         "commit_timestamp_after_precheck_required": true,
@@ -441,6 +443,7 @@
         "evt_276e496e_000073_bc920d9e"
       ],
       "pairing_policy": {
+        "causal_chain_unique_per_slot_required": true,
         "commit_log_line_after_precheck_required": true,
         "commit_source_line_after_precheck_required": true,
         "commit_timestamp_after_precheck_required": true,
@@ -521,7 +524,7 @@
   "classification": "R3_RUNTIME_INSTRUMENTATION_PLAN_READY",
   "entity_target_count": 1,
   "event_template_count": 6,
-  "generated_at": "2026-05-05T13:59:10Z",
+  "generated_at": "2026-05-05T14:13:19Z",
   "instrumentation_plan_ready": true,
   "interpretation": {
     "boundary": "This plan is not runtime evidence and does not approve R3 cutover; it defines how fresh runtime evidence must be emitted and validated.",
@@ -559,8 +562,8 @@
     "source.sanitized"
   ],
   "mandatory_field_count": 28,
-  "negative_control_count": 54,
-  "negative_control_detected_count": 54,
+  "negative_control_count": 55,
+  "negative_control_detected_count": 55,
   "pass": true,
   "positive_control_count": 6,
   "positive_control_passed_count": 6,
@@ -571,6 +574,7 @@
     "Emit original_event_id in tension.components so each runtime event maps back to a capture slot.",
     "Emit fixed decision.reason values so no-tick prechecks and runtime commits remain semantically distinct.",
     "Emit fixed field.state_after values so prechecks prove suppression and commits prove completion.",
+    "Never reuse a causal_chain_id across different original_event_id or r3_runtime_slot_id values.",
     "Write the fresh runtime JSONL in causal pair order so each commit record appears after its precheck record.",
     "Emit source.line as a monotonic runtime sequence so each commit follows its no-tick precheck physically in the log.",
     "Keep each source.file_name plus source.line pair unique across the final runtime JSONL.",
@@ -623,7 +627,7 @@
     "event_template_count": 6,
     "instrumentation_plan_ready": true,
     "mandatory_field_count": 28,
-    "negative_control_detected_count": 54,
+    "negative_control_detected_count": 55,
     "positive_control_passed_count": 6,
     "required_runtime_event_count": 70
   },

@@ -35,17 +35,24 @@ r3_preparation_ready: true
 r3_runtime_capture_coverage_percent: 0.0
 runtime_pending_slot_count: 35
 runtime_required_event_count: 70
-runtime_contract_check_count: 283
+runtime_contract_check_count: 287
 runtime_contract_failure_count: 0
+runtime_negative_control_count: 55
 runtime_positive_control_passed_count: 6
 runtime_mandatory_field_count: 28
-runtime_enforced_control_count: 51
+runtime_enforced_control_count: 52
 ```
 
 ## What This Proves
 
 The ledger proves that the current PNVA package has a coherent preparation
 layer for the next runtime step:
+
+It is intentionally upstream of final attestation and semantic consistency.
+The ledger builds the release dashboard first; the attestor then hashes that
+dashboard, and the semantic guard validates cross-report agreement after the
+ledger exists. This avoids circular publication logic while keeping all checks
+public.
 
 - no-tick evidence is present and reproducible;
 - native path remains clean;
