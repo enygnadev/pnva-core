@@ -1,0 +1,342 @@
+{
+  "author": "Gustavo de Aguiar Martins",
+  "bounded_occurrences_sample": [
+    {
+      "bounded": true,
+      "context": "pendent reproduction attempts. - review of the equations and validation protocol. - issues about unclear documentation. - suggestions for better benchmarks. - sanitized proof artifacts from other machines. ## what is not in scope yet - claims that pnva is a universal physical theory. - medical, legal or safety-critical automation without licensed experts. - requests for the private commercial tuning layer. - unsanitized logs containing personal paths, tokens or user data. ## reproduction report template open an issue with: ```text har",
+      "path": "CONTRIBUTING.md",
+      "phrase": "universal physical theory"
+    },
+    {
+      "bounded": true,
+      "context": "a/no-tick was locally validated in a live field with 15m, 8h, 12h, 24h, g1, guard rails, distribution-gate and production-candidate pass, using auditable json proof logs and documented canonical reclassification criteria. ``` do not overclaim: ```text not a universal proof. not a full linux kernel tick replacement claim. not a medical, legal or physical theory. not evidence that a veon is a physical particle. ``` ## verify the release package ```bash sha256sum -c sha256sums.txt python3 -m json.tool manifest.json >/dev/null fo",
+      "path": "README.md",
+      "phrase": "universal proof"
+    },
+    {
+      "bounded": true,
+      "context": "by observable cause: ```text state -> event -> tension -> collapse -> execution -> proof ``` the central shift is simple: ```text from: \"is it time to check again?\" to: \"did the field change enough to justify action?\" ``` pnva is not presented here as a universal physical theory or a miracle optimization. it is a technical architecture for event-aware, proof-driven computation. ## production evidence this repository publishes the sanitized evidence layer of a local live-field validation. ```text 15m live gate pass 8h live",
+      "path": "README.md",
+      "phrase": "universal physical theory"
+    },
+    {
+      "bounded": true,
+      "context": "tate -> event -> tension -> collapse -> execution -> proof ``` the central shift is simple: ```text from: \"is it time to check again?\" to: \"did the field change enough to justify action?\" ``` pnva is not presented here as a universal physical theory or a miracle optimization. it is a technical architecture for event-aware, proof-driven computation. ## production evidence this repository publishes the sanitized evidence layer of a local live-field validation. ```text 15m live gate pass 8h live gate pass 12h l",
+      "path": "README.md",
+      "phrase": "miracle optimization"
+    },
+    {
+      "bounded": true,
+      "context": "beta * k_i(m_i) - gamma * a_i * u_i v_i,t = nu_i,t * d_i,t phi_t+1 = phi_t + eta_t * ( sum_{j in s_t} g_tilde_j(phi_t) + delta * sum_{i in s_t} v_i,t ) + mu_t * (phi_t - phi_t-1) ``` the veon is a computational unit, not a claim of physical particle discovery. ## repository map ```text docs/ pnva_architecture.md validation_protocol.md proof_matrix.md pnva_sovereign_logs_entities_heuristics.md pnva_canonical_event_bridge.md pnva_replay_validation.md pnva_no_tick_invariants.md pnva_native",
+      "path": "README.md",
+      "phrase": "physical particle"
+    },
+    {
+      "bounded": true,
+      "context": ", using auditable json proof logs and documented canonical reclassification criteria. ``` do not overclaim: ```text not a universal proof. not a full linux kernel tick replacement claim. not a medical, legal or physical theory. not evidence that a veon is a physical particle. ``` ## verify the release package ```bash sha256sum -c sha256sums.txt python3 -m json.tool manifest.json >/dev/null for f in proofs/sanitized/*.json; do python3 -m json.tool \"$f\" >/dev/null; done python3 tools/pnva_sovereign_audit.py --repo . --strict-publ",
+      "path": "README.md",
+      "phrase": "physical particle"
+    },
+    {
+      "bounded": true,
+      "context": "itetura event-aware/no-tick com provas json auditaveis. ``` ```text modelo causal: estado, evento, tensao, colapso e prova. ``` ## claims not allowed yet ```text provado universalmente. ``` ```text substitui todo tick do kernel linux. ``` ```text garante economia de energia em qualquer computador. ``` ```text melhora todo jogo, minerador ou workload. ``` ## reclassification note o 24h foi pass canonico. o bruto registrou fail por ultimo snapshot em `warmup`. essa diferenca precisa ficar visivel em qualquer paper, readme ou apresentacao.",
+      "path": "docs/LIMITATIONS.md",
+      "phrase": "economia de energia em qualquer"
+    },
+    {
+      "bounded": true,
+      "context": "ext arquitetura event-aware/no-tick com provas json auditaveis. ``` ```text modelo causal: estado, evento, tensao, colapso e prova. ``` ## claims not allowed yet ```text provado universalmente. ``` ```text substitui todo tick do kernel linux. ``` ```text garante economia de energia em qualquer computador. ``` ```text melhora todo jogo, minerador ou workload. ``` ## reclassification note o 24h foi pass canonico. o bruto registrou fail por ultimo snapshot em `warmup`. essa diferenca precisa ficar visivel em qualquer paper, r",
+      "path": "docs/LIMITATIONS.md",
+      "phrase": "garante economia"
+    },
+    {
+      "bounded": true,
+      "context": "ates longos e production-candidate pass. ``` ```text arquitetura event-aware/no-tick com provas json auditaveis. ``` ```text modelo causal: estado, evento, tensao, colapso e prova. ``` ## claims not allowed yet ```text provado universalmente. ``` ```text substitui todo tick do kernel linux. ``` ```text garante economia de energia em qualquer computador. ``` ```text melhora todo jogo, minerador ou workload. ``` ## reclassification note o 24h foi pass canonico. o bruto registrou fail por ultimo snapshot em `warmup`. essa difer",
+      "path": "docs/LIMITATIONS.md",
+      "phrase": "substitui todo tick"
+    },
+    {
+      "bounded": true,
+      "context": "e for state/event-oriented no-tick runtime validation ``` enviar como: - osf preprints; - zenodo; - arxiv apenas se o texto estiver em formato academico suficiente. ## 6. public claim usar sempre: ```text local live-field validation ``` evitar: ```text universal proof ``` ## 7. arquivos finais de lancamento postagem autoral final: ```text release/post_01_profissional_autoral.md ``` checklist de publicacao: ```text docs/repository_publishing_checklist.md ``` posicionamento publico: ```text docs/public_positioning.md",
+      "path": "docs/ONLINE_PUBLICATION.md",
+      "phrase": "universal proof"
+    },
+    {
+      "bounded": true,
+      "context": "provado hoje e: ```text ganho de estabilidade e governanca causal em campo vivo local. ``` ainda nao e correto afirmar: ```text ganho universal de energia em qualquer hardware ganho universal de velocidade substituicao completa de todos os ticks do kernel prova fisica sobre a realidade ``` ## por que pnva e pos-temporal temporal: ```text executar porque passou tempo ``` pos-temporal: ```text executar porque nasceu causa ``` pnva nao elimina o tempo. ele rebaixa o tempo de rei para relogio. o tempo mede, limita e orde",
+      "path": "docs/PNVA_POST_TEMPORAL_CIVILIZATION.md",
+      "phrase": "prova fisica"
+    },
+    {
+      "bounded": true,
+      "context": "ich proof hash seals the event ``` replay validation makes that chain checkable. ## interpretation pnva-core now has three evidence layers: ```text 1. sanitized production proof gates 2. canonical event bridge 3. replay validation ``` this does not claim universal proof. it proves that the public sample is structurally replayable and internally consistent. ## sovereign rule future pnva runtimes should emit `pnva.event.v1` directly. until then, the bridge and replay validator allow legacy logs to remain useful without rewri",
+      "path": "docs/PNVA_REPLAY_VALIDATION.md",
+      "phrase": "universal proof"
+    },
+    {
+      "bounded": true,
+      "context": "each mutation must make: ```text pnva_root_sovereignty_guard_fail pnva_root_causal_intelligence_needs_hardening ``` ## boundary this sentry is adversarial validation over the public deterministic r3 runtime sample. it does not claim universal security for private deployments. it proves that the current public root validators reject the most important root-level evidence corruptions. ## command ```bash python3 tools/pnva_root_adversarial_sentry.py \\ --write reports/pnva-root-adversarial-sentry-2026-05-05.json ``` ## sovereig",
+      "path": "docs/PNVA_ROOT_ADVERSARIAL_SENTRY.md",
+      "phrase": "private deployment"
+    },
+    {
+      "bounded": true,
+      "context": "pnva evidence package into a deterministic score over: ```text no-tick efficiency runtime slot closure entity coverage heuristic authority proof integrity publication hygiene controlled legacy context ``` it is not a black-box ai layer and not a claim about private deployments. it is a reproducible analyzer over public reports. ## current public result report: ```text reports/pnva-root-causal-intelligence-2026-05-05.json ``` expected classification: ```text pnva_root_causal_intelligence_ready ``` expected result: ```text ro",
+      "path": "docs/PNVA_ROOT_CAUSAL_INTELLIGENCE.md",
+      "phrase": "private deployment"
+    },
+    {
+      "bounded": true,
+      "context": "ers, runtime r3 validation, root guards, release seal, verifier, claim boundary and publication gate. ## boundary this validates public repository evidence dependencies only. it does not extend claims beyond the published proof reports and does not validate private deployments. ## command ```bash python3 tools/pnva_root_dependency_graph.py \\ --write reports/pnva-root-dependency-graph-2026-05-05.json ```",
+      "path": "docs/PNVA_ROOT_DEPENDENCY_GRAPH.md",
+      "phrase": "private deployment"
+    },
+    {
+      "bounded": true,
+      "context": "t uses a public event baseline: ```text baseline event actions = all public events pnva avoided actions = observe + block decisions with valid proof pnva required actions = collapse + proof-only decisions ``` this is an engineering metric. it does not claim universal speedup, hardware counters or private deployment performance. ## tool ```text tools/pnva_root_efficiency_proof_ledger.py ``` ## report ```text reports/pnva-root-efficiency-proof-ledger-2026-05-05.json ``` ## classification ```text pnva_root_efficiency_proof_led",
+      "path": "docs/PNVA_ROOT_EFFICIENCY_PROOF_LEDGER.md",
+      "phrase": "universal speedup"
+    },
+    {
+      "bounded": true,
+      "context": "baseline event actions = all public events pnva avoided actions = observe + block decisions with valid proof pnva required actions = collapse + proof-only decisions ``` this is an engineering metric. it does not claim universal speedup, hardware counters or private deployment performance. ## tool ```text tools/pnva_root_efficiency_proof_ledger.py ``` ## report ```text reports/pnva-root-efficiency-proof-ledger-2026-05-05.json ``` ## classification ```text pnva_root_efficiency_proof_ledger_ready ``` ## current result ```text",
+      "path": "docs/PNVA_ROOT_EFFICIENCY_PROOF_LEDGER.md",
+      "phrase": "private deployment"
+    },
+    {
+      "bounded": true,
+      "context": "euristic rules 35 accepted runtime slots 0 runtime rejected events 0 public path leaks 0 unbounded high-risk claims ``` ## boundary this index is a public observability layer over existing reports. it does not change the root release seal and does not claim private deployment validation. ## command ```bash python3 tools/pnva_root_observability_index.py \\ --write reports/pnva-root-observability-index-2026-05-05.json ```",
+      "path": "docs/PNVA_ROOT_OBSERVABILITY_INDEX.md",
+      "phrase": "private deployment"
+    },
+    {
+      "bounded": true,
+      "context": "ntionally outside the attestation seed to avoid circular evidence hashing. ## boundary this seal allows the public claim: ```text the public pnva-core evidence package is root-sealed for the deterministic r3 runtime sample. ``` it does not claim: ```text universal performance improvement private deployment validation hardware-level energy gain without separate counters physical particle or physics proof ``` ## command ```bash python3 tools/pnva_root_release_seal.py \\ --write reports/pnva-root-release-seal-2026-05-05.json ```",
+      "path": "docs/PNVA_ROOT_RELEASE_SEAL.md",
+      "phrase": "universal performance"
+    },
+    {
+      "bounded": true,
+      "context": "claim: ```text the public pnva-core evidence package is root-sealed for the deterministic r3 runtime sample. ``` it does not claim: ```text universal performance improvement private deployment validation hardware-level energy gain without separate counters physical particle or physics proof ``` ## command ```bash python3 tools/pnva_root_release_seal.py \\ --write reports/pnva-root-release-seal-2026-05-05.json ``` ## sovereign rule the root seal is the final citation anchor. if any root report, attestation, audit, semantic r",
+      "path": "docs/PNVA_ROOT_RELEASE_SEAL.md",
+      "phrase": "physical particle"
+    },
+    {
+      "bounded": true,
+      "context": "seed to avoid circular evidence hashing. ## boundary this seal allows the public claim: ```text the public pnva-core evidence package is root-sealed for the deterministic r3 runtime sample. ``` it does not claim: ```text universal performance improvement private deployment validation hardware-level energy gain without separate counters physical particle or physics proof ``` ## command ```bash python3 tools/pnva_root_release_seal.py \\ --write reports/pnva-root-release-seal-2026-05-05.json ``` ## sovereign rule the root sea",
+      "path": "docs/PNVA_ROOT_RELEASE_SEAL.md",
+      "phrase": "private deployment"
+    },
+    {
+      "bounded": true,
+      "context": "e hashing. ## boundary this seal allows the public claim: ```text the public pnva-core evidence package is root-sealed for the deterministic r3 runtime sample. ``` it does not claim: ```text universal performance improvement private deployment validation hardware-level energy gain without separate counters physical particle or physics proof ``` ## command ```bash python3 tools/pnva_root_release_seal.py \\ --write reports/pnva-root-release-seal-2026-05-05.json ``` ## sovereign rule the root seal is the final citation anchor. i",
+      "path": "docs/PNVA_ROOT_RELEASE_SEAL.md",
+      "phrase": "hardware-level energy"
+    },
+    {
+      "bounded": true,
+      "context": "blic claim boundary drifts, the verifier fails. ## boundary the verifier consumes the seal and is intentionally outside the seal hash. including the verifier inside the seal would make the verifier part of the thing it verifies. the verifier does not claim universal performance improvement, private deployment validation, hardware-level energy gain without separate counters, or any physical particle proof. ## command ```bash python3 tools/pnva_root_release_verifier.py \\ --write reports/pnva-root-release-verifier-2026-05-05.json `",
+      "path": "docs/PNVA_ROOT_RELEASE_VERIFIER.md",
+      "phrase": "universal performance"
+    },
+    {
+      "bounded": true,
+      "context": "eal hash. including the verifier inside the seal would make the verifier part of the thing it verifies. the verifier does not claim universal performance improvement, private deployment validation, hardware-level energy gain without separate counters, or any physical particle proof. ## command ```bash python3 tools/pnva_root_release_verifier.py \\ --write reports/pnva-root-release-verifier-2026-05-05.json ```",
+      "path": "docs/PNVA_ROOT_RELEASE_VERIFIER.md",
+      "phrase": "physical particle"
+    },
+    {
+      "bounded": true,
+      "context": "ifier fails. ## boundary the verifier consumes the seal and is intentionally outside the seal hash. including the verifier inside the seal would make the verifier part of the thing it verifies. the verifier does not claim universal performance improvement, private deployment validation, hardware-level energy gain without separate counters, or any physical particle proof. ## command ```bash python3 tools/pnva_root_release_verifier.py \\ --write reports/pnva-root-release-verifier-2026-05-05.json ```",
+      "path": "docs/PNVA_ROOT_RELEASE_VERIFIER.md",
+      "phrase": "private deployment"
+    },
+    {
+      "bounded": true,
+      "context": "verifier consumes the seal and is intentionally outside the seal hash. including the verifier inside the seal would make the verifier part of the thing it verifies. the verifier does not claim universal performance improvement, private deployment validation, hardware-level energy gain without separate counters, or any physical particle proof. ## command ```bash python3 tools/pnva_root_release_verifier.py \\ --write reports/pnva-root-release-verifier-2026-05-05.json ```",
+      "path": "docs/PNVA_ROOT_RELEASE_VERIFIER.md",
+      "phrase": "hardware-level energy"
+    },
+    {
+      "bounded": true,
+      "context": "replay, policy, no-tick, proof-chain, cutover, ledger, attestation, semantic consistency, reproducibility and audit all pass ``` ## boundary this guard validates the public repository evidence package and deterministic r3 runtime sample. it does not claim universal proof for private deployments, external miners or environments not represented by the published artifacts. it is intentionally kept outside the evidence attestation hash seed because it consumes the attestation, audit and reproducibility reports. ## command ```b",
+      "path": "docs/PNVA_ROOT_SOVEREIGNTY_GUARD.md",
+      "phrase": "universal proof"
+    },
+    {
+      "bounded": true,
+      "context": "tick, proof-chain, cutover, ledger, attestation, semantic consistency, reproducibility and audit all pass ``` ## boundary this guard validates the public repository evidence package and deterministic r3 runtime sample. it does not claim universal proof for private deployments, external miners or environments not represented by the published artifacts. it is intentionally kept outside the evidence attestation hash seed because it consumes the attestation, audit and reproducibility reports. ## command ```bash python3 tools/pnva_",
+      "path": "docs/PNVA_ROOT_SOVEREIGNTY_GUARD.md",
+      "phrase": "private deployment"
+    },
+    {
+      "bounded": true,
+      "context": "d. it feeds it. the root guard now consumes this matrix as an explicit root input, so a traceability failure becomes a root blocker. ## boundary this validates the public deterministic r3 runtime sample only. it does not claim private deployment coverage or universal performance behavior. ## command ```bash python3 tools/pnva_root_traceability_matrix.py \\ --write reports/pnva-root-traceability-matrix-2026-05-05.json ```",
+      "path": "docs/PNVA_ROOT_TRACEABILITY_MATRIX.md",
+      "phrase": "universal performance"
+    },
+    {
+      "bounded": true,
+      "context": "place the root sovereignty guard. it feeds it. the root guard now consumes this matrix as an explicit root input, so a traceability failure becomes a root blocker. ## boundary this validates the public deterministic r3 runtime sample only. it does not claim private deployment coverage or universal performance behavior. ## command ```bash python3 tools/pnva_root_traceability_matrix.py \\ --write reports/pnva-root-traceability-matrix-2026-05-05.json ```",
+      "path": "docs/PNVA_ROOT_TRACEABILITY_MATRIX.md",
+      "phrase": "private deployment"
+    },
+    {
+      "bounded": true,
+      "context": "ash seed as well. it reruns the current evidence commands, including the attestor, and compares stable fields against the published reports; hashing it into the attestation would also create a circular dependency. ## boundary this attestation does not claim universal proof for every pnva deployment. it attests the integrity and consistency of this public repository evidence package. ## verification run: ```bash python3 tools/pnva_evidence_attestor.py \\ --write /tmp/pnva-sovereign-evidence-attestation.json ``` expected cla",
+      "path": "docs/PNVA_SOVEREIGN_EVIDENCE_ATTESTATION.md",
+      "phrase": "universal proof"
+    },
+    {
+      "bounded": true,
+      "context": "o-tick should preserve these invariants: ```text do not wake without observable cause do not execute without threshold do not reclassify without criteria do not publish raw logs without sanitization do not hide transients do not confuse local validation with universal proof ``` ## 6. entity health each runtime entity should expose: ```text entity_id entity_type state last_seen confidence capabilities risk_flags proof_ref ``` recommended health flags: ```text missing_schema_version missing_entity_id missing_causal_chain miss",
+      "path": "docs/PNVA_SOVEREIGN_LOGS_ENTITIES_HEURISTICS.md",
+      "phrase": "universal proof"
+    },
+    {
+      "bounded": true,
+      "context": "count: 48 unbounded_high_risk_occurrence_count: 0 root_release_hash: sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc ``` production interpretation: the claim boundary guard makes public recognition safer. it checks that phrases about universal proof, physical particles, private deployment, hardware energy and medical/legal scope appear only inside explicit limitation language. this keeps pnva ambitious but academically defensible. ## 43. root publication gate after claim boundary validation, close the",
+      "path": "docs/PNVA_SOVEREIGN_LOGS_ENTITIES_HEURISTICS.md",
+      "phrase": "universal proof"
+    },
+    {
+      "bounded": true,
+      "context": "` production interpretation: the verifier makes the final seal challengeable. it recomputes the root release hash, confirms artifact classifications, checks checksum coverage and proves that the public claim boundary still rejects unsupported claims such as universal performance, private deployment validation, hardware energy proof without counters or physical-particle proof. ## 42. root claim boundary guard after verifying the release seal, scan the public language before posting, publishing or indexing: ```text root seal + root",
+      "path": "docs/PNVA_SOVEREIGN_LOGS_ENTITIES_HEURISTICS.md",
+      "phrase": "universal performance"
+    },
+    {
+      "bounded": true,
+      "context": "ed_high_risk_occurrence_count: 0 root_release_hash: sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc ``` production interpretation: the claim boundary guard makes public recognition safer. it checks that phrases about universal proof, physical particles, private deployment, hardware energy and medical/legal scope appear only inside explicit limitation language. this keeps pnva ambitious but academically defensible. ## 43. root publication gate after claim boundary validation, close the public release pack",
+      "path": "docs/PNVA_SOVEREIGN_LOGS_ENTITIES_HEURISTICS.md",
+      "phrase": "physical particle"
+    },
+    {
+      "bounded": true,
+      "context": "ation: the verifier makes the final seal challengeable. it recomputes the root release hash, confirms artifact classifications, checks checksum coverage and proves that the public claim boundary still rejects unsupported claims such as universal performance, private deployment validation, hardware energy proof without counters or physical-particle proof. ## 42. root claim boundary guard after verifying the release seal, scan the public language before posting, publishing or indexing: ```text root seal + root verifier + public do",
+      "path": "docs/PNVA_SOVEREIGN_LOGS_ENTITIES_HEURISTICS.md",
+      "phrase": "private deployment"
+    },
+    {
+      "bounded": true,
+      "context": "nce_count: 0 root_release_hash: sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc ``` production interpretation: the claim boundary guard makes public recognition safer. it checks that phrases about universal proof, physical particles, private deployment, hardware energy and medical/legal scope appear only inside explicit limitation language. this keeps pnva ambitious but academically defensible. ## 43. root publication gate after claim boundary validation, close the public release package for repository pu",
+      "path": "docs/PNVA_SOVEREIGN_LOGS_ENTITIES_HEURISTICS.md",
+      "phrase": "private deployment"
+    },
+    {
+      "bounded": true,
+      "context": "ld with 15m, 8h, 12h, 24h, g1, guard rails, distribution-gate and production-candidate pass, using auditable json proof logs and documented canonical reclassification criteria. ``` ## 8. claim proibido nao publicar: ```text pnva prova uma nova fisica. pnva substitui todo tick do linux. pnva garante ganho universal. pnva elimina toda falha. veon e uma particula fisica descoberta. ``` ## 9. proxima camada depois da primeira publicacao: - abrir issues para reproducao externa; - preparar benchmark isolado loop vs pnva; - gerar pape",
+      "path": "docs/REPOSITORY_PUBLISHING_CHECKLIST.md",
+      "phrase": "substitui todo tick"
+    },
+    {
+      "bounded": true,
+      "context": "e adam classico. chame de: ```text pnva adaptive gain ``` ou: ```text veonic adaptive gain ``` isso evita critica academica facil. ## nota fisica permitido: ```text veon e particula logica do modelo pnva. ``` evitar: ```text veon gera materia. veon e boson de higgs. veon prova fisica fundamental. ``` nao ha evidencia experimental para alegacoes fisicas. a forca do conceito esta em computacao causal, nao em fisica de particulas. ## estrategia publica publicar: - definicao formal do veon; - equacao corrigida; - provas",
+      "path": "docs/VEON_MODEL_VALIDATION.md",
+      "phrase": "boson de higgs"
+    },
+    {
+      "bounded": true,
+      "context": "e de: ```text pnva adaptive gain ``` ou: ```text veonic adaptive gain ``` isso evita critica academica facil. ## nota fisica permitido: ```text veon e particula logica do modelo pnva. ``` evitar: ```text veon gera materia. veon e boson de higgs. veon prova fisica fundamental. ``` nao ha evidencia experimental para alegacoes fisicas. a forca do conceito esta em computacao causal, nao em fisica de particulas. ## estrategia publica publicar: - definicao formal do veon; - equacao corrigida; - provas pnva ja fechadas;",
+      "path": "docs/VEON_MODEL_VALIDATION.md",
+      "phrase": "prova fisica"
+    }
+  ],
+  "check_count": 7,
+  "checks": [
+    {
+      "evidence": {
+        "missing_not_claimed": [],
+        "present_not_claimed": [
+          "hardware-level energy gain without separate counters",
+          "physical particle or physics proof",
+          "private deployment validation",
+          "universal performance improvement"
+        ],
+        "required_not_claimed": [
+          "hardware-level energy gain without separate counters",
+          "physical particle or physics proof",
+          "private deployment validation",
+          "universal performance improvement"
+        ],
+        "seal_classification": "PNVA_ROOT_RELEASE_SEALED",
+        "seal_pass": true
+      },
+      "name": "root_seal_claim_boundary_present",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "root_release_hash": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+        "verifier_classification": "PNVA_ROOT_RELEASE_VERIFIED",
+        "verifier_pass": true
+      },
+      "name": "root_verifier_claim_boundary_passed",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "missing": [],
+        "required_file_count": 7
+      },
+      "name": "required_boundary_files_present",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "missing": [],
+        "required_phrase_count": 8
+      },
+      "name": "required_boundary_phrases_present",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "occurrence_count": 48,
+        "unbounded": [],
+        "unbounded_count": 0
+      },
+      "name": "high_risk_claims_are_bounded",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "not_published": "raw local proofs, sensitive environment paths, commercial tuning and private thresholds",
+        "published": "sanitized proof summaries and public documentation"
+      },
+      "name": "public_data_policy_is_sanitized",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "old_hash_hits": [],
+        "seal_root_release_hash": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+        "verifier_root_release_hash": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc"
+      },
+      "name": "root_release_hash_is_current",
+      "pass": true
+    }
+  ],
+  "claim_boundary_score": 100.0,
+  "classification": "PNVA_ROOT_CLAIM_BOUNDARY_GUARD_READY",
+  "failure_count": 0,
+  "failures": [],
+  "generated_at": "2026-05-05T20:35:01Z",
+  "high_risk_occurrence_count": 48,
+  "interpretation": {
+    "boundary": "This guard audits public text and release claim boundaries; it does not validate private deployments.",
+    "purpose": "Verify that public PNVA claims stay inside the evidence boundary established by the root release seal.",
+    "sovereignty": "A strong public architecture must prove what it does not claim, not only what it claims."
+  },
+  "pass": true,
+  "project": "PNVA-Core",
+  "recommendations": [
+    "Run this guard after the root release verifier and before public posting.",
+    "Treat any unbounded high-risk claim as a publication blocker.",
+    "Keep this guard outside the root release seal because it validates post-seal public language."
+  ],
+  "root_release_hash": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+  "scanned_file_count": 90,
+  "schema_version": "pnva.root_claim_boundary_guard.v1",
+  "unbounded_high_risk_occurrence_count": 0
+}

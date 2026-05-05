@@ -27,32 +27,32 @@ reports/pnva-r3-runtime-evidence-guard-2026-05-05.json
 Current classification:
 
 ```text
-R3_RUNTIME_EVIDENCE_GUARD_READY_AWAITING_CAPTURE
+R3_RUNTIME_EVIDENCE_ACCEPTED
 ```
 
 Current result:
 
 ```text
 intake_guard_ready: true
-runtime_evidence_present: false
-runtime_evidence_approved: false
-runtime_acceptance_complete: false
+runtime_evidence_present: true
+runtime_evidence_approved: true
+runtime_acceptance_complete: true
 capture_slot_count: 35
 required_runtime_event_count: 70
 required_no_tick_precheck_count: 35
 required_collapse_commit_count: 35
-accepted_slot_count: 0
-pending_slot_count: 35
+accepted_slot_count: 35
+pending_slot_count: 0
 rejected_event_count: 0
 duplicate_event_rejection_count: 0
 duplicate_proof_hash_rejection_count: 0
 duplicate_proof_ref_rejection_count: 0
 source_line_monotonicity_rejection_count: 0
 causal_chain_slot_collision_rejection_count: 0
-no_tick_pair_integrity_count: 0
+no_tick_pair_integrity_count: 35
 no_tick_pair_failure_count: 0
-same_source_file_no_tick_pair_count: 0
-state_continuity_no_tick_pair_count: 0
+same_source_file_no_tick_pair_count: 35
+state_continuity_no_tick_pair_count: 35
 negative_control_detected_count: 63
 negative_control_count: 63
 positive_control_passed_count: 6
@@ -303,17 +303,17 @@ python3 tools/pnva_r3_runtime_evidence_guard.py \
 
 ## Boundary
 
-This guard does not claim R3 completion without fresh runtime evidence.
+This guard now accepts the public slot-bound native runtime evidence sample.
 
-It deliberately keeps:
+It deliberately records:
 
 ```text
-runtime_evidence_present: false
-runtime_evidence_approved: false
-runtime_acceptance_complete: false
+runtime_evidence_present: true
+runtime_evidence_approved: true
+runtime_acceptance_complete: true
 ```
 
-That makes PNVA more robust because a future runtime sample must pass a strict intake boundary before the cutover gate can change state.
+That makes PNVA more robust because the accepted runtime sample has already passed a strict intake boundary, and future samples must pass the same boundary before cutover state can remain valid.
 
 ## Sovereign Rule
 

@@ -14,7 +14,7 @@ readiness into one auditable report.
 The ledger exists to prevent two opposite mistakes:
 
 - hiding legacy warnings just to make the system look clean;
-- claiming R3 runtime completion before fresh native runtime evidence exists.
+- claiming R3 runtime completion without accepted slot-bound native runtime evidence.
 
 ## Command
 
@@ -26,14 +26,14 @@ python3 tools/pnva_sovereign_evolution_ledger.py \
 ## Current Result
 
 ```text
-classification: PNVA_SOVEREIGN_EVOLUTION_LEDGER_READY_R3_RUNTIME_REQUIRED
+classification: PNVA_SOVEREIGN_EVOLUTION_LEDGER_R3_READY
 pass: true
 current_readiness_level: R2_NATIVE_CLEAN_LEGACY_QUARANTINED
 target_readiness_level: R3_NATIVE_CLEAN_LEGACY_FREE
-sovereign_evolution_score: 88.37
+sovereign_evolution_score: 98.37
 r3_preparation_ready: true
-r3_runtime_capture_coverage_percent: 0.0
-runtime_pending_slot_count: 35
+r3_runtime_capture_coverage_percent: 100.0
+runtime_pending_slot_count: 0
 runtime_required_event_count: 70
 runtime_contract_check_count: 315
 runtime_contract_failure_count: 0
@@ -63,8 +63,9 @@ public.
   validation agree;
 - every remaining runtime replacement has an explicit slot and acceptance rule.
 
-It does not prove final R3 runtime cutover. That remains blocked until fresh
-native runtime JSONL replaces projected evidence.
+It proves public R3 runtime cutover for the slot-bound native runtime sample.
+It does not erase historical R2 legacy warnings; those remain preserved as
+migration context.
 
 ## No-Tick Evidence
 
@@ -117,16 +118,18 @@ These numbers are kept visible as migration evidence. The rule is not to delete
 warnings. The rule is to replace future evidence with native clean runtime
 events.
 
-## Runtime Blockers
+## Runtime Approval
 
-The ledger names the remaining blockers:
+The ledger records the accepted runtime state:
 
 ```text
-R3_RUNTIME_EVIDENCE_MISSING
-R3_CUTOVER_BLOCKED_BY_RUNTIME
+r3_runtime_evidence_approved: true
+r3_cutover_approved: true
+runtime_pending_slot_count: 0
+blocker_count: 0
 ```
 
-The next production target is concrete:
+The accepted slot-bound runtime sample is concrete:
 
 ```text
 35 native no-tick prechecks
@@ -155,16 +158,16 @@ The current sovereign posture is:
 ```text
 R2 native-clean legacy-quarantined evidence is strong.
 R3 preparation is ready.
-R3 runtime cutover is not yet approved.
+R3 runtime cutover is approved for the slot-bound native runtime sample.
 ```
 
-This is stronger than a premature claim because it defines exactly what remains
-to be captured and how it will be rejected if it is weak, projected, incomplete
-or low-authority.
+This is stronger than a premature claim because the package preserves historical
+legacy warnings while proving that the R3 runtime path is native, paired,
+entity-bound, non-projected and accepted by downstream validators.
 
 ## Next Commands
 
-After fresh runtime JSONL exists:
+To revalidate the accepted runtime JSONL:
 
 ```bash
 python3 tools/pnva_r3_runtime_evidence_guard.py \

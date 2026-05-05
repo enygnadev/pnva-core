@@ -29,8 +29,15 @@ R3 migration plan
 authority migration ledger
 R3 authority projection
 R3 cutover gate
+R3 runtime event emitter
+R3 runtime event JSONL
+R3 runtime entity catalog
 R3 runtime capture matrix
 R3 runtime evidence guard
+R3 runtime replay
+R3 runtime policy
+R3 runtime no-tick
+R3 runtime proof-chain
 R3 runtime instrumentation plan
 R3 runtime contract validation
 sovereign evolution ledger
@@ -75,7 +82,7 @@ Current result:
 ```text
 classification: PNVA_SOVEREIGN_EVIDENCE_ATTESTED
 pass: true
-artifact_count: 41
+artifact_count: 48
 failure_count: 0
 ```
 

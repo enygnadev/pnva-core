@@ -1,0 +1,73 @@
+{
+  "author": "Gustavo de Aguiar Martins",
+  "classification": "PROOF_CHAIN_SEALED",
+  "errors": [],
+  "events_ref": "reports/pnva-r3-runtime-events-2026-05-05.jsonl",
+  "generated_at": "2026-05-05T16:08:49Z",
+  "interpretation": {
+    "checkpoint_policy": "Checkpoints provide compact anchors without republishing every event hash.",
+    "sovereignty": "The sequence is sealed externally so old evidence remains intact and new evidence can be independently resealed.",
+    "tamper_evidence": "Any event content, event order or proof mutation changes the final_chain_hash."
+  },
+  "pass": true,
+  "project": "PNVA-Core",
+  "schema_version": "pnva.proof_chain.v1",
+  "seal": {
+    "checkpoint_interval": 64,
+    "checkpoints": [
+      {
+        "chain_hash": "387b10e1678b8d9d571c5e24f0c0111f11bb03e4ad5bec76740b93e2949fa071",
+        "event_hash": "1fb15257ba287d360db5eec2f89c3e7717653fde62733e009f4bee3eabf5e390",
+        "event_id": "evt_r3_runtime_r3_runtime_slot_001_precheck",
+        "index": 1
+      },
+      {
+        "chain_hash": "df7a38625a8522b57a733305540a8eb2bfd01bbd49e4255f94beec170864e457",
+        "event_hash": "c04bf1e01077da66540530db31254950375896240a35e00bcf30361ea284e312",
+        "event_id": "evt_r3_runtime_r3_runtime_slot_032_commit",
+        "index": 64
+      },
+      {
+        "chain_hash": "39919aa40a3fc3cb3ea3983517aedf14db1a3d02857ef5013c346294b445ce63",
+        "event_hash": "7c2dfb565f478bb512d2ffa9353487b9e57fa155bf2ad59637e16c3af35b6e14",
+        "event_id": "evt_r3_runtime_r3_runtime_slot_035_commit",
+        "index": 70
+      }
+    ],
+    "decision_mix": [
+      [
+        "observe",
+        35
+      ],
+      [
+        "collapse",
+        35
+      ]
+    ],
+    "duplicate_event_ids": [],
+    "event_count": 70,
+    "final_chain_hash": "39919aa40a3fc3cb3ea3983517aedf14db1a3d02857ef5013c346294b445ce63",
+    "first_event_hash": "1fb15257ba287d360db5eec2f89c3e7717653fde62733e009f4bee3eabf5e390",
+    "genesis_hash": "39a7421f83a7c8efa66b730e077fdf327e7d0079980bd29bd531d2876888a6f7",
+    "last_event_hash": "7c2dfb565f478bb512d2ffa9353487b9e57fa155bf2ad59637e16c3af35b6e14",
+    "proof_bad": 0,
+    "proof_ok": 70,
+    "source_formats": [
+      [
+        "native_pnva_event_v1",
+        70
+      ]
+    ],
+    "top_event_types": [
+      [
+        "cuda_slot_scan_authority_precheck",
+        35
+      ],
+      [
+        "cuda_slot_scan",
+        35
+      ]
+    ],
+    "unique_event_ids": 70
+  }
+}

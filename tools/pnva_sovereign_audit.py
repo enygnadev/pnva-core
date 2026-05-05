@@ -206,14 +206,22 @@ R3_CUTOVER_GATE_FILES = [
 
 R3_RUNTIME_CAPTURE_MATRIX_FILES = [
     "tools/pnva_r3_runtime_capture_matrix.py",
+    "tools/pnva_r3_runtime_event_emitter.py",
     "docs/PNVA_R3_RUNTIME_CAPTURE_MATRIX.md",
     "reports/pnva-r3-runtime-capture-matrix-2026-05-05.json",
+    "reports/pnva-r3-runtime-event-emitter-summary-2026-05-05.json",
+    "reports/pnva-r3-runtime-events-2026-05-05.jsonl",
+    "reports/pnva-r3-runtime-entity-catalog-2026-05-05.json",
 ]
 
 R3_RUNTIME_EVIDENCE_GUARD_FILES = [
     "tools/pnva_r3_runtime_evidence_guard.py",
     "docs/PNVA_R3_RUNTIME_EVIDENCE_GUARD.md",
     "reports/pnva-r3-runtime-evidence-guard-2026-05-05.json",
+    "reports/pnva-r3-runtime-replay-2026-05-05.json",
+    "reports/pnva-r3-runtime-policy-2026-05-05.json",
+    "reports/pnva-r3-runtime-no-tick-2026-05-05.json",
+    "reports/pnva-r3-runtime-proof-chain-2026-05-05.json",
 ]
 
 R3_RUNTIME_INSTRUMENTATION_PLAN_FILES = [
@@ -1211,12 +1219,14 @@ def audit_r3_cutover_gate(repo: Path) -> dict[str, Any]:
     ok = (
         not missing
         and data.get("pass") is True
-        and data.get("classification") == "R3_CUTOVER_GATE_READY_RUNTIME_REQUIRED"
+        and data.get("classification") == "R3_CUTOVER_APPROVED"
         and data.get("contract_ready") is True
-        and data.get("cutover_approved") is False
-        and data.get("legacy_free_claim_allowed") is False
+        and data.get("cutover_approved") is True
+        and data.get("legacy_free_claim_allowed") is True
         and int(data.get("precondition_failure_count", 1)) == 0
-        and int(data.get("remaining_runtime_replacement_count", -1)) == int(data.get("authority_candidate_count", 0))
+        and int(data.get("remaining_runtime_replacement_count", -1)) == 0
+        and int(data.get("runtime_blocker_count", -1)) == 0
+        and data.get("fresh_runtime_evidence_present") is True
     )
     return {
         "r3_cutover_gate_ok": ok,
@@ -1254,13 +1264,13 @@ def audit_r3_runtime_capture_matrix(repo: Path) -> dict[str, Any]:
     ok = (
         not missing
         and data.get("pass") is True
-        and data.get("classification") == "R3_RUNTIME_CAPTURE_MATRIX_READY_PENDING_RUNTIME"
+        and data.get("classification") == "R3_RUNTIME_CAPTURE_MATRIX_COMPLETE"
         and data.get("capture_contract_ready") is True
-        and data.get("runtime_capture_complete") is False
-        and data.get("runtime_capture_approved") is False
+        and data.get("runtime_capture_complete") is True
+        and data.get("runtime_capture_approved") is True
         and int(data.get("capture_slot_count", -1)) == int(data.get("source_candidate_count", 0))
-        and int(data.get("pending_slot_count", -1)) == int(data.get("capture_slot_count", 0))
-        and int(data.get("verified_runtime_slot_count", -1)) == 0
+        and int(data.get("pending_slot_count", -1)) == 0
+        and int(data.get("verified_runtime_slot_count", -1)) == int(data.get("capture_slot_count", 0))
         and float(data.get("projection_pair_coverage_ratio", 0.0)) == 1.0
     )
     return {
@@ -1301,12 +1311,14 @@ def audit_r3_runtime_evidence_guard(repo: Path) -> dict[str, Any]:
     ok = (
         not missing
         and data.get("pass") is True
-        and data.get("classification") == "R3_RUNTIME_EVIDENCE_GUARD_READY_AWAITING_CAPTURE"
+        and data.get("classification") == "R3_RUNTIME_EVIDENCE_ACCEPTED"
         and data.get("intake_guard_ready") is True
-        and data.get("runtime_evidence_present") is False
-        and data.get("runtime_evidence_approved") is False
-        and data.get("runtime_acceptance_complete") is False
-        and int(data.get("capture_slot_count", -1)) == int(data.get("pending_slot_count", 0))
+        and data.get("runtime_evidence_present") is True
+        and data.get("runtime_evidence_approved") is True
+        and data.get("runtime_acceptance_complete") is True
+        and int(data.get("accepted_slot_count", 0)) == int(data.get("capture_slot_count", -1))
+        and int(data.get("pending_slot_count", -1)) == 0
+        and int(data.get("rejected_event_count", -1)) == 0
         and int(data.get("required_runtime_event_count", 0)) == int(data.get("capture_slot_count", 0)) * 2
         and int(data.get("negative_control_detected_count", 0)) == int(data.get("negative_control_count", -1))
         and int(data.get("positive_control_passed_count", 0)) == int(data.get("positive_control_count", -1))
@@ -1352,8 +1364,8 @@ def audit_r3_runtime_instrumentation_plan(repo: Path) -> dict[str, Any]:
         and data.get("pass") is True
         and data.get("classification") == "R3_RUNTIME_INSTRUMENTATION_PLAN_READY"
         and data.get("instrumentation_plan_ready") is True
-        and data.get("runtime_evidence_present") is False
-        and data.get("runtime_evidence_approved") is False
+        and data.get("runtime_evidence_present") is True
+        and data.get("runtime_evidence_approved") is True
         and int(data.get("capture_slot_count", 0)) == 35
         and int(data.get("required_runtime_event_count", 0)) == 70
         and int(data.get("action_contract_count", 0)) == 3
@@ -1401,8 +1413,8 @@ def audit_r3_runtime_contract_validation(repo: Path) -> dict[str, Any]:
         and data.get("pass") is True
         and data.get("classification") == "R3_RUNTIME_CONTRACT_VALIDATED_READY"
         and data.get("contract_validation_ready") is True
-        and data.get("runtime_evidence_present") is False
-        and data.get("runtime_evidence_approved") is False
+        and data.get("runtime_evidence_present") is True
+        and data.get("runtime_evidence_approved") is True
         and int(data.get("capture_slot_count", 0)) == 35
         and int(data.get("action_contract_count", 0)) == 3
         and int(data.get("required_runtime_event_count", 0)) == 70
@@ -1454,17 +1466,17 @@ def audit_sovereign_evolution_ledger(repo: Path) -> dict[str, Any]:
     ok = (
         not missing
         and data.get("pass") is True
-        and data.get("classification") == "PNVA_SOVEREIGN_EVOLUTION_LEDGER_READY_R3_RUNTIME_REQUIRED"
+        and data.get("classification") == "PNVA_SOVEREIGN_EVOLUTION_LEDGER_R3_READY"
         and data.get("evidence_integrity_ready") is True
         and data.get("no_tick_ready") is True
         and data.get("native_clean_path") is True
         and data.get("r3_preparation_ready") is True
-        and data.get("r3_runtime_evidence_approved") is False
-        and int(data.get("runtime_pending_slot_count", 0)) == 35
+        and data.get("r3_runtime_evidence_approved") is True
+        and int(data.get("runtime_pending_slot_count", -1)) == 0
         and int(data.get("runtime_required_event_count", 0)) == 70
         and int(data.get("runtime_contract_check_count", 0)) >= 100
         and int(data.get("runtime_contract_failure_count", -1)) == 0
-        and float(data.get("r3_runtime_capture_coverage_percent", -1.0)) == 0.0
+        and float(data.get("r3_runtime_capture_coverage_percent", -1.0)) == 100.0
     )
     return {
         "sovereign_evolution_ledger_ok": ok,

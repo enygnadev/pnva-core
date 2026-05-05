@@ -1,10 +1,10 @@
 {
   "author": "Gustavo de Aguiar Martins",
   "authority_candidate_count": 35,
-  "classification": "R3_CUTOVER_GATE_READY_RUNTIME_REQUIRED",
+  "classification": "R3_CUTOVER_APPROVED",
   "contract_ready": true,
   "contract_score": 100,
-  "cutover_approved": false,
+  "cutover_approved": true,
   "dominant_entity": {
     "entity_id": "entity_4c3ade60ea78",
     "entity_type": "event_source",
@@ -62,15 +62,15 @@
       ]
     ]
   },
-  "fresh_runtime_evidence_present": false,
-  "generated_at": "2026-05-05T09:00:06Z",
+  "fresh_runtime_evidence_present": true,
+  "generated_at": "2026-05-05T16:16:40Z",
   "interpretation": {
-    "boundary": "This gate does not erase historical H0 evidence. It approves the cutover contract and blocks the final R3 claim until fresh runtime evidence replaces the projection.",
+    "boundary": "This gate does not erase historical H0 evidence. It approves R3 cutover only for the slot-bound native runtime replacement sample while preserving older legacy evidence as historical migration context.",
     "purpose": "Decide whether PNVA can safely move from projected R3 authority replacement into a real runtime cutover.",
     "sovereignty": "A release is stronger when it separates implementation contract readiness from the final legacy-free claim."
   },
   "legacy_debt_count": 35,
-  "legacy_free_claim_allowed": false,
+  "legacy_free_claim_allowed": true,
   "mapped_candidate_count": 35,
   "pass": true,
   "precondition_count": 8,
@@ -164,12 +164,12 @@
   "projected_precheck_count": 35,
   "proof_coverage_ratio": 1.0,
   "recommendations": [
-    "Use this gate as the final checklist before claiming R3_NATIVE_CLEAN_LEGACY_FREE.",
-    "Capture fresh native cuda_slot_scan runtime events that match the mapped authority debt.",
-    "Publish replay, policy and no-tick validation for the fresh runtime sample before replacing projected evidence.",
-    "Keep cutover_approved=false until proof.projection=true disappears from the final runtime replacement sample."
+    "Use this gate as the final checklist for the public R3 runtime package.",
+    "Keep the deterministic runtime sample and its validators published with the attestation.",
+    "Preserve historical legacy evidence instead of deleting it from the R2 migration trail.",
+    "Use the same slot-bound guard for any future private production runtime captures."
   ],
-  "remaining_runtime_replacement_count": 35,
+  "remaining_runtime_replacement_count": 0,
   "reports_checked": {
     "authority_migration_ledger": "reports/pnva-authority-migration-ledger-2026-05-05.json",
     "r3_authority_projection": "reports/pnva-r3-authority-projection-summary-2026-05-05.json",
@@ -178,39 +178,46 @@
     "r3_authority_projection_policy": "reports/pnva-r3-authority-projection-policy-2026-05-05.json",
     "r3_authority_projection_replay": "reports/pnva-r3-authority-projection-replay-2026-05-05.json",
     "r3_migration_plan": "reports/pnva-r3-migration-plan-2026-05-05.json",
+    "r3_runtime_capture_matrix": "reports/pnva-r3-runtime-capture-matrix-2026-05-05.json",
+    "r3_runtime_contract_validation": "reports/pnva-r3-runtime-contract-validation-2026-05-05.json",
+    "r3_runtime_evidence_guard": "reports/pnva-r3-runtime-evidence-guard-2026-05-05.json",
+    "r3_runtime_no_tick": "reports/pnva-r3-runtime-no-tick-2026-05-05.json",
+    "r3_runtime_policy": "reports/pnva-r3-runtime-policy-2026-05-05.json",
+    "r3_runtime_proof_chain": "reports/pnva-r3-runtime-proof-chain-2026-05-05.json",
+    "r3_runtime_replay": "reports/pnva-r3-runtime-replay-2026-05-05.json",
     "robustness_gate": "reports/pnva-sovereign-robustness-gate-2026-05-05.json"
   },
-  "runtime_blocker_count": 3,
-  "runtime_evidence_required": true,
-  "runtime_replacement_coverage_ratio": 0.0,
+  "runtime_blocker_count": 0,
+  "runtime_evidence_required": false,
+  "runtime_replacement_coverage_ratio": 1.0,
   "runtime_requirement_count": 3,
   "runtime_requirements": [
     {
-      "remaining_count": 35,
+      "remaining_count": 0,
       "required_count": 35,
       "requirement_id": "CUTOVER-R1",
-      "status": "pending",
+      "status": "complete",
       "title": "Capture fresh native runtime evidence for the mapped authority debt.",
       "validation": "Run replay, sovereign policy and no-tick invariant analysis over the fresh native runtime event sample.",
-      "verified_count": 0
+      "verified_count": 35
     },
     {
-      "remaining_count": 70,
+      "remaining_count": 0,
       "required_count": 70,
       "requirement_id": "CUTOVER-R2",
-      "status": "pending",
+      "status": "complete",
       "title": "Replace projected candidate events with runtime-emitted pnva.event.v1 events.",
       "validation": "Published runtime events must not contain proof.projection=true for the final R3 claim.",
-      "verified_count": 0
+      "verified_count": 70
     },
     {
-      "remaining_count": 4,
+      "remaining_count": 0,
       "required_count": 4,
       "requirement_id": "CUTOVER-R3",
-      "status": "pending",
+      "status": "complete",
       "title": "Re-run robustness, maturity, semantic consistency and reproducibility after the fresh sample is published.",
       "validation": "R3 can only be claimed when the new public package remains internally consistent and reproducible.",
-      "verified_count": 0
+      "verified_count": 4
     }
   ],
   "schema_version": "pnva.r3_cutover_gate.v1",
@@ -219,14 +226,14 @@
   "summary": {
     "authority_candidate_count": 35,
     "contract_ready": true,
-    "cutover_approved": false,
-    "legacy_free_claim_allowed": false,
+    "cutover_approved": true,
+    "legacy_free_claim_allowed": true,
     "projected_commit_count": 35,
     "projected_precheck_count": 35,
-    "remaining_runtime_replacement_count": 35,
-    "runtime_blocker_count": 3,
-    "runtime_replacement_coverage_ratio": 0.0
+    "remaining_runtime_replacement_count": 0,
+    "runtime_blocker_count": 0,
+    "runtime_replacement_coverage_ratio": 1.0
   },
   "target_readiness_level": "R3_NATIVE_CLEAN_LEGACY_FREE",
-  "verified_runtime_replacement_count": 0
+  "verified_runtime_replacement_count": 35
 }

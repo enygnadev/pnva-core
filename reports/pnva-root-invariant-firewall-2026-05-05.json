@@ -1,0 +1,268 @@
+{
+  "author": "Gustavo de Aguiar Martins",
+  "check_count": 12,
+  "checks": [
+    {
+      "evidence": {
+        "classification_failures": []
+      },
+      "name": "required_reports_ready",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "root_hashes": {
+          "claim_boundary": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+          "dependency_graph": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+          "observability": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+          "publication": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+          "release_verifier": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+          "release_verifier_recomputed": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc"
+        }
+      },
+      "name": "root_release_hashes_agree",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "failures": [],
+        "no_tick": {
+          "aggregate_event_count": 589,
+          "aggregate_suppressed_count": 285,
+          "aggregate_suppression_ratio": 0.483871
+        }
+      },
+      "name": "no_tick_budget_locked",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "failures": [],
+        "streams": {
+          "canonical": {
+            "event_count": 512,
+            "missing_core_count": 0,
+            "native_count": 0,
+            "parse_error_count": 0,
+            "path": "reports/pnva-canonical-events-sample-2026-05-05.jsonl",
+            "projected_count": 0,
+            "proof_hash_count": 512,
+            "unique_proof_hash_count": 512
+          },
+          "native": {
+            "event_count": 7,
+            "missing_core_count": 0,
+            "native_count": 7,
+            "parse_error_count": 0,
+            "path": "reports/pnva-native-events-demo-2026-05-05.jsonl",
+            "projected_count": 0,
+            "proof_hash_count": 7,
+            "unique_proof_hash_count": 7
+          },
+          "runtime_r3": {
+            "event_count": 70,
+            "missing_core_count": 0,
+            "native_count": 70,
+            "parse_error_count": 0,
+            "path": "reports/pnva-r3-runtime-events-2026-05-05.jsonl",
+            "projected_count": 0,
+            "proof_hash_count": 70,
+            "unique_proof_hash_count": 70
+          }
+        }
+      },
+      "name": "event_stream_identity_locked",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "failures": [],
+        "scope_count": 3,
+        "scopes": {
+          "canonical": {
+            "entity_count": 6,
+            "missing_core_count": 0,
+            "path": "reports/pnva-entity-catalog-2026-05-05.json",
+            "schema_version": "pnva.entity_catalog.v1"
+          },
+          "native": {
+            "entity_count": 6,
+            "missing_core_count": 0,
+            "path": "reports/pnva-native-entity-catalog-demo-2026-05-05.json",
+            "schema_version": "pnva.entity_catalog.v1"
+          },
+          "runtime_r3": {
+            "entity_count": 1,
+            "missing_core_count": 0,
+            "path": "reports/pnva-r3-runtime-entity-catalog-2026-05-05.json",
+            "schema_version": "pnva.entity_catalog.v1"
+          }
+        },
+        "total_entity_rows": 13
+      },
+      "name": "entity_catalog_contract_locked",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "failures": [],
+        "heuristic": {
+          "heuristic_coverage_ratio": 1.0,
+          "heuristic_rule_count": 9,
+          "influence_edge_count": 1136,
+          "low_authority_legacy_context": {
+            "controlled_boundary": "legacy warnings are preserved as canonical migration evidence; native and R3 runtime scopes are clean",
+            "decision_trace_low_authority_trace_count": 152,
+            "entity_legacy_low_authority_warning_count": 35,
+            "heuristic_low_authority_strong_edge_count": 164
+          },
+          "native_influence_clean": true,
+          "proof_event_coverage_ratio": 1.0
+        }
+      },
+      "name": "heuristic_authority_visibility_locked",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "failures": []
+      },
+      "name": "runtime_r3_contract_locked",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "cycle_count": 0,
+        "failure_count": 0,
+        "unreachable_node_count": 0
+      },
+      "name": "dependency_graph_locked",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "root_score_failures": []
+      },
+      "name": "root_scores_locked",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "path_leak_count": 0,
+        "unbounded_high_risk_occurrence_count": 0
+      },
+      "name": "publication_boundary_locked",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "reproducibility_failure_count": 0,
+        "semantic_error_count": 0,
+        "semantic_warning_count": 0
+      },
+      "name": "semantic_and_reproducibility_locked",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "root_detected": 8,
+        "root_test_count": 8,
+        "runtime_detected": 63,
+        "runtime_negative_count": 63
+      },
+      "name": "adversarial_controls_locked",
+      "pass": true
+    }
+  ],
+  "classification": "PNVA_ROOT_INVARIANT_FIREWALL_READY",
+  "entity_catalog_firewall": {
+    "failures": [],
+    "scope_count": 3,
+    "scopes": {
+      "canonical": {
+        "entity_count": 6,
+        "missing_core_count": 0,
+        "path": "reports/pnva-entity-catalog-2026-05-05.json",
+        "schema_version": "pnva.entity_catalog.v1"
+      },
+      "native": {
+        "entity_count": 6,
+        "missing_core_count": 0,
+        "path": "reports/pnva-native-entity-catalog-demo-2026-05-05.json",
+        "schema_version": "pnva.entity_catalog.v1"
+      },
+      "runtime_r3": {
+        "entity_count": 1,
+        "missing_core_count": 0,
+        "path": "reports/pnva-r3-runtime-entity-catalog-2026-05-05.json",
+        "schema_version": "pnva.entity_catalog.v1"
+      }
+    },
+    "total_entity_rows": 13
+  },
+  "event_stream_firewall": {
+    "failures": [],
+    "streams": {
+      "canonical": {
+        "event_count": 512,
+        "missing_core_count": 0,
+        "native_count": 0,
+        "parse_error_count": 0,
+        "path": "reports/pnva-canonical-events-sample-2026-05-05.jsonl",
+        "projected_count": 0,
+        "proof_hash_count": 512,
+        "unique_proof_hash_count": 512
+      },
+      "native": {
+        "event_count": 7,
+        "missing_core_count": 0,
+        "native_count": 7,
+        "parse_error_count": 0,
+        "path": "reports/pnva-native-events-demo-2026-05-05.jsonl",
+        "projected_count": 0,
+        "proof_hash_count": 7,
+        "unique_proof_hash_count": 7
+      },
+      "runtime_r3": {
+        "event_count": 70,
+        "missing_core_count": 0,
+        "native_count": 70,
+        "parse_error_count": 0,
+        "path": "reports/pnva-r3-runtime-events-2026-05-05.jsonl",
+        "projected_count": 0,
+        "proof_hash_count": 70,
+        "unique_proof_hash_count": 70
+      }
+    }
+  },
+  "failure_count": 0,
+  "firewall_score": 100.0,
+  "generated_at": "2026-05-05T18:48:05Z",
+  "interpretation": {
+    "boundary": "This firewall validates the public evidence package and deterministic runtime sample. It does not change the root release seal.",
+    "purpose": "Block root regressions across PNVA/no-tick logs, entities, heuristics, runtime R3, publication hygiene and claim boundaries.",
+    "sovereignty": "A root invariant firewall turns PASS into a guarded contract: future changes must preserve observable proof identity, entity identity, heuristic visibility and no-tick integrity."
+  },
+  "invariant_firewall_hash": "sha256:1519d69747405385e1031b12ada03c59c1ae12fdb06163c5ae68813d7c997a4d",
+  "locked_invariants": {
+    "aggregate_event_count": 589,
+    "aggregate_suppressed_count": 285,
+    "aggregate_suppression_ratio": 0.483871,
+    "entity_catalog_count": 3,
+    "entity_catalog_rows": 13,
+    "event_stream_count": 3,
+    "heuristic_rule_count": 9,
+    "influence_edge_count": 1136,
+    "publication_path_leaks": 0,
+    "root_dependency_cycles": 0,
+    "runtime_accepted_slots": 35,
+    "runtime_no_tick_pair_failures": 0,
+    "runtime_pending_slots": 0,
+    "runtime_rejected_events": 0,
+    "unbounded_high_risk_claims": 0
+  },
+  "pass": true,
+  "project": "PNVA-Core",
+  "root_release_hash": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+  "schema_version": "pnva.root_invariant_firewall.v1"
+}

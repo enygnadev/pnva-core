@@ -1,0 +1,204 @@
+{
+  "author": "Gustavo de Aguiar Martins",
+  "classification": "PNVA_ROOT_ADVERSARIAL_SENTRY_PASS",
+  "clean_control": {
+    "causal_classification": "PNVA_ROOT_CAUSAL_INTELLIGENCE_READY",
+    "causal_failure_count": 0,
+    "causal_failures": [],
+    "causal_pass": true,
+    "detected": true,
+    "expected_clean": true,
+    "id": "clean_control",
+    "mutation": "No mutation; clean control.",
+    "root_classification": "PNVA_ROOT_SOVEREIGNTY_GUARD_READY",
+    "root_failure_count": 0,
+    "root_failure_names": [],
+    "root_pass": true
+  },
+  "clean_control_pass": true,
+  "controls": [
+    {
+      "causal_classification": "PNVA_ROOT_CAUSAL_INTELLIGENCE_NEEDS_HARDENING",
+      "causal_failure_count": 3,
+      "causal_failures": [
+        "classifications_ok",
+        "root_guard_ready",
+        "runtime_events_native_non_projected"
+      ],
+      "causal_pass": false,
+      "detected": true,
+      "expected_clean": false,
+      "id": "projection_true",
+      "mutation": "Set proof.projection=true on a native runtime precheck.",
+      "root_classification": "PNVA_ROOT_SOVEREIGNTY_GUARD_FAIL",
+      "root_failure_count": 1,
+      "root_failure_names": [
+        "runtime_proofs_are_native_non_projected_and_hash_bound"
+      ],
+      "root_pass": false
+    },
+    {
+      "causal_classification": "PNVA_ROOT_CAUSAL_INTELLIGENCE_NEEDS_HARDENING",
+      "causal_failure_count": 3,
+      "causal_failures": [
+        "classifications_ok",
+        "root_guard_ready",
+        "runtime_entity_coverage_clean"
+      ],
+      "causal_pass": false,
+      "detected": true,
+      "expected_clean": false,
+      "id": "missing_entity",
+      "mutation": "Moved a runtime event onto an entity_id absent from the entity catalog.",
+      "root_classification": "PNVA_ROOT_SOVEREIGNTY_GUARD_FAIL",
+      "root_failure_count": 1,
+      "root_failure_names": [
+        "runtime_events_are_entity_catalog_bound"
+      ],
+      "root_pass": false
+    },
+    {
+      "causal_classification": "PNVA_ROOT_CAUSAL_INTELLIGENCE_NEEDS_HARDENING",
+      "causal_failure_count": 2,
+      "causal_failures": [
+        "classifications_ok",
+        "root_guard_ready"
+      ],
+      "causal_pass": false,
+      "detected": true,
+      "expected_clean": false,
+      "id": "state_continuity_break",
+      "mutation": "Broke precheck-to-commit state continuity inside one no-tick pair.",
+      "root_classification": "PNVA_ROOT_SOVEREIGNTY_GUARD_FAIL",
+      "root_failure_count": 1,
+      "root_failure_names": [
+        "slot_pairs_are_causal_no_tick_pairs"
+      ],
+      "root_pass": false
+    },
+    {
+      "causal_classification": "PNVA_ROOT_CAUSAL_INTELLIGENCE_NEEDS_HARDENING",
+      "causal_failure_count": 2,
+      "causal_failures": [
+        "classifications_ok",
+        "root_guard_ready"
+      ],
+      "causal_pass": false,
+      "detected": true,
+      "expected_clean": false,
+      "id": "weak_authority",
+      "mutation": "Downgraded a runtime collapse commit below H2 authority.",
+      "root_classification": "PNVA_ROOT_SOVEREIGNTY_GUARD_FAIL",
+      "root_failure_count": 1,
+      "root_failure_names": [
+        "heuristics_are_known_non_legacy_and_strong_decisions_h2_plus"
+      ],
+      "root_pass": false
+    },
+    {
+      "causal_classification": "PNVA_ROOT_CAUSAL_INTELLIGENCE_NEEDS_HARDENING",
+      "causal_failure_count": 2,
+      "causal_failures": [
+        "classifications_ok",
+        "root_guard_ready"
+      ],
+      "causal_pass": false,
+      "detected": true,
+      "expected_clean": false,
+      "id": "unsafe_source_path",
+      "mutation": "Injected an unsafe local path into source.file_name.",
+      "root_classification": "PNVA_ROOT_SOVEREIGNTY_GUARD_FAIL",
+      "root_failure_count": 2,
+      "root_failure_names": [
+        "slot_pairs_are_causal_no_tick_pairs",
+        "runtime_source_is_sanitized_public_native"
+      ],
+      "root_pass": false
+    },
+    {
+      "causal_classification": "PNVA_ROOT_CAUSAL_INTELLIGENCE_NEEDS_HARDENING",
+      "causal_failure_count": 2,
+      "causal_failures": [
+        "classifications_ok",
+        "root_guard_ready"
+      ],
+      "causal_pass": false,
+      "detected": true,
+      "expected_clean": false,
+      "id": "duplicate_event_id",
+      "mutation": "Duplicated a runtime event_id.",
+      "root_classification": "PNVA_ROOT_SOVEREIGNTY_GUARD_FAIL",
+      "root_failure_count": 1,
+      "root_failure_names": [
+        "identity_sets_unique"
+      ],
+      "root_pass": false
+    },
+    {
+      "causal_classification": "PNVA_ROOT_CAUSAL_INTELLIGENCE_NEEDS_HARDENING",
+      "causal_failure_count": 3,
+      "causal_failures": [
+        "classifications_ok",
+        "root_guard_ready",
+        "runtime_gate_shape_clean"
+      ],
+      "causal_pass": false,
+      "detected": true,
+      "expected_clean": false,
+      "id": "gate_delta_inversion",
+      "mutation": "Made a no-tick precheck cross the positive execution gate.",
+      "root_classification": "PNVA_ROOT_SOVEREIGNTY_GUARD_FAIL",
+      "root_failure_count": 1,
+      "root_failure_names": [
+        "slot_pairs_are_causal_no_tick_pairs"
+      ],
+      "root_pass": false
+    },
+    {
+      "causal_classification": "PNVA_ROOT_CAUSAL_INTELLIGENCE_NEEDS_HARDENING",
+      "causal_failure_count": 2,
+      "causal_failures": [
+        "classifications_ok",
+        "root_guard_ready"
+      ],
+      "causal_pass": false,
+      "detected": true,
+      "expected_clean": false,
+      "id": "legacy_rule_injection",
+      "mutation": "Injected legacy_observer into a runtime commit heuristic set.",
+      "root_classification": "PNVA_ROOT_SOVEREIGNTY_GUARD_FAIL",
+      "root_failure_count": 1,
+      "root_failure_names": [
+        "heuristics_are_known_non_legacy_and_strong_decisions_h2_plus"
+      ],
+      "root_pass": false
+    }
+  ],
+  "detected_count": 8,
+  "failure_count": 0,
+  "generated_at": "2026-05-05T17:31:09Z",
+  "interpretation": {
+    "boundary": "This is adversarial validation over the public deterministic R3 runtime sample; it is not a universal security proof for private deployments.",
+    "purpose": "Prove that PNVA root validators reject controlled runtime evidence corruption.",
+    "sovereignty": "A root PASS is stronger when projection, missing entity identity, broken no-tick continuity, weak authority, unsafe source paths, duplicate identity, gate inversion and legacy heuristic injection all fail."
+  },
+  "mutation_targets": [
+    "proof.projection",
+    "entity_id",
+    "field.state_before",
+    "tension.components.authority_delta",
+    "source.file_name",
+    "event_id",
+    "tension.gate_delta",
+    "heuristics.rules"
+  ],
+  "pass": true,
+  "project": "PNVA-Core",
+  "recommendations": [
+    "Run this sentry before public root-readiness claims.",
+    "Treat any undetected mutation as a release-blocking validator gap.",
+    "Keep mutations temporary so public evidence files remain intact."
+  ],
+  "schema_version": "pnva.root_adversarial_sentry.v1",
+  "test_count": 8
+}

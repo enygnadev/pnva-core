@@ -199,16 +199,47 @@ jobs:
           python3 -m json.tool /tmp/pnva-r3-cutover-gate.json >/dev/null
       - name: Run R3 runtime capture matrix
         run: |
+          python3 tools/pnva_r3_runtime_event_emitter.py \
+            --events /tmp/pnva-r3-runtime-events.jsonl \
+            --entity-catalog /tmp/pnva-r3-runtime-entities.json \
+            --summary /tmp/pnva-r3-runtime-emitter-summary.json \
+            >/dev/null
           python3 tools/pnva_r3_runtime_capture_matrix.py \
+            --runtime-events /tmp/pnva-r3-runtime-events.jsonl \
             --write /tmp/pnva-r3-runtime-capture-matrix.json \
             >/dev/null
+          python3 -m json.tool /tmp/pnva-r3-runtime-emitter-summary.json >/dev/null
+          python3 -m json.tool /tmp/pnva-r3-runtime-entities.json >/dev/null
           python3 -m json.tool /tmp/pnva-r3-runtime-capture-matrix.json >/dev/null
       - name: Run R3 runtime evidence guard
         run: |
           python3 tools/pnva_r3_runtime_evidence_guard.py \
+            --runtime-events /tmp/pnva-r3-runtime-events.jsonl \
             --write /tmp/pnva-r3-runtime-evidence-guard.json \
             >/dev/null
           python3 -m json.tool /tmp/pnva-r3-runtime-evidence-guard.json >/dev/null
+      - name: Run R3 runtime downstream validators
+        run: |
+          python3 tools/pnva_replay_validator.py \
+            --events /tmp/pnva-r3-runtime-events.jsonl \
+            --entity-catalog /tmp/pnva-r3-runtime-entities.json \
+            --write /tmp/pnva-r3-runtime-replay.json >/dev/null
+          python3 tools/pnva_sovereign_policy_validator.py \
+            --events /tmp/pnva-r3-runtime-events.jsonl \
+            --entity-catalog /tmp/pnva-r3-runtime-entities.json \
+            --write /tmp/pnva-r3-runtime-policy.json >/dev/null
+          python3 tools/pnva_no_tick_invariant_analyzer.py \
+            --events /tmp/pnva-r3-runtime-events.jsonl \
+            --entity-catalog /tmp/pnva-r3-runtime-entities.json \
+            --replay-report /tmp/pnva-r3-runtime-replay.json \
+            --write /tmp/pnva-r3-runtime-no-tick.json >/dev/null
+          python3 tools/pnva_proof_chain_sealer.py \
+            --events /tmp/pnva-r3-runtime-events.jsonl \
+            --write /tmp/pnva-r3-runtime-proof-chain.json >/dev/null
+          python3 -m json.tool /tmp/pnva-r3-runtime-replay.json >/dev/null
+          python3 -m json.tool /tmp/pnva-r3-runtime-policy.json >/dev/null
+          python3 -m json.tool /tmp/pnva-r3-runtime-no-tick.json >/dev/null
+          python3 -m json.tool /tmp/pnva-r3-runtime-proof-chain.json >/dev/null
       - name: Run R3 runtime instrumentation plan
         run: |
           python3 tools/pnva_r3_runtime_instrumentation_plan.py \
@@ -245,5 +276,187 @@ jobs:
             --write /tmp/pnva-reproducibility.json \
             >/dev/null
           python3 -m json.tool /tmp/pnva-reproducibility.json >/dev/null
+      - name: Run root traceability matrix
+        run: |
+          python3 tools/pnva_root_traceability_matrix.py \
+            --write /tmp/pnva-root-traceability-matrix.json \
+            >/dev/null
+          python3 -m json.tool /tmp/pnva-root-traceability-matrix.json >/dev/null
+      - name: Clean Python bytecode cache before root guard
+        run: find tools -type d -name __pycache__ -prune -exec rm -rf {} +
+      - name: Run root sovereignty guard
+        run: |
+          python3 tools/pnva_root_sovereignty_guard.py \
+            --write /tmp/pnva-root-sovereignty-guard.json \
+            >/dev/null
+          python3 -m json.tool /tmp/pnva-root-sovereignty-guard.json >/dev/null
+      - name: Run root causal intelligence
+        run: |
+          python3 tools/pnva_root_causal_intelligence.py \
+            --write /tmp/pnva-root-causal-intelligence.json \
+            >/dev/null
+          python3 -m json.tool /tmp/pnva-root-causal-intelligence.json >/dev/null
+      - name: Run root adversarial sentry
+        run: |
+          python3 tools/pnva_root_adversarial_sentry.py \
+            --write /tmp/pnva-root-adversarial-sentry.json \
+            >/dev/null
+          python3 -m json.tool /tmp/pnva-root-adversarial-sentry.json >/dev/null
+      - name: Run root release seal
+        run: |
+          python3 tools/pnva_root_release_seal.py \
+            --write /tmp/pnva-root-release-seal.json \
+            >/dev/null
+          python3 -m json.tool /tmp/pnva-root-release-seal.json >/dev/null
+      - name: Run root release verifier
+        run: |
+          python3 tools/pnva_root_release_verifier.py \
+            --write /tmp/pnva-root-release-verifier.json \
+            >/dev/null
+          python3 -m json.tool /tmp/pnva-root-release-verifier.json >/dev/null
+      - name: Run root claim boundary guard
+        run: |
+          python3 tools/pnva_root_claim_boundary_guard.py \
+            --write /tmp/pnva-root-claim-boundary-guard.json \
+            >/dev/null
+          python3 -m json.tool /tmp/pnva-root-claim-boundary-guard.json >/dev/null
+      - name: Run root publication gate
+        run: |
+          python3 tools/pnva_root_publication_gate.py \
+            --write /tmp/pnva-root-publication-gate.json \
+            >/dev/null
+          python3 -m json.tool /tmp/pnva-root-publication-gate.json >/dev/null
+      - name: Run root dependency graph
+        run: |
+          python3 tools/pnva_root_dependency_graph.py \
+            --write /tmp/pnva-root-dependency-graph.json \
+            >/dev/null
+          python3 -m json.tool /tmp/pnva-root-dependency-graph.json >/dev/null
+      - name: Run root observability index
+        run: |
+          python3 tools/pnva_root_observability_index.py \
+            --write /tmp/pnva-root-observability-index.json \
+            >/dev/null
+          python3 -m json.tool /tmp/pnva-root-observability-index.json >/dev/null
+      - name: Run root invariant firewall
+        run: |
+          python3 tools/pnva_root_invariant_firewall.py \
+            --write /tmp/pnva-root-invariant-firewall.json \
+            >/dev/null
+          python3 -m json.tool /tmp/pnva-root-invariant-firewall.json >/dev/null
+      - name: Run root regression sentinel
+        run: |
+          python3 tools/pnva_root_regression_sentinel.py \
+            --write /tmp/pnva-root-regression-sentinel.json \
+            >/dev/null
+          python3 -m json.tool /tmp/pnva-root-regression-sentinel.json >/dev/null
+      - name: Run root proof theorem ledger
+        run: |
+          python3 tools/pnva_root_proof_theorem_ledger.py \
+            --write /tmp/pnva-root-proof-theorem-ledger.json \
+            >/dev/null
+          python3 -m json.tool /tmp/pnva-root-proof-theorem-ledger.json >/dev/null
+      - name: Run root evolution governor
+        run: |
+          python3 tools/pnva_root_evolution_governor.py \
+            --write /tmp/pnva-root-evolution-governor.json \
+            >/dev/null
+          python3 -m json.tool /tmp/pnva-root-evolution-governor.json >/dev/null
+      - name: Run root heuristic weight ledger
+        run: |
+          python3 tools/pnva_root_heuristic_weight_ledger.py \
+            --write /tmp/pnva-root-heuristic-weight-ledger.json \
+            >/dev/null
+          python3 -m json.tool /tmp/pnva-root-heuristic-weight-ledger.json >/dev/null
+      - name: Run root entity capability ledger
+        run: |
+          python3 tools/pnva_root_entity_capability_ledger.py \
+            --write /tmp/pnva-root-entity-capability-ledger.json \
+            >/dev/null
+          python3 -m json.tool /tmp/pnva-root-entity-capability-ledger.json >/dev/null
+      - name: Run root field topology ledger
+        run: |
+          python3 tools/pnva_root_field_topology_ledger.py \
+            --write /tmp/pnva-root-field-topology-ledger.json \
+            >/dev/null
+          python3 -m json.tool /tmp/pnva-root-field-topology-ledger.json >/dev/null
+      - name: Run root no-tick causal contract
+        run: |
+          python3 tools/pnva_root_no_tick_causal_contract.py \
+            --write /tmp/pnva-root-no-tick-causal-contract.json \
+            >/dev/null
+          python3 -m json.tool /tmp/pnva-root-no-tick-causal-contract.json >/dev/null
+      - name: Run root runtime admission controller
+        run: |
+          python3 tools/pnva_root_runtime_admission_controller.py \
+            --write /tmp/pnva-root-runtime-admission-controller.json \
+            >/dev/null
+          python3 -m json.tool /tmp/pnva-root-runtime-admission-controller.json >/dev/null
+      - name: Run root entity heuristic admission matrix
+        run: |
+          python3 tools/pnva_root_entity_heuristic_admission_matrix.py \
+            --write /tmp/pnva-root-entity-heuristic-admission-matrix.json \
+            >/dev/null
+          python3 -m json.tool /tmp/pnva-root-entity-heuristic-admission-matrix.json >/dev/null
+      - name: Run root admission negative controls
+        run: |
+          python3 tools/pnva_root_admission_negative_controls.py \
+            --write /tmp/pnva-root-admission-negative-controls.json \
+            >/dev/null
+          python3 -m json.tool /tmp/pnva-root-admission-negative-controls.json >/dev/null
+      - name: Run root event identity ledger
+        run: |
+          python3 tools/pnva_root_event_identity_ledger.py \
+            --write /tmp/pnva-root-event-identity-ledger.json \
+            >/dev/null
+          python3 -m json.tool /tmp/pnva-root-event-identity-ledger.json >/dev/null
+      - name: Run root runtime growth budget
+        run: |
+          python3 tools/pnva_root_runtime_growth_budget.py \
+            --write /tmp/pnva-root-runtime-growth-budget.json \
+            >/dev/null
+          python3 -m json.tool /tmp/pnva-root-runtime-growth-budget.json >/dev/null
+      - name: Run root causal mesh ledger
+        run: |
+          python3 tools/pnva_root_causal_mesh_ledger.py \
+            --write /tmp/pnva-root-causal-mesh-ledger.json \
+            >/dev/null
+          python3 -m json.tool /tmp/pnva-root-causal-mesh-ledger.json >/dev/null
+      - name: Run root efficiency proof ledger
+        run: |
+          python3 tools/pnva_root_efficiency_proof_ledger.py \
+            --write /tmp/pnva-root-efficiency-proof-ledger.json \
+            >/dev/null
+          python3 -m json.tool /tmp/pnva-root-efficiency-proof-ledger.json >/dev/null
+      - name: Run root equation consistency ledger
+        run: |
+          python3 tools/pnva_root_equation_consistency_ledger.py \
+            --write /tmp/pnva-root-equation-consistency-ledger.json \
+            >/dev/null
+          python3 -m json.tool /tmp/pnva-root-equation-consistency-ledger.json >/dev/null
+      - name: Run root legacy quarantine ledger
+        run: |
+          python3 tools/pnva_root_legacy_quarantine_ledger.py \
+            --write /tmp/pnva-root-legacy-quarantine-ledger.json \
+            >/dev/null
+          python3 -m json.tool /tmp/pnva-root-legacy-quarantine-ledger.json >/dev/null
+      - name: Run root evidence chronology ledger
+        run: |
+          python3 tools/pnva_root_evidence_chronology_ledger.py \
+            --write /tmp/pnva-root-evidence-chronology-ledger.json \
+            >/dev/null
+          python3 -m json.tool /tmp/pnva-root-evidence-chronology-ledger.json >/dev/null
+      - name: Run root sovereign readiness gate
+        run: |
+          python3 tools/pnva_root_sovereign_readiness_gate.py \
+            --write /tmp/pnva-root-sovereign-readiness-gate.json \
+            >/dev/null
+          python3 -m json.tool /tmp/pnva-root-sovereign-readiness-gate.json >/dev/null
+      - name: Run root validator registry
+        run: |
+          python3 tools/pnva_root_validator_registry.py \
+            --write /tmp/pnva-root-validator-registry.json \
+            >/dev/null
+          python3 -m json.tool /tmp/pnva-root-validator-registry.json >/dev/null
       - name: Check release checksums
         run: sha256sum -c SHA256SUMS.txt

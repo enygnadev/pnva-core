@@ -1,0 +1,2004 @@
+{
+  "admission_matrix_score": 100.0,
+  "admission_rows": [
+    {
+      "admission_status": "CONTROLLED_CANONICAL_EVIDENCE",
+      "admission_weight": 0.702035,
+      "block_count": 0,
+      "collapse_count": 68,
+      "decision_mix": [
+        [
+          "collapse",
+          68
+        ],
+        [
+          "observe",
+          18
+        ]
+      ],
+      "edge_id": "canonical:entity_4c3ade60ea78->field_scheduler",
+      "entity_key": "canonical:entity_4c3ade60ea78",
+      "entity_readiness_score": 0.766034,
+      "entity_status": "CONTROLLED_CANONICAL",
+      "event_count": 86,
+      "native_count": 0,
+      "observe_count": 18,
+      "projected_count": 0,
+      "proof_coverage": 1.0,
+      "proof_valid_count": 86,
+      "prove_count": 0,
+      "rule": "field_scheduler",
+      "rule_public_weight": 0.916454,
+      "rule_status": "PUBLIC_WEIGHT_READY",
+      "scope": "canonical",
+      "suppressed_count": 18,
+      "suppression_ratio": 0.209302
+    },
+    {
+      "admission_status": "BOUND_CANONICAL_LEGACY",
+      "admission_weight": 0.500926,
+      "block_count": 0,
+      "collapse_count": 35,
+      "decision_mix": [
+        [
+          "collapse",
+          35
+        ],
+        [
+          "observe",
+          11
+        ]
+      ],
+      "edge_id": "canonical:entity_4c3ade60ea78->legacy_observer",
+      "entity_key": "canonical:entity_4c3ade60ea78",
+      "entity_readiness_score": 0.766034,
+      "entity_status": "CONTROLLED_CANONICAL",
+      "event_count": 46,
+      "native_count": 0,
+      "observe_count": 11,
+      "projected_count": 0,
+      "proof_coverage": 1.0,
+      "proof_valid_count": 46,
+      "prove_count": 0,
+      "rule": "legacy_observer",
+      "rule_public_weight": 0.653922,
+      "rule_status": "CONTROLLED_LEGACY",
+      "scope": "canonical",
+      "suppressed_count": 11,
+      "suppression_ratio": 0.23913
+    },
+    {
+      "admission_status": "BOUND_CANONICAL_LEGACY",
+      "admission_weight": 0.384448,
+      "block_count": 0,
+      "collapse_count": 0,
+      "decision_mix": [
+        [
+          "observe",
+          13
+        ]
+      ],
+      "edge_id": "canonical:entity_8ba8a9970d6a->legacy_observer",
+      "entity_key": "canonical:entity_8ba8a9970d6a",
+      "entity_readiness_score": 0.587911,
+      "entity_status": "CONTROLLED_CANONICAL",
+      "event_count": 13,
+      "native_count": 0,
+      "observe_count": 13,
+      "projected_count": 0,
+      "proof_coverage": 1.0,
+      "proof_valid_count": 13,
+      "prove_count": 0,
+      "rule": "legacy_observer",
+      "rule_public_weight": 0.653922,
+      "rule_status": "CONTROLLED_LEGACY",
+      "scope": "canonical",
+      "suppressed_count": 13,
+      "suppression_ratio": 1.0
+    },
+    {
+      "admission_status": "CONTROLLED_CANONICAL_EVIDENCE",
+      "admission_weight": 0.577312,
+      "block_count": 33,
+      "collapse_count": 0,
+      "decision_mix": [
+        [
+          "block",
+          33
+        ]
+      ],
+      "edge_id": "canonical:entity_9030cf1aa9f6->adaptive_threshold",
+      "entity_key": "canonical:entity_9030cf1aa9f6",
+      "entity_readiness_score": 0.611496,
+      "entity_status": "CONTROLLED_CANONICAL",
+      "event_count": 33,
+      "native_count": 0,
+      "observe_count": 0,
+      "projected_count": 0,
+      "proof_coverage": 1.0,
+      "proof_valid_count": 33,
+      "prove_count": 0,
+      "rule": "adaptive_threshold",
+      "rule_public_weight": 0.944098,
+      "rule_status": "PUBLIC_WEIGHT_READY",
+      "scope": "canonical",
+      "suppressed_count": 33,
+      "suppression_ratio": 1.0
+    },
+    {
+      "admission_status": "CONTROLLED_CANONICAL_EVIDENCE",
+      "admission_weight": 0.465048,
+      "block_count": 33,
+      "collapse_count": 0,
+      "decision_mix": [
+        [
+          "block",
+          33
+        ]
+      ],
+      "edge_id": "canonical:entity_9030cf1aa9f6->etev_guard",
+      "entity_key": "canonical:entity_9030cf1aa9f6",
+      "entity_readiness_score": 0.611496,
+      "entity_status": "CONTROLLED_CANONICAL",
+      "event_count": 33,
+      "native_count": 0,
+      "observe_count": 0,
+      "projected_count": 0,
+      "proof_coverage": 1.0,
+      "proof_valid_count": 33,
+      "prove_count": 0,
+      "rule": "etev_guard",
+      "rule_public_weight": 0.760509,
+      "rule_status": "PUBLIC_WEIGHT_READY",
+      "scope": "canonical",
+      "suppressed_count": 33,
+      "suppression_ratio": 1.0
+    },
+    {
+      "admission_status": "CONTROLLED_CANONICAL_EVIDENCE",
+      "admission_weight": 0.560408,
+      "block_count": 25,
+      "collapse_count": 0,
+      "decision_mix": [
+        [
+          "block",
+          25
+        ]
+      ],
+      "edge_id": "canonical:entity_9030cf1aa9f6->field_scheduler",
+      "entity_key": "canonical:entity_9030cf1aa9f6",
+      "entity_readiness_score": 0.611496,
+      "entity_status": "CONTROLLED_CANONICAL",
+      "event_count": 25,
+      "native_count": 0,
+      "observe_count": 0,
+      "projected_count": 0,
+      "proof_coverage": 1.0,
+      "proof_valid_count": 25,
+      "prove_count": 0,
+      "rule": "field_scheduler",
+      "rule_public_weight": 0.916454,
+      "rule_status": "PUBLIC_WEIGHT_READY",
+      "scope": "canonical",
+      "suppressed_count": 25,
+      "suppression_ratio": 1.0
+    },
+    {
+      "admission_status": "CONTROLLED_CANONICAL_EVIDENCE",
+      "admission_weight": 0.584107,
+      "block_count": 0,
+      "collapse_count": 35,
+      "decision_mix": [
+        [
+          "collapse",
+          35
+        ]
+      ],
+      "edge_id": "canonical:entity_9ad2a10c30be->adaptive_threshold",
+      "entity_key": "canonical:entity_9ad2a10c30be",
+      "entity_readiness_score": 0.618693,
+      "entity_status": "CONTROLLED_CANONICAL",
+      "event_count": 35,
+      "native_count": 0,
+      "observe_count": 0,
+      "projected_count": 0,
+      "proof_coverage": 1.0,
+      "proof_valid_count": 35,
+      "prove_count": 0,
+      "rule": "adaptive_threshold",
+      "rule_public_weight": 0.944098,
+      "rule_status": "PUBLIC_WEIGHT_READY",
+      "scope": "canonical",
+      "suppressed_count": 0,
+      "suppression_ratio": 0.0
+    },
+    {
+      "admission_status": "CONTROLLED_CANONICAL_EVIDENCE",
+      "admission_weight": 0.470522,
+      "block_count": 0,
+      "collapse_count": 35,
+      "decision_mix": [
+        [
+          "collapse",
+          35
+        ]
+      ],
+      "edge_id": "canonical:entity_9ad2a10c30be->etev_guard",
+      "entity_key": "canonical:entity_9ad2a10c30be",
+      "entity_readiness_score": 0.618693,
+      "entity_status": "CONTROLLED_CANONICAL",
+      "event_count": 35,
+      "native_count": 0,
+      "observe_count": 0,
+      "projected_count": 0,
+      "proof_coverage": 1.0,
+      "proof_valid_count": 35,
+      "prove_count": 0,
+      "rule": "etev_guard",
+      "rule_public_weight": 0.760509,
+      "rule_status": "PUBLIC_WEIGHT_READY",
+      "scope": "canonical",
+      "suppressed_count": 0,
+      "suppression_ratio": 0.0
+    },
+    {
+      "admission_status": "CONTROLLED_CANONICAL_EVIDENCE",
+      "admission_weight": 0.567004,
+      "block_count": 0,
+      "collapse_count": 25,
+      "decision_mix": [
+        [
+          "collapse",
+          25
+        ]
+      ],
+      "edge_id": "canonical:entity_9ad2a10c30be->field_scheduler",
+      "entity_key": "canonical:entity_9ad2a10c30be",
+      "entity_readiness_score": 0.618693,
+      "entity_status": "CONTROLLED_CANONICAL",
+      "event_count": 25,
+      "native_count": 0,
+      "observe_count": 0,
+      "projected_count": 0,
+      "proof_coverage": 1.0,
+      "proof_valid_count": 25,
+      "prove_count": 0,
+      "rule": "field_scheduler",
+      "rule_public_weight": 0.916454,
+      "rule_status": "PUBLIC_WEIGHT_READY",
+      "scope": "canonical",
+      "suppressed_count": 0,
+      "suppression_ratio": 0.0
+    },
+    {
+      "admission_status": "CONTROLLED_CANONICAL_EVIDENCE",
+      "admission_weight": 0.837276,
+      "block_count": 0,
+      "collapse_count": 128,
+      "decision_mix": [
+        [
+          "collapse",
+          128
+        ],
+        [
+          "observe",
+          37
+        ]
+      ],
+      "edge_id": "canonical:zano-entity-00->adaptive_threshold",
+      "entity_key": "canonical:zano-entity-00",
+      "entity_readiness_score": 0.886853,
+      "entity_status": "CONTROLLED_CANONICAL",
+      "event_count": 165,
+      "native_count": 0,
+      "observe_count": 37,
+      "projected_count": 0,
+      "proof_coverage": 1.0,
+      "proof_valid_count": 165,
+      "prove_count": 0,
+      "rule": "adaptive_threshold",
+      "rule_public_weight": 0.944098,
+      "rule_status": "PUBLIC_WEIGHT_READY",
+      "scope": "canonical",
+      "suppressed_count": 37,
+      "suppression_ratio": 0.224242
+    },
+    {
+      "admission_status": "CONTROLLED_CANONICAL_EVIDENCE",
+      "admission_weight": 0.590659,
+      "block_count": 0,
+      "collapse_count": 0,
+      "decision_mix": [
+        [
+          "observe",
+          37
+        ]
+      ],
+      "edge_id": "canonical:zano-entity-00->affinity_router",
+      "entity_key": "canonical:zano-entity-00",
+      "entity_readiness_score": 0.886853,
+      "entity_status": "CONTROLLED_CANONICAL",
+      "event_count": 37,
+      "native_count": 0,
+      "observe_count": 37,
+      "projected_count": 0,
+      "proof_coverage": 1.0,
+      "proof_valid_count": 37,
+      "prove_count": 0,
+      "rule": "affinity_router",
+      "rule_public_weight": 0.666017,
+      "rule_status": "PUBLIC_WEIGHT_READY",
+      "scope": "canonical",
+      "suppressed_count": 37,
+      "suppression_ratio": 1.0
+    },
+    {
+      "admission_status": "CONTROLLED_CANONICAL_EVIDENCE",
+      "admission_weight": 0.81276,
+      "block_count": 0,
+      "collapse_count": 128,
+      "decision_mix": [
+        [
+          "collapse",
+          128
+        ]
+      ],
+      "edge_id": "canonical:zano-entity-00->field_scheduler",
+      "entity_key": "canonical:zano-entity-00",
+      "entity_readiness_score": 0.886853,
+      "entity_status": "CONTROLLED_CANONICAL",
+      "event_count": 128,
+      "native_count": 0,
+      "observe_count": 0,
+      "projected_count": 0,
+      "proof_coverage": 1.0,
+      "proof_valid_count": 128,
+      "prove_count": 0,
+      "rule": "field_scheduler",
+      "rule_public_weight": 0.916454,
+      "rule_status": "PUBLIC_WEIGHT_READY",
+      "scope": "canonical",
+      "suppressed_count": 0,
+      "suppression_ratio": 0.0
+    },
+    {
+      "admission_status": "BOUND_CANONICAL_LEGACY",
+      "admission_weight": 0.579933,
+      "block_count": 0,
+      "collapse_count": 0,
+      "decision_mix": [
+        [
+          "observe",
+          47
+        ]
+      ],
+      "edge_id": "canonical:zano-entity-00->legacy_observer",
+      "entity_key": "canonical:zano-entity-00",
+      "entity_readiness_score": 0.886853,
+      "entity_status": "CONTROLLED_CANONICAL",
+      "event_count": 47,
+      "native_count": 0,
+      "observe_count": 47,
+      "projected_count": 0,
+      "proof_coverage": 1.0,
+      "proof_valid_count": 47,
+      "prove_count": 0,
+      "rule": "legacy_observer",
+      "rule_public_weight": 0.653922,
+      "rule_status": "CONTROLLED_LEGACY",
+      "scope": "canonical",
+      "suppressed_count": 47,
+      "suppression_ratio": 1.0
+    },
+    {
+      "admission_status": "CONTROLLED_CANONICAL_EVIDENCE",
+      "admission_weight": 0.548208,
+      "block_count": 0,
+      "collapse_count": 0,
+      "decision_mix": [
+        [
+          "observe",
+          37
+        ]
+      ],
+      "edge_id": "canonical:zano-entity-00->memory4d",
+      "entity_key": "canonical:zano-entity-00",
+      "entity_readiness_score": 0.886853,
+      "entity_status": "CONTROLLED_CANONICAL",
+      "event_count": 37,
+      "native_count": 0,
+      "observe_count": 37,
+      "projected_count": 0,
+      "proof_coverage": 1.0,
+      "proof_valid_count": 37,
+      "prove_count": 0,
+      "rule": "memory4d",
+      "rule_public_weight": 0.61815,
+      "rule_status": "PUBLIC_WEIGHT_READY",
+      "scope": "canonical",
+      "suppressed_count": 37,
+      "suppression_ratio": 1.0
+    },
+    {
+      "admission_status": "CONTROLLED_CANONICAL_EVIDENCE",
+      "admission_weight": 0.596641,
+      "block_count": 0,
+      "collapse_count": 0,
+      "decision_mix": [
+        [
+          "observe",
+          37
+        ]
+      ],
+      "edge_id": "canonical:zano-entity-00->power_orchestrator",
+      "entity_key": "canonical:zano-entity-00",
+      "entity_readiness_score": 0.886853,
+      "entity_status": "CONTROLLED_CANONICAL",
+      "event_count": 37,
+      "native_count": 0,
+      "observe_count": 37,
+      "projected_count": 0,
+      "proof_coverage": 1.0,
+      "proof_valid_count": 37,
+      "prove_count": 0,
+      "rule": "power_orchestrator",
+      "rule_public_weight": 0.672762,
+      "rule_status": "PUBLIC_WEIGHT_READY",
+      "scope": "canonical",
+      "suppressed_count": 37,
+      "suppression_ratio": 1.0
+    },
+    {
+      "admission_status": "CONTROLLED_CANONICAL_EVIDENCE",
+      "admission_weight": 0.587625,
+      "block_count": 0,
+      "collapse_count": 128,
+      "decision_mix": [
+        [
+          "collapse",
+          128
+        ]
+      ],
+      "edge_id": "canonical:zano-entity-00->veonic_layer",
+      "entity_key": "canonical:zano-entity-00",
+      "entity_readiness_score": 0.886853,
+      "entity_status": "CONTROLLED_CANONICAL",
+      "event_count": 128,
+      "native_count": 0,
+      "observe_count": 0,
+      "projected_count": 0,
+      "proof_coverage": 1.0,
+      "proof_valid_count": 128,
+      "prove_count": 0,
+      "rule": "veonic_layer",
+      "rule_public_weight": 0.662596,
+      "rule_status": "PUBLIC_WEIGHT_READY",
+      "scope": "canonical",
+      "suppressed_count": 0,
+      "suppression_ratio": 0.0
+    },
+    {
+      "admission_status": "CONTROLLED_CANONICAL_EVIDENCE",
+      "admission_weight": 0.637431,
+      "block_count": 0,
+      "collapse_count": 0,
+      "decision_mix": [
+        [
+          "observe",
+          41
+        ]
+      ],
+      "edge_id": "canonical:zano-entity-01->adaptive_threshold",
+      "entity_key": "canonical:zano-entity-01",
+      "entity_readiness_score": 0.675175,
+      "entity_status": "CONTROLLED_CANONICAL",
+      "event_count": 41,
+      "native_count": 0,
+      "observe_count": 41,
+      "projected_count": 0,
+      "proof_coverage": 1.0,
+      "proof_valid_count": 41,
+      "prove_count": 0,
+      "rule": "adaptive_threshold",
+      "rule_public_weight": 0.944098,
+      "rule_status": "PUBLIC_WEIGHT_READY",
+      "scope": "canonical",
+      "suppressed_count": 41,
+      "suppression_ratio": 1.0
+    },
+    {
+      "admission_status": "CONTROLLED_CANONICAL_EVIDENCE",
+      "admission_weight": 0.449678,
+      "block_count": 0,
+      "collapse_count": 0,
+      "decision_mix": [
+        [
+          "observe",
+          41
+        ]
+      ],
+      "edge_id": "canonical:zano-entity-01->affinity_router",
+      "entity_key": "canonical:zano-entity-01",
+      "entity_readiness_score": 0.675175,
+      "entity_status": "CONTROLLED_CANONICAL",
+      "event_count": 41,
+      "native_count": 0,
+      "observe_count": 41,
+      "projected_count": 0,
+      "proof_coverage": 1.0,
+      "proof_valid_count": 41,
+      "prove_count": 0,
+      "rule": "affinity_router",
+      "rule_public_weight": 0.666017,
+      "rule_status": "PUBLIC_WEIGHT_READY",
+      "scope": "canonical",
+      "suppressed_count": 41,
+      "suppression_ratio": 1.0
+    },
+    {
+      "admission_status": "BOUND_CANONICAL_LEGACY",
+      "admission_weight": 0.441512,
+      "block_count": 0,
+      "collapse_count": 0,
+      "decision_mix": [
+        [
+          "observe",
+          46
+        ]
+      ],
+      "edge_id": "canonical:zano-entity-01->legacy_observer",
+      "entity_key": "canonical:zano-entity-01",
+      "entity_readiness_score": 0.675175,
+      "entity_status": "CONTROLLED_CANONICAL",
+      "event_count": 46,
+      "native_count": 0,
+      "observe_count": 46,
+      "projected_count": 0,
+      "proof_coverage": 1.0,
+      "proof_valid_count": 46,
+      "prove_count": 0,
+      "rule": "legacy_observer",
+      "rule_public_weight": 0.653922,
+      "rule_status": "CONTROLLED_LEGACY",
+      "scope": "canonical",
+      "suppressed_count": 46,
+      "suppression_ratio": 1.0
+    },
+    {
+      "admission_status": "CONTROLLED_CANONICAL_EVIDENCE",
+      "admission_weight": 0.417359,
+      "block_count": 0,
+      "collapse_count": 0,
+      "decision_mix": [
+        [
+          "observe",
+          41
+        ]
+      ],
+      "edge_id": "canonical:zano-entity-01->memory4d",
+      "entity_key": "canonical:zano-entity-01",
+      "entity_readiness_score": 0.675175,
+      "entity_status": "CONTROLLED_CANONICAL",
+      "event_count": 41,
+      "native_count": 0,
+      "observe_count": 41,
+      "projected_count": 0,
+      "proof_coverage": 1.0,
+      "proof_valid_count": 41,
+      "prove_count": 0,
+      "rule": "memory4d",
+      "rule_public_weight": 0.61815,
+      "rule_status": "PUBLIC_WEIGHT_READY",
+      "scope": "canonical",
+      "suppressed_count": 41,
+      "suppression_ratio": 1.0
+    },
+    {
+      "admission_status": "CONTROLLED_CANONICAL_EVIDENCE",
+      "admission_weight": 0.454232,
+      "block_count": 0,
+      "collapse_count": 0,
+      "decision_mix": [
+        [
+          "observe",
+          41
+        ]
+      ],
+      "edge_id": "canonical:zano-entity-01->power_orchestrator",
+      "entity_key": "canonical:zano-entity-01",
+      "entity_readiness_score": 0.675175,
+      "entity_status": "CONTROLLED_CANONICAL",
+      "event_count": 41,
+      "native_count": 0,
+      "observe_count": 41,
+      "projected_count": 0,
+      "proof_coverage": 1.0,
+      "proof_valid_count": 41,
+      "prove_count": 0,
+      "rule": "power_orchestrator",
+      "rule_public_weight": 0.672762,
+      "rule_status": "PUBLIC_WEIGHT_READY",
+      "scope": "canonical",
+      "suppressed_count": 41,
+      "suppression_ratio": 1.0
+    },
+    {
+      "admission_status": "ADMIT_NATIVE_RESTRICTED",
+      "admission_weight": 0.613606,
+      "block_count": 1,
+      "collapse_count": 1,
+      "decision_mix": [
+        [
+          "block",
+          1
+        ],
+        [
+          "collapse",
+          1
+        ]
+      ],
+      "edge_id": "native:pnva-etev-guard->adaptive_threshold",
+      "entity_key": "native:pnva-etev-guard",
+      "entity_readiness_score": 0.649939,
+      "entity_status": "NATIVE_READY",
+      "event_count": 2,
+      "native_count": 2,
+      "observe_count": 0,
+      "projected_count": 0,
+      "proof_coverage": 1.0,
+      "proof_valid_count": 2,
+      "prove_count": 0,
+      "rule": "adaptive_threshold",
+      "rule_public_weight": 0.944098,
+      "rule_status": "PUBLIC_WEIGHT_READY",
+      "scope": "native",
+      "suppressed_count": 1,
+      "suppression_ratio": 0.5
+    },
+    {
+      "admission_status": "ADMIT_NATIVE_RESTRICTED",
+      "admission_weight": 0.494284,
+      "block_count": 1,
+      "collapse_count": 1,
+      "decision_mix": [
+        [
+          "block",
+          1
+        ],
+        [
+          "collapse",
+          1
+        ]
+      ],
+      "edge_id": "native:pnva-etev-guard->etev_guard",
+      "entity_key": "native:pnva-etev-guard",
+      "entity_readiness_score": 0.649939,
+      "entity_status": "NATIVE_READY",
+      "event_count": 2,
+      "native_count": 2,
+      "observe_count": 0,
+      "projected_count": 0,
+      "proof_coverage": 1.0,
+      "proof_valid_count": 2,
+      "prove_count": 0,
+      "rule": "etev_guard",
+      "rule_public_weight": 0.760509,
+      "rule_status": "PUBLIC_WEIGHT_READY",
+      "scope": "native",
+      "suppressed_count": 1,
+      "suppression_ratio": 0.5
+    },
+    {
+      "admission_status": "ADMIT_NATIVE_RESTRICTED",
+      "admission_weight": 0.464382,
+      "block_count": 1,
+      "collapse_count": 1,
+      "decision_mix": [
+        [
+          "block",
+          1
+        ],
+        [
+          "collapse",
+          1
+        ]
+      ],
+      "edge_id": "native:pnva-etev-guard->native_event_emitter",
+      "entity_key": "native:pnva-etev-guard",
+      "entity_readiness_score": 0.649939,
+      "entity_status": "NATIVE_READY",
+      "event_count": 2,
+      "native_count": 2,
+      "observe_count": 0,
+      "projected_count": 0,
+      "proof_coverage": 1.0,
+      "proof_valid_count": 2,
+      "prove_count": 0,
+      "rule": "native_event_emitter",
+      "rule_public_weight": 0.714501,
+      "rule_status": "PUBLIC_WEIGHT_READY",
+      "scope": "native",
+      "suppressed_count": 1,
+      "suppression_ratio": 0.5
+    },
+    {
+      "admission_status": "OBSERVE_NATIVE_LEGACY_ONLY",
+      "admission_weight": 0.342498,
+      "block_count": 0,
+      "collapse_count": 0,
+      "decision_mix": [
+        [
+          "observe",
+          1
+        ]
+      ],
+      "edge_id": "native:pnva-field-demo->legacy_observer",
+      "entity_key": "native:pnva-field-demo",
+      "entity_readiness_score": 0.52376,
+      "entity_status": "NATIVE_READY",
+      "event_count": 1,
+      "native_count": 1,
+      "observe_count": 1,
+      "projected_count": 0,
+      "proof_coverage": 1.0,
+      "proof_valid_count": 1,
+      "prove_count": 0,
+      "rule": "legacy_observer",
+      "rule_public_weight": 0.653922,
+      "rule_status": "CONTROLLED_LEGACY",
+      "scope": "native",
+      "suppressed_count": 1,
+      "suppression_ratio": 1.0
+    },
+    {
+      "admission_status": "ADMIT_NATIVE_RESTRICTED",
+      "admission_weight": 0.374227,
+      "block_count": 0,
+      "collapse_count": 0,
+      "decision_mix": [
+        [
+          "observe",
+          1
+        ]
+      ],
+      "edge_id": "native:pnva-field-demo->native_event_emitter",
+      "entity_key": "native:pnva-field-demo",
+      "entity_readiness_score": 0.52376,
+      "entity_status": "NATIVE_READY",
+      "event_count": 1,
+      "native_count": 1,
+      "observe_count": 1,
+      "projected_count": 0,
+      "proof_coverage": 1.0,
+      "proof_valid_count": 1,
+      "prove_count": 0,
+      "rule": "native_event_emitter",
+      "rule_public_weight": 0.714501,
+      "rule_status": "PUBLIC_WEIGHT_READY",
+      "scope": "native",
+      "suppressed_count": 1,
+      "suppression_ratio": 1.0
+    },
+    {
+      "admission_status": "ADMIT_NATIVE_RESTRICTED",
+      "admission_weight": 0.377685,
+      "block_count": 0,
+      "collapse_count": 0,
+      "decision_mix": [
+        [
+          "prove",
+          1
+        ]
+      ],
+      "edge_id": "native:pnva-proof-native-demo->native_event_emitter",
+      "entity_key": "native:pnva-proof-native-demo",
+      "entity_readiness_score": 0.528599,
+      "entity_status": "NATIVE_READY",
+      "event_count": 1,
+      "native_count": 1,
+      "observe_count": 0,
+      "projected_count": 0,
+      "proof_coverage": 1.0,
+      "proof_valid_count": 1,
+      "prove_count": 1,
+      "rule": "native_event_emitter",
+      "rule_public_weight": 0.714501,
+      "rule_status": "PUBLIC_WEIGHT_READY",
+      "scope": "native",
+      "suppressed_count": 0,
+      "suppression_ratio": 0.0
+    },
+    {
+      "admission_status": "ADMIT_NATIVE_RESTRICTED",
+      "admission_weight": 0.374227,
+      "block_count": 0,
+      "collapse_count": 0,
+      "decision_mix": [
+        [
+          "observe",
+          1
+        ]
+      ],
+      "edge_id": "native:pnva-thermal-guard->native_event_emitter",
+      "entity_key": "native:pnva-thermal-guard",
+      "entity_readiness_score": 0.52376,
+      "entity_status": "NATIVE_READY",
+      "event_count": 1,
+      "native_count": 1,
+      "observe_count": 1,
+      "projected_count": 0,
+      "proof_coverage": 1.0,
+      "proof_valid_count": 1,
+      "prove_count": 0,
+      "rule": "native_event_emitter",
+      "rule_public_weight": 0.714501,
+      "rule_status": "PUBLIC_WEIGHT_READY",
+      "scope": "native",
+      "suppressed_count": 1,
+      "suppression_ratio": 1.0
+    },
+    {
+      "admission_status": "ADMIT_NATIVE_RESTRICTED",
+      "admission_weight": 0.352366,
+      "block_count": 0,
+      "collapse_count": 0,
+      "decision_mix": [
+        [
+          "observe",
+          1
+        ]
+      ],
+      "edge_id": "native:pnva-thermal-guard->power_orchestrator",
+      "entity_key": "native:pnva-thermal-guard",
+      "entity_readiness_score": 0.52376,
+      "entity_status": "NATIVE_READY",
+      "event_count": 1,
+      "native_count": 1,
+      "observe_count": 1,
+      "projected_count": 0,
+      "proof_coverage": 1.0,
+      "proof_valid_count": 1,
+      "prove_count": 0,
+      "rule": "power_orchestrator",
+      "rule_public_weight": 0.672762,
+      "rule_status": "PUBLIC_WEIGHT_READY",
+      "scope": "native",
+      "suppressed_count": 1,
+      "suppression_ratio": 1.0
+    },
+    {
+      "admission_status": "ADMIT_NATIVE_RESTRICTED",
+      "admission_weight": 0.530259,
+      "block_count": 0,
+      "collapse_count": 1,
+      "decision_mix": [
+        [
+          "collapse",
+          1
+        ]
+      ],
+      "edge_id": "native:zano-entity-00->field_scheduler",
+      "entity_key": "native:zano-entity-00",
+      "entity_readiness_score": 0.578599,
+      "entity_status": "NATIVE_READY",
+      "event_count": 1,
+      "native_count": 1,
+      "observe_count": 0,
+      "projected_count": 0,
+      "proof_coverage": 1.0,
+      "proof_valid_count": 1,
+      "prove_count": 0,
+      "rule": "field_scheduler",
+      "rule_public_weight": 0.916454,
+      "rule_status": "PUBLIC_WEIGHT_READY",
+      "scope": "native",
+      "suppressed_count": 0,
+      "suppression_ratio": 0.0
+    },
+    {
+      "admission_status": "ADMIT_NATIVE_RESTRICTED",
+      "admission_weight": 0.357661,
+      "block_count": 0,
+      "collapse_count": 1,
+      "decision_mix": [
+        [
+          "collapse",
+          1
+        ]
+      ],
+      "edge_id": "native:zano-entity-00->memory4d",
+      "entity_key": "native:zano-entity-00",
+      "entity_readiness_score": 0.578599,
+      "entity_status": "NATIVE_READY",
+      "event_count": 1,
+      "native_count": 1,
+      "observe_count": 0,
+      "projected_count": 0,
+      "proof_coverage": 1.0,
+      "proof_valid_count": 1,
+      "prove_count": 0,
+      "rule": "memory4d",
+      "rule_public_weight": 0.61815,
+      "rule_status": "PUBLIC_WEIGHT_READY",
+      "scope": "native",
+      "suppressed_count": 0,
+      "suppression_ratio": 0.0
+    },
+    {
+      "admission_status": "ADMIT_NATIVE_RESTRICTED",
+      "admission_weight": 0.41341,
+      "block_count": 0,
+      "collapse_count": 1,
+      "decision_mix": [
+        [
+          "collapse",
+          1
+        ]
+      ],
+      "edge_id": "native:zano-entity-00->native_event_emitter",
+      "entity_key": "native:zano-entity-00",
+      "entity_readiness_score": 0.578599,
+      "entity_status": "NATIVE_READY",
+      "event_count": 1,
+      "native_count": 1,
+      "observe_count": 0,
+      "projected_count": 0,
+      "proof_coverage": 1.0,
+      "proof_valid_count": 1,
+      "prove_count": 0,
+      "rule": "native_event_emitter",
+      "rule_public_weight": 0.714501,
+      "rule_status": "PUBLIC_WEIGHT_READY",
+      "scope": "native",
+      "suppressed_count": 0,
+      "suppression_ratio": 0.0
+    },
+    {
+      "admission_status": "ADMIT_NATIVE_RESTRICTED",
+      "admission_weight": 0.525825,
+      "block_count": 1,
+      "collapse_count": 0,
+      "decision_mix": [
+        [
+          "block",
+          1
+        ]
+      ],
+      "edge_id": "native:zano-entity-01->field_scheduler",
+      "entity_key": "native:zano-entity-01",
+      "entity_readiness_score": 0.57376,
+      "entity_status": "NATIVE_READY",
+      "event_count": 1,
+      "native_count": 1,
+      "observe_count": 0,
+      "projected_count": 0,
+      "proof_coverage": 1.0,
+      "proof_valid_count": 1,
+      "prove_count": 0,
+      "rule": "field_scheduler",
+      "rule_public_weight": 0.916454,
+      "rule_status": "PUBLIC_WEIGHT_READY",
+      "scope": "native",
+      "suppressed_count": 1,
+      "suppression_ratio": 1.0
+    },
+    {
+      "admission_status": "ADMIT_NATIVE_RESTRICTED",
+      "admission_weight": 0.409952,
+      "block_count": 1,
+      "collapse_count": 0,
+      "decision_mix": [
+        [
+          "block",
+          1
+        ]
+      ],
+      "edge_id": "native:zano-entity-01->native_event_emitter",
+      "entity_key": "native:zano-entity-01",
+      "entity_readiness_score": 0.57376,
+      "entity_status": "NATIVE_READY",
+      "event_count": 1,
+      "native_count": 1,
+      "observe_count": 0,
+      "projected_count": 0,
+      "proof_coverage": 1.0,
+      "proof_valid_count": 1,
+      "prove_count": 0,
+      "rule": "native_event_emitter",
+      "rule_public_weight": 0.714501,
+      "rule_status": "PUBLIC_WEIGHT_READY",
+      "scope": "native",
+      "suppressed_count": 1,
+      "suppression_ratio": 1.0
+    },
+    {
+      "admission_status": "ADMIT_R3_RESTRICTED",
+      "admission_weight": 0.783722,
+      "block_count": 0,
+      "collapse_count": 35,
+      "decision_mix": [
+        [
+          "collapse",
+          35
+        ],
+        [
+          "observe",
+          35
+        ]
+      ],
+      "edge_id": "runtime_r3:entity_4c3ade60ea78->adaptive_threshold",
+      "entity_key": "runtime_r3:entity_4c3ade60ea78",
+      "entity_readiness_score": 0.830128,
+      "entity_status": "R3_RUNTIME_READY",
+      "event_count": 70,
+      "native_count": 70,
+      "observe_count": 35,
+      "projected_count": 0,
+      "proof_coverage": 1.0,
+      "proof_valid_count": 70,
+      "prove_count": 0,
+      "rule": "adaptive_threshold",
+      "rule_public_weight": 0.944098,
+      "rule_status": "PUBLIC_WEIGHT_READY",
+      "scope": "runtime_r3",
+      "suppressed_count": 35,
+      "suppression_ratio": 0.5
+    },
+    {
+      "admission_status": "ADMIT_R3_RESTRICTED",
+      "admission_weight": 0.760774,
+      "block_count": 0,
+      "collapse_count": 35,
+      "decision_mix": [
+        [
+          "collapse",
+          35
+        ],
+        [
+          "observe",
+          35
+        ]
+      ],
+      "edge_id": "runtime_r3:entity_4c3ade60ea78->field_scheduler",
+      "entity_key": "runtime_r3:entity_4c3ade60ea78",
+      "entity_readiness_score": 0.830128,
+      "entity_status": "R3_RUNTIME_READY",
+      "event_count": 70,
+      "native_count": 70,
+      "observe_count": 35,
+      "projected_count": 0,
+      "proof_coverage": 1.0,
+      "proof_valid_count": 70,
+      "prove_count": 0,
+      "rule": "field_scheduler",
+      "rule_public_weight": 0.916454,
+      "rule_status": "PUBLIC_WEIGHT_READY",
+      "scope": "runtime_r3",
+      "suppressed_count": 35,
+      "suppression_ratio": 0.5
+    },
+    {
+      "admission_status": "ADMIT_R3_RESTRICTED",
+      "admission_weight": 0.593127,
+      "block_count": 0,
+      "collapse_count": 35,
+      "decision_mix": [
+        [
+          "collapse",
+          35
+        ],
+        [
+          "observe",
+          35
+        ]
+      ],
+      "edge_id": "runtime_r3:entity_4c3ade60ea78->native_event_emitter",
+      "entity_key": "runtime_r3:entity_4c3ade60ea78",
+      "entity_readiness_score": 0.830128,
+      "entity_status": "R3_RUNTIME_READY",
+      "event_count": 70,
+      "native_count": 70,
+      "observe_count": 35,
+      "projected_count": 0,
+      "proof_coverage": 1.0,
+      "proof_valid_count": 70,
+      "prove_count": 0,
+      "rule": "native_event_emitter",
+      "rule_public_weight": 0.714501,
+      "rule_status": "PUBLIC_WEIGHT_READY",
+      "scope": "runtime_r3",
+      "suppressed_count": 35,
+      "suppression_ratio": 0.5
+    },
+    {
+      "admission_status": "ADMIT_R3_RESTRICTED",
+      "admission_weight": 0.558479,
+      "block_count": 0,
+      "collapse_count": 2,
+      "decision_mix": [
+        [
+          "collapse",
+          2
+        ],
+        [
+          "observe",
+          2
+        ]
+      ],
+      "edge_id": "runtime_r3:entity_4c3ade60ea78->power_orchestrator",
+      "entity_key": "runtime_r3:entity_4c3ade60ea78",
+      "entity_readiness_score": 0.830128,
+      "entity_status": "R3_RUNTIME_READY",
+      "event_count": 4,
+      "native_count": 4,
+      "observe_count": 2,
+      "projected_count": 0,
+      "proof_coverage": 1.0,
+      "proof_valid_count": 4,
+      "prove_count": 0,
+      "rule": "power_orchestrator",
+      "rule_public_weight": 0.672762,
+      "rule_status": "PUBLIC_WEIGHT_READY",
+      "scope": "runtime_r3",
+      "suppressed_count": 2,
+      "suppression_ratio": 0.5
+    }
+  ],
+  "admitted_native_edge_count": 12,
+  "admitted_r3_edge_count": 4,
+  "author": "Gustavo de Aguiar Martins",
+  "bounded_legacy_edge_count": 5,
+  "check_count": 11,
+  "checks": [
+    {
+      "evidence": {
+        "reports": [
+          {
+            "classification": "PNVA_ROOT_ENTITY_CAPABILITY_LEDGER_READY",
+            "expected": "PNVA_ROOT_ENTITY_CAPABILITY_LEDGER_READY",
+            "name": "entity_capability",
+            "pass": true
+          },
+          {
+            "classification": "PNVA_ROOT_HEURISTIC_WEIGHT_LEDGER_READY",
+            "expected": "PNVA_ROOT_HEURISTIC_WEIGHT_LEDGER_READY",
+            "name": "heuristic_weight",
+            "pass": true
+          },
+          {
+            "classification": "PNVA_ROOT_FIELD_TOPOLOGY_LEDGER_READY",
+            "expected": "PNVA_ROOT_FIELD_TOPOLOGY_LEDGER_READY",
+            "name": "field_topology",
+            "pass": true
+          },
+          {
+            "classification": "PNVA_ROOT_NO_TICK_CAUSAL_CONTRACT_READY",
+            "expected": "PNVA_ROOT_NO_TICK_CAUSAL_CONTRACT_READY",
+            "name": "no_tick_contract",
+            "pass": true
+          },
+          {
+            "classification": "PNVA_ROOT_RUNTIME_ADMISSION_READY",
+            "expected": "PNVA_ROOT_RUNTIME_ADMISSION_READY",
+            "name": "runtime_admission",
+            "pass": true
+          },
+          {
+            "classification": "PNVA_ROOT_PUBLICATION_GATE_READY",
+            "expected": "PNVA_ROOT_PUBLICATION_GATE_READY",
+            "name": "publication_gate",
+            "pass": true
+          },
+          {
+            "classification": "PNVA_ROOT_CLAIM_BOUNDARY_GUARD_READY",
+            "expected": "PNVA_ROOT_CLAIM_BOUNDARY_GUARD_READY",
+            "name": "claim_boundary",
+            "pass": true
+          },
+          {
+            "classification": "PNVA_ROOT_RELEASE_VERIFIED",
+            "expected": "PNVA_ROOT_RELEASE_VERIFIED",
+            "name": "release_verifier",
+            "pass": true
+          }
+        ]
+      },
+      "name": "source_reports_ready",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "parse_error_count": 0,
+        "parse_errors": []
+      },
+      "name": "parse_clean",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "contract_event_count": 589,
+        "event_count": 589,
+        "heuristic_rule_event_edge_count": 1350,
+        "rule_event_edge_count": 1350,
+        "topology_event_count": 589,
+        "topology_rule_event_edge_count": 1350
+      },
+      "name": "event_and_rule_edge_counts_match_root",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "matrix_edge_count": 38,
+        "topology_entity_rule_edge_count": 38,
+        "unknown_entities": [],
+        "unknown_entity_count": 0,
+        "unknown_rule_count": 0,
+        "unknown_rules": []
+      },
+      "name": "entity_rule_matrix_complete",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "native_restricted_edge_count": 12,
+        "projected_runtime_edge_count": 0,
+        "r3_restricted_edge_count": 4
+      },
+      "name": "runtime_edges_admitted_restricted",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "legacy_edge_count": 5,
+        "legacy_projection_count": 0,
+        "topology_legacy_edge_count": 5
+      },
+      "name": "legacy_edges_bounded",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "denied_edge_count": 0,
+        "denied_edges": [],
+        "uncovered_edge_count": 0
+      },
+      "name": "no_denied_or_uncovered_edges",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "controlled_canonical_edge_count": 17,
+        "noncanonical_controlled_count": 0
+      },
+      "name": "controlled_canonical_edges_remain_evidence_only",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "admission_decision": "ADMIT_RESTRICTED_ROOT_RUNTIME_PLANNING",
+        "allowed_modes": [
+          "audit_only",
+          "observe",
+          "simulate",
+          "restricted_native_event_ingest",
+          "restricted_r3_precheck_commit",
+          "planning_only_evolution"
+        ],
+        "denied_modes": [
+          "unbounded_public_claims",
+          "unsanitized_log_ingest",
+          "private_threshold_publication",
+          "unpaired_r3_runtime_events",
+          "projected_runtime_evidence",
+          "unknown_entity_or_rule_runtime",
+          "hardware_energy_claim_without_counter_benchmark"
+        ]
+      },
+      "name": "runtime_admission_modes_enforced",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "path_leak_count": 0,
+        "unbounded_high_risk_occurrence_count": 0
+      },
+      "name": "public_boundary_clean",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "recomputed_root_release_hash": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+        "root_release_hash": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc"
+      },
+      "name": "root_hash_stable",
+      "pass": true
+    }
+  ],
+  "classification": "PNVA_ROOT_ENTITY_HEURISTIC_ADMISSION_MATRIX_READY",
+  "controlled_canonical_edge_count": 17,
+  "denied_edge_count": 0,
+  "entity_heuristic_admission_matrix_hash": "sha256:091ff920e814e5f8d344e4287ce5d88d5afc715a11918d12789a20c7b428dd28",
+  "entity_rule_edge_count": 38,
+  "event_count": 589,
+  "failure_count": 0,
+  "generated_at": "2026-05-05T19:06:52Z",
+  "interpretation": {
+    "boundary": "This matrix audits public evidence only. It does not execute runtime actions or change live gates.",
+    "purpose": "Map every entity-rule edge into an explicit admission class for future PNVA runtime evidence.",
+    "sovereignty": "Entity and heuristic growth is safe only when each edge has a status, proof coverage and a bounded runtime mode."
+  },
+  "pass": true,
+  "project": "PNVA-Core",
+  "root_release_hash": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+  "rule_event_edge_count": 1350,
+  "schema_version": "pnva.root_entity_heuristic_admission_matrix.v1",
+  "source_classification_checks": [
+    {
+      "classification": "PNVA_ROOT_ENTITY_CAPABILITY_LEDGER_READY",
+      "expected": "PNVA_ROOT_ENTITY_CAPABILITY_LEDGER_READY",
+      "name": "entity_capability",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_HEURISTIC_WEIGHT_LEDGER_READY",
+      "expected": "PNVA_ROOT_HEURISTIC_WEIGHT_LEDGER_READY",
+      "name": "heuristic_weight",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_FIELD_TOPOLOGY_LEDGER_READY",
+      "expected": "PNVA_ROOT_FIELD_TOPOLOGY_LEDGER_READY",
+      "name": "field_topology",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_NO_TICK_CAUSAL_CONTRACT_READY",
+      "expected": "PNVA_ROOT_NO_TICK_CAUSAL_CONTRACT_READY",
+      "name": "no_tick_contract",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_RUNTIME_ADMISSION_READY",
+      "expected": "PNVA_ROOT_RUNTIME_ADMISSION_READY",
+      "name": "runtime_admission",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_PUBLICATION_GATE_READY",
+      "expected": "PNVA_ROOT_PUBLICATION_GATE_READY",
+      "name": "publication_gate",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_CLAIM_BOUNDARY_GUARD_READY",
+      "expected": "PNVA_ROOT_CLAIM_BOUNDARY_GUARD_READY",
+      "name": "claim_boundary",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_RELEASE_VERIFIED",
+      "expected": "PNVA_ROOT_RELEASE_VERIFIED",
+      "name": "release_verifier",
+      "pass": true
+    }
+  ],
+  "status_counts": {
+    "ADMIT_NATIVE_RESTRICTED": 12,
+    "ADMIT_R3_RESTRICTED": 4,
+    "BOUND_CANONICAL_LEGACY": 4,
+    "CONTROLLED_CANONICAL_EVIDENCE": 17,
+    "OBSERVE_NATIVE_LEGACY_ONLY": 1
+  },
+  "top_edges_by_admission_weight": [
+    {
+      "admission_status": "CONTROLLED_CANONICAL_EVIDENCE",
+      "admission_weight": 0.837276,
+      "block_count": 0,
+      "collapse_count": 128,
+      "decision_mix": [
+        [
+          "collapse",
+          128
+        ],
+        [
+          "observe",
+          37
+        ]
+      ],
+      "edge_id": "canonical:zano-entity-00->adaptive_threshold",
+      "entity_key": "canonical:zano-entity-00",
+      "entity_readiness_score": 0.886853,
+      "entity_status": "CONTROLLED_CANONICAL",
+      "event_count": 165,
+      "native_count": 0,
+      "observe_count": 37,
+      "projected_count": 0,
+      "proof_coverage": 1.0,
+      "proof_valid_count": 165,
+      "prove_count": 0,
+      "rule": "adaptive_threshold",
+      "rule_public_weight": 0.944098,
+      "rule_status": "PUBLIC_WEIGHT_READY",
+      "scope": "canonical",
+      "suppressed_count": 37,
+      "suppression_ratio": 0.224242
+    },
+    {
+      "admission_status": "CONTROLLED_CANONICAL_EVIDENCE",
+      "admission_weight": 0.81276,
+      "block_count": 0,
+      "collapse_count": 128,
+      "decision_mix": [
+        [
+          "collapse",
+          128
+        ]
+      ],
+      "edge_id": "canonical:zano-entity-00->field_scheduler",
+      "entity_key": "canonical:zano-entity-00",
+      "entity_readiness_score": 0.886853,
+      "entity_status": "CONTROLLED_CANONICAL",
+      "event_count": 128,
+      "native_count": 0,
+      "observe_count": 0,
+      "projected_count": 0,
+      "proof_coverage": 1.0,
+      "proof_valid_count": 128,
+      "prove_count": 0,
+      "rule": "field_scheduler",
+      "rule_public_weight": 0.916454,
+      "rule_status": "PUBLIC_WEIGHT_READY",
+      "scope": "canonical",
+      "suppressed_count": 0,
+      "suppression_ratio": 0.0
+    },
+    {
+      "admission_status": "ADMIT_R3_RESTRICTED",
+      "admission_weight": 0.783722,
+      "block_count": 0,
+      "collapse_count": 35,
+      "decision_mix": [
+        [
+          "collapse",
+          35
+        ],
+        [
+          "observe",
+          35
+        ]
+      ],
+      "edge_id": "runtime_r3:entity_4c3ade60ea78->adaptive_threshold",
+      "entity_key": "runtime_r3:entity_4c3ade60ea78",
+      "entity_readiness_score": 0.830128,
+      "entity_status": "R3_RUNTIME_READY",
+      "event_count": 70,
+      "native_count": 70,
+      "observe_count": 35,
+      "projected_count": 0,
+      "proof_coverage": 1.0,
+      "proof_valid_count": 70,
+      "prove_count": 0,
+      "rule": "adaptive_threshold",
+      "rule_public_weight": 0.944098,
+      "rule_status": "PUBLIC_WEIGHT_READY",
+      "scope": "runtime_r3",
+      "suppressed_count": 35,
+      "suppression_ratio": 0.5
+    },
+    {
+      "admission_status": "ADMIT_R3_RESTRICTED",
+      "admission_weight": 0.760774,
+      "block_count": 0,
+      "collapse_count": 35,
+      "decision_mix": [
+        [
+          "collapse",
+          35
+        ],
+        [
+          "observe",
+          35
+        ]
+      ],
+      "edge_id": "runtime_r3:entity_4c3ade60ea78->field_scheduler",
+      "entity_key": "runtime_r3:entity_4c3ade60ea78",
+      "entity_readiness_score": 0.830128,
+      "entity_status": "R3_RUNTIME_READY",
+      "event_count": 70,
+      "native_count": 70,
+      "observe_count": 35,
+      "projected_count": 0,
+      "proof_coverage": 1.0,
+      "proof_valid_count": 70,
+      "prove_count": 0,
+      "rule": "field_scheduler",
+      "rule_public_weight": 0.916454,
+      "rule_status": "PUBLIC_WEIGHT_READY",
+      "scope": "runtime_r3",
+      "suppressed_count": 35,
+      "suppression_ratio": 0.5
+    },
+    {
+      "admission_status": "CONTROLLED_CANONICAL_EVIDENCE",
+      "admission_weight": 0.702035,
+      "block_count": 0,
+      "collapse_count": 68,
+      "decision_mix": [
+        [
+          "collapse",
+          68
+        ],
+        [
+          "observe",
+          18
+        ]
+      ],
+      "edge_id": "canonical:entity_4c3ade60ea78->field_scheduler",
+      "entity_key": "canonical:entity_4c3ade60ea78",
+      "entity_readiness_score": 0.766034,
+      "entity_status": "CONTROLLED_CANONICAL",
+      "event_count": 86,
+      "native_count": 0,
+      "observe_count": 18,
+      "projected_count": 0,
+      "proof_coverage": 1.0,
+      "proof_valid_count": 86,
+      "prove_count": 0,
+      "rule": "field_scheduler",
+      "rule_public_weight": 0.916454,
+      "rule_status": "PUBLIC_WEIGHT_READY",
+      "scope": "canonical",
+      "suppressed_count": 18,
+      "suppression_ratio": 0.209302
+    },
+    {
+      "admission_status": "CONTROLLED_CANONICAL_EVIDENCE",
+      "admission_weight": 0.637431,
+      "block_count": 0,
+      "collapse_count": 0,
+      "decision_mix": [
+        [
+          "observe",
+          41
+        ]
+      ],
+      "edge_id": "canonical:zano-entity-01->adaptive_threshold",
+      "entity_key": "canonical:zano-entity-01",
+      "entity_readiness_score": 0.675175,
+      "entity_status": "CONTROLLED_CANONICAL",
+      "event_count": 41,
+      "native_count": 0,
+      "observe_count": 41,
+      "projected_count": 0,
+      "proof_coverage": 1.0,
+      "proof_valid_count": 41,
+      "prove_count": 0,
+      "rule": "adaptive_threshold",
+      "rule_public_weight": 0.944098,
+      "rule_status": "PUBLIC_WEIGHT_READY",
+      "scope": "canonical",
+      "suppressed_count": 41,
+      "suppression_ratio": 1.0
+    },
+    {
+      "admission_status": "ADMIT_NATIVE_RESTRICTED",
+      "admission_weight": 0.613606,
+      "block_count": 1,
+      "collapse_count": 1,
+      "decision_mix": [
+        [
+          "block",
+          1
+        ],
+        [
+          "collapse",
+          1
+        ]
+      ],
+      "edge_id": "native:pnva-etev-guard->adaptive_threshold",
+      "entity_key": "native:pnva-etev-guard",
+      "entity_readiness_score": 0.649939,
+      "entity_status": "NATIVE_READY",
+      "event_count": 2,
+      "native_count": 2,
+      "observe_count": 0,
+      "projected_count": 0,
+      "proof_coverage": 1.0,
+      "proof_valid_count": 2,
+      "prove_count": 0,
+      "rule": "adaptive_threshold",
+      "rule_public_weight": 0.944098,
+      "rule_status": "PUBLIC_WEIGHT_READY",
+      "scope": "native",
+      "suppressed_count": 1,
+      "suppression_ratio": 0.5
+    },
+    {
+      "admission_status": "CONTROLLED_CANONICAL_EVIDENCE",
+      "admission_weight": 0.596641,
+      "block_count": 0,
+      "collapse_count": 0,
+      "decision_mix": [
+        [
+          "observe",
+          37
+        ]
+      ],
+      "edge_id": "canonical:zano-entity-00->power_orchestrator",
+      "entity_key": "canonical:zano-entity-00",
+      "entity_readiness_score": 0.886853,
+      "entity_status": "CONTROLLED_CANONICAL",
+      "event_count": 37,
+      "native_count": 0,
+      "observe_count": 37,
+      "projected_count": 0,
+      "proof_coverage": 1.0,
+      "proof_valid_count": 37,
+      "prove_count": 0,
+      "rule": "power_orchestrator",
+      "rule_public_weight": 0.672762,
+      "rule_status": "PUBLIC_WEIGHT_READY",
+      "scope": "canonical",
+      "suppressed_count": 37,
+      "suppression_ratio": 1.0
+    },
+    {
+      "admission_status": "ADMIT_R3_RESTRICTED",
+      "admission_weight": 0.593127,
+      "block_count": 0,
+      "collapse_count": 35,
+      "decision_mix": [
+        [
+          "collapse",
+          35
+        ],
+        [
+          "observe",
+          35
+        ]
+      ],
+      "edge_id": "runtime_r3:entity_4c3ade60ea78->native_event_emitter",
+      "entity_key": "runtime_r3:entity_4c3ade60ea78",
+      "entity_readiness_score": 0.830128,
+      "entity_status": "R3_RUNTIME_READY",
+      "event_count": 70,
+      "native_count": 70,
+      "observe_count": 35,
+      "projected_count": 0,
+      "proof_coverage": 1.0,
+      "proof_valid_count": 70,
+      "prove_count": 0,
+      "rule": "native_event_emitter",
+      "rule_public_weight": 0.714501,
+      "rule_status": "PUBLIC_WEIGHT_READY",
+      "scope": "runtime_r3",
+      "suppressed_count": 35,
+      "suppression_ratio": 0.5
+    },
+    {
+      "admission_status": "CONTROLLED_CANONICAL_EVIDENCE",
+      "admission_weight": 0.590659,
+      "block_count": 0,
+      "collapse_count": 0,
+      "decision_mix": [
+        [
+          "observe",
+          37
+        ]
+      ],
+      "edge_id": "canonical:zano-entity-00->affinity_router",
+      "entity_key": "canonical:zano-entity-00",
+      "entity_readiness_score": 0.886853,
+      "entity_status": "CONTROLLED_CANONICAL",
+      "event_count": 37,
+      "native_count": 0,
+      "observe_count": 37,
+      "projected_count": 0,
+      "proof_coverage": 1.0,
+      "proof_valid_count": 37,
+      "prove_count": 0,
+      "rule": "affinity_router",
+      "rule_public_weight": 0.666017,
+      "rule_status": "PUBLIC_WEIGHT_READY",
+      "scope": "canonical",
+      "suppressed_count": 37,
+      "suppression_ratio": 1.0
+    },
+    {
+      "admission_status": "CONTROLLED_CANONICAL_EVIDENCE",
+      "admission_weight": 0.587625,
+      "block_count": 0,
+      "collapse_count": 128,
+      "decision_mix": [
+        [
+          "collapse",
+          128
+        ]
+      ],
+      "edge_id": "canonical:zano-entity-00->veonic_layer",
+      "entity_key": "canonical:zano-entity-00",
+      "entity_readiness_score": 0.886853,
+      "entity_status": "CONTROLLED_CANONICAL",
+      "event_count": 128,
+      "native_count": 0,
+      "observe_count": 0,
+      "projected_count": 0,
+      "proof_coverage": 1.0,
+      "proof_valid_count": 128,
+      "prove_count": 0,
+      "rule": "veonic_layer",
+      "rule_public_weight": 0.662596,
+      "rule_status": "PUBLIC_WEIGHT_READY",
+      "scope": "canonical",
+      "suppressed_count": 0,
+      "suppression_ratio": 0.0
+    },
+    {
+      "admission_status": "CONTROLLED_CANONICAL_EVIDENCE",
+      "admission_weight": 0.584107,
+      "block_count": 0,
+      "collapse_count": 35,
+      "decision_mix": [
+        [
+          "collapse",
+          35
+        ]
+      ],
+      "edge_id": "canonical:entity_9ad2a10c30be->adaptive_threshold",
+      "entity_key": "canonical:entity_9ad2a10c30be",
+      "entity_readiness_score": 0.618693,
+      "entity_status": "CONTROLLED_CANONICAL",
+      "event_count": 35,
+      "native_count": 0,
+      "observe_count": 0,
+      "projected_count": 0,
+      "proof_coverage": 1.0,
+      "proof_valid_count": 35,
+      "prove_count": 0,
+      "rule": "adaptive_threshold",
+      "rule_public_weight": 0.944098,
+      "rule_status": "PUBLIC_WEIGHT_READY",
+      "scope": "canonical",
+      "suppressed_count": 0,
+      "suppression_ratio": 0.0
+    },
+    {
+      "admission_status": "BOUND_CANONICAL_LEGACY",
+      "admission_weight": 0.579933,
+      "block_count": 0,
+      "collapse_count": 0,
+      "decision_mix": [
+        [
+          "observe",
+          47
+        ]
+      ],
+      "edge_id": "canonical:zano-entity-00->legacy_observer",
+      "entity_key": "canonical:zano-entity-00",
+      "entity_readiness_score": 0.886853,
+      "entity_status": "CONTROLLED_CANONICAL",
+      "event_count": 47,
+      "native_count": 0,
+      "observe_count": 47,
+      "projected_count": 0,
+      "proof_coverage": 1.0,
+      "proof_valid_count": 47,
+      "prove_count": 0,
+      "rule": "legacy_observer",
+      "rule_public_weight": 0.653922,
+      "rule_status": "CONTROLLED_LEGACY",
+      "scope": "canonical",
+      "suppressed_count": 47,
+      "suppression_ratio": 1.0
+    },
+    {
+      "admission_status": "CONTROLLED_CANONICAL_EVIDENCE",
+      "admission_weight": 0.577312,
+      "block_count": 33,
+      "collapse_count": 0,
+      "decision_mix": [
+        [
+          "block",
+          33
+        ]
+      ],
+      "edge_id": "canonical:entity_9030cf1aa9f6->adaptive_threshold",
+      "entity_key": "canonical:entity_9030cf1aa9f6",
+      "entity_readiness_score": 0.611496,
+      "entity_status": "CONTROLLED_CANONICAL",
+      "event_count": 33,
+      "native_count": 0,
+      "observe_count": 0,
+      "projected_count": 0,
+      "proof_coverage": 1.0,
+      "proof_valid_count": 33,
+      "prove_count": 0,
+      "rule": "adaptive_threshold",
+      "rule_public_weight": 0.944098,
+      "rule_status": "PUBLIC_WEIGHT_READY",
+      "scope": "canonical",
+      "suppressed_count": 33,
+      "suppression_ratio": 1.0
+    },
+    {
+      "admission_status": "CONTROLLED_CANONICAL_EVIDENCE",
+      "admission_weight": 0.567004,
+      "block_count": 0,
+      "collapse_count": 25,
+      "decision_mix": [
+        [
+          "collapse",
+          25
+        ]
+      ],
+      "edge_id": "canonical:entity_9ad2a10c30be->field_scheduler",
+      "entity_key": "canonical:entity_9ad2a10c30be",
+      "entity_readiness_score": 0.618693,
+      "entity_status": "CONTROLLED_CANONICAL",
+      "event_count": 25,
+      "native_count": 0,
+      "observe_count": 0,
+      "projected_count": 0,
+      "proof_coverage": 1.0,
+      "proof_valid_count": 25,
+      "prove_count": 0,
+      "rule": "field_scheduler",
+      "rule_public_weight": 0.916454,
+      "rule_status": "PUBLIC_WEIGHT_READY",
+      "scope": "canonical",
+      "suppressed_count": 0,
+      "suppression_ratio": 0.0
+    },
+    {
+      "admission_status": "CONTROLLED_CANONICAL_EVIDENCE",
+      "admission_weight": 0.560408,
+      "block_count": 25,
+      "collapse_count": 0,
+      "decision_mix": [
+        [
+          "block",
+          25
+        ]
+      ],
+      "edge_id": "canonical:entity_9030cf1aa9f6->field_scheduler",
+      "entity_key": "canonical:entity_9030cf1aa9f6",
+      "entity_readiness_score": 0.611496,
+      "entity_status": "CONTROLLED_CANONICAL",
+      "event_count": 25,
+      "native_count": 0,
+      "observe_count": 0,
+      "projected_count": 0,
+      "proof_coverage": 1.0,
+      "proof_valid_count": 25,
+      "prove_count": 0,
+      "rule": "field_scheduler",
+      "rule_public_weight": 0.916454,
+      "rule_status": "PUBLIC_WEIGHT_READY",
+      "scope": "canonical",
+      "suppressed_count": 25,
+      "suppression_ratio": 1.0
+    },
+    {
+      "admission_status": "ADMIT_R3_RESTRICTED",
+      "admission_weight": 0.558479,
+      "block_count": 0,
+      "collapse_count": 2,
+      "decision_mix": [
+        [
+          "collapse",
+          2
+        ],
+        [
+          "observe",
+          2
+        ]
+      ],
+      "edge_id": "runtime_r3:entity_4c3ade60ea78->power_orchestrator",
+      "entity_key": "runtime_r3:entity_4c3ade60ea78",
+      "entity_readiness_score": 0.830128,
+      "entity_status": "R3_RUNTIME_READY",
+      "event_count": 4,
+      "native_count": 4,
+      "observe_count": 2,
+      "projected_count": 0,
+      "proof_coverage": 1.0,
+      "proof_valid_count": 4,
+      "prove_count": 0,
+      "rule": "power_orchestrator",
+      "rule_public_weight": 0.672762,
+      "rule_status": "PUBLIC_WEIGHT_READY",
+      "scope": "runtime_r3",
+      "suppressed_count": 2,
+      "suppression_ratio": 0.5
+    },
+    {
+      "admission_status": "CONTROLLED_CANONICAL_EVIDENCE",
+      "admission_weight": 0.548208,
+      "block_count": 0,
+      "collapse_count": 0,
+      "decision_mix": [
+        [
+          "observe",
+          37
+        ]
+      ],
+      "edge_id": "canonical:zano-entity-00->memory4d",
+      "entity_key": "canonical:zano-entity-00",
+      "entity_readiness_score": 0.886853,
+      "entity_status": "CONTROLLED_CANONICAL",
+      "event_count": 37,
+      "native_count": 0,
+      "observe_count": 37,
+      "projected_count": 0,
+      "proof_coverage": 1.0,
+      "proof_valid_count": 37,
+      "prove_count": 0,
+      "rule": "memory4d",
+      "rule_public_weight": 0.61815,
+      "rule_status": "PUBLIC_WEIGHT_READY",
+      "scope": "canonical",
+      "suppressed_count": 37,
+      "suppression_ratio": 1.0
+    },
+    {
+      "admission_status": "ADMIT_NATIVE_RESTRICTED",
+      "admission_weight": 0.530259,
+      "block_count": 0,
+      "collapse_count": 1,
+      "decision_mix": [
+        [
+          "collapse",
+          1
+        ]
+      ],
+      "edge_id": "native:zano-entity-00->field_scheduler",
+      "entity_key": "native:zano-entity-00",
+      "entity_readiness_score": 0.578599,
+      "entity_status": "NATIVE_READY",
+      "event_count": 1,
+      "native_count": 1,
+      "observe_count": 0,
+      "projected_count": 0,
+      "proof_coverage": 1.0,
+      "proof_valid_count": 1,
+      "prove_count": 0,
+      "rule": "field_scheduler",
+      "rule_public_weight": 0.916454,
+      "rule_status": "PUBLIC_WEIGHT_READY",
+      "scope": "native",
+      "suppressed_count": 0,
+      "suppression_ratio": 0.0
+    },
+    {
+      "admission_status": "ADMIT_NATIVE_RESTRICTED",
+      "admission_weight": 0.525825,
+      "block_count": 1,
+      "collapse_count": 0,
+      "decision_mix": [
+        [
+          "block",
+          1
+        ]
+      ],
+      "edge_id": "native:zano-entity-01->field_scheduler",
+      "entity_key": "native:zano-entity-01",
+      "entity_readiness_score": 0.57376,
+      "entity_status": "NATIVE_READY",
+      "event_count": 1,
+      "native_count": 1,
+      "observe_count": 0,
+      "projected_count": 0,
+      "proof_coverage": 1.0,
+      "proof_valid_count": 1,
+      "prove_count": 0,
+      "rule": "field_scheduler",
+      "rule_public_weight": 0.916454,
+      "rule_status": "PUBLIC_WEIGHT_READY",
+      "scope": "native",
+      "suppressed_count": 1,
+      "suppression_ratio": 1.0
+    }
+  ],
+  "unknown_entity_count": 0,
+  "unknown_rule_count": 0
+}

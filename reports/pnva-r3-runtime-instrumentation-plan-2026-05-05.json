@@ -545,10 +545,10 @@
   "classification": "R3_RUNTIME_INSTRUMENTATION_PLAN_READY",
   "entity_target_count": 1,
   "event_template_count": 6,
-  "generated_at": "2026-05-05T15:42:55Z",
+  "generated_at": "2026-05-05T16:16:40Z",
   "instrumentation_plan_ready": true,
   "interpretation": {
-    "boundary": "This plan is not runtime evidence and does not approve R3 cutover; it defines how fresh runtime evidence must be emitted and validated.",
+    "boundary": "This plan remains the instrumentation contract. When runtime evidence is present, it records the accepted state without weakening the field, proof or no-tick requirements.",
     "purpose": "Convert R3 runtime capture slots into concrete emitter contracts, required fields and validation commands.",
     "sovereignty": "PNVA becomes easier to execute safely when the next runtime step is an explicit instrumentation plan instead of an informal instruction."
   },
@@ -643,11 +643,11 @@
       "phase": 5
     }
   ],
-  "runtime_evidence_approved": false,
-  "runtime_evidence_present": false,
+  "runtime_evidence_approved": true,
+  "runtime_evidence_present": true,
   "schema_version": "pnva.r3_runtime_instrumentation_plan.v1",
-  "source_guard_classification": "R3_RUNTIME_EVIDENCE_GUARD_READY_AWAITING_CAPTURE",
-  "source_matrix_classification": "R3_RUNTIME_CAPTURE_MATRIX_READY_PENDING_RUNTIME",
+  "source_guard_classification": "R3_RUNTIME_EVIDENCE_ACCEPTED",
+  "source_matrix_classification": "R3_RUNTIME_CAPTURE_MATRIX_COMPLETE",
   "summary": {
     "action_contract_count": 3,
     "capture_slot_count": 35,

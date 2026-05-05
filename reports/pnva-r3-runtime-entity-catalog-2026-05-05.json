@@ -1,0 +1,85 @@
+{
+  "author": "Gustavo de Aguiar Martins",
+  "entities": [
+    {
+      "capabilities": [
+        "emit_native_pnva_event",
+        "emit_r3_runtime_event",
+        "emit_no_tick_precheck",
+        "emit_hard_authority_commit"
+      ],
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "evidence": {
+        "confidence": 0.97,
+        "last_seen": "2026-05-05T16:01:10Z",
+        "notes": "Deterministic repo-native R3 runtime capture sample bound to R3 capture slots.",
+        "proof_ref": "reports/pnva-r3-runtime-events-2026-05-05.jsonl"
+      },
+      "schema_version": "pnva.entity.v1",
+      "sovereignty_domain": "runtime",
+      "state": "r3_runtime_verified",
+      "stats": {
+        "decision_mix": [
+          [
+            "observe",
+            35
+          ],
+          [
+            "collapse",
+            35
+          ]
+        ],
+        "event_count": 70,
+        "first_seen": "2026-05-05T16:00:01Z",
+        "last_seen": "2026-05-05T16:01:10Z",
+        "risk_flags": [
+          [
+            "RESIZE_BATCH_PRESSURE",
+            64
+          ]
+        ],
+        "top_actions": [
+          [
+            "NO_ACTION",
+            35
+          ],
+          [
+            "RESIZE_BATCH",
+            32
+          ],
+          [
+            "COOLDOWN_GPU",
+            2
+          ],
+          [
+            "EXECUTE",
+            1
+          ]
+        ],
+        "top_rules": [
+          [
+            "native_event_emitter",
+            70
+          ],
+          [
+            "adaptive_threshold",
+            70
+          ],
+          [
+            "field_scheduler",
+            70
+          ],
+          [
+            "power_orchestrator",
+            4
+          ]
+        ]
+      }
+    }
+  ],
+  "entity_count": 1,
+  "generated_at": "2026-05-05T16:08:49Z",
+  "project": "PNVA-Core",
+  "schema_version": "pnva.entity_catalog.v1"
+}

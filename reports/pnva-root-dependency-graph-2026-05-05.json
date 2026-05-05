@@ -1,0 +1,999 @@
+{
+  "author": "Gustavo de Aguiar Martins",
+  "boundary": "This graph validates public repository evidence dependencies only. It does not extend claims beyond the published proof reports.",
+  "check_count": 8,
+  "checks": [
+    {
+      "evidence": {
+        "missing_artifact_nodes": []
+      },
+      "name": "all_dependency_artifacts_exist",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "readiness_failures": []
+      },
+      "name": "all_classified_reports_ready",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "cycles": []
+      },
+      "name": "dependency_graph_acyclic",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "phase_violations": []
+      },
+      "name": "dependency_phase_order_valid",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "unreachable_nodes": []
+      },
+      "name": "all_nodes_reach_publication_gate",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "actual": [
+          "root_adversarial_sentry",
+          "root_causal_intelligence",
+          "root_sovereignty",
+          "root_traceability"
+        ],
+        "expected": [
+          "root_adversarial_sentry",
+          "root_causal_intelligence",
+          "root_sovereignty",
+          "root_traceability"
+        ]
+      },
+      "name": "root_release_seal_has_expected_inputs",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "violations": []
+      },
+      "name": "pre_seal_nodes_do_not_depend_on_post_seal_nodes",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "node_count": 49,
+        "topological_order_count": 49
+      },
+      "name": "topological_order_covers_all_nodes",
+      "pass": true
+    }
+  ],
+  "classification": "PNVA_ROOT_DEPENDENCY_GRAPH_READY",
+  "cycle_count": 0,
+  "dependency_graph_hash": "sha256:b163111434ae28702917fb66aa71a9a0d0e527092cc64a6da0b72b7d69246f2f",
+  "dependency_score": 100.0,
+  "edge_count": 104,
+  "failure_count": 0,
+  "generated_at": "2026-05-05T18:48:05Z",
+  "max_distance_to_publication": 9,
+  "missing_artifact_count": 0,
+  "node_count": 49,
+  "nodes": [
+    {
+      "actual_classification": "ADVERSARIAL_VALIDATION_PASS",
+      "actual_pass": true,
+      "artifact_count": 3,
+      "depends_on": [
+        "canonical_policy",
+        "canonical_proof_chain",
+        "canonical_causal_graph"
+      ],
+      "expected_classification": "ADVERSARIAL_VALIDATION_PASS",
+      "missing_artifacts": [],
+      "node_id": "adversarial_validation",
+      "phase": 3,
+      "readiness_failures": [],
+      "ready": true,
+      "report": "reports/pnva-adversarial-validation-2026-05-05.json",
+      "report_parse_error": ""
+    },
+    {
+      "actual_classification": "AUTHORITY_MIGRATION_LEDGER_READY_WITH_LEGACY_WARNINGS",
+      "actual_pass": true,
+      "artifact_count": 3,
+      "depends_on": [
+        "r3_migration_plan"
+      ],
+      "expected_classification": "AUTHORITY_MIGRATION_LEDGER_READY_WITH_LEGACY_WARNINGS",
+      "missing_artifacts": [],
+      "node_id": "authority_migration",
+      "phase": 4,
+      "readiness_failures": [],
+      "ready": true,
+      "report": "reports/pnva-authority-migration-ledger-2026-05-05.json",
+      "report_parse_error": ""
+    },
+    {
+      "actual_classification": null,
+      "actual_pass": null,
+      "artifact_count": 5,
+      "depends_on": [
+        "proof_gates"
+      ],
+      "expected_classification": null,
+      "missing_artifacts": [],
+      "node_id": "canonical_bridge",
+      "phase": 1,
+      "readiness_failures": [],
+      "ready": true,
+      "report": "reports/pnva-canonical-bridge-summary-2026-05-05.json",
+      "report_parse_error": ""
+    },
+    {
+      "actual_classification": "CAUSAL_GRAPH_READY",
+      "actual_pass": true,
+      "artifact_count": 3,
+      "depends_on": [
+        "canonical_replay"
+      ],
+      "expected_classification": "CAUSAL_GRAPH_READY",
+      "missing_artifacts": [],
+      "node_id": "canonical_causal_graph",
+      "phase": 2,
+      "readiness_failures": [],
+      "ready": true,
+      "report": "reports/pnva-causal-graph-2026-05-05.json",
+      "report_parse_error": ""
+    },
+    {
+      "actual_classification": "SOVEREIGN_NO_TICK_READY",
+      "actual_pass": true,
+      "artifact_count": 3,
+      "depends_on": [
+        "canonical_replay"
+      ],
+      "expected_classification": "SOVEREIGN_NO_TICK_READY",
+      "missing_artifacts": [],
+      "node_id": "canonical_no_tick",
+      "phase": 2,
+      "readiness_failures": [],
+      "ready": true,
+      "report": "reports/pnva-no-tick-invariants-2026-05-05.json",
+      "report_parse_error": ""
+    },
+    {
+      "actual_classification": "SOVEREIGN_POLICY_READY_WITH_LEGACY_WARNINGS",
+      "actual_pass": true,
+      "artifact_count": 3,
+      "depends_on": [
+        "canonical_replay"
+      ],
+      "expected_classification": "SOVEREIGN_POLICY_READY_WITH_LEGACY_WARNINGS",
+      "missing_artifacts": [],
+      "node_id": "canonical_policy",
+      "phase": 2,
+      "readiness_failures": [],
+      "ready": true,
+      "report": "reports/pnva-sovereign-policy-2026-05-05.json",
+      "report_parse_error": ""
+    },
+    {
+      "actual_classification": "PROOF_CHAIN_SEALED",
+      "actual_pass": true,
+      "artifact_count": 3,
+      "depends_on": [
+        "canonical_replay"
+      ],
+      "expected_classification": "PROOF_CHAIN_SEALED",
+      "missing_artifacts": [],
+      "node_id": "canonical_proof_chain",
+      "phase": 2,
+      "readiness_failures": [],
+      "ready": true,
+      "report": "reports/pnva-proof-chain-2026-05-05.json",
+      "report_parse_error": ""
+    },
+    {
+      "actual_classification": "REPLAY_VALID",
+      "actual_pass": true,
+      "artifact_count": 3,
+      "depends_on": [
+        "canonical_bridge"
+      ],
+      "expected_classification": "REPLAY_VALID",
+      "missing_artifacts": [],
+      "node_id": "canonical_replay",
+      "phase": 2,
+      "readiness_failures": [],
+      "ready": true,
+      "report": "reports/pnva-replay-validation-2026-05-05.json",
+      "report_parse_error": ""
+    },
+    {
+      "actual_classification": "CAUSAL_CHRONOLOGY_READY_WITH_LEGACY_WARNINGS",
+      "actual_pass": true,
+      "artifact_count": 3,
+      "depends_on": [
+        "canonical_replay",
+        "native_replay"
+      ],
+      "expected_classification": "CAUSAL_CHRONOLOGY_READY_WITH_LEGACY_WARNINGS",
+      "missing_artifacts": [],
+      "node_id": "causal_chronology",
+      "phase": 3,
+      "readiness_failures": [],
+      "ready": true,
+      "report": "reports/pnva-causal-chronology-2026-05-05.json",
+      "report_parse_error": ""
+    },
+    {
+      "actual_classification": "DECISION_TRACE_INDEX_READY_WITH_LEGACY_WARNINGS",
+      "actual_pass": true,
+      "artifact_count": 3,
+      "depends_on": [
+        "canonical_policy",
+        "native_policy"
+      ],
+      "expected_classification": "DECISION_TRACE_INDEX_READY_WITH_LEGACY_WARNINGS",
+      "missing_artifacts": [],
+      "node_id": "decision_trace",
+      "phase": 3,
+      "readiness_failures": [],
+      "ready": true,
+      "report": "reports/pnva-decision-trace-index-2026-05-05.json",
+      "report_parse_error": ""
+    },
+    {
+      "actual_classification": "ENTITY_HEURISTIC_MATURITY_READY_WITH_LEGACY_WARNINGS",
+      "actual_pass": true,
+      "artifact_count": 3,
+      "depends_on": [
+        "entity_no_tick",
+        "heuristic_influence"
+      ],
+      "expected_classification": "ENTITY_HEURISTIC_MATURITY_READY_WITH_LEGACY_WARNINGS",
+      "missing_artifacts": [],
+      "node_id": "entity_heuristic_maturity",
+      "phase": 3,
+      "readiness_failures": [],
+      "ready": true,
+      "report": "reports/pnva-entity-heuristic-maturity-2026-05-05.json",
+      "report_parse_error": ""
+    },
+    {
+      "actual_classification": "ENTITY_NO_TICK_MATRIX_READY_WITH_LEGACY_WARNINGS",
+      "actual_pass": true,
+      "artifact_count": 3,
+      "depends_on": [
+        "canonical_no_tick",
+        "native_no_tick",
+        "heuristic_influence"
+      ],
+      "expected_classification": "ENTITY_NO_TICK_MATRIX_READY_WITH_LEGACY_WARNINGS",
+      "missing_artifacts": [],
+      "node_id": "entity_no_tick",
+      "phase": 3,
+      "readiness_failures": [],
+      "ready": true,
+      "report": "reports/pnva-entity-no-tick-matrix-2026-05-05.json",
+      "report_parse_error": ""
+    },
+    {
+      "actual_classification": "PNVA_SOVEREIGN_EVIDENCE_ATTESTED",
+      "actual_pass": true,
+      "artifact_count": 3,
+      "depends_on": [
+        "sovereign_evolution",
+        "adversarial_validation"
+      ],
+      "expected_classification": "PNVA_SOVEREIGN_EVIDENCE_ATTESTED",
+      "missing_artifacts": [],
+      "node_id": "evidence_attestation",
+      "phase": 6,
+      "readiness_failures": [],
+      "ready": true,
+      "report": "reports/pnva-sovereign-evidence-attestation-2026-05-05.json",
+      "report_parse_error": ""
+    },
+    {
+      "actual_classification": "HEURISTIC_INFLUENCE_MAP_READY_WITH_LEGACY_WARNINGS",
+      "actual_pass": true,
+      "artifact_count": 3,
+      "depends_on": [
+        "decision_trace"
+      ],
+      "expected_classification": "HEURISTIC_INFLUENCE_MAP_READY_WITH_LEGACY_WARNINGS",
+      "missing_artifacts": [],
+      "node_id": "heuristic_influence",
+      "phase": 3,
+      "readiness_failures": [],
+      "ready": true,
+      "report": "reports/pnva-heuristic-influence-map-2026-05-05.json",
+      "report_parse_error": ""
+    },
+    {
+      "actual_classification": "CAUSAL_GRAPH_READY",
+      "actual_pass": true,
+      "artifact_count": 1,
+      "depends_on": [
+        "native_replay"
+      ],
+      "expected_classification": "CAUSAL_GRAPH_READY",
+      "missing_artifacts": [],
+      "node_id": "native_causal_graph",
+      "phase": 2,
+      "readiness_failures": [],
+      "ready": true,
+      "report": "reports/pnva-native-causal-graph-2026-05-05.json",
+      "report_parse_error": ""
+    },
+    {
+      "actual_classification": "NATIVE_EMITTER_READY",
+      "actual_pass": true,
+      "artifact_count": 5,
+      "depends_on": [
+        "public_contract"
+      ],
+      "expected_classification": "NATIVE_EMITTER_READY",
+      "missing_artifacts": [],
+      "node_id": "native_event_emitter",
+      "phase": 1,
+      "readiness_failures": [],
+      "ready": true,
+      "report": "reports/pnva-native-emitter-summary-2026-05-05.json",
+      "report_parse_error": ""
+    },
+    {
+      "actual_classification": "SOVEREIGN_NO_TICK_READY",
+      "actual_pass": true,
+      "artifact_count": 1,
+      "depends_on": [
+        "native_replay"
+      ],
+      "expected_classification": "SOVEREIGN_NO_TICK_READY",
+      "missing_artifacts": [],
+      "node_id": "native_no_tick",
+      "phase": 2,
+      "readiness_failures": [],
+      "ready": true,
+      "report": "reports/pnva-native-no-tick-invariants-2026-05-05.json",
+      "report_parse_error": ""
+    },
+    {
+      "actual_classification": "SOVEREIGN_POLICY_READY",
+      "actual_pass": true,
+      "artifact_count": 1,
+      "depends_on": [
+        "native_replay"
+      ],
+      "expected_classification": "SOVEREIGN_POLICY_READY",
+      "missing_artifacts": [],
+      "node_id": "native_policy",
+      "phase": 2,
+      "readiness_failures": [],
+      "ready": true,
+      "report": "reports/pnva-native-sovereign-policy-2026-05-05.json",
+      "report_parse_error": ""
+    },
+    {
+      "actual_classification": "PROOF_CHAIN_SEALED",
+      "actual_pass": true,
+      "artifact_count": 1,
+      "depends_on": [
+        "native_replay"
+      ],
+      "expected_classification": "PROOF_CHAIN_SEALED",
+      "missing_artifacts": [],
+      "node_id": "native_proof_chain",
+      "phase": 2,
+      "readiness_failures": [],
+      "ready": true,
+      "report": "reports/pnva-native-proof-chain-2026-05-05.json",
+      "report_parse_error": ""
+    },
+    {
+      "actual_classification": "REPLAY_VALID",
+      "actual_pass": true,
+      "artifact_count": 1,
+      "depends_on": [
+        "native_event_emitter"
+      ],
+      "expected_classification": "REPLAY_VALID",
+      "missing_artifacts": [],
+      "node_id": "native_replay",
+      "phase": 2,
+      "readiness_failures": [],
+      "ready": true,
+      "report": "reports/pnva-native-replay-validation-2026-05-05.json",
+      "report_parse_error": ""
+    },
+    {
+      "actual_classification": null,
+      "actual_pass": null,
+      "artifact_count": 5,
+      "depends_on": [
+        "public_contract"
+      ],
+      "expected_classification": null,
+      "missing_artifacts": [],
+      "node_id": "proof_gates",
+      "phase": 0,
+      "readiness_failures": [],
+      "ready": true,
+      "report": null,
+      "report_parse_error": ""
+    },
+    {
+      "actual_classification": null,
+      "actual_pass": null,
+      "artifact_count": 9,
+      "depends_on": [],
+      "expected_classification": null,
+      "missing_artifacts": [],
+      "node_id": "public_contract",
+      "phase": 0,
+      "readiness_failures": [],
+      "ready": true,
+      "report": null,
+      "report_parse_error": ""
+    },
+    {
+      "actual_classification": "R3_AUTHORITY_PROJECTION_READY",
+      "actual_pass": true,
+      "artifact_count": 3,
+      "depends_on": [
+        "authority_migration"
+      ],
+      "expected_classification": "R3_AUTHORITY_PROJECTION_READY",
+      "missing_artifacts": [],
+      "node_id": "r3_authority_projection",
+      "phase": 4,
+      "readiness_failures": [],
+      "ready": true,
+      "report": "reports/pnva-r3-authority-projection-summary-2026-05-05.json",
+      "report_parse_error": ""
+    },
+    {
+      "actual_classification": "R3_CUTOVER_APPROVED",
+      "actual_pass": true,
+      "artifact_count": 3,
+      "depends_on": [
+        "r3_authority_projection"
+      ],
+      "expected_classification": "R3_CUTOVER_APPROVED",
+      "missing_artifacts": [],
+      "node_id": "r3_cutover",
+      "phase": 4,
+      "readiness_failures": [],
+      "ready": true,
+      "report": "reports/pnva-r3-cutover-gate-2026-05-05.json",
+      "report_parse_error": ""
+    },
+    {
+      "actual_classification": "R3_MIGRATION_PLAN_READY",
+      "actual_pass": true,
+      "artifact_count": 3,
+      "depends_on": [
+        "sovereign_robustness"
+      ],
+      "expected_classification": "R3_MIGRATION_PLAN_READY",
+      "missing_artifacts": [],
+      "node_id": "r3_migration_plan",
+      "phase": 4,
+      "readiness_failures": [],
+      "ready": true,
+      "report": "reports/pnva-r3-migration-plan-2026-05-05.json",
+      "report_parse_error": ""
+    },
+    {
+      "actual_classification": "R3_RUNTIME_CAPTURE_MATRIX_COMPLETE",
+      "actual_pass": true,
+      "artifact_count": 3,
+      "depends_on": [
+        "r3_runtime_emitter"
+      ],
+      "expected_classification": "R3_RUNTIME_CAPTURE_MATRIX_COMPLETE",
+      "missing_artifacts": [],
+      "node_id": "r3_runtime_capture",
+      "phase": 5,
+      "readiness_failures": [],
+      "ready": true,
+      "report": "reports/pnva-r3-runtime-capture-matrix-2026-05-05.json",
+      "report_parse_error": ""
+    },
+    {
+      "actual_classification": "R3_RUNTIME_CONTRACT_VALIDATED_READY",
+      "actual_pass": true,
+      "artifact_count": 3,
+      "depends_on": [
+        "r3_runtime_instrumentation",
+        "r3_runtime_policy",
+        "r3_runtime_no_tick",
+        "r3_runtime_proof_chain"
+      ],
+      "expected_classification": "R3_RUNTIME_CONTRACT_VALIDATED_READY",
+      "missing_artifacts": [],
+      "node_id": "r3_runtime_contract",
+      "phase": 5,
+      "readiness_failures": [],
+      "ready": true,
+      "report": "reports/pnva-r3-runtime-contract-validation-2026-05-05.json",
+      "report_parse_error": ""
+    },
+    {
+      "actual_classification": "R3_RUNTIME_EVENT_EMITTER_READY",
+      "actual_pass": true,
+      "artifact_count": 3,
+      "depends_on": [
+        "r3_cutover"
+      ],
+      "expected_classification": "R3_RUNTIME_EVENT_EMITTER_READY",
+      "missing_artifacts": [],
+      "node_id": "r3_runtime_emitter",
+      "phase": 5,
+      "readiness_failures": [],
+      "ready": true,
+      "report": "reports/pnva-r3-runtime-event-emitter-summary-2026-05-05.json",
+      "report_parse_error": ""
+    },
+    {
+      "actual_classification": "R3_RUNTIME_EVIDENCE_ACCEPTED",
+      "actual_pass": true,
+      "artifact_count": 3,
+      "depends_on": [
+        "r3_runtime_capture"
+      ],
+      "expected_classification": "R3_RUNTIME_EVIDENCE_ACCEPTED",
+      "missing_artifacts": [],
+      "node_id": "r3_runtime_guard",
+      "phase": 5,
+      "readiness_failures": [],
+      "ready": true,
+      "report": "reports/pnva-r3-runtime-evidence-guard-2026-05-05.json",
+      "report_parse_error": ""
+    },
+    {
+      "actual_classification": "R3_RUNTIME_INSTRUMENTATION_PLAN_READY",
+      "actual_pass": true,
+      "artifact_count": 3,
+      "depends_on": [
+        "r3_runtime_capture",
+        "r3_runtime_guard"
+      ],
+      "expected_classification": "R3_RUNTIME_INSTRUMENTATION_PLAN_READY",
+      "missing_artifacts": [],
+      "node_id": "r3_runtime_instrumentation",
+      "phase": 5,
+      "readiness_failures": [],
+      "ready": true,
+      "report": "reports/pnva-r3-runtime-instrumentation-plan-2026-05-05.json",
+      "report_parse_error": ""
+    },
+    {
+      "actual_classification": "SOVEREIGN_NO_TICK_READY",
+      "actual_pass": true,
+      "artifact_count": 1,
+      "depends_on": [
+        "r3_runtime_replay"
+      ],
+      "expected_classification": "SOVEREIGN_NO_TICK_READY",
+      "missing_artifacts": [],
+      "node_id": "r3_runtime_no_tick",
+      "phase": 5,
+      "readiness_failures": [],
+      "ready": true,
+      "report": "reports/pnva-r3-runtime-no-tick-2026-05-05.json",
+      "report_parse_error": ""
+    },
+    {
+      "actual_classification": "SOVEREIGN_POLICY_READY",
+      "actual_pass": true,
+      "artifact_count": 1,
+      "depends_on": [
+        "r3_runtime_replay"
+      ],
+      "expected_classification": "SOVEREIGN_POLICY_READY",
+      "missing_artifacts": [],
+      "node_id": "r3_runtime_policy",
+      "phase": 5,
+      "readiness_failures": [],
+      "ready": true,
+      "report": "reports/pnva-r3-runtime-policy-2026-05-05.json",
+      "report_parse_error": ""
+    },
+    {
+      "actual_classification": "PROOF_CHAIN_SEALED",
+      "actual_pass": true,
+      "artifact_count": 1,
+      "depends_on": [
+        "r3_runtime_replay"
+      ],
+      "expected_classification": "PROOF_CHAIN_SEALED",
+      "missing_artifacts": [],
+      "node_id": "r3_runtime_proof_chain",
+      "phase": 5,
+      "readiness_failures": [],
+      "ready": true,
+      "report": "reports/pnva-r3-runtime-proof-chain-2026-05-05.json",
+      "report_parse_error": ""
+    },
+    {
+      "actual_classification": "REPLAY_VALID",
+      "actual_pass": true,
+      "artifact_count": 1,
+      "depends_on": [
+        "r3_runtime_guard"
+      ],
+      "expected_classification": "REPLAY_VALID",
+      "missing_artifacts": [],
+      "node_id": "r3_runtime_replay",
+      "phase": 5,
+      "readiness_failures": [],
+      "ready": true,
+      "report": "reports/pnva-r3-runtime-replay-2026-05-05.json",
+      "report_parse_error": ""
+    },
+    {
+      "actual_classification": "REPRODUCIBILITY_READY",
+      "actual_pass": true,
+      "artifact_count": 3,
+      "depends_on": [
+        "semantic_consistency"
+      ],
+      "expected_classification": "REPRODUCIBILITY_READY",
+      "missing_artifacts": [],
+      "node_id": "reproducibility",
+      "phase": 6,
+      "readiness_failures": [],
+      "ready": true,
+      "report": "reports/pnva-reproducibility-2026-05-05.json",
+      "report_parse_error": ""
+    },
+    {
+      "actual_classification": "PNVA_ROOT_ADVERSARIAL_SENTRY_PASS",
+      "actual_pass": true,
+      "artifact_count": 3,
+      "depends_on": [
+        "root_sovereignty",
+        "root_causal_intelligence"
+      ],
+      "expected_classification": "PNVA_ROOT_ADVERSARIAL_SENTRY_PASS",
+      "missing_artifacts": [],
+      "node_id": "root_adversarial_sentry",
+      "phase": 7,
+      "readiness_failures": [],
+      "ready": true,
+      "report": "reports/pnva-root-adversarial-sentry-2026-05-05.json",
+      "report_parse_error": ""
+    },
+    {
+      "actual_classification": "PNVA_ROOT_CAUSAL_INTELLIGENCE_READY",
+      "actual_pass": true,
+      "artifact_count": 3,
+      "depends_on": [
+        "root_sovereignty",
+        "root_traceability"
+      ],
+      "expected_classification": "PNVA_ROOT_CAUSAL_INTELLIGENCE_READY",
+      "missing_artifacts": [],
+      "node_id": "root_causal_intelligence",
+      "phase": 7,
+      "readiness_failures": [],
+      "ready": true,
+      "report": "reports/pnva-root-causal-intelligence-2026-05-05.json",
+      "report_parse_error": ""
+    },
+    {
+      "actual_classification": "PNVA_ROOT_CLAIM_BOUNDARY_GUARD_READY",
+      "actual_pass": true,
+      "artifact_count": 3,
+      "depends_on": [
+        "root_release_verifier"
+      ],
+      "expected_classification": "PNVA_ROOT_CLAIM_BOUNDARY_GUARD_READY",
+      "missing_artifacts": [],
+      "node_id": "root_claim_boundary",
+      "phase": 10,
+      "readiness_failures": [],
+      "ready": true,
+      "report": "reports/pnva-root-claim-boundary-guard-2026-05-05.json",
+      "report_parse_error": ""
+    },
+    {
+      "actual_classification": "PNVA_ROOT_PUBLICATION_GATE_READY",
+      "actual_pass": true,
+      "artifact_count": 3,
+      "depends_on": [
+        "root_claim_boundary",
+        "public_contract"
+      ],
+      "expected_classification": "PNVA_ROOT_PUBLICATION_GATE_READY",
+      "missing_artifacts": [],
+      "node_id": "root_publication",
+      "phase": 10,
+      "readiness_failures": [],
+      "ready": true,
+      "report": "reports/pnva-root-publication-gate-2026-05-05.json",
+      "report_parse_error": ""
+    },
+    {
+      "actual_classification": "PNVA_ROOT_RELEASE_SEALED",
+      "actual_pass": true,
+      "artifact_count": 3,
+      "depends_on": [
+        "root_sovereignty",
+        "root_causal_intelligence",
+        "root_traceability",
+        "root_adversarial_sentry"
+      ],
+      "expected_classification": "PNVA_ROOT_RELEASE_SEALED",
+      "missing_artifacts": [],
+      "node_id": "root_release_seal",
+      "phase": 8,
+      "readiness_failures": [],
+      "ready": true,
+      "report": "reports/pnva-root-release-seal-2026-05-05.json",
+      "report_parse_error": ""
+    },
+    {
+      "actual_classification": "PNVA_ROOT_RELEASE_VERIFIED",
+      "actual_pass": true,
+      "artifact_count": 3,
+      "depends_on": [
+        "root_release_seal"
+      ],
+      "expected_classification": "PNVA_ROOT_RELEASE_VERIFIED",
+      "missing_artifacts": [],
+      "node_id": "root_release_verifier",
+      "phase": 9,
+      "readiness_failures": [],
+      "ready": true,
+      "report": "reports/pnva-root-release-verifier-2026-05-05.json",
+      "report_parse_error": ""
+    },
+    {
+      "actual_classification": "PNVA_ROOT_SOVEREIGNTY_GUARD_READY",
+      "actual_pass": true,
+      "artifact_count": 3,
+      "depends_on": [
+        "root_traceability",
+        "semantic_consistency",
+        "reproducibility",
+        "evidence_attestation"
+      ],
+      "expected_classification": "PNVA_ROOT_SOVEREIGNTY_GUARD_READY",
+      "missing_artifacts": [],
+      "node_id": "root_sovereignty",
+      "phase": 7,
+      "readiness_failures": [],
+      "ready": true,
+      "report": "reports/pnva-root-sovereignty-guard-2026-05-05.json",
+      "report_parse_error": ""
+    },
+    {
+      "actual_classification": "PNVA_ROOT_TRACEABILITY_MATRIX_READY",
+      "actual_pass": true,
+      "artifact_count": 3,
+      "depends_on": [
+        "r3_runtime_contract"
+      ],
+      "expected_classification": "PNVA_ROOT_TRACEABILITY_MATRIX_READY",
+      "missing_artifacts": [],
+      "node_id": "root_traceability",
+      "phase": 7,
+      "readiness_failures": [],
+      "ready": true,
+      "report": "reports/pnva-root-traceability-matrix-2026-05-05.json",
+      "report_parse_error": ""
+    },
+    {
+      "actual_classification": "SCHEMA_CONTRACT_READY_WITH_LEGACY_WARNINGS",
+      "actual_pass": true,
+      "artifact_count": 3,
+      "depends_on": [
+        "canonical_replay",
+        "native_replay"
+      ],
+      "expected_classification": "SCHEMA_CONTRACT_READY_WITH_LEGACY_WARNINGS",
+      "missing_artifacts": [],
+      "node_id": "schema_contract",
+      "phase": 3,
+      "readiness_failures": [],
+      "ready": true,
+      "report": "reports/pnva-schema-contract-validation-2026-05-05.json",
+      "report_parse_error": ""
+    },
+    {
+      "actual_classification": "SEMANTIC_CONSISTENCY_READY",
+      "actual_pass": true,
+      "artifact_count": 3,
+      "depends_on": [
+        "canonical_no_tick",
+        "canonical_policy",
+        "canonical_proof_chain",
+        "canonical_causal_graph",
+        "native_no_tick",
+        "native_policy",
+        "native_proof_chain",
+        "native_causal_graph",
+        "schema_contract",
+        "causal_chronology",
+        "tension_decision",
+        "decision_trace",
+        "heuristic_influence",
+        "entity_no_tick",
+        "suppression_ledger",
+        "sovereign_robustness",
+        "r3_migration_plan",
+        "authority_migration",
+        "r3_authority_projection",
+        "r3_cutover",
+        "r3_runtime_capture",
+        "r3_runtime_guard",
+        "r3_runtime_instrumentation",
+        "r3_runtime_contract",
+        "sovereign_evolution",
+        "adversarial_validation",
+        "entity_heuristic_maturity",
+        "evidence_attestation"
+      ],
+      "expected_classification": "SEMANTIC_CONSISTENCY_READY",
+      "missing_artifacts": [],
+      "node_id": "semantic_consistency",
+      "phase": 6,
+      "readiness_failures": [],
+      "ready": true,
+      "report": "reports/pnva-semantic-consistency-2026-05-05.json",
+      "report_parse_error": ""
+    },
+    {
+      "actual_classification": "PNVA_SOVEREIGN_EVOLUTION_LEDGER_R3_READY",
+      "actual_pass": true,
+      "artifact_count": 3,
+      "depends_on": [
+        "r3_runtime_contract",
+        "sovereign_robustness"
+      ],
+      "expected_classification": "PNVA_SOVEREIGN_EVOLUTION_LEDGER_R3_READY",
+      "missing_artifacts": [],
+      "node_id": "sovereign_evolution",
+      "phase": 6,
+      "readiness_failures": [],
+      "ready": true,
+      "report": "reports/pnva-sovereign-evolution-ledger-2026-05-05.json",
+      "report_parse_error": ""
+    },
+    {
+      "actual_classification": "SOVEREIGN_ROBUSTNESS_GATE_READY_WITH_LEGACY_WARNINGS",
+      "actual_pass": true,
+      "artifact_count": 3,
+      "depends_on": [
+        "suppression_ledger",
+        "adversarial_validation",
+        "entity_heuristic_maturity",
+        "schema_contract",
+        "causal_chronology"
+      ],
+      "expected_classification": "SOVEREIGN_ROBUSTNESS_GATE_READY_WITH_LEGACY_WARNINGS",
+      "missing_artifacts": [],
+      "node_id": "sovereign_robustness",
+      "phase": 4,
+      "readiness_failures": [],
+      "ready": true,
+      "report": "reports/pnva-sovereign-robustness-gate-2026-05-05.json",
+      "report_parse_error": ""
+    },
+    {
+      "actual_classification": "SUPPRESSION_LEDGER_READY_WITH_LEGACY_WARNINGS",
+      "actual_pass": true,
+      "artifact_count": 3,
+      "depends_on": [
+        "entity_no_tick",
+        "tension_decision"
+      ],
+      "expected_classification": "SUPPRESSION_LEDGER_READY_WITH_LEGACY_WARNINGS",
+      "missing_artifacts": [],
+      "node_id": "suppression_ledger",
+      "phase": 3,
+      "readiness_failures": [],
+      "ready": true,
+      "report": "reports/pnva-suppression-ledger-2026-05-05.json",
+      "report_parse_error": ""
+    },
+    {
+      "actual_classification": "TENSION_DECISION_READY_WITH_LEGACY_WARNINGS",
+      "actual_pass": true,
+      "artifact_count": 3,
+      "depends_on": [
+        "canonical_no_tick",
+        "native_no_tick"
+      ],
+      "expected_classification": "TENSION_DECISION_READY_WITH_LEGACY_WARNINGS",
+      "missing_artifacts": [],
+      "node_id": "tension_decision",
+      "phase": 3,
+      "readiness_failures": [],
+      "ready": true,
+      "report": "reports/pnva-tension-decision-calibration-2026-05-05.json",
+      "report_parse_error": ""
+    }
+  ],
+  "pass": true,
+  "phase_count": 11,
+  "phase_counts": {
+    "0": 2,
+    "1": 2,
+    "10": 2,
+    "2": 10,
+    "3": 9,
+    "4": 5,
+    "5": 9,
+    "6": 4,
+    "7": 4,
+    "8": 1,
+    "9": 1
+  },
+  "phase_violation_count": 0,
+  "project": "PNVA-Core",
+  "readiness_failure_count": 0,
+  "root_publication_node": "root_publication",
+  "root_release_hash": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+  "schema_version": "pnva.root_dependency_graph.v1",
+  "topological_order": [
+    "public_contract",
+    "native_event_emitter",
+    "proof_gates",
+    "native_replay",
+    "canonical_bridge",
+    "native_causal_graph",
+    "native_no_tick",
+    "native_policy",
+    "native_proof_chain",
+    "canonical_replay",
+    "canonical_causal_graph",
+    "canonical_no_tick",
+    "canonical_policy",
+    "canonical_proof_chain",
+    "causal_chronology",
+    "schema_contract",
+    "tension_decision",
+    "decision_trace",
+    "adversarial_validation",
+    "heuristic_influence",
+    "entity_no_tick",
+    "entity_heuristic_maturity",
+    "suppression_ledger",
+    "sovereign_robustness",
+    "r3_migration_plan",
+    "authority_migration",
+    "r3_authority_projection",
+    "r3_cutover",
+    "r3_runtime_emitter",
+    "r3_runtime_capture",
+    "r3_runtime_guard",
+    "r3_runtime_instrumentation",
+    "r3_runtime_replay",
+    "r3_runtime_no_tick",
+    "r3_runtime_policy",
+    "r3_runtime_proof_chain",
+    "r3_runtime_contract",
+    "root_traceability",
+    "sovereign_evolution",
+    "evidence_attestation",
+    "semantic_consistency",
+    "reproducibility",
+    "root_sovereignty",
+    "root_causal_intelligence",
+    "root_adversarial_sentry",
+    "root_release_seal",
+    "root_release_verifier",
+    "root_claim_boundary",
+    "root_publication"
+  ],
+  "topological_order_count": 49,
+  "unreachable_node_count": 0
+}

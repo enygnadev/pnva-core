@@ -1,7 +1,12 @@
 {
   "title": "PNVA-Core: A Post-Temporal Causal Architecture for State/Event-Oriented Computation",
   "upload_type": "software",
-  "description": "Open Research / Production Evidence release of PNVA-Core, a causal state/event-oriented no-tick architecture with sanitized proof logs and production-candidate PASS evidence.",
+  "publication_date": "2026-05-05",
+  "version": "0.1.0-production-evidence",
+  "doi": "10.5281/zenodo.20044503",
+  "record_url": "https://zenodo.org/records/20044503",
+  "doi_url": "https://doi.org/10.5281/zenodo.20044503",
+  "description": "PNVA-Core is an Open Research / Production Evidence release by Gustavo de Aguiar Martins. It documents a causal state/event-oriented no-tick architecture based on field state, observable events, operational tension, collapse, veonic computational units and auditable proof logs. This release includes sanitized validation artifacts for 15m, 8h, 12h, 24h, G1, long-run-live-gate, distribution-gate and production-candidate PASS evidence. Search aliases: Gustavo Martins PNVA; Gustavo de Aguiar Martins PNVA; PNVA-Core Gustavo Martins; PNVA no-tick.",
   "creators": [
     {
       "name": "Gustavo de Aguiar Martins",
@@ -11,19 +16,38 @@
   "license": "MIT",
   "keywords": [
     "PNVA",
+    "PNVA-Core",
+    "Gustavo Martins PNVA",
+    "Gustavo de Aguiar Martins PNVA",
     "causal computing",
     "no-tick",
+    "no-tick runtime",
     "event-aware runtime",
+    "state-event computation",
+    "field of events",
+    "operational tension",
+    "collapse decision",
     "proof logs",
+    "production evidence",
     "operating systems",
-    "veonic unit"
+    "veonic unit",
+    "Veon"
   ],
   "related_identifiers": [
     {
       "relation": "isSupplementTo",
       "identifier": "https://github.com/enygnadev/pnva-core",
       "scheme": "url"
+    },
+    {
+      "relation": "isDocumentedBy",
+      "identifier": "https://enygnadev.github.io/pnva-core/",
+      "scheme": "url"
+    },
+    {
+      "relation": "isIdenticalTo",
+      "identifier": "10.5281/zenodo.20044503",
+      "scheme": "doi"
     }
   ]
 }
-

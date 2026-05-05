@@ -121,12 +121,12 @@ Examples:
 R3 migration starts at R2_NATIVE_CLEAN_LEGACY_QUARANTINED, targets R3_NATIVE_CLEAN_LEGACY_FREE and preserves the 35 primary legacy debt count until the native path replaces it.
 35 authority migration candidates must match R3 primary debt, policy low-authority legacy count and heuristic influence uncompensated low-authority strong count.
 70 projected native R3 authority events must equal 35 prechecks + 35 commits, preserve 0 projected low-authority strong decisions and pass replay, sovereign policy and no-tick validation.
-R3 cutover must keep contract_ready=true, cutover_approved=false and legacy_free_claim_allowed=false until fresh native runtime evidence replaces the projected sample.
-R3 runtime capture must keep 35 pending slots explicit and require 70 fresh runtime events before the final cutover claim.
-R3 runtime evidence guard must keep intake_guard_ready=true, runtime_evidence_approved=false, 63/63 negative controls detected and 6/6 fixture-only positive controls accepted until fresh runtime JSONL is supplied.
-R3 runtime instrumentation must keep 35 capture slots mapped into 3 action contracts, 6 event templates, 28 mandatory event fields and 70 required runtime events without claiming runtime approval.
-R3 runtime contract validation must keep 315 contract checks, 59 enforced controls, zero failures and no runtime approval claim while matrix, guard and instrumentation remain aligned.
-Sovereign evolution ledger must keep no-tick/log/entity/heuristic evidence ready, 35 pending runtime slots explicit, 70 required runtime events, 315 contract checks and final R3 approval blocked until fresh native runtime JSONL exists.
+R3 cutover must keep contract_ready=true, cutover_approved=true and legacy_free_claim_allowed=true after fresh native runtime evidence replaces the projected sample and downstream validators pass.
+R3 runtime capture must keep 35 verified slots explicit, 0 pending slots and 70 accepted native runtime events before the final cutover claim.
+R3 runtime evidence guard must keep intake_guard_ready=true, runtime_evidence_approved=true, 35/35 no-tick pairs intact, 63/63 negative controls detected and 6/6 fixture-only positive controls accepted.
+R3 runtime instrumentation must keep 35 capture slots mapped into 3 action contracts, 6 event templates, 28 mandatory event fields and 70 accepted runtime events.
+R3 runtime contract validation must keep 315 contract checks, 59 enforced controls, zero failures and accepted runtime approval while matrix, guard and instrumentation remain aligned.
+Sovereign evolution ledger must keep no-tick/log/entity/heuristic evidence ready, 0 pending runtime slots, 70 accepted runtime events, 315 contract checks and final R3 cutover approval.
 ```
 
 ## Attestation Boundary

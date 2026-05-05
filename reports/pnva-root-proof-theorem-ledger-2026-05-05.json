@@ -1,0 +1,1006 @@
+{
+  "author": "Gustavo de Aguiar Martins",
+  "check_count": 4,
+  "checks": [
+    {
+      "evidence": {
+        "failure_count": 0,
+        "failures": []
+      },
+      "name": "source_classifications_ready",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "expected": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+        "root_hashes": {
+          "claim_boundary": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+          "dependency_graph": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+          "firewall": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+          "observability": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+          "publication_gate": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+          "regression": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+          "release_verifier": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+          "release_verifier_recomputed": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc"
+        }
+      },
+      "name": "root_release_hash_stable",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "failed_theorem_count": 0,
+        "theorem_count": 12
+      },
+      "name": "all_theorems_proven",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "path_leak_count": 0,
+        "unbounded_high_risk_occurrence_count": 0
+      },
+      "name": "public_boundaries_clean",
+      "pass": true
+    }
+  ],
+  "classification": "PNVA_ROOT_PROOF_THEOREM_LEDGER_READY",
+  "failed_theorem_count": 0,
+  "failed_theorems": [],
+  "failure_count": 0,
+  "generated_at": "2026-05-05T18:48:05Z",
+  "interpretation": {
+    "boundary": "This ledger is a post-seal publication layer over deterministic public evidence; it does not change the root release seal.",
+    "purpose": "Convert root PASS reports into explicit proof theorem cards with claim, criteria, evidence, boundary and dependencies.",
+    "sovereignty": "A robust PNVA root should state what is proven and where each proof stops."
+  },
+  "pass": true,
+  "project": "PNVA-Core",
+  "proof_theorem_ledger_hash": "sha256:47728fd099b37a7eec99b6a0d285836fda2de79258962434d898bee4b525c83b",
+  "proven_theorem_count": 12,
+  "recommendations": [
+    "Use theorem IDs in the paper, README and future public posts when making evidence-backed claims.",
+    "Add new theorems only when they have deterministic criteria, source reports and an explicit boundary.",
+    "Keep commercial tuning, raw local evidence and unreviewed deployment claims outside the public theorem ledger."
+  ],
+  "root_release_hash": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+  "schema_version": "pnva.root_proof_theorem_ledger.v1",
+  "source_classification_checks": [
+    {
+      "classification": "PNVA_ROOT_REGRESSION_SENTINEL_READY",
+      "expected": "PNVA_ROOT_REGRESSION_SENTINEL_READY",
+      "name": "regression",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_INVARIANT_FIREWALL_READY",
+      "expected": "PNVA_ROOT_INVARIANT_FIREWALL_READY",
+      "name": "firewall",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_OBSERVABILITY_INDEX_READY",
+      "expected": "PNVA_ROOT_OBSERVABILITY_INDEX_READY",
+      "name": "observability",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_DEPENDENCY_GRAPH_READY",
+      "expected": "PNVA_ROOT_DEPENDENCY_GRAPH_READY",
+      "name": "dependency_graph",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_PUBLICATION_GATE_READY",
+      "expected": "PNVA_ROOT_PUBLICATION_GATE_READY",
+      "name": "publication_gate",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_CLAIM_BOUNDARY_GUARD_READY",
+      "expected": "PNVA_ROOT_CLAIM_BOUNDARY_GUARD_READY",
+      "name": "claim_boundary",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_RELEASE_VERIFIED",
+      "expected": "PNVA_ROOT_RELEASE_VERIFIED",
+      "name": "release_verifier",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_CAUSAL_INTELLIGENCE_READY",
+      "expected": "PNVA_ROOT_CAUSAL_INTELLIGENCE_READY",
+      "name": "causal_intelligence",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_TRACEABILITY_MATRIX_READY",
+      "expected": "PNVA_ROOT_TRACEABILITY_MATRIX_READY",
+      "name": "traceability",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_ADVERSARIAL_SENTRY_PASS",
+      "expected": "PNVA_ROOT_ADVERSARIAL_SENTRY_PASS",
+      "name": "adversarial",
+      "pass": true
+    },
+    {
+      "classification": "SEMANTIC_CONSISTENCY_READY",
+      "expected": "SEMANTIC_CONSISTENCY_READY",
+      "name": "semantic",
+      "pass": true
+    },
+    {
+      "classification": "REPRODUCIBILITY_READY",
+      "expected": "REPRODUCIBILITY_READY",
+      "name": "reproducibility",
+      "pass": true
+    }
+  ],
+  "theorem_count": 12,
+  "theorem_score": 100.0,
+  "theorems": [
+    {
+      "boundary": "This theorem proves suppression in the public deterministic sample, not a universal performance rule.",
+      "claim": "The public PNVA evidence set contains proof-backed no-tick suppression with preserved decision accounting.",
+      "criteria": [
+        {
+          "expected": 589,
+          "name": "aggregate_event_count",
+          "pass": true,
+          "rule": "min",
+          "value": 589
+        },
+        {
+          "expected": 285,
+          "name": "aggregate_suppressed_count",
+          "pass": true,
+          "rule": "min",
+          "value": 285
+        },
+        {
+          "expected": [
+            0.45,
+            0.7
+          ],
+          "name": "aggregate_suppression_ratio",
+          "pass": true,
+          "rule": "between",
+          "value": 0.483871
+        },
+        {
+          "expected": 1.0,
+          "name": "proof_integrity_canonical",
+          "pass": true,
+          "rule": "eq",
+          "value": 1.0
+        },
+        {
+          "expected": 1.0,
+          "name": "proof_integrity_runtime_r3",
+          "pass": true,
+          "rule": "eq",
+          "value": 1.0
+        }
+      ],
+      "depends_on": [
+        "observability",
+        "firewall",
+        "regression"
+      ],
+      "evidence": {
+        "aggregate_event_count": 589,
+        "aggregate_suppressed_count": 285,
+        "aggregate_suppression_ratio": 0.483871,
+        "canonical_suppressed_count": 246,
+        "runtime_r3_suppressed_count": 35
+      },
+      "failed_criteria": [],
+      "status": "PROVEN",
+      "theorem_id": "T1_NO_TICK_SUPPRESSION_OBSERVED"
+    },
+    {
+      "boundary": "This theorem proves native status for the included R3 runtime sample only.",
+      "claim": "The R3 runtime sample is accepted as native, slot-bound and non-projected evidence.",
+      "criteria": [
+        {
+          "expected": 70,
+          "name": "runtime_r3_event_count",
+          "pass": true,
+          "rule": "eq",
+          "value": 70
+        },
+        {
+          "expected": 70,
+          "name": "runtime_r3_native_count",
+          "pass": true,
+          "rule": "eq",
+          "value": 70
+        },
+        {
+          "expected": 0,
+          "name": "runtime_r3_projected_count",
+          "pass": true,
+          "rule": "eq",
+          "value": 0
+        },
+        {
+          "expected": 70,
+          "name": "runtime_r3_proof_hash_unique_count",
+          "pass": true,
+          "rule": "eq",
+          "value": 70
+        },
+        {
+          "expected": 35,
+          "name": "accepted_slot_count",
+          "pass": true,
+          "rule": "eq",
+          "value": 35
+        },
+        {
+          "expected": 0,
+          "name": "pending_slot_count",
+          "pass": true,
+          "rule": "eq",
+          "value": 0
+        },
+        {
+          "expected": 0,
+          "name": "rejected_event_count",
+          "pass": true,
+          "rule": "eq",
+          "value": 0
+        }
+      ],
+      "depends_on": [
+        "observability",
+        "runtime_evidence_guard",
+        "traceability"
+      ],
+      "evidence": {
+        "accepted_slot_count": 35,
+        "runtime_r3_event_count": 70,
+        "runtime_r3_native_count": 70,
+        "runtime_r3_projected_count": 0
+      },
+      "failed_criteria": [],
+      "status": "PROVEN",
+      "theorem_id": "T2_RUNTIME_R3_NATIVE_NON_PROJECTED"
+    },
+    {
+      "boundary": "This theorem proves catalog coverage for the public evidence set, not exhaustive deployment discovery.",
+      "claim": "The PNVA evidence base has cataloged entity coverage across canonical, native and R3 runtime scopes.",
+      "criteria": [
+        {
+          "expected": 3,
+          "name": "entity_catalog_count",
+          "pass": true,
+          "rule": "min",
+          "value": 3
+        },
+        {
+          "expected": 13,
+          "name": "entity_catalog_rows",
+          "pass": true,
+          "rule": "min",
+          "value": 13
+        },
+        {
+          "expected": 1,
+          "name": "runtime_r3_entity_count",
+          "pass": true,
+          "rule": "eq",
+          "value": 1
+        },
+        {
+          "expected": 0,
+          "name": "firewall_failure_count",
+          "pass": true,
+          "rule": "eq",
+          "value": 0
+        }
+      ],
+      "depends_on": [
+        "observability",
+        "firewall"
+      ],
+      "evidence": {
+        "scope_count": 3,
+        "state_mix": [
+          [
+            "active",
+            7
+          ],
+          [
+            "observing",
+            3
+          ],
+          [
+            "blocked",
+            2
+          ],
+          [
+            "r3_runtime_verified",
+            1
+          ]
+        ],
+        "total_entity_rows": 13,
+        "type_mix": [
+          [
+            "field",
+            5
+          ],
+          [
+            "guard",
+            4
+          ],
+          [
+            "worker",
+            2
+          ],
+          [
+            "event_source",
+            1
+          ],
+          [
+            "proof",
+            1
+          ]
+        ]
+      },
+      "failed_criteria": [],
+      "status": "PROVEN",
+      "theorem_id": "T3_ENTITY_CATALOG_COVERAGE"
+    },
+    {
+      "boundary": "This theorem proves explicit heuristic visibility and control, not hidden automatic learning.",
+      "claim": "Heuristic rules are visible, covered by proof events and clean in native influence scope.",
+      "criteria": [
+        {
+          "expected": 9,
+          "name": "heuristic_rule_count",
+          "pass": true,
+          "rule": "min",
+          "value": 9
+        },
+        {
+          "expected": 1136,
+          "name": "influence_edge_count",
+          "pass": true,
+          "rule": "min",
+          "value": 1136
+        },
+        {
+          "expected": 1.0,
+          "name": "heuristic_coverage_ratio",
+          "pass": true,
+          "rule": "eq",
+          "value": 1.0
+        },
+        {
+          "expected": 1.0,
+          "name": "proof_event_coverage_ratio",
+          "pass": true,
+          "rule": "eq",
+          "value": 1.0
+        },
+        {
+          "expected": true,
+          "name": "native_influence_clean",
+          "pass": true,
+          "rule": "eq",
+          "value": true
+        }
+      ],
+      "depends_on": [
+        "observability",
+        "causal_intelligence",
+        "firewall"
+      ],
+      "evidence": {
+        "heuristic_rule_count": 9,
+        "influence_edge_count": 1136,
+        "low_authority_legacy_context": {
+          "controlled_boundary": "legacy warnings are preserved as canonical migration evidence; native and R3 runtime scopes are clean",
+          "decision_trace_low_authority_trace_count": 152,
+          "entity_legacy_low_authority_warning_count": 35,
+          "heuristic_low_authority_strong_edge_count": 164
+        }
+      },
+      "failed_criteria": [],
+      "status": "PROVEN",
+      "theorem_id": "T4_HEURISTIC_VISIBILITY_CLOSED"
+    },
+    {
+      "boundary": "This theorem proves repository-level proof dependency hygiene, not external peer review.",
+      "claim": "The root proof graph is present, acyclic and reachable.",
+      "criteria": [
+        {
+          "expected": 49,
+          "name": "node_count",
+          "pass": true,
+          "rule": "min",
+          "value": 49
+        },
+        {
+          "expected": 104,
+          "name": "edge_count",
+          "pass": true,
+          "rule": "min",
+          "value": 104
+        },
+        {
+          "expected": 0,
+          "name": "cycle_count",
+          "pass": true,
+          "rule": "eq",
+          "value": 0
+        },
+        {
+          "expected": 0,
+          "name": "unreachable_node_count",
+          "pass": true,
+          "rule": "eq",
+          "value": 0
+        },
+        {
+          "expected": 0,
+          "name": "missing_artifact_count",
+          "pass": true,
+          "rule": "eq",
+          "value": 0
+        },
+        {
+          "expected": 0,
+          "name": "readiness_failure_count",
+          "pass": true,
+          "rule": "eq",
+          "value": 0
+        }
+      ],
+      "depends_on": [
+        "dependency_graph"
+      ],
+      "evidence": {
+        "edge_count": 104,
+        "node_count": 49,
+        "phase_count": 11,
+        "root_dependency_graph_hash": null
+      },
+      "failed_criteria": [],
+      "status": "PROVEN",
+      "theorem_id": "T5_ROOT_PROOF_CHAIN_ACYCLIC"
+    },
+    {
+      "boundary": "This theorem proves public wording control for scanned files; it does not endorse claims outside the repository.",
+      "claim": "Public PNVA claims are bounded and free of local path exposure.",
+      "criteria": [
+        {
+          "expected": 0,
+          "name": "claim_boundary_failure_count",
+          "pass": true,
+          "rule": "eq",
+          "value": 0
+        },
+        {
+          "expected": 0,
+          "name": "unbounded_high_risk_occurrence_count",
+          "pass": true,
+          "rule": "eq",
+          "value": 0
+        },
+        {
+          "expected": 0,
+          "name": "publication_path_leak_count",
+          "pass": true,
+          "rule": "eq",
+          "value": 0
+        },
+        {
+          "expected": 0,
+          "name": "publication_failure_count",
+          "pass": true,
+          "rule": "eq",
+          "value": 0
+        }
+      ],
+      "depends_on": [
+        "claim_boundary",
+        "publication_gate"
+      ],
+      "evidence": {
+        "high_risk_occurrence_count": 46,
+        "path_leak_count": 0,
+        "scanned_file_count": 77,
+        "unbounded_high_risk_occurrence_count": 0
+      },
+      "failed_criteria": [],
+      "status": "PROVEN",
+      "theorem_id": "T6_PUBLIC_CLAIM_BOUNDARY_CLEAN"
+    },
+    {
+      "boundary": "This theorem proves the current public root seal; later artifacts are post-seal extensions.",
+      "claim": "The sealed root release hash recomputes and remains stable across verifier inputs.",
+      "criteria": [
+        {
+          "expected": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+          "name": "root_release_hash",
+          "pass": true,
+          "rule": "eq",
+          "value": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc"
+        },
+        {
+          "expected": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+          "name": "recomputed_root_release_hash",
+          "pass": true,
+          "rule": "eq",
+          "value": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc"
+        },
+        {
+          "expected": 9,
+          "name": "verification_count",
+          "pass": true,
+          "rule": "min",
+          "value": 9
+        },
+        {
+          "expected": 0,
+          "name": "verifier_failure_count",
+          "pass": true,
+          "rule": "eq",
+          "value": 0
+        },
+        {
+          "expected": 0,
+          "name": "checksum_missing_count",
+          "pass": true,
+          "rule": "eq",
+          "value": 0
+        },
+        {
+          "expected": 0,
+          "name": "checksum_mismatch_count",
+          "pass": true,
+          "rule": "eq",
+          "value": 0
+        },
+        {
+          "expected": 0,
+          "name": "stable_hash_mismatch_count",
+          "pass": true,
+          "rule": "eq",
+          "value": 0
+        },
+        {
+          "expected": 0,
+          "name": "classification_mismatch_count",
+          "pass": true,
+          "rule": "eq",
+          "value": 0
+        }
+      ],
+      "depends_on": [
+        "release_verifier",
+        "release_seal"
+      ],
+      "evidence": {
+        "recomputed_root_release_hash": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+        "root_release_hash": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+        "sealed_artifact_count": 11
+      },
+      "failed_criteria": [],
+      "status": "PROVEN",
+      "theorem_id": "T7_RELEASE_HASH_VERIFIED"
+    },
+    {
+      "boundary": "This theorem proves stability against the declared public baseline, not future performance.",
+      "claim": "The post-firewall root baseline has no detected metric regression.",
+      "criteria": [
+        {
+          "expected": 100.0,
+          "name": "regression_score",
+          "pass": true,
+          "rule": "eq",
+          "value": 100.0
+        },
+        {
+          "expected": 0,
+          "name": "regression_failure_count",
+          "pass": true,
+          "rule": "eq",
+          "value": 0
+        },
+        {
+          "expected": 36,
+          "name": "monitored_metric_count",
+          "pass": true,
+          "rule": "eq",
+          "value": 36
+        },
+        {
+          "expected": 36,
+          "name": "stable_metric_count",
+          "pass": true,
+          "rule": "eq",
+          "value": 36
+        },
+        {
+          "expected": 0,
+          "name": "regressed_metric_count",
+          "pass": true,
+          "rule": "eq",
+          "value": 0
+        }
+      ],
+      "depends_on": [
+        "regression",
+        "firewall",
+        "observability"
+      ],
+      "evidence": {
+        "baseline": {
+          "entities": {
+            "entity_catalog_count_min": 3,
+            "entity_catalog_rows_min": 13
+          },
+          "heuristics": {
+            "heuristic_coverage_ratio_min": 1.0,
+            "heuristic_rule_count_min": 9,
+            "influence_edge_count_min": 1136,
+            "proof_event_coverage_ratio_min": 1.0
+          },
+          "logs": {
+            "canonical_event_count_min": 512,
+            "native_event_count_min": 7,
+            "runtime_r3_event_count_min": 70,
+            "runtime_r3_projected_count_max": 0,
+            "runtime_r3_proof_hash_unique_count_min": 70
+          },
+          "no_tick": {
+            "aggregate_event_count_min": 589,
+            "aggregate_suppressed_count_min": 285,
+            "aggregate_suppression_ratio_max": 0.7,
+            "aggregate_suppression_ratio_min": 0.45,
+            "runtime_r3_suppression_ratio_min": 0.5
+          },
+          "public": {
+            "dependency_cycle_count_max": 0,
+            "dependency_unreachable_node_count_max": 0,
+            "path_leak_count_max": 0,
+            "reproducibility_failure_count_max": 0,
+            "semantic_error_count_max": 0,
+            "semantic_warning_count_max": 0,
+            "unbounded_high_risk_occurrence_count_max": 0
+          },
+          "root_release_hash": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+          "runtime": {
+            "accepted_slot_count_min": 35,
+            "contract_check_count_min": 315,
+            "contract_failure_count_max": 0,
+            "negative_control_detected_count_min": 63,
+            "no_tick_pair_failure_count_max": 0,
+            "pending_slot_count_max": 0,
+            "rejected_event_count_max": 0
+          },
+          "scores": {
+            "claim_boundary_score": 100.0,
+            "dependency_score": 100.0,
+            "firewall_score": 100.0,
+            "observability_score": 100.0,
+            "publication_score": 100.0
+          }
+        },
+        "regression_sentinel_hash": "sha256:4d88bc497f949f138f99485097d4a997af537b5bb71f7441f63cbd768efa5170"
+      },
+      "failed_criteria": [],
+      "status": "PROVEN",
+      "theorem_id": "T8_REGRESSION_BASELINE_STABLE"
+    },
+    {
+      "boundary": "This theorem proves deterministic repository checks, not independent laboratory replication.",
+      "claim": "Semantic consistency and reproducibility checks are clean for the published evidence package.",
+      "criteria": [
+        {
+          "expected": 0,
+          "name": "semantic_error_count",
+          "pass": true,
+          "rule": "eq",
+          "value": 0
+        },
+        {
+          "expected": 0,
+          "name": "semantic_warning_count",
+          "pass": true,
+          "rule": "eq",
+          "value": 0
+        },
+        {
+          "expected": 331,
+          "name": "semantic_check_count",
+          "pass": true,
+          "rule": "min",
+          "value": 331
+        },
+        {
+          "expected": 0,
+          "name": "repro_command_failure_count",
+          "pass": true,
+          "rule": "eq",
+          "value": 0
+        },
+        {
+          "expected": 0,
+          "name": "repro_comparison_failure_count",
+          "pass": true,
+          "rule": "eq",
+          "value": 0
+        },
+        {
+          "expected": 445,
+          "name": "repro_comparison_count",
+          "pass": true,
+          "rule": "min",
+          "value": 445
+        }
+      ],
+      "depends_on": [
+        "semantic",
+        "reproducibility"
+      ],
+      "evidence": {
+        "repro_command_count": 40,
+        "repro_comparison_count": 445,
+        "semantic_check_count": 331
+      },
+      "failed_criteria": [],
+      "status": "PROVEN",
+      "theorem_id": "T9_SEMANTIC_REPRODUCIBILITY_CLEAN"
+    },
+    {
+      "boundary": "This theorem proves detection for declared controlled mutations, not every possible attack.",
+      "claim": "Root adversarial controls detect all declared controlled mutations.",
+      "criteria": [
+        {
+          "expected": true,
+          "name": "clean_control_pass",
+          "pass": true,
+          "rule": "eq",
+          "value": true
+        },
+        {
+          "expected": 8,
+          "name": "test_count",
+          "pass": true,
+          "rule": "eq",
+          "value": 8
+        },
+        {
+          "expected": 8,
+          "name": "detected_count",
+          "pass": true,
+          "rule": "eq",
+          "value": 8
+        },
+        {
+          "expected": 0,
+          "name": "adversarial_failure_count",
+          "pass": true,
+          "rule": "eq",
+          "value": 0
+        },
+        {
+          "expected": 63,
+          "name": "runtime_negative_control_detected_count",
+          "pass": true,
+          "rule": "eq",
+          "value": 63
+        },
+        {
+          "expected": 63,
+          "name": "runtime_negative_control_count",
+          "pass": true,
+          "rule": "eq",
+          "value": 63
+        }
+      ],
+      "depends_on": [
+        "adversarial",
+        "runtime_evidence_guard",
+        "observability"
+      ],
+      "evidence": {
+        "detected_count": 8,
+        "mutation_targets": [
+          "proof.projection",
+          "entity_id",
+          "field.state_before",
+          "tension.components.authority_delta",
+          "source.file_name",
+          "event_id",
+          "tension.gate_delta",
+          "heuristics.rules"
+        ],
+        "runtime_negative_control_detected_count": 63,
+        "test_count": 8
+      },
+      "failed_criteria": [],
+      "status": "PROVEN",
+      "theorem_id": "T10_ADVERSARIAL_CONTROLS_DETECT_MUTATIONS"
+    },
+    {
+      "boundary": "This theorem proves closure for the included R3 slots, not unobserved runtime activity.",
+      "claim": "Every R3 runtime slot has closed traceability from precheck to commit proof.",
+      "criteria": [
+        {
+          "expected": 35,
+          "name": "slot_count",
+          "pass": true,
+          "rule": "eq",
+          "value": 35
+        },
+        {
+          "expected": 70,
+          "name": "event_count",
+          "pass": true,
+          "rule": "eq",
+          "value": 70
+        },
+        {
+          "expected": 35,
+          "name": "precheck_count",
+          "pass": true,
+          "rule": "eq",
+          "value": 35
+        },
+        {
+          "expected": 35,
+          "name": "commit_count",
+          "pass": true,
+          "rule": "eq",
+          "value": 35
+        },
+        {
+          "expected": 0,
+          "name": "invalid_slot_count",
+          "pass": true,
+          "rule": "eq",
+          "value": 0
+        },
+        {
+          "expected": 70,
+          "name": "proof_hash_unique_count",
+          "pass": true,
+          "rule": "eq",
+          "value": 70
+        },
+        {
+          "expected": 100.0,
+          "name": "traceability_score",
+          "pass": true,
+          "rule": "eq",
+          "value": 100.0
+        }
+      ],
+      "depends_on": [
+        "traceability",
+        "observability"
+      ],
+      "evidence": {
+        "root_traceability_hash": "sha256:f6bd17b7e2103e6a3f224b3be267cbd835ad548cfa5b5aa04245817ef91feb7d",
+        "summary": {
+          "commit_count": 35,
+          "entity_count": 1,
+          "event_count": 70,
+          "heuristic_rule_count": 4,
+          "invalid_slot_count": 0,
+          "no_tick_suppression_ratio": 0.5,
+          "precheck_count": 35,
+          "proof_hash_unique_count": 70,
+          "proof_ref_unique_count": 70,
+          "risk_flag_count": 1,
+          "runtime_guard_negative_controls": "63/63",
+          "slot_count": 35,
+          "valid_slot_count": 35
+        }
+      },
+      "failed_criteria": [],
+      "status": "PROVEN",
+      "theorem_id": "T11_TRACEABILITY_SLOT_CLOSURE"
+    },
+    {
+      "boundary": "This theorem proves deterministic signal alignment for the public evidence package.",
+      "claim": "The causal intelligence report agrees with no-tick, entity, heuristic and root guard signals.",
+      "criteria": [
+        {
+          "expected": 100.0,
+          "name": "root_causal_intelligence_score",
+          "pass": true,
+          "rule": "eq",
+          "value": 100.0
+        },
+        {
+          "expected": 0,
+          "name": "causal_failure_count",
+          "pass": true,
+          "rule": "eq",
+          "value": 0
+        },
+        {
+          "expected": 589,
+          "name": "causal_event_count",
+          "pass": true,
+          "rule": "eq",
+          "value": 589
+        },
+        {
+          "expected": 285,
+          "name": "causal_suppressed_count",
+          "pass": true,
+          "rule": "eq",
+          "value": 285
+        },
+        {
+          "expected": 0.483871,
+          "name": "causal_suppression_ratio",
+          "pass": true,
+          "rule": "eq",
+          "value": 0.483871
+        },
+        {
+          "expected": true,
+          "name": "runtime_events_native_non_projected",
+          "pass": true,
+          "rule": "eq",
+          "value": true
+        },
+        {
+          "expected": true,
+          "name": "runtime_slots_closed",
+          "pass": true,
+          "rule": "eq",
+          "value": true
+        }
+      ],
+      "depends_on": [
+        "causal_intelligence",
+        "observability",
+        "firewall"
+      ],
+      "evidence": {
+        "controlled_legacy_context": {
+          "above_threshold_suppression_count": 176,
+          "boundary": "Historical canonical warnings remain visible as migration context; the R3 runtime path is measured separately and is native-clean.",
+          "historical_controlled_warning_count": 1232,
+          "legacy_debt_count": 35,
+          "low_authority_influence_edge_count": 164,
+          "low_authority_legacy_count": 35
+        },
+        "score_parts": {
+          "classification_agreement": 15.0,
+          "entity_coverage": 10.0,
+          "heuristic_authority": 15.0,
+          "native_non_projected_proof": 15.0,
+          "no_tick_runtime_pairs": 20.0,
+          "publication_hygiene": 10.0,
+          "root_guard": 15.0
+        },
+        "signals": {
+          "audit_hygiene_clean": true,
+          "classifications_ok": true,
+          "root_guard_ready": true,
+          "runtime_entity_coverage_clean": true,
+          "runtime_events_native_non_projected": true,
+          "runtime_gate_shape_clean": true,
+          "runtime_policy_hard_authority_clean": true,
+          "runtime_slots_closed": true
+        }
+      },
+      "failed_criteria": [],
+      "status": "PROVEN",
+      "theorem_id": "T12_CAUSAL_INTELLIGENCE_ALIGNMENT"
+    }
+  ]
+}

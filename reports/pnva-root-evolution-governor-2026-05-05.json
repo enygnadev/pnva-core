@@ -1,0 +1,629 @@
+{
+  "author": "Gustavo de Aguiar Martins",
+  "blocked_card_count": 0,
+  "check_count": 6,
+  "checks": [
+    {
+      "evidence": {
+        "classification_failures": []
+      },
+      "name": "source_classifications_ready",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "failure_count": 0,
+        "failures": []
+      },
+      "name": "root_invariants_locked",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "controlled_debt_count": 5
+      },
+      "name": "controlled_debts_declared",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "evolution_card_count": 8,
+        "unsafe_cards": []
+      },
+      "name": "evolution_cards_guarded",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "path_leak_count": 0,
+        "unbounded_high_risk_occurrence_count": 0
+      },
+      "name": "publication_hygiene_clean",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "failed_theorem_count": 0,
+        "theorem_count": 12
+      },
+      "name": "theorem_ledger_ready",
+      "pass": true
+    }
+  ],
+  "classification": "PNVA_ROOT_EVOLUTION_GOVERNOR_READY",
+  "controlled_debt_count": 5,
+  "controlled_debts": [
+    {
+      "boundary": "Controlled warning context, not a current root failure.",
+      "debt_id": "D1_CANONICAL_LEGACY_AUTHORITY_CONTEXT",
+      "impact": "Legacy context is preserved as migration evidence and should not expand.",
+      "remediation": "Move legacy observer evidence toward native or R3 runtime evidence while keeping proof coverage at 1.0.",
+      "signal": {
+        "decision_trace_low_authority_trace_count": 152,
+        "entity_legacy_low_authority_warning_count": 35,
+        "heuristic_low_authority_strong_edge_count": 164
+      },
+      "status": "CONTROLLED"
+    },
+    {
+      "boundary": "This is a scope limit, not a contradiction of current PASS.",
+      "debt_id": "D2_RUNTIME_R3_SCOPE_IS_STILL_SMALL",
+      "impact": "The runtime sample is strong but intentionally narrow.",
+      "remediation": "Add more R3 runtime entities and slot pairs only under the evidence guard.",
+      "signal": {
+        "accepted_slot_count": 35,
+        "runtime_r3_entity_count": 1
+      },
+      "status": "CONTROLLED"
+    },
+    {
+      "boundary": "Bounded public language remains acceptable while unbounded claims stay zero.",
+      "debt_id": "D3_PUBLIC_CLAIM_DENSITY_REQUIRES_DISCIPLINE",
+      "impact": "Strong language is present but bounded.",
+      "remediation": "Keep every strong claim tied to a theorem ID and reduce unsupported rhetorical density.",
+      "signal": {
+        "high_risk_occurrence_count": 46,
+        "unbounded_high_risk_occurrence_count": 0
+      },
+      "status": "CONTROLLED"
+    },
+    {
+      "boundary": "This does not weaken current repository evidence.",
+      "debt_id": "D4_EXTERNAL_REPLICATION_NOT_YET_SEPARATE",
+      "impact": "The current package is reproducible locally from published reports, but independent external replication is future work.",
+      "remediation": "Publish a minimal reproduction capsule with expected report hashes and environment notes.",
+      "signal": {
+        "reproducibility_scope": "repository deterministic checks"
+      },
+      "status": "CONTROLLED"
+    },
+    {
+      "boundary": "Do not claim hardware-level energy gain before separate counters exist.",
+      "debt_id": "D5_HARDWARE_COUNTER_BENCHMARK_PENDING",
+      "impact": "The current package proves causal execution discipline, not hardware energy counters.",
+      "remediation": "Add a separate perf or powertop benchmark harness with environment declaration.",
+      "signal": {
+        "current_metric_scope": "event, proof, entity, heuristic and runtime contracts"
+      },
+      "status": "CONTROLLED"
+    }
+  ],
+  "current_root_state": {
+    "aggregate_event_count": 589,
+    "aggregate_suppressed_count": 285,
+    "aggregate_suppression_ratio": 0.483871,
+    "causal_intelligence_score": 100.0,
+    "dependency_score": 100.0,
+    "entity_catalog_rows": 13,
+    "heuristic_rule_count": 9,
+    "influence_edge_count": 1136,
+    "publication_score": 100.0,
+    "runtime_r3_entity_count": 1,
+    "runtime_r3_events": 70,
+    "runtime_r3_native_events": 70,
+    "runtime_r3_projected_events": 0,
+    "traceability_score": 100.0
+  },
+  "evolution_card_count": 8,
+  "evolution_cards": [
+    {
+      "card_id": "E1_EXPAND_R3_ENTITY_FIELD",
+      "execution_mode": "planning_only",
+      "impact_area": [
+        "entities",
+        "runtime",
+        "no_tick"
+      ],
+      "missing_required_guards": [],
+      "objective": "Add more native runtime entities and keep each new slot bound to precheck, commit, proof hash and no-tick pair.",
+      "required_guards": [
+        "root_hash_stable",
+        "no_tick_budget_preserved",
+        "runtime_native_non_projected",
+        "entity_catalog_not_reduced",
+        "heuristic_coverage_not_reduced",
+        "claim_boundary_clean",
+        "path_hygiene_clean",
+        "negative_controls_preserved",
+        "theorem_ledger_preserved"
+      ],
+      "status": "SAFE_TO_PLAN",
+      "success_metrics": {
+        "pending_slot_count_max": 0,
+        "projected_count_max": 0,
+        "runtime_r3_entity_count_min_next": 3
+      },
+      "title": "Expand R3 runtime entity coverage"
+    },
+    {
+      "card_id": "E2_ADD_RUNTIME_BLOCK_PATH_SAMPLE",
+      "execution_mode": "planning_only",
+      "impact_area": [
+        "no_tick",
+        "logs",
+        "negative_controls"
+      ],
+      "missing_required_guards": [],
+      "objective": "Capture native block-path samples so runtime scope includes collapse, observe and block behavior under proof.",
+      "required_guards": [
+        "root_hash_stable",
+        "no_tick_budget_preserved",
+        "runtime_native_non_projected",
+        "entity_catalog_not_reduced",
+        "heuristic_coverage_not_reduced",
+        "claim_boundary_clean",
+        "path_hygiene_clean",
+        "negative_controls_preserved",
+        "theorem_ledger_preserved"
+      ],
+      "status": "SAFE_TO_PLAN",
+      "success_metrics": {
+        "no_tick_pair_failure_count_max": 0,
+        "runtime_block_path_events_min_next": 2
+      },
+      "title": "Add R3 block-path evidence"
+    },
+    {
+      "card_id": "E3_MIGRATE_LEGACY_OBSERVER_CONTEXT",
+      "execution_mode": "planning_only",
+      "impact_area": [
+        "heuristics",
+        "authority",
+        "logs"
+      ],
+      "missing_required_guards": [],
+      "objective": "Move legacy observer paths into native/R3 authority while preserving historical evidence as controlled context.",
+      "required_guards": [
+        "root_hash_stable",
+        "no_tick_budget_preserved",
+        "runtime_native_non_projected",
+        "entity_catalog_not_reduced",
+        "heuristic_coverage_not_reduced",
+        "claim_boundary_clean",
+        "path_hygiene_clean",
+        "negative_controls_preserved",
+        "theorem_ledger_preserved"
+      ],
+      "status": "SAFE_TO_PLAN",
+      "success_metrics": {
+        "native_influence_clean": true,
+        "proof_event_coverage_ratio": 1.0
+      },
+      "title": "Reduce canonical legacy authority reliance"
+    },
+    {
+      "card_id": "E4_CREATE_HEURISTIC_WEIGHT_LEDGER",
+      "execution_mode": "planning_only",
+      "impact_area": [
+        "heuristics",
+        "tension",
+        "proofs"
+      ],
+      "missing_required_guards": [],
+      "objective": "Publish rule-level weights, thresholds and tension contribution summaries while keeping private tuning out of public artifacts.",
+      "required_guards": [
+        "root_hash_stable",
+        "no_tick_budget_preserved",
+        "runtime_native_non_projected",
+        "entity_catalog_not_reduced",
+        "heuristic_coverage_not_reduced",
+        "claim_boundary_clean",
+        "path_hygiene_clean",
+        "negative_controls_preserved",
+        "theorem_ledger_preserved"
+      ],
+      "status": "SAFE_TO_PLAN",
+      "success_metrics": {
+        "heuristic_rule_count_min": 9,
+        "proof_event_coverage_ratio": 1.0
+      },
+      "title": "Expose bounded heuristic weights"
+    },
+    {
+      "card_id": "E5_BUILD_REPRODUCTION_CAPSULE",
+      "execution_mode": "planning_only",
+      "impact_area": [
+        "reproducibility",
+        "publication"
+      ],
+      "missing_required_guards": [],
+      "objective": "Add a compact reproduction script that reruns root validators and checks expected hashes for reviewers.",
+      "required_guards": [
+        "root_hash_stable",
+        "no_tick_budget_preserved",
+        "runtime_native_non_projected",
+        "entity_catalog_not_reduced",
+        "heuristic_coverage_not_reduced",
+        "claim_boundary_clean",
+        "path_hygiene_clean",
+        "negative_controls_preserved",
+        "theorem_ledger_preserved"
+      ],
+      "status": "SAFE_TO_PLAN",
+      "success_metrics": {
+        "checksum_mismatch_count": 0,
+        "command_failure_count": 0
+      },
+      "title": "Package deterministic reproduction"
+    },
+    {
+      "card_id": "E6_ADD_COUNTER_BENCH_HARNESS",
+      "execution_mode": "planning_only",
+      "impact_area": [
+        "metrics",
+        "benchmark",
+        "publication_boundary"
+      ],
+      "missing_required_guards": [],
+      "objective": "Create an optional benchmark harness for wakeups, CPU and latency with environment metadata and no broad performance claims.",
+      "required_guards": [
+        "root_hash_stable",
+        "no_tick_budget_preserved",
+        "runtime_native_non_projected",
+        "entity_catalog_not_reduced",
+        "heuristic_coverage_not_reduced",
+        "claim_boundary_clean",
+        "path_hygiene_clean",
+        "negative_controls_preserved",
+        "theorem_ledger_preserved"
+      ],
+      "status": "SAFE_TO_PLAN",
+      "success_metrics": {
+        "path_leak_count": 0,
+        "unbounded_high_risk_occurrence_count": 0
+      },
+      "title": "Separate hardware-counter benchmark"
+    },
+    {
+      "card_id": "E7_CREATE_DOMAIN_ADAPTER_TEMPLATES",
+      "execution_mode": "planning_only",
+      "impact_area": [
+        "architecture",
+        "documentation",
+        "entities"
+      ],
+      "missing_required_guards": [],
+      "objective": "Define adapter schemas for legal, social, mental and operational systems as event-state-tension proof templates.",
+      "required_guards": [
+        "root_hash_stable",
+        "no_tick_budget_preserved",
+        "runtime_native_non_projected",
+        "entity_catalog_not_reduced",
+        "heuristic_coverage_not_reduced",
+        "claim_boundary_clean",
+        "path_hygiene_clean",
+        "negative_controls_preserved",
+        "theorem_ledger_preserved"
+      ],
+      "status": "SAFE_TO_PLAN",
+      "success_metrics": {
+        "claim_boundary_clean": true,
+        "theorem_failed_count": 0
+      },
+      "title": "Map PNVA to sector adapters"
+    },
+    {
+      "card_id": "E8_BIND_PAPER_CLAIMS_TO_THEOREMS",
+      "execution_mode": "planning_only",
+      "impact_area": [
+        "paper",
+        "llms",
+        "publication"
+      ],
+      "missing_required_guards": [],
+      "objective": "Make every strong public statement cite a theorem card or a boundary section.",
+      "required_guards": [
+        "root_hash_stable",
+        "no_tick_budget_preserved",
+        "runtime_native_non_projected",
+        "entity_catalog_not_reduced",
+        "heuristic_coverage_not_reduced",
+        "claim_boundary_clean",
+        "path_hygiene_clean",
+        "negative_controls_preserved",
+        "theorem_ledger_preserved"
+      ],
+      "status": "SAFE_TO_PLAN",
+      "success_metrics": {
+        "failed_theorem_count": 0,
+        "unbounded_high_risk_occurrence_count": 0
+      },
+      "title": "Tie paper claims to theorem IDs"
+    }
+  ],
+  "evolution_governor_hash": "sha256:2ef360f6962dfc788c9e63736c2508fb0f37441459c8aab3f0bb7d2511c2cf39",
+  "failure_count": 0,
+  "generated_at": "2026-05-05T18:48:05Z",
+  "governor_score": 100.0,
+  "interpretation": {
+    "boundary": "This governor is advisory and deterministic. It does not execute system actions, change live gates or claim external deployment validation.",
+    "purpose": "Define safe PNVA root evolution steps while preserving no-tick, logs, entities, heuristics, proof identity and public boundaries.",
+    "sovereignty": "A sovereign root improves only through guarded cards that preserve locked invariants."
+  },
+  "invariant_count": 22,
+  "invariant_failure_count": 0,
+  "locked_invariants": [
+    {
+      "expected": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+      "guard": "root_hash_stable",
+      "name": "root_release_hash",
+      "pass": true,
+      "rule": "eq",
+      "value": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc"
+    },
+    {
+      "expected": 589,
+      "guard": "no_tick_budget_preserved",
+      "name": "aggregate_event_count",
+      "pass": true,
+      "rule": "min",
+      "value": 589
+    },
+    {
+      "expected": 285,
+      "guard": "no_tick_budget_preserved",
+      "name": "aggregate_suppressed_count",
+      "pass": true,
+      "rule": "min",
+      "value": 285
+    },
+    {
+      "expected": [
+        0.45,
+        0.7
+      ],
+      "guard": "no_tick_budget_preserved",
+      "name": "aggregate_suppression_ratio",
+      "pass": true,
+      "rule": "between",
+      "value": 0.483871
+    },
+    {
+      "expected": 70,
+      "guard": "runtime_native_non_projected",
+      "name": "runtime_r3_event_count",
+      "pass": true,
+      "rule": "eq",
+      "value": 70
+    },
+    {
+      "expected": 70,
+      "guard": "runtime_native_non_projected",
+      "name": "runtime_r3_native_count",
+      "pass": true,
+      "rule": "eq",
+      "value": 70
+    },
+    {
+      "expected": 0,
+      "guard": "runtime_native_non_projected",
+      "name": "runtime_r3_projected_count",
+      "pass": true,
+      "rule": "eq",
+      "value": 0
+    },
+    {
+      "expected": 35,
+      "guard": "runtime_native_non_projected",
+      "name": "runtime_accepted_slot_count",
+      "pass": true,
+      "rule": "eq",
+      "value": 35
+    },
+    {
+      "expected": 0,
+      "guard": "runtime_native_non_projected",
+      "name": "runtime_pending_slot_count",
+      "pass": true,
+      "rule": "eq",
+      "value": 0
+    },
+    {
+      "expected": 0,
+      "guard": "runtime_native_non_projected",
+      "name": "runtime_rejected_event_count",
+      "pass": true,
+      "rule": "eq",
+      "value": 0
+    },
+    {
+      "expected": 13,
+      "guard": "entity_catalog_not_reduced",
+      "name": "entity_catalog_rows",
+      "pass": true,
+      "rule": "min",
+      "value": 13
+    },
+    {
+      "expected": 3,
+      "guard": "entity_catalog_not_reduced",
+      "name": "entity_catalog_count",
+      "pass": true,
+      "rule": "min",
+      "value": 3
+    },
+    {
+      "expected": 9,
+      "guard": "heuristic_coverage_not_reduced",
+      "name": "heuristic_rule_count",
+      "pass": true,
+      "rule": "min",
+      "value": 9
+    },
+    {
+      "expected": 1.0,
+      "guard": "heuristic_coverage_not_reduced",
+      "name": "heuristic_coverage_ratio",
+      "pass": true,
+      "rule": "eq",
+      "value": 1.0
+    },
+    {
+      "expected": 1.0,
+      "guard": "heuristic_coverage_not_reduced",
+      "name": "proof_event_coverage_ratio",
+      "pass": true,
+      "rule": "eq",
+      "value": 1.0
+    },
+    {
+      "expected": 1136,
+      "guard": "heuristic_coverage_not_reduced",
+      "name": "influence_edge_count",
+      "pass": true,
+      "rule": "min",
+      "value": 1136
+    },
+    {
+      "expected": 0,
+      "guard": "claim_boundary_clean",
+      "name": "unbounded_high_risk_occurrence_count",
+      "pass": true,
+      "rule": "eq",
+      "value": 0
+    },
+    {
+      "expected": 0,
+      "guard": "path_hygiene_clean",
+      "name": "publication_path_leak_count",
+      "pass": true,
+      "rule": "eq",
+      "value": 0
+    },
+    {
+      "expected": 63,
+      "guard": "negative_controls_preserved",
+      "name": "negative_control_detected_count",
+      "pass": true,
+      "rule": "eq",
+      "value": 63
+    },
+    {
+      "expected": 8,
+      "guard": "negative_controls_preserved",
+      "name": "adversarial_detected_count",
+      "pass": true,
+      "rule": "eq",
+      "value": 8
+    },
+    {
+      "expected": 0,
+      "guard": "theorem_ledger_preserved",
+      "name": "theorem_failed_count",
+      "pass": true,
+      "rule": "eq",
+      "value": 0
+    },
+    {
+      "expected": 12,
+      "guard": "theorem_ledger_preserved",
+      "name": "theorem_proven_count",
+      "pass": true,
+      "rule": "min",
+      "value": 12
+    }
+  ],
+  "pass": true,
+  "project": "PNVA-Core",
+  "root_hashes": {
+    "claim_boundary": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+    "dependency_graph": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+    "firewall": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+    "publication_gate": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+    "regression": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+    "release_verifier": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+    "release_verifier_recomputed": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+    "theorem_ledger": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc"
+  },
+  "root_release_hash": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+  "safe_to_plan_count": 8,
+  "schema_version": "pnva.root_evolution_governor.v1",
+  "source_classification_checks": [
+    {
+      "classification": "PNVA_ROOT_OBSERVABILITY_INDEX_READY",
+      "expected": "PNVA_ROOT_OBSERVABILITY_INDEX_READY",
+      "name": "observability",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_INVARIANT_FIREWALL_READY",
+      "expected": "PNVA_ROOT_INVARIANT_FIREWALL_READY",
+      "name": "firewall",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_REGRESSION_SENTINEL_READY",
+      "expected": "PNVA_ROOT_REGRESSION_SENTINEL_READY",
+      "name": "regression",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_PROOF_THEOREM_LEDGER_READY",
+      "expected": "PNVA_ROOT_PROOF_THEOREM_LEDGER_READY",
+      "name": "theorem_ledger",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_CAUSAL_INTELLIGENCE_READY",
+      "expected": "PNVA_ROOT_CAUSAL_INTELLIGENCE_READY",
+      "name": "causal_intelligence",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_TRACEABILITY_MATRIX_READY",
+      "expected": "PNVA_ROOT_TRACEABILITY_MATRIX_READY",
+      "name": "traceability",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_DEPENDENCY_GRAPH_READY",
+      "expected": "PNVA_ROOT_DEPENDENCY_GRAPH_READY",
+      "name": "dependency_graph",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_PUBLICATION_GATE_READY",
+      "expected": "PNVA_ROOT_PUBLICATION_GATE_READY",
+      "name": "publication_gate",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_CLAIM_BOUNDARY_GUARD_READY",
+      "expected": "PNVA_ROOT_CLAIM_BOUNDARY_GUARD_READY",
+      "name": "claim_boundary",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_RELEASE_VERIFIED",
+      "expected": "PNVA_ROOT_RELEASE_VERIFIED",
+      "name": "release_verifier",
+      "pass": true
+    },
+    {
+      "classification": "PNVA_ROOT_ADVERSARIAL_SENTRY_PASS",
+      "expected": "PNVA_ROOT_ADVERSARIAL_SENTRY_PASS",
+      "name": "adversarial",
+      "pass": true
+    }
+  ]
+}

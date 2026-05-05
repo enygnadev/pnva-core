@@ -1,0 +1,280 @@
+{
+  "admission_negative_controls_hash": "sha256:5dee8f543be1ebc48df99b35d2594678e929ce2831f234b041d2e38bccebda84",
+  "author": "Gustavo de Aguiar Martins",
+  "classification": "PNVA_ROOT_ADMISSION_NEGATIVE_CONTROLS_PASS",
+  "clean_control": {
+    "admission_classification": "PNVA_ROOT_RUNTIME_ADMISSION_READY",
+    "admission_failure_count": 0,
+    "admission_failure_names": [],
+    "admission_pass": true,
+    "contract_classification": "PNVA_ROOT_NO_TICK_CAUSAL_CONTRACT_READY",
+    "contract_failure_count": 0,
+    "contract_failure_names": [],
+    "contract_pass": true,
+    "detected": true,
+    "expected_clean": true,
+    "id": "clean_control",
+    "matrix_classification": "PNVA_ROOT_ENTITY_HEURISTIC_ADMISSION_MATRIX_READY",
+    "matrix_failure_count": 0,
+    "matrix_failure_names": [],
+    "matrix_pass": true,
+    "mutation": "No mutation; clean control."
+  },
+  "clean_control_pass": true,
+  "control_count": 8,
+  "controls": [
+    {
+      "admission_classification": "PNVA_ROOT_RUNTIME_ADMISSION_BLOCKED",
+      "admission_failure_count": 2,
+      "admission_failure_names": [
+        "source_reports_ready",
+        "no_tick_runtime_contract_admissible"
+      ],
+      "admission_pass": false,
+      "contract_classification": "PNVA_ROOT_NO_TICK_CAUSAL_CONTRACT_FAIL",
+      "contract_failure_count": 1,
+      "contract_failure_names": [
+        "native_and_r3_threshold_contract_strict"
+      ],
+      "contract_pass": false,
+      "detected": true,
+      "expected_clean": false,
+      "id": "r3_gate_delta_inversion",
+      "matrix_classification": "PNVA_ROOT_ENTITY_HEURISTIC_ADMISSION_MATRIX_FAIL",
+      "matrix_failure_count": 4,
+      "matrix_failure_names": [
+        "source_reports_ready",
+        "runtime_edges_admitted_restricted",
+        "no_denied_or_uncovered_edges",
+        "runtime_admission_modes_enforced"
+      ],
+      "matrix_pass": false,
+      "mutation": "Made an R3 precheck cross a positive execution gate."
+    },
+    {
+      "admission_classification": "PNVA_ROOT_RUNTIME_ADMISSION_BLOCKED",
+      "admission_failure_count": 3,
+      "admission_failure_names": [
+        "source_reports_ready",
+        "no_tick_runtime_contract_admissible",
+        "no_tick_budget_inside_regression_bounds"
+      ],
+      "admission_pass": false,
+      "contract_classification": "PNVA_ROOT_NO_TICK_CAUSAL_CONTRACT_FAIL",
+      "contract_failure_count": 2,
+      "contract_failure_names": [
+        "suppression_matches_observability",
+        "r3_precheck_commit_pairs_complete"
+      ],
+      "contract_pass": false,
+      "detected": true,
+      "expected_clean": false,
+      "id": "r3_unpaired_chain",
+      "matrix_classification": "PNVA_ROOT_ENTITY_HEURISTIC_ADMISSION_MATRIX_FAIL",
+      "matrix_failure_count": 5,
+      "matrix_failure_names": [
+        "source_reports_ready",
+        "event_and_rule_edge_counts_match_root",
+        "runtime_edges_admitted_restricted",
+        "no_denied_or_uncovered_edges",
+        "runtime_admission_modes_enforced"
+      ],
+      "matrix_pass": false,
+      "mutation": "Removed one R3 commit event: evt_r3_runtime_r3_runtime_slot_001_commit."
+    },
+    {
+      "admission_classification": "PNVA_ROOT_RUNTIME_ADMISSION_BLOCKED",
+      "admission_failure_count": 2,
+      "admission_failure_names": [
+        "source_reports_ready",
+        "no_tick_runtime_contract_admissible"
+      ],
+      "admission_pass": false,
+      "contract_classification": "PNVA_ROOT_NO_TICK_CAUSAL_CONTRACT_FAIL",
+      "contract_failure_count": 1,
+      "contract_failure_names": [
+        "entity_and_rule_closure_complete"
+      ],
+      "contract_pass": false,
+      "detected": true,
+      "expected_clean": false,
+      "id": "r3_unknown_entity",
+      "matrix_classification": "PNVA_ROOT_ENTITY_HEURISTIC_ADMISSION_MATRIX_FAIL",
+      "matrix_failure_count": 6,
+      "matrix_failure_names": [
+        "source_reports_ready",
+        "event_and_rule_edge_counts_match_root",
+        "entity_rule_matrix_complete",
+        "runtime_edges_admitted_restricted",
+        "no_denied_or_uncovered_edges",
+        "runtime_admission_modes_enforced"
+      ],
+      "matrix_pass": false,
+      "mutation": "Moved an R3 event onto an unknown entity."
+    },
+    {
+      "admission_classification": "PNVA_ROOT_RUNTIME_ADMISSION_BLOCKED",
+      "admission_failure_count": 2,
+      "admission_failure_names": [
+        "source_reports_ready",
+        "no_tick_runtime_contract_admissible"
+      ],
+      "admission_pass": false,
+      "contract_classification": "PNVA_ROOT_NO_TICK_CAUSAL_CONTRACT_FAIL",
+      "contract_failure_count": 1,
+      "contract_failure_names": [
+        "proof_contract_complete"
+      ],
+      "contract_pass": false,
+      "detected": true,
+      "expected_clean": false,
+      "id": "r3_projected_proof",
+      "matrix_classification": "PNVA_ROOT_ENTITY_HEURISTIC_ADMISSION_MATRIX_FAIL",
+      "matrix_failure_count": 4,
+      "matrix_failure_names": [
+        "source_reports_ready",
+        "runtime_edges_admitted_restricted",
+        "no_denied_or_uncovered_edges",
+        "runtime_admission_modes_enforced"
+      ],
+      "matrix_pass": false,
+      "mutation": "Marked an R3 proof as projected evidence."
+    },
+    {
+      "admission_classification": "PNVA_ROOT_RUNTIME_ADMISSION_BLOCKED",
+      "admission_failure_count": 2,
+      "admission_failure_names": [
+        "source_reports_ready",
+        "no_tick_runtime_contract_admissible"
+      ],
+      "admission_pass": false,
+      "contract_classification": "PNVA_ROOT_NO_TICK_CAUSAL_CONTRACT_FAIL",
+      "contract_failure_count": 1,
+      "contract_failure_names": [
+        "entity_and_rule_closure_complete"
+      ],
+      "contract_pass": false,
+      "detected": true,
+      "expected_clean": false,
+      "id": "r3_unknown_rule",
+      "matrix_classification": "PNVA_ROOT_ENTITY_HEURISTIC_ADMISSION_MATRIX_FAIL",
+      "matrix_failure_count": 5,
+      "matrix_failure_names": [
+        "source_reports_ready",
+        "entity_rule_matrix_complete",
+        "runtime_edges_admitted_restricted",
+        "no_denied_or_uncovered_edges",
+        "runtime_admission_modes_enforced"
+      ],
+      "matrix_pass": false,
+      "mutation": "Injected an unknown heuristic rule into an R3 commit."
+    },
+    {
+      "admission_classification": "PNVA_ROOT_RUNTIME_ADMISSION_BLOCKED",
+      "admission_failure_count": 2,
+      "admission_failure_names": [
+        "source_reports_ready",
+        "no_tick_runtime_contract_admissible"
+      ],
+      "admission_pass": false,
+      "contract_classification": "PNVA_ROOT_NO_TICK_CAUSAL_CONTRACT_FAIL",
+      "contract_failure_count": 1,
+      "contract_failure_names": [
+        "event_identity_unique"
+      ],
+      "contract_pass": false,
+      "detected": true,
+      "expected_clean": false,
+      "id": "r3_duplicate_event_id",
+      "matrix_classification": "PNVA_ROOT_ENTITY_HEURISTIC_ADMISSION_MATRIX_FAIL",
+      "matrix_failure_count": 4,
+      "matrix_failure_names": [
+        "source_reports_ready",
+        "runtime_edges_admitted_restricted",
+        "no_denied_or_uncovered_edges",
+        "runtime_admission_modes_enforced"
+      ],
+      "matrix_pass": false,
+      "mutation": "Duplicated an R3 event_id across precheck and commit."
+    },
+    {
+      "admission_classification": "PNVA_ROOT_RUNTIME_ADMISSION_BLOCKED",
+      "admission_failure_count": 2,
+      "admission_failure_names": [
+        "source_reports_ready",
+        "no_tick_runtime_contract_admissible"
+      ],
+      "admission_pass": false,
+      "contract_classification": "PNVA_ROOT_NO_TICK_CAUSAL_CONTRACT_FAIL",
+      "contract_failure_count": 1,
+      "contract_failure_names": [
+        "proof_contract_complete"
+      ],
+      "contract_pass": false,
+      "detected": true,
+      "expected_clean": false,
+      "id": "r3_invalid_proof_hash",
+      "matrix_classification": "PNVA_ROOT_ENTITY_HEURISTIC_ADMISSION_MATRIX_FAIL",
+      "matrix_failure_count": 4,
+      "matrix_failure_names": [
+        "source_reports_ready",
+        "runtime_edges_admitted_restricted",
+        "no_denied_or_uncovered_edges",
+        "runtime_admission_modes_enforced"
+      ],
+      "matrix_pass": false,
+      "mutation": "Invalidated a proof hash on an R3 commit."
+    },
+    {
+      "admission_classification": "PNVA_ROOT_RUNTIME_ADMISSION_BLOCKED",
+      "admission_failure_count": 2,
+      "admission_failure_names": [
+        "source_reports_ready",
+        "no_tick_runtime_contract_admissible"
+      ],
+      "admission_pass": false,
+      "contract_classification": "PNVA_ROOT_NO_TICK_CAUSAL_CONTRACT_FAIL",
+      "contract_failure_count": 1,
+      "contract_failure_names": [
+        "schema_and_public_sources_clean"
+      ],
+      "contract_pass": false,
+      "detected": true,
+      "expected_clean": false,
+      "id": "native_source_path_leak",
+      "matrix_classification": "PNVA_ROOT_ENTITY_HEURISTIC_ADMISSION_MATRIX_FAIL",
+      "matrix_failure_count": 4,
+      "matrix_failure_names": [
+        "source_reports_ready",
+        "runtime_edges_admitted_restricted",
+        "no_denied_or_uncovered_edges",
+        "runtime_admission_modes_enforced"
+      ],
+      "matrix_pass": false,
+      "mutation": "Injected an unsafe local path into a native source reference."
+    }
+  ],
+  "detected_count": 8,
+  "failure_count": 0,
+  "generated_at": "2026-05-05T19:12:01Z",
+  "interpretation": {
+    "boundary": "All mutations happen in temporary copies. This tool does not modify live evidence, runtime services, gates or mining workloads.",
+    "purpose": "Prove that the no-tick contract, runtime admission controller and entity-heuristic admission matrix reject corrupted evidence.",
+    "sovereignty": "Admission is stronger when bad events are denied before runtime growth can become invisible."
+  },
+  "mutation_targets": [
+    "r3.tension.gate_delta",
+    "r3.precheck_commit_pair",
+    "r3.entity_id",
+    "r3.proof.projection",
+    "r3.heuristics.rules",
+    "r3.event_id",
+    "r3.proof.hash",
+    "native.source.file_name"
+  ],
+  "pass": true,
+  "project": "PNVA-Core",
+  "root_release_hash": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+  "schema_version": "pnva.root_admission_negative_controls.v1",
+  "undetected_count": 0
+}

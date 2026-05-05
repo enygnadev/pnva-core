@@ -1,0 +1,125 @@
+{
+  "author": "Gustavo de Aguiar Martins",
+  "checksum_checked_path_count": 12,
+  "checksum_mismatch_count": 0,
+  "checksum_missing_count": 0,
+  "classification": "PNVA_ROOT_RELEASE_VERIFIED",
+  "classification_mismatch_count": 0,
+  "failure_count": 0,
+  "failures": [],
+  "generated_at": "2026-05-05T17:31:10Z",
+  "interpretation": {
+    "boundary": "This verifier consumes the seal and is intentionally outside the seal hash to avoid self-reference.",
+    "purpose": "Verify that the PNVA root release seal can be recomputed from current public artifacts.",
+    "sovereignty": "A seal is stronger when a separate verifier proves its hash, artifact classifications, checksum coverage and claim boundaries."
+  },
+  "pass": true,
+  "project": "PNVA-Core",
+  "recommendations": [
+    "Run this verifier after generating the root release seal and refreshing SHA256SUMS.txt.",
+    "Treat any hash mismatch, classification mismatch or missing claim boundary as a release blocker.",
+    "Keep this verifier outside the root release hash because it verifies the hash."
+  ],
+  "recomputed_root_release_hash": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+  "root_release_hash": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+  "schema_version": "pnva.root_release_verifier.v1",
+  "sealed_artifact_count": 11,
+  "stable_hash_mismatch_count": 0,
+  "verification_count": 9,
+  "verifications": [
+    {
+      "evidence": {
+        "classification": "PNVA_ROOT_RELEASE_SEALED",
+        "pass": true,
+        "report": "reports/pnva-root-release-seal-2026-05-05.json"
+      },
+      "name": "seal_report_ready",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "recomputed_hash": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+        "sealed_hash": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc"
+      },
+      "name": "root_release_hash_recomputes",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "recomputed_artifact_count": 11,
+        "sealed_artifact_count": 11
+      },
+      "name": "sealed_artifact_count_matches",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "failed_artifacts": [],
+        "recomputed_failure_count": 0
+      },
+      "name": "sealed_artifacts_still_pass",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "mismatch_count": 0,
+        "mismatches": []
+      },
+      "name": "stable_artifact_hashes_match_seal",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "mismatch_count": 0,
+        "mismatches": []
+      },
+      "name": "artifact_classifications_match_seal",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "checked_path_count": 12,
+        "mismatch_count": 0,
+        "mismatches": [],
+        "missing": [],
+        "missing_count": 0
+      },
+      "name": "checksums_cover_sealed_artifacts",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "attestation_artifact_count": 48,
+        "attestation_failure_count": 0,
+        "root_adversarial_detection_ratio": "8/8",
+        "root_causal_intelligence_score": 100.0,
+        "root_score": 100.0,
+        "runtime_accepted_slots": 35,
+        "runtime_no_tick_pairs": 35,
+        "runtime_pending_slots": 0,
+        "sovereign_evolution_score": 98.37
+      },
+      "name": "release_vector_is_closed",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "missing": [],
+        "present": [
+          "hardware-level energy gain without separate counters",
+          "physical particle or physics proof",
+          "private deployment validation",
+          "universal performance improvement"
+        ],
+        "required": [
+          "hardware-level energy gain without separate counters",
+          "physical particle or physics proof",
+          "private deployment validation",
+          "universal performance improvement"
+        ]
+      },
+      "name": "claim_boundaries_present",
+      "pass": true
+    }
+  ]
+}

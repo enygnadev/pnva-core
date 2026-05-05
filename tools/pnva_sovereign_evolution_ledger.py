@@ -243,7 +243,7 @@ def build_report(repo: Path) -> dict[str, Any]:
             "id": "ENTITY_NO_TICK_LEGACY_WARNINGS",
             "count": entity_warning_count,
             "meaning": "Entity-level low-authority legacy debt is isolated.",
-            "next_action": "Capture one native no-tick precheck and one native commit per pending slot.",
+            "next_action": "Keep the accepted R3 runtime path as paired native no-tick prechecks and native commits; require the same shape for future replacement slots.",
         },
         {
             "id": "SUPPRESSION_LEDGER_LEGACY_WARNINGS",
@@ -257,7 +257,7 @@ def build_report(repo: Path) -> dict[str, Any]:
         {
             "order": 1,
             "id": "CAPTURE_R3_RUNTIME_JSONL",
-            "status": "pending",
+            "status": "complete" if runtime_approved else "pending",
             "target": {
                 "slot_count": capture_slots,
                 "required_prechecks": capture_slots,
@@ -277,19 +277,19 @@ def build_report(repo: Path) -> dict[str, Any]:
         {
             "order": 2,
             "id": "RUN_RUNTIME_EVIDENCE_GUARD",
-            "status": "blocked_until_capture",
+            "status": "complete" if runtime_approved else "blocked_until_capture",
             "command": "python3 tools/pnva_r3_runtime_evidence_guard.py --runtime-events <fresh-runtime.jsonl> --write reports/pnva-r3-runtime-evidence-guard-2026-05-05.json",
         },
         {
             "order": 3,
             "id": "REGENERATE_DOWNSTREAM_EVIDENCE",
-            "status": "blocked_until_guard_accepts",
+            "status": "complete" if cutover_approved else "blocked_until_guard_accepts",
             "command": "python3 tools/pnva_r3_cutover_gate.py --write reports/pnva-r3-cutover-gate-2026-05-05.json && python3 tools/pnva_semantic_consistency_guard.py --write reports/pnva-semantic-consistency-2026-05-05.json",
         },
         {
             "order": 4,
             "id": "PUBLISH_NEW_ATTESTATION",
-            "status": "blocked_until_downstream_passes",
+            "status": "complete" if runtime_approved and cutover_approved else "blocked_until_downstream_passes",
             "command": "python3 tools/pnva_evidence_attestor.py --write reports/pnva-sovereign-evidence-attestation-2026-05-05.json && python3 tools/pnva_reproducibility_guard.py --write reports/pnva-reproducibility-2026-05-05.json",
         },
     ]
@@ -391,10 +391,10 @@ def build_report(repo: Path) -> dict[str, Any]:
         "interpretation": {
             "purpose": "Unify PNVA no-tick, log integrity, heuristic influence, entity coverage and R3 runtime readiness into one evolution ledger.",
             "sovereignty": "The system becomes more robust when every remaining warning is classified as controlled legacy evidence or a runtime blocker with a next command.",
-            "boundary": "This ledger does not approve R3. It proves the preparation layer is coherent and names the missing runtime evidence explicitly.",
+            "boundary": "This ledger approves R3 only when the evidence guard and cutover gate have accepted slot-bound native runtime evidence; historical legacy warnings remain preserved as migration context.",
         },
         "recommendations": [
-            "Treat R3 runtime capture as the next P0 production task.",
+            "Treat any future R3 runtime capture as a slot-bound, guard-validated evidence package.",
             "Do not reduce legacy warning counts by deletion; replace them with fresh native evidence.",
             "Keep no-tick prechecks paired with commits so non-execution remains auditable.",
             "Use this ledger as the release dashboard before public claims about R3 readiness.",

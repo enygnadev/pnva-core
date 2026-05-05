@@ -1,5 +1,5 @@
 {
-  "artifact_count": 41,
+  "artifact_count": 48,
   "artifacts": [
     {
       "entry_count": 9,
@@ -320,8 +320,8 @@
       "size_bytes": 6974
     },
     {
-      "classification": "R3_CUTOVER_GATE_READY_RUNTIME_REQUIRED",
-      "expected": "R3_CUTOVER_GATE_READY_RUNTIME_REQUIRED",
+      "classification": "R3_CUTOVER_APPROVED",
+      "expected": "R3_CUTOVER_APPROVED",
       "id": "r3_cutover_gate",
       "kind": "json_classification",
       "pass": true,
@@ -329,12 +329,12 @@
       "present": true,
       "reported_pass": true,
       "required": true,
-      "sha256": "d3875f5e64c56ea74ea4c1f4c101502b9e4a104040e2c39fac65f576c6d39566",
-      "size_bytes": 7421
+      "sha256": "ef542a7bee180a04aba5fb7d0aa037a6f92723618daec86fa4a6a43c4822fe73",
+      "size_bytes": 7969
     },
     {
-      "classification": "R3_RUNTIME_CAPTURE_MATRIX_READY_PENDING_RUNTIME",
-      "expected": "R3_RUNTIME_CAPTURE_MATRIX_READY_PENDING_RUNTIME",
+      "classification": "R3_RUNTIME_CAPTURE_MATRIX_COMPLETE",
+      "expected": "R3_RUNTIME_CAPTURE_MATRIX_COMPLETE",
       "id": "r3_runtime_capture_matrix",
       "kind": "json_classification",
       "pass": true,
@@ -342,12 +342,49 @@
       "present": true,
       "reported_pass": true,
       "required": true,
-      "sha256": "2ea707f1ca79a025c87d937804e971f513151ecb2ea0f67944e07d53cb120046",
-      "size_bytes": 71818
+      "sha256": "106a325a367ff204b272cbad61907e338a9a0acf902eab139cf03c34c7a2c67c",
+      "size_bytes": 71781
     },
     {
-      "classification": "R3_RUNTIME_EVIDENCE_GUARD_READY_AWAITING_CAPTURE",
-      "expected": "R3_RUNTIME_EVIDENCE_GUARD_READY_AWAITING_CAPTURE",
+      "classification": "R3_RUNTIME_EVENT_EMITTER_READY",
+      "expected": "R3_RUNTIME_EVENT_EMITTER_READY",
+      "id": "r3_runtime_event_emitter",
+      "kind": "json_classification",
+      "pass": true,
+      "path": "reports/pnva-r3-runtime-event-emitter-summary-2026-05-05.json",
+      "present": true,
+      "reported_pass": true,
+      "required": true,
+      "sha256": "60b6c6b36e74e92ab118d330db77fde577a77fa7cb27736848e987404548374c",
+      "size_bytes": 1520
+    },
+    {
+      "bad_json_lines": 0,
+      "id": "r3_runtime_events",
+      "kind": "jsonl",
+      "line_count": 70,
+      "pass": true,
+      "path": "reports/pnva-r3-runtime-events-2026-05-05.jsonl",
+      "present": true,
+      "required": true,
+      "sha256": "b010209cd954430bd097efcafa1c5ccc2ebc1d4a03e0e2f78670081e0b083954",
+      "size_bytes": 79168
+    },
+    {
+      "entity_count": 1,
+      "id": "r3_runtime_entities",
+      "kind": "entity_catalog",
+      "pass": true,
+      "path": "reports/pnva-r3-runtime-entity-catalog-2026-05-05.json",
+      "present": true,
+      "required": true,
+      "schema_version": "pnva.entity_catalog.v1",
+      "sha256": "4cc50f3ea093f8a5cc595f20cfc569bc0b56bb073efd89f403ad145bd1bc9565",
+      "size_bytes": 1892
+    },
+    {
+      "classification": "R3_RUNTIME_EVIDENCE_ACCEPTED",
+      "expected": "R3_RUNTIME_EVIDENCE_ACCEPTED",
       "id": "r3_runtime_evidence_guard",
       "kind": "json_classification",
       "pass": true,
@@ -355,8 +392,60 @@
       "present": true,
       "reported_pass": true,
       "required": true,
-      "sha256": "eb69dab942f51c3f113ac78ae371c96179b261dfcd58c86d6e30384bdf77ac1b",
-      "size_bytes": 56084
+      "sha256": "a524268a544134be918254f9bbd497f56966f14bee9dd7878e10d7989d5c57b7",
+      "size_bytes": 55891
+    },
+    {
+      "classification": "REPLAY_VALID",
+      "expected": "REPLAY_VALID",
+      "id": "r3_runtime_replay",
+      "kind": "json_classification",
+      "pass": true,
+      "path": "reports/pnva-r3-runtime-replay-2026-05-05.json",
+      "present": true,
+      "reported_pass": true,
+      "required": true,
+      "sha256": "a5590ca8cf9da8911ade7c6986795f3ce0a3bb40a28553862bb6c46351c56bb0",
+      "size_bytes": 2292
+    },
+    {
+      "classification": "SOVEREIGN_POLICY_READY",
+      "expected": "SOVEREIGN_POLICY_READY",
+      "id": "r3_runtime_policy",
+      "kind": "json_classification",
+      "pass": true,
+      "path": "reports/pnva-r3-runtime-policy-2026-05-05.json",
+      "present": true,
+      "reported_pass": true,
+      "required": true,
+      "sha256": "b3459157199f6c8cf545e8d3e9064e6437b4ac635cb9e678db1c3419391c7209",
+      "size_bytes": 2756
+    },
+    {
+      "classification": "SOVEREIGN_NO_TICK_READY",
+      "expected": "SOVEREIGN_NO_TICK_READY",
+      "id": "r3_runtime_no_tick",
+      "kind": "json_classification",
+      "pass": true,
+      "path": "reports/pnva-r3-runtime-no-tick-2026-05-05.json",
+      "present": true,
+      "reported_pass": true,
+      "required": true,
+      "sha256": "f021a781d2cf4d5172b76f44aa84a49ee046e3ce1380e0051142020897697b10",
+      "size_bytes": 6472
+    },
+    {
+      "classification": "PROOF_CHAIN_SEALED",
+      "expected": "PROOF_CHAIN_SEALED",
+      "id": "r3_runtime_proof_chain",
+      "kind": "json_classification",
+      "pass": true,
+      "path": "reports/pnva-r3-runtime-proof-chain-2026-05-05.json",
+      "present": true,
+      "reported_pass": true,
+      "required": true,
+      "sha256": "7cd9f676da89131973531bfb7f6f37843e8104f0c37a253bf185a77987f36dbc",
+      "size_bytes": 2442
     },
     {
       "classification": "R3_RUNTIME_INSTRUMENTATION_PLAN_READY",
@@ -368,8 +457,8 @@
       "present": true,
       "reported_pass": true,
       "required": true,
-      "sha256": "14fe20113fe3cb0247126b178f6e3354b63f769b77e3cb1c35532c535dbda6ed",
-      "size_bytes": 25049
+      "sha256": "22463d9b79666c9104d7e615d4a75e6b70df1a6a241ea5801cc91be5fea56057",
+      "size_bytes": 25050
     },
     {
       "classification": "R3_RUNTIME_CONTRACT_VALIDATED_READY",
@@ -381,12 +470,12 @@
       "present": true,
       "reported_pass": true,
       "required": true,
-      "sha256": "ee7c76a940406c1b5ee4eddf8a52eb5390a9479ca4e9c47c0e64da3612c2a86e",
-      "size_bytes": 109730
+      "sha256": "49a30daddcf56aa40d111e4470854734d26ac2fdb616e17f5e2fdac0a64d629e",
+      "size_bytes": 109587
     },
     {
-      "classification": "PNVA_SOVEREIGN_EVOLUTION_LEDGER_READY_R3_RUNTIME_REQUIRED",
-      "expected": "PNVA_SOVEREIGN_EVOLUTION_LEDGER_READY_R3_RUNTIME_REQUIRED",
+      "classification": "PNVA_SOVEREIGN_EVOLUTION_LEDGER_R3_READY",
+      "expected": "PNVA_SOVEREIGN_EVOLUTION_LEDGER_R3_READY",
       "id": "sovereign_evolution_ledger",
       "kind": "json_classification",
       "pass": true,
@@ -394,8 +483,8 @@
       "present": true,
       "reported_pass": true,
       "required": true,
-      "sha256": "7e34b94591c392651143678236f8f6d633334d7d5bf10bd8d60c9df12dffe06a",
-      "size_bytes": 9718
+      "sha256": "cfc376d660396e378928c7545cb33a6f4d4b01e7c5a95d2b035660cc3d0c196b",
+      "size_bytes": 9126
     },
     {
       "classification": "NATIVE_EMITTER_READY",
@@ -558,9 +647,9 @@
     "entity and heuristic maturity",
     "sovereign audit consumes this attestation without being part of its hash seed"
   ],
-  "evidence_hash": "sha256:4118eb25c457642fce4e8f0f03dc66c492d59a9f5dea31a91e2ec7e8d953b490",
+  "evidence_hash": "sha256:9f38e4089290b13df2093b0bc190dbb5970b5827eee92caf20af591534f34400",
   "failure_count": 0,
-  "generated_at": "2026-05-05T15:44:56Z",
+  "generated_at": "2026-05-05T16:32:39Z",
   "interpretation": {
     "boundary": "This attests repository evidence integrity; it is not a universal proof of all possible PNVA deployments.",
     "hash_policy": "The evidence_hash changes when any tracked artifact hash, classification or pass flag changes.",
@@ -586,7 +675,7 @@
     "Run authority migration ledger before attestation so H0 strong decisions become entity/action-specific native targets.",
     "Run R3 authority projection before attestation so mapped debt has replay, policy and no-tick native proof.",
     "Run R3 cutover gate before attestation so projection readiness is separated from final runtime cutover approval.",
-    "Run R3 runtime capture matrix before attestation so every pending runtime replacement has an entity/action/no-tick acceptance slot.",
+    "Run R3 runtime capture matrix before attestation so every runtime replacement has an entity/action/no-tick acceptance slot.",
     "Run R3 runtime evidence guard before attestation so projected or weak runtime evidence is rejected before cutover.",
     "Run R3 runtime instrumentation plan before attestation so each remaining slot has an emitter contract and validation command.",
     "Run R3 runtime contract validation before attestation so matrix, guard and instrumentation cannot drift apart.",

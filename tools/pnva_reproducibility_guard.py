@@ -46,7 +46,12 @@ PUBLISHED_REPORTS = {
     "r3_authority_projection_no_tick": "reports/pnva-r3-authority-projection-no-tick-2026-05-05.json",
     "r3_cutover_gate": "reports/pnva-r3-cutover-gate-2026-05-05.json",
     "r3_runtime_capture_matrix": "reports/pnva-r3-runtime-capture-matrix-2026-05-05.json",
+    "r3_runtime_event_emitter": "reports/pnva-r3-runtime-event-emitter-summary-2026-05-05.json",
     "r3_runtime_evidence_guard": "reports/pnva-r3-runtime-evidence-guard-2026-05-05.json",
+    "r3_runtime_replay": "reports/pnva-r3-runtime-replay-2026-05-05.json",
+    "r3_runtime_policy": "reports/pnva-r3-runtime-policy-2026-05-05.json",
+    "r3_runtime_no_tick": "reports/pnva-r3-runtime-no-tick-2026-05-05.json",
+    "r3_runtime_proof_chain": "reports/pnva-r3-runtime-proof-chain-2026-05-05.json",
     "r3_runtime_instrumentation_plan": "reports/pnva-r3-runtime-instrumentation-plan-2026-05-05.json",
     "r3_runtime_contract_validation": "reports/pnva-r3-runtime-contract-validation-2026-05-05.json",
     "sovereign_evolution_ledger": "reports/pnva-sovereign-evolution-ledger-2026-05-05.json",
@@ -394,6 +399,19 @@ STABLE_PATHS = {
         ["action_target_count"],
         ["target_rule_count"],
     ],
+    "r3_runtime_event_emitter": [
+        ["classification"],
+        ["pass"],
+        ["event_count"],
+        ["entity_count"],
+        ["capture_slot_count"],
+        ["required_runtime_event_count"],
+        ["precheck_count"],
+        ["commit_count"],
+        ["projection_count"],
+        ["native_count"],
+        ["proof_hash_count"],
+    ],
     "r3_runtime_evidence_guard": [
         ["classification"],
         ["pass"],
@@ -417,6 +435,42 @@ STABLE_PATHS = {
         ["positive_control_passed_count"],
         ["positive_controls_pass"],
         ["positive_controls_fixture_only"],
+    ],
+    "r3_runtime_replay": [
+        ["classification"],
+        ["pass"],
+        ["summary", "event_count"],
+        ["summary", "unique_event_ids"],
+        ["summary", "proof_hash_ok"],
+        ["summary", "proof_hash_bad"],
+    ],
+    "r3_runtime_policy": [
+        ["classification"],
+        ["pass"],
+        ["summary", "event_count"],
+        ["summary", "native_event_count"],
+        ["summary", "strong_decision_count"],
+        ["summary", "low_authority_legacy_count"],
+        ["summary", "proof_policy_bad"],
+        ["summary", "entity_missing_count"],
+    ],
+    "r3_runtime_no_tick": [
+        ["classification"],
+        ["pass"],
+        ["no_tick_efficiency", "event_count"],
+        ["no_tick_efficiency", "collapse_count"],
+        ["no_tick_efficiency", "observe_count"],
+        ["no_tick_efficiency", "suppressed_count"],
+        ["no_tick_efficiency", "no_tick_suppression_ratio"],
+        ["no_tick_efficiency", "proof_integrity_ratio"],
+    ],
+    "r3_runtime_proof_chain": [
+        ["classification"],
+        ["pass"],
+        ["seal", "event_count"],
+        ["seal", "unique_event_ids"],
+        ["seal", "proof_bad"],
+        ["seal", "final_chain_hash"],
     ],
     "r3_runtime_instrumentation_plan": [
         ["classification"],
@@ -649,7 +703,14 @@ def build_report(repo: Path) -> dict[str, Any]:
             "r3_authority_projection_no_tick": tmp / "r3-authority-projection-no-tick.json",
             "r3_cutover_gate": tmp / "r3-cutover-gate.json",
             "r3_runtime_capture_matrix": tmp / "r3-runtime-capture-matrix.json",
+            "r3_runtime_event_emitter": tmp / "r3-runtime-emitter-summary.json",
+            "r3_runtime_events": tmp / "r3-runtime-events.jsonl",
+            "r3_runtime_entities": tmp / "r3-runtime-entities.json",
             "r3_runtime_evidence_guard": tmp / "r3-runtime-evidence-guard.json",
+            "r3_runtime_replay": tmp / "r3-runtime-replay.json",
+            "r3_runtime_policy": tmp / "r3-runtime-policy.json",
+            "r3_runtime_no_tick": tmp / "r3-runtime-no-tick.json",
+            "r3_runtime_proof_chain": tmp / "r3-runtime-proof-chain.json",
             "r3_runtime_instrumentation_plan": tmp / "r3-runtime-instrumentation-plan.json",
             "r3_runtime_contract_validation": tmp / "r3-runtime-contract-validation.json",
             "sovereign_evolution_ledger": tmp / "sovereign-evolution-ledger.json",
@@ -742,9 +803,27 @@ def build_report(repo: Path) -> dict[str, Any]:
             ],
             outputs["r3_authority_projection_no_tick"],
         )
+        commands["r3_runtime_event_emitter"] = _run(
+            repo,
+            [
+                "tools/pnva_r3_runtime_event_emitter.py",
+                "--events",
+                str(outputs["r3_runtime_events"]),
+                "--entity-catalog",
+                str(outputs["r3_runtime_entities"]),
+                "--summary",
+                str(outputs["r3_runtime_event_emitter"]),
+            ],
+            outputs["r3_runtime_event_emitter"],
+            write_flag=None,
+        )
+        commands["r3_runtime_capture_matrix"] = _run(repo, ["tools/pnva_r3_runtime_capture_matrix.py", "--runtime-events", str(outputs["r3_runtime_events"])], outputs["r3_runtime_capture_matrix"])
+        commands["r3_runtime_evidence_guard"] = _run(repo, ["tools/pnva_r3_runtime_evidence_guard.py", "--runtime-events", str(outputs["r3_runtime_events"])], outputs["r3_runtime_evidence_guard"])
+        commands["r3_runtime_replay"] = _run(repo, ["tools/pnva_replay_validator.py", "--events", str(outputs["r3_runtime_events"]), "--entity-catalog", str(outputs["r3_runtime_entities"])], outputs["r3_runtime_replay"])
+        commands["r3_runtime_policy"] = _run(repo, ["tools/pnva_sovereign_policy_validator.py", "--events", str(outputs["r3_runtime_events"]), "--entity-catalog", str(outputs["r3_runtime_entities"])], outputs["r3_runtime_policy"])
+        commands["r3_runtime_no_tick"] = _run(repo, ["tools/pnva_no_tick_invariant_analyzer.py", "--events", str(outputs["r3_runtime_events"]), "--entity-catalog", str(outputs["r3_runtime_entities"]), "--replay-report", str(outputs["r3_runtime_replay"])], outputs["r3_runtime_no_tick"])
+        commands["r3_runtime_proof_chain"] = _run(repo, ["tools/pnva_proof_chain_sealer.py", "--events", str(outputs["r3_runtime_events"])], outputs["r3_runtime_proof_chain"])
         commands["r3_cutover_gate"] = _run(repo, ["tools/pnva_r3_cutover_gate.py"], outputs["r3_cutover_gate"])
-        commands["r3_runtime_capture_matrix"] = _run(repo, ["tools/pnva_r3_runtime_capture_matrix.py"], outputs["r3_runtime_capture_matrix"])
-        commands["r3_runtime_evidence_guard"] = _run(repo, ["tools/pnva_r3_runtime_evidence_guard.py"], outputs["r3_runtime_evidence_guard"])
         commands["r3_runtime_instrumentation_plan"] = _run(repo, ["tools/pnva_r3_runtime_instrumentation_plan.py"], outputs["r3_runtime_instrumentation_plan"])
         commands["r3_runtime_contract_validation"] = _run(repo, ["tools/pnva_r3_runtime_contract_validator.py"], outputs["r3_runtime_contract_validation"])
         commands["sovereign_evolution_ledger"] = _run(repo, ["tools/pnva_sovereign_evolution_ledger.py"], outputs["sovereign_evolution_ledger"])

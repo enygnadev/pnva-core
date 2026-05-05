@@ -237,12 +237,14 @@ def build_report(repo: Path) -> dict[str, Any]:
     contract_commits = sum(int(item["required_commit_count"]) for item in contracts)
     entity_count = len({str(slot.get("entity_id") or "") for slot in slots})
     target_rules = sorted({rule for contract in contracts for rule in contract["target_rules"]})
+    runtime_present = guard.get("runtime_evidence_present") is True
+    runtime_approved = guard.get("runtime_evidence_approved") is True
 
     plan_ready = (
         matrix.get("pass") is True
-        and matrix.get("classification") == "R3_RUNTIME_CAPTURE_MATRIX_READY_PENDING_RUNTIME"
+        and matrix.get("classification") in {"R3_RUNTIME_CAPTURE_MATRIX_READY_PENDING_RUNTIME", "R3_RUNTIME_CAPTURE_MATRIX_COMPLETE"}
         and guard.get("pass") is True
-        and guard.get("classification") == "R3_RUNTIME_EVIDENCE_GUARD_READY_AWAITING_CAPTURE"
+        and guard.get("classification") in {"R3_RUNTIME_EVIDENCE_GUARD_READY_AWAITING_CAPTURE", "R3_RUNTIME_EVIDENCE_ACCEPTED"}
         and int(matrix.get("capture_slot_count", 0)) == len(slots)
         and int(matrix.get("required_runtime_event_count", 0)) == contract_runtime_events
         and int(guard.get("required_runtime_event_count", 0)) == contract_runtime_events
@@ -259,8 +261,8 @@ def build_report(repo: Path) -> dict[str, Any]:
         "classification": classification,
         "pass": plan_ready,
         "instrumentation_plan_ready": plan_ready,
-        "runtime_evidence_present": False,
-        "runtime_evidence_approved": False,
+        "runtime_evidence_present": runtime_present,
+        "runtime_evidence_approved": runtime_approved,
         "source_matrix_classification": matrix.get("classification"),
         "source_guard_classification": guard.get("classification"),
         "capture_slot_count": len(slots),
@@ -325,7 +327,7 @@ def build_report(repo: Path) -> dict[str, Any]:
         "interpretation": {
             "purpose": "Convert R3 runtime capture slots into concrete emitter contracts, required fields and validation commands.",
             "sovereignty": "PNVA becomes easier to execute safely when the next runtime step is an explicit instrumentation plan instead of an informal instruction.",
-            "boundary": "This plan is not runtime evidence and does not approve R3 cutover; it defines how fresh runtime evidence must be emitted and validated.",
+            "boundary": "This plan remains the instrumentation contract. When runtime evidence is present, it records the accepted state without weakening the field, proof or no-tick requirements.",
         },
         "recommendations": [
             "Implement one emitter path per action contract before collecting final R3 runtime evidence.",

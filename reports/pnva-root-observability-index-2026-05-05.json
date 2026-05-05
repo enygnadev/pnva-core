@@ -1,0 +1,660 @@
+{
+  "author": "Gustavo de Aguiar Martins",
+  "check_count": 8,
+  "checks": [
+    {
+      "evidence": {
+        "classification_failures": []
+      },
+      "name": "required_observability_reports_ready",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "parse_errors": [],
+        "stream_count_mismatches": []
+      },
+      "name": "event_streams_parse_and_match_reports",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "expected_no_tick": {
+          "block_count": 35,
+          "collapse_count": 303,
+          "event_count": 589,
+          "observe_count": 250,
+          "suppressed_count": 285,
+          "suppression_ratio": 0.483871
+        },
+        "mismatches": []
+      },
+      "name": "aggregate_no_tick_matches_root_causal_intelligence",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "proof_coverage_failures": []
+      },
+      "name": "proof_and_guard_coverage_closed",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "native_clean_failures": []
+      },
+      "name": "native_and_runtime_scope_clean",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "runtime_failures": []
+      },
+      "name": "runtime_slots_contract_and_guard_closed",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "root_failures": [],
+        "root_scores": {
+          "root_causal_intelligence.root_causal_intelligence_score": 100.0,
+          "root_claim_boundary.claim_boundary_score": 100.0,
+          "root_dependency_graph.dependency_score": 100.0,
+          "root_publication.publication_score": 100.0,
+          "root_sovereignty.root_score": 100.0,
+          "root_traceability.root_traceability_score": 100.0
+        }
+      },
+      "name": "root_scores_all_maxed",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "path_leak_count": 0,
+        "unbounded_high_risk_occurrence_count": 0
+      },
+      "name": "claim_and_publication_boundary_clean",
+      "pass": true
+    }
+  ],
+  "classification": "PNVA_ROOT_OBSERVABILITY_INDEX_READY",
+  "entity_observability": {
+    "capability_mix": [
+      [
+        "emit_native_pnva_event",
+        7
+      ],
+      [
+        "emit_events",
+        6
+      ],
+      [
+        "runtime_observation",
+        4
+      ],
+      [
+        "guard_decision",
+        3
+      ],
+      [
+        "receive_guard_decision",
+        2
+      ],
+      [
+        "emit_hard_authority_commit",
+        1
+      ],
+      [
+        "emit_no_tick_precheck",
+        1
+      ],
+      [
+        "emit_r3_runtime_event",
+        1
+      ]
+    ],
+    "scope_count": 3,
+    "scopes": {
+      "canonical": {
+        "entity_count": 6,
+        "path": "reports/pnva-entity-catalog-2026-05-05.json",
+        "schema_version": "pnva.entity_catalog.v1",
+        "states": [
+          [
+            "active",
+            6
+          ]
+        ],
+        "types": [
+          [
+            "field",
+            4
+          ],
+          [
+            "guard",
+            2
+          ]
+        ]
+      },
+      "native": {
+        "entity_count": 6,
+        "path": "reports/pnva-native-entity-catalog-demo-2026-05-05.json",
+        "schema_version": "pnva.entity_catalog.v1",
+        "states": [
+          [
+            "observing",
+            3
+          ],
+          [
+            "blocked",
+            2
+          ],
+          [
+            "active",
+            1
+          ]
+        ],
+        "types": [
+          [
+            "guard",
+            2
+          ],
+          [
+            "worker",
+            2
+          ],
+          [
+            "field",
+            1
+          ],
+          [
+            "proof",
+            1
+          ]
+        ]
+      },
+      "runtime_r3": {
+        "entity_count": 1,
+        "path": "reports/pnva-r3-runtime-entity-catalog-2026-05-05.json",
+        "schema_version": "pnva.entity_catalog.v1",
+        "states": [
+          [
+            "r3_runtime_verified",
+            1
+          ]
+        ],
+        "types": [
+          [
+            "event_source",
+            1
+          ]
+        ]
+      }
+    },
+    "state_mix": [
+      [
+        "active",
+        7
+      ],
+      [
+        "observing",
+        3
+      ],
+      [
+        "blocked",
+        2
+      ],
+      [
+        "r3_runtime_verified",
+        1
+      ]
+    ],
+    "total_entity_rows": 13,
+    "type_mix": [
+      [
+        "field",
+        5
+      ],
+      [
+        "guard",
+        4
+      ],
+      [
+        "worker",
+        2
+      ],
+      [
+        "event_source",
+        1
+      ],
+      [
+        "proof",
+        1
+      ]
+    ]
+  },
+  "failure_count": 0,
+  "generated_at": "2026-05-05T18:48:05Z",
+  "heuristic_observability": {
+    "heuristic_coverage_ratio": 1.0,
+    "heuristic_rule_count": 9,
+    "influence_edge_count": 1136,
+    "low_authority_legacy_context": {
+      "controlled_boundary": "legacy warnings are preserved as canonical migration evidence; native and R3 runtime scopes are clean",
+      "decision_trace_low_authority_trace_count": 152,
+      "entity_legacy_low_authority_warning_count": 35,
+      "heuristic_low_authority_strong_edge_count": 164
+    },
+    "native_influence_clean": true,
+    "proof_event_coverage_ratio": 1.0
+  },
+  "interpretation": {
+    "boundary": "This index is a public observability layer over existing reports; it does not change the root release seal or claim private deployment validation.",
+    "purpose": "Expose one root laboratory view for PNVA/no-tick logs, entities, heuristics, runtime slots and public proof gates.",
+    "sovereignty": "A root system is stronger when every PASS can be traced to observable log, entity, heuristic and proof metrics."
+  },
+  "log_observability": {
+    "canonical": {
+      "action_mix": [
+        [
+          "RESIZE_BATCH",
+          176
+        ],
+        [
+          "pnva_engine_evaluated",
+          78
+        ],
+        [
+          "EXECUTE",
+          42
+        ],
+        [
+          "assigned",
+          36
+        ],
+        [
+          "ETEV_GUARD_PASS",
+          35
+        ],
+        [
+          "ETEV_GUARD_BLOCK",
+          33
+        ],
+        [
+          "entity_range_assigned",
+          22
+        ],
+        [
+          "kernel_launched",
+          18
+        ],
+        [
+          "kernel_completed",
+          17
+        ],
+        [
+          "runtime_snapshot",
+          10
+        ],
+        [
+          "scan_ranges=2",
+          10
+        ],
+        [
+          "SWITCH_INTENSITY",
+          9
+        ]
+      ],
+      "collapse_count_observed": 266,
+      "decision_mix": [
+        [
+          "collapse",
+          266
+        ],
+        [
+          "observe",
+          213
+        ],
+        [
+          "block",
+          33
+        ]
+      ],
+      "event_count": 512,
+      "native_count": 0,
+      "parse_error_count": 0,
+      "path": "reports/pnva-canonical-events-sample-2026-05-05.jsonl",
+      "projected_count": 0,
+      "proof_hash_count": 512,
+      "proof_hash_unique_count": 512,
+      "risk_mix": [
+        [
+          "RESIZE_BATCH_PRESSURE",
+          176
+        ],
+        [
+          "THERMAL_PRESSURE",
+          138
+        ],
+        [
+          "VEONIC_TRACE",
+          128
+        ]
+      ],
+      "rule_mix": [
+        [
+          "adaptive_threshold",
+          274
+        ],
+        [
+          "field_scheduler",
+          264
+        ],
+        [
+          "legacy_observer",
+          152
+        ],
+        [
+          "veonic_layer",
+          128
+        ],
+        [
+          "affinity_router",
+          78
+        ],
+        [
+          "memory4d",
+          78
+        ],
+        [
+          "power_orchestrator",
+          78
+        ],
+        [
+          "etev_guard",
+          68
+        ]
+      ],
+      "suppressed_count_observed": 246
+    },
+    "native": {
+      "action_mix": [
+        [
+          "AUTHORIZE_COLLAPSE",
+          1
+        ],
+        [
+          "BLOCK_EXECUTION",
+          1
+        ],
+        [
+          "DROP_STALE",
+          1
+        ],
+        [
+          "EXECUTE",
+          1
+        ],
+        [
+          "HOLD_PRESSURE",
+          1
+        ],
+        [
+          "NO_ACTION",
+          1
+        ],
+        [
+          "SEAL_PROOF",
+          1
+        ]
+      ],
+      "collapse_count_observed": 2,
+      "decision_mix": [
+        [
+          "block",
+          2
+        ],
+        [
+          "collapse",
+          2
+        ],
+        [
+          "observe",
+          2
+        ],
+        [
+          "prove",
+          1
+        ]
+      ],
+      "event_count": 7,
+      "native_count": 7,
+      "parse_error_count": 0,
+      "path": "reports/pnva-native-events-demo-2026-05-05.jsonl",
+      "projected_count": 0,
+      "proof_hash_count": 7,
+      "proof_hash_unique_count": 7,
+      "risk_mix": [
+        [
+          "STALE_PRESSURE",
+          2
+        ],
+        [
+          "THERMAL_PRESSURE",
+          1
+        ]
+      ],
+      "rule_mix": [
+        [
+          "native_event_emitter",
+          7
+        ],
+        [
+          "adaptive_threshold",
+          2
+        ],
+        [
+          "etev_guard",
+          2
+        ],
+        [
+          "field_scheduler",
+          2
+        ],
+        [
+          "legacy_observer",
+          1
+        ],
+        [
+          "memory4d",
+          1
+        ],
+        [
+          "power_orchestrator",
+          1
+        ]
+      ],
+      "suppressed_count_observed": 4
+    },
+    "runtime_r3": {
+      "action_mix": [
+        [
+          "NO_ACTION",
+          35
+        ],
+        [
+          "RESIZE_BATCH",
+          32
+        ],
+        [
+          "COOLDOWN_GPU",
+          2
+        ],
+        [
+          "EXECUTE",
+          1
+        ]
+      ],
+      "collapse_count_observed": 35,
+      "decision_mix": [
+        [
+          "collapse",
+          35
+        ],
+        [
+          "observe",
+          35
+        ]
+      ],
+      "event_count": 70,
+      "native_count": 70,
+      "parse_error_count": 0,
+      "path": "reports/pnva-r3-runtime-events-2026-05-05.jsonl",
+      "projected_count": 0,
+      "proof_hash_count": 70,
+      "proof_hash_unique_count": 70,
+      "risk_mix": [
+        [
+          "RESIZE_BATCH_PRESSURE",
+          64
+        ]
+      ],
+      "rule_mix": [
+        [
+          "adaptive_threshold",
+          70
+        ],
+        [
+          "field_scheduler",
+          70
+        ],
+        [
+          "native_event_emitter",
+          70
+        ],
+        [
+          "power_orchestrator",
+          4
+        ]
+      ],
+      "suppressed_count_observed": 35
+    }
+  },
+  "no_tick_observability": {
+    "aggregate_block_count": 35,
+    "aggregate_collapse_count": 303,
+    "aggregate_event_count": 589,
+    "aggregate_observe_count": 250,
+    "aggregate_suppressed_count": 285,
+    "aggregate_suppression_ratio": 0.483871,
+    "layers": {
+      "canonical": {
+        "block_count": 33,
+        "causal_execution_ratio": 0.5195,
+        "collapse_count": 266,
+        "event_count": 512,
+        "guard_consistency_ratio": 1.0,
+        "no_tick_suppression_ratio": 0.4805,
+        "observe_count": 213,
+        "proof_integrity_ratio": 1.0,
+        "suppressed_count": 246
+      },
+      "native": {
+        "block_count": 2,
+        "causal_execution_ratio": 0.2857,
+        "collapse_count": 2,
+        "event_count": 7,
+        "guard_consistency_ratio": 1.0,
+        "no_tick_suppression_ratio": 0.5714,
+        "observe_count": 2,
+        "proof_integrity_ratio": 1.0,
+        "suppressed_count": 4
+      },
+      "runtime_r3": {
+        "block_count": 0,
+        "causal_execution_ratio": 0.5,
+        "collapse_count": 35,
+        "event_count": 70,
+        "guard_consistency_ratio": 0.0,
+        "no_tick_suppression_ratio": 0.5,
+        "observe_count": 35,
+        "proof_integrity_ratio": 1.0,
+        "suppressed_count": 35
+      }
+    },
+    "root_causal_intelligence_aggregate": {
+      "block_count": 35,
+      "causal_execution_ratio": 0.514431,
+      "collapse_count": 303,
+      "event_count": 589,
+      "layers": {
+        "canonical": {
+          "block_count": 33,
+          "causal_execution_ratio": 0.5195,
+          "collapse_count": 266,
+          "event_count": 512,
+          "guard_consistency_ratio": 1.0,
+          "no_tick_suppression_ratio": 0.4805,
+          "observe_count": 213,
+          "proof_integrity_ratio": 1.0,
+          "suppressed_count": 246
+        },
+        "native_demo": {
+          "block_count": 2,
+          "causal_execution_ratio": 0.2857,
+          "collapse_count": 2,
+          "event_count": 7,
+          "guard_consistency_ratio": 1.0,
+          "no_tick_suppression_ratio": 0.5714,
+          "observe_count": 2,
+          "proof_integrity_ratio": 1.0,
+          "suppressed_count": 4
+        },
+        "r3_runtime": {
+          "block_count": 0,
+          "causal_execution_ratio": 0.5,
+          "collapse_count": 35,
+          "event_count": 70,
+          "guard_consistency_ratio": 0.0,
+          "no_tick_suppression_ratio": 0.5,
+          "observe_count": 35,
+          "proof_integrity_ratio": 1.0,
+          "suppressed_count": 35
+        }
+      },
+      "observe_count": 250,
+      "suppressed_count": 285,
+      "suppression_ratio": 0.483871
+    }
+  },
+  "observability_index_hash": "sha256:e18e3d2a4977fc4c9a636959984a7d377fa1ebaa2b7089aeed358a16b29dea82",
+  "observability_score": 100.0,
+  "pass": true,
+  "project": "PNVA-Core",
+  "root_observability": {
+    "dependency_graph_hash": "sha256:b163111434ae28702917fb66aa71a9a0d0e527092cc64a6da0b72b7d69246f2f",
+    "publication_path_leak_count": 0,
+    "root_release_hash": "sha256:97f5c3f379db838784f864c312778a3afabea50ebb30acfffe4f6da2c97b65fc",
+    "root_scores": {
+      "root_causal_intelligence.root_causal_intelligence_score": 100.0,
+      "root_claim_boundary.claim_boundary_score": 100.0,
+      "root_dependency_graph.dependency_score": 100.0,
+      "root_publication.publication_score": 100.0,
+      "root_sovereignty.root_score": 100.0,
+      "root_traceability.root_traceability_score": 100.0
+    },
+    "unbounded_high_risk_occurrence_count": 0
+  },
+  "runtime_observability": {
+    "accepted_slot_count": 35,
+    "contract_check_count": 315,
+    "contract_failure_count": 0,
+    "negative_control_count": 63,
+    "negative_control_detected_count": 63,
+    "no_tick_pair_failure_count": 0,
+    "no_tick_pair_integrity_count": 35,
+    "pending_slot_count": 0,
+    "rejected_event_count": 0
+  },
+  "schema_version": "pnva.root_observability_index.v1"
+}

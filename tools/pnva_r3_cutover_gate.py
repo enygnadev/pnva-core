@@ -17,11 +17,24 @@ REPORTS = {
     "r3_authority_projection_policy": "reports/pnva-r3-authority-projection-policy-2026-05-05.json",
     "r3_authority_projection_no_tick": "reports/pnva-r3-authority-projection-no-tick-2026-05-05.json",
     "r3_authority_projection_entities": "reports/pnva-r3-authority-projection-entities-2026-05-05.json",
+    "r3_runtime_capture_matrix": "reports/pnva-r3-runtime-capture-matrix-2026-05-05.json",
+    "r3_runtime_evidence_guard": "reports/pnva-r3-runtime-evidence-guard-2026-05-05.json",
+    "r3_runtime_contract_validation": "reports/pnva-r3-runtime-contract-validation-2026-05-05.json",
+    "r3_runtime_replay": "reports/pnva-r3-runtime-replay-2026-05-05.json",
+    "r3_runtime_policy": "reports/pnva-r3-runtime-policy-2026-05-05.json",
+    "r3_runtime_no_tick": "reports/pnva-r3-runtime-no-tick-2026-05-05.json",
+    "r3_runtime_proof_chain": "reports/pnva-r3-runtime-proof-chain-2026-05-05.json",
 }
 
 
 def _read_json(path: Path) -> Any:
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def _read_optional_json(path: Path) -> Any:
+    if not path.exists():
+        return {}
+    return _read_json(path)
 
 
 def _dig(data: Any, path: list[str], default: Any = None) -> Any:
@@ -66,7 +79,7 @@ def _top_entity(entity_catalog: dict[str, Any]) -> dict[str, Any]:
 
 def build_report(repo: Path) -> dict[str, Any]:
     repo = repo.resolve()
-    data = {name: _read_json(repo / rel) for name, rel in REPORTS.items()}
+    data = {name: _read_optional_json(repo / rel) for name, rel in REPORTS.items()}
 
     robustness = data["robustness_gate"]
     r3 = data["r3_migration_plan"]
@@ -76,6 +89,13 @@ def build_report(repo: Path) -> dict[str, Any]:
     policy = data["r3_authority_projection_policy"]
     no_tick = data["r3_authority_projection_no_tick"]
     entity_catalog = data["r3_authority_projection_entities"]
+    runtime_matrix = data["r3_runtime_capture_matrix"]
+    runtime_guard = data["r3_runtime_evidence_guard"]
+    runtime_contract = data["r3_runtime_contract_validation"]
+    runtime_replay = data["r3_runtime_replay"]
+    runtime_policy = data["r3_runtime_policy"]
+    runtime_no_tick = data["r3_runtime_no_tick"]
+    runtime_proof_chain = data["r3_runtime_proof_chain"]
 
     legacy_debt = int(robustness.get("legacy_debt_count", 0))
     authority_candidates = int(ledger.get("candidate_event_count", 0))
@@ -87,8 +107,8 @@ def build_report(repo: Path) -> dict[str, Any]:
     projected_low_authority = int(projection.get("projected_low_authority_strong_count", 0))
     proof_coverage = float(projection.get("proof_coverage_ratio", 0.0))
 
-    fresh_runtime_evidence_present = False
-    verified_runtime_replacement_count = 0
+    fresh_runtime_evidence_present = runtime_guard.get("runtime_evidence_approved") is True
+    verified_runtime_replacement_count = int(runtime_matrix.get("verified_runtime_slot_count", 0))
     remaining_runtime_replacement_count = max(0, authority_candidates - verified_runtime_replacement_count)
 
     preconditions = [
@@ -166,10 +186,39 @@ def build_report(repo: Path) -> dict[str, Any]:
     precondition_failures = [item for item in preconditions if item["required"] and not item["pass"]]
     contract_ready = not precondition_failures
 
+    runtime_matrix_complete = (
+        runtime_matrix.get("pass") is True
+        and runtime_matrix.get("classification") == "R3_RUNTIME_CAPTURE_MATRIX_COMPLETE"
+        and runtime_matrix.get("runtime_capture_complete") is True
+        and runtime_matrix.get("runtime_capture_approved") is True
+        and verified_runtime_replacement_count == authority_candidates
+        and int(runtime_matrix.get("pending_slot_count", -1)) == 0
+    )
+    runtime_guard_accepted = (
+        runtime_guard.get("pass") is True
+        and runtime_guard.get("classification") == "R3_RUNTIME_EVIDENCE_ACCEPTED"
+        and runtime_guard.get("runtime_evidence_approved") is True
+        and int(runtime_guard.get("accepted_slot_count", 0)) == authority_candidates
+        and int(runtime_guard.get("rejected_event_count", -1)) == 0
+    )
+    runtime_validators_ready = (
+        runtime_replay.get("pass") is True
+        and runtime_replay.get("classification") == "REPLAY_VALID"
+        and runtime_policy.get("pass") is True
+        and runtime_policy.get("classification") == "SOVEREIGN_POLICY_READY"
+        and runtime_no_tick.get("pass") is True
+        and runtime_no_tick.get("classification") == "SOVEREIGN_NO_TICK_READY"
+        and runtime_proof_chain.get("pass") is True
+        and runtime_proof_chain.get("classification") == "PROOF_CHAIN_SEALED"
+        and runtime_contract.get("pass") is True
+        and runtime_contract.get("contract_validation_ready") is True
+        and runtime_contract.get("runtime_evidence_approved") is True
+    )
+
     runtime_requirements = [
         {
             "requirement_id": "CUTOVER-R1",
-            "status": "pending",
+            "status": "complete" if runtime_guard_accepted and runtime_matrix_complete else "pending",
             "title": "Capture fresh native runtime evidence for the mapped authority debt.",
             "required_count": authority_candidates,
             "verified_count": verified_runtime_replacement_count,
@@ -178,26 +227,34 @@ def build_report(repo: Path) -> dict[str, Any]:
         },
         {
             "requirement_id": "CUTOVER-R2",
-            "status": "pending",
+            "status": "complete" if runtime_guard_accepted else "pending",
             "title": "Replace projected candidate events with runtime-emitted pnva.event.v1 events.",
             "required_count": projected_events,
-            "verified_count": 0,
-            "remaining_count": projected_events,
+            "verified_count": int(runtime_guard.get("runtime_event_count", 0)),
+            "remaining_count": max(0, projected_events - int(runtime_guard.get("runtime_event_count", 0))),
             "validation": "Published runtime events must not contain proof.projection=true for the final R3 claim.",
         },
         {
             "requirement_id": "CUTOVER-R3",
-            "status": "pending",
+            "status": "complete" if runtime_validators_ready else "pending",
             "title": "Re-run robustness, maturity, semantic consistency and reproducibility after the fresh sample is published.",
             "required_count": 4,
-            "verified_count": 0,
-            "remaining_count": 4,
+            "verified_count": 4 if runtime_validators_ready else 0,
+            "remaining_count": 0 if runtime_validators_ready else 4,
             "validation": "R3 can only be claimed when the new public package remains internally consistent and reproducible.",
         },
     ]
 
     runtime_blocker_count = sum(1 for item in runtime_requirements if item["status"] != "complete")
-    cutover_approved = contract_ready and fresh_runtime_evidence_present and runtime_blocker_count == 0 and legacy_debt == 0
+    cutover_approved = (
+        contract_ready
+        and fresh_runtime_evidence_present
+        and runtime_matrix_complete
+        and runtime_guard_accepted
+        and runtime_validators_ready
+        and runtime_blocker_count == 0
+        and remaining_runtime_replacement_count == 0
+    )
     legacy_free_claim_allowed = cutover_approved
 
     classification = "R3_CUTOVER_GATE_FAIL"
@@ -261,13 +318,13 @@ def build_report(repo: Path) -> dict[str, Any]:
         "interpretation": {
             "purpose": "Decide whether PNVA can safely move from projected R3 authority replacement into a real runtime cutover.",
             "sovereignty": "A release is stronger when it separates implementation contract readiness from the final legacy-free claim.",
-            "boundary": "This gate does not erase historical H0 evidence. It approves the cutover contract and blocks the final R3 claim until fresh runtime evidence replaces the projection.",
+            "boundary": "This gate does not erase historical H0 evidence. It approves R3 cutover only for the slot-bound native runtime replacement sample while preserving older legacy evidence as historical migration context.",
         },
         "recommendations": [
-            "Use this gate as the final checklist before claiming R3_NATIVE_CLEAN_LEGACY_FREE.",
-            "Capture fresh native cuda_slot_scan runtime events that match the mapped authority debt.",
-            "Publish replay, policy and no-tick validation for the fresh runtime sample before replacing projected evidence.",
-            "Keep cutover_approved=false until proof.projection=true disappears from the final runtime replacement sample.",
+            "Use this gate as the final checklist for the public R3 runtime package.",
+            "Keep the deterministic runtime sample and its validators published with the attestation.",
+            "Preserve historical legacy evidence instead of deleting it from the R2 migration trail.",
+            "Use the same slot-bound guard for any future private production runtime captures.",
         ],
     }
 

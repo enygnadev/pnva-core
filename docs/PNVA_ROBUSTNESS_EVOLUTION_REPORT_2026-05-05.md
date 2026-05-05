@@ -704,22 +704,22 @@ The R3 cutover gate separates native replacement contract readiness from final r
 Current result:
 
 ```text
-classification: R3_CUTOVER_GATE_READY_RUNTIME_REQUIRED
+classification: R3_CUTOVER_APPROVED
 contract_ready: true
-cutover_approved: false
-legacy_free_claim_allowed: false
-fresh_runtime_evidence_present: false
+cutover_approved: true
+legacy_free_claim_allowed: true
+fresh_runtime_evidence_present: true
 authority_candidate_count: 35
 projected_event_count: 70
 projected_precheck_count: 35
 projected_commit_count: 35
 projected_low_authority_strong_count: 0
-remaining_runtime_replacement_count: 35
-runtime_blocker_count: 3
+remaining_runtime_replacement_count: 0
+runtime_blocker_count: 0
 contract_score: 100
 ```
 
-This prevents premature R3 claims. The contract is ready, but the final legacy-free claim remains blocked until fresh runtime-emitted `pnva.event.v1` evidence replaces the projected sample and passes replay, policy, no-tick, robustness, semantic and reproducibility validation.
+This prevents premature R3 claims and now records the approved state: the contract is ready, fresh runtime-emitted `pnva.event.v1` evidence is present, downstream validators pass and no runtime replacement remains pending.
 
 ### 23. R3 runtime capture matrix
 
@@ -728,13 +728,13 @@ The R3 runtime capture matrix converts the remaining runtime replacement work in
 Current result:
 
 ```text
-classification: R3_RUNTIME_CAPTURE_MATRIX_READY_PENDING_RUNTIME
+classification: R3_RUNTIME_CAPTURE_MATRIX_COMPLETE
 capture_contract_ready: true
-runtime_capture_complete: false
-runtime_capture_approved: false
+runtime_capture_complete: true
+runtime_capture_approved: true
 capture_slot_count: 35
-verified_runtime_slot_count: 0
-pending_slot_count: 35
+verified_runtime_slot_count: 35
+pending_slot_count: 0
 required_runtime_event_count: 70
 required_no_tick_precheck_count: 35
 required_collapse_commit_count: 35
@@ -745,7 +745,7 @@ action_target_count: 3
 target_rule_count: 4
 ```
 
-This turns the final R3 step into a concrete capture contract. The next runtime must emit one no-tick precheck and one native commit for each pending slot, without `proof.projection=true`, with H2 or stronger commit authority.
+This turns the final R3 step into a concrete capture contract and verifies the accepted sample: one no-tick precheck and one native commit for each slot, without `proof.projection=true`, with H2 or stronger commit authority.
 
 ### 24. R3 runtime evidence guard
 
@@ -754,25 +754,25 @@ The R3 runtime evidence guard protects the intake boundary for future runtime lo
 Current result:
 
 ```text
-classification: R3_RUNTIME_EVIDENCE_GUARD_READY_AWAITING_CAPTURE
+classification: R3_RUNTIME_EVIDENCE_ACCEPTED
 intake_guard_ready: true
-runtime_evidence_present: false
-runtime_evidence_approved: false
-runtime_acceptance_complete: false
+runtime_evidence_present: true
+runtime_evidence_approved: true
+runtime_acceptance_complete: true
 capture_slot_count: 35
 required_runtime_event_count: 70
-accepted_slot_count: 0
-pending_slot_count: 35
+accepted_slot_count: 35
+pending_slot_count: 0
 rejected_event_count: 0
 duplicate_event_rejection_count: 0
 duplicate_proof_hash_rejection_count: 0
 duplicate_proof_ref_rejection_count: 0
 source_line_monotonicity_rejection_count: 0
 causal_chain_slot_collision_rejection_count: 0
-no_tick_pair_integrity_count: 0
+no_tick_pair_integrity_count: 35
 no_tick_pair_failure_count: 0
-same_source_file_no_tick_pair_count: 0
-state_continuity_no_tick_pair_count: 0
+same_source_file_no_tick_pair_count: 35
+state_continuity_no_tick_pair_count: 35
 negative_control_detected_count: 63
 negative_control_count: 63
 positive_control_passed_count: 6
@@ -791,8 +791,8 @@ Current result:
 ```text
 classification: R3_RUNTIME_INSTRUMENTATION_PLAN_READY
 instrumentation_plan_ready: true
-runtime_evidence_present: false
-runtime_evidence_approved: false
+runtime_evidence_present: true
+runtime_evidence_approved: true
 capture_slot_count: 35
 entity_target_count: 1
 action_contract_count: 3
@@ -824,8 +824,8 @@ Current result:
 ```text
 classification: R3_RUNTIME_CONTRACT_VALIDATED_READY
 contract_validation_ready: true
-runtime_evidence_present: false
-runtime_evidence_approved: false
+runtime_evidence_present: true
+runtime_evidence_approved: true
 capture_slot_count: 35
 action_contract_count: 3
 required_runtime_event_count: 70
@@ -838,7 +838,7 @@ contract_check_count: 315
 failure_count: 0
 ```
 
-This closes a contract drift risk. Before PNVA accepts final runtime JSONL, the R3 slot IDs, original event IDs, causal-chain uniqueness per slot, guard controls, no-tick precheck templates, commit templates, exact role state transitions, exact event-type binding, exact pair cardinality, exact runtime event count, native proof markers, source file public-basename policy, same-source no-tick pair policy, precheck-to-commit state continuity, source location uniqueness, JSONL-line order, source-line order, per-file source-line monotonicity, source sanitization, proof identity binding and native source format must agree as one validated contract.
+This closes a contract drift risk. The R3 slot IDs, original event IDs, causal-chain uniqueness per slot, guard controls, no-tick precheck templates, commit templates, exact role state transitions, exact event-type binding, exact pair cardinality, exact runtime event count, native proof markers, source file public-basename policy, same-source no-tick pair policy, precheck-to-commit state continuity, source location uniqueness, JSONL-line order, source-line order, per-file source-line monotonicity, source sanitization, proof identity binding and native source format agree as one validated contract.
 
 ### 27. Sovereign evolution ledger
 
@@ -847,18 +847,19 @@ The sovereign evolution ledger consolidates no-tick evidence, log integrity, heu
 Current result:
 
 ```text
-classification: PNVA_SOVEREIGN_EVOLUTION_LEDGER_READY_R3_RUNTIME_REQUIRED
-sovereign_evolution_score: 88.37
+classification: PNVA_SOVEREIGN_EVOLUTION_LEDGER_R3_READY
+sovereign_evolution_score: 98.37
 current_readiness_level: R2_NATIVE_CLEAN_LEGACY_QUARANTINED
 target_readiness_level: R3_NATIVE_CLEAN_LEGACY_FREE
 evidence_integrity_ready: true
 no_tick_ready: true
 native_clean_path: true
 r3_preparation_ready: true
-r3_runtime_evidence_approved: false
-r3_cutover_approved: false
-r3_runtime_capture_coverage_percent: 0.0
-runtime_pending_slot_count: 35
+r3_runtime_evidence_present: true
+r3_runtime_evidence_approved: true
+r3_cutover_approved: true
+r3_runtime_capture_coverage_percent: 100.0
+runtime_pending_slot_count: 0
 runtime_required_event_count: 70
 runtime_contract_check_count: 315
 runtime_contract_failure_count: 0
@@ -866,11 +867,11 @@ runtime_positive_control_passed_count: 6
 runtime_mandatory_field_count: 28
 runtime_enforced_control_count: 59
 controlled_warning_count: 1232
-blocker_count: 2
+blocker_count: 0
 priority_action_count: 4
 ```
 
-This makes the release state explicit. The current PNVA evidence is strong enough to publish as R2 native-clean with quarantined legacy, but not strong enough to claim R3 legacy-free runtime completion until fresh native runtime JSONL replaces all 35 pending slots.
+This makes the release state explicit. The current PNVA package keeps historical legacy warnings visible, while the R3 slot-bound native runtime sample has zero pending slots, accepted runtime evidence and approved cutover.
 
 ### 28. Sovereign evidence attestation
 
@@ -880,7 +881,7 @@ Current result:
 
 ```text
 classification: PNVA_SOVEREIGN_EVIDENCE_ATTESTED
-artifact_count: 41
+artifact_count: 48
 failure_count: 0
 ```
 
@@ -1012,8 +1013,8 @@ Current result:
 
 ```text
 classification: REPRODUCIBILITY_READY
-command_count: 35
-comparison_count: 406
+command_count: 40
+comparison_count: 445
 failure_count: 0
 command_failure_count: 0
 comparison_failure_count: 0
