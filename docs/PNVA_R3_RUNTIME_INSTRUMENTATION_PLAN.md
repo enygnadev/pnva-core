@@ -46,7 +46,7 @@ required_no_tick_precheck_count: 35
 required_collapse_commit_count: 35
 event_template_count: 6
 mandatory_field_count: 25
-negative_control_detected_count: 36
+negative_control_detected_count: 38
 positive_control_passed_count: 6
 ```
 
@@ -74,6 +74,10 @@ entity_id present
 causal_chain_id present
 same causal_chain_id across precheck and commit
 commit timestamp >= precheck timestamp
+exactly one precheck and one commit per slot
+runtime event count equals required_runtime_event_count
+precheck event_type equals slot event_type + _authority_precheck
+commit event_type equals slot event_type
 unique event_id values
 proof_hash present
 proof_hash bound to event identity
@@ -142,7 +146,7 @@ Current result:
 
 ```text
 R3_RUNTIME_CONTRACT_VALIDATED_READY
-171 contract checks
+195 contract checks
 0 failures
 ```
 

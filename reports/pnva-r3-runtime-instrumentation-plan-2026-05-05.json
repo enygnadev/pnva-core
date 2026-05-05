@@ -42,6 +42,10 @@
           32
         ]
       ],
+      "event_type_policy": {
+        "commit_event_type_must_equal_slot_event_type": true,
+        "precheck_event_type_must_equal_slot_event_type_plus_authority_precheck": true
+      },
       "heuristic_policy": {
         "duplicate_rules_forbidden": true,
         "known_rules_only": true
@@ -83,6 +87,9 @@
       "pairing_policy": {
         "commit_timestamp_after_precheck_required": true,
         "duplicate_event_id_forbidden": true,
+        "exactly_one_commit_per_slot_required": true,
+        "exactly_one_precheck_per_slot_required": true,
+        "runtime_event_count_must_equal_required": true,
         "same_causal_chain_id_required": true,
         "timestamp_iso8601_required": true
       },
@@ -219,6 +226,10 @@
           2
         ]
       ],
+      "event_type_policy": {
+        "commit_event_type_must_equal_slot_event_type": true,
+        "precheck_event_type_must_equal_slot_event_type_plus_authority_precheck": true
+      },
       "heuristic_policy": {
         "duplicate_rules_forbidden": true,
         "known_rules_only": true
@@ -230,6 +241,9 @@
       "pairing_policy": {
         "commit_timestamp_after_precheck_required": true,
         "duplicate_event_id_forbidden": true,
+        "exactly_one_commit_per_slot_required": true,
+        "exactly_one_precheck_per_slot_required": true,
+        "runtime_event_count_must_equal_required": true,
         "same_causal_chain_id_required": true,
         "timestamp_iso8601_required": true
       },
@@ -332,6 +346,10 @@
           1
         ]
       ],
+      "event_type_policy": {
+        "commit_event_type_must_equal_slot_event_type": true,
+        "precheck_event_type_must_equal_slot_event_type_plus_authority_precheck": true
+      },
       "heuristic_policy": {
         "duplicate_rules_forbidden": true,
         "known_rules_only": true
@@ -342,6 +360,9 @@
       "pairing_policy": {
         "commit_timestamp_after_precheck_required": true,
         "duplicate_event_id_forbidden": true,
+        "exactly_one_commit_per_slot_required": true,
+        "exactly_one_precheck_per_slot_required": true,
+        "runtime_event_count_must_equal_required": true,
         "same_causal_chain_id_required": true,
         "timestamp_iso8601_required": true
       },
@@ -406,7 +427,7 @@
   "classification": "R3_RUNTIME_INSTRUMENTATION_PLAN_READY",
   "entity_target_count": 1,
   "event_template_count": 6,
-  "generated_at": "2026-05-05T12:08:48Z",
+  "generated_at": "2026-05-05T12:16:01Z",
   "instrumentation_plan_ready": true,
   "interpretation": {
     "boundary": "This plan is not runtime evidence and does not approve R3 cutover; it defines how fresh runtime evidence must be emitted and validated.",
@@ -441,8 +462,8 @@
     "source.sanitized"
   ],
   "mandatory_field_count": 25,
-  "negative_control_count": 36,
-  "negative_control_detected_count": 36,
+  "negative_control_count": 38,
+  "negative_control_detected_count": 38,
   "pass": true,
   "positive_control_count": 6,
   "positive_control_passed_count": 6,
@@ -499,7 +520,7 @@
     "event_template_count": 6,
     "instrumentation_plan_ready": true,
     "mandatory_field_count": 25,
-    "negative_control_detected_count": 36,
+    "negative_control_detected_count": 38,
     "positive_control_passed_count": 6,
     "required_runtime_event_count": 70
   },

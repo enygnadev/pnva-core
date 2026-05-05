@@ -54,6 +54,7 @@ REQUIRED_ENFORCED_CONTROLS = {
     "timestamp_iso8601_required": True,
     "duplicate_event_id_forbidden": True,
     "field_state_required": True,
+    "event_type_must_match_slot": True,
     "entity_id_required": True,
     "entity_type_required": True,
     "entity_type_must_match_slot": True,
@@ -77,6 +78,8 @@ REQUIRED_ENFORCED_CONTROLS = {
     "precheck_must_be_no_tick": True,
     "no_tick_pair_causal_chain_required": True,
     "no_tick_pair_commit_after_precheck_required": True,
+    "no_tick_pair_exactly_one_precheck_commit_required": True,
+    "runtime_event_count_exact_required": True,
     "commit_must_match_slot_action": True,
     "target_rules_required_on_commit": True,
     "heuristic_rules_known_required": True,
@@ -127,11 +130,14 @@ def _template_checks(checks: list[dict[str, Any]], contract: dict[str, Any]) -> 
     precheck = contract.get("precheck_template") if isinstance(contract.get("precheck_template"), dict) else {}
     commit = contract.get("commit_template") if isinstance(contract.get("commit_template"), dict) else {}
     pairing = contract.get("pairing_policy") if isinstance(contract.get("pairing_policy"), dict) else {}
+    event_type_policy = contract.get("event_type_policy") if isinstance(contract.get("event_type_policy"), dict) else {}
     tension_policy = contract.get("tension_policy") if isinstance(contract.get("tension_policy"), dict) else {}
     proof_policy = contract.get("proof_policy") if isinstance(contract.get("proof_policy"), dict) else {}
     heuristic_policy = contract.get("heuristic_policy") if isinstance(contract.get("heuristic_policy"), dict) else {}
     slot_ids = contract.get("slot_ids") if isinstance(contract.get("slot_ids"), list) else []
     original_ids = contract.get("original_event_ids") if isinstance(contract.get("original_event_ids"), list) else []
+    event_type_mix = contract.get("event_type_mix") if isinstance(contract.get("event_type_mix"), list) else []
+    target_event_types = sorted(str(item[0]) for item in event_type_mix if isinstance(item, list) and item and str(item[0]))
 
     _add_check(checks, "contract", f"{contract_id}_precheck_count", int(contract.get("required_precheck_count", 0)), slot_count)
     _add_check(checks, "contract", f"{contract_id}_commit_count", int(contract.get("required_commit_count", 0)), slot_count)
@@ -151,6 +157,8 @@ def _template_checks(checks: list[dict[str, Any]], contract: dict[str, Any]) -> 
     _add_check(checks, "template", f"{contract_id}_precheck_kind", _dig(precheck, ["decision", "kind"]), "observe")
     _add_check(checks, "template", f"{contract_id}_precheck_action", _dig(precheck, ["decision", "action"]), "NO_ACTION")
     _add_check(checks, "template", f"{contract_id}_commit_action", _dig(commit, ["decision", "action"]), action)
+    _add_check(checks, "event_type_policy", f"{contract_id}_commit_event_type_in_matrix", commit.get("event_type") in set(target_event_types), True)
+    _add_check(checks, "event_type_policy", f"{contract_id}_precheck_event_type_binding", precheck.get("event_type"), f"{commit.get('event_type')}_authority_precheck")
     _add_check(checks, "template", f"{contract_id}_commit_min_authority", commit.get("min_authority"), "H2")
     _add_check(checks, "template", f"{contract_id}_precheck_native_rule", "native_event_emitter" in set(precheck.get("required_rules", [])), True)
     _add_check(checks, "template", f"{contract_id}_commit_rules_nonempty", bool(commit.get("required_rules")), True)
@@ -158,6 +166,11 @@ def _template_checks(checks: list[dict[str, Any]], contract: dict[str, Any]) -> 
     _add_check(checks, "pairing", f"{contract_id}_duplicate_event_id_forbidden", pairing.get("duplicate_event_id_forbidden"), True)
     _add_check(checks, "pairing", f"{contract_id}_same_causal_chain_id_required", pairing.get("same_causal_chain_id_required"), True)
     _add_check(checks, "pairing", f"{contract_id}_commit_timestamp_after_precheck_required", pairing.get("commit_timestamp_after_precheck_required"), True)
+    _add_check(checks, "pairing", f"{contract_id}_exactly_one_precheck_per_slot", pairing.get("exactly_one_precheck_per_slot_required"), True)
+    _add_check(checks, "pairing", f"{contract_id}_exactly_one_commit_per_slot", pairing.get("exactly_one_commit_per_slot_required"), True)
+    _add_check(checks, "pairing", f"{contract_id}_runtime_event_count_exact", pairing.get("runtime_event_count_must_equal_required"), True)
+    _add_check(checks, "event_type_policy", f"{contract_id}_precheck_event_type_policy", event_type_policy.get("precheck_event_type_must_equal_slot_event_type_plus_authority_precheck"), True)
+    _add_check(checks, "event_type_policy", f"{contract_id}_commit_event_type_policy", event_type_policy.get("commit_event_type_must_equal_slot_event_type"), True)
     _add_check(checks, "tension_policy", f"{contract_id}_gate_delta_consistency", tension_policy.get("gate_delta_must_equal_score_minus_threshold"), True)
     _add_check(checks, "tension_policy", f"{contract_id}_precheck_gate_delta_nonpositive", tension_policy.get("precheck_gate_delta_nonpositive_required"), True)
     _add_check(checks, "tension_policy", f"{contract_id}_commit_gate_delta_nonnegative", tension_policy.get("commit_gate_delta_nonnegative_required"), True)

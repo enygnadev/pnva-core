@@ -99,6 +99,13 @@ def _action_contracts(slots: list[dict[str, Any]]) -> list[dict[str, Any]]:
                     "duplicate_event_id_forbidden": True,
                     "same_causal_chain_id_required": True,
                     "commit_timestamp_after_precheck_required": True,
+                    "exactly_one_precheck_per_slot_required": True,
+                    "exactly_one_commit_per_slot_required": True,
+                    "runtime_event_count_must_equal_required": True,
+                },
+                "event_type_policy": {
+                    "precheck_event_type_must_equal_slot_event_type_plus_authority_precheck": True,
+                    "commit_event_type_must_equal_slot_event_type": True,
                 },
                 "tension_policy": {
                     "gate_delta_must_equal_score_minus_threshold": True,

@@ -275,6 +275,11 @@ def _role(event: dict[str, Any], slot: dict[str, Any]) -> str:
     return "unknown"
 
 
+def _expected_event_type(slot: dict[str, Any], role: str) -> str:
+    base = str(slot.get("event_type") or "")
+    return f"{base}_authority_precheck" if role == "precheck" else base
+
+
 def _event_codes(event: dict[str, Any], slot: dict[str, Any]) -> list[str]:
     codes: list[str] = []
     if event.get("schema_version") != "pnva.event.v1":
@@ -338,6 +343,8 @@ def _event_codes(event: dict[str, Any], slot: dict[str, Any]) -> list[str]:
     if role in {"precheck", "commit"} and not _proof_ref_role_valid(event, slot, role):
         codes.append("PROOF_REF_ROLE_MISMATCH")
     if role == "precheck":
+        if str(event.get("event_type") or "") != _expected_event_type(slot, "precheck"):
+            codes.append("PRECHECK_EVENT_TYPE_MISMATCH")
         if _decision_kind(event) not in PRECHECK_DECISIONS:
             codes.append("PRECHECK_DECISION_INVALID")
         if _decision_action(event) != "NO_ACTION":
@@ -347,6 +354,8 @@ def _event_codes(event: dict[str, Any], slot: dict[str, Any]) -> list[str]:
         if "native_event_emitter" not in rules:
             codes.append("PRECHECK_NATIVE_RULE_MISSING")
     elif role == "commit":
+        if str(event.get("event_type") or "") != _expected_event_type(slot, "commit"):
+            codes.append("COMMIT_EVENT_TYPE_MISMATCH")
         if _decision_kind(event) not in STRONG_DECISIONS:
             codes.append("COMMIT_DECISION_NOT_STRONG")
         if _decision_action(event) != str(slot.get("decision_action") or ""):
@@ -369,6 +378,7 @@ def _pair_evidence(prechecks: list[dict[str, Any]], commits: list[dict[str, Any]
     matching_chain_count = 0
     ordered_pair_count = 0
     shared_chains: set[str] = set()
+    exact_cardinality = len(prechecks) == 1 and len(commits) == 1
     for precheck in prechecks:
         precheck_chain = str(precheck.get("causal_chain_id") or "")
         precheck_time = _timestamp_epoch(precheck)
@@ -382,7 +392,9 @@ def _pair_evidence(prechecks: list[dict[str, Any]], commits: list[dict[str, Any]
             if precheck_time is not None and commit_time is not None and commit_time >= precheck_time:
                 ordered_pair_count += 1
 
-    if ordered_pair_count > 0:
+    if not exact_cardinality and prechecks and commits:
+        reason = "NO_TICK_PAIR_CARDINALITY_INVALID"
+    elif ordered_pair_count > 0:
         reason = ""
     elif prechecks and commits and not shared_chains:
         reason = "NO_TICK_PAIR_CAUSAL_CHAIN_MISMATCH"
@@ -392,7 +404,8 @@ def _pair_evidence(prechecks: list[dict[str, Any]], commits: list[dict[str, Any]
         reason = "NO_TICK_PAIR_INCOMPLETE"
 
     return {
-        "valid": ordered_pair_count > 0,
+        "valid": exact_cardinality and ordered_pair_count > 0,
+        "exact_cardinality": exact_cardinality,
         "matching_chain_count": matching_chain_count,
         "ordered_pair_count": ordered_pair_count,
         "shared_causal_chain_count": len(shared_chains),
@@ -479,7 +492,7 @@ def _validate_runtime_events(matrix: dict[str, Any], events: list[dict[str, Any]
         pair = _pair_evidence(row["precheck"], row["commit"])
         no_tick_pair_integrity_count += 1 if pair["valid"] else 0
         no_tick_pair_failure_count += 1 if precheck_count > 0 and commit_count > 0 and not pair["valid"] else 0
-        accepted = precheck_count >= 1 and commit_count >= 1 and rejected_count == 0 and pair["valid"]
+        accepted = precheck_count == 1 and commit_count == 1 and rejected_count == 0 and pair["valid"]
         accepted_slot_count += 1 if accepted else 0
         slot_rows.append(
             {
@@ -494,6 +507,7 @@ def _validate_runtime_events(matrix: dict[str, Any], events: list[dict[str, Any]
                 "missing_precheck": precheck_count == 0,
                 "missing_commit": commit_count == 0,
                 "no_tick_pair_valid": pair["valid"],
+                "exact_no_tick_pair_cardinality": pair["exact_cardinality"],
                 "matching_causal_chain_pair_count": pair["matching_chain_count"],
                 "ordered_no_tick_pair_count": pair["ordered_pair_count"],
                 "shared_causal_chain_count": pair["shared_causal_chain_count"],
@@ -652,6 +666,8 @@ def _negative_controls(matrix: dict[str, Any]) -> dict[str, Any]:
     run_control("reject_unknown_heuristic_rule", "commit", lambda event: event["heuristics"].update({"rules": list(slot.get("target_rules") or []) + ["unknown_rule"]}), "HEURISTIC_RULE_UNKNOWN")
     run_control("reject_duplicate_heuristic_rule", "commit", lambda event: event["heuristics"].update({"rules": list(slot.get("target_rules") or []) + [str((slot.get("target_rules") or ["native_event_emitter"])[0])]}), "HEURISTIC_RULE_DUPLICATE")
     run_control("reject_wrong_action", "commit", lambda event: event["decision"].update({"action": "WRONG_ACTION"}), "COMMIT_ACTION_MISMATCH")
+    run_control("reject_precheck_event_type_mismatch", "precheck", lambda event: event.update({"event_type": "wrong_precheck_event_type"}), "PRECHECK_EVENT_TYPE_MISMATCH")
+    run_control("reject_commit_event_type_mismatch", "commit", lambda event: event.update({"event_type": "wrong_commit_event_type"}), "COMMIT_EVENT_TYPE_MISMATCH")
     run_control("reject_precheck_execution_action", "precheck", lambda event: event["decision"].update({"action": slot.get("decision_action")}), "PRECHECK_ACTION_INVALID")
     run_control("reject_precheck_positive_gate_delta", "precheck", lambda event: event["tension"].update({"score": 1.0, "threshold": 0.5, "gate_delta": 0.5}), "PRECHECK_GATE_DELTA_POSITIVE")
     run_control("reject_commit_negative_gate_delta", "commit", lambda event: event["tension"].update({"score": 0.0, "threshold": 0.5, "gate_delta": -0.5}), "COMMIT_GATE_DELTA_NEGATIVE")
@@ -761,7 +777,7 @@ def build_report(repo: Path, runtime_events_path: Path | None = None) -> dict[st
         runtime_present
         and runtime["accepted_slot_count"] == len(slots)
         and runtime["rejected_event_count"] == 0
-        and runtime["runtime_event_count"] >= len(slots) * 2
+        and runtime["runtime_event_count"] == len(slots) * 2
     )
 
     if not guard_ready:
@@ -813,6 +829,7 @@ def build_report(repo: Path, runtime_events_path: Path | None = None) -> dict[st
             "timestamp_iso8601_required": True,
             "duplicate_event_id_forbidden": True,
             "field_state_required": True,
+            "event_type_must_match_slot": True,
             "entity_id_required": True,
             "entity_type_required": True,
             "entity_type_must_match_slot": True,
@@ -836,6 +853,8 @@ def build_report(repo: Path, runtime_events_path: Path | None = None) -> dict[st
             "precheck_must_be_no_tick": True,
             "no_tick_pair_causal_chain_required": True,
             "no_tick_pair_commit_after_precheck_required": True,
+            "no_tick_pair_exactly_one_precheck_commit_required": True,
+            "runtime_event_count_exact_required": True,
             "commit_must_match_slot_action": True,
             "target_rules_required_on_commit": True,
             "heuristic_rules_known_required": True,
@@ -875,14 +894,16 @@ def build_report(repo: Path, runtime_events_path: Path | None = None) -> dict[st
         },
         "interpretation": {
             "purpose": "Protect the R3 runtime intake boundary before fresh events are accepted as legacy-free evidence.",
-            "sovereignty": "PNVA becomes harder to fake when projected proofs, malformed, duplicated or content-unbound proof hashes, wrong proof-ref slot roles, malformed or inconsistent tension values, invalid gate signs, duplicate events, entity or slot mismatches, unsanitized sources, unknown heuristic rules, weak authority, missing target rules and causally broken no-tick pairs are rejected before cutover.",
+            "sovereignty": "PNVA becomes harder to fake when projected proofs, malformed, duplicated or content-unbound proof hashes, wrong proof-ref slot roles, wrong event types, malformed or inconsistent tension values, invalid gate signs, duplicate events, entity or slot mismatches, unsanitized sources, unknown heuristic rules, weak authority, missing target rules, extra runtime events and causally broken no-tick pairs are rejected before cutover.",
             "boundary": "Without a runtime-events file this guard certifies the intake contract only; it does not claim final runtime completion.",
         },
         "recommendations": [
             "Feed fresh runtime JSONL through this guard before rerunning R3 cutover approval.",
             "Reject any event with proof.projection=true in final runtime evidence.",
             "Reject any event with non-finite tension values, entity mismatch, slot mismatch or original-event mismatch.",
-            "Require every slot to contain one native no-tick precheck and one H2+ commit in the same causal_chain_id, with commit timestamp at or after precheck timestamp.",
+            "Require every slot to contain exactly one native no-tick precheck and exactly one H2+ commit in the same causal_chain_id, with commit timestamp at or after precheck timestamp.",
+            "Require the runtime event count to equal the declared R3 requirement instead of allowing extra events.",
+            "Require precheck and commit event_type values to match the capture slot contract.",
             "Reject duplicate event_id, proof_hash and proof_ref values before accepting runtime coverage.",
             "Reject runtime events whose proof_hash does not bind to the canonical event identity payload.",
             "Require proof_ref to match runtime:<slot-id>:precheck or runtime:<slot-id>:commit.",

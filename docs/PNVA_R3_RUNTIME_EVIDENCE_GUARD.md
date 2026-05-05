@@ -49,8 +49,8 @@ duplicate_proof_hash_rejection_count: 0
 duplicate_proof_ref_rejection_count: 0
 no_tick_pair_integrity_count: 0
 no_tick_pair_failure_count: 0
-negative_control_detected_count: 36
-negative_control_count: 36
+negative_control_detected_count: 38
+negative_control_count: 38
 positive_control_passed_count: 6
 positive_control_count: 6
 positive_controls_fixture_only: true
@@ -117,6 +117,9 @@ source.sanitized=true
 gate_delta equal to score - threshold
 precheck gate_delta <= 0
 commit gate_delta >= 0
+event_type matching the slot contract
+exactly one precheck and one commit per slot
+runtime event count equal to the declared requirement
 ```
 
 The precheck proves that PNVA can observe and suppress without waking blindly.
@@ -150,6 +153,8 @@ reject_missing_target_rules
 reject_unknown_heuristic_rule
 reject_duplicate_heuristic_rule
 reject_wrong_action
+reject_precheck_event_type_mismatch
+reject_commit_event_type_mismatch
 reject_precheck_execution_action
 reject_precheck_positive_gate_delta
 reject_commit_negative_gate_delta
@@ -169,7 +174,7 @@ reject_commit_before_precheck
 Current result:
 
 ```text
-36/36 detected
+38/38 detected
 ```
 
 ## Positive Controls
@@ -211,7 +216,7 @@ R3_RUNTIME_INSTRUMENTATION_PLAN_READY
 6 event templates
 70 required runtime events
 25 mandatory event fields
-36 negative controls
+38 negative controls
 6 positive controls
 ```
 

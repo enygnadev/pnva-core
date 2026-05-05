@@ -41,10 +41,10 @@ action_contract_count: 3
 required_runtime_event_count: 70
 event_template_count: 6
 mandatory_field_count: 25
-negative_control_detected_count: 36
+negative_control_detected_count: 38
 positive_control_passed_count: 6
-enforced_control_count: 32
-contract_check_count: 171
+enforced_control_count: 35
+contract_check_count: 195
 failure_count: 0
 ```
 
@@ -61,13 +61,15 @@ runtime approval remains false
 70 required runtime events remain paired
 6 templates remain two per action contract
 25 mandatory runtime fields are present
-36 negative controls are detected
+38 negative controls are detected
 6 positive controls are accepted as fixture-only guard controls
 guard enforced controls match the runtime contract
 contract slot IDs cover the matrix
 contract original event IDs cover the matrix
 precheck templates are no-tick observe/NO_ACTION
 commit templates match their action
+precheck event_type matches the slot precheck contract
+commit event_type matches the slot commit contract
 proof.projection=false
 proof.native=true
 source.format=native_pnva_event_v1
@@ -88,6 +90,8 @@ entity_type must be present and match the capture slot
 heuristic rules must be known and unique
 precheck and commit must share causal_chain_id
 commit timestamp must be at or after precheck timestamp
+each slot must have exactly one precheck and one commit
+runtime event count must equal the declared requirement
 ```
 
 ## Why This Matters
