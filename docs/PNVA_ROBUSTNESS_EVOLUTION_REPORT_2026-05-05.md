@@ -772,14 +772,15 @@ causal_chain_slot_collision_rejection_count: 0
 no_tick_pair_integrity_count: 0
 no_tick_pair_failure_count: 0
 same_source_file_no_tick_pair_count: 0
-negative_control_detected_count: 59
-negative_control_count: 59
+state_continuity_no_tick_pair_count: 0
+negative_control_detected_count: 60
+negative_control_count: 60
 positive_control_passed_count: 6
 positive_control_count: 6
 positive_controls_fixture_only: true
 ```
 
-This prevents a weak R3 completion claim. Final runtime evidence must be fresh, native, no-tick paired, same-chain strictly timestamp-ordered, causal-chain unique per slot, same-source-file paired, JSONL-line ordered, source-line ordered, monotonic per source file, public-basename sourced, exact event-type bound, exact-cardinality per slot, exact-count by declared runtime requirement, duplicate-free across events/proof hashes/proof refs/source locations, entity-bound by ID and type, slot-bound, source-format-bound, source-sanitized, proof-clean, proof-hash bound to event identity, proof-ref bound to slot/role, gate-delta consistent, heuristic-clean, risk-flag clean on prechecks and commits, and H2+ authorized before it can be accepted by the cutover path.
+This prevents a weak R3 completion claim. Final runtime evidence must be fresh, native, no-tick paired, same-chain strictly timestamp-ordered, causal-chain unique per slot, same-source-file paired, state-continuous from precheck to commit, JSONL-line ordered, source-line ordered, monotonic per source file, public-basename sourced, exact event-type bound, exact-cardinality per slot, exact-count by declared runtime requirement, duplicate-free across events/proof hashes/proof refs/source locations, entity-bound by ID and type, slot-bound, source-format-bound, source-sanitized, proof-clean, proof-hash bound to event identity, proof-ref bound to slot/role, gate-delta consistent, heuristic-clean, risk-flag clean on prechecks and commits, and H2+ authorized before it can be accepted by the cutover path.
 
 ### 25. R3 runtime instrumentation plan
 
@@ -800,7 +801,7 @@ required_no_tick_precheck_count: 35
 required_collapse_commit_count: 35
 event_template_count: 6
 mandatory_field_count: 28
-negative_control_detected_count: 59
+negative_control_detected_count: 60
 positive_control_passed_count: 6
 ```
 
@@ -812,7 +813,7 @@ COOLDOWN_GPU: 2 slots, 4 runtime events
 EXECUTE: 1 slot, 2 runtime events
 ```
 
-This makes R3 operational instead of informal. The final runtime must emit native no-tick prechecks and native commits with entity identity and type, same-chain causal pair identity, causal-chain uniqueness per slot, original event mapping, R3 runtime slot identity, exact event types, exactly one precheck and one commit per slot, strict proof hashes bound to event identity, runtime proof refs bound to slot/role, known non-legacy heuristic rules, known and unique risk flags on both prechecks and commits, unique event IDs, unique public source filenames, same-source-file no-tick pairs, unique source locations, strictly increasing timestamps, ordered JSONL records, ordered source lines without per-file regression, `proof.native=true`, `source.format=native_pnva_event_v1`, `source.sanitized=true` and `proof.projection=false`.
+This makes R3 operational instead of informal. The final runtime must emit native no-tick prechecks and native commits with entity identity and type, same-chain causal pair identity, causal-chain uniqueness per slot, original event mapping, R3 runtime slot identity, exact event types, exactly one precheck and one commit per slot, strict proof hashes bound to event identity, runtime proof refs bound to slot/role, known non-legacy heuristic rules, known and unique risk flags on both prechecks and commits, unique event IDs, unique public source filenames, same-source-file no-tick pairs, precheck-to-commit state continuity, unique source locations, strictly increasing timestamps, ordered JSONL records, ordered source lines without per-file regression, `proof.native=true`, `source.format=native_pnva_event_v1`, `source.sanitized=true` and `proof.projection=false`.
 
 ### 26. R3 runtime contract validation
 
@@ -830,14 +831,14 @@ action_contract_count: 3
 required_runtime_event_count: 70
 event_template_count: 6
 mandatory_field_count: 28
-negative_control_detected_count: 59
+negative_control_detected_count: 60
 positive_control_passed_count: 6
-enforced_control_count: 56
-contract_check_count: 303
+enforced_control_count: 57
+contract_check_count: 307
 failure_count: 0
 ```
 
-This closes a contract drift risk. Before PNVA accepts final runtime JSONL, the R3 slot IDs, original event IDs, causal-chain uniqueness per slot, guard controls, no-tick precheck templates, commit templates, exact role state transitions, exact event-type binding, exact pair cardinality, exact runtime event count, native proof markers, source file public-basename policy, same-source no-tick pair policy, source location uniqueness, JSONL-line order, source-line order, per-file source-line monotonicity, source sanitization, proof identity binding and native source format must agree as one validated contract.
+This closes a contract drift risk. Before PNVA accepts final runtime JSONL, the R3 slot IDs, original event IDs, causal-chain uniqueness per slot, guard controls, no-tick precheck templates, commit templates, exact role state transitions, exact event-type binding, exact pair cardinality, exact runtime event count, native proof markers, source file public-basename policy, same-source no-tick pair policy, precheck-to-commit state continuity, source location uniqueness, JSONL-line order, source-line order, per-file source-line monotonicity, source sanitization, proof identity binding and native source format must agree as one validated contract.
 
 ### 27. Sovereign evolution ledger
 
@@ -859,11 +860,11 @@ r3_cutover_approved: false
 r3_runtime_capture_coverage_percent: 0.0
 runtime_pending_slot_count: 35
 runtime_required_event_count: 70
-runtime_contract_check_count: 303
+runtime_contract_check_count: 307
 runtime_contract_failure_count: 0
 runtime_positive_control_passed_count: 6
 runtime_mandatory_field_count: 28
-runtime_enforced_control_count: 56
+runtime_enforced_control_count: 57
 controlled_warning_count: 1232
 blocker_count: 2
 priority_action_count: 4

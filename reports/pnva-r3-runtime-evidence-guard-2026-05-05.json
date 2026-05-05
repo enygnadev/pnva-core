@@ -33,6 +33,7 @@
     "no_tick_pair_log_line_order_required": true,
     "no_tick_pair_same_source_file_required": true,
     "no_tick_pair_source_line_order_required": true,
+    "no_tick_pair_state_continuity_required": true,
     "precheck_gate_delta_nonpositive_required": true,
     "precheck_must_be_no_tick": true,
     "precheck_reason_required": "native_authority_precheck_no_tick",
@@ -67,16 +68,16 @@
     "timestamp_iso8601_required": true,
     "timestamp_required": true
   },
-  "generated_at": "2026-05-05T15:11:11Z",
+  "generated_at": "2026-05-05T15:22:53Z",
   "intake_guard_ready": true,
   "interpretation": {
     "boundary": "Without a runtime-events file this guard certifies the intake contract only; it does not claim final runtime completion.",
     "purpose": "Protect the R3 runtime intake boundary before fresh events are accepted as legacy-free evidence.",
-    "sovereignty": "PNVA becomes harder to fake when projected proofs, malformed, duplicated or content-unbound proof hashes, wrong proof-ref slot roles, wrong event types, wrong decision reasons, wrong role state transitions, malformed or inconsistent tension values, invalid gate signs, duplicate events, duplicated source locations, reused causal chains across different slots, unsafe source file names, mismatched pair source files, regressed source lines, entity or slot mismatches, missing, equal or reversed pair timestamps, missing or reversed log/source location order, unsanitized sources, legacy heuristic rules, unknown heuristic rules, invalid risk flags, weak authority, missing target rules, missing precheck or commit target risk flags, extra runtime events and causally broken no-tick pairs are rejected before cutover."
+    "sovereignty": "PNVA becomes harder to fake when projected proofs, malformed, duplicated or content-unbound proof hashes, wrong proof-ref slot roles, wrong event types, wrong decision reasons, wrong role state transitions, malformed or inconsistent tension values, invalid gate signs, duplicate events, duplicated source locations, reused causal chains across different slots, unsafe source file names, mismatched pair source files, broken precheck-to-commit state continuity, regressed source lines, entity or slot mismatches, missing, equal or reversed pair timestamps, missing or reversed log/source location order, unsanitized sources, legacy heuristic rules, unknown heuristic rules, invalid risk flags, weak authority, missing target rules, missing precheck or commit target risk flags, extra runtime events and causally broken no-tick pairs are rejected before cutover."
   },
   "matrix_classification": "R3_RUNTIME_CAPTURE_MATRIX_READY_PENDING_RUNTIME",
-  "negative_control_count": 59,
-  "negative_control_detected_count": 59,
+  "negative_control_count": 60,
+  "negative_control_detected_count": 60,
   "negative_controls": [
     {
       "codes": [
@@ -616,6 +617,15 @@
       "detected": true,
       "expected_detection": "NO_TICK_PAIR_SOURCE_FILE_MISMATCH",
       "name": "reject_no_tick_pair_source_file_mismatch"
+    },
+    {
+      "codes": [
+        "NO_TICK_PAIR_INCOMPLETE",
+        "NO_TICK_PAIR_STATE_CONTINUITY_INVALID"
+      ],
+      "detected": true,
+      "expected_detection": "NO_TICK_PAIR_STATE_CONTINUITY_INVALID",
+      "name": "reject_no_tick_pair_state_continuity_mismatch"
     }
   ],
   "negative_controls_pass": true,
@@ -690,6 +700,7 @@
     "Reject no-tick pairs whose commit JSONL line appears before the precheck line.",
     "Reject no-tick pairs whose commit timestamp is equal to the precheck timestamp.",
     "Reject no-tick pairs whose precheck and commit are emitted by different source.file_name values.",
+    "Reject no-tick pairs whose commit field.state_before does not equal the precheck field.state_after.",
     "Reject no-tick pairs whose commit source.line does not follow the precheck source.line.",
     "Require proof_ref to match runtime:<slot-id>:precheck or runtime:<slot-id>:commit.",
     "Require gate_delta to equal score minus threshold, with nonpositive prechecks and nonnegative commits.",
@@ -741,7 +752,8 @@
       "same_source_file_no_tick_pair_count": 0,
       "shared_causal_chain_count": 0,
       "slot_id": "r3-runtime-slot-001",
-      "source_line_ordered_no_tick_pair_count": 0
+      "source_line_ordered_no_tick_pair_count": 0,
+      "state_continuity_no_tick_pair_count": 0
     },
     {
       "accepted": false,
@@ -763,7 +775,8 @@
       "same_source_file_no_tick_pair_count": 0,
       "shared_causal_chain_count": 0,
       "slot_id": "r3-runtime-slot-002",
-      "source_line_ordered_no_tick_pair_count": 0
+      "source_line_ordered_no_tick_pair_count": 0,
+      "state_continuity_no_tick_pair_count": 0
     },
     {
       "accepted": false,
@@ -785,7 +798,8 @@
       "same_source_file_no_tick_pair_count": 0,
       "shared_causal_chain_count": 0,
       "slot_id": "r3-runtime-slot-003",
-      "source_line_ordered_no_tick_pair_count": 0
+      "source_line_ordered_no_tick_pair_count": 0,
+      "state_continuity_no_tick_pair_count": 0
     },
     {
       "accepted": false,
@@ -807,7 +821,8 @@
       "same_source_file_no_tick_pair_count": 0,
       "shared_causal_chain_count": 0,
       "slot_id": "r3-runtime-slot-004",
-      "source_line_ordered_no_tick_pair_count": 0
+      "source_line_ordered_no_tick_pair_count": 0,
+      "state_continuity_no_tick_pair_count": 0
     },
     {
       "accepted": false,
@@ -829,7 +844,8 @@
       "same_source_file_no_tick_pair_count": 0,
       "shared_causal_chain_count": 0,
       "slot_id": "r3-runtime-slot-005",
-      "source_line_ordered_no_tick_pair_count": 0
+      "source_line_ordered_no_tick_pair_count": 0,
+      "state_continuity_no_tick_pair_count": 0
     },
     {
       "accepted": false,
@@ -851,7 +867,8 @@
       "same_source_file_no_tick_pair_count": 0,
       "shared_causal_chain_count": 0,
       "slot_id": "r3-runtime-slot-006",
-      "source_line_ordered_no_tick_pair_count": 0
+      "source_line_ordered_no_tick_pair_count": 0,
+      "state_continuity_no_tick_pair_count": 0
     },
     {
       "accepted": false,
@@ -873,7 +890,8 @@
       "same_source_file_no_tick_pair_count": 0,
       "shared_causal_chain_count": 0,
       "slot_id": "r3-runtime-slot-007",
-      "source_line_ordered_no_tick_pair_count": 0
+      "source_line_ordered_no_tick_pair_count": 0,
+      "state_continuity_no_tick_pair_count": 0
     },
     {
       "accepted": false,
@@ -895,7 +913,8 @@
       "same_source_file_no_tick_pair_count": 0,
       "shared_causal_chain_count": 0,
       "slot_id": "r3-runtime-slot-008",
-      "source_line_ordered_no_tick_pair_count": 0
+      "source_line_ordered_no_tick_pair_count": 0,
+      "state_continuity_no_tick_pair_count": 0
     },
     {
       "accepted": false,
@@ -917,7 +936,8 @@
       "same_source_file_no_tick_pair_count": 0,
       "shared_causal_chain_count": 0,
       "slot_id": "r3-runtime-slot-009",
-      "source_line_ordered_no_tick_pair_count": 0
+      "source_line_ordered_no_tick_pair_count": 0,
+      "state_continuity_no_tick_pair_count": 0
     },
     {
       "accepted": false,
@@ -939,7 +959,8 @@
       "same_source_file_no_tick_pair_count": 0,
       "shared_causal_chain_count": 0,
       "slot_id": "r3-runtime-slot-010",
-      "source_line_ordered_no_tick_pair_count": 0
+      "source_line_ordered_no_tick_pair_count": 0,
+      "state_continuity_no_tick_pair_count": 0
     },
     {
       "accepted": false,
@@ -961,7 +982,8 @@
       "same_source_file_no_tick_pair_count": 0,
       "shared_causal_chain_count": 0,
       "slot_id": "r3-runtime-slot-011",
-      "source_line_ordered_no_tick_pair_count": 0
+      "source_line_ordered_no_tick_pair_count": 0,
+      "state_continuity_no_tick_pair_count": 0
     },
     {
       "accepted": false,
@@ -983,7 +1005,8 @@
       "same_source_file_no_tick_pair_count": 0,
       "shared_causal_chain_count": 0,
       "slot_id": "r3-runtime-slot-012",
-      "source_line_ordered_no_tick_pair_count": 0
+      "source_line_ordered_no_tick_pair_count": 0,
+      "state_continuity_no_tick_pair_count": 0
     },
     {
       "accepted": false,
@@ -1005,7 +1028,8 @@
       "same_source_file_no_tick_pair_count": 0,
       "shared_causal_chain_count": 0,
       "slot_id": "r3-runtime-slot-013",
-      "source_line_ordered_no_tick_pair_count": 0
+      "source_line_ordered_no_tick_pair_count": 0,
+      "state_continuity_no_tick_pair_count": 0
     },
     {
       "accepted": false,
@@ -1027,7 +1051,8 @@
       "same_source_file_no_tick_pair_count": 0,
       "shared_causal_chain_count": 0,
       "slot_id": "r3-runtime-slot-014",
-      "source_line_ordered_no_tick_pair_count": 0
+      "source_line_ordered_no_tick_pair_count": 0,
+      "state_continuity_no_tick_pair_count": 0
     },
     {
       "accepted": false,
@@ -1049,7 +1074,8 @@
       "same_source_file_no_tick_pair_count": 0,
       "shared_causal_chain_count": 0,
       "slot_id": "r3-runtime-slot-015",
-      "source_line_ordered_no_tick_pair_count": 0
+      "source_line_ordered_no_tick_pair_count": 0,
+      "state_continuity_no_tick_pair_count": 0
     },
     {
       "accepted": false,
@@ -1071,7 +1097,8 @@
       "same_source_file_no_tick_pair_count": 0,
       "shared_causal_chain_count": 0,
       "slot_id": "r3-runtime-slot-016",
-      "source_line_ordered_no_tick_pair_count": 0
+      "source_line_ordered_no_tick_pair_count": 0,
+      "state_continuity_no_tick_pair_count": 0
     },
     {
       "accepted": false,
@@ -1093,7 +1120,8 @@
       "same_source_file_no_tick_pair_count": 0,
       "shared_causal_chain_count": 0,
       "slot_id": "r3-runtime-slot-017",
-      "source_line_ordered_no_tick_pair_count": 0
+      "source_line_ordered_no_tick_pair_count": 0,
+      "state_continuity_no_tick_pair_count": 0
     },
     {
       "accepted": false,
@@ -1115,7 +1143,8 @@
       "same_source_file_no_tick_pair_count": 0,
       "shared_causal_chain_count": 0,
       "slot_id": "r3-runtime-slot-018",
-      "source_line_ordered_no_tick_pair_count": 0
+      "source_line_ordered_no_tick_pair_count": 0,
+      "state_continuity_no_tick_pair_count": 0
     },
     {
       "accepted": false,
@@ -1137,7 +1166,8 @@
       "same_source_file_no_tick_pair_count": 0,
       "shared_causal_chain_count": 0,
       "slot_id": "r3-runtime-slot-019",
-      "source_line_ordered_no_tick_pair_count": 0
+      "source_line_ordered_no_tick_pair_count": 0,
+      "state_continuity_no_tick_pair_count": 0
     },
     {
       "accepted": false,
@@ -1159,7 +1189,8 @@
       "same_source_file_no_tick_pair_count": 0,
       "shared_causal_chain_count": 0,
       "slot_id": "r3-runtime-slot-020",
-      "source_line_ordered_no_tick_pair_count": 0
+      "source_line_ordered_no_tick_pair_count": 0,
+      "state_continuity_no_tick_pair_count": 0
     },
     {
       "accepted": false,
@@ -1181,7 +1212,8 @@
       "same_source_file_no_tick_pair_count": 0,
       "shared_causal_chain_count": 0,
       "slot_id": "r3-runtime-slot-021",
-      "source_line_ordered_no_tick_pair_count": 0
+      "source_line_ordered_no_tick_pair_count": 0,
+      "state_continuity_no_tick_pair_count": 0
     },
     {
       "accepted": false,
@@ -1203,7 +1235,8 @@
       "same_source_file_no_tick_pair_count": 0,
       "shared_causal_chain_count": 0,
       "slot_id": "r3-runtime-slot-022",
-      "source_line_ordered_no_tick_pair_count": 0
+      "source_line_ordered_no_tick_pair_count": 0,
+      "state_continuity_no_tick_pair_count": 0
     },
     {
       "accepted": false,
@@ -1225,7 +1258,8 @@
       "same_source_file_no_tick_pair_count": 0,
       "shared_causal_chain_count": 0,
       "slot_id": "r3-runtime-slot-023",
-      "source_line_ordered_no_tick_pair_count": 0
+      "source_line_ordered_no_tick_pair_count": 0,
+      "state_continuity_no_tick_pair_count": 0
     },
     {
       "accepted": false,
@@ -1247,7 +1281,8 @@
       "same_source_file_no_tick_pair_count": 0,
       "shared_causal_chain_count": 0,
       "slot_id": "r3-runtime-slot-024",
-      "source_line_ordered_no_tick_pair_count": 0
+      "source_line_ordered_no_tick_pair_count": 0,
+      "state_continuity_no_tick_pair_count": 0
     },
     {
       "accepted": false,
@@ -1269,7 +1304,8 @@
       "same_source_file_no_tick_pair_count": 0,
       "shared_causal_chain_count": 0,
       "slot_id": "r3-runtime-slot-025",
-      "source_line_ordered_no_tick_pair_count": 0
+      "source_line_ordered_no_tick_pair_count": 0,
+      "state_continuity_no_tick_pair_count": 0
     },
     {
       "accepted": false,
@@ -1291,7 +1327,8 @@
       "same_source_file_no_tick_pair_count": 0,
       "shared_causal_chain_count": 0,
       "slot_id": "r3-runtime-slot-026",
-      "source_line_ordered_no_tick_pair_count": 0
+      "source_line_ordered_no_tick_pair_count": 0,
+      "state_continuity_no_tick_pair_count": 0
     },
     {
       "accepted": false,
@@ -1313,7 +1350,8 @@
       "same_source_file_no_tick_pair_count": 0,
       "shared_causal_chain_count": 0,
       "slot_id": "r3-runtime-slot-027",
-      "source_line_ordered_no_tick_pair_count": 0
+      "source_line_ordered_no_tick_pair_count": 0,
+      "state_continuity_no_tick_pair_count": 0
     },
     {
       "accepted": false,
@@ -1335,7 +1373,8 @@
       "same_source_file_no_tick_pair_count": 0,
       "shared_causal_chain_count": 0,
       "slot_id": "r3-runtime-slot-028",
-      "source_line_ordered_no_tick_pair_count": 0
+      "source_line_ordered_no_tick_pair_count": 0,
+      "state_continuity_no_tick_pair_count": 0
     },
     {
       "accepted": false,
@@ -1357,7 +1396,8 @@
       "same_source_file_no_tick_pair_count": 0,
       "shared_causal_chain_count": 0,
       "slot_id": "r3-runtime-slot-029",
-      "source_line_ordered_no_tick_pair_count": 0
+      "source_line_ordered_no_tick_pair_count": 0,
+      "state_continuity_no_tick_pair_count": 0
     },
     {
       "accepted": false,
@@ -1379,7 +1419,8 @@
       "same_source_file_no_tick_pair_count": 0,
       "shared_causal_chain_count": 0,
       "slot_id": "r3-runtime-slot-030",
-      "source_line_ordered_no_tick_pair_count": 0
+      "source_line_ordered_no_tick_pair_count": 0,
+      "state_continuity_no_tick_pair_count": 0
     },
     {
       "accepted": false,
@@ -1401,7 +1442,8 @@
       "same_source_file_no_tick_pair_count": 0,
       "shared_causal_chain_count": 0,
       "slot_id": "r3-runtime-slot-031",
-      "source_line_ordered_no_tick_pair_count": 0
+      "source_line_ordered_no_tick_pair_count": 0,
+      "state_continuity_no_tick_pair_count": 0
     },
     {
       "accepted": false,
@@ -1423,7 +1465,8 @@
       "same_source_file_no_tick_pair_count": 0,
       "shared_causal_chain_count": 0,
       "slot_id": "r3-runtime-slot-032",
-      "source_line_ordered_no_tick_pair_count": 0
+      "source_line_ordered_no_tick_pair_count": 0,
+      "state_continuity_no_tick_pair_count": 0
     },
     {
       "accepted": false,
@@ -1445,7 +1488,8 @@
       "same_source_file_no_tick_pair_count": 0,
       "shared_causal_chain_count": 0,
       "slot_id": "r3-runtime-slot-033",
-      "source_line_ordered_no_tick_pair_count": 0
+      "source_line_ordered_no_tick_pair_count": 0,
+      "state_continuity_no_tick_pair_count": 0
     },
     {
       "accepted": false,
@@ -1467,7 +1511,8 @@
       "same_source_file_no_tick_pair_count": 0,
       "shared_causal_chain_count": 0,
       "slot_id": "r3-runtime-slot-034",
-      "source_line_ordered_no_tick_pair_count": 0
+      "source_line_ordered_no_tick_pair_count": 0,
+      "state_continuity_no_tick_pair_count": 0
     },
     {
       "accepted": false,
@@ -1489,10 +1534,12 @@
       "same_source_file_no_tick_pair_count": 0,
       "shared_causal_chain_count": 0,
       "slot_id": "r3-runtime-slot-035",
-      "source_line_ordered_no_tick_pair_count": 0
+      "source_line_ordered_no_tick_pair_count": 0,
+      "state_continuity_no_tick_pair_count": 0
     }
   ],
   "source_line_monotonicity_rejection_count": 0,
+  "state_continuity_no_tick_pair_count": 0,
   "summary": {
     "accepted_slot_count": 0,
     "capture_slot_count": 35,
@@ -1502,8 +1549,8 @@
     "duplicate_proof_ref_rejection_count": 0,
     "duplicate_source_location_rejection_count": 0,
     "intake_guard_ready": true,
-    "negative_control_count": 59,
-    "negative_control_detected_count": 59,
+    "negative_control_count": 60,
+    "negative_control_detected_count": 60,
     "no_tick_pair_failure_count": 0,
     "no_tick_pair_integrity_count": 0,
     "pending_slot_count": 35,
@@ -1514,6 +1561,7 @@
     "runtime_evidence_approved": false,
     "runtime_evidence_present": false,
     "same_source_file_no_tick_pair_count": 0,
-    "source_line_monotonicity_rejection_count": 0
+    "source_line_monotonicity_rejection_count": 0,
+    "state_continuity_no_tick_pair_count": 0
   }
 }

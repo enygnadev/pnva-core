@@ -99,6 +99,7 @@ REQUIRED_ENFORCED_CONTROLS = {
     "no_tick_pair_commit_strictly_after_precheck_required": True,
     "no_tick_pair_log_line_order_required": True,
     "no_tick_pair_same_source_file_required": True,
+    "no_tick_pair_state_continuity_required": True,
     "no_tick_pair_source_line_order_required": True,
     "no_tick_pair_exactly_one_precheck_commit_required": True,
     "runtime_event_count_exact_required": True,
@@ -212,6 +213,7 @@ def _template_checks(checks: list[dict[str, Any]], contract: dict[str, Any]) -> 
     _add_check(checks, "pairing", f"{contract_id}_commit_timestamp_strictly_after_precheck_required", pairing.get("commit_timestamp_strictly_after_precheck_required"), True)
     _add_check(checks, "pairing", f"{contract_id}_commit_log_line_after_precheck_required", pairing.get("commit_log_line_after_precheck_required"), True)
     _add_check(checks, "pairing", f"{contract_id}_same_source_file_name_required", pairing.get("same_source_file_name_required"), True)
+    _add_check(checks, "pairing", f"{contract_id}_commit_state_before_equals_precheck_state_after_required", pairing.get("commit_state_before_equals_precheck_state_after_required"), True)
     _add_check(checks, "pairing", f"{contract_id}_commit_source_line_after_precheck_required", pairing.get("commit_source_line_after_precheck_required"), True)
     _add_check(checks, "pairing", f"{contract_id}_exactly_one_precheck_per_slot", pairing.get("exactly_one_precheck_per_slot_required"), True)
     _add_check(checks, "pairing", f"{contract_id}_exactly_one_commit_per_slot", pairing.get("exactly_one_commit_per_slot_required"), True)
