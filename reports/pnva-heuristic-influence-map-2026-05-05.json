@@ -1,0 +1,2669 @@
+{
+  "author": "Gustavo de Aguiar Martins",
+  "classification": "HEURISTIC_INFLUENCE_MAP_READY_WITH_LEGACY_WARNINGS",
+  "error_count": 0,
+  "errors": [],
+  "event_count": 519,
+  "event_with_rules_count": 519,
+  "generated_at": "2026-05-05T07:39:18Z",
+  "hard_authority_edge_count": 776,
+  "hard_authority_edge_ratio": 0.683099,
+  "heuristic_coverage_ratio": 1.0,
+  "heuristic_rule_count": 9,
+  "heuristic_rules": [
+    "adaptive_threshold",
+    "affinity_router",
+    "etev_guard",
+    "field_scheduler",
+    "legacy_observer",
+    "memory4d",
+    "native_event_emitter",
+    "power_orchestrator",
+    "veonic_layer"
+  ],
+  "influence_edge_count": 1136,
+  "interpretation": {
+    "boundary": "Low-authority canonical influence is preserved as migration evidence; native strong events must be covered by hard authority.",
+    "purpose": "Map how PNVA heuristic rules influence decisions, entities, suppression and proof-backed execution.",
+    "sovereignty": "A no-tick runtime is stronger when each rule's authority, decision mix and entity reach are measurable."
+  },
+  "low_authority_edge_count": 360,
+  "low_authority_strong_edge_count": 164,
+  "native_influence_clean": true,
+  "pass": true,
+  "project": "PNVA-Core",
+  "proof_event_coverage_ratio": 1.0,
+  "proof_valid_event_count": 519,
+  "recommendations": [
+    "Use the highest low-authority strong edge counts as migration targets.",
+    "Keep native influence clean: every native strong decision should include H2/H3/H4 coverage.",
+    "Use rule profiles to decide which heuristics deserve production authority and which should remain observer-only."
+  ],
+  "schema_version": "pnva.heuristic_influence_map.v1",
+  "scope_count": 2,
+  "scopes": [
+    {
+      "authority_mix": [
+        [
+          "H2",
+          694
+        ],
+        [
+          "H1",
+          206
+        ],
+        [
+          "H0",
+          152
+        ],
+        [
+          "H3",
+          68
+        ]
+      ],
+      "classification": "HEURISTIC_INFLUENCE_MAP_READY",
+      "decision_mix": [
+        [
+          "collapse",
+          266
+        ],
+        [
+          "observe",
+          213
+        ],
+        [
+          "block",
+          33
+        ]
+      ],
+      "entity_catalog_ref": "reports/pnva-entity-catalog-2026-05-05.json",
+      "entity_valid_count": 512,
+      "error_count": 0,
+      "errors": [],
+      "event_count": 512,
+      "event_with_hard_authority_ratio": 0.703125,
+      "event_with_rules_count": 512,
+      "events_ref": "reports/pnva-canonical-events-sample-2026-05-05.jsonl",
+      "hard_authority_edge_count": 762,
+      "hard_authority_edge_ratio": 0.680357,
+      "heuristic_coverage_ratio": 1.0,
+      "heuristic_rule_count": 8,
+      "influence_edge_count": 1120,
+      "legacy_tolerant": true,
+      "low_authority_edge_count": 358,
+      "low_authority_strong_edge_count": 163,
+      "pass": true,
+      "proof_event_coverage_ratio": 1.0,
+      "proof_valid_event_count": 512,
+      "risk_flags": [
+        [
+          "RESIZE_BATCH_PRESSURE",
+          176
+        ],
+        [
+          "THERMAL_PRESSURE",
+          138
+        ],
+        [
+          "VEONIC_TRACE",
+          128
+        ]
+      ],
+      "rule_profiles": [
+        {
+          "authority": "H2",
+          "decision_mix": [
+            [
+              "collapse",
+              163
+            ],
+            [
+              "observe",
+              78
+            ],
+            [
+              "block",
+              33
+            ]
+          ],
+          "entity_count": 4,
+          "event_count": 274,
+          "gate_delta_mean": -24.933734,
+          "proof_coverage_ratio": 1.0,
+          "proof_valid_count": 274,
+          "risk_flags": [
+            [
+              "VEONIC_TRACE",
+              128
+            ],
+            [
+              "RESIZE_BATCH_PRESSURE",
+              86
+            ],
+            [
+              "THERMAL_PRESSURE",
+              86
+            ]
+          ],
+          "rule": "adaptive_threshold",
+          "score_mean": -24.219776,
+          "strong_decision_count": 196,
+          "strong_decision_ratio": 0.715328,
+          "suppressed_count": 111,
+          "suppression_ratio": 0.405109,
+          "top_entities": [
+            [
+              "zano-entity-00",
+              165
+            ],
+            [
+              "zano-entity-01",
+              41
+            ],
+            [
+              "entity_9ad2a10c30be",
+              35
+            ],
+            [
+              "entity_9030cf1aa9f6",
+              33
+            ]
+          ]
+        },
+        {
+          "authority": "H2",
+          "decision_mix": [
+            [
+              "collapse",
+              221
+            ],
+            [
+              "block",
+              25
+            ],
+            [
+              "observe",
+              18
+            ]
+          ],
+          "entity_count": 4,
+          "event_count": 264,
+          "gate_delta_mean": -32.065334,
+          "proof_coverage_ratio": 1.0,
+          "proof_valid_count": 264,
+          "risk_flags": [
+            [
+              "RESIZE_BATCH_PRESSURE",
+              144
+            ],
+            [
+              "THERMAL_PRESSURE",
+              138
+            ],
+            [
+              "VEONIC_TRACE",
+              128
+            ]
+          ],
+          "rule": "field_scheduler",
+          "score_mean": -31.591644,
+          "strong_decision_count": 246,
+          "strong_decision_ratio": 0.931818,
+          "suppressed_count": 43,
+          "suppression_ratio": 0.162879,
+          "top_entities": [
+            [
+              "zano-entity-00",
+              128
+            ],
+            [
+              "entity_4c3ade60ea78",
+              86
+            ],
+            [
+              "entity_9ad2a10c30be",
+              25
+            ],
+            [
+              "entity_9030cf1aa9f6",
+              25
+            ]
+          ]
+        },
+        {
+          "authority": "H0",
+          "decision_mix": [
+            [
+              "observe",
+              117
+            ],
+            [
+              "collapse",
+              35
+            ]
+          ],
+          "entity_count": 4,
+          "event_count": 152,
+          "gate_delta_mean": -14.823241,
+          "proof_coverage_ratio": 1.0,
+          "proof_valid_count": 152,
+          "risk_flags": [
+            [
+              "RESIZE_BATCH_PRESSURE",
+              32
+            ]
+          ],
+          "rule": "legacy_observer",
+          "score_mean": -14.823241,
+          "strong_decision_count": 35,
+          "strong_decision_ratio": 0.230263,
+          "suppressed_count": 117,
+          "suppression_ratio": 0.769737,
+          "top_entities": [
+            [
+              "zano-entity-00",
+              47
+            ],
+            [
+              "zano-entity-01",
+              46
+            ],
+            [
+              "entity_4c3ade60ea78",
+              46
+            ],
+            [
+              "entity_8ba8a9970d6a",
+              13
+            ]
+          ]
+        },
+        {
+          "authority": "H1",
+          "decision_mix": [
+            [
+              "collapse",
+              128
+            ]
+          ],
+          "entity_count": 1,
+          "event_count": 128,
+          "gate_delta_mean": -53.377252,
+          "proof_coverage_ratio": 1.0,
+          "proof_valid_count": 128,
+          "risk_flags": [
+            [
+              "VEONIC_TRACE",
+              128
+            ],
+            [
+              "RESIZE_BATCH_PRESSURE",
+              86
+            ],
+            [
+              "THERMAL_PRESSURE",
+              86
+            ]
+          ],
+          "rule": "veonic_layer",
+          "score_mean": -52.683958,
+          "strong_decision_count": 128,
+          "strong_decision_ratio": 1.0,
+          "suppressed_count": 0,
+          "suppression_ratio": 0.0,
+          "top_entities": [
+            [
+              "zano-entity-00",
+              128
+            ]
+          ]
+        },
+        {
+          "authority": "H2",
+          "decision_mix": [
+            [
+              "observe",
+              78
+            ]
+          ],
+          "entity_count": 2,
+          "event_count": 78,
+          "gate_delta_mean": 0.010131,
+          "proof_coverage_ratio": 1.0,
+          "proof_valid_count": 78,
+          "risk_flags": [],
+          "rule": "affinity_router",
+          "score_mean": 0.741036,
+          "strong_decision_count": 0,
+          "strong_decision_ratio": 0.0,
+          "suppressed_count": 78,
+          "suppression_ratio": 1.0,
+          "top_entities": [
+            [
+              "zano-entity-01",
+              41
+            ],
+            [
+              "zano-entity-00",
+              37
+            ]
+          ]
+        },
+        {
+          "authority": "H1",
+          "decision_mix": [
+            [
+              "observe",
+              78
+            ]
+          ],
+          "entity_count": 2,
+          "event_count": 78,
+          "gate_delta_mean": 0.010131,
+          "proof_coverage_ratio": 1.0,
+          "proof_valid_count": 78,
+          "risk_flags": [],
+          "rule": "memory4d",
+          "score_mean": 0.741036,
+          "strong_decision_count": 0,
+          "strong_decision_ratio": 0.0,
+          "suppressed_count": 78,
+          "suppression_ratio": 1.0,
+          "top_entities": [
+            [
+              "zano-entity-01",
+              41
+            ],
+            [
+              "zano-entity-00",
+              37
+            ]
+          ]
+        },
+        {
+          "authority": "H2",
+          "decision_mix": [
+            [
+              "observe",
+              78
+            ]
+          ],
+          "entity_count": 2,
+          "event_count": 78,
+          "gate_delta_mean": 0.010131,
+          "proof_coverage_ratio": 1.0,
+          "proof_valid_count": 78,
+          "risk_flags": [],
+          "rule": "power_orchestrator",
+          "score_mean": 0.741036,
+          "strong_decision_count": 0,
+          "strong_decision_ratio": 0.0,
+          "suppressed_count": 78,
+          "suppression_ratio": 1.0,
+          "top_entities": [
+            [
+              "zano-entity-01",
+              41
+            ],
+            [
+              "zano-entity-00",
+              37
+            ]
+          ]
+        },
+        {
+          "authority": "H3",
+          "decision_mix": [
+            [
+              "collapse",
+              35
+            ],
+            [
+              "block",
+              33
+            ]
+          ],
+          "entity_count": 2,
+          "event_count": 68,
+          "gate_delta_mean": -0.005075,
+          "proof_coverage_ratio": 1.0,
+          "proof_valid_count": 68,
+          "risk_flags": [],
+          "rule": "etev_guard",
+          "score_mean": 0.728339,
+          "strong_decision_count": 68,
+          "strong_decision_ratio": 1.0,
+          "suppressed_count": 33,
+          "suppression_ratio": 0.485294,
+          "top_entities": [
+            [
+              "entity_9ad2a10c30be",
+              35
+            ],
+            [
+              "entity_9030cf1aa9f6",
+              33
+            ]
+          ]
+        }
+      ],
+      "scope": "canonical",
+      "scope_influence_clean": false,
+      "top_entity_rule_edges": [
+        {
+          "count": 165,
+          "entity_id": "zano-entity-00",
+          "rule": "adaptive_threshold"
+        },
+        {
+          "count": 128,
+          "entity_id": "zano-entity-00",
+          "rule": "field_scheduler"
+        },
+        {
+          "count": 128,
+          "entity_id": "zano-entity-00",
+          "rule": "veonic_layer"
+        },
+        {
+          "count": 86,
+          "entity_id": "entity_4c3ade60ea78",
+          "rule": "field_scheduler"
+        },
+        {
+          "count": 47,
+          "entity_id": "zano-entity-00",
+          "rule": "legacy_observer"
+        },
+        {
+          "count": 46,
+          "entity_id": "zano-entity-01",
+          "rule": "legacy_observer"
+        },
+        {
+          "count": 46,
+          "entity_id": "entity_4c3ade60ea78",
+          "rule": "legacy_observer"
+        },
+        {
+          "count": 41,
+          "entity_id": "zano-entity-01",
+          "rule": "adaptive_threshold"
+        },
+        {
+          "count": 41,
+          "entity_id": "zano-entity-01",
+          "rule": "affinity_router"
+        },
+        {
+          "count": 41,
+          "entity_id": "zano-entity-01",
+          "rule": "memory4d"
+        },
+        {
+          "count": 41,
+          "entity_id": "zano-entity-01",
+          "rule": "power_orchestrator"
+        },
+        {
+          "count": 37,
+          "entity_id": "zano-entity-00",
+          "rule": "affinity_router"
+        },
+        {
+          "count": 37,
+          "entity_id": "zano-entity-00",
+          "rule": "memory4d"
+        },
+        {
+          "count": 37,
+          "entity_id": "zano-entity-00",
+          "rule": "power_orchestrator"
+        },
+        {
+          "count": 35,
+          "entity_id": "entity_9ad2a10c30be",
+          "rule": "adaptive_threshold"
+        },
+        {
+          "count": 35,
+          "entity_id": "entity_9ad2a10c30be",
+          "rule": "etev_guard"
+        },
+        {
+          "count": 33,
+          "entity_id": "entity_9030cf1aa9f6",
+          "rule": "adaptive_threshold"
+        },
+        {
+          "count": 33,
+          "entity_id": "entity_9030cf1aa9f6",
+          "rule": "etev_guard"
+        },
+        {
+          "count": 25,
+          "entity_id": "entity_9ad2a10c30be",
+          "rule": "field_scheduler"
+        },
+        {
+          "count": 25,
+          "entity_id": "entity_9030cf1aa9f6",
+          "rule": "field_scheduler"
+        },
+        {
+          "count": 13,
+          "entity_id": "entity_8ba8a9970d6a",
+          "rule": "legacy_observer"
+        }
+      ],
+      "top_rule_decision_edges": [
+        {
+          "count": 221,
+          "decision_kind": "collapse",
+          "rule": "field_scheduler"
+        },
+        {
+          "count": 163,
+          "decision_kind": "collapse",
+          "rule": "adaptive_threshold"
+        },
+        {
+          "count": 128,
+          "decision_kind": "collapse",
+          "rule": "veonic_layer"
+        },
+        {
+          "count": 117,
+          "decision_kind": "observe",
+          "rule": "legacy_observer"
+        },
+        {
+          "count": 78,
+          "decision_kind": "observe",
+          "rule": "adaptive_threshold"
+        },
+        {
+          "count": 78,
+          "decision_kind": "observe",
+          "rule": "affinity_router"
+        },
+        {
+          "count": 78,
+          "decision_kind": "observe",
+          "rule": "memory4d"
+        },
+        {
+          "count": 78,
+          "decision_kind": "observe",
+          "rule": "power_orchestrator"
+        },
+        {
+          "count": 35,
+          "decision_kind": "collapse",
+          "rule": "etev_guard"
+        },
+        {
+          "count": 35,
+          "decision_kind": "collapse",
+          "rule": "legacy_observer"
+        },
+        {
+          "count": 33,
+          "decision_kind": "block",
+          "rule": "adaptive_threshold"
+        },
+        {
+          "count": 33,
+          "decision_kind": "block",
+          "rule": "etev_guard"
+        },
+        {
+          "count": 25,
+          "decision_kind": "block",
+          "rule": "field_scheduler"
+        },
+        {
+          "count": 18,
+          "decision_kind": "observe",
+          "rule": "field_scheduler"
+        }
+      ],
+      "uncompensated_low_authority_strong_event_count": 35,
+      "warning_count": 70,
+      "warnings": [
+        {
+          "code": "LOW_AUTHORITY_STRONG_EVENT",
+          "decision_kind": "collapse",
+          "detail": "max_authority=H0",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000001_5f5d2586",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 385,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_RULE",
+          "decision_kind": "collapse",
+          "detail": "rule=legacy_observer",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000001_5f5d2586",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 385,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_EVENT",
+          "decision_kind": "collapse",
+          "detail": "max_authority=H0",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000003_392d3b13",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 387,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_RULE",
+          "decision_kind": "collapse",
+          "detail": "rule=legacy_observer",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000003_392d3b13",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 387,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_EVENT",
+          "decision_kind": "collapse",
+          "detail": "max_authority=H0",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000008_597a2713",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 392,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_RULE",
+          "decision_kind": "collapse",
+          "detail": "rule=legacy_observer",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000008_597a2713",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 392,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_EVENT",
+          "decision_kind": "collapse",
+          "detail": "max_authority=H0",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000010_54e369e9",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 394,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_RULE",
+          "decision_kind": "collapse",
+          "detail": "rule=legacy_observer",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000010_54e369e9",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 394,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_EVENT",
+          "decision_kind": "collapse",
+          "detail": "max_authority=H0",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000015_ddd7919f",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 399,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_RULE",
+          "decision_kind": "collapse",
+          "detail": "rule=legacy_observer",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000015_ddd7919f",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 399,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_EVENT",
+          "decision_kind": "collapse",
+          "detail": "max_authority=H0",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000017_b19df11f",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 401,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_RULE",
+          "decision_kind": "collapse",
+          "detail": "rule=legacy_observer",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000017_b19df11f",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 401,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_EVENT",
+          "decision_kind": "collapse",
+          "detail": "max_authority=H0",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000022_460f742b",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 406,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_RULE",
+          "decision_kind": "collapse",
+          "detail": "rule=legacy_observer",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000022_460f742b",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 406,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_EVENT",
+          "decision_kind": "collapse",
+          "detail": "max_authority=H0",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000024_b9380e24",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 408,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_RULE",
+          "decision_kind": "collapse",
+          "detail": "rule=legacy_observer",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000024_b9380e24",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 408,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_EVENT",
+          "decision_kind": "collapse",
+          "detail": "max_authority=H0",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000029_e115771c",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 413,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_RULE",
+          "decision_kind": "collapse",
+          "detail": "rule=legacy_observer",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000029_e115771c",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 413,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_EVENT",
+          "decision_kind": "collapse",
+          "detail": "max_authority=H0",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000031_f7f54e57",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 415,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_RULE",
+          "decision_kind": "collapse",
+          "detail": "rule=legacy_observer",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000031_f7f54e57",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 415,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_EVENT",
+          "decision_kind": "collapse",
+          "detail": "max_authority=H0",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000038_704394c1",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 422,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_RULE",
+          "decision_kind": "collapse",
+          "detail": "rule=legacy_observer",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000038_704394c1",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 422,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_EVENT",
+          "decision_kind": "collapse",
+          "detail": "max_authority=H0",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000040_456190e1",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 424,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_RULE",
+          "decision_kind": "collapse",
+          "detail": "rule=legacy_observer",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000040_456190e1",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 424,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_EVENT",
+          "decision_kind": "collapse",
+          "detail": "max_authority=H0",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000045_044db479",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 429,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_RULE",
+          "decision_kind": "collapse",
+          "detail": "rule=legacy_observer",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000045_044db479",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 429,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_EVENT",
+          "decision_kind": "collapse",
+          "detail": "max_authority=H0",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000047_2f09ade1",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 431,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_RULE",
+          "decision_kind": "collapse",
+          "detail": "rule=legacy_observer",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000047_2f09ade1",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 431,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_EVENT",
+          "decision_kind": "collapse",
+          "detail": "max_authority=H0",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000052_18bf554d",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 436,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_RULE",
+          "decision_kind": "collapse",
+          "detail": "rule=legacy_observer",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000052_18bf554d",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 436,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_EVENT",
+          "decision_kind": "collapse",
+          "detail": "max_authority=H0",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000054_3898d4c2",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 438,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_RULE",
+          "decision_kind": "collapse",
+          "detail": "rule=legacy_observer",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000054_3898d4c2",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 438,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_EVENT",
+          "decision_kind": "collapse",
+          "detail": "max_authority=H0",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000059_01f7a41e",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 443,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_RULE",
+          "decision_kind": "collapse",
+          "detail": "rule=legacy_observer",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000059_01f7a41e",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 443,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_EVENT",
+          "decision_kind": "collapse",
+          "detail": "max_authority=H0",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000061_1a9c106c",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 445,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_RULE",
+          "decision_kind": "collapse",
+          "detail": "rule=legacy_observer",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000061_1a9c106c",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 445,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_EVENT",
+          "decision_kind": "collapse",
+          "detail": "max_authority=H0",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000071_4bf4fe50",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 455,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_RULE",
+          "decision_kind": "collapse",
+          "detail": "rule=legacy_observer",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000071_4bf4fe50",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 455,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_EVENT",
+          "decision_kind": "collapse",
+          "detail": "max_authority=H0",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000073_bc920d9e",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 457,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_RULE",
+          "decision_kind": "collapse",
+          "detail": "rule=legacy_observer",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000073_bc920d9e",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 457,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_EVENT",
+          "decision_kind": "collapse",
+          "detail": "max_authority=H0",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000078_933bffc6",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 462,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_RULE",
+          "decision_kind": "collapse",
+          "detail": "rule=legacy_observer",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000078_933bffc6",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 462,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_EVENT",
+          "decision_kind": "collapse",
+          "detail": "max_authority=H0",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000080_7f5c085d",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 464,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_RULE",
+          "decision_kind": "collapse",
+          "detail": "rule=legacy_observer",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000080_7f5c085d",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 464,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_EVENT",
+          "decision_kind": "collapse",
+          "detail": "max_authority=H0",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000085_2950be7a",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 469,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_RULE",
+          "decision_kind": "collapse",
+          "detail": "rule=legacy_observer",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000085_2950be7a",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 469,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_EVENT",
+          "decision_kind": "collapse",
+          "detail": "max_authority=H0",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000087_2b862356",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 471,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_RULE",
+          "decision_kind": "collapse",
+          "detail": "rule=legacy_observer",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000087_2b862356",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 471,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_EVENT",
+          "decision_kind": "collapse",
+          "detail": "max_authority=H0",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000092_7c509ec7",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 476,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_RULE",
+          "decision_kind": "collapse",
+          "detail": "rule=legacy_observer",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000092_7c509ec7",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 476,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_EVENT",
+          "decision_kind": "collapse",
+          "detail": "max_authority=H0",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000094_7cdd1632",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 478,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_RULE",
+          "decision_kind": "collapse",
+          "detail": "rule=legacy_observer",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000094_7cdd1632",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 478,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_EVENT",
+          "decision_kind": "collapse",
+          "detail": "max_authority=H0",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000099_a59ef6d5",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 483,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_RULE",
+          "decision_kind": "collapse",
+          "detail": "rule=legacy_observer",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000099_a59ef6d5",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 483,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_EVENT",
+          "decision_kind": "collapse",
+          "detail": "max_authority=H0",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000101_8ad59514",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 485,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_RULE",
+          "decision_kind": "collapse",
+          "detail": "rule=legacy_observer",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000101_8ad59514",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 485,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_EVENT",
+          "decision_kind": "collapse",
+          "detail": "max_authority=H0",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000106_d4230bdb",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 490,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_RULE",
+          "decision_kind": "collapse",
+          "detail": "rule=legacy_observer",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000106_d4230bdb",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 490,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_EVENT",
+          "decision_kind": "collapse",
+          "detail": "max_authority=H0",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000108_25063b2d",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 492,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_RULE",
+          "decision_kind": "collapse",
+          "detail": "rule=legacy_observer",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000108_25063b2d",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 492,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_EVENT",
+          "decision_kind": "collapse",
+          "detail": "max_authority=H0",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000113_4a44cb7a",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 497,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_RULE",
+          "decision_kind": "collapse",
+          "detail": "rule=legacy_observer",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000113_4a44cb7a",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 497,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_EVENT",
+          "decision_kind": "collapse",
+          "detail": "max_authority=H0",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000115_cba9a5dc",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 499,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_RULE",
+          "decision_kind": "collapse",
+          "detail": "rule=legacy_observer",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000115_cba9a5dc",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 499,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_EVENT",
+          "decision_kind": "collapse",
+          "detail": "max_authority=H0",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000120_ef36629d",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 504,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_RULE",
+          "decision_kind": "collapse",
+          "detail": "rule=legacy_observer",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000120_ef36629d",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 504,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_EVENT",
+          "decision_kind": "collapse",
+          "detail": "max_authority=H0",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000122_197aa047",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 506,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_RULE",
+          "decision_kind": "collapse",
+          "detail": "rule=legacy_observer",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000122_197aa047",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 506,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_EVENT",
+          "decision_kind": "collapse",
+          "detail": "max_authority=H0",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000127_2ae25618",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 511,
+          "scope": "canonical"
+        },
+        {
+          "code": "LOW_AUTHORITY_STRONG_RULE",
+          "decision_kind": "collapse",
+          "detail": "rule=legacy_observer",
+          "entity_id": "entity_4c3ade60ea78",
+          "event_id": "evt_276e496e_000127_2ae25618",
+          "event_type": "cuda_slot_scan",
+          "legacy_tolerated": true,
+          "line": 511,
+          "scope": "canonical"
+        }
+      ]
+    },
+    {
+      "authority_mix": [
+        [
+          "H2",
+          12
+        ],
+        [
+          "H3",
+          2
+        ],
+        [
+          "H0",
+          1
+        ],
+        [
+          "H1",
+          1
+        ]
+      ],
+      "classification": "HEURISTIC_INFLUENCE_MAP_READY",
+      "decision_mix": [
+        [
+          "observe",
+          2
+        ],
+        [
+          "collapse",
+          2
+        ],
+        [
+          "block",
+          2
+        ],
+        [
+          "prove",
+          1
+        ]
+      ],
+      "entity_catalog_ref": "reports/pnva-native-entity-catalog-demo-2026-05-05.json",
+      "entity_valid_count": 7,
+      "error_count": 0,
+      "errors": [],
+      "event_count": 7,
+      "event_with_hard_authority_ratio": 1.0,
+      "event_with_rules_count": 7,
+      "events_ref": "reports/pnva-native-events-demo-2026-05-05.jsonl",
+      "hard_authority_edge_count": 14,
+      "hard_authority_edge_ratio": 0.875,
+      "heuristic_coverage_ratio": 1.0,
+      "heuristic_rule_count": 7,
+      "influence_edge_count": 16,
+      "legacy_tolerant": false,
+      "low_authority_edge_count": 2,
+      "low_authority_strong_edge_count": 1,
+      "pass": true,
+      "proof_event_coverage_ratio": 1.0,
+      "proof_valid_event_count": 7,
+      "risk_flags": [
+        [
+          "STALE_PRESSURE",
+          2
+        ],
+        [
+          "THERMAL_PRESSURE",
+          1
+        ]
+      ],
+      "rule_profiles": [
+        {
+          "authority": "H2",
+          "decision_mix": [
+            [
+              "observe",
+              2
+            ],
+            [
+              "collapse",
+              2
+            ],
+            [
+              "block",
+              2
+            ],
+            [
+              "prove",
+              1
+            ]
+          ],
+          "entity_count": 6,
+          "event_count": 7,
+          "gate_delta_mean": -0.299,
+          "proof_coverage_ratio": 1.0,
+          "proof_valid_count": 7,
+          "risk_flags": [
+            [
+              "STALE_PRESSURE",
+              2
+            ],
+            [
+              "THERMAL_PRESSURE",
+              1
+            ]
+          ],
+          "rule": "native_event_emitter",
+          "score_mean": 0.308143,
+          "strong_decision_count": 5,
+          "strong_decision_ratio": 0.714286,
+          "suppressed_count": 4,
+          "suppression_ratio": 0.571429,
+          "top_entities": [
+            [
+              "pnva-etev-guard",
+              2
+            ],
+            [
+              "pnva-field-demo",
+              1
+            ],
+            [
+              "zano-entity-00",
+              1
+            ],
+            [
+              "pnva-thermal-guard",
+              1
+            ],
+            [
+              "zano-entity-01",
+              1
+            ],
+            [
+              "pnva-proof-native-demo",
+              1
+            ]
+          ]
+        },
+        {
+          "authority": "H2",
+          "decision_mix": [
+            [
+              "collapse",
+              1
+            ],
+            [
+              "block",
+              1
+            ]
+          ],
+          "entity_count": 1,
+          "event_count": 2,
+          "gate_delta_mean": -0.282,
+          "proof_coverage_ratio": 1.0,
+          "proof_valid_count": 2,
+          "risk_flags": [
+            [
+              "STALE_PRESSURE",
+              1
+            ]
+          ],
+          "rule": "adaptive_threshold",
+          "score_mean": 0.408,
+          "strong_decision_count": 2,
+          "strong_decision_ratio": 1.0,
+          "suppressed_count": 1,
+          "suppression_ratio": 0.5,
+          "top_entities": [
+            [
+              "pnva-etev-guard",
+              2
+            ]
+          ]
+        },
+        {
+          "authority": "H3",
+          "decision_mix": [
+            [
+              "collapse",
+              1
+            ],
+            [
+              "block",
+              1
+            ]
+          ],
+          "entity_count": 1,
+          "event_count": 2,
+          "gate_delta_mean": -0.282,
+          "proof_coverage_ratio": 1.0,
+          "proof_valid_count": 2,
+          "risk_flags": [
+            [
+              "STALE_PRESSURE",
+              1
+            ]
+          ],
+          "rule": "etev_guard",
+          "score_mean": 0.408,
+          "strong_decision_count": 2,
+          "strong_decision_ratio": 1.0,
+          "suppressed_count": 1,
+          "suppression_ratio": 0.5,
+          "top_entities": [
+            [
+              "pnva-etev-guard",
+              2
+            ]
+          ]
+        },
+        {
+          "authority": "H2",
+          "decision_mix": [
+            [
+              "collapse",
+              1
+            ],
+            [
+              "block",
+              1
+            ]
+          ],
+          "entity_count": 2,
+          "event_count": 2,
+          "gate_delta_mean": -0.2375,
+          "proof_coverage_ratio": 1.0,
+          "proof_valid_count": 2,
+          "risk_flags": [
+            [
+              "STALE_PRESSURE",
+              1
+            ]
+          ],
+          "rule": "field_scheduler",
+          "score_mean": 0.3325,
+          "strong_decision_count": 2,
+          "strong_decision_ratio": 1.0,
+          "suppressed_count": 1,
+          "suppression_ratio": 0.5,
+          "top_entities": [
+            [
+              "zano-entity-00",
+              1
+            ],
+            [
+              "zano-entity-01",
+              1
+            ]
+          ]
+        },
+        {
+          "authority": "H0",
+          "decision_mix": [
+            [
+              "observe",
+              1
+            ]
+          ],
+          "entity_count": 1,
+          "event_count": 1,
+          "gate_delta_mean": -0.554,
+          "proof_coverage_ratio": 1.0,
+          "proof_valid_count": 1,
+          "risk_flags": [],
+          "rule": "legacy_observer",
+          "score_mean": 0.046,
+          "strong_decision_count": 0,
+          "strong_decision_ratio": 0.0,
+          "suppressed_count": 1,
+          "suppression_ratio": 1.0,
+          "top_entities": [
+            [
+              "pnva-field-demo",
+              1
+            ]
+          ]
+        },
+        {
+          "authority": "H1",
+          "decision_mix": [
+            [
+              "collapse",
+              1
+            ]
+          ],
+          "entity_count": 1,
+          "event_count": 1,
+          "gate_delta_mean": 0.046,
+          "proof_coverage_ratio": 1.0,
+          "proof_valid_count": 1,
+          "risk_flags": [],
+          "rule": "memory4d",
+          "score_mean": 0.566,
+          "strong_decision_count": 1,
+          "strong_decision_ratio": 1.0,
+          "suppressed_count": 0,
+          "suppression_ratio": 0.0,
+          "top_entities": [
+            [
+              "zano-entity-00",
+              1
+            ]
+          ]
+        },
+        {
+          "authority": "H2",
+          "decision_mix": [
+            [
+              "observe",
+              1
+            ]
+          ],
+          "entity_count": 1,
+          "event_count": 1,
+          "gate_delta_mean": -0.548,
+          "proof_coverage_ratio": 1.0,
+          "proof_valid_count": 1,
+          "risk_flags": [
+            [
+              "THERMAL_PRESSURE",
+              1
+            ]
+          ],
+          "rule": "power_orchestrator",
+          "score_mean": 0.132,
+          "strong_decision_count": 0,
+          "strong_decision_ratio": 0.0,
+          "suppressed_count": 1,
+          "suppression_ratio": 1.0,
+          "top_entities": [
+            [
+              "pnva-thermal-guard",
+              1
+            ]
+          ]
+        }
+      ],
+      "scope": "native",
+      "scope_influence_clean": true,
+      "top_entity_rule_edges": [
+        {
+          "count": 2,
+          "entity_id": "pnva-etev-guard",
+          "rule": "adaptive_threshold"
+        },
+        {
+          "count": 2,
+          "entity_id": "pnva-etev-guard",
+          "rule": "etev_guard"
+        },
+        {
+          "count": 2,
+          "entity_id": "pnva-etev-guard",
+          "rule": "native_event_emitter"
+        },
+        {
+          "count": 1,
+          "entity_id": "pnva-field-demo",
+          "rule": "legacy_observer"
+        },
+        {
+          "count": 1,
+          "entity_id": "pnva-field-demo",
+          "rule": "native_event_emitter"
+        },
+        {
+          "count": 1,
+          "entity_id": "zano-entity-00",
+          "rule": "field_scheduler"
+        },
+        {
+          "count": 1,
+          "entity_id": "zano-entity-00",
+          "rule": "memory4d"
+        },
+        {
+          "count": 1,
+          "entity_id": "zano-entity-00",
+          "rule": "native_event_emitter"
+        },
+        {
+          "count": 1,
+          "entity_id": "pnva-thermal-guard",
+          "rule": "native_event_emitter"
+        },
+        {
+          "count": 1,
+          "entity_id": "pnva-thermal-guard",
+          "rule": "power_orchestrator"
+        },
+        {
+          "count": 1,
+          "entity_id": "zano-entity-01",
+          "rule": "field_scheduler"
+        },
+        {
+          "count": 1,
+          "entity_id": "zano-entity-01",
+          "rule": "native_event_emitter"
+        },
+        {
+          "count": 1,
+          "entity_id": "pnva-proof-native-demo",
+          "rule": "native_event_emitter"
+        }
+      ],
+      "top_rule_decision_edges": [
+        {
+          "count": 2,
+          "decision_kind": "observe",
+          "rule": "native_event_emitter"
+        },
+        {
+          "count": 2,
+          "decision_kind": "collapse",
+          "rule": "native_event_emitter"
+        },
+        {
+          "count": 2,
+          "decision_kind": "block",
+          "rule": "native_event_emitter"
+        },
+        {
+          "count": 1,
+          "decision_kind": "observe",
+          "rule": "legacy_observer"
+        },
+        {
+          "count": 1,
+          "decision_kind": "collapse",
+          "rule": "adaptive_threshold"
+        },
+        {
+          "count": 1,
+          "decision_kind": "collapse",
+          "rule": "etev_guard"
+        },
+        {
+          "count": 1,
+          "decision_kind": "collapse",
+          "rule": "field_scheduler"
+        },
+        {
+          "count": 1,
+          "decision_kind": "collapse",
+          "rule": "memory4d"
+        },
+        {
+          "count": 1,
+          "decision_kind": "observe",
+          "rule": "power_orchestrator"
+        },
+        {
+          "count": 1,
+          "decision_kind": "block",
+          "rule": "adaptive_threshold"
+        },
+        {
+          "count": 1,
+          "decision_kind": "block",
+          "rule": "etev_guard"
+        },
+        {
+          "count": 1,
+          "decision_kind": "block",
+          "rule": "field_scheduler"
+        },
+        {
+          "count": 1,
+          "decision_kind": "prove",
+          "rule": "native_event_emitter"
+        }
+      ],
+      "uncompensated_low_authority_strong_event_count": 0,
+      "warning_count": 0,
+      "warnings": []
+    }
+  ],
+  "summary": {
+    "hard_authority_edge_count": 776,
+    "hard_authority_edge_ratio": 0.683099,
+    "heuristic_coverage_ratio": 1.0,
+    "heuristic_rule_count": 9,
+    "influence_edge_count": 1136,
+    "low_authority_edge_count": 360,
+    "low_authority_strong_edge_count": 164,
+    "native_influence_clean": true,
+    "proof_event_coverage_ratio": 1.0,
+    "total_event_count": 519,
+    "uncompensated_low_authority_strong_event_count": 35
+  },
+  "uncompensated_low_authority_strong_event_count": 35,
+  "warning_count": 70,
+  "warnings": [
+    {
+      "code": "LOW_AUTHORITY_STRONG_EVENT",
+      "decision_kind": "collapse",
+      "detail": "max_authority=H0",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000001_5f5d2586",
+      "event_type": "cuda_slot_scan",
+      "legacy_tolerated": true,
+      "line": 385,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_RULE",
+      "decision_kind": "collapse",
+      "detail": "rule=legacy_observer",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000001_5f5d2586",
+      "event_type": "cuda_slot_scan",
+      "legacy_tolerated": true,
+      "line": 385,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_EVENT",
+      "decision_kind": "collapse",
+      "detail": "max_authority=H0",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000003_392d3b13",
+      "event_type": "cuda_slot_scan",
+      "legacy_tolerated": true,
+      "line": 387,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_RULE",
+      "decision_kind": "collapse",
+      "detail": "rule=legacy_observer",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000003_392d3b13",
+      "event_type": "cuda_slot_scan",
+      "legacy_tolerated": true,
+      "line": 387,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_EVENT",
+      "decision_kind": "collapse",
+      "detail": "max_authority=H0",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000008_597a2713",
+      "event_type": "cuda_slot_scan",
+      "legacy_tolerated": true,
+      "line": 392,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_RULE",
+      "decision_kind": "collapse",
+      "detail": "rule=legacy_observer",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000008_597a2713",
+      "event_type": "cuda_slot_scan",
+      "legacy_tolerated": true,
+      "line": 392,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_EVENT",
+      "decision_kind": "collapse",
+      "detail": "max_authority=H0",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000010_54e369e9",
+      "event_type": "cuda_slot_scan",
+      "legacy_tolerated": true,
+      "line": 394,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_RULE",
+      "decision_kind": "collapse",
+      "detail": "rule=legacy_observer",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000010_54e369e9",
+      "event_type": "cuda_slot_scan",
+      "legacy_tolerated": true,
+      "line": 394,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_EVENT",
+      "decision_kind": "collapse",
+      "detail": "max_authority=H0",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000015_ddd7919f",
+      "event_type": "cuda_slot_scan",
+      "legacy_tolerated": true,
+      "line": 399,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_RULE",
+      "decision_kind": "collapse",
+      "detail": "rule=legacy_observer",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000015_ddd7919f",
+      "event_type": "cuda_slot_scan",
+      "legacy_tolerated": true,
+      "line": 399,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_EVENT",
+      "decision_kind": "collapse",
+      "detail": "max_authority=H0",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000017_b19df11f",
+      "event_type": "cuda_slot_scan",
+      "legacy_tolerated": true,
+      "line": 401,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_RULE",
+      "decision_kind": "collapse",
+      "detail": "rule=legacy_observer",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000017_b19df11f",
+      "event_type": "cuda_slot_scan",
+      "legacy_tolerated": true,
+      "line": 401,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_EVENT",
+      "decision_kind": "collapse",
+      "detail": "max_authority=H0",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000022_460f742b",
+      "event_type": "cuda_slot_scan",
+      "legacy_tolerated": true,
+      "line": 406,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_RULE",
+      "decision_kind": "collapse",
+      "detail": "rule=legacy_observer",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000022_460f742b",
+      "event_type": "cuda_slot_scan",
+      "legacy_tolerated": true,
+      "line": 406,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_EVENT",
+      "decision_kind": "collapse",
+      "detail": "max_authority=H0",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000024_b9380e24",
+      "event_type": "cuda_slot_scan",
+      "legacy_tolerated": true,
+      "line": 408,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_RULE",
+      "decision_kind": "collapse",
+      "detail": "rule=legacy_observer",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000024_b9380e24",
+      "event_type": "cuda_slot_scan",
+      "legacy_tolerated": true,
+      "line": 408,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_EVENT",
+      "decision_kind": "collapse",
+      "detail": "max_authority=H0",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000029_e115771c",
+      "event_type": "cuda_slot_scan",
+      "legacy_tolerated": true,
+      "line": 413,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_RULE",
+      "decision_kind": "collapse",
+      "detail": "rule=legacy_observer",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000029_e115771c",
+      "event_type": "cuda_slot_scan",
+      "legacy_tolerated": true,
+      "line": 413,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_EVENT",
+      "decision_kind": "collapse",
+      "detail": "max_authority=H0",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000031_f7f54e57",
+      "event_type": "cuda_slot_scan",
+      "legacy_tolerated": true,
+      "line": 415,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_RULE",
+      "decision_kind": "collapse",
+      "detail": "rule=legacy_observer",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000031_f7f54e57",
+      "event_type": "cuda_slot_scan",
+      "legacy_tolerated": true,
+      "line": 415,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_EVENT",
+      "decision_kind": "collapse",
+      "detail": "max_authority=H0",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000038_704394c1",
+      "event_type": "cuda_slot_scan",
+      "legacy_tolerated": true,
+      "line": 422,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_RULE",
+      "decision_kind": "collapse",
+      "detail": "rule=legacy_observer",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000038_704394c1",
+      "event_type": "cuda_slot_scan",
+      "legacy_tolerated": true,
+      "line": 422,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_EVENT",
+      "decision_kind": "collapse",
+      "detail": "max_authority=H0",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000040_456190e1",
+      "event_type": "cuda_slot_scan",
+      "legacy_tolerated": true,
+      "line": 424,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_RULE",
+      "decision_kind": "collapse",
+      "detail": "rule=legacy_observer",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000040_456190e1",
+      "event_type": "cuda_slot_scan",
+      "legacy_tolerated": true,
+      "line": 424,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_EVENT",
+      "decision_kind": "collapse",
+      "detail": "max_authority=H0",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000045_044db479",
+      "event_type": "cuda_slot_scan",
+      "legacy_tolerated": true,
+      "line": 429,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_RULE",
+      "decision_kind": "collapse",
+      "detail": "rule=legacy_observer",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000045_044db479",
+      "event_type": "cuda_slot_scan",
+      "legacy_tolerated": true,
+      "line": 429,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_EVENT",
+      "decision_kind": "collapse",
+      "detail": "max_authority=H0",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000047_2f09ade1",
+      "event_type": "cuda_slot_scan",
+      "legacy_tolerated": true,
+      "line": 431,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_RULE",
+      "decision_kind": "collapse",
+      "detail": "rule=legacy_observer",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000047_2f09ade1",
+      "event_type": "cuda_slot_scan",
+      "legacy_tolerated": true,
+      "line": 431,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_EVENT",
+      "decision_kind": "collapse",
+      "detail": "max_authority=H0",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000052_18bf554d",
+      "event_type": "cuda_slot_scan",
+      "legacy_tolerated": true,
+      "line": 436,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_RULE",
+      "decision_kind": "collapse",
+      "detail": "rule=legacy_observer",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000052_18bf554d",
+      "event_type": "cuda_slot_scan",
+      "legacy_tolerated": true,
+      "line": 436,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_EVENT",
+      "decision_kind": "collapse",
+      "detail": "max_authority=H0",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000054_3898d4c2",
+      "event_type": "cuda_slot_scan",
+      "legacy_tolerated": true,
+      "line": 438,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_RULE",
+      "decision_kind": "collapse",
+      "detail": "rule=legacy_observer",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000054_3898d4c2",
+      "event_type": "cuda_slot_scan",
+      "legacy_tolerated": true,
+      "line": 438,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_EVENT",
+      "decision_kind": "collapse",
+      "detail": "max_authority=H0",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000059_01f7a41e",
+      "event_type": "cuda_slot_scan",
+      "legacy_tolerated": true,
+      "line": 443,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_RULE",
+      "decision_kind": "collapse",
+      "detail": "rule=legacy_observer",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000059_01f7a41e",
+      "event_type": "cuda_slot_scan",
+      "legacy_tolerated": true,
+      "line": 443,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_EVENT",
+      "decision_kind": "collapse",
+      "detail": "max_authority=H0",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000061_1a9c106c",
+      "event_type": "cuda_slot_scan",
+      "legacy_tolerated": true,
+      "line": 445,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_RULE",
+      "decision_kind": "collapse",
+      "detail": "rule=legacy_observer",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000061_1a9c106c",
+      "event_type": "cuda_slot_scan",
+      "legacy_tolerated": true,
+      "line": 445,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_EVENT",
+      "decision_kind": "collapse",
+      "detail": "max_authority=H0",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000071_4bf4fe50",
+      "event_type": "cuda_slot_scan",
+      "legacy_tolerated": true,
+      "line": 455,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_RULE",
+      "decision_kind": "collapse",
+      "detail": "rule=legacy_observer",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000071_4bf4fe50",
+      "event_type": "cuda_slot_scan",
+      "legacy_tolerated": true,
+      "line": 455,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_EVENT",
+      "decision_kind": "collapse",
+      "detail": "max_authority=H0",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000073_bc920d9e",
+      "event_type": "cuda_slot_scan",
+      "legacy_tolerated": true,
+      "line": 457,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_RULE",
+      "decision_kind": "collapse",
+      "detail": "rule=legacy_observer",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000073_bc920d9e",
+      "event_type": "cuda_slot_scan",
+      "legacy_tolerated": true,
+      "line": 457,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_EVENT",
+      "decision_kind": "collapse",
+      "detail": "max_authority=H0",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000078_933bffc6",
+      "event_type": "cuda_slot_scan",
+      "legacy_tolerated": true,
+      "line": 462,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_RULE",
+      "decision_kind": "collapse",
+      "detail": "rule=legacy_observer",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000078_933bffc6",
+      "event_type": "cuda_slot_scan",
+      "legacy_tolerated": true,
+      "line": 462,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_EVENT",
+      "decision_kind": "collapse",
+      "detail": "max_authority=H0",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000080_7f5c085d",
+      "event_type": "cuda_slot_scan",
+      "legacy_tolerated": true,
+      "line": 464,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_RULE",
+      "decision_kind": "collapse",
+      "detail": "rule=legacy_observer",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000080_7f5c085d",
+      "event_type": "cuda_slot_scan",
+      "legacy_tolerated": true,
+      "line": 464,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_EVENT",
+      "decision_kind": "collapse",
+      "detail": "max_authority=H0",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000085_2950be7a",
+      "event_type": "cuda_slot_scan",
+      "legacy_tolerated": true,
+      "line": 469,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_RULE",
+      "decision_kind": "collapse",
+      "detail": "rule=legacy_observer",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000085_2950be7a",
+      "event_type": "cuda_slot_scan",
+      "legacy_tolerated": true,
+      "line": 469,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_EVENT",
+      "decision_kind": "collapse",
+      "detail": "max_authority=H0",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000087_2b862356",
+      "event_type": "cuda_slot_scan",
+      "legacy_tolerated": true,
+      "line": 471,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_RULE",
+      "decision_kind": "collapse",
+      "detail": "rule=legacy_observer",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000087_2b862356",
+      "event_type": "cuda_slot_scan",
+      "legacy_tolerated": true,
+      "line": 471,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_EVENT",
+      "decision_kind": "collapse",
+      "detail": "max_authority=H0",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000092_7c509ec7",
+      "event_type": "cuda_slot_scan",
+      "legacy_tolerated": true,
+      "line": 476,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_RULE",
+      "decision_kind": "collapse",
+      "detail": "rule=legacy_observer",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000092_7c509ec7",
+      "event_type": "cuda_slot_scan",
+      "legacy_tolerated": true,
+      "line": 476,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_EVENT",
+      "decision_kind": "collapse",
+      "detail": "max_authority=H0",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000094_7cdd1632",
+      "event_type": "cuda_slot_scan",
+      "legacy_tolerated": true,
+      "line": 478,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_RULE",
+      "decision_kind": "collapse",
+      "detail": "rule=legacy_observer",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000094_7cdd1632",
+      "event_type": "cuda_slot_scan",
+      "legacy_tolerated": true,
+      "line": 478,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_EVENT",
+      "decision_kind": "collapse",
+      "detail": "max_authority=H0",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000099_a59ef6d5",
+      "event_type": "cuda_slot_scan",
+      "legacy_tolerated": true,
+      "line": 483,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_RULE",
+      "decision_kind": "collapse",
+      "detail": "rule=legacy_observer",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000099_a59ef6d5",
+      "event_type": "cuda_slot_scan",
+      "legacy_tolerated": true,
+      "line": 483,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_EVENT",
+      "decision_kind": "collapse",
+      "detail": "max_authority=H0",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000101_8ad59514",
+      "event_type": "cuda_slot_scan",
+      "legacy_tolerated": true,
+      "line": 485,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_RULE",
+      "decision_kind": "collapse",
+      "detail": "rule=legacy_observer",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000101_8ad59514",
+      "event_type": "cuda_slot_scan",
+      "legacy_tolerated": true,
+      "line": 485,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_EVENT",
+      "decision_kind": "collapse",
+      "detail": "max_authority=H0",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000106_d4230bdb",
+      "event_type": "cuda_slot_scan",
+      "legacy_tolerated": true,
+      "line": 490,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_RULE",
+      "decision_kind": "collapse",
+      "detail": "rule=legacy_observer",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000106_d4230bdb",
+      "event_type": "cuda_slot_scan",
+      "legacy_tolerated": true,
+      "line": 490,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_EVENT",
+      "decision_kind": "collapse",
+      "detail": "max_authority=H0",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000108_25063b2d",
+      "event_type": "cuda_slot_scan",
+      "legacy_tolerated": true,
+      "line": 492,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_RULE",
+      "decision_kind": "collapse",
+      "detail": "rule=legacy_observer",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000108_25063b2d",
+      "event_type": "cuda_slot_scan",
+      "legacy_tolerated": true,
+      "line": 492,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_EVENT",
+      "decision_kind": "collapse",
+      "detail": "max_authority=H0",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000113_4a44cb7a",
+      "event_type": "cuda_slot_scan",
+      "legacy_tolerated": true,
+      "line": 497,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_RULE",
+      "decision_kind": "collapse",
+      "detail": "rule=legacy_observer",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000113_4a44cb7a",
+      "event_type": "cuda_slot_scan",
+      "legacy_tolerated": true,
+      "line": 497,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_EVENT",
+      "decision_kind": "collapse",
+      "detail": "max_authority=H0",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000115_cba9a5dc",
+      "event_type": "cuda_slot_scan",
+      "legacy_tolerated": true,
+      "line": 499,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_RULE",
+      "decision_kind": "collapse",
+      "detail": "rule=legacy_observer",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000115_cba9a5dc",
+      "event_type": "cuda_slot_scan",
+      "legacy_tolerated": true,
+      "line": 499,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_EVENT",
+      "decision_kind": "collapse",
+      "detail": "max_authority=H0",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000120_ef36629d",
+      "event_type": "cuda_slot_scan",
+      "legacy_tolerated": true,
+      "line": 504,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_RULE",
+      "decision_kind": "collapse",
+      "detail": "rule=legacy_observer",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000120_ef36629d",
+      "event_type": "cuda_slot_scan",
+      "legacy_tolerated": true,
+      "line": 504,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_EVENT",
+      "decision_kind": "collapse",
+      "detail": "max_authority=H0",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000122_197aa047",
+      "event_type": "cuda_slot_scan",
+      "legacy_tolerated": true,
+      "line": 506,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_RULE",
+      "decision_kind": "collapse",
+      "detail": "rule=legacy_observer",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000122_197aa047",
+      "event_type": "cuda_slot_scan",
+      "legacy_tolerated": true,
+      "line": 506,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_EVENT",
+      "decision_kind": "collapse",
+      "detail": "max_authority=H0",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000127_2ae25618",
+      "event_type": "cuda_slot_scan",
+      "legacy_tolerated": true,
+      "line": 511,
+      "scope": "canonical"
+    },
+    {
+      "code": "LOW_AUTHORITY_STRONG_RULE",
+      "decision_kind": "collapse",
+      "detail": "rule=legacy_observer",
+      "entity_id": "entity_4c3ade60ea78",
+      "event_id": "evt_276e496e_000127_2ae25618",
+      "event_type": "cuda_slot_scan",
+      "legacy_tolerated": true,
+      "line": 511,
+      "scope": "canonical"
+    }
+  ]
+}

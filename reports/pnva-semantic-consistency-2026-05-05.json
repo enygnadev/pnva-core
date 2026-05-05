@@ -1,6 +1,6 @@
 {
   "author": "Gustavo de Aguiar Martins",
-  "check_count": 128,
+  "check_count": 143,
   "checks": [
     {
       "group": "classification",
@@ -284,6 +284,26 @@
     },
     {
       "group": "classification",
+      "left": "HEURISTIC_INFLUENCE_MAP_READY_WITH_LEGACY_WARNINGS",
+      "left_ref": "reports/pnva-heuristic-influence-map-2026-05-05.json:classification",
+      "name": "heuristic_influence_map_classification",
+      "pass": true,
+      "right": "HEURISTIC_INFLUENCE_MAP_READY_WITH_LEGACY_WARNINGS",
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "classification",
+      "left": true,
+      "left_ref": "reports/pnva-heuristic-influence-map-2026-05-05.json:pass",
+      "name": "heuristic_influence_map_pass_flag",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "classification",
       "left": "ENTITY_NO_TICK_MATRIX_READY_WITH_LEGACY_WARNINGS",
       "left_ref": "reports/pnva-entity-no-tick-matrix-2026-05-05.json:classification",
       "name": "entity_no_tick_matrix_classification",
@@ -495,21 +515,21 @@
     },
     {
       "group": "manifest",
-      "left": 25,
+      "left": 26,
       "left_ref": "MANIFEST:sovereign_evidence_attestation.artifact_count",
       "name": "manifest_attestation_artifact_count",
       "pass": true,
-      "right": 25,
+      "right": 26,
       "right_ref": "attestation:artifact_count",
       "severity": "error"
     },
     {
       "group": "manifest",
-      "left": "sha256:742f6febce6c156bb010219ca535915da9c7d44c335c2c2ccfaa8873aa9d96e6",
+      "left": "sha256:c892d5b8f9de3012a47baacb291b9e79bc509142d1919eb58493793c85453183",
       "left_ref": "MANIFEST:sovereign_evidence_attestation.evidence_hash",
       "name": "manifest_attestation_hash",
       "pass": true,
-      "right": "sha256:742f6febce6c156bb010219ca535915da9c7d44c335c2c2ccfaa8873aa9d96e6",
+      "right": "sha256:c892d5b8f9de3012a47baacb291b9e79bc509142d1919eb58493793c85453183",
       "right_ref": "attestation:evidence_hash",
       "severity": "error"
     },
@@ -642,6 +662,56 @@
       "pass": true,
       "right": true,
       "right_ref": "decision_trace_index:native_trace_clean",
+      "severity": "error"
+    },
+    {
+      "group": "manifest",
+      "left": 519,
+      "left_ref": "MANIFEST:heuristic_influence_map.event_count",
+      "name": "manifest_heuristic_influence_event_count",
+      "pass": true,
+      "right": 519,
+      "right_ref": "heuristic_influence_map:event_count",
+      "severity": "error"
+    },
+    {
+      "group": "manifest",
+      "left": 9,
+      "left_ref": "MANIFEST:heuristic_influence_map.heuristic_rule_count",
+      "name": "manifest_heuristic_influence_rule_count",
+      "pass": true,
+      "right": 9,
+      "right_ref": "heuristic_influence_map:heuristic_rule_count",
+      "severity": "error"
+    },
+    {
+      "group": "manifest",
+      "left": 1136,
+      "left_ref": "MANIFEST:heuristic_influence_map.influence_edge_count",
+      "name": "manifest_heuristic_influence_edge_count",
+      "pass": true,
+      "right": 1136,
+      "right_ref": "heuristic_influence_map:influence_edge_count",
+      "severity": "error"
+    },
+    {
+      "group": "manifest",
+      "left": 70,
+      "left_ref": "MANIFEST:heuristic_influence_map.warning_count",
+      "name": "manifest_heuristic_influence_warning_count",
+      "pass": true,
+      "right": 70,
+      "right_ref": "heuristic_influence_map:warning_count",
+      "severity": "error"
+    },
+    {
+      "group": "manifest",
+      "left": true,
+      "left_ref": "MANIFEST:heuristic_influence_map.native_influence_clean",
+      "name": "manifest_heuristic_influence_native_clean",
+      "pass": true,
+      "right": true,
+      "right_ref": "heuristic_influence_map:native_influence_clean",
       "severity": "error"
     },
     {
@@ -949,6 +1019,68 @@
       "severity": "error"
     },
     {
+      "group": "heuristic_influence_map",
+      "left": 519,
+      "left_ref": "heuristic_influence_map:event_count",
+      "name": "heuristic_influence_total_event_count",
+      "pass": true,
+      "right": 519,
+      "right_ref": "canonical_events+native_events",
+      "severity": "error"
+    },
+    {
+      "group": "heuristic_influence_map",
+      "left": 9,
+      "left_ref": "heuristic_influence_map:heuristic_rule_count",
+      "name": "heuristic_influence_rule_count_matches_schema",
+      "pass": true,
+      "right": 9,
+      "right_ref": "schema_contract:heuristic_rule_count",
+      "severity": "error"
+    },
+    {
+      "group": "heuristic_influence_map",
+      "left": 1.0,
+      "left_ref": "heuristic_influence_map:heuristic_coverage_ratio",
+      "name": "heuristic_influence_coverage",
+      "pass": true,
+      "right": 1.0,
+      "right_ref": "expected",
+      "severity": "error",
+      "tolerance": 1e-06
+    },
+    {
+      "group": "heuristic_influence_map",
+      "left": 1.0,
+      "left_ref": "heuristic_influence_map:proof_event_coverage_ratio",
+      "name": "heuristic_influence_proof_coverage",
+      "pass": true,
+      "right": 1.0,
+      "right_ref": "expected",
+      "severity": "error",
+      "tolerance": 1e-06
+    },
+    {
+      "group": "heuristic_influence_map",
+      "left": true,
+      "left_ref": "heuristic_influence_map:native_influence_clean",
+      "name": "heuristic_influence_native_clean",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "heuristic_influence_map",
+      "left": true,
+      "left_ref": "heuristic_influence_map:influence_edge_count",
+      "name": "heuristic_influence_edges_present",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
       "group": "entity_no_tick_matrix",
       "left": 519,
       "left_ref": "entity_no_tick_matrix:event_count",
@@ -1082,11 +1214,11 @@
     },
     {
       "group": "attestation",
-      "left": 25,
+      "left": 26,
       "left_ref": "attestation:artifact_count",
       "name": "artifact_count_matches_list",
       "pass": true,
-      "right": 25,
+      "right": 26,
       "right_ref": "len(attestation.artifacts)",
       "severity": "error"
     },
@@ -1144,6 +1276,16 @@
       "group": "attestation",
       "left": true,
       "left_ref": "attestation:artifact_ids",
+      "name": "attestation_contains_heuristic_influence_map",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "attestation",
+      "left": true,
+      "left_ref": "attestation:artifact_ids",
       "name": "attestation_contains_entity_no_tick_matrix",
       "pass": true,
       "right": true,
@@ -1192,11 +1334,11 @@
     },
     {
       "group": "audit",
-      "left": "sha256:742f6febce6c156bb010219ca535915da9c7d44c335c2c2ccfaa8873aa9d96e6",
+      "left": "sha256:c892d5b8f9de3012a47baacb291b9e79bc509142d1919eb58493793c85453183",
       "left_ref": "audit:evidence_attestation.evidence_hash",
       "name": "audit_attestation_hash_matches",
       "pass": true,
-      "right": "sha256:742f6febce6c156bb010219ca535915da9c7d44c335c2c2ccfaa8873aa9d96e6",
+      "right": "sha256:c892d5b8f9de3012a47baacb291b9e79bc509142d1919eb58493793c85453183",
       "right_ref": "attestation:evidence_hash",
       "severity": "error"
     },
@@ -1253,6 +1395,16 @@
     },
     {
       "group": "audit",
+      "left": "HEURISTIC_INFLUENCE_MAP_READY_WITH_LEGACY_WARNINGS",
+      "left_ref": "audit:heuristic_influence_map.classification",
+      "name": "audit_heuristic_influence_matches",
+      "pass": true,
+      "right": "HEURISTIC_INFLUENCE_MAP_READY_WITH_LEGACY_WARNINGS",
+      "right_ref": "heuristic_influence_map:classification",
+      "severity": "error"
+    },
+    {
+      "group": "audit",
       "left": "ENTITY_NO_TICK_MATRIX_READY_WITH_LEGACY_WARNINGS",
       "left_ref": "audit:entity_no_tick_matrix.classification",
       "name": "audit_entity_no_tick_matrix_matches",
@@ -1295,7 +1447,7 @@
   "classification": "SEMANTIC_CONSISTENCY_READY",
   "error_count": 0,
   "errors": [],
-  "generated_at": "2026-05-05T07:26:45Z",
+  "generated_at": "2026-05-05T07:41:38Z",
   "interpretation": {
     "boundary": "This guard checks semantic consistency of the public evidence package; it does not replace runtime execution tests.",
     "purpose": "Detect drift between PNVA public evidence reports, manifest metadata, attestation and audit summaries.",
@@ -1317,6 +1469,7 @@
     "causal_graph": "reports/pnva-causal-graph-2026-05-05.json",
     "decision_trace_index": "reports/pnva-decision-trace-index-2026-05-05.json",
     "entity_no_tick_matrix": "reports/pnva-entity-no-tick-matrix-2026-05-05.json",
+    "heuristic_influence_map": "reports/pnva-heuristic-influence-map-2026-05-05.json",
     "manifest": "MANIFEST.json",
     "maturity": "reports/pnva-entity-heuristic-maturity-2026-05-05.json",
     "native_causal_graph": "reports/pnva-native-causal-graph-2026-05-05.json",
@@ -1334,7 +1487,7 @@
   },
   "schema_version": "pnva.semantic_consistency.v1",
   "summary": {
-    "attestation_artifact_count": 25,
+    "attestation_artifact_count": 26,
     "audit_score": 100,
     "canonical_event_count": 512,
     "canonical_suppressed_count": 246,
@@ -1346,6 +1499,9 @@
     "entity_no_tick_matrix_event_count": 519,
     "entity_no_tick_matrix_suppressed_count": 250,
     "entity_no_tick_matrix_warning_count": 35,
+    "heuristic_influence_edge_count": 1136,
+    "heuristic_influence_event_count": 519,
+    "heuristic_influence_warning_count": 70,
     "native_event_count": 7,
     "native_suppressed_count": 4,
     "schema_contract_event_count": 519,

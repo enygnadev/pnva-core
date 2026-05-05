@@ -32,6 +32,7 @@ schema contract validation
 causal chronology guard
 tension-decision calibration
 decision trace index
+heuristic influence map
 entity no-tick matrix
 suppression ledger
 adversarial validation
@@ -59,7 +60,7 @@ SEMANTIC_CONSISTENCY_READY
 Current result:
 
 ```text
-check_count: 128
+check_count: 143
 error_count: 0
 warning_count: 0
 ```
@@ -76,6 +77,7 @@ schema contract report vs Manifest and attestation
 causal chronology report vs Manifest and attestation
 tension-decision calibration report vs Manifest, attestation and audit
 decision trace index vs Manifest, attestation and audit
+heuristic influence map vs Manifest, attestation and audit
 entity no-tick matrix vs Manifest, attestation and audit
 suppression ledger vs Manifest, attestation and audit
 maturity aggregate math vs canonical + native reports
@@ -91,6 +93,7 @@ Examples:
 7 native events must match native emitter, native no-tick, native policy, native graph and native proof-chain.
 250 total suppressions must equal 246 canonical suppressions + 4 native suppressions.
 519 traced events must equal canonical + native event count.
+9 heuristic rules must match schema contract heuristic rule count.
 250 avoided executions must equal 250 ledger suppressions.
 304 strong decisions must equal 299 canonical + 5 native.
 269 hard-authority strong decisions must equal 304 - 35 legacy low-authority warnings.

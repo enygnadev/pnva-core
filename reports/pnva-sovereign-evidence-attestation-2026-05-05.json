@@ -1,5 +1,5 @@
 {
-  "artifact_count": 25,
+  "artifact_count": 26,
   "artifacts": [
     {
       "entry_count": 9,
@@ -164,6 +164,19 @@
       "required": true,
       "sha256": "8c76f188a2fe2c8506130b9ee34475da5df54e8b072d82b4e09efa614859c2a0",
       "size_bytes": 536905
+    },
+    {
+      "classification": "HEURISTIC_INFLUENCE_MAP_READY_WITH_LEGACY_WARNINGS",
+      "expected": "HEURISTIC_INFLUENCE_MAP_READY_WITH_LEGACY_WARNINGS",
+      "id": "heuristic_influence_map",
+      "kind": "json_classification",
+      "pass": true,
+      "path": "reports/pnva-heuristic-influence-map-2026-05-05.json",
+      "present": true,
+      "reported_pass": true,
+      "required": true,
+      "sha256": "cfcf158578ed37f6f3c2250183e45567ad7b3fc4f200da4783b541ecb9ccbeac",
+      "size_bytes": 77644
     },
     {
       "classification": "ENTITY_NO_TICK_MATRIX_READY_WITH_LEGACY_WARNINGS",
@@ -335,15 +348,16 @@
     "causal chronology guard",
     "tension-decision calibration",
     "decision trace index",
+    "heuristic influence map",
     "entity no-tick matrix",
     "suppression ledger",
     "adversarial negative controls",
     "entity and heuristic maturity",
     "sovereign audit consumes this attestation without being part of its hash seed"
   ],
-  "evidence_hash": "sha256:742f6febce6c156bb010219ca535915da9c7d44c335c2c2ccfaa8873aa9d96e6",
+  "evidence_hash": "sha256:c892d5b8f9de3012a47baacb291b9e79bc509142d1919eb58493793c85453183",
   "failure_count": 0,
-  "generated_at": "2026-05-05T07:26:26Z",
+  "generated_at": "2026-05-05T07:39:18Z",
   "interpretation": {
     "boundary": "This attests repository evidence integrity; it is not a universal proof of all possible PNVA deployments.",
     "hash_policy": "The evidence_hash changes when any tracked artifact hash, classification or pass flag changes.",
@@ -361,6 +375,7 @@
     "Run causal chronology before attestation so timestamp regressions and batch compaction are explicit.",
     "Run tension-decision calibration before attestation so threshold/decision drift is explicit.",
     "Run decision trace index before attestation so every event remains linked to entity, heuristics, tension and proof.",
+    "Run heuristic influence map before attestation so rule authority and decision influence stay measurable.",
     "Run entity no-tick matrix before attestation so suppression and execution are attributable by entity.",
     "Run suppression ledger before attestation so avoided execution is proof-backed."
   ],

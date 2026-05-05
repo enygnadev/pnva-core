@@ -130,6 +130,12 @@ jobs:
             --write /tmp/pnva-decision-trace-index.json \
             >/dev/null
           python3 -m json.tool /tmp/pnva-decision-trace-index.json >/dev/null
+      - name: Run heuristic influence map
+        run: |
+          python3 tools/pnva_heuristic_influence_map.py \
+            --write /tmp/pnva-heuristic-influence-map.json \
+            >/dev/null
+          python3 -m json.tool /tmp/pnva-heuristic-influence-map.json >/dev/null
       - name: Run entity no-tick matrix
         run: |
           python3 tools/pnva_entity_no_tick_matrix.py \

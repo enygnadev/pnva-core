@@ -26,6 +26,7 @@ REPORTS = {
     "causal_chronology": "reports/pnva-causal-chronology-2026-05-05.json",
     "tension_decision": "reports/pnva-tension-decision-calibration-2026-05-05.json",
     "decision_trace_index": "reports/pnva-decision-trace-index-2026-05-05.json",
+    "heuristic_influence_map": "reports/pnva-heuristic-influence-map-2026-05-05.json",
     "entity_no_tick_matrix": "reports/pnva-entity-no-tick-matrix-2026-05-05.json",
     "suppression_ledger": "reports/pnva-suppression-ledger-2026-05-05.json",
     "adversarial": "reports/pnva-adversarial-validation-2026-05-05.json",
@@ -49,6 +50,7 @@ EXPECTED_CLASSIFICATIONS = {
     "causal_chronology": "CAUSAL_CHRONOLOGY_READY_WITH_LEGACY_WARNINGS",
     "tension_decision": "TENSION_DECISION_READY_WITH_LEGACY_WARNINGS",
     "decision_trace_index": "DECISION_TRACE_INDEX_READY_WITH_LEGACY_WARNINGS",
+    "heuristic_influence_map": "HEURISTIC_INFLUENCE_MAP_READY_WITH_LEGACY_WARNINGS",
     "entity_no_tick_matrix": "ENTITY_NO_TICK_MATRIX_READY_WITH_LEGACY_WARNINGS",
     "suppression_ledger": "SUPPRESSION_LEDGER_READY_WITH_LEGACY_WARNINGS",
     "adversarial": "ADVERSARIAL_VALIDATION_PASS",
@@ -186,6 +188,11 @@ def build_report(repo: Path) -> dict[str, Any]:
     check_error(group="manifest", name="manifest_decision_trace_trace_coverage", left_ref="MANIFEST:decision_trace_index.trace_coverage_ratio", left=_dig(manifest_summary, ["decision_trace_index", "trace_coverage_ratio"]), right_ref="decision_trace_index:trace_coverage_ratio", right=data["decision_trace_index"].get("trace_coverage_ratio"), tolerance=0.000001)
     check_error(group="manifest", name="manifest_decision_trace_warning_count", left_ref="MANIFEST:decision_trace_index.warning_count", left=_dig(manifest_summary, ["decision_trace_index", "warning_count"]), right_ref="decision_trace_index:warning_count", right=data["decision_trace_index"].get("warning_count"))
     check_error(group="manifest", name="manifest_decision_trace_native_clean", left_ref="MANIFEST:decision_trace_index.native_trace_clean", left=_dig(manifest_summary, ["decision_trace_index", "native_trace_clean"]), right_ref="decision_trace_index:native_trace_clean", right=data["decision_trace_index"].get("native_trace_clean"))
+    check_error(group="manifest", name="manifest_heuristic_influence_event_count", left_ref="MANIFEST:heuristic_influence_map.event_count", left=_dig(manifest_summary, ["heuristic_influence_map", "event_count"]), right_ref="heuristic_influence_map:event_count", right=data["heuristic_influence_map"].get("event_count"))
+    check_error(group="manifest", name="manifest_heuristic_influence_rule_count", left_ref="MANIFEST:heuristic_influence_map.heuristic_rule_count", left=_dig(manifest_summary, ["heuristic_influence_map", "heuristic_rule_count"]), right_ref="heuristic_influence_map:heuristic_rule_count", right=data["heuristic_influence_map"].get("heuristic_rule_count"))
+    check_error(group="manifest", name="manifest_heuristic_influence_edge_count", left_ref="MANIFEST:heuristic_influence_map.influence_edge_count", left=_dig(manifest_summary, ["heuristic_influence_map", "influence_edge_count"]), right_ref="heuristic_influence_map:influence_edge_count", right=data["heuristic_influence_map"].get("influence_edge_count"))
+    check_error(group="manifest", name="manifest_heuristic_influence_warning_count", left_ref="MANIFEST:heuristic_influence_map.warning_count", left=_dig(manifest_summary, ["heuristic_influence_map", "warning_count"]), right_ref="heuristic_influence_map:warning_count", right=data["heuristic_influence_map"].get("warning_count"))
+    check_error(group="manifest", name="manifest_heuristic_influence_native_clean", left_ref="MANIFEST:heuristic_influence_map.native_influence_clean", left=_dig(manifest_summary, ["heuristic_influence_map", "native_influence_clean"]), right_ref="heuristic_influence_map:native_influence_clean", right=data["heuristic_influence_map"].get("native_influence_clean"))
     check_error(group="manifest", name="manifest_entity_no_tick_matrix_event_count", left_ref="MANIFEST:entity_no_tick_matrix.event_count", left=_dig(manifest_summary, ["entity_no_tick_matrix", "event_count"]), right_ref="entity_no_tick_matrix:event_count", right=data["entity_no_tick_matrix"].get("event_count"))
     check_error(group="manifest", name="manifest_entity_no_tick_matrix_suppressed_count", left_ref="MANIFEST:entity_no_tick_matrix.suppressed_count", left=_dig(manifest_summary, ["entity_no_tick_matrix", "suppressed_count"]), right_ref="entity_no_tick_matrix:suppressed_count", right=data["entity_no_tick_matrix"].get("suppressed_count"))
     check_error(group="manifest", name="manifest_entity_no_tick_matrix_native_clean", left_ref="MANIFEST:entity_no_tick_matrix.native_matrix_clean", left=_dig(manifest_summary, ["entity_no_tick_matrix", "native_matrix_clean"]), right_ref="entity_no_tick_matrix:native_matrix_clean", right=data["entity_no_tick_matrix"].get("native_matrix_clean"))
@@ -232,6 +239,12 @@ def build_report(repo: Path) -> dict[str, Any]:
     check_error(group="decision_trace_index", name="decision_trace_proof_coverage", left_ref="decision_trace_index:proof_coverage_ratio", left=data["decision_trace_index"].get("proof_coverage_ratio"), right_ref="expected", right=1.0, tolerance=0.000001)
     check_error(group="decision_trace_index", name="decision_trace_heuristic_coverage", left_ref="decision_trace_index:heuristic_coverage_ratio", left=data["decision_trace_index"].get("heuristic_coverage_ratio"), right_ref="expected", right=1.0, tolerance=0.000001)
     check_error(group="decision_trace_index", name="decision_trace_native_clean", left_ref="decision_trace_index:native_trace_clean", left=data["decision_trace_index"].get("native_trace_clean"), right_ref="expected", right=True)
+    check_error(group="heuristic_influence_map", name="heuristic_influence_total_event_count", left_ref="heuristic_influence_map:event_count", left=data["heuristic_influence_map"].get("event_count"), right_ref="canonical_events+native_events", right=total_events)
+    check_error(group="heuristic_influence_map", name="heuristic_influence_rule_count_matches_schema", left_ref="heuristic_influence_map:heuristic_rule_count", left=data["heuristic_influence_map"].get("heuristic_rule_count"), right_ref="schema_contract:heuristic_rule_count", right=data["schema_contract"].get("heuristic_rule_count"))
+    check_error(group="heuristic_influence_map", name="heuristic_influence_coverage", left_ref="heuristic_influence_map:heuristic_coverage_ratio", left=data["heuristic_influence_map"].get("heuristic_coverage_ratio"), right_ref="expected", right=1.0, tolerance=0.000001)
+    check_error(group="heuristic_influence_map", name="heuristic_influence_proof_coverage", left_ref="heuristic_influence_map:proof_event_coverage_ratio", left=data["heuristic_influence_map"].get("proof_event_coverage_ratio"), right_ref="expected", right=1.0, tolerance=0.000001)
+    check_error(group="heuristic_influence_map", name="heuristic_influence_native_clean", left_ref="heuristic_influence_map:native_influence_clean", left=data["heuristic_influence_map"].get("native_influence_clean"), right_ref="expected", right=True)
+    check_error(group="heuristic_influence_map", name="heuristic_influence_edges_present", left_ref="heuristic_influence_map:influence_edge_count", left=int(data["heuristic_influence_map"].get("influence_edge_count", 0)) > 0, right_ref="expected", right=True)
     check_error(group="entity_no_tick_matrix", name="entity_matrix_total_event_count", left_ref="entity_no_tick_matrix:event_count", left=data["entity_no_tick_matrix"].get("event_count"), right_ref="canonical_events+native_events", right=total_events)
     check_error(group="entity_no_tick_matrix", name="entity_matrix_total_suppressed_count", left_ref="entity_no_tick_matrix:suppressed_count", left=data["entity_no_tick_matrix"].get("suppressed_count"), right_ref="canonical_suppressed+native_suppressed", right=total_suppressed)
     check_error(group="entity_no_tick_matrix", name="entity_matrix_native_clean", left_ref="entity_no_tick_matrix:native_matrix_clean", left=data["entity_no_tick_matrix"].get("native_matrix_clean"), right_ref="expected", right=True)
@@ -254,7 +267,7 @@ def build_report(repo: Path) -> dict[str, Any]:
     artifact_ids = [str(item.get("id")) for item in artifacts if isinstance(item, dict)]
     check_error(group="attestation", name="artifact_count_matches_list", left_ref="attestation:artifact_count", left=data["attestation"].get("artifact_count"), right_ref="len(attestation.artifacts)", right=len(artifacts))
     check_error(group="attestation", name="failure_count_zero", left_ref="attestation:failure_count", left=data["attestation"].get("failure_count"), right_ref="expected", right=0)
-    for required_id in ("schema_contract_validation", "causal_chronology", "tension_decision_calibration", "decision_trace_index", "entity_no_tick_matrix", "suppression_ledger", "adversarial_validation", "entity_heuristic_maturity"):
+    for required_id in ("schema_contract_validation", "causal_chronology", "tension_decision_calibration", "decision_trace_index", "heuristic_influence_map", "entity_no_tick_matrix", "suppression_ledger", "adversarial_validation", "entity_heuristic_maturity"):
         check_error(group="attestation", name=f"attestation_contains_{required_id}", left_ref="attestation:artifact_ids", left=required_id in artifact_ids, right_ref="expected", right=True)
     check_error(group="audit", name="audit_score_ready", left_ref="audit:score.classification", left=_dig(data["audit"], ["score", "classification"]), right_ref="expected", right="SOVEREIGN_READY")
     check_error(group="audit", name="audit_attestation_hash_matches", left_ref="audit:evidence_attestation.evidence_hash", left=_dig(data["audit"], ["evidence_attestation", "evidence_hash"]), right_ref="attestation:evidence_hash", right=data["attestation"].get("evidence_hash"))
@@ -263,6 +276,7 @@ def build_report(repo: Path) -> dict[str, Any]:
     check_error(group="audit", name="audit_chronology_matches", left_ref="audit:causal_chronology.classification", left=_dig(data["audit"], ["causal_chronology", "classification"]), right_ref="causal_chronology:classification", right=data["causal_chronology"].get("classification"))
     check_error(group="audit", name="audit_tension_decision_matches", left_ref="audit:tension_decision.classification", left=_dig(data["audit"], ["tension_decision_calibration", "classification"]), right_ref="tension_decision:classification", right=data["tension_decision"].get("classification"))
     check_error(group="audit", name="audit_decision_trace_matches", left_ref="audit:decision_trace_index.classification", left=_dig(data["audit"], ["decision_trace_index", "classification"]), right_ref="decision_trace_index:classification", right=data["decision_trace_index"].get("classification"))
+    check_error(group="audit", name="audit_heuristic_influence_matches", left_ref="audit:heuristic_influence_map.classification", left=_dig(data["audit"], ["heuristic_influence_map", "classification"]), right_ref="heuristic_influence_map:classification", right=data["heuristic_influence_map"].get("classification"))
     check_error(group="audit", name="audit_entity_no_tick_matrix_matches", left_ref="audit:entity_no_tick_matrix.classification", left=_dig(data["audit"], ["entity_no_tick_matrix", "classification"]), right_ref="entity_no_tick_matrix:classification", right=data["entity_no_tick_matrix"].get("classification"))
     check_error(group="audit", name="audit_suppression_ledger_matches", left_ref="audit:suppression_ledger.classification", left=_dig(data["audit"], ["suppression_ledger", "classification"]), right_ref="suppression_ledger:classification", right=data["suppression_ledger"].get("classification"))
 
@@ -302,6 +316,9 @@ def build_report(repo: Path) -> dict[str, Any]:
             "decision_trace_event_count": data["decision_trace_index"].get("event_count"),
             "decision_trace_trace_coverage_ratio": data["decision_trace_index"].get("trace_coverage_ratio"),
             "decision_trace_warning_count": data["decision_trace_index"].get("warning_count"),
+            "heuristic_influence_event_count": data["heuristic_influence_map"].get("event_count"),
+            "heuristic_influence_edge_count": data["heuristic_influence_map"].get("influence_edge_count"),
+            "heuristic_influence_warning_count": data["heuristic_influence_map"].get("warning_count"),
             "entity_no_tick_matrix_event_count": data["entity_no_tick_matrix"].get("event_count"),
             "entity_no_tick_matrix_suppressed_count": data["entity_no_tick_matrix"].get("suppressed_count"),
             "entity_no_tick_matrix_warning_count": data["entity_no_tick_matrix"].get("warning_count"),

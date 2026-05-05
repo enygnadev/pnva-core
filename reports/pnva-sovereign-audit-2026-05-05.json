@@ -101,7 +101,7 @@
     "robots_missing_tokens": [],
     "robots_ok": true,
     "sitemap_ok": true,
-    "sitemap_url_count": 56,
+    "sitemap_url_count": 58,
     "sitemap_urls": [
       "https://enygnadev.github.io/pnva-core/",
       "https://enygnadev.github.io/pnva-core/author.html",
@@ -121,6 +121,7 @@
       "https://enygnadev.github.io/pnva-core/docs/PNVA_CAUSAL_CHRONOLOGY_GUARD.md",
       "https://enygnadev.github.io/pnva-core/docs/PNVA_TENSION_DECISION_CALIBRATION.md",
       "https://enygnadev.github.io/pnva-core/docs/PNVA_DECISION_TRACE_INDEX.md",
+      "https://enygnadev.github.io/pnva-core/docs/PNVA_HEURISTIC_INFLUENCE_MAP.md",
       "https://enygnadev.github.io/pnva-core/docs/PNVA_ENTITY_NO_TICK_MATRIX.md",
       "https://enygnadev.github.io/pnva-core/docs/PNVA_SUPPRESSION_LEDGER.md",
       "https://enygnadev.github.io/pnva-core/docs/PNVA_SOVEREIGN_EVIDENCE_ATTESTATION.md",
@@ -152,6 +153,7 @@
       "https://enygnadev.github.io/pnva-core/reports/pnva-causal-chronology-2026-05-05.json",
       "https://enygnadev.github.io/pnva-core/reports/pnva-tension-decision-calibration-2026-05-05.json",
       "https://enygnadev.github.io/pnva-core/reports/pnva-decision-trace-index-2026-05-05.json",
+      "https://enygnadev.github.io/pnva-core/reports/pnva-heuristic-influence-map-2026-05-05.json",
       "https://enygnadev.github.io/pnva-core/reports/pnva-entity-no-tick-matrix-2026-05-05.json",
       "https://enygnadev.github.io/pnva-core/reports/pnva-suppression-ledger-2026-05-05.json",
       "https://enygnadev.github.io/pnva-core/reports/pnva-adversarial-validation-2026-05-05.json",
@@ -192,16 +194,35 @@
     "warning_count": 35
   },
   "evidence_attestation": {
-    "artifact_count": 25,
+    "artifact_count": 26,
     "attestation_ok": true,
     "classification": "PNVA_SOVEREIGN_EVIDENCE_ATTESTED",
     "errors": [],
-    "evidence_hash": "sha256:742f6febce6c156bb010219ca535915da9c7d44c335c2c2ccfaa8873aa9d96e6",
+    "evidence_hash": "sha256:c892d5b8f9de3012a47baacb291b9e79bc509142d1919eb58493793c85453183",
     "failure_count": 0,
     "missing": [],
-    "tracked_artifacts": 25
+    "tracked_artifacts": 26
   },
-  "generated_at": "2026-05-05T07:26:49Z",
+  "generated_at": "2026-05-05T07:41:42Z",
+  "heuristic_influence_map": {
+    "classification": "HEURISTIC_INFLUENCE_MAP_READY_WITH_LEGACY_WARNINGS",
+    "error_count": 0,
+    "errors": [],
+    "event_count": 519,
+    "hard_authority_edge_count": 776,
+    "hard_authority_edge_ratio": 0.683099,
+    "heuristic_coverage_ratio": 1.0,
+    "heuristic_rule_count": 9,
+    "influence_edge_count": 1136,
+    "influence_map_ok": true,
+    "low_authority_edge_count": 360,
+    "low_authority_strong_edge_count": 164,
+    "missing": [],
+    "native_influence_clean": true,
+    "proof_event_coverage_ratio": 1.0,
+    "uncompensated_low_authority_strong_event_count": 35,
+    "warning_count": 70
+  },
   "local_logs": {
     "available": true,
     "bad_json_ratio": 0.0,
@@ -975,6 +996,7 @@
     "Run causal chronology guard so time remains an audited trace, not a blind execution driver.",
     "Run tension-decision calibration so threshold/decision drift remains explicit.",
     "Run decision trace index so every public event is traceable to entity, heuristics, tension and proof.",
+    "Run heuristic influence map so rule authority, decision mix and entity reach remain measurable.",
     "Run entity no-tick matrix so suppression and execution remain attributable by entity.",
     "Run suppression ledger so avoided execution is proof-backed.",
     "Publish one sovereign evidence attestation hash with every evidence release.",
@@ -1002,9 +1024,9 @@
   "repo_path": "<REPO>",
   "reproducibility": {
     "classification": "REPRODUCIBILITY_READY",
-    "command_count": 21,
+    "command_count": 22,
     "command_failure_count": 0,
-    "comparison_count": 176,
+    "comparison_count": 190,
     "comparison_failure_count": 0,
     "errors": [],
     "failure_count": 0,
@@ -1038,7 +1060,7 @@
     "total": 100
   },
   "semantic_consistency": {
-    "check_count": 128,
+    "check_count": 143,
     "classification": "SEMANTIC_CONSISTENCY_READY",
     "consistency_ok": true,
     "error_count": 0,

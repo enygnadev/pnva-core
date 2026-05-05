@@ -34,6 +34,7 @@ PUBLISHED_REPORTS = {
     "causal_chronology": "reports/pnva-causal-chronology-2026-05-05.json",
     "tension_decision": "reports/pnva-tension-decision-calibration-2026-05-05.json",
     "decision_trace_index": "reports/pnva-decision-trace-index-2026-05-05.json",
+    "heuristic_influence_map": "reports/pnva-heuristic-influence-map-2026-05-05.json",
     "entity_no_tick_matrix": "reports/pnva-entity-no-tick-matrix-2026-05-05.json",
     "suppression_ledger": "reports/pnva-suppression-ledger-2026-05-05.json",
     "adversarial": "reports/pnva-adversarial-validation-2026-05-05.json",
@@ -202,6 +203,22 @@ STABLE_PATHS = {
         ["warning_count"],
         ["native_trace_clean"],
     ],
+    "heuristic_influence_map": [
+        ["classification"],
+        ["pass"],
+        ["scope_count"],
+        ["event_count"],
+        ["heuristic_rule_count"],
+        ["heuristic_coverage_ratio"],
+        ["proof_event_coverage_ratio"],
+        ["influence_edge_count"],
+        ["hard_authority_edge_count"],
+        ["low_authority_edge_count"],
+        ["low_authority_strong_edge_count"],
+        ["uncompensated_low_authority_strong_event_count"],
+        ["warning_count"],
+        ["native_influence_clean"],
+    ],
     "entity_no_tick_matrix": [
         ["classification"],
         ["pass"],
@@ -363,6 +380,7 @@ def build_report(repo: Path) -> dict[str, Any]:
             "causal_chronology": tmp / "causal-chronology.json",
             "tension_decision": tmp / "tension-decision.json",
             "decision_trace_index": tmp / "decision-trace-index.json",
+            "heuristic_influence_map": tmp / "heuristic-influence-map.json",
             "entity_no_tick_matrix": tmp / "entity-no-tick-matrix.json",
             "suppression_ledger": tmp / "suppression-ledger.json",
             "adversarial": tmp / "adversarial.json",
@@ -399,6 +417,7 @@ def build_report(repo: Path) -> dict[str, Any]:
         commands["causal_chronology"] = _run(repo, ["tools/pnva_causal_chronology_guard.py"], outputs["causal_chronology"])
         commands["tension_decision"] = _run(repo, ["tools/pnva_tension_decision_calibrator.py"], outputs["tension_decision"])
         commands["decision_trace_index"] = _run(repo, ["tools/pnva_decision_trace_index.py"], outputs["decision_trace_index"])
+        commands["heuristic_influence_map"] = _run(repo, ["tools/pnva_heuristic_influence_map.py"], outputs["heuristic_influence_map"])
         commands["entity_no_tick_matrix"] = _run(repo, ["tools/pnva_entity_no_tick_matrix.py"], outputs["entity_no_tick_matrix"])
         commands["suppression_ledger"] = _run(repo, ["tools/pnva_suppression_ledger.py"], outputs["suppression_ledger"])
         commands["adversarial"] = _run(repo, ["tools/pnva_adversarial_validator.py"], outputs["adversarial"])
