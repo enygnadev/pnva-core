@@ -45,8 +45,8 @@ required_runtime_event_count: 70
 required_no_tick_precheck_count: 35
 required_collapse_commit_count: 35
 event_template_count: 6
-mandatory_field_count: 24
-negative_control_detected_count: 30
+mandatory_field_count: 25
+negative_control_detected_count: 36
 positive_control_passed_count: 6
 ```
 
@@ -68,6 +68,7 @@ Every action contract requires:
 proof.projection=false
 proof.native=true
 source.format=native_pnva_event_v1
+source.sanitized=true
 commit authority >= H2
 entity_id present
 causal_chain_id present
@@ -75,6 +76,11 @@ same causal_chain_id across precheck and commit
 commit timestamp >= precheck timestamp
 unique event_id values
 proof_hash present
+proof_hash bound to event identity
+proof_ref in runtime:<slot-id>:<role> form
+gate_delta equals score - threshold
+precheck gate_delta <= 0
+commit gate_delta >= 0
 tension.components.original_event_id present
 tension.components.r3_runtime_slot_id present
 ```
@@ -108,6 +114,7 @@ proof.native
 proof.proof_hash
 proof.proof_ref
 source.format
+source.sanitized
 ```
 
 ## Runtime Phases
@@ -135,7 +142,7 @@ Current result:
 
 ```text
 R3_RUNTIME_CONTRACT_VALIDATED_READY
-144 contract checks
+171 contract checks
 0 failures
 ```
 

@@ -49,8 +49,8 @@ duplicate_proof_hash_rejection_count: 0
 duplicate_proof_ref_rejection_count: 0
 no_tick_pair_integrity_count: 0
 no_tick_pair_failure_count: 0
-negative_control_detected_count: 30
-negative_control_count: 30
+negative_control_detected_count: 36
+negative_control_count: 36
 positive_control_passed_count: 6
 positive_control_count: 6
 positive_controls_fixture_only: true
@@ -111,6 +111,12 @@ unique event_id values
 unique proof_hash values
 unique proof_ref values
 known and unique heuristic rules
+proof_ref in runtime:<slot-id>:<role> form
+proof_hash bound to the event identity payload
+source.sanitized=true
+gate_delta equal to score - threshold
+precheck gate_delta <= 0
+commit gate_delta >= 0
 ```
 
 The precheck proves that PNVA can observe and suppress without waking blindly.
@@ -127,6 +133,7 @@ reject_missing_timestamp
 reject_invalid_timestamp
 reject_missing_field_state
 reject_missing_gate_delta
+reject_gate_delta_inconsistent
 reject_nonfinite_tension_score
 reject_nonfinite_tension_threshold
 reject_missing_entity
@@ -136,17 +143,22 @@ reject_entity_type_mismatch
 reject_missing_chain
 reject_missing_hash
 reject_invalid_proof_hash_format
+reject_proof_hash_binding_tamper
+reject_proof_ref_role_mismatch
 reject_low_authority_commit
 reject_missing_target_rules
 reject_unknown_heuristic_rule
 reject_duplicate_heuristic_rule
 reject_wrong_action
 reject_precheck_execution_action
+reject_precheck_positive_gate_delta
+reject_commit_negative_gate_delta
 reject_missing_slot_id
 reject_slot_id_mismatch
 reject_original_event_mismatch
 reject_missing_native_proof
 reject_invalid_source_format
+reject_unsanitized_source
 reject_duplicate_event_id
 reject_duplicate_proof_hash
 reject_duplicate_proof_ref
@@ -157,7 +169,7 @@ reject_commit_before_precheck
 Current result:
 
 ```text
-30/30 detected
+36/36 detected
 ```
 
 ## Positive Controls
@@ -198,8 +210,8 @@ R3_RUNTIME_INSTRUMENTATION_PLAN_READY
 3 action contracts
 6 event templates
 70 required runtime events
-24 mandatory event fields
-30 negative controls
+25 mandatory event fields
+36 negative controls
 6 positive controls
 ```
 

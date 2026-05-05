@@ -35,6 +35,7 @@ HARD_AUTHORITIES = {"H2", "H3", "H4"}
 STRONG_DECISIONS = {"collapse", "block", "prove", "reclassify"}
 PRECHECK_DECISIONS = {"observe", "block"}
 PROOF_HASH_RE = re.compile(r"^sha256:[0-9a-f]{64}$")
+RUNTIME_PROOF_REF_RE = re.compile(r"^runtime:[A-Za-z0-9_.:-]+:(precheck|commit)$")
 
 
 def _read_json(path: Path) -> Any:
@@ -141,6 +142,76 @@ def _proof_hash_valid(value: Any) -> bool:
     return isinstance(value, str) and bool(PROOF_HASH_RE.fullmatch(value))
 
 
+def _source(event: dict[str, Any]) -> dict[str, Any]:
+    value = event.get("source")
+    return value if isinstance(value, dict) else {}
+
+
+def _proof_hash_payload(event: dict[str, Any]) -> dict[str, Any]:
+    return {
+        "schema_version": event.get("schema_version"),
+        "event_id": event.get("event_id"),
+        "timestamp": event.get("timestamp"),
+        "entity_id": event.get("entity_id"),
+        "entity_type": event.get("entity_type"),
+        "causal_chain_id": event.get("causal_chain_id"),
+        "event_type": event.get("event_type"),
+        "field": {
+            "state_before": _dig(event, ["field", "state_before"]),
+            "state_after": _dig(event, ["field", "state_after"]),
+        },
+        "decision": {
+            "kind": _decision_kind(event),
+            "action": _decision_action(event),
+            "reason": str(_decision(event).get("reason") or ""),
+        },
+        "heuristics": {
+            "rules": _rules(event),
+        },
+        "tension": {
+            "score": _tension(event).get("score"),
+            "threshold": _tension(event).get("threshold"),
+            "gate_delta": _tension(event).get("gate_delta"),
+            "components": {
+                "original_event_id": _original_id(event),
+                "r3_runtime_slot_id": _r3_slot_id(event),
+            },
+        },
+        "proof": {
+            "proof_ref": _proof(event).get("proof_ref"),
+            "native": _proof(event).get("native"),
+            "projection": _proof(event).get("projection"),
+            "valid": _proof(event).get("valid"),
+        },
+        "source": {
+            "format": _source(event).get("format"),
+            "sanitized": _source(event).get("sanitized"),
+        },
+    }
+
+
+def _expected_proof_hash(event: dict[str, Any]) -> str:
+    payload = json.dumps(_proof_hash_payload(event), ensure_ascii=True, sort_keys=True, separators=(",", ":"))
+    return "sha256:" + _sha256_text(payload)
+
+
+def _proof_ref_role_valid(event: dict[str, Any], slot: dict[str, Any], role: str) -> bool:
+    proof_ref = _proof(event).get("proof_ref")
+    if not isinstance(proof_ref, str) or not RUNTIME_PROOF_REF_RE.fullmatch(proof_ref):
+        return False
+    return proof_ref == f"runtime:{slot.get('slot_id')}:{role}"
+
+
+def _gate_delta_consistent(event: dict[str, Any]) -> bool:
+    tension = _tension(event)
+    score = tension.get("score")
+    threshold = tension.get("threshold")
+    gate_delta = tension.get("gate_delta")
+    if not (_finite_number(score) and _finite_number(threshold) and _finite_number(gate_delta)):
+        return False
+    return abs(float(gate_delta) - (float(score) - float(threshold))) <= 0.000001
+
+
 def _timestamp_epoch(event: dict[str, Any]) -> float | None:
     value = event.get("timestamp")
     if not isinstance(value, str) or not value.strip():
@@ -229,16 +300,22 @@ def _event_codes(event: dict[str, Any], slot: dict[str, Any]) -> list[str]:
         codes.append("TENSION_THRESHOLD_INVALID")
     if not _finite_number(tension.get("gate_delta")):
         codes.append("TENSION_GATE_DELTA_INVALID")
+    elif not _gate_delta_consistent(event):
+        codes.append("TENSION_GATE_DELTA_INCONSISTENT")
     if _proof(event).get("projection") is True:
         codes.append("PROJECTED_PROOF_FORBIDDEN")
     if _proof(event).get("native") is not True:
         codes.append("PROOF_NATIVE_REQUIRED")
     if not _proof_hash_valid(_proof(event).get("proof_hash")):
         codes.append("PROOF_HASH_FORMAT_INVALID")
+    elif _proof(event).get("proof_hash") != _expected_proof_hash(event):
+        codes.append("PROOF_HASH_BINDING_INVALID")
     if not _proof_clean(event):
         codes.append("PROOF_HASH_OR_VALIDITY_INVALID")
-    if _dig(event, ["source", "format"]) != "native_pnva_event_v1":
+    if _source(event).get("format") != "native_pnva_event_v1":
         codes.append("SOURCE_FORMAT_INVALID")
+    if _source(event).get("sanitized") is not True:
+        codes.append("SOURCE_SANITIZED_REQUIRED")
     original = _original_id(event)
     if not original:
         codes.append("MISSING_ORIGINAL_EVENT_ID")
@@ -258,11 +335,15 @@ def _event_codes(event: dict[str, Any], slot: dict[str, Any]) -> list[str]:
     role = _role(event, slot)
     rules = set(_rules(event))
     target_rules = set(str(rule) for rule in slot.get("target_rules", []) if str(rule))
+    if role in {"precheck", "commit"} and not _proof_ref_role_valid(event, slot, role):
+        codes.append("PROOF_REF_ROLE_MISMATCH")
     if role == "precheck":
         if _decision_kind(event) not in PRECHECK_DECISIONS:
             codes.append("PRECHECK_DECISION_INVALID")
         if _decision_action(event) != "NO_ACTION":
             codes.append("PRECHECK_ACTION_INVALID")
+        if _finite_number(tension.get("gate_delta")) and float(tension.get("gate_delta")) > 0:
+            codes.append("PRECHECK_GATE_DELTA_POSITIVE")
         if "native_event_emitter" not in rules:
             codes.append("PRECHECK_NATIVE_RULE_MISSING")
     elif role == "commit":
@@ -270,6 +351,8 @@ def _event_codes(event: dict[str, Any], slot: dict[str, Any]) -> list[str]:
             codes.append("COMMIT_DECISION_NOT_STRONG")
         if _decision_action(event) != str(slot.get("decision_action") or ""):
             codes.append("COMMIT_ACTION_MISMATCH")
+        if _finite_number(tension.get("gate_delta")) and float(tension.get("gate_delta")) < 0:
+            codes.append("COMMIT_GATE_DELTA_NEGATIVE")
         if _max_authority(_rules(event)) not in HARD_AUTHORITIES:
             codes.append("COMMIT_AUTHORITY_BELOW_H2")
         missing_target_rules = sorted(target_rules - rules)
@@ -449,8 +532,8 @@ def _sample_event(slot: dict[str, Any], *, role: str, control: str = "negative")
     score = 0.0 if role == "precheck" else 1.0
     threshold = 0.5
     event_id = f"evt_{control}_control_{role}_{slot.get('slot_id')}"
-    proof_ref = f"{control}-control-fixture:{slot.get('slot_id')}:{role}"
-    return {
+    proof_ref = f"runtime:{slot.get('slot_id')}:{role}"
+    event = {
         "schema_version": "pnva.event.v1",
         "event_id": event_id,
         "timestamp": "2026-05-05T00:00:00Z",
@@ -486,7 +569,7 @@ def _sample_event(slot: dict[str, Any], *, role: str, control: str = "negative")
             "valid": True,
             "native": True,
             "projection": False,
-            "proof_hash": "sha256:" + _sha256_text(f"{event_id}:{proof_ref}"),
+            "proof_hash": "",
             "proof_ref": proof_ref,
         },
         "source": {
@@ -494,6 +577,8 @@ def _sample_event(slot: dict[str, Any], *, role: str, control: str = "negative")
             "sanitized": True,
         },
     }
+    event["proof"]["proof_hash"] = _expected_proof_hash(event)
+    return event
 
 
 def _negative_controls(matrix: dict[str, Any]) -> dict[str, Any]:
@@ -542,11 +627,15 @@ def _negative_controls(matrix: dict[str, Any]) -> dict[str, Any]:
             }
         )
 
+    def rebind_proof_hash(event: dict[str, Any]) -> None:
+        event["proof"]["proof_hash"] = _expected_proof_hash(event)
+
     run_control("reject_projection_true", "commit", lambda event: event["proof"].update({"projection": True}), "PROJECTED_PROOF_FORBIDDEN")
     run_control("reject_missing_timestamp", "commit", lambda event: event.pop("timestamp", None), "MISSING_TIMESTAMP")
     run_control("reject_invalid_timestamp", "commit", lambda event: event.update({"timestamp": "not-a-valid-iso8601-timestamp"}), "TIMESTAMP_INVALID")
     run_control("reject_missing_field_state", "commit", lambda event: event.pop("field", None), "FIELD_STATE_INVALID")
     run_control("reject_missing_gate_delta", "commit", lambda event: event["tension"].pop("gate_delta", None), "TENSION_GATE_DELTA_INVALID")
+    run_control("reject_gate_delta_inconsistent", "commit", lambda event: event["tension"].update({"gate_delta": 9.99}), "TENSION_GATE_DELTA_INCONSISTENT")
     run_control("reject_nonfinite_tension_score", "commit", lambda event: event["tension"].update({"score": float("nan")}), "TENSION_SCORE_INVALID")
     run_control("reject_nonfinite_tension_threshold", "commit", lambda event: event["tension"].update({"threshold": float("inf")}), "TENSION_THRESHOLD_INVALID")
     run_control("reject_missing_entity", "commit", lambda event: event.pop("entity_id", None), "MISSING_ENTITY_ID")
@@ -556,17 +645,22 @@ def _negative_controls(matrix: dict[str, Any]) -> dict[str, Any]:
     run_control("reject_missing_chain", "commit", lambda event: event.pop("causal_chain_id", None), "MISSING_CAUSAL_CHAIN_ID")
     run_control("reject_missing_hash", "commit", lambda event: event["proof"].pop("proof_hash", None), "PROOF_HASH_OR_VALIDITY_INVALID")
     run_control("reject_invalid_proof_hash_format", "commit", lambda event: event["proof"].update({"proof_hash": "sha256:not-64-hex"}), "PROOF_HASH_FORMAT_INVALID")
+    run_control("reject_proof_hash_binding_tamper", "commit", lambda event: event["field"].update({"state_after": "tampered_after_hash"}), "PROOF_HASH_BINDING_INVALID")
+    run_control("reject_proof_ref_role_mismatch", "commit", lambda event: event["proof"].update({"proof_ref": f"runtime:{slot.get('slot_id')}:precheck"}), "PROOF_REF_ROLE_MISMATCH")
     run_control("reject_low_authority_commit", "commit", lambda event: event["heuristics"].update({"rules": ["legacy_observer"]}), "COMMIT_AUTHORITY_BELOW_H2")
     run_control("reject_missing_target_rules", "commit", lambda event: event["heuristics"].update({"rules": ["native_event_emitter"]}), "COMMIT_TARGET_RULES_MISSING")
     run_control("reject_unknown_heuristic_rule", "commit", lambda event: event["heuristics"].update({"rules": list(slot.get("target_rules") or []) + ["unknown_rule"]}), "HEURISTIC_RULE_UNKNOWN")
     run_control("reject_duplicate_heuristic_rule", "commit", lambda event: event["heuristics"].update({"rules": list(slot.get("target_rules") or []) + [str((slot.get("target_rules") or ["native_event_emitter"])[0])]}), "HEURISTIC_RULE_DUPLICATE")
     run_control("reject_wrong_action", "commit", lambda event: event["decision"].update({"action": "WRONG_ACTION"}), "COMMIT_ACTION_MISMATCH")
     run_control("reject_precheck_execution_action", "precheck", lambda event: event["decision"].update({"action": slot.get("decision_action")}), "PRECHECK_ACTION_INVALID")
+    run_control("reject_precheck_positive_gate_delta", "precheck", lambda event: event["tension"].update({"score": 1.0, "threshold": 0.5, "gate_delta": 0.5}), "PRECHECK_GATE_DELTA_POSITIVE")
+    run_control("reject_commit_negative_gate_delta", "commit", lambda event: event["tension"].update({"score": 0.0, "threshold": 0.5, "gate_delta": -0.5}), "COMMIT_GATE_DELTA_NEGATIVE")
     run_control("reject_missing_slot_id", "commit", lambda event: event["tension"]["components"].pop("r3_runtime_slot_id", None), "MISSING_R3_RUNTIME_SLOT_ID")
     run_control("reject_slot_id_mismatch", "commit", lambda event: event["tension"]["components"].update({"r3_runtime_slot_id": "r3-runtime-slot-wrong"}), "R3_RUNTIME_SLOT_MISMATCH")
     run_control("reject_original_event_mismatch", "commit", lambda event: event["tension"]["components"].update({"original_event_id": "evt_wrong"}), "ORIGINAL_EVENT_MISMATCH")
     run_control("reject_missing_native_proof", "commit", lambda event: event["proof"].pop("native", None), "PROOF_NATIVE_REQUIRED")
     run_control("reject_invalid_source_format", "commit", lambda event: event["source"].update({"format": "legacy_bridge"}), "SOURCE_FORMAT_INVALID")
+    run_control("reject_unsanitized_source", "commit", lambda event: event["source"].update({"sanitized": False}), "SOURCE_SANITIZED_REQUIRED")
 
     duplicate_precheck = _sample_event(slot, role="precheck", control="duplicate")
     duplicate_commit = _sample_event(slot, role="commit", control="duplicate")
@@ -586,12 +680,15 @@ def _negative_controls(matrix: dict[str, Any]) -> dict[str, Any]:
     chain_precheck = _sample_event(slot, role="precheck", control="chain")
     chain_commit = _sample_event(slot, role="commit", control="chain")
     chain_commit["causal_chain_id"] = "chain_wrong_for_pair"
+    rebind_proof_hash(chain_commit)
     run_stream_control("reject_no_tick_pair_chain_mismatch", [chain_precheck, chain_commit], "NO_TICK_PAIR_CAUSAL_CHAIN_MISMATCH")
 
     order_precheck = _sample_event(slot, role="precheck", control="order")
     order_commit = _sample_event(slot, role="commit", control="order")
     order_precheck["timestamp"] = "2026-05-05T00:00:02Z"
     order_commit["timestamp"] = "2026-05-05T00:00:01Z"
+    rebind_proof_hash(order_precheck)
+    rebind_proof_hash(order_commit)
     run_stream_control("reject_commit_before_precheck", [order_precheck, order_commit], "NO_TICK_PAIR_ORDER_INVALID")
 
     detected_count = sum(1 for item in controls if item["detected"])
@@ -721,13 +818,19 @@ def build_report(repo: Path, runtime_events_path: Path | None = None) -> dict[st
             "entity_type_must_match_slot": True,
             "causal_chain_id_required": True,
             "tension_gate_delta_required": True,
+            "tension_gate_delta_consistency_required": True,
+            "precheck_gate_delta_nonpositive_required": True,
+            "commit_gate_delta_nonnegative_required": True,
             "proof_hash_required": True,
             "proof_hash_sha256_format_required": True,
+            "proof_hash_binds_event_identity": True,
             "proof_hash_unique_required": True,
             "proof_ref_unique_required": True,
+            "proof_ref_runtime_slot_role_required": True,
             "proof_native_required": True,
             "proof_projection_forbidden": True,
             "source_format_required": "native_pnva_event_v1",
+            "source_sanitized_required": True,
             "r3_runtime_slot_id_required": True,
             "commit_min_authority": "H2",
             "precheck_must_be_no_tick": True,
@@ -772,7 +875,7 @@ def build_report(repo: Path, runtime_events_path: Path | None = None) -> dict[st
         },
         "interpretation": {
             "purpose": "Protect the R3 runtime intake boundary before fresh events are accepted as legacy-free evidence.",
-            "sovereignty": "PNVA becomes harder to fake when projected proofs, malformed or duplicated proof hashes, malformed tension values, duplicate events, entity or slot mismatches, unknown heuristic rules, weak authority, missing target rules and causally broken no-tick pairs are rejected before cutover.",
+            "sovereignty": "PNVA becomes harder to fake when projected proofs, malformed, duplicated or content-unbound proof hashes, wrong proof-ref slot roles, malformed or inconsistent tension values, invalid gate signs, duplicate events, entity or slot mismatches, unsanitized sources, unknown heuristic rules, weak authority, missing target rules and causally broken no-tick pairs are rejected before cutover.",
             "boundary": "Without a runtime-events file this guard certifies the intake contract only; it does not claim final runtime completion.",
         },
         "recommendations": [
@@ -781,8 +884,11 @@ def build_report(repo: Path, runtime_events_path: Path | None = None) -> dict[st
             "Reject any event with non-finite tension values, entity mismatch, slot mismatch or original-event mismatch.",
             "Require every slot to contain one native no-tick precheck and one H2+ commit in the same causal_chain_id, with commit timestamp at or after precheck timestamp.",
             "Reject duplicate event_id, proof_hash and proof_ref values before accepting runtime coverage.",
+            "Reject runtime events whose proof_hash does not bind to the canonical event identity payload.",
+            "Require proof_ref to match runtime:<slot-id>:precheck or runtime:<slot-id>:commit.",
+            "Require gate_delta to equal score minus threshold, with nonpositive prechecks and nonnegative commits.",
             "Reject unknown or duplicated heuristic rules before accepting runtime coverage.",
-            "Keep entity_id, causal_chain_id and proof_hash mandatory for every runtime event.",
+            "Keep entity_id, causal_chain_id, source.sanitized and proof_hash mandatory for every runtime event.",
         ],
     }
     return report

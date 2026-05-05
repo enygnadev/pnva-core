@@ -40,6 +40,7 @@ MANDATORY_EVENT_FIELDS = [
     "proof.proof_hash",
     "proof.proof_ref",
     "source.format",
+    "source.sanitized",
 ]
 
 VALIDATION_COMMANDS = [
@@ -99,10 +100,17 @@ def _action_contracts(slots: list[dict[str, Any]]) -> list[dict[str, Any]]:
                     "same_causal_chain_id_required": True,
                     "commit_timestamp_after_precheck_required": True,
                 },
+                "tension_policy": {
+                    "gate_delta_must_equal_score_minus_threshold": True,
+                    "precheck_gate_delta_nonpositive_required": True,
+                    "commit_gate_delta_nonnegative_required": True,
+                },
                 "proof_policy": {
                     "proof_hash_sha256_format_required": True,
+                    "proof_hash_binds_event_identity": True,
                     "proof_hash_unique_required": True,
                     "proof_ref_unique_required": True,
+                    "proof_ref_runtime_slot_role_required": True,
                 },
                 "heuristic_policy": {
                     "known_rules_only": True,
@@ -125,6 +133,7 @@ def _action_contracts(slots: list[dict[str, Any]]) -> list[dict[str, Any]]:
                     },
                     "source": {
                         "format": "native_pnva_event_v1",
+                        "sanitized": True,
                     },
                     "required_rules": sorted(set(["native_event_emitter", *rules])),
                     "required_components": [
@@ -149,6 +158,7 @@ def _action_contracts(slots: list[dict[str, Any]]) -> list[dict[str, Any]]:
                     },
                     "source": {
                         "format": "native_pnva_event_v1",
+                        "sanitized": True,
                     },
                     "min_authority": "H2",
                     "required_rules": rules,

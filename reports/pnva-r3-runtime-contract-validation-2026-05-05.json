@@ -95,11 +95,11 @@
     },
     {
       "group": "controls",
-      "left": 30,
+      "left": 36,
       "left_ref": "negative_controls_complete",
       "name": "negative_controls_complete",
       "pass": true,
-      "right": 30,
+      "right": 36,
       "right_ref": "expected"
     },
     {
@@ -140,11 +140,11 @@
     },
     {
       "group": "fields",
-      "left": 24,
+      "left": 25,
       "left_ref": "mandatory_field_count",
       "name": "mandatory_field_count",
       "pass": true,
-      "right": 24,
+      "right": 25,
       "right_ref": "expected"
     },
     {
@@ -168,6 +168,7 @@
         "proof.valid",
         "schema_version",
         "source.format",
+        "source.sanitized",
         "tension.components.original_event_id",
         "tension.components.r3_runtime_slot_id",
         "tension.gate_delta",
@@ -197,6 +198,7 @@
         "proof.valid",
         "schema_version",
         "source.format",
+        "source.sanitized",
         "tension.components.original_event_id",
         "tension.components.r3_runtime_slot_id",
         "tension.gate_delta",
@@ -299,6 +301,33 @@
     {
       "group": "enforced_controls",
       "left": true,
+      "left_ref": "enforced_tension_gate_delta_consistency_required",
+      "name": "enforced_tension_gate_delta_consistency_required",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "enforced_controls",
+      "left": true,
+      "left_ref": "enforced_precheck_gate_delta_nonpositive_required",
+      "name": "enforced_precheck_gate_delta_nonpositive_required",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "enforced_controls",
+      "left": true,
+      "left_ref": "enforced_commit_gate_delta_nonnegative_required",
+      "name": "enforced_commit_gate_delta_nonnegative_required",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "enforced_controls",
+      "left": true,
       "left_ref": "enforced_proof_hash_required",
       "name": "enforced_proof_hash_required",
       "pass": true,
@@ -317,6 +346,15 @@
     {
       "group": "enforced_controls",
       "left": true,
+      "left_ref": "enforced_proof_hash_binds_event_identity",
+      "name": "enforced_proof_hash_binds_event_identity",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "enforced_controls",
+      "left": true,
       "left_ref": "enforced_proof_hash_unique_required",
       "name": "enforced_proof_hash_unique_required",
       "pass": true,
@@ -328,6 +366,15 @@
       "left": true,
       "left_ref": "enforced_proof_ref_unique_required",
       "name": "enforced_proof_ref_unique_required",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "enforced_controls",
+      "left": true,
+      "left_ref": "enforced_proof_ref_runtime_slot_role_required",
+      "name": "enforced_proof_ref_runtime_slot_role_required",
       "pass": true,
       "right": true,
       "right_ref": "expected"
@@ -357,6 +404,15 @@
       "name": "enforced_source_format_required",
       "pass": true,
       "right": "native_pnva_event_v1",
+      "right_ref": "expected"
+    },
+    {
+      "group": "enforced_controls",
+      "left": true,
+      "left_ref": "enforced_source_sanitized_required",
+      "name": "enforced_source_sanitized_required",
+      "pass": true,
+      "right": true,
       "right_ref": "expected"
     },
     {
@@ -532,6 +588,15 @@
     },
     {
       "group": "template",
+      "left": true,
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_precheck_source_sanitized",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_precheck_source_sanitized",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "template",
       "left": [
         "tension.components.original_event_id",
         "tension.components.r3_runtime_slot_id"
@@ -588,6 +653,15 @@
       "name": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_commit_source_format",
       "pass": true,
       "right": "native_pnva_event_v1",
+      "right_ref": "expected"
+    },
+    {
+      "group": "template",
+      "left": true,
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_commit_source_sanitized",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_commit_source_sanitized",
+      "pass": true,
+      "right": true,
       "right_ref": "expected"
     },
     {
@@ -696,10 +770,46 @@
       "right_ref": "expected"
     },
     {
+      "group": "tension_policy",
+      "left": true,
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_gate_delta_consistency",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_gate_delta_consistency",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "tension_policy",
+      "left": true,
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_precheck_gate_delta_nonpositive",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_precheck_gate_delta_nonpositive",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "tension_policy",
+      "left": true,
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_commit_gate_delta_nonnegative",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_commit_gate_delta_nonnegative",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
       "group": "proof_policy",
       "left": true,
       "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_proof_hash_sha256_format_required",
       "name": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_proof_hash_sha256_format_required",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "proof_policy",
+      "left": true,
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_proof_hash_binds_event_identity",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_proof_hash_binds_event_identity",
       "pass": true,
       "right": true,
       "right_ref": "expected"
@@ -718,6 +828,15 @@
       "left": true,
       "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_proof_ref_unique_required",
       "name": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_proof_ref_unique_required",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "proof_policy",
+      "left": true,
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_proof_ref_runtime_slot_role_required",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_proof_ref_runtime_slot_role_required",
       "pass": true,
       "right": true,
       "right_ref": "expected"
@@ -832,6 +951,15 @@
     },
     {
       "group": "template",
+      "left": true,
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_precheck_source_sanitized",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_precheck_source_sanitized",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "template",
       "left": [
         "tension.components.original_event_id",
         "tension.components.r3_runtime_slot_id"
@@ -888,6 +1016,15 @@
       "name": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_commit_source_format",
       "pass": true,
       "right": "native_pnva_event_v1",
+      "right_ref": "expected"
+    },
+    {
+      "group": "template",
+      "left": true,
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_commit_source_sanitized",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_commit_source_sanitized",
+      "pass": true,
+      "right": true,
       "right_ref": "expected"
     },
     {
@@ -996,10 +1133,46 @@
       "right_ref": "expected"
     },
     {
+      "group": "tension_policy",
+      "left": true,
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_gate_delta_consistency",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_gate_delta_consistency",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "tension_policy",
+      "left": true,
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_precheck_gate_delta_nonpositive",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_precheck_gate_delta_nonpositive",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "tension_policy",
+      "left": true,
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_commit_gate_delta_nonnegative",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_commit_gate_delta_nonnegative",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
       "group": "proof_policy",
       "left": true,
       "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_proof_hash_sha256_format_required",
       "name": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_proof_hash_sha256_format_required",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "proof_policy",
+      "left": true,
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_proof_hash_binds_event_identity",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_proof_hash_binds_event_identity",
       "pass": true,
       "right": true,
       "right_ref": "expected"
@@ -1018,6 +1191,15 @@
       "left": true,
       "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_proof_ref_unique_required",
       "name": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_proof_ref_unique_required",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "proof_policy",
+      "left": true,
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_proof_ref_runtime_slot_role_required",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_proof_ref_runtime_slot_role_required",
       "pass": true,
       "right": true,
       "right_ref": "expected"
@@ -1132,6 +1314,15 @@
     },
     {
       "group": "template",
+      "left": true,
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-execute_precheck_source_sanitized",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-execute_precheck_source_sanitized",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "template",
       "left": [
         "tension.components.original_event_id",
         "tension.components.r3_runtime_slot_id"
@@ -1188,6 +1379,15 @@
       "name": "r3-runtime-instrument-entity_4c3ade60ea78-execute_commit_source_format",
       "pass": true,
       "right": "native_pnva_event_v1",
+      "right_ref": "expected"
+    },
+    {
+      "group": "template",
+      "left": true,
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-execute_commit_source_sanitized",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-execute_commit_source_sanitized",
+      "pass": true,
+      "right": true,
       "right_ref": "expected"
     },
     {
@@ -1296,10 +1496,46 @@
       "right_ref": "expected"
     },
     {
+      "group": "tension_policy",
+      "left": true,
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-execute_gate_delta_consistency",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-execute_gate_delta_consistency",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "tension_policy",
+      "left": true,
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-execute_precheck_gate_delta_nonpositive",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-execute_precheck_gate_delta_nonpositive",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "tension_policy",
+      "left": true,
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-execute_commit_gate_delta_nonnegative",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-execute_commit_gate_delta_nonnegative",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
       "group": "proof_policy",
       "left": true,
       "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-execute_proof_hash_sha256_format_required",
       "name": "r3-runtime-instrument-entity_4c3ade60ea78-execute_proof_hash_sha256_format_required",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "proof_policy",
+      "left": true,
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-execute_proof_hash_binds_event_identity",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-execute_proof_hash_binds_event_identity",
       "pass": true,
       "right": true,
       "right_ref": "expected"
@@ -1318,6 +1554,15 @@
       "left": true,
       "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-execute_proof_ref_unique_required",
       "name": "r3-runtime-instrument-entity_4c3ade60ea78-execute_proof_ref_unique_required",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "proof_policy",
+      "left": true,
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-execute_proof_ref_runtime_slot_role_required",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-execute_proof_ref_runtime_slot_role_required",
       "pass": true,
       "right": true,
       "right_ref": "expected"
@@ -1531,21 +1776,21 @@
     }
   ],
   "classification": "R3_RUNTIME_CONTRACT_VALIDATED_READY",
-  "contract_check_count": 144,
+  "contract_check_count": 171,
   "contract_validation_ready": true,
-  "enforced_control_count": 26,
+  "enforced_control_count": 32,
   "event_template_count": 6,
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-05-05T11:46:27Z",
+  "generated_at": "2026-05-05T12:08:48Z",
   "interpretation": {
     "boundary": "This is a contract validator, not runtime evidence and not final R3 cutover approval.",
     "purpose": "Validate that the R3 runtime capture matrix, evidence guard and instrumentation plan form one coherent runtime contract.",
     "sovereignty": "The final runtime path becomes harder to mislabel because the contract itself is checked before fresh runtime evidence is accepted."
   },
-  "mandatory_field_count": 24,
-  "negative_control_count": 30,
-  "negative_control_detected_count": 30,
+  "mandatory_field_count": 25,
+  "negative_control_count": 36,
+  "negative_control_detected_count": 36,
   "pass": true,
   "positive_control_count": 6,
   "positive_control_passed_count": 6,
@@ -1573,11 +1818,11 @@
   "summary": {
     "action_contract_count": 3,
     "capture_slot_count": 35,
-    "contract_check_count": 144,
+    "contract_check_count": 171,
     "contract_validation_ready": true,
     "failure_count": 0,
-    "mandatory_field_count": 24,
-    "negative_control_detected_count": 30,
+    "mandatory_field_count": 25,
+    "negative_control_detected_count": 36,
     "positive_control_passed_count": 6,
     "required_runtime_event_count": 70
   }

@@ -28,7 +28,8 @@
         ],
         "schema_version": "pnva.event.v1",
         "source": {
-          "format": "native_pnva_event_v1"
+          "format": "native_pnva_event_v1",
+          "sanitized": true
         }
       },
       "contract_id": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch",
@@ -110,12 +111,15 @@
         ],
         "schema_version": "pnva.event.v1",
         "source": {
-          "format": "native_pnva_event_v1"
+          "format": "native_pnva_event_v1",
+          "sanitized": true
         }
       },
       "proof_policy": {
+        "proof_hash_binds_event_identity": true,
         "proof_hash_sha256_format_required": true,
         "proof_hash_unique_required": true,
+        "proof_ref_runtime_slot_role_required": true,
         "proof_ref_unique_required": true
       },
       "required_commit_count": 32,
@@ -166,7 +170,12 @@
         "native_event_emitter",
         "adaptive_threshold",
         "field_scheduler"
-      ]
+      ],
+      "tension_policy": {
+        "commit_gate_delta_nonnegative_required": true,
+        "gate_delta_must_equal_score_minus_threshold": true,
+        "precheck_gate_delta_nonpositive_required": true
+      }
     },
     {
       "commit_template": {
@@ -196,7 +205,8 @@
         ],
         "schema_version": "pnva.event.v1",
         "source": {
-          "format": "native_pnva_event_v1"
+          "format": "native_pnva_event_v1",
+          "sanitized": true
         }
       },
       "contract_id": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu",
@@ -249,12 +259,15 @@
         ],
         "schema_version": "pnva.event.v1",
         "source": {
-          "format": "native_pnva_event_v1"
+          "format": "native_pnva_event_v1",
+          "sanitized": true
         }
       },
       "proof_policy": {
+        "proof_hash_binds_event_identity": true,
         "proof_hash_sha256_format_required": true,
         "proof_hash_unique_required": true,
+        "proof_ref_runtime_slot_role_required": true,
         "proof_ref_unique_required": true
       },
       "required_commit_count": 2,
@@ -271,7 +284,12 @@
         "power_orchestrator",
         "field_scheduler",
         "adaptive_threshold"
-      ]
+      ],
+      "tension_policy": {
+        "commit_gate_delta_nonnegative_required": true,
+        "gate_delta_must_equal_score_minus_threshold": true,
+        "precheck_gate_delta_nonpositive_required": true
+      }
     },
     {
       "commit_template": {
@@ -300,7 +318,8 @@
         ],
         "schema_version": "pnva.event.v1",
         "source": {
-          "format": "native_pnva_event_v1"
+          "format": "native_pnva_event_v1",
+          "sanitized": true
         }
       },
       "contract_id": "r3-runtime-instrument-entity_4c3ade60ea78-execute",
@@ -351,12 +370,15 @@
         ],
         "schema_version": "pnva.event.v1",
         "source": {
-          "format": "native_pnva_event_v1"
+          "format": "native_pnva_event_v1",
+          "sanitized": true
         }
       },
       "proof_policy": {
+        "proof_hash_binds_event_identity": true,
         "proof_hash_sha256_format_required": true,
         "proof_hash_unique_required": true,
+        "proof_ref_runtime_slot_role_required": true,
         "proof_ref_unique_required": true
       },
       "required_commit_count": 1,
@@ -371,7 +393,12 @@
         "native_event_emitter",
         "adaptive_threshold",
         "field_scheduler"
-      ]
+      ],
+      "tension_policy": {
+        "commit_gate_delta_nonnegative_required": true,
+        "gate_delta_must_equal_score_minus_threshold": true,
+        "precheck_gate_delta_nonpositive_required": true
+      }
     }
   ],
   "author": "Gustavo de Aguiar Martins",
@@ -379,7 +406,7 @@
   "classification": "R3_RUNTIME_INSTRUMENTATION_PLAN_READY",
   "entity_target_count": 1,
   "event_template_count": 6,
-  "generated_at": "2026-05-05T11:46:27Z",
+  "generated_at": "2026-05-05T12:08:48Z",
   "instrumentation_plan_ready": true,
   "interpretation": {
     "boundary": "This plan is not runtime evidence and does not approve R3 cutover; it defines how fresh runtime evidence must be emitted and validated.",
@@ -410,11 +437,12 @@
     "proof.native",
     "proof.proof_hash",
     "proof.proof_ref",
-    "source.format"
+    "source.format",
+    "source.sanitized"
   ],
-  "mandatory_field_count": 24,
-  "negative_control_count": 30,
-  "negative_control_detected_count": 30,
+  "mandatory_field_count": 25,
+  "negative_control_count": 36,
+  "negative_control_detected_count": 36,
   "pass": true,
   "positive_control_count": 6,
   "positive_control_passed_count": 6,
@@ -470,8 +498,8 @@
     "entity_target_count": 1,
     "event_template_count": 6,
     "instrumentation_plan_ready": true,
-    "mandatory_field_count": 24,
-    "negative_control_detected_count": 30,
+    "mandatory_field_count": 25,
+    "negative_control_detected_count": 36,
     "positive_control_passed_count": 6,
     "required_runtime_event_count": 70
   },

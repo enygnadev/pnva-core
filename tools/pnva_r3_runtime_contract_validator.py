@@ -40,6 +40,7 @@ REQUIRED_MANDATORY_FIELDS = [
     "proof.proof_hash",
     "proof.proof_ref",
     "source.format",
+    "source.sanitized",
 ]
 
 REQUIRED_COMPONENTS = [
@@ -58,13 +59,19 @@ REQUIRED_ENFORCED_CONTROLS = {
     "entity_type_must_match_slot": True,
     "causal_chain_id_required": True,
     "tension_gate_delta_required": True,
+    "tension_gate_delta_consistency_required": True,
+    "precheck_gate_delta_nonpositive_required": True,
+    "commit_gate_delta_nonnegative_required": True,
     "proof_hash_required": True,
     "proof_hash_sha256_format_required": True,
+    "proof_hash_binds_event_identity": True,
     "proof_hash_unique_required": True,
     "proof_ref_unique_required": True,
+    "proof_ref_runtime_slot_role_required": True,
     "proof_native_required": True,
     "proof_projection_forbidden": True,
     "source_format_required": "native_pnva_event_v1",
+    "source_sanitized_required": True,
     "r3_runtime_slot_id_required": True,
     "commit_min_authority": "H2",
     "precheck_must_be_no_tick": True,
@@ -120,6 +127,7 @@ def _template_checks(checks: list[dict[str, Any]], contract: dict[str, Any]) -> 
     precheck = contract.get("precheck_template") if isinstance(contract.get("precheck_template"), dict) else {}
     commit = contract.get("commit_template") if isinstance(contract.get("commit_template"), dict) else {}
     pairing = contract.get("pairing_policy") if isinstance(contract.get("pairing_policy"), dict) else {}
+    tension_policy = contract.get("tension_policy") if isinstance(contract.get("tension_policy"), dict) else {}
     proof_policy = contract.get("proof_policy") if isinstance(contract.get("proof_policy"), dict) else {}
     heuristic_policy = contract.get("heuristic_policy") if isinstance(contract.get("heuristic_policy"), dict) else {}
     slot_ids = contract.get("slot_ids") if isinstance(contract.get("slot_ids"), list) else []
@@ -137,6 +145,7 @@ def _template_checks(checks: list[dict[str, Any]], contract: dict[str, Any]) -> 
         _add_check(checks, "template", f"{contract_id}_{template_name}_proof_native", _dig(template, ["proof", "native"]), True)
         _add_check(checks, "template", f"{contract_id}_{template_name}_proof_valid", _dig(template, ["proof", "valid"]), True)
         _add_check(checks, "template", f"{contract_id}_{template_name}_source_format", _dig(template, ["source", "format"]), "native_pnva_event_v1")
+        _add_check(checks, "template", f"{contract_id}_{template_name}_source_sanitized", _dig(template, ["source", "sanitized"]), True)
         _add_check(checks, "template", f"{contract_id}_{template_name}_components", sorted(template.get("required_components", [])), sorted(REQUIRED_COMPONENTS))
 
     _add_check(checks, "template", f"{contract_id}_precheck_kind", _dig(precheck, ["decision", "kind"]), "observe")
@@ -149,9 +158,14 @@ def _template_checks(checks: list[dict[str, Any]], contract: dict[str, Any]) -> 
     _add_check(checks, "pairing", f"{contract_id}_duplicate_event_id_forbidden", pairing.get("duplicate_event_id_forbidden"), True)
     _add_check(checks, "pairing", f"{contract_id}_same_causal_chain_id_required", pairing.get("same_causal_chain_id_required"), True)
     _add_check(checks, "pairing", f"{contract_id}_commit_timestamp_after_precheck_required", pairing.get("commit_timestamp_after_precheck_required"), True)
+    _add_check(checks, "tension_policy", f"{contract_id}_gate_delta_consistency", tension_policy.get("gate_delta_must_equal_score_minus_threshold"), True)
+    _add_check(checks, "tension_policy", f"{contract_id}_precheck_gate_delta_nonpositive", tension_policy.get("precheck_gate_delta_nonpositive_required"), True)
+    _add_check(checks, "tension_policy", f"{contract_id}_commit_gate_delta_nonnegative", tension_policy.get("commit_gate_delta_nonnegative_required"), True)
     _add_check(checks, "proof_policy", f"{contract_id}_proof_hash_sha256_format_required", proof_policy.get("proof_hash_sha256_format_required"), True)
+    _add_check(checks, "proof_policy", f"{contract_id}_proof_hash_binds_event_identity", proof_policy.get("proof_hash_binds_event_identity"), True)
     _add_check(checks, "proof_policy", f"{contract_id}_proof_hash_unique_required", proof_policy.get("proof_hash_unique_required"), True)
     _add_check(checks, "proof_policy", f"{contract_id}_proof_ref_unique_required", proof_policy.get("proof_ref_unique_required"), True)
+    _add_check(checks, "proof_policy", f"{contract_id}_proof_ref_runtime_slot_role_required", proof_policy.get("proof_ref_runtime_slot_role_required"), True)
     _add_check(checks, "heuristic_policy", f"{contract_id}_known_rules_only", heuristic_policy.get("known_rules_only"), True)
     _add_check(checks, "heuristic_policy", f"{contract_id}_duplicate_rules_forbidden", heuristic_policy.get("duplicate_rules_forbidden"), True)
 

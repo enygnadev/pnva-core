@@ -9,6 +9,7 @@
   "duplicate_proof_ref_rejection_count": 0,
   "enforced_controls": {
     "causal_chain_id_required": true,
+    "commit_gate_delta_nonnegative_required": true,
     "commit_min_authority": "H2",
     "commit_must_match_slot_action": true,
     "duplicate_event_id_forbidden": true,
@@ -20,35 +21,41 @@
     "heuristic_rules_unique_required": true,
     "no_tick_pair_causal_chain_required": true,
     "no_tick_pair_commit_after_precheck_required": true,
+    "precheck_gate_delta_nonpositive_required": true,
     "precheck_must_be_no_tick": true,
+    "proof_hash_binds_event_identity": true,
     "proof_hash_required": true,
     "proof_hash_sha256_format_required": true,
     "proof_hash_unique_required": true,
     "proof_native_required": true,
     "proof_projection_forbidden": true,
+    "proof_ref_runtime_slot_role_required": true,
     "proof_ref_unique_required": true,
     "r3_runtime_slot_id_required": true,
     "schema_version_required": "pnva.event.v1",
     "source_format_required": "native_pnva_event_v1",
+    "source_sanitized_required": true,
     "target_rules_required_on_commit": true,
+    "tension_gate_delta_consistency_required": true,
     "tension_gate_delta_required": true,
     "timestamp_iso8601_required": true,
     "timestamp_required": true
   },
-  "generated_at": "2026-05-05T11:46:27Z",
+  "generated_at": "2026-05-05T12:08:48Z",
   "intake_guard_ready": true,
   "interpretation": {
     "boundary": "Without a runtime-events file this guard certifies the intake contract only; it does not claim final runtime completion.",
     "purpose": "Protect the R3 runtime intake boundary before fresh events are accepted as legacy-free evidence.",
-    "sovereignty": "PNVA becomes harder to fake when projected proofs, malformed or duplicated proof hashes, malformed tension values, duplicate events, entity or slot mismatches, unknown heuristic rules, weak authority, missing target rules and causally broken no-tick pairs are rejected before cutover."
+    "sovereignty": "PNVA becomes harder to fake when projected proofs, malformed, duplicated or content-unbound proof hashes, wrong proof-ref slot roles, malformed or inconsistent tension values, invalid gate signs, duplicate events, entity or slot mismatches, unsanitized sources, unknown heuristic rules, weak authority, missing target rules and causally broken no-tick pairs are rejected before cutover."
   },
   "matrix_classification": "R3_RUNTIME_CAPTURE_MATRIX_READY_PENDING_RUNTIME",
-  "negative_control_count": 30,
-  "negative_control_detected_count": 30,
+  "negative_control_count": 36,
+  "negative_control_detected_count": 36,
   "negative_controls": [
     {
       "codes": [
         "PROJECTED_PROOF_FORBIDDEN",
+        "PROOF_HASH_BINDING_INVALID",
         "PROOF_HASH_OR_VALIDITY_INVALID"
       ],
       "detected": true,
@@ -57,7 +64,8 @@
     },
     {
       "codes": [
-        "MISSING_TIMESTAMP"
+        "MISSING_TIMESTAMP",
+        "PROOF_HASH_BINDING_INVALID"
       ],
       "detected": true,
       "expected_detection": "MISSING_TIMESTAMP",
@@ -65,7 +73,8 @@
     },
     {
       "codes": [
-        "TIMESTAMP_INVALID"
+        "TIMESTAMP_INVALID",
+        "PROOF_HASH_BINDING_INVALID"
       ],
       "detected": true,
       "expected_detection": "TIMESTAMP_INVALID",
@@ -73,7 +82,8 @@
     },
     {
       "codes": [
-        "FIELD_STATE_INVALID"
+        "FIELD_STATE_INVALID",
+        "PROOF_HASH_BINDING_INVALID"
       ],
       "detected": true,
       "expected_detection": "FIELD_STATE_INVALID",
@@ -81,7 +91,8 @@
     },
     {
       "codes": [
-        "TENSION_GATE_DELTA_INVALID"
+        "TENSION_GATE_DELTA_INVALID",
+        "PROOF_HASH_BINDING_INVALID"
       ],
       "detected": true,
       "expected_detection": "TENSION_GATE_DELTA_INVALID",
@@ -89,7 +100,18 @@
     },
     {
       "codes": [
-        "TENSION_SCORE_INVALID"
+        "TENSION_GATE_DELTA_INCONSISTENT",
+        "PROOF_HASH_BINDING_INVALID"
+      ],
+      "detected": true,
+      "expected_detection": "TENSION_GATE_DELTA_INCONSISTENT",
+      "name": "reject_gate_delta_inconsistent"
+    },
+    {
+      "codes": [
+        "TENSION_SCORE_INVALID",
+        "TENSION_GATE_DELTA_INCONSISTENT",
+        "PROOF_HASH_BINDING_INVALID"
       ],
       "detected": true,
       "expected_detection": "TENSION_SCORE_INVALID",
@@ -97,7 +119,9 @@
     },
     {
       "codes": [
-        "TENSION_THRESHOLD_INVALID"
+        "TENSION_THRESHOLD_INVALID",
+        "TENSION_GATE_DELTA_INCONSISTENT",
+        "PROOF_HASH_BINDING_INVALID"
       ],
       "detected": true,
       "expected_detection": "TENSION_THRESHOLD_INVALID",
@@ -106,6 +130,7 @@
     {
       "codes": [
         "MISSING_ENTITY_ID",
+        "PROOF_HASH_BINDING_INVALID",
         "ENTITY_MISMATCH"
       ],
       "detected": true,
@@ -114,6 +139,7 @@
     },
     {
       "codes": [
+        "PROOF_HASH_BINDING_INVALID",
         "ENTITY_MISMATCH"
       ],
       "detected": true,
@@ -123,6 +149,7 @@
     {
       "codes": [
         "MISSING_ENTITY_TYPE",
+        "PROOF_HASH_BINDING_INVALID",
         "ENTITY_TYPE_MISMATCH"
       ],
       "detected": true,
@@ -131,6 +158,7 @@
     },
     {
       "codes": [
+        "PROOF_HASH_BINDING_INVALID",
         "ENTITY_TYPE_MISMATCH"
       ],
       "detected": true,
@@ -139,7 +167,8 @@
     },
     {
       "codes": [
-        "MISSING_CAUSAL_CHAIN_ID"
+        "MISSING_CAUSAL_CHAIN_ID",
+        "PROOF_HASH_BINDING_INVALID"
       ],
       "detected": true,
       "expected_detection": "MISSING_CAUSAL_CHAIN_ID",
@@ -165,6 +194,24 @@
     },
     {
       "codes": [
+        "PROOF_HASH_BINDING_INVALID"
+      ],
+      "detected": true,
+      "expected_detection": "PROOF_HASH_BINDING_INVALID",
+      "name": "reject_proof_hash_binding_tamper"
+    },
+    {
+      "codes": [
+        "PROOF_HASH_BINDING_INVALID",
+        "PROOF_REF_ROLE_MISMATCH"
+      ],
+      "detected": true,
+      "expected_detection": "PROOF_REF_ROLE_MISMATCH",
+      "name": "reject_proof_ref_role_mismatch"
+    },
+    {
+      "codes": [
+        "PROOF_HASH_BINDING_INVALID",
         "COMMIT_AUTHORITY_BELOW_H2",
         "COMMIT_TARGET_RULES_MISSING"
       ],
@@ -174,6 +221,7 @@
     },
     {
       "codes": [
+        "PROOF_HASH_BINDING_INVALID",
         "COMMIT_TARGET_RULES_MISSING"
       ],
       "detected": true,
@@ -182,6 +230,7 @@
     },
     {
       "codes": [
+        "PROOF_HASH_BINDING_INVALID",
         "HEURISTIC_RULE_UNKNOWN"
       ],
       "detected": true,
@@ -190,6 +239,7 @@
     },
     {
       "codes": [
+        "PROOF_HASH_BINDING_INVALID",
         "HEURISTIC_RULE_DUPLICATE"
       ],
       "detected": true,
@@ -198,6 +248,7 @@
     },
     {
       "codes": [
+        "PROOF_HASH_BINDING_INVALID",
         "COMMIT_ACTION_MISMATCH",
         "RUNTIME_ROLE_UNKNOWN"
       ],
@@ -207,6 +258,7 @@
     },
     {
       "codes": [
+        "PROOF_HASH_BINDING_INVALID",
         "PRECHECK_ACTION_INVALID"
       ],
       "detected": true,
@@ -215,6 +267,25 @@
     },
     {
       "codes": [
+        "PROOF_HASH_BINDING_INVALID",
+        "PRECHECK_GATE_DELTA_POSITIVE"
+      ],
+      "detected": true,
+      "expected_detection": "PRECHECK_GATE_DELTA_POSITIVE",
+      "name": "reject_precheck_positive_gate_delta"
+    },
+    {
+      "codes": [
+        "PROOF_HASH_BINDING_INVALID",
+        "COMMIT_GATE_DELTA_NEGATIVE"
+      ],
+      "detected": true,
+      "expected_detection": "COMMIT_GATE_DELTA_NEGATIVE",
+      "name": "reject_commit_negative_gate_delta"
+    },
+    {
+      "codes": [
+        "PROOF_HASH_BINDING_INVALID",
         "MISSING_R3_RUNTIME_SLOT_ID"
       ],
       "detected": true,
@@ -223,6 +294,7 @@
     },
     {
       "codes": [
+        "PROOF_HASH_BINDING_INVALID",
         "R3_RUNTIME_SLOT_MISMATCH"
       ],
       "detected": true,
@@ -231,6 +303,7 @@
     },
     {
       "codes": [
+        "PROOF_HASH_BINDING_INVALID",
         "ORIGINAL_EVENT_MISMATCH"
       ],
       "detected": true,
@@ -239,7 +312,8 @@
     },
     {
       "codes": [
-        "PROOF_NATIVE_REQUIRED"
+        "PROOF_NATIVE_REQUIRED",
+        "PROOF_HASH_BINDING_INVALID"
       ],
       "detected": true,
       "expected_detection": "PROOF_NATIVE_REQUIRED",
@@ -247,6 +321,7 @@
     },
     {
       "codes": [
+        "PROOF_HASH_BINDING_INVALID",
         "SOURCE_FORMAT_INVALID"
       ],
       "detected": true,
@@ -255,8 +330,18 @@
     },
     {
       "codes": [
+        "PROOF_HASH_BINDING_INVALID",
+        "SOURCE_SANITIZED_REQUIRED"
+      ],
+      "detected": true,
+      "expected_detection": "SOURCE_SANITIZED_REQUIRED",
+      "name": "reject_unsanitized_source"
+    },
+    {
+      "codes": [
         "DUPLICATE_EVENT_ID",
-        "NO_TICK_PAIR_INCOMPLETE"
+        "NO_TICK_PAIR_INCOMPLETE",
+        "PROOF_HASH_BINDING_INVALID"
       ],
       "detected": true,
       "expected_detection": "DUPLICATE_EVENT_ID",
@@ -265,7 +350,8 @@
     {
       "codes": [
         "DUPLICATE_PROOF_HASH",
-        "NO_TICK_PAIR_INCOMPLETE"
+        "NO_TICK_PAIR_INCOMPLETE",
+        "PROOF_HASH_BINDING_INVALID"
       ],
       "detected": true,
       "expected_detection": "DUPLICATE_PROOF_HASH",
@@ -274,7 +360,9 @@
     {
       "codes": [
         "DUPLICATE_PROOF_REF",
-        "NO_TICK_PAIR_INCOMPLETE"
+        "NO_TICK_PAIR_INCOMPLETE",
+        "PROOF_HASH_BINDING_INVALID",
+        "PROOF_REF_ROLE_MISMATCH"
       ],
       "detected": true,
       "expected_detection": "DUPLICATE_PROOF_REF",
@@ -359,8 +447,11 @@
     "Reject any event with non-finite tension values, entity mismatch, slot mismatch or original-event mismatch.",
     "Require every slot to contain one native no-tick precheck and one H2+ commit in the same causal_chain_id, with commit timestamp at or after precheck timestamp.",
     "Reject duplicate event_id, proof_hash and proof_ref values before accepting runtime coverage.",
+    "Reject runtime events whose proof_hash does not bind to the canonical event identity payload.",
+    "Require proof_ref to match runtime:<slot-id>:precheck or runtime:<slot-id>:commit.",
+    "Require gate_delta to equal score minus threshold, with nonpositive prechecks and nonnegative commits.",
     "Reject unknown or duplicated heuristic rules before accepting runtime coverage.",
-    "Keep entity_id, causal_chain_id and proof_hash mandatory for every runtime event."
+    "Keep entity_id, causal_chain_id, source.sanitized and proof_hash mandatory for every runtime event."
   ],
   "rejected_event_count": 0,
   "rejections": [],
@@ -986,8 +1077,8 @@
     "duplicate_proof_hash_rejection_count": 0,
     "duplicate_proof_ref_rejection_count": 0,
     "intake_guard_ready": true,
-    "negative_control_count": 30,
-    "negative_control_detected_count": 30,
+    "negative_control_count": 36,
+    "negative_control_detected_count": 36,
     "no_tick_pair_failure_count": 0,
     "no_tick_pair_integrity_count": 0,
     "pending_slot_count": 35,
