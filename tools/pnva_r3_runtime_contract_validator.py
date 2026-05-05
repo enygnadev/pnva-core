@@ -92,6 +92,7 @@ REQUIRED_ENFORCED_CONTROLS = {
     "precheck_must_be_no_tick": True,
     "precheck_reason_required": PRECHECK_REASON,
     "commit_reason_required": COMMIT_REASON,
+    "field_state_transition_required": True,
     "precheck_state_after_required": PRECHECK_STATE_AFTER,
     "commit_state_after_required": COMMIT_STATE_AFTER,
     "no_tick_pair_causal_chain_required": True,
@@ -225,6 +226,7 @@ def _template_checks(checks: list[dict[str, Any]], contract: dict[str, Any]) -> 
     _add_check(checks, "tension_policy", f"{contract_id}_commit_gate_delta_nonnegative", tension_policy.get("commit_gate_delta_nonnegative_required"), True)
     _add_check(checks, "decision_reason_policy", f"{contract_id}_precheck_reason_required", decision_reason_policy.get("precheck_reason_required"), PRECHECK_REASON)
     _add_check(checks, "decision_reason_policy", f"{contract_id}_commit_reason_required", decision_reason_policy.get("commit_reason_required"), COMMIT_REASON)
+    _add_check(checks, "field_state_policy", f"{contract_id}_state_transition_required", field_state_policy.get("state_transition_required"), True)
     _add_check(checks, "field_state_policy", f"{contract_id}_precheck_state_after_required", field_state_policy.get("precheck_state_after_required"), PRECHECK_STATE_AFTER)
     _add_check(checks, "field_state_policy", f"{contract_id}_commit_state_after_required", field_state_policy.get("commit_state_after_required"), COMMIT_STATE_AFTER)
     _add_check(checks, "proof_policy", f"{contract_id}_proof_hash_sha256_format_required", proof_policy.get("proof_hash_sha256_format_required"), True)

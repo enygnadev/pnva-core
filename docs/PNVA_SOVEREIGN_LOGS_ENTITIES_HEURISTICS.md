@@ -987,8 +987,8 @@ no_tick_pair_integrity_count: 0
 no_tick_pair_failure_count: 0
 same_source_file_no_tick_pair_count: 0
 state_continuity_no_tick_pair_count: 0
-negative_control_detected_count: 60
-negative_control_count: 60
+negative_control_detected_count: 62
+negative_control_count: 62
 positive_control_passed_count: 6
 positive_control_count: 6
 positive_controls_fixture_only: true
@@ -1032,7 +1032,7 @@ required_no_tick_precheck_count: 35
 required_collapse_commit_count: 35
 event_template_count: 6
 mandatory_field_count: 28
-negative_control_detected_count: 60
+negative_control_detected_count: 62
 positive_control_passed_count: 6
 ```
 
@@ -1071,10 +1071,10 @@ action_contract_count: 3
 required_runtime_event_count: 70
 event_template_count: 6
 mandatory_field_count: 28
-negative_control_detected_count: 60
+negative_control_detected_count: 62
 positive_control_passed_count: 6
-enforced_control_count: 57
-contract_check_count: 307
+enforced_control_count: 58
+contract_check_count: 311
 failure_count: 0
 ```
 
@@ -1118,11 +1118,11 @@ r3_cutover_approved: false
 r3_runtime_capture_coverage_percent: 0.0
 runtime_pending_slot_count: 35
 runtime_required_event_count: 70
-runtime_contract_check_count: 307
+runtime_contract_check_count: 311
 runtime_contract_failure_count: 0
 runtime_positive_control_passed_count: 6
 runtime_mandatory_field_count: 28
-runtime_enforced_control_count: 57
+runtime_enforced_control_count: 58
 controlled_warning_count: 1232
 blocker_count: 2
 priority_action_count: 4

@@ -41,10 +41,10 @@ action_contract_count: 3
 required_runtime_event_count: 70
 event_template_count: 6
 mandatory_field_count: 28
-negative_control_detected_count: 60
+negative_control_detected_count: 62
 positive_control_passed_count: 6
-enforced_control_count: 57
-contract_check_count: 307
+enforced_control_count: 58
+contract_check_count: 311
 failure_count: 0
 ```
 
@@ -61,7 +61,7 @@ runtime approval remains false
 70 required runtime events remain paired
 6 templates remain two per action contract
 28 mandatory runtime fields are present
-60 negative controls are detected
+62 negative controls are detected
 6 positive controls are accepted as fixture-only guard controls
 guard enforced controls match the runtime contract
 contract slot IDs cover the matrix
@@ -84,6 +84,7 @@ source.file_name + source.line is unique in the runtime stream
 source.line is monotonic inside each source.file_name stream
 source.sanitized=true
 field.state_before and field.state_after are required
+field.state_before must differ from field.state_after
 tension.gate_delta is required
 tension.gate_delta must equal score - threshold
 precheck gate_delta must be nonpositive

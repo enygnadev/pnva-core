@@ -95,11 +95,11 @@
     },
     {
       "group": "controls",
-      "left": 60,
+      "left": 62,
       "left_ref": "negative_controls_complete",
       "name": "negative_controls_complete",
       "pass": true,
-      "right": 60,
+      "right": 62,
       "right_ref": "expected"
     },
     {
@@ -536,6 +536,15 @@
       "name": "enforced_commit_reason_required",
       "pass": true,
       "right": "native_runtime_commit",
+      "right_ref": "expected"
+    },
+    {
+      "group": "enforced_controls",
+      "left": true,
+      "left_ref": "enforced_field_state_transition_required",
+      "name": "enforced_field_state_transition_required",
+      "pass": true,
+      "right": true,
       "right_ref": "expected"
     },
     {
@@ -1289,6 +1298,15 @@
     },
     {
       "group": "field_state_policy",
+      "left": true,
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_state_transition_required",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_state_transition_required",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "field_state_policy",
       "left": "suppressed",
       "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_precheck_state_after_required",
       "name": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_precheck_state_after_required",
@@ -1981,6 +1999,15 @@
       "name": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_commit_reason_required",
       "pass": true,
       "right": "native_runtime_commit",
+      "right_ref": "expected"
+    },
+    {
+      "group": "field_state_policy",
+      "left": true,
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_state_transition_required",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_state_transition_required",
+      "pass": true,
+      "right": true,
       "right_ref": "expected"
     },
     {
@@ -2681,6 +2708,15 @@
     },
     {
       "group": "field_state_policy",
+      "left": true,
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-execute_state_transition_required",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-execute_state_transition_required",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "field_state_policy",
       "left": "suppressed",
       "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-execute_precheck_state_after_required",
       "name": "r3-runtime-instrument-entity_4c3ade60ea78-execute_precheck_state_after_required",
@@ -3014,21 +3050,21 @@
     }
   ],
   "classification": "R3_RUNTIME_CONTRACT_VALIDATED_READY",
-  "contract_check_count": 307,
+  "contract_check_count": 311,
   "contract_validation_ready": true,
-  "enforced_control_count": 57,
+  "enforced_control_count": 58,
   "event_template_count": 6,
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-05-05T15:22:54Z",
+  "generated_at": "2026-05-05T15:32:31Z",
   "interpretation": {
     "boundary": "This is a contract validator, not runtime evidence and not final R3 cutover approval.",
     "purpose": "Validate that the R3 runtime capture matrix, evidence guard and instrumentation plan form one coherent runtime contract.",
     "sovereignty": "The final runtime path becomes harder to mislabel because the contract itself is checked before fresh runtime evidence is accepted."
   },
   "mandatory_field_count": 28,
-  "negative_control_count": 60,
-  "negative_control_detected_count": 60,
+  "negative_control_count": 62,
+  "negative_control_detected_count": 62,
   "pass": true,
   "positive_control_count": 6,
   "positive_control_passed_count": 6,
@@ -3056,11 +3092,11 @@
   "summary": {
     "action_contract_count": 3,
     "capture_slot_count": 35,
-    "contract_check_count": 307,
+    "contract_check_count": 311,
     "contract_validation_ready": true,
     "failure_count": 0,
     "mandatory_field_count": 28,
-    "negative_control_detected_count": 60,
+    "negative_control_detected_count": 62,
     "positive_control_passed_count": 6,
     "required_runtime_event_count": 70
   }

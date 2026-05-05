@@ -133,6 +133,7 @@ def _action_contracts(slots: list[dict[str, Any]]) -> list[dict[str, Any]]:
                     "commit_reason_required": COMMIT_REASON,
                 },
                 "field_state_policy": {
+                    "state_transition_required": True,
                     "precheck_state_after_required": PRECHECK_STATE_AFTER,
                     "commit_state_after_required": COMMIT_STATE_AFTER,
                 },
@@ -331,6 +332,7 @@ def build_report(repo: Path) -> dict[str, Any]:
             "Emit original_event_id in tension.components so each runtime event maps back to a capture slot.",
             "Emit fixed decision.reason values so no-tick prechecks and runtime commits remain semantically distinct.",
             "Emit fixed field.state_after values so prechecks prove suppression and commits prove completion.",
+            "Emit different field.state_before and field.state_after values so every runtime event proves a real state transition.",
             "Emit each commit field.state_before equal to its precheck field.state_after so state continuity is explicit.",
             "Never reuse a causal_chain_id across different original_event_id or r3_runtime_slot_id values.",
             "Emit source.file_name as a public basename only, never as a local path.",

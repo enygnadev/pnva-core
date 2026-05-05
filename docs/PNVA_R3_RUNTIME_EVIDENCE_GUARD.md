@@ -53,8 +53,8 @@ no_tick_pair_integrity_count: 0
 no_tick_pair_failure_count: 0
 same_source_file_no_tick_pair_count: 0
 state_continuity_no_tick_pair_count: 0
-negative_control_detected_count: 60
-negative_control_count: 60
+negative_control_detected_count: 62
+negative_control_count: 62
 positive_control_passed_count: 6
 positive_control_count: 6
 positive_controls_fixture_only: true
@@ -107,6 +107,8 @@ commit authority below H2
 commit action mismatch
 precheck decision.reason mismatch
 commit decision.reason mismatch
+precheck field.state_before equal to field.state_after
+commit field.state_before equal to field.state_after
 precheck field.state_after mismatch
 commit field.state_after mismatch
 missing native target rules
@@ -188,6 +190,8 @@ reject_precheck_reason_mismatch
 reject_commit_reason_mismatch
 reject_precheck_state_after_mismatch
 reject_commit_state_after_mismatch
+reject_precheck_state_transition_missing
+reject_commit_state_transition_missing
 reject_precheck_event_type_mismatch
 reject_commit_event_type_mismatch
 reject_precheck_execution_action
@@ -225,7 +229,7 @@ reject_precheck_missing_target_risk_flags
 Current result:
 
 ```text
-60/60 detected
+62/62 detected
 ```
 
 ## Positive Controls
@@ -267,7 +271,7 @@ R3_RUNTIME_INSTRUMENTATION_PLAN_READY
 6 event templates
 70 required runtime events
 28 mandatory event fields
-60 negative controls
+62 negative controls
 6 positive controls
 ```
 

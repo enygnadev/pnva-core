@@ -23,6 +23,7 @@
     "entity_type_required": true,
     "event_type_must_match_slot": true,
     "field_state_required": true,
+    "field_state_transition_required": true,
     "heuristic_rules_known_required": true,
     "heuristic_rules_unique_required": true,
     "legacy_heuristic_rule_forbidden": true,
@@ -68,16 +69,16 @@
     "timestamp_iso8601_required": true,
     "timestamp_required": true
   },
-  "generated_at": "2026-05-05T15:22:53Z",
+  "generated_at": "2026-05-05T15:32:31Z",
   "intake_guard_ready": true,
   "interpretation": {
     "boundary": "Without a runtime-events file this guard certifies the intake contract only; it does not claim final runtime completion.",
     "purpose": "Protect the R3 runtime intake boundary before fresh events are accepted as legacy-free evidence.",
-    "sovereignty": "PNVA becomes harder to fake when projected proofs, malformed, duplicated or content-unbound proof hashes, wrong proof-ref slot roles, wrong event types, wrong decision reasons, wrong role state transitions, malformed or inconsistent tension values, invalid gate signs, duplicate events, duplicated source locations, reused causal chains across different slots, unsafe source file names, mismatched pair source files, broken precheck-to-commit state continuity, regressed source lines, entity or slot mismatches, missing, equal or reversed pair timestamps, missing or reversed log/source location order, unsanitized sources, legacy heuristic rules, unknown heuristic rules, invalid risk flags, weak authority, missing target rules, missing precheck or commit target risk flags, extra runtime events and causally broken no-tick pairs are rejected before cutover."
+    "sovereignty": "PNVA becomes harder to fake when projected proofs, malformed, duplicated or content-unbound proof hashes, wrong proof-ref slot roles, wrong event types, wrong decision reasons, missing state transitions, wrong role state transitions, malformed or inconsistent tension values, invalid gate signs, duplicate events, duplicated source locations, reused causal chains across different slots, unsafe source file names, mismatched pair source files, broken precheck-to-commit state continuity, regressed source lines, entity or slot mismatches, missing, equal or reversed pair timestamps, missing or reversed log/source location order, unsanitized sources, legacy heuristic rules, unknown heuristic rules, invalid risk flags, weak authority, missing target rules, missing precheck or commit target risk flags, extra runtime events and causally broken no-tick pairs are rejected before cutover."
   },
   "matrix_classification": "R3_RUNTIME_CAPTURE_MATRIX_READY_PENDING_RUNTIME",
-  "negative_control_count": 60,
-  "negative_control_detected_count": 60,
+  "negative_control_count": 62,
+  "negative_control_detected_count": 62,
   "negative_controls": [
     {
       "codes": [
@@ -111,6 +112,7 @@
       "codes": [
         "FIELD_STATE_INVALID",
         "PROOF_HASH_BINDING_INVALID",
+        "COMMIT_STATE_TRANSITION_MISSING",
         "COMMIT_STATE_AFTER_MISMATCH"
       ],
       "detected": true,
@@ -371,6 +373,22 @@
       "detected": true,
       "expected_detection": "COMMIT_STATE_AFTER_MISMATCH",
       "name": "reject_commit_state_after_mismatch"
+    },
+    {
+      "codes": [
+        "PRECHECK_STATE_TRANSITION_MISSING"
+      ],
+      "detected": true,
+      "expected_detection": "PRECHECK_STATE_TRANSITION_MISSING",
+      "name": "reject_precheck_state_transition_missing"
+    },
+    {
+      "codes": [
+        "COMMIT_STATE_TRANSITION_MISSING"
+      ],
+      "detected": true,
+      "expected_detection": "COMMIT_STATE_TRANSITION_MISSING",
+      "name": "reject_commit_state_transition_missing"
     },
     {
       "codes": [
@@ -691,6 +709,7 @@
     "Require precheck and commit event_type values to match the capture slot contract.",
     "Require decision.reason to distinguish native no-tick prechecks from native runtime commits.",
     "Require field.state_after to prove no-tick precheck suppression and commit completion.",
+    "Reject prechecks or commits whose field.state_before equals field.state_after.",
     "Reject duplicate event_id, proof_hash and proof_ref values before accepting runtime coverage.",
     "Reject causal_chain_id reuse across different original_event_id or r3_runtime_slot_id values.",
     "Reject source.file_name values that expose local paths or path traversal markers.",
@@ -1549,8 +1568,8 @@
     "duplicate_proof_ref_rejection_count": 0,
     "duplicate_source_location_rejection_count": 0,
     "intake_guard_ready": true,
-    "negative_control_count": 60,
-    "negative_control_detected_count": 60,
+    "negative_control_count": 62,
+    "negative_control_detected_count": 62,
     "no_tick_pair_failure_count": 0,
     "no_tick_pair_integrity_count": 0,
     "pending_slot_count": 35,

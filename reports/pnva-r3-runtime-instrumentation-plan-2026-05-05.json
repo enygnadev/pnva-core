@@ -60,7 +60,8 @@
       },
       "field_state_policy": {
         "commit_state_after_required": "committed",
-        "precheck_state_after_required": "suppressed"
+        "precheck_state_after_required": "suppressed",
+        "state_transition_required": true
       },
       "heuristic_policy": {
         "commit_target_risk_flags_required": true,
@@ -282,7 +283,8 @@
       },
       "field_state_policy": {
         "commit_state_after_required": "committed",
-        "precheck_state_after_required": "suppressed"
+        "precheck_state_after_required": "suppressed",
+        "state_transition_required": true
       },
       "heuristic_policy": {
         "commit_target_risk_flags_required": true,
@@ -438,7 +440,8 @@
       },
       "field_state_policy": {
         "commit_state_after_required": "committed",
-        "precheck_state_after_required": "suppressed"
+        "precheck_state_after_required": "suppressed",
+        "state_transition_required": true
       },
       "heuristic_policy": {
         "commit_target_risk_flags_required": true,
@@ -539,7 +542,7 @@
   "classification": "R3_RUNTIME_INSTRUMENTATION_PLAN_READY",
   "entity_target_count": 1,
   "event_template_count": 6,
-  "generated_at": "2026-05-05T15:22:53Z",
+  "generated_at": "2026-05-05T15:32:31Z",
   "instrumentation_plan_ready": true,
   "interpretation": {
     "boundary": "This plan is not runtime evidence and does not approve R3 cutover; it defines how fresh runtime evidence must be emitted and validated.",
@@ -577,8 +580,8 @@
     "source.sanitized"
   ],
   "mandatory_field_count": 28,
-  "negative_control_count": 60,
-  "negative_control_detected_count": 60,
+  "negative_control_count": 62,
+  "negative_control_detected_count": 62,
   "pass": true,
   "positive_control_count": 6,
   "positive_control_passed_count": 6,
@@ -589,6 +592,7 @@
     "Emit original_event_id in tension.components so each runtime event maps back to a capture slot.",
     "Emit fixed decision.reason values so no-tick prechecks and runtime commits remain semantically distinct.",
     "Emit fixed field.state_after values so prechecks prove suppression and commits prove completion.",
+    "Emit different field.state_before and field.state_after values so every runtime event proves a real state transition.",
     "Emit each commit field.state_before equal to its precheck field.state_after so state continuity is explicit.",
     "Never reuse a causal_chain_id across different original_event_id or r3_runtime_slot_id values.",
     "Emit source.file_name as a public basename only, never as a local path.",
@@ -647,7 +651,7 @@
     "event_template_count": 6,
     "instrumentation_plan_ready": true,
     "mandatory_field_count": 28,
-    "negative_control_detected_count": 60,
+    "negative_control_detected_count": 62,
     "positive_control_passed_count": 6,
     "required_runtime_event_count": 70
   },
