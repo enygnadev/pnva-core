@@ -24,6 +24,7 @@ REPORTS = {
     "native_causal_graph": "reports/pnva-native-causal-graph-2026-05-05.json",
     "schema_contract": "reports/pnva-schema-contract-validation-2026-05-05.json",
     "causal_chronology": "reports/pnva-causal-chronology-2026-05-05.json",
+    "tension_decision": "reports/pnva-tension-decision-calibration-2026-05-05.json",
     "adversarial": "reports/pnva-adversarial-validation-2026-05-05.json",
     "maturity": "reports/pnva-entity-heuristic-maturity-2026-05-05.json",
     "attestation": "reports/pnva-sovereign-evidence-attestation-2026-05-05.json",
@@ -43,6 +44,7 @@ EXPECTED_CLASSIFICATIONS = {
     "native_causal_graph": "CAUSAL_GRAPH_READY",
     "schema_contract": "SCHEMA_CONTRACT_READY_WITH_LEGACY_WARNINGS",
     "causal_chronology": "CAUSAL_CHRONOLOGY_READY_WITH_LEGACY_WARNINGS",
+    "tension_decision": "TENSION_DECISION_READY_WITH_LEGACY_WARNINGS",
     "adversarial": "ADVERSARIAL_VALIDATION_PASS",
     "maturity": "ENTITY_HEURISTIC_MATURITY_READY_WITH_LEGACY_WARNINGS",
     "attestation": "PNVA_SOVEREIGN_EVIDENCE_ATTESTED",
@@ -171,6 +173,9 @@ def build_report(repo: Path) -> dict[str, Any]:
     check_error(group="manifest", name="manifest_causal_chronology_event_count", left_ref="MANIFEST:causal_chronology.event_count", left=_dig(manifest_summary, ["causal_chronology", "event_count"]), right_ref="causal_chronology:event_count", right=data["causal_chronology"].get("event_count"))
     check_error(group="manifest", name="manifest_causal_chronology_chain_count", left_ref="MANIFEST:causal_chronology.chain_count", left=_dig(manifest_summary, ["causal_chronology", "chain_count"]), right_ref="causal_chronology:chain_count", right=data["causal_chronology"].get("chain_count"))
     check_error(group="manifest", name="manifest_causal_chronology_backward_count", left_ref="MANIFEST:causal_chronology.global_backward_count", left=_dig(manifest_summary, ["causal_chronology", "global_backward_count"]), right_ref="causal_chronology:global_backward_count", right=data["causal_chronology"].get("global_backward_count"))
+    check_error(group="manifest", name="manifest_tension_decision_event_count", left_ref="MANIFEST:tension_decision_calibration.event_count", left=_dig(manifest_summary, ["tension_decision_calibration", "event_count"]), right_ref="tension_decision:event_count", right=data["tension_decision"].get("event_count"))
+    check_error(group="manifest", name="manifest_tension_decision_warning_count", left_ref="MANIFEST:tension_decision_calibration.warning_count", left=_dig(manifest_summary, ["tension_decision_calibration", "warning_count"]), right_ref="tension_decision:warning_count", right=data["tension_decision"].get("warning_count"))
+    check_error(group="manifest", name="manifest_tension_decision_native_clean", left_ref="MANIFEST:tension_decision_calibration.native_calibration_clean", left=_dig(manifest_summary, ["tension_decision_calibration", "native_calibration_clean"]), right_ref="tension_decision:native_calibration_clean", right=data["tension_decision"].get("native_calibration_clean"))
 
     # Canonical report agreement.
     for key, report_name in (
@@ -202,6 +207,8 @@ def build_report(repo: Path) -> dict[str, Any]:
     check_error(group="native", name="native_proof_chain_unique_ids_match_event_count", left_ref="native_proof_chain:seal.unique_event_ids", left=_dig(data["native_proof_chain"], ["seal", "unique_event_ids"], 0), right_ref="native_proof_chain:seal.event_count", right=_dig(data["native_proof_chain"], ["seal", "event_count"], 0))
     check_error(group="chronology", name="chronology_total_event_count", left_ref="causal_chronology:event_count", left=data["causal_chronology"].get("event_count"), right_ref="canonical_events+native_events", right=total_events)
     check_error(group="chronology", name="chronology_native_clean", left_ref="causal_chronology:native_chronology_clean", left=data["causal_chronology"].get("native_chronology_clean"), right_ref="expected", right=True)
+    check_error(group="tension_decision", name="tension_decision_total_event_count", left_ref="tension_decision:event_count", left=data["tension_decision"].get("event_count"), right_ref="canonical_events+native_events", right=total_events)
+    check_error(group="tension_decision", name="tension_decision_native_clean", left_ref="tension_decision:native_calibration_clean", left=data["tension_decision"].get("native_calibration_clean"), right_ref="expected", right=True)
 
     # Maturity aggregate math.
     maturity_summary = data["maturity"].get("summary", {})
@@ -217,13 +224,14 @@ def build_report(repo: Path) -> dict[str, Any]:
     artifact_ids = [str(item.get("id")) for item in artifacts if isinstance(item, dict)]
     check_error(group="attestation", name="artifact_count_matches_list", left_ref="attestation:artifact_count", left=data["attestation"].get("artifact_count"), right_ref="len(attestation.artifacts)", right=len(artifacts))
     check_error(group="attestation", name="failure_count_zero", left_ref="attestation:failure_count", left=data["attestation"].get("failure_count"), right_ref="expected", right=0)
-    for required_id in ("schema_contract_validation", "causal_chronology", "adversarial_validation", "entity_heuristic_maturity"):
+    for required_id in ("schema_contract_validation", "causal_chronology", "tension_decision_calibration", "adversarial_validation", "entity_heuristic_maturity"):
         check_error(group="attestation", name=f"attestation_contains_{required_id}", left_ref="attestation:artifact_ids", left=required_id in artifact_ids, right_ref="expected", right=True)
     check_error(group="audit", name="audit_score_ready", left_ref="audit:score.classification", left=_dig(data["audit"], ["score", "classification"]), right_ref="expected", right="SOVEREIGN_READY")
     check_error(group="audit", name="audit_attestation_hash_matches", left_ref="audit:evidence_attestation.evidence_hash", left=_dig(data["audit"], ["evidence_attestation", "evidence_hash"]), right_ref="attestation:evidence_hash", right=data["attestation"].get("evidence_hash"))
     check_error(group="audit", name="audit_maturity_score_matches", left_ref="audit:entity_heuristic_maturity.maturity_score", left=_dig(data["audit"], ["entity_heuristic_maturity", "maturity_score"]), right_ref="maturity:maturity_score", right=data["maturity"].get("maturity_score"), tolerance=0.000001)
     check_error(group="audit", name="audit_schema_contract_matches", left_ref="audit:schema_contract.classification", left=_dig(data["audit"], ["schema_contract_validation", "classification"]), right_ref="schema_contract:classification", right=data["schema_contract"].get("classification"))
     check_error(group="audit", name="audit_chronology_matches", left_ref="audit:causal_chronology.classification", left=_dig(data["audit"], ["causal_chronology", "classification"]), right_ref="causal_chronology:classification", right=data["causal_chronology"].get("classification"))
+    check_error(group="audit", name="audit_tension_decision_matches", left_ref="audit:tension_decision.classification", left=_dig(data["audit"], ["tension_decision_calibration", "classification"]), right_ref="tension_decision:classification", right=data["tension_decision"].get("classification"))
 
     manifest_files = data["manifest"].get("files", []) if isinstance(data["manifest"], dict) else []
     duplicate_files = sorted({item for item in manifest_files if manifest_files.count(item) > 1})
@@ -256,6 +264,8 @@ def build_report(repo: Path) -> dict[str, Any]:
             "schema_contract_warning_count": data["schema_contract"].get("warning_count"),
             "causal_chronology_event_count": data["causal_chronology"].get("event_count"),
             "causal_chronology_warning_count": data["causal_chronology"].get("warning_count"),
+            "tension_decision_event_count": data["tension_decision"].get("event_count"),
+            "tension_decision_warning_count": data["tension_decision"].get("warning_count"),
             "attestation_artifact_count": data["attestation"].get("artifact_count"),
             "audit_score": _dig(data["audit"], ["score", "total"]),
         },

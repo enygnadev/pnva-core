@@ -32,6 +32,7 @@ PUBLISHED_REPORTS = {
     "native_causal_graph": "reports/pnva-native-causal-graph-2026-05-05.json",
     "schema_contract": "reports/pnva-schema-contract-validation-2026-05-05.json",
     "causal_chronology": "reports/pnva-causal-chronology-2026-05-05.json",
+    "tension_decision": "reports/pnva-tension-decision-calibration-2026-05-05.json",
     "adversarial": "reports/pnva-adversarial-validation-2026-05-05.json",
     "maturity": "reports/pnva-entity-heuristic-maturity-2026-05-05.json",
     "attestation": "reports/pnva-sovereign-evidence-attestation-2026-05-05.json",
@@ -175,6 +176,16 @@ STABLE_PATHS = {
         ["warning_count"],
         ["native_chronology_clean"],
     ],
+    "tension_decision": [
+        ["classification"],
+        ["pass"],
+        ["scope_count"],
+        ["event_count"],
+        ["error_count"],
+        ["warning_count"],
+        ["native_calibration_clean"],
+        ["legacy_calibration_warning_count"],
+    ],
     "adversarial": [
         ["classification"],
         ["pass"],
@@ -310,6 +321,7 @@ def build_report(repo: Path) -> dict[str, Any]:
             "native_causal_graph": tmp / "native-causal-graph.json",
             "schema_contract": tmp / "schema-contract.json",
             "causal_chronology": tmp / "causal-chronology.json",
+            "tension_decision": tmp / "tension-decision.json",
             "adversarial": tmp / "adversarial.json",
             "maturity": tmp / "maturity.json",
             "attestation": tmp / "attestation.json",
@@ -342,6 +354,7 @@ def build_report(repo: Path) -> dict[str, Any]:
         commands["native_causal_graph"] = _run(repo, ["tools/pnva_causal_graph_auditor.py", "--events", NATIVE_EVENTS, "--entity-catalog", NATIVE_ENTITIES], outputs["native_causal_graph"])
         commands["schema_contract"] = _run(repo, ["tools/pnva_schema_contract_validator.py"], outputs["schema_contract"])
         commands["causal_chronology"] = _run(repo, ["tools/pnva_causal_chronology_guard.py"], outputs["causal_chronology"])
+        commands["tension_decision"] = _run(repo, ["tools/pnva_tension_decision_calibrator.py"], outputs["tension_decision"])
         commands["adversarial"] = _run(repo, ["tools/pnva_adversarial_validator.py"], outputs["adversarial"])
         commands["maturity"] = _run(repo, ["tools/pnva_entity_heuristic_maturity.py"], outputs["maturity"])
         commands["attestation"] = _run(repo, ["tools/pnva_evidence_attestor.py"], outputs["attestation"])

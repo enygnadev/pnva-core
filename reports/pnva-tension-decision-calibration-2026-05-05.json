@@ -1,0 +1,2614 @@
+{
+  "author": "Gustavo de Aguiar Martins",
+  "classification": "TENSION_DECISION_READY_WITH_LEGACY_WARNINGS",
+  "error_count": 0,
+  "event_count": 519,
+  "generated_at": "2026-05-05T06:41:41Z",
+  "interpretation": {
+    "boundary": "This guard checks calibration semantics; policy, schema, replay and graph validators keep their own authority and topology responsibilities.",
+    "purpose": "Validate alignment between PNVA tension values, threshold margins, decision kind, guard events and action labels.",
+    "sovereignty": "A no-tick runtime is stronger when every collapse, block or observe decision can be traced to tension crossing or not crossing threshold."
+  },
+  "legacy_calibration_warning_count": 384,
+  "native_calibration_clean": true,
+  "pass": true,
+  "project": "PNVA-Core",
+  "recommendations": [
+    "Treat native collapse below threshold as release-blocking.",
+    "Treat native block above threshold as release-blocking.",
+    "Keep canonical bridge calibration warnings visible until legacy logs are replaced by native pnva.event.v1 emission."
+  ],
+  "schema_version": "pnva.tension_decision_calibration.v1",
+  "scope_count": 2,
+  "scopes": [
+    {
+      "absolute_margin_stats": {
+        "count": 512,
+        "max": 228.835927,
+        "mean": 20.976614,
+        "median": 0.072853,
+        "min": 0.0
+      },
+      "calibration_counts": {
+        "block_negative": 33,
+        "collapse_negative": 208,
+        "collapse_positive": 58,
+        "observe_negative": 37,
+        "observe_positive": 176
+      },
+      "decision_counts": {
+        "block": 33,
+        "collapse": 266,
+        "observe": 213
+      },
+      "error_codes": {},
+      "error_count": 0,
+      "errors": [],
+      "event_count": 512,
+      "event_file": "reports/pnva-canonical-events-sample-2026-05-05.jsonl",
+      "formula_mismatch_count": 0,
+      "gate_delta_stats": {
+        "count": 512,
+        "max": 0.887577,
+        "mean": -20.932827,
+        "median": -0.021793,
+        "min": -228.835927
+      },
+      "gate_family_counts": {
+        "general": 444,
+        "guard_block": 33,
+        "guard_pass": 35
+      },
+      "heuristic_rule_counts": {
+        "adaptive_threshold": 274,
+        "affinity_router": 78,
+        "etev_guard": 68,
+        "field_scheduler": 264,
+        "legacy_observer": 152,
+        "memory4d": 78,
+        "power_orchestrator": 78,
+        "veonic_layer": 128
+      },
+      "legacy_calibration_warning_count": 384,
+      "native_calibration_clean": true,
+      "scope": "canonical",
+      "top_actions": [
+        {
+          "action": "RESIZE_BATCH",
+          "count": 176
+        },
+        {
+          "action": "pnva_engine_evaluated",
+          "count": 78
+        },
+        {
+          "action": "EXECUTE",
+          "count": 42
+        },
+        {
+          "action": "assigned",
+          "count": 36
+        },
+        {
+          "action": "ETEV_GUARD_PASS",
+          "count": 35
+        },
+        {
+          "action": "ETEV_GUARD_BLOCK",
+          "count": 33
+        },
+        {
+          "action": "entity_range_assigned",
+          "count": 22
+        },
+        {
+          "action": "kernel_launched",
+          "count": 18
+        },
+        {
+          "action": "kernel_completed",
+          "count": 17
+        },
+        {
+          "action": "runtime_snapshot",
+          "count": 10
+        },
+        {
+          "action": "scan_ranges=2",
+          "count": 10
+        },
+        {
+          "action": "SWITCH_INTENSITY",
+          "count": 9
+        }
+      ],
+      "top_reasons": [
+        {
+          "count": 118,
+          "reason": "observed"
+        },
+        {
+          "count": 90,
+          "reason": "zano_native_headless"
+        },
+        {
+          "count": 73,
+          "reason": "cpu_host_thermal_nanoparallel_taper"
+        },
+        {
+          "count": 50,
+          "reason": "cpu_host_thermal_taper"
+        },
+        {
+          "count": 35,
+          "reason": "threshold_passed"
+        },
+        {
+          "count": 32,
+          "reason": "safe_mode_hold"
+        },
+        {
+          "count": 25,
+          "reason": "zano-entity-00"
+        },
+        {
+          "count": 25,
+          "reason": "zano-entity-01"
+        },
+        {
+          "count": 12,
+          "reason": "scan_in_progress"
+        },
+        {
+          "count": 11,
+          "reason": "native_transport_hashing"
+        },
+        {
+          "count": 11,
+          "reason": "cpu_host_thermal_collapse_taper"
+        },
+        {
+          "count": 8,
+          "reason": "low_occupancy_with_clean_feedback"
+        }
+      ],
+      "warning_codes": {
+        "LEGACY_COLLAPSE_BELOW_THRESHOLD": 208,
+        "LEGACY_OBSERVE_ABOVE_THRESHOLD": 176
+      },
+      "warning_count": 384,
+      "warnings": [
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.017211 action=pnva_engine_evaluated",
+          "scope": "canonical",
+          "subject": "evt_a48d0c7f_000001_a85b608d"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.003914 action=pnva_engine_evaluated",
+          "scope": "canonical",
+          "subject": "evt_a48d0c7f_000004_5d023893"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.003914 action=pnva_engine_evaluated",
+          "scope": "canonical",
+          "subject": "evt_a48d0c7f_000005_0812b439"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.010503 action=pnva_engine_evaluated",
+          "scope": "canonical",
+          "subject": "evt_a48d0c7f_000008_1fbbadfd"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.010621 action=pnva_engine_evaluated",
+          "scope": "canonical",
+          "subject": "evt_a48d0c7f_000011_9b7cd532"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.010621 action=pnva_engine_evaluated",
+          "scope": "canonical",
+          "subject": "evt_a48d0c7f_000012_73687cee"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.023715 action=pnva_engine_evaluated",
+          "scope": "canonical",
+          "subject": "evt_a48d0c7f_000013_1c2865b1"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.002591 action=pnva_engine_evaluated",
+          "scope": "canonical",
+          "subject": "evt_a48d0c7f_000014_8e3d66cf"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.002591 action=pnva_engine_evaluated",
+          "scope": "canonical",
+          "subject": "evt_a48d0c7f_000015_6c2dc650"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.018347 action=pnva_engine_evaluated",
+          "scope": "canonical",
+          "subject": "evt_a48d0c7f_000016_cce236a0"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.002778 action=pnva_engine_evaluated",
+          "scope": "canonical",
+          "subject": "evt_a48d0c7f_000019_a7f745be"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.002778 action=pnva_engine_evaluated",
+          "scope": "canonical",
+          "subject": "evt_a48d0c7f_000020_7d267db6"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.018192 action=pnva_engine_evaluated",
+          "scope": "canonical",
+          "subject": "evt_a48d0c7f_000023_87993539"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.002933 action=pnva_engine_evaluated",
+          "scope": "canonical",
+          "subject": "evt_a48d0c7f_000026_3c11985e"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.002933 action=pnva_engine_evaluated",
+          "scope": "canonical",
+          "subject": "evt_a48d0c7f_000027_4dd81705"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.022434 action=pnva_engine_evaluated",
+          "scope": "canonical",
+          "subject": "evt_a48d0c7f_000028_92ddaff1"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.00131 action=pnva_engine_evaluated",
+          "scope": "canonical",
+          "subject": "evt_a48d0c7f_000029_cde75297"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.00131 action=pnva_engine_evaluated",
+          "scope": "canonical",
+          "subject": "evt_a48d0c7f_000030_0d8a1a6c"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.024012 action=pnva_engine_evaluated",
+          "scope": "canonical",
+          "subject": "evt_a48d0c7f_000033_5cc6467f"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.002888 action=pnva_engine_evaluated",
+          "scope": "canonical",
+          "subject": "evt_a48d0c7f_000034_de1f05ed"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.002888 action=pnva_engine_evaluated",
+          "scope": "canonical",
+          "subject": "evt_a48d0c7f_000035_850b9147"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.023468 action=pnva_engine_evaluated",
+          "scope": "canonical",
+          "subject": "evt_a48d0c7f_000038_e0829b89"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.002344 action=pnva_engine_evaluated",
+          "scope": "canonical",
+          "subject": "evt_a48d0c7f_000039_caff75fc"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.002344 action=pnva_engine_evaluated",
+          "scope": "canonical",
+          "subject": "evt_a48d0c7f_000040_3d5952a7"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.009399 action=pnva_engine_evaluated",
+          "scope": "canonical",
+          "subject": "evt_a48d0c7f_000041_6161ecc6"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.011725 action=pnva_engine_evaluated",
+          "scope": "canonical",
+          "subject": "evt_a48d0c7f_000044_657243bf"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.011725 action=pnva_engine_evaluated",
+          "scope": "canonical",
+          "subject": "evt_a48d0c7f_000045_89b68aab"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.025934 action=pnva_engine_evaluated",
+          "scope": "canonical",
+          "subject": "evt_a48d0c7f_000046_8e17199d"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.00481 action=pnva_engine_evaluated",
+          "scope": "canonical",
+          "subject": "evt_a48d0c7f_000047_296e8010"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.00481 action=pnva_engine_evaluated",
+          "scope": "canonical",
+          "subject": "evt_a48d0c7f_000048_87af61aa"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.010743 action=pnva_engine_evaluated",
+          "scope": "canonical",
+          "subject": "evt_a48d0c7f_000049_d59e563b"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.010381 action=pnva_engine_evaluated",
+          "scope": "canonical",
+          "subject": "evt_a48d0c7f_000052_901324b5"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.010381 action=pnva_engine_evaluated",
+          "scope": "canonical",
+          "subject": "evt_a48d0c7f_000053_925e6996"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.025909 action=pnva_engine_evaluated",
+          "scope": "canonical",
+          "subject": "evt_a48d0c7f_000054_1843aa91"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.004785 action=pnva_engine_evaluated",
+          "scope": "canonical",
+          "subject": "evt_a48d0c7f_000055_43ed8371"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.004785 action=pnva_engine_evaluated",
+          "scope": "canonical",
+          "subject": "evt_a48d0c7f_000056_8f5a6635"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.023221 action=pnva_engine_evaluated",
+          "scope": "canonical",
+          "subject": "evt_a48d0c7f_000059_f56ba87b"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.002096 action=pnva_engine_evaluated",
+          "scope": "canonical",
+          "subject": "evt_a48d0c7f_000060_222c5449"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.002096 action=pnva_engine_evaluated",
+          "scope": "canonical",
+          "subject": "evt_a48d0c7f_000061_71e55b8e"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.018934 action=pnva_engine_evaluated",
+          "scope": "canonical",
+          "subject": "evt_a48d0c7f_000062_0a0f40e9"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.00219 action=pnva_engine_evaluated",
+          "scope": "canonical",
+          "subject": "evt_a48d0c7f_000065_85177084"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.00219 action=pnva_engine_evaluated",
+          "scope": "canonical",
+          "subject": "evt_a48d0c7f_000066_6ff28479"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.024772 action=pnva_engine_evaluated",
+          "scope": "canonical",
+          "subject": "evt_a48d0c7f_000067_7bed2c01"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.003648 action=pnva_engine_evaluated",
+          "scope": "canonical",
+          "subject": "evt_a48d0c7f_000068_0ce6a8cc"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.003648 action=pnva_engine_evaluated",
+          "scope": "canonical",
+          "subject": "evt_a48d0c7f_000069_be1c0bc8"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.036561 action=pnva_engine_evaluated",
+          "scope": "canonical",
+          "subject": "evt_a48d0c7f_000072_359c4bae"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.015436 action=pnva_engine_evaluated",
+          "scope": "canonical",
+          "subject": "evt_a48d0c7f_000073_eaeb8246"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.015436 action=pnva_engine_evaluated",
+          "scope": "canonical",
+          "subject": "evt_a48d0c7f_000074_60b6ad0e"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.010774 action=pnva_engine_evaluated",
+          "scope": "canonical",
+          "subject": "evt_a48d0c7f_000075_687bb1af"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.01035 action=pnva_engine_evaluated",
+          "scope": "canonical",
+          "subject": "evt_a48d0c7f_000078_7d58cd40"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.01035 action=pnva_engine_evaluated",
+          "scope": "canonical",
+          "subject": "evt_a48d0c7f_000079_91c56733"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.014748 action=pnva_engine_evaluated",
+          "scope": "canonical",
+          "subject": "evt_a48d0c7f_000082_8f53d476"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.006377 action=pnva_engine_evaluated",
+          "scope": "canonical",
+          "subject": "evt_a48d0c7f_000085_dfe3d717"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.006377 action=pnva_engine_evaluated",
+          "scope": "canonical",
+          "subject": "evt_a48d0c7f_000086_108e8158"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.026339 action=pnva_engine_evaluated",
+          "scope": "canonical",
+          "subject": "evt_a48d0c7f_000087_56754d5a"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.005214 action=pnva_engine_evaluated",
+          "scope": "canonical",
+          "subject": "evt_a48d0c7f_000088_d91b2805"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.005214 action=pnva_engine_evaluated",
+          "scope": "canonical",
+          "subject": "evt_a48d0c7f_000089_9e81ea4d"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.021512 action=pnva_engine_evaluated",
+          "scope": "canonical",
+          "subject": "evt_a48d0c7f_000092_00e276fd"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.000387 action=pnva_engine_evaluated",
+          "scope": "canonical",
+          "subject": "evt_a48d0c7f_000093_f24149c4"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.000387 action=pnva_engine_evaluated",
+          "scope": "canonical",
+          "subject": "evt_a48d0c7f_000094_b40ea5b8"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.014673 action=pnva_engine_evaluated",
+          "scope": "canonical",
+          "subject": "evt_a48d0c7f_000095_144d8702"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.006451 action=pnva_engine_evaluated",
+          "scope": "canonical",
+          "subject": "evt_a48d0c7f_000098_694ed7d5"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.006451 action=pnva_engine_evaluated",
+          "scope": "canonical",
+          "subject": "evt_a48d0c7f_000099_c6a9df53"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.030839 action=pnva_engine_evaluated",
+          "scope": "canonical",
+          "subject": "evt_a48d0c7f_000100_82e874c1"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.009715 action=pnva_engine_evaluated",
+          "scope": "canonical",
+          "subject": "evt_a48d0c7f_000101_683627e1"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.009715 action=pnva_engine_evaluated",
+          "scope": "canonical",
+          "subject": "evt_a48d0c7f_000102_21b705e8"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.019493 action=pnva_engine_evaluated",
+          "scope": "canonical",
+          "subject": "evt_a48d0c7f_000103_31736628"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.010642 action=pnva_engine_evaluated",
+          "scope": "canonical",
+          "subject": "evt_a48d0c7f_000110_860d85f6"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.010483 action=pnva_engine_evaluated",
+          "scope": "canonical",
+          "subject": "evt_a48d0c7f_000113_b60d8c1b"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.010483 action=pnva_engine_evaluated",
+          "scope": "canonical",
+          "subject": "evt_a48d0c7f_000114_15f7c29b"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.018353 action=pnva_engine_evaluated",
+          "scope": "canonical",
+          "subject": "evt_a48d0c7f_000117_d232fdbf"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.002772 action=pnva_engine_evaluated",
+          "scope": "canonical",
+          "subject": "evt_a48d0c7f_000120_1a632251"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.002772 action=pnva_engine_evaluated",
+          "scope": "canonical",
+          "subject": "evt_a48d0c7f_000121_f8592ee0"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.018361 action=pnva_engine_evaluated",
+          "scope": "canonical",
+          "subject": "evt_a48d0c7f_000124_a2886915"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.002763 action=pnva_engine_evaluated",
+          "scope": "canonical",
+          "subject": "evt_a48d0c7f_000127_7d9ab577"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.002763 action=pnva_engine_evaluated",
+          "scope": "canonical",
+          "subject": "evt_a48d0c7f_000128_37cd2093"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=kernel_completed",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000002_2eee331e"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=runtime_snapshot",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000003_1bb3dc04"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=scan_ranges=2",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000005_03a0b088"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=entity_range_assigned",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000006_c879b0bf"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=entity_range_assigned",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000007_6ab85dce"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=kernel_launched",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000008_4e83334a"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=kernel_launched",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000009_2853e213"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=kernel_completed",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000012_57f14fe3"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=kernel_completed",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000013_b2fa757a"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=runtime_snapshot",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000014_cbc3f40d"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=eth_getWork_sent",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000015_adf9c2c7"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=scan_ranges=2",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000017_dad5a994"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=entity_range_assigned",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000018_ce7cda07"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=entity_range_assigned",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000019_881217aa"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=kernel_launched",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000020_4a5c9fb4"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=kernel_launched",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000021_eef4fb0a"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=eth_getWork_response",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000022_dffbcf56"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=STRATUM_JOB",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000023_98b08e51"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=job_received",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000024_55ee1f71"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=kernel_completed",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000026_42dca652"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=kernel_completed",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000027_00ca5748"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=runtime_snapshot",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000028_e489653b"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=scan_ranges=2",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000030_f34fea81"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=entity_range_assigned",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000031_0f5cc535"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=entity_range_assigned",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000032_876d8796"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=kernel_launched",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000033_11961ceb"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=kernel_launched",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000034_9ee927e8"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=kernel_completed",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000035_9fe17f43"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=kernel_completed",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000038_a668c211"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=runtime_snapshot",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000039_72d17e02"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=scan_ranges=2",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000041_52337bd2"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=entity_range_assigned",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000042_b0aa6e97"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=entity_range_assigned",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000043_599d246c"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=kernel_launched",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000044_60df94a0"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=kernel_launched",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000045_be2a43a0"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=kernel_completed",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000048_e7856d1d"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=kernel_completed",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000051_2d7e6197"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=runtime_snapshot",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000052_55ed13be"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=scan_ranges=2",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000054_0c8770b9"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=entity_range_assigned",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000055_00d8ee01"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=entity_range_assigned",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000056_31ae9d31"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=kernel_launched",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000057_e2c66cbc"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=kernel_launched",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000058_ebf961ba"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=kernel_completed",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000061_289c1769"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=kernel_completed",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000064_6b4a830b"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=runtime_snapshot",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000065_4ee9e729"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=scan_ranges=2",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000067_f6ed4d3c"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=entity_range_assigned",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000068_2506fb2b"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=entity_range_assigned",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000069_12be0a20"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=kernel_launched",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000070_2d5f51d9"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=kernel_launched",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000071_80a845bc"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=job_received",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000072_1eb4c0fc"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=entity_range_assigned",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000074_551874bb"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=entity_range_assigned",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000075_a273b2b5"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=runtime_snapshot",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000076_a731d878"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=backend_started",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000078_f4f6c611"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=stratum+tcp://pool.br.woolypooly.com:3146",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000080_b8777a1a"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=pool_connected",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000081_9fc49e5e"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=bootstrap_login:login",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000082_668e5621"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=login",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000083_5c412898"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=pool_authorized",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000084_f638205d"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=eth_getWork_sent",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000085_11dbf5a5"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=eth_submitLogin",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000086_9fec4b6f"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=pool_authorized",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000087_460f3d4a"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=eth_getWork_deduped",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000088_f62401b7"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=eth_getWork_response",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000089_230734cf"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=STRATUM_JOB",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000090_43e7ebb0"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=job_received",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000091_b7fe69d2"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=scan_ranges=2",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000092_22bfef15"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=entity_range_assigned",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000094_61453d05"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=entity_range_assigned",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000095_923f4231"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=kernel_launched",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000096_b22725b7"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=kernel_launched",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000097_3718d2b8"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=kernel_completed",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000099_f79f31c5"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=kernel_completed",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000100_0fa146a8"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=runtime_snapshot",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000101_63f0763b"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=scan_ranges=2",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000103_6251275f"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=entity_range_assigned",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000104_9175140f"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=entity_range_assigned",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000105_4be39e6e"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=kernel_launched",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000106_b3faf303"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=kernel_launched",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000107_3331d707"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=kernel_completed",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000109_0146e455"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=kernel_completed",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000110_9c5ccf23"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=runtime_snapshot",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000111_d4258e82"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=scan_ranges=2",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000113_a12cadae"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=entity_range_assigned",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000114_bcc07226"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=entity_range_assigned",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000115_fb29e999"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=kernel_launched",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000116_ddf91d7f"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=kernel_launched",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000117_7558515a"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=kernel_completed",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000120_ff03db4c"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=kernel_completed",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000123_b6c06389"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=runtime_snapshot",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000124_d14e1946"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=scan_ranges=2",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000126_9ee0f5d7"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=entity_range_assigned",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000127_b58c4cb7"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=entity_range_assigned",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000128_7bcb2fe9"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-173.890434 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000001_6fae5dcf"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-180.283599 action=EXECUTE",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000002_46645d30"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-186.676676 action=EXECUTE",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000003_0856dcc0"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-192.962912 action=EXECUTE",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000004_59c7a9f2"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-199.390133 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000005_2e25140a"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-206.128983 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000006_b9b75d16"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-213.379981 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000007_9ba2d0e3"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-220.969487 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000008_38e90470"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-0.786622 action=SWITCH_INTENSITY",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000009_81d483e2"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-228.835927 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000011_74f7e82c"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-0.784138 action=SWITCH_INTENSITY",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000012_c64a5fce"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-1.012447 action=EXECUTE",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000013_2d10d951"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-2.379266 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000014_bd4ac355"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-4.636153 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000015_5579ab1b"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-7.756963 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000016_08184ab7"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-11.591003 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000017_c4ddf9f1"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-15.963562 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000018_d48dc628"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-20.872715 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000019_66a6bf89"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-26.268172 action=EXECUTE",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000020_7d5fe1e5"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-32.165849 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000021_c9fcbbf6"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-38.575084 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000022_885c7fc6"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-45.491376 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000023_76f4c0d8"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-52.813577 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000024_09c8f25a"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-60.419177 action=EXECUTE",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000025_35a5b986"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-67.44682 action=EXECUTE",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000026_49d73b60"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-74.036723 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000027_3d2ee416"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-80.401686 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000028_fc593e7a"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-86.590788 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000029_ece0bca2"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-92.596733 action=EXECUTE",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000030_176d62bc"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-98.747877 action=EXECUTE",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000031_5162e0dd"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-105.172564 action=EXECUTE",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000032_40378604"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-112.006155 action=EXECUTE",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000033_d933ad55"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-119.218069 action=EXECUTE",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000034_ff9d1784"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-126.738837 action=EXECUTE",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000035_c4c9fdab"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-134.603042 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000036_be57c1cb"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-142.713595 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000037_c3344c24"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-149.986401 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000038_03bf3f29"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-156.515544 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000039_47c9fbb2"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-162.628895 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000040_b7203cf0"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-0.789641 action=SWITCH_INTENSITY",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000041_975f9682"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-0.78425 action=EXECUTE",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000043_d221d110"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-1.010047 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000044_7caa089c"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-2.463945 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000045_33b084bb"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-4.829048 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000046_d8543903"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-8.08113 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000047_16b5f1f0"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-12.025869 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000048_4478841b"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-16.769166 action=EXECUTE",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000049_8039dc69"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-22.276503 action=EXECUTE",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000050_e8bf4134"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-28.476053 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000051_79e1105d"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-35.275573 action=EXECUTE",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000052_cb4b3053"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-42.345643 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000053_932427d6"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-49.748906 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000054_42c3e9bb"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-57.481743 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000055_1800795b"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-65.473207 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000056_e978aece"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-72.658351 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000057_bfa26622"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-79.167321 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000058_734bbfd1"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-85.237179 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000059_b56056fd"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-91.102571 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000060_d2dd612b"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-96.898382 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000061_a66fcada"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-102.819017 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000062_1a4c0375"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-108.811259 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000063_9af0b3a7"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-114.838366 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000064_9ecae8e3"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-0.792913 action=EXECUTE",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000065_cac44b48"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-121.018948 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000067_be68b958"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-0.784022 action=EXECUTE",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000068_7db886d8"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-1.010953 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000069_238083d1"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-2.402191 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000070_18905cdc"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-4.74071 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000071_eef51317"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-8.148179 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000072_9d4ef16f"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-12.342613 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000073_f5bb5e8a"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-17.183351 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000074_0f2060cd"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-22.548102 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000075_eda78f1d"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-28.501584 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000076_2c0de70a"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-34.962776 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000077_f5d79e0b"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-41.728506 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000078_1eba4748"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-48.724116 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000079_96c2eb7d"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-56.074013 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000080_11e665ae"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-63.617604 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000081_9e66be0e"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-70.456088 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000082_e06899b0"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-76.725007 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000083_6f9e2230"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-82.515597 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000084_e46d3fa9"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-88.090725 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000085_d3667aa4"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-93.718188 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000086_50b6bf8c"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-99.453637 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000087_6e97b7cc"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-0.789356 action=SWITCH_INTENSITY",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000088_566ef8be"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-0.784245 action=EXECUTE",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000090_31b53b25"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-1.009726 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000091_7cb8f6ae"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-2.384527 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000092_279df346"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-4.686787 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000093_af10aaa9"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-7.800003 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000094_31a09820"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-11.818918 action=EXECUTE",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000095_903d5116"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-16.549438 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000096_ab7cb215"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-21.817572 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000097_39e340f2"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-27.483536 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000098_fab6d052"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-33.477814 action=EXECUTE",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000099_e5df25d1"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-39.93588 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000100_e7f44e23"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-46.748487 action=EXECUTE",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000101_f658a9db"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-53.984016 action=EXECUTE",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000102_64b602dd"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-61.483635 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000103_bbe98953"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-68.217992 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000104_ca6cee84"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-0.785519 action=SWITCH_INTENSITY",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000105_8bc2aaa8"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-0.784114 action=SWITCH_INTENSITY",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000107_28ceda0e"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-1.01794 action=EXECUTE",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000108_a756a081"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-2.513056 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000109_75ed7bd9"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-5.112272 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000110_1767b5ff"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-8.570408 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000111_9f31f141"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-12.707767 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000112_b2be43ae"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-0.783956 action=SWITCH_INTENSITY",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000113_0f40c0e2"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-1.015134 action=EXECUTE",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000114_cffa4d59"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-2.412465 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000115_b4fbed2c"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-4.72624 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000116_9f03a07d"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-8.021503 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000117_3081c85a"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-12.113803 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000118_ce2f7eda"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-16.841205 action=EXECUTE",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000119_4a1256d5"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-22.359275 action=EXECUTE",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000120_137a965b"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-28.318205 action=EXECUTE",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000121_313e7138"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-34.739236 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000122_9ed5f542"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-41.575372 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000123_9d1dfa14"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-48.917002 action=EXECUTE",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000124_b20bb751"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-56.680133 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000125_191be134"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-64.599255 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000126_94f51dab"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-71.803188 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000127_41cd469c"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-78.578357 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000128_6f95b5e5"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-22.407801 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000001_5f5d2586"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-24.245245 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000002_9bad1d6d"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-24.245245 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000003_392d3b13"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-26.127451 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000004_49b02ecf"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-28.074192 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000007_4e666019"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-28.074192 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000008_597a2713"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-30.065771 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000009_cdb154d4"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-30.065771 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000010_54e369e9"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-32.09763 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000011_099e33f7"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-34.213134 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000014_4fe75da2"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-34.213134 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000015_ddd7919f"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-36.388023 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000016_5b4cea16"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-36.388023 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000017_b19df11f"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-38.615776 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000018_36d5ca6c"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-40.89884 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000021_b9b6a286"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-40.89884 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000022_460f742b"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-43.21836 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000023_c5672091"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-43.21836 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000024_b9380e24"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-45.570846 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000025_7cdcbfe6"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-47.987966 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000028_d519076e"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-47.987966 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000029_e115771c"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-50.449523 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000030_c15ed223"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-50.449523 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000031_f7f54e57"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-52.949476 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000032_7ed5fb05"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=job_reset",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000036_93c31eb0"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-55.538186 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000037_3b0841c5"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-55.538186 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000038_704394c1"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-58.190411 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000039_bfb23b7a"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-58.190411 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000040_456190e1"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-60.742243 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000041_6bed9ef3"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-63.209355 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000044_082bb2b1"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-63.209355 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000045_044db479"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-65.587503 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000046_523f215b"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-65.587503 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000047_2f09ade1"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-67.885354 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000048_2053ced2"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-70.165713 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000051_b73b140a"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-70.165713 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000052_18bf554d"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-72.415834 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000053_eeef2b8a"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-72.415834 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000054_3898d4c2"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-74.637828 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000055_7f072fd4"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-76.86358 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000058_59f5052b"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-76.86358 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000059_01f7a41e"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-79.082916 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000060_7c898008"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-79.082916 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000061_1a9c106c"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-81.293283 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000062_84c7cc5f"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=job_received",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000065_01b286cf"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.0 action=job_reset",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000066_6bce43f6"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.045993 action=assigned",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000068_5ed40bfe"
+        },
+        {
+          "code": "LEGACY_OBSERVE_ABOVE_THRESHOLD",
+          "detail": "gate_delta=0.045993 action=assigned",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000069_40451d50"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-0.072853 action=EXECUTE",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000072_7ec0112e"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-0.072853 action=EXECUTE",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000073_bc920d9e"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-0.281767 action=EXECUTE",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000074_4b8134aa"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-0.626913 action=COOLDOWN_GPU",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000077_7f87e347"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-0.626913 action=COOLDOWN_GPU",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000078_933bffc6"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-1.083425 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000079_f52ae7aa"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-1.083425 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000080_7f5c085d"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-1.644017 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000081_423c489b"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-2.326432 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000084_98fde210"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-2.326432 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000085_2950be7a"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-3.102202 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000086_6bf1cd79"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-3.102202 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000087_2b862356"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-3.961227 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000088_d5325eab"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-4.931434 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000091_7320e4e2"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-4.931434 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000092_7c509ec7"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-5.988246 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000093_b0b3eaa6"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-5.988246 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000094_7cdd1632"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-7.122697 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000095_33b8116e"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-8.336305 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000098_5ead11ab"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-8.336305 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000099_a59ef6d5"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-9.607268 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000100_4e491161"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-9.607268 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000101_8ad59514"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-10.92937 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000102_c90c72f0"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-12.325026 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000105_7b615dc9"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-12.325026 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000106_d4230bdb"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-13.773552 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000107_642c7080"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-13.773552 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000108_25063b2d"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-15.268842 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000109_39facaa4"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-16.850578 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000112_dedb4d64"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-16.850578 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000113_4a44cb7a"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-18.494722 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000114_d2f7472c"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-18.494722 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000115_cba9a5dc"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-20.19473 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000116_1fbae054"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-21.988595 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000119_caec175a"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-21.988595 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000120_ef36629d"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-23.851511 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000121_a25ffe37"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-23.851511 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000122_197aa047"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-25.775375 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000123_9e321ee1"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-27.758626 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000126_73e593c6"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-27.758626 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000127_2ae25618"
+        },
+        {
+          "code": "LEGACY_COLLAPSE_BELOW_THRESHOLD",
+          "detail": "gate_delta=-29.780721 action=RESIZE_BATCH",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000128_8ef8c56b"
+        }
+      ]
+    },
+    {
+      "absolute_margin_stats": {
+        "count": 7,
+        "max": 0.604,
+        "mean": 0.337286,
+        "median": 0.521,
+        "min": 0.04
+      },
+      "calibration_counts": {
+        "block_negative": 2,
+        "collapse_positive": 2,
+        "observe_negative": 2,
+        "prove_positive": 1
+      },
+      "decision_counts": {
+        "block": 2,
+        "collapse": 2,
+        "observe": 2,
+        "prove": 1
+      },
+      "error_codes": {},
+      "error_count": 0,
+      "errors": [],
+      "event_count": 7,
+      "event_file": "reports/pnva-native-events-demo-2026-05-05.jsonl",
+      "formula_mismatch_count": 0,
+      "gate_delta_stats": {
+        "count": 7,
+        "max": 0.048,
+        "mean": -0.299,
+        "median": -0.521,
+        "min": -0.604
+      },
+      "gate_family_counts": {
+        "general": 5,
+        "guard_block": 1,
+        "guard_pass": 1
+      },
+      "heuristic_rule_counts": {
+        "adaptive_threshold": 2,
+        "etev_guard": 2,
+        "field_scheduler": 2,
+        "legacy_observer": 1,
+        "memory4d": 1,
+        "native_event_emitter": 7,
+        "power_orchestrator": 1
+      },
+      "legacy_calibration_warning_count": 0,
+      "native_calibration_clean": true,
+      "scope": "native",
+      "top_actions": [
+        {
+          "action": "NO_ACTION",
+          "count": 1
+        },
+        {
+          "action": "AUTHORIZE_COLLAPSE",
+          "count": 1
+        },
+        {
+          "action": "EXECUTE",
+          "count": 1
+        },
+        {
+          "action": "HOLD_PRESSURE",
+          "count": 1
+        },
+        {
+          "action": "BLOCK_EXECUTION",
+          "count": 1
+        },
+        {
+          "action": "DROP_STALE",
+          "count": 1
+        },
+        {
+          "action": "SEAL_PROOF",
+          "count": 1
+        }
+      ],
+      "top_reasons": [
+        {
+          "count": 1,
+          "reason": "field_change_below_threshold"
+        },
+        {
+          "count": 1,
+          "reason": "guard_signal_above_threshold"
+        },
+        {
+          "count": 1,
+          "reason": "authorized_causal_collapse"
+        },
+        {
+          "count": 1,
+          "reason": "thermal_pressure_visible_but_below_collapse"
+        },
+        {
+          "count": 1,
+          "reason": "guard_signal_below_threshold"
+        },
+        {
+          "count": 1,
+          "reason": "stale_job_pressure_blocked"
+        },
+        {
+          "count": 1,
+          "reason": "native_event_sequence_sealed"
+        }
+      ],
+      "warning_codes": {},
+      "warning_count": 0,
+      "warnings": []
+    }
+  ],
+  "summary": {
+    "canonical_legacy_warning_count": 384,
+    "legacy_warning_policy": "canonical bridge calibration warnings are preserved as migration evidence; native runtime calibration must remain error-free",
+    "native_calibration_clean": true,
+    "native_warning_count": 0,
+    "total_event_count": 519,
+    "validated_scopes": [
+      "canonical",
+      "native"
+    ]
+  },
+  "warning_count": 384
+}

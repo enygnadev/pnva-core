@@ -19,6 +19,7 @@ proof-chain sealing
 causal graph audit
 schema contract validation
 causal chronology guard
+tension-decision calibration
 adversarial validation
 entity and heuristic maturity
 sovereign audit
@@ -60,7 +61,7 @@ Current result:
 ```text
 classification: PNVA_SOVEREIGN_EVIDENCE_ATTESTED
 pass: true
-artifact_count: 21
+artifact_count: 22
 failure_count: 0
 ```
 

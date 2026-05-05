@@ -84,7 +84,7 @@
     "robots_missing_tokens": [],
     "robots_ok": true,
     "sitemap_ok": true,
-    "sitemap_url_count": 48,
+    "sitemap_url_count": 50,
     "sitemap_urls": [
       "https://enygnadev.github.io/pnva-core/",
       "https://enygnadev.github.io/pnva-core/author.html",
@@ -102,6 +102,7 @@
       "https://enygnadev.github.io/pnva-core/docs/PNVA_CAUSAL_GRAPH_AUDIT.md",
       "https://enygnadev.github.io/pnva-core/docs/PNVA_SCHEMA_CONTRACT_VALIDATION.md",
       "https://enygnadev.github.io/pnva-core/docs/PNVA_CAUSAL_CHRONOLOGY_GUARD.md",
+      "https://enygnadev.github.io/pnva-core/docs/PNVA_TENSION_DECISION_CALIBRATION.md",
       "https://enygnadev.github.io/pnva-core/docs/PNVA_SOVEREIGN_EVIDENCE_ATTESTATION.md",
       "https://enygnadev.github.io/pnva-core/docs/PNVA_ADVERSARIAL_VALIDATION.md",
       "https://enygnadev.github.io/pnva-core/docs/PNVA_ENTITY_HEURISTIC_MATURITY.md",
@@ -129,6 +130,7 @@
       "https://enygnadev.github.io/pnva-core/reports/pnva-native-causal-graph-2026-05-05.json",
       "https://enygnadev.github.io/pnva-core/reports/pnva-schema-contract-validation-2026-05-05.json",
       "https://enygnadev.github.io/pnva-core/reports/pnva-causal-chronology-2026-05-05.json",
+      "https://enygnadev.github.io/pnva-core/reports/pnva-tension-decision-calibration-2026-05-05.json",
       "https://enygnadev.github.io/pnva-core/reports/pnva-adversarial-validation-2026-05-05.json",
       "https://enygnadev.github.io/pnva-core/reports/pnva-entity-heuristic-maturity-2026-05-05.json",
       "https://enygnadev.github.io/pnva-core/reports/pnva-semantic-consistency-2026-05-05.json",
@@ -152,16 +154,16 @@
     "warning_count": 35
   },
   "evidence_attestation": {
-    "artifact_count": 21,
+    "artifact_count": 22,
     "attestation_ok": true,
     "classification": "PNVA_SOVEREIGN_EVIDENCE_ATTESTED",
     "errors": [],
-    "evidence_hash": "sha256:faacc59e0cdcf3fc5df6b57fb58ba22f24fc5714ac04f4992705b0a7469fa870",
+    "evidence_hash": "sha256:ef193f016573569f4b951fd65b3bd2d4d8a40b08816f7bf0dc611a1e77f098f1",
     "failure_count": 0,
     "missing": [],
-    "tracked_artifacts": 21
+    "tracked_artifacts": 22
   },
-  "generated_at": "2026-05-05T06:28:04Z",
+  "generated_at": "2026-05-05T06:43:20Z",
   "local_logs": {
     "available": true,
     "bad_json_ratio": 0.0,
@@ -933,6 +935,7 @@
     "Audit causal graphs so entity topology is visible, not implicit.",
     "Run schema contract validation so event and entity envelopes are checked before attestation.",
     "Run causal chronology guard so time remains an audited trace, not a blind execution driver.",
+    "Run tension-decision calibration so threshold/decision drift remains explicit.",
     "Publish one sovereign evidence attestation hash with every evidence release.",
     "Run adversarial validation so validators prove tamper detection, not only green-path acceptance.",
     "Track entity and heuristic maturity so no-tick suppression stays attributable to actors and authority.",
@@ -958,9 +961,9 @@
   "repo_path": "<REPO>",
   "reproducibility": {
     "classification": "REPRODUCIBILITY_READY",
-    "command_count": 17,
+    "command_count": 18,
     "command_failure_count": 0,
-    "comparison_count": 137,
+    "comparison_count": 145,
     "comparison_failure_count": 0,
     "errors": [],
     "failure_count": 0,
@@ -994,7 +997,7 @@
     "total": 100
   },
   "semantic_consistency": {
-    "check_count": 83,
+    "check_count": 92,
     "classification": "SEMANTIC_CONSISTENCY_READY",
     "consistency_ok": true,
     "error_count": 0,
@@ -1024,5 +1027,16 @@
     "missing_docs": [],
     "path_leaks": [],
     "raw_proofs_absent": true
+  },
+  "tension_decision_calibration": {
+    "calibration_ok": true,
+    "classification": "TENSION_DECISION_READY_WITH_LEGACY_WARNINGS",
+    "error_count": 0,
+    "errors": [],
+    "event_count": 519,
+    "legacy_calibration_warning_count": 384,
+    "missing": [],
+    "native_calibration_clean": true,
+    "warning_count": 384
   }
 }

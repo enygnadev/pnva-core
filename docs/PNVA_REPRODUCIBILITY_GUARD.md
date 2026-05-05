@@ -31,8 +31,8 @@ REPRODUCIBILITY_READY
 Current result:
 
 ```text
-command_count: 17
-comparison_count: 137
+command_count: 18
+comparison_count: 145
 failure_count: 0
 command_failure_count: 0
 comparison_failure_count: 0
@@ -56,6 +56,7 @@ canonical causal graph
 native causal graph
 schema contract validation
 causal chronology guard
+tension-decision calibration
 adversarial validation
 entity and heuristic maturity
 evidence attestation
@@ -83,6 +84,7 @@ adversarial detection count
 maturity score
 attestation evidence hash
 semantic consistency count
+tension-decision warning count
 ```
 
 The guard intentionally ignores:

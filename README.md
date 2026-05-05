@@ -123,6 +123,7 @@ docs/
   PNVA_CAUSAL_GRAPH_AUDIT.md
   PNVA_SCHEMA_CONTRACT_VALIDATION.md
   PNVA_CAUSAL_CHRONOLOGY_GUARD.md
+  PNVA_TENSION_DECISION_CALIBRATION.md
   PNVA_SOVEREIGN_EVIDENCE_ATTESTATION.md
   PNVA_ADVERSARIAL_VALIDATION.md
   PNVA_ENTITY_HEURISTIC_MATURITY.md
@@ -167,6 +168,7 @@ reports/
   pnva-native-causal-graph-2026-05-05.json
   pnva-schema-contract-validation-2026-05-05.json
   pnva-causal-chronology-2026-05-05.json
+  pnva-tension-decision-calibration-2026-05-05.json
   pnva-sovereign-evidence-attestation-2026-05-05.json
   pnva-adversarial-validation-2026-05-05.json
   pnva-entity-heuristic-maturity-2026-05-05.json
@@ -189,6 +191,7 @@ tools/
   pnva_causal_graph_auditor.py
   pnva_schema_contract_validator.py
   pnva_causal_chronology_guard.py
+  pnva_tension_decision_calibrator.py
   pnva_evidence_attestor.py
   pnva_adversarial_validator.py
   pnva_entity_heuristic_maturity.py
@@ -269,6 +272,7 @@ python3 tools/pnva_adversarial_validator.py --write /tmp/pnva-adversarial-valida
 python3 tools/pnva_entity_heuristic_maturity.py --write /tmp/pnva-entity-heuristic-maturity.json
 python3 tools/pnva_schema_contract_validator.py --write /tmp/pnva-schema-contract-validation.json
 python3 tools/pnva_causal_chronology_guard.py --write /tmp/pnva-causal-chronology.json
+python3 tools/pnva_tension_decision_calibrator.py --write /tmp/pnva-tension-decision-calibration.json
 python3 tools/pnva_evidence_attestor.py --write /tmp/pnva-evidence-attestation.json
 python3 tools/pnva_semantic_consistency_guard.py --write /tmp/pnva-semantic-consistency.json
 python3 tools/pnva_reproducibility_guard.py --write /tmp/pnva-reproducibility.json
@@ -304,15 +308,17 @@ The schema contract validator checks public `pnva.event.v1` logs and `pnva.entit
 
 The causal chronology guard checks timestamp order and time-gap evidence. The current package is `CAUSAL_CHRONOLOGY_READY_WITH_LEGACY_WARNINGS` with `519` events, `15` chains, `0` errors and `2` explicit legacy chronology warnings; the native scope is monotonic and clean.
 
+The tension-decision calibrator checks whether `score`, `threshold`, `gate_delta`, guard events and `decision.kind` agree. The current package is `TENSION_DECISION_READY_WITH_LEGACY_WARNINGS` with `519` events, `0` errors and `384` explicit legacy warnings; the native scope is calibrated and clean.
+
 The adversarial validator runs negative controls against the public validators. The current package is `ADVERSARIAL_VALIDATION_PASS` with `7` detections over `7` controlled mutations.
 
 The entity and heuristic maturity auditor scores actor/rule readiness across entity coverage, proof coverage, no-tick suppression, authority and causal relations. The current package is `ENTITY_HEURISTIC_MATURITY_READY_WITH_LEGACY_WARNINGS` with score `94.59`, `0` errors and `35` preserved legacy warnings.
 
-The semantic consistency guard checks cross-report agreement across Manifest, replay, no-tick, policy, proof-chain, graph, schema contract, causal chronology, maturity, adversarial validation, attestation and audit. The current package is `SEMANTIC_CONSISTENCY_READY` with `83` checks, `0` errors and `0` warnings.
+The semantic consistency guard checks cross-report agreement across Manifest, replay, no-tick, policy, proof-chain, graph, schema contract, causal chronology, tension-decision calibration, maturity, adversarial validation, attestation and audit. The current package is `SEMANTIC_CONSISTENCY_READY` with the public report's check count, `0` errors and `0` warnings.
 
-The reproducibility guard reruns the current evidence commands and compares stable fields against the published reports. The current package is `REPRODUCIBILITY_READY` with `17` reproduced commands, `137` stable-field comparisons and `0` failures.
+The reproducibility guard reruns the current evidence commands and compares stable fields against the published reports. The current package is `REPRODUCIBILITY_READY` with the public report's command/comparison counts and `0` failures.
 
-The sovereign evidence attestor binds the public evidence base into one machine-readable attestation. The current package is `PNVA_SOVEREIGN_EVIDENCE_ATTESTED` with `21` tracked artifacts and `0` failures; the sovereign audit consumes this attestation without being included in its hash seed.
+The sovereign evidence attestor binds the public evidence base into one machine-readable attestation. The current package is `PNVA_SOVEREIGN_EVIDENCE_ATTESTED` with `22` tracked artifacts and `0` failures; the sovereign audit consumes this attestation without being included in its hash seed.
 
 ## Citation
 

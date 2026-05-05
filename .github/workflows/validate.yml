@@ -118,6 +118,12 @@ jobs:
             --write /tmp/pnva-causal-chronology.json \
             >/dev/null
           python3 -m json.tool /tmp/pnva-causal-chronology.json >/dev/null
+      - name: Run tension decision calibrator
+        run: |
+          python3 tools/pnva_tension_decision_calibrator.py \
+            --write /tmp/pnva-tension-decision-calibration.json \
+            >/dev/null
+          python3 -m json.tool /tmp/pnva-tension-decision-calibration.json >/dev/null
       - name: Run evidence attestor
         run: |
           python3 tools/pnva_evidence_attestor.py \
