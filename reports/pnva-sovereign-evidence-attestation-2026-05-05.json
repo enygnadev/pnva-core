@@ -355,8 +355,8 @@
       "present": true,
       "reported_pass": true,
       "required": true,
-      "sha256": "b3289b054bba2f9133ebf78382f570d66308513404446342c823a0986f7331a1",
-      "size_bytes": 16870
+      "sha256": "516e5adb1cae5dd138b694e088a9a526f37ffd9cbc48d578163d1ccd392fe519",
+      "size_bytes": 17586
     },
     {
       "classification": "R3_RUNTIME_INSTRUMENTATION_PLAN_READY",
@@ -368,8 +368,8 @@
       "present": true,
       "reported_pass": true,
       "required": true,
-      "sha256": "51e1a18619b8fc328532d7c757c390d93013722a2c2dc92255049a23dc7bd756",
-      "size_bytes": 13399
+      "sha256": "075e625cc3315d297cd6a326658afd5f98b79afc143e179e7dd956d358de43f0",
+      "size_bytes": 14532
     },
     {
       "classification": "NATIVE_EMITTER_READY",
@@ -530,9 +530,9 @@
     "entity and heuristic maturity",
     "sovereign audit consumes this attestation without being part of its hash seed"
   ],
-  "evidence_hash": "sha256:79e7f025cae66642dcfb0986040bee9517eb2851d593ab9f35e5594d4ac7513f",
+  "evidence_hash": "sha256:db31c5a7a1d133de5efee6850e90bb863689a1871f1747f21a6a34d5e0a3b3a4",
   "failure_count": 0,
-  "generated_at": "2026-05-05T09:58:57Z",
+  "generated_at": "2026-05-05T10:13:08Z",
   "interpretation": {
     "boundary": "This attests repository evidence integrity; it is not a universal proof of all possible PNVA deployments.",
     "hash_policy": "The evidence_hash changes when any tracked artifact hash, classification or pass flag changes.",

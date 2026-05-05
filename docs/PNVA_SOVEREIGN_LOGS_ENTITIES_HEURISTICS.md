@@ -979,13 +979,13 @@ required_runtime_event_count: 70
 accepted_slot_count: 0
 pending_slot_count: 35
 rejected_event_count: 0
-negative_control_detected_count: 7
-negative_control_count: 7
+negative_control_detected_count: 10
+negative_control_count: 10
 ```
 
 Production interpretation:
 
-The guard makes the future R3 runtime harder to fake. It rejects projected proofs, missing entities, missing causal chains, missing proof hashes, low-authority commits, action mismatches and prechecks that execute instead of proving no-tick suppression. This improves robustness without disturbing the current 24h and production PASS evidence.
+The guard makes the future R3 runtime harder to fake. It rejects projected proofs, missing entities, missing causal chains, missing proof hashes, missing native proof flags, invalid native source format, missing R3 slot identity, low-authority commits, action mismatches and prechecks that execute instead of proving no-tick suppression. This improves robustness without disturbing the current 24h and production PASS evidence.
 
 ## 28. R3 Runtime Instrumentation Plan
 
@@ -1020,13 +1020,13 @@ required_runtime_event_count: 70
 required_no_tick_precheck_count: 35
 required_collapse_commit_count: 35
 event_template_count: 6
-mandatory_field_count: 18
-negative_control_detected_count: 7
+mandatory_field_count: 21
+negative_control_detected_count: 10
 ```
 
 Production interpretation:
 
-The plan turns R3 from an abstract backlog into explicit runtime engineering. The current targets are `RESIZE_BATCH`, `COOLDOWN_GPU` and `EXECUTE`, each requiring native no-tick precheck and native commit events with `proof.projection=false`, `tension.components.original_event_id`, entity identity, causal chain identity and proof hash. This makes PNVA more sovereign because final evidence must be emitted by the runtime contract, not inferred from projection.
+The plan turns R3 from an abstract backlog into explicit runtime engineering. The current targets are `RESIZE_BATCH`, `COOLDOWN_GPU` and `EXECUTE`, each requiring native no-tick precheck and native commit events with `proof.projection=false`, `proof.native=true`, `source.format=native_pnva_event_v1`, `tension.components.original_event_id`, `tension.components.r3_runtime_slot_id`, entity identity, causal chain identity and proof hash. This makes PNVA more sovereign because final evidence must be emitted by the runtime contract, not inferred from projection.
 
 ## 29. Sovereign Evidence Attestation
 

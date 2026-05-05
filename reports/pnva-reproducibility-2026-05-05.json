@@ -2323,16 +2323,16 @@
     {
       "field": "negative_control_count",
       "pass": true,
-      "published": 7,
+      "published": 10,
       "report": "r3_runtime_evidence_guard",
-      "reproduced": 7
+      "reproduced": 10
     },
     {
       "field": "negative_control_detected_count",
       "pass": true,
-      "published": 7,
+      "published": 10,
       "report": "r3_runtime_evidence_guard",
-      "reproduced": 7
+      "reproduced": 10
     },
     {
       "field": "negative_controls_pass",
@@ -2442,9 +2442,9 @@
     {
       "field": "mandatory_field_count",
       "pass": true,
-      "published": 18,
+      "published": 21,
       "report": "r3_runtime_instrumentation_plan",
-      "reproduced": 18
+      "reproduced": 21
     },
     {
       "field": "target_rule_count",
@@ -2456,16 +2456,16 @@
     {
       "field": "negative_control_count",
       "pass": true,
-      "published": 7,
+      "published": 10,
       "report": "r3_runtime_instrumentation_plan",
-      "reproduced": 7
+      "reproduced": 10
     },
     {
       "field": "negative_control_detected_count",
       "pass": true,
-      "published": 7,
+      "published": 10,
       "report": "r3_runtime_instrumentation_plan",
-      "reproduced": 7
+      "reproduced": 10
     },
     {
       "field": "classification",
@@ -2610,9 +2610,9 @@
     {
       "field": "evidence_hash",
       "pass": true,
-      "published": "sha256:79e7f025cae66642dcfb0986040bee9517eb2851d593ab9f35e5594d4ac7513f",
+      "published": "sha256:db31c5a7a1d133de5efee6850e90bb863689a1871f1747f21a6a34d5e0a3b3a4",
       "report": "attestation",
-      "reproduced": "sha256:79e7f025cae66642dcfb0986040bee9517eb2851d593ab9f35e5594d4ac7513f"
+      "reproduced": "sha256:db31c5a7a1d133de5efee6850e90bb863689a1871f1747f21a6a34d5e0a3b3a4"
     },
     {
       "field": "classification",
@@ -2665,7 +2665,7 @@
     }
   ],
   "failure_count": 0,
-  "generated_at": "2026-05-05T09:59:44Z",
+  "generated_at": "2026-05-05T10:13:34Z",
   "interpretation": {
     "boundary": "Generated timestamps, temporary paths and non-semantic ordering are intentionally excluded from comparison.",
     "purpose": "Regenerate PNVA evidence reports with current tools and compare stable fields against the published evidence package.",
@@ -2680,7 +2680,7 @@
   ],
   "schema_version": "pnva.reproducibility_guard.v1",
   "summary": {
-    "published_attestation_hash": "sha256:79e7f025cae66642dcfb0986040bee9517eb2851d593ab9f35e5594d4ac7513f",
+    "published_attestation_hash": "sha256:db31c5a7a1d133de5efee6850e90bb863689a1871f1747f21a6a34d5e0a3b3a4",
     "reports_reproduced": [
       "adversarial",
       "attestation",
@@ -2716,7 +2716,7 @@
       "suppression_ledger",
       "tension_decision"
     ],
-    "reproduced_attestation_hash": "sha256:79e7f025cae66642dcfb0986040bee9517eb2851d593ab9f35e5594d4ac7513f",
+    "reproduced_attestation_hash": "sha256:db31c5a7a1d133de5efee6850e90bb863689a1871f1747f21a6a34d5e0a3b3a4",
     "stable_fields_compared": 346
   }
 }

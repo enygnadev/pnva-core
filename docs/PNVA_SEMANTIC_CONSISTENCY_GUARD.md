@@ -119,7 +119,7 @@ R3 migration starts at R2_NATIVE_CLEAN_LEGACY_QUARANTINED, targets R3_NATIVE_CLE
 70 projected native R3 authority events must equal 35 prechecks + 35 commits, preserve 0 projected low-authority strong decisions and pass replay, sovereign policy and no-tick validation.
 R3 cutover must keep contract_ready=true, cutover_approved=false and legacy_free_claim_allowed=false until fresh native runtime evidence replaces the projected sample.
 R3 runtime capture must keep 35 pending slots explicit and require 70 fresh runtime events before the final cutover claim.
-R3 runtime evidence guard must keep intake_guard_ready=true, runtime_evidence_approved=false and 7/7 negative controls detected until fresh runtime JSONL is supplied.
+R3 runtime evidence guard must keep intake_guard_ready=true, runtime_evidence_approved=false and 10/10 negative controls detected until fresh runtime JSONL is supplied.
 R3 runtime instrumentation must keep 35 capture slots mapped into 3 action contracts, 6 event templates and 70 required runtime events without claiming runtime approval.
 ```
 

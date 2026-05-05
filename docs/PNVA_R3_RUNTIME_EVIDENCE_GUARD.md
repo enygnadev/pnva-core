@@ -44,8 +44,8 @@ required_collapse_commit_count: 35
 accepted_slot_count: 0
 pending_slot_count: 35
 rejected_event_count: 0
-negative_control_detected_count: 7
-negative_control_count: 7
+negative_control_detected_count: 10
+negative_control_count: 10
 ```
 
 ## What It Adds
@@ -60,7 +60,10 @@ missing schema_version
 missing entity_id
 missing causal_chain_id
 missing proof_hash
+missing proof.native=true
+invalid source.format
 unknown original_event_id
+missing r3_runtime_slot_id
 entity mismatch
 commit authority below H2
 commit action mismatch
@@ -93,12 +96,15 @@ reject_missing_hash
 reject_low_authority_commit
 reject_wrong_action
 reject_precheck_execution_action
+reject_missing_slot_id
+reject_missing_native_proof
+reject_invalid_source_format
 ```
 
 Current result:
 
 ```text
-7/7 detected
+10/10 detected
 ```
 
 ## Instrumentation Plan Link
@@ -118,7 +124,7 @@ R3_RUNTIME_INSTRUMENTATION_PLAN_READY
 3 action contracts
 6 event templates
 70 required runtime events
-18 mandatory event fields
+21 mandatory event fields
 ```
 
 This keeps the workflow explicit:

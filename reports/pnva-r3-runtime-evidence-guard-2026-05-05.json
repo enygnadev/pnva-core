@@ -11,11 +11,14 @@
     "entity_id_required": true,
     "precheck_must_be_no_tick": true,
     "proof_hash_required": true,
+    "proof_native_required": true,
     "proof_projection_forbidden": true,
+    "r3_runtime_slot_id_required": true,
     "schema_version_required": "pnva.event.v1",
+    "source_format_required": "native_pnva_event_v1",
     "target_rules_required_on_commit": true
   },
-  "generated_at": "2026-05-05T09:37:38Z",
+  "generated_at": "2026-05-05T10:10:44Z",
   "intake_guard_ready": true,
   "interpretation": {
     "boundary": "Without a runtime-events file this guard certifies the intake contract only; it does not claim final runtime completion.",
@@ -23,8 +26,8 @@
     "sovereignty": "PNVA becomes harder to fake when projected proofs, missing entities, weak authority and incomplete no-tick pairs are rejected before cutover."
   },
   "matrix_classification": "R3_RUNTIME_CAPTURE_MATRIX_READY_PENDING_RUNTIME",
-  "negative_control_count": 7,
-  "negative_control_detected_count": 7,
+  "negative_control_count": 10,
+  "negative_control_detected_count": 10,
   "negative_controls": [
     {
       "codes": [
@@ -85,6 +88,30 @@
       "detected": true,
       "expected_detection": "PRECHECK_ACTION_INVALID",
       "name": "reject_precheck_execution_action"
+    },
+    {
+      "codes": [
+        "MISSING_R3_RUNTIME_SLOT_ID"
+      ],
+      "detected": true,
+      "expected_detection": "MISSING_R3_RUNTIME_SLOT_ID",
+      "name": "reject_missing_slot_id"
+    },
+    {
+      "codes": [
+        "PROOF_NATIVE_REQUIRED"
+      ],
+      "detected": true,
+      "expected_detection": "PROOF_NATIVE_REQUIRED",
+      "name": "reject_missing_native_proof"
+    },
+    {
+      "codes": [
+        "SOURCE_FORMAT_INVALID"
+      ],
+      "detected": true,
+      "expected_detection": "SOURCE_FORMAT_INVALID",
+      "name": "reject_invalid_source_format"
     }
   ],
   "negative_controls_pass": true,
@@ -543,8 +570,8 @@
     "accepted_slot_count": 0,
     "capture_slot_count": 35,
     "intake_guard_ready": true,
-    "negative_control_count": 7,
-    "negative_control_detected_count": 7,
+    "negative_control_count": 10,
+    "negative_control_detected_count": 10,
     "pending_slot_count": 35,
     "rejected_event_count": 0,
     "required_runtime_event_count": 70,

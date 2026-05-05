@@ -745,11 +745,11 @@
     },
     {
       "group": "manifest",
-      "left": "sha256:79e7f025cae66642dcfb0986040bee9517eb2851d593ab9f35e5594d4ac7513f",
+      "left": "sha256:db31c5a7a1d133de5efee6850e90bb863689a1871f1747f21a6a34d5e0a3b3a4",
       "left_ref": "MANIFEST:sovereign_evidence_attestation.evidence_hash",
       "name": "manifest_attestation_hash",
       "pass": true,
-      "right": "sha256:79e7f025cae66642dcfb0986040bee9517eb2851d593ab9f35e5594d4ac7513f",
+      "right": "sha256:db31c5a7a1d133de5efee6850e90bb863689a1871f1747f21a6a34d5e0a3b3a4",
       "right_ref": "attestation:evidence_hash",
       "severity": "error"
     },
@@ -1277,11 +1277,11 @@
     },
     {
       "group": "manifest",
-      "left": 7,
+      "left": 10,
       "left_ref": "MANIFEST:r3_runtime_evidence_guard.negative_control_detected_count",
       "name": "manifest_r3_evidence_guard_negative_control_count",
       "pass": true,
-      "right": 7,
+      "right": 10,
       "right_ref": "r3_runtime_evidence_guard:negative_control_detected_count",
       "severity": "error"
     },
@@ -2188,11 +2188,11 @@
     },
     {
       "group": "r3_runtime_evidence_guard",
-      "left": 7,
+      "left": 10,
       "left_ref": "r3_runtime_evidence_guard:negative_control_detected_count",
       "name": "evidence_guard_negative_controls_complete",
       "pass": true,
-      "right": 7,
+      "right": 10,
       "right_ref": "r3_runtime_evidence_guard:negative_control_count",
       "severity": "error"
     },
@@ -2570,11 +2570,11 @@
     },
     {
       "group": "audit",
-      "left": "sha256:79e7f025cae66642dcfb0986040bee9517eb2851d593ab9f35e5594d4ac7513f",
+      "left": "sha256:db31c5a7a1d133de5efee6850e90bb863689a1871f1747f21a6a34d5e0a3b3a4",
       "left_ref": "audit:evidence_attestation.evidence_hash",
       "name": "audit_attestation_hash_matches",
       "pass": true,
-      "right": "sha256:79e7f025cae66642dcfb0986040bee9517eb2851d593ab9f35e5594d4ac7513f",
+      "right": "sha256:db31c5a7a1d133de5efee6850e90bb863689a1871f1747f21a6a34d5e0a3b3a4",
       "right_ref": "attestation:evidence_hash",
       "severity": "error"
     },
@@ -2763,7 +2763,7 @@
   "classification": "SEMANTIC_CONSISTENCY_READY",
   "error_count": 0,
   "errors": [],
-  "generated_at": "2026-05-05T09:59:40Z",
+  "generated_at": "2026-05-05T10:13:29Z",
   "interpretation": {
     "boundary": "This guard checks semantic consistency of the public evidence package; it does not replace runtime execution tests.",
     "purpose": "Detect drift between PNVA public evidence reports, manifest metadata, attestation and audit summaries.",
@@ -2854,7 +2854,7 @@
     "r3_runtime_capture_slot_count": 35,
     "r3_runtime_evidence_approved": false,
     "r3_runtime_evidence_guard_ready": true,
-    "r3_runtime_evidence_negative_controls": 7,
+    "r3_runtime_evidence_negative_controls": 10,
     "r3_runtime_evidence_present": false,
     "r3_runtime_evidence_required_event_count": 70,
     "r3_runtime_instrumentation_action_contract_count": 3,

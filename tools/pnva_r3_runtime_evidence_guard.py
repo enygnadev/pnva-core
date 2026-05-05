@@ -123,6 +123,10 @@ def _original_id(event: dict[str, Any]) -> str:
     return str(_components(event).get("original_event_id") or "")
 
 
+def _r3_slot_id(event: dict[str, Any]) -> str:
+    return str(_components(event).get("r3_runtime_slot_id") or "")
+
+
 def _slot_map(matrix: dict[str, Any]) -> dict[str, dict[str, Any]]:
     slots = matrix.get("capture_slots")
     if not isinstance(slots, list):
@@ -154,13 +158,22 @@ def _event_codes(event: dict[str, Any], slot: dict[str, Any]) -> list[str]:
         codes.append("MISSING_CAUSAL_CHAIN_ID")
     if _proof(event).get("projection") is True:
         codes.append("PROJECTED_PROOF_FORBIDDEN")
+    if _proof(event).get("native") is not True:
+        codes.append("PROOF_NATIVE_REQUIRED")
     if not _proof_clean(event):
         codes.append("PROOF_HASH_OR_VALIDITY_INVALID")
+    if _dig(event, ["source", "format"]) != "native_pnva_event_v1":
+        codes.append("SOURCE_FORMAT_INVALID")
     original = _original_id(event)
     if not original:
         codes.append("MISSING_ORIGINAL_EVENT_ID")
     if original and original != str(slot.get("original_event_id") or ""):
         codes.append("ORIGINAL_EVENT_MISMATCH")
+    slot_id = _r3_slot_id(event)
+    if not slot_id:
+        codes.append("MISSING_R3_RUNTIME_SLOT_ID")
+    if slot_id and slot_id != str(slot.get("slot_id") or ""):
+        codes.append("R3_RUNTIME_SLOT_MISMATCH")
     if str(event.get("entity_id") or "") != str(slot.get("entity_id") or ""):
         codes.append("ENTITY_MISMATCH")
 
@@ -299,13 +312,19 @@ def _sample_event(slot: dict[str, Any], *, role: str) -> dict[str, Any]:
             "threshold": 0.5,
             "components": {
                 "original_event_id": slot.get("original_event_id"),
+                "r3_runtime_slot_id": slot.get("slot_id"),
             },
         },
         "proof": {
             "valid": True,
+            "native": True,
             "projection": False,
             "proof_hash": "sha256:" + ("a" * 64),
             "proof_ref": "negative-control-fixture",
+        },
+        "source": {
+            "format": "native_pnva_event_v1",
+            "sanitized": True,
         },
     }
 
@@ -343,6 +362,9 @@ def _negative_controls(matrix: dict[str, Any]) -> dict[str, Any]:
     run_control("reject_low_authority_commit", "commit", lambda event: event["heuristics"].update({"rules": ["legacy_observer"]}), "COMMIT_AUTHORITY_BELOW_H2")
     run_control("reject_wrong_action", "commit", lambda event: event["decision"].update({"action": "WRONG_ACTION"}), "COMMIT_ACTION_MISMATCH")
     run_control("reject_precheck_execution_action", "precheck", lambda event: event["decision"].update({"action": slot.get("decision_action")}), "PRECHECK_ACTION_INVALID")
+    run_control("reject_missing_slot_id", "commit", lambda event: event["tension"]["components"].pop("r3_runtime_slot_id", None), "MISSING_R3_RUNTIME_SLOT_ID")
+    run_control("reject_missing_native_proof", "commit", lambda event: event["proof"].pop("native", None), "PROOF_NATIVE_REQUIRED")
+    run_control("reject_invalid_source_format", "commit", lambda event: event["source"].update({"format": "legacy_bridge"}), "SOURCE_FORMAT_INVALID")
 
     detected_count = sum(1 for item in controls if item["detected"])
     return {
@@ -420,7 +442,10 @@ def build_report(repo: Path, runtime_events_path: Path | None = None) -> dict[st
             "entity_id_required": True,
             "causal_chain_id_required": True,
             "proof_hash_required": True,
+            "proof_native_required": True,
             "proof_projection_forbidden": True,
+            "source_format_required": "native_pnva_event_v1",
+            "r3_runtime_slot_id_required": True,
             "commit_min_authority": "H2",
             "precheck_must_be_no_tick": True,
             "commit_must_match_slot_action": True,

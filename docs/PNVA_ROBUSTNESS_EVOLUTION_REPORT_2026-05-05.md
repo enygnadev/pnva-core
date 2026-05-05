@@ -758,11 +758,11 @@ required_runtime_event_count: 70
 accepted_slot_count: 0
 pending_slot_count: 35
 rejected_event_count: 0
-negative_control_detected_count: 7
-negative_control_count: 7
+negative_control_detected_count: 10
+negative_control_count: 10
 ```
 
-This prevents a weak R3 completion claim. Final runtime evidence must be fresh, native, no-tick paired, entity-bound, proof-clean and H2+ authorized before it can be accepted by the cutover path.
+This prevents a weak R3 completion claim. Final runtime evidence must be fresh, native, no-tick paired, entity-bound, slot-bound, source-format-bound, proof-clean and H2+ authorized before it can be accepted by the cutover path.
 
 ### 25. R3 runtime instrumentation plan
 
@@ -782,8 +782,8 @@ required_runtime_event_count: 70
 required_no_tick_precheck_count: 35
 required_collapse_commit_count: 35
 event_template_count: 6
-mandatory_field_count: 18
-negative_control_detected_count: 7
+mandatory_field_count: 21
+negative_control_detected_count: 10
 ```
 
 Action contracts:
@@ -794,7 +794,7 @@ COOLDOWN_GPU: 2 slots, 4 runtime events
 EXECUTE: 1 slot, 2 runtime events
 ```
 
-This makes R3 operational instead of informal. The final runtime must emit native no-tick prechecks and native commits with entity identity, causal chain identity, original event mapping, proof hashes and `proof.projection=false`.
+This makes R3 operational instead of informal. The final runtime must emit native no-tick prechecks and native commits with entity identity, causal chain identity, original event mapping, R3 runtime slot identity, proof hashes, `proof.native=true`, `source.format=native_pnva_event_v1` and `proof.projection=false`.
 
 ### 26. Sovereign evidence attestation
 

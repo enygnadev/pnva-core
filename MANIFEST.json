@@ -500,8 +500,8 @@
             "accepted_slot_count": 0,
             "pending_slot_count": 35,
             "rejected_event_count": 0,
-            "negative_control_count": 7,
-            "negative_control_detected_count": 7,
+            "negative_control_count": 10,
+            "negative_control_detected_count": 10,
             "legacy_warning_policy": "R3 runtime evidence guard is ready, but final approval remains blocked until fresh native runtime JSONL passes the intake boundary"
         },
         "r3_runtime_instrumentation_plan": {
@@ -520,10 +520,10 @@
             "required_no_tick_precheck_count": 35,
             "required_collapse_commit_count": 35,
             "event_template_count": 6,
-            "mandatory_field_count": 18,
+            "mandatory_field_count": 21,
             "target_rule_count": 4,
-            "negative_control_count": 7,
-            "negative_control_detected_count": 7,
+            "negative_control_count": 10,
+            "negative_control_detected_count": 10,
             "legacy_warning_policy": "R3 runtime instrumentation plan is ready, but final approval remains blocked until fresh native runtime JSONL is emitted and accepted"
         },
         "reproducibility_guard": {
@@ -547,7 +547,7 @@
             "classification": "PNVA_SOVEREIGN_EVIDENCE_ATTESTED",
             "artifact_count": 39,
             "failure_count": 0,
-            "evidence_hash": "sha256:79e7f025cae66642dcfb0986040bee9517eb2851d593ab9f35e5594d4ac7513f",
+            "evidence_hash": "sha256:db31c5a7a1d133de5efee6850e90bb863689a1871f1747f21a6a34d5e0a3b3a4",
             "hash_policy": "sovereign audit consumes this attestation and is excluded from the attestation seed to avoid circular hashing"
         }
   },

@@ -45,8 +45,8 @@ required_runtime_event_count: 70
 required_no_tick_precheck_count: 35
 required_collapse_commit_count: 35
 event_template_count: 6
-mandatory_field_count: 18
-negative_control_detected_count: 7
+mandatory_field_count: 21
+negative_control_detected_count: 10
 ```
 
 ## Action Contracts
@@ -65,11 +65,14 @@ Every action contract requires:
 1 native no-tick precheck per slot
 1 native commit per slot
 proof.projection=false
+proof.native=true
+source.format=native_pnva_event_v1
 commit authority >= H2
 entity_id present
 causal_chain_id present
 proof_hash present
 tension.components.original_event_id present
+tension.components.r3_runtime_slot_id present
 ```
 
 ## Mandatory Event Fields
@@ -91,10 +94,13 @@ heuristics.rules
 tension.score
 tension.threshold
 tension.components.original_event_id
+tension.components.r3_runtime_slot_id
 proof.valid
 proof.projection
+proof.native
 proof.proof_hash
 proof.proof_ref
+source.format
 ```
 
 ## Runtime Phases

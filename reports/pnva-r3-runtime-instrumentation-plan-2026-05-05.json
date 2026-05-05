@@ -11,18 +11,25 @@
         "event_type": "cuda_slot_scan",
         "min_authority": "H2",
         "proof": {
+          "native": true,
           "projection": false,
           "proof_hash": "sha256:<runtime-proof-hash>",
           "proof_ref": "runtime:<slot-id>:commit",
           "valid": true
         },
-        "required_component": "tension.components.original_event_id",
+        "required_components": [
+          "tension.components.original_event_id",
+          "tension.components.r3_runtime_slot_id"
+        ],
         "required_rules": [
           "native_event_emitter",
           "adaptive_threshold",
           "field_scheduler"
         ],
-        "schema_version": "pnva.event.v1"
+        "schema_version": "pnva.event.v1",
+        "source": {
+          "format": "native_pnva_event_v1"
+        }
       },
       "contract_id": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch",
       "decision_action": "RESIZE_BATCH",
@@ -76,18 +83,25 @@
         },
         "event_type": "cuda_slot_scan_authority_precheck",
         "proof": {
+          "native": true,
           "projection": false,
           "proof_hash": "sha256:<runtime-proof-hash>",
           "proof_ref": "runtime:<slot-id>:precheck",
           "valid": true
         },
-        "required_component": "tension.components.original_event_id",
+        "required_components": [
+          "tension.components.original_event_id",
+          "tension.components.r3_runtime_slot_id"
+        ],
         "required_rules": [
           "adaptive_threshold",
           "field_scheduler",
           "native_event_emitter"
         ],
-        "schema_version": "pnva.event.v1"
+        "schema_version": "pnva.event.v1",
+        "source": {
+          "format": "native_pnva_event_v1"
+        }
       },
       "required_commit_count": 32,
       "required_precheck_count": 32,
@@ -149,19 +163,26 @@
         "event_type": "cuda_slot_scan",
         "min_authority": "H2",
         "proof": {
+          "native": true,
           "projection": false,
           "proof_hash": "sha256:<runtime-proof-hash>",
           "proof_ref": "runtime:<slot-id>:commit",
           "valid": true
         },
-        "required_component": "tension.components.original_event_id",
+        "required_components": [
+          "tension.components.original_event_id",
+          "tension.components.r3_runtime_slot_id"
+        ],
         "required_rules": [
           "native_event_emitter",
           "power_orchestrator",
           "field_scheduler",
           "adaptive_threshold"
         ],
-        "schema_version": "pnva.event.v1"
+        "schema_version": "pnva.event.v1",
+        "source": {
+          "format": "native_pnva_event_v1"
+        }
       },
       "contract_id": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu",
       "decision_action": "COOLDOWN_GPU",
@@ -185,19 +206,26 @@
         },
         "event_type": "cuda_slot_scan_authority_precheck",
         "proof": {
+          "native": true,
           "projection": false,
           "proof_hash": "sha256:<runtime-proof-hash>",
           "proof_ref": "runtime:<slot-id>:precheck",
           "valid": true
         },
-        "required_component": "tension.components.original_event_id",
+        "required_components": [
+          "tension.components.original_event_id",
+          "tension.components.r3_runtime_slot_id"
+        ],
         "required_rules": [
           "adaptive_threshold",
           "field_scheduler",
           "native_event_emitter",
           "power_orchestrator"
         ],
-        "schema_version": "pnva.event.v1"
+        "schema_version": "pnva.event.v1",
+        "source": {
+          "format": "native_pnva_event_v1"
+        }
       },
       "required_commit_count": 2,
       "required_precheck_count": 2,
@@ -225,18 +253,25 @@
         "event_type": "cuda_slot_scan",
         "min_authority": "H2",
         "proof": {
+          "native": true,
           "projection": false,
           "proof_hash": "sha256:<runtime-proof-hash>",
           "proof_ref": "runtime:<slot-id>:commit",
           "valid": true
         },
-        "required_component": "tension.components.original_event_id",
+        "required_components": [
+          "tension.components.original_event_id",
+          "tension.components.r3_runtime_slot_id"
+        ],
         "required_rules": [
           "native_event_emitter",
           "adaptive_threshold",
           "field_scheduler"
         ],
-        "schema_version": "pnva.event.v1"
+        "schema_version": "pnva.event.v1",
+        "source": {
+          "format": "native_pnva_event_v1"
+        }
       },
       "contract_id": "r3-runtime-instrument-entity_4c3ade60ea78-execute",
       "decision_action": "EXECUTE",
@@ -259,18 +294,25 @@
         },
         "event_type": "cuda_slot_scan_authority_precheck",
         "proof": {
+          "native": true,
           "projection": false,
           "proof_hash": "sha256:<runtime-proof-hash>",
           "proof_ref": "runtime:<slot-id>:precheck",
           "valid": true
         },
-        "required_component": "tension.components.original_event_id",
+        "required_components": [
+          "tension.components.original_event_id",
+          "tension.components.r3_runtime_slot_id"
+        ],
         "required_rules": [
           "adaptive_threshold",
           "field_scheduler",
           "native_event_emitter"
         ],
-        "schema_version": "pnva.event.v1"
+        "schema_version": "pnva.event.v1",
+        "source": {
+          "format": "native_pnva_event_v1"
+        }
       },
       "required_commit_count": 1,
       "required_precheck_count": 1,
@@ -292,7 +334,7 @@
   "classification": "R3_RUNTIME_INSTRUMENTATION_PLAN_READY",
   "entity_target_count": 1,
   "event_template_count": 6,
-  "generated_at": "2026-05-05T09:58:47Z",
+  "generated_at": "2026-05-05T10:10:44Z",
   "instrumentation_plan_ready": true,
   "interpretation": {
     "boundary": "This plan is not runtime evidence and does not approve R3 cutover; it defines how fresh runtime evidence must be emitted and validated.",
@@ -314,14 +356,17 @@
     "tension.score",
     "tension.threshold",
     "tension.components.original_event_id",
+    "tension.components.r3_runtime_slot_id",
     "proof.valid",
     "proof.projection",
+    "proof.native",
     "proof.proof_hash",
-    "proof.proof_ref"
+    "proof.proof_ref",
+    "source.format"
   ],
-  "mandatory_field_count": 18,
-  "negative_control_count": 7,
-  "negative_control_detected_count": 7,
+  "mandatory_field_count": 21,
+  "negative_control_count": 10,
+  "negative_control_detected_count": 10,
   "pass": true,
   "project": "PNVA-Core",
   "recommendations": [
@@ -375,8 +420,8 @@
     "entity_target_count": 1,
     "event_template_count": 6,
     "instrumentation_plan_ready": true,
-    "mandatory_field_count": 18,
-    "negative_control_detected_count": 7,
+    "mandatory_field_count": 21,
+    "negative_control_detected_count": 10,
     "required_runtime_event_count": 70
   },
   "target_rule_count": 4,

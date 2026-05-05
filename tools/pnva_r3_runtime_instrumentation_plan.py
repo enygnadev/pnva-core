@@ -30,10 +30,13 @@ MANDATORY_EVENT_FIELDS = [
     "tension.score",
     "tension.threshold",
     "tension.components.original_event_id",
+    "tension.components.r3_runtime_slot_id",
     "proof.valid",
     "proof.projection",
+    "proof.native",
     "proof.proof_hash",
     "proof.proof_ref",
+    "source.format",
 ]
 
 VALIDATION_COMMANDS = [
@@ -97,12 +100,19 @@ def _action_contracts(slots: list[dict[str, Any]]) -> list[dict[str, Any]]:
                     },
                     "proof": {
                         "projection": False,
+                        "native": True,
                         "valid": True,
                         "proof_hash": "sha256:<runtime-proof-hash>",
                         "proof_ref": "runtime:<slot-id>:precheck",
                     },
+                    "source": {
+                        "format": "native_pnva_event_v1",
+                    },
                     "required_rules": sorted(set(["native_event_emitter", *rules])),
-                    "required_component": "tension.components.original_event_id",
+                    "required_components": [
+                        "tension.components.original_event_id",
+                        "tension.components.r3_runtime_slot_id",
+                    ],
                 },
                 "commit_template": {
                     "schema_version": "pnva.event.v1",
@@ -114,13 +124,20 @@ def _action_contracts(slots: list[dict[str, Any]]) -> list[dict[str, Any]]:
                     },
                     "proof": {
                         "projection": False,
+                        "native": True,
                         "valid": True,
                         "proof_hash": "sha256:<runtime-proof-hash>",
                         "proof_ref": "runtime:<slot-id>:commit",
                     },
+                    "source": {
+                        "format": "native_pnva_event_v1",
+                    },
                     "min_authority": "H2",
                     "required_rules": rules,
-                    "required_component": "tension.components.original_event_id",
+                    "required_components": [
+                        "tension.components.original_event_id",
+                        "tension.components.r3_runtime_slot_id",
+                    ],
                 },
                 "slot_ids": [str(slot.get("slot_id") or "") for slot in action_slots],
                 "original_event_ids": [str(slot.get("original_event_id") or "") for slot in action_slots],
