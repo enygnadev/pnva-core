@@ -51,6 +51,7 @@ PUBLIC_DOCS = [
     "docs/PNVA_CAUSAL_CHRONOLOGY_GUARD.md",
     "docs/PNVA_TENSION_DECISION_CALIBRATION.md",
     "docs/PNVA_ENTITY_NO_TICK_MATRIX.md",
+    "docs/PNVA_SUPPRESSION_LEDGER.md",
     "docs/PNVA_SOVEREIGN_EVIDENCE_ATTESTATION.md",
     "docs/PNVA_ADVERSARIAL_VALIDATION.md",
     "docs/PNVA_ENTITY_HEURISTIC_MATURITY.md",
@@ -136,6 +137,12 @@ ENTITY_NO_TICK_MATRIX_FILES = [
     "tools/pnva_entity_no_tick_matrix.py",
     "docs/PNVA_ENTITY_NO_TICK_MATRIX.md",
     "reports/pnva-entity-no-tick-matrix-2026-05-05.json",
+]
+
+SUPPRESSION_LEDGER_FILES = [
+    "tools/pnva_suppression_ledger.py",
+    "docs/PNVA_SUPPRESSION_LEDGER.md",
+    "reports/pnva-suppression-ledger-2026-05-05.json",
 ]
 
 EVIDENCE_ATTESTATION_FILES = [
@@ -824,6 +831,40 @@ def audit_entity_no_tick_matrix(repo: Path) -> dict[str, Any]:
     }
 
 
+def audit_suppression_ledger(repo: Path) -> dict[str, Any]:
+    missing = [rel for rel in SUPPRESSION_LEDGER_FILES if not (repo / rel).exists()]
+    report_path = repo / "reports" / "pnva-suppression-ledger-2026-05-05.json"
+    if not report_path.exists():
+        return {
+            "ledger_ok": False,
+            "missing": missing,
+            "classification": "SUPPRESSION_LEDGER_MISSING",
+            "errors": ["missing suppression ledger report"],
+        }
+    data = _read_json(report_path)
+    return {
+        "ledger_ok": (
+            not missing
+            and data.get("pass") is True
+            and str(data.get("classification", "")).startswith("SUPPRESSION_LEDGER_READY")
+            and int(data.get("error_count", 0)) == 0
+            and data.get("native_suppression_clean") is True
+            and float(data.get("proof_coverage_ratio", 0.0)) == 1.0
+        ),
+        "missing": missing,
+        "classification": data.get("classification"),
+        "event_count": int(data.get("event_count", 0)),
+        "suppressed_count": int(data.get("suppressed_count", 0)),
+        "estimated_avoided_execution_count": int(data.get("estimated_avoided_execution_count", 0)),
+        "proof_coverage_ratio": float(data.get("proof_coverage_ratio", 0.0)),
+        "above_threshold_suppression_count": int(data.get("above_threshold_suppression_count", 0)),
+        "error_count": int(data.get("error_count", 0)),
+        "warning_count": int(data.get("warning_count", 0)),
+        "native_suppression_clean": bool(data.get("native_suppression_clean")),
+        "errors": [] if isinstance(data, dict) and data.get("pass") is True else ["suppression ledger failed"],
+    }
+
+
 def audit_reproducibility(repo: Path) -> dict[str, Any]:
     missing = [rel for rel in REPRODUCIBILITY_FILES if not (repo / rel).exists()]
     report_path = repo / "reports" / "pnva-reproducibility-2026-05-05.json"
@@ -1053,6 +1094,8 @@ def score_report(report: dict[str, Any]) -> dict[str, Any]:
         scores["actionability"] += 0
     if report.get("entity_no_tick_matrix", {}).get("matrix_ok"):
         scores["actionability"] += 0
+    if report.get("suppression_ledger", {}).get("ledger_ok"):
+        scores["actionability"] += 0
     if report.get("sovereign_policy", {}).get("policy_ok"):
         scores["actionability"] += 0
     if report.get("proof_chain", {}).get("chain_ok"):
@@ -1124,6 +1167,7 @@ def build_report(repo: Path, *, strict_public: bool = False) -> dict[str, Any]:
         "causal_chronology": audit_causal_chronology(repo),
         "tension_decision_calibration": audit_tension_decision_calibration(repo),
         "entity_no_tick_matrix": audit_entity_no_tick_matrix(repo),
+        "suppression_ledger": audit_suppression_ledger(repo),
         "evidence_attestation": audit_evidence_attestation(repo),
         "adversarial_validation": audit_adversarial_validation(repo),
         "entity_heuristic_maturity": audit_entity_heuristic_maturity(repo),
@@ -1143,6 +1187,7 @@ def build_report(repo: Path, *, strict_public: bool = False) -> dict[str, Any]:
             "Run causal chronology guard so time remains an audited trace, not a blind execution driver.",
             "Run tension-decision calibration so threshold/decision drift remains explicit.",
             "Run entity no-tick matrix so suppression and execution remain attributable by entity.",
+            "Run suppression ledger so avoided execution is proof-backed.",
             "Publish one sovereign evidence attestation hash with every evidence release.",
             "Run adversarial validation so validators prove tamper detection, not only green-path acceptance.",
             "Track entity and heuristic maturity so no-tick suppression stays attributable to actors and authority.",

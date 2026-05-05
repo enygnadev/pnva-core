@@ -1,6 +1,6 @@
 {
   "author": "Gustavo de Aguiar Martins",
-  "check_count": 102,
+  "check_count": 113,
   "checks": [
     {
       "group": "classification",
@@ -284,6 +284,26 @@
     },
     {
       "group": "classification",
+      "left": "SUPPRESSION_LEDGER_READY_WITH_LEGACY_WARNINGS",
+      "left_ref": "reports/pnva-suppression-ledger-2026-05-05.json:classification",
+      "name": "suppression_ledger_classification",
+      "pass": true,
+      "right": "SUPPRESSION_LEDGER_READY_WITH_LEGACY_WARNINGS",
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "classification",
+      "left": true,
+      "left_ref": "reports/pnva-suppression-ledger-2026-05-05.json:pass",
+      "name": "suppression_ledger_pass_flag",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "classification",
       "left": "ADVERSARIAL_VALIDATION_PASS",
       "left_ref": "reports/pnva-adversarial-validation-2026-05-05.json:classification",
       "name": "adversarial_classification",
@@ -455,21 +475,21 @@
     },
     {
       "group": "manifest",
-      "left": 23,
+      "left": 24,
       "left_ref": "MANIFEST:sovereign_evidence_attestation.artifact_count",
       "name": "manifest_attestation_artifact_count",
       "pass": true,
-      "right": 23,
+      "right": 24,
       "right_ref": "attestation:artifact_count",
       "severity": "error"
     },
     {
       "group": "manifest",
-      "left": "sha256:ab9c36eba9d4b7301930615648a44483d3167fd7a268c04355a14d6f7190a55e",
+      "left": "sha256:ed7e956a027efd644668c0af9bcb5338c4cb06bbfcef429393f99e455c7ad0fb",
       "left_ref": "MANIFEST:sovereign_evidence_attestation.evidence_hash",
       "name": "manifest_attestation_hash",
       "pass": true,
-      "right": "sha256:ab9c36eba9d4b7301930615648a44483d3167fd7a268c04355a14d6f7190a55e",
+      "right": "sha256:ed7e956a027efd644668c0af9bcb5338c4cb06bbfcef429393f99e455c7ad0fb",
       "right_ref": "attestation:evidence_hash",
       "severity": "error"
     },
@@ -591,6 +611,36 @@
       "pass": true,
       "right": true,
       "right_ref": "entity_no_tick_matrix:native_matrix_clean",
+      "severity": "error"
+    },
+    {
+      "group": "manifest",
+      "left": 519,
+      "left_ref": "MANIFEST:suppression_ledger.event_count",
+      "name": "manifest_suppression_ledger_event_count",
+      "pass": true,
+      "right": 519,
+      "right_ref": "suppression_ledger:event_count",
+      "severity": "error"
+    },
+    {
+      "group": "manifest",
+      "left": 250,
+      "left_ref": "MANIFEST:suppression_ledger.suppressed_count",
+      "name": "manifest_suppression_ledger_suppressed_count",
+      "pass": true,
+      "right": 250,
+      "right_ref": "suppression_ledger:suppressed_count",
+      "severity": "error"
+    },
+    {
+      "group": "manifest",
+      "left": true,
+      "left_ref": "MANIFEST:suppression_ledger.native_suppression_clean",
+      "name": "manifest_suppression_ledger_native_clean",
+      "pass": true,
+      "right": true,
+      "right_ref": "suppression_ledger:native_suppression_clean",
       "severity": "error"
     },
     {
@@ -794,6 +844,46 @@
       "severity": "error"
     },
     {
+      "group": "suppression_ledger",
+      "left": 519,
+      "left_ref": "suppression_ledger:event_count",
+      "name": "suppression_ledger_total_event_count",
+      "pass": true,
+      "right": 519,
+      "right_ref": "canonical_events+native_events",
+      "severity": "error"
+    },
+    {
+      "group": "suppression_ledger",
+      "left": 250,
+      "left_ref": "suppression_ledger:suppressed_count",
+      "name": "suppression_ledger_total_suppressed_count",
+      "pass": true,
+      "right": 250,
+      "right_ref": "canonical_suppressed+native_suppressed",
+      "severity": "error"
+    },
+    {
+      "group": "suppression_ledger",
+      "left": 250,
+      "left_ref": "suppression_ledger:estimated_avoided_execution_count",
+      "name": "suppression_ledger_avoided_matches_suppressed",
+      "pass": true,
+      "right": 250,
+      "right_ref": "suppression_ledger:suppressed_count",
+      "severity": "error"
+    },
+    {
+      "group": "suppression_ledger",
+      "left": true,
+      "left_ref": "suppression_ledger:native_suppression_clean",
+      "name": "suppression_ledger_native_clean",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
       "group": "maturity_math",
       "left": 519,
       "left_ref": "maturity:summary.total_event_count",
@@ -857,11 +947,11 @@
     },
     {
       "group": "attestation",
-      "left": 23,
+      "left": 24,
       "left_ref": "attestation:artifact_count",
       "name": "artifact_count_matches_list",
       "pass": true,
-      "right": 23,
+      "right": 24,
       "right_ref": "len(attestation.artifacts)",
       "severity": "error"
     },
@@ -919,6 +1009,16 @@
       "group": "attestation",
       "left": true,
       "left_ref": "attestation:artifact_ids",
+      "name": "attestation_contains_suppression_ledger",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "attestation",
+      "left": true,
+      "left_ref": "attestation:artifact_ids",
       "name": "attestation_contains_adversarial_validation",
       "pass": true,
       "right": true,
@@ -947,11 +1047,11 @@
     },
     {
       "group": "audit",
-      "left": "sha256:ab9c36eba9d4b7301930615648a44483d3167fd7a268c04355a14d6f7190a55e",
+      "left": "sha256:ed7e956a027efd644668c0af9bcb5338c4cb06bbfcef429393f99e455c7ad0fb",
       "left_ref": "audit:evidence_attestation.evidence_hash",
       "name": "audit_attestation_hash_matches",
       "pass": true,
-      "right": "sha256:ab9c36eba9d4b7301930615648a44483d3167fd7a268c04355a14d6f7190a55e",
+      "right": "sha256:ed7e956a027efd644668c0af9bcb5338c4cb06bbfcef429393f99e455c7ad0fb",
       "right_ref": "attestation:evidence_hash",
       "severity": "error"
     },
@@ -1007,6 +1107,16 @@
       "severity": "error"
     },
     {
+      "group": "audit",
+      "left": "SUPPRESSION_LEDGER_READY_WITH_LEGACY_WARNINGS",
+      "left_ref": "audit:suppression_ledger.classification",
+      "name": "audit_suppression_ledger_matches",
+      "pass": true,
+      "right": "SUPPRESSION_LEDGER_READY_WITH_LEGACY_WARNINGS",
+      "right_ref": "suppression_ledger:classification",
+      "severity": "error"
+    },
+    {
       "group": "manifest_hygiene",
       "left": [],
       "left_ref": "MANIFEST:files duplicates",
@@ -1030,7 +1140,7 @@
   "classification": "SEMANTIC_CONSISTENCY_READY",
   "error_count": 0,
   "errors": [],
-  "generated_at": "2026-05-05T06:58:02Z",
+  "generated_at": "2026-05-05T07:11:51Z",
   "interpretation": {
     "boundary": "This guard checks semantic consistency of the public evidence package; it does not replace runtime execution tests.",
     "purpose": "Detect drift between PNVA public evidence reports, manifest metadata, attestation and audit summaries.",
@@ -1063,11 +1173,12 @@
     "proof_chain": "reports/pnva-proof-chain-2026-05-05.json",
     "replay": "reports/pnva-replay-validation-2026-05-05.json",
     "schema_contract": "reports/pnva-schema-contract-validation-2026-05-05.json",
+    "suppression_ledger": "reports/pnva-suppression-ledger-2026-05-05.json",
     "tension_decision": "reports/pnva-tension-decision-calibration-2026-05-05.json"
   },
   "schema_version": "pnva.semantic_consistency.v1",
   "summary": {
-    "attestation_artifact_count": 23,
+    "attestation_artifact_count": 24,
     "audit_score": 100,
     "canonical_event_count": 512,
     "canonical_suppressed_count": 246,
@@ -1080,6 +1191,9 @@
     "native_suppressed_count": 4,
     "schema_contract_event_count": 519,
     "schema_contract_warning_count": 341,
+    "suppression_ledger_event_count": 519,
+    "suppression_ledger_suppressed_count": 250,
+    "suppression_ledger_warning_count": 176,
     "tension_decision_event_count": 519,
     "tension_decision_warning_count": 384,
     "total_event_count": 519,

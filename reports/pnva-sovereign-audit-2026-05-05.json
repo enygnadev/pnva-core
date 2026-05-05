@@ -84,7 +84,7 @@
     "robots_missing_tokens": [],
     "robots_ok": true,
     "sitemap_ok": true,
-    "sitemap_url_count": 52,
+    "sitemap_url_count": 54,
     "sitemap_urls": [
       "https://enygnadev.github.io/pnva-core/",
       "https://enygnadev.github.io/pnva-core/author.html",
@@ -104,6 +104,7 @@
       "https://enygnadev.github.io/pnva-core/docs/PNVA_CAUSAL_CHRONOLOGY_GUARD.md",
       "https://enygnadev.github.io/pnva-core/docs/PNVA_TENSION_DECISION_CALIBRATION.md",
       "https://enygnadev.github.io/pnva-core/docs/PNVA_ENTITY_NO_TICK_MATRIX.md",
+      "https://enygnadev.github.io/pnva-core/docs/PNVA_SUPPRESSION_LEDGER.md",
       "https://enygnadev.github.io/pnva-core/docs/PNVA_SOVEREIGN_EVIDENCE_ATTESTATION.md",
       "https://enygnadev.github.io/pnva-core/docs/PNVA_ADVERSARIAL_VALIDATION.md",
       "https://enygnadev.github.io/pnva-core/docs/PNVA_ENTITY_HEURISTIC_MATURITY.md",
@@ -133,6 +134,7 @@
       "https://enygnadev.github.io/pnva-core/reports/pnva-causal-chronology-2026-05-05.json",
       "https://enygnadev.github.io/pnva-core/reports/pnva-tension-decision-calibration-2026-05-05.json",
       "https://enygnadev.github.io/pnva-core/reports/pnva-entity-no-tick-matrix-2026-05-05.json",
+      "https://enygnadev.github.io/pnva-core/reports/pnva-suppression-ledger-2026-05-05.json",
       "https://enygnadev.github.io/pnva-core/reports/pnva-adversarial-validation-2026-05-05.json",
       "https://enygnadev.github.io/pnva-core/reports/pnva-entity-heuristic-maturity-2026-05-05.json",
       "https://enygnadev.github.io/pnva-core/reports/pnva-semantic-consistency-2026-05-05.json",
@@ -171,16 +173,16 @@
     "warning_count": 35
   },
   "evidence_attestation": {
-    "artifact_count": 23,
+    "artifact_count": 24,
     "attestation_ok": true,
     "classification": "PNVA_SOVEREIGN_EVIDENCE_ATTESTED",
     "errors": [],
-    "evidence_hash": "sha256:ab9c36eba9d4b7301930615648a44483d3167fd7a268c04355a14d6f7190a55e",
+    "evidence_hash": "sha256:ed7e956a027efd644668c0af9bcb5338c4cb06bbfcef429393f99e455c7ad0fb",
     "failure_count": 0,
     "missing": [],
-    "tracked_artifacts": 23
+    "tracked_artifacts": 24
   },
-  "generated_at": "2026-05-05T06:58:05Z",
+  "generated_at": "2026-05-05T07:11:54Z",
   "local_logs": {
     "available": true,
     "bad_json_ratio": 0.0,
@@ -954,6 +956,7 @@
     "Run causal chronology guard so time remains an audited trace, not a blind execution driver.",
     "Run tension-decision calibration so threshold/decision drift remains explicit.",
     "Run entity no-tick matrix so suppression and execution remain attributable by entity.",
+    "Run suppression ledger so avoided execution is proof-backed.",
     "Publish one sovereign evidence attestation hash with every evidence release.",
     "Run adversarial validation so validators prove tamper detection, not only green-path acceptance.",
     "Track entity and heuristic maturity so no-tick suppression stays attributable to actors and authority.",
@@ -979,9 +982,9 @@
   "repo_path": "<REPO>",
   "reproducibility": {
     "classification": "REPRODUCIBILITY_READY",
-    "command_count": 19,
+    "command_count": 20,
     "command_failure_count": 0,
-    "comparison_count": 155,
+    "comparison_count": 165,
     "comparison_failure_count": 0,
     "errors": [],
     "failure_count": 0,
@@ -1015,7 +1018,7 @@
     "total": 100
   },
   "semantic_consistency": {
-    "check_count": 102,
+    "check_count": 113,
     "classification": "SEMANTIC_CONSISTENCY_READY",
     "consistency_ok": true,
     "error_count": 0,
@@ -1045,6 +1048,20 @@
     "missing_docs": [],
     "path_leaks": [],
     "raw_proofs_absent": true
+  },
+  "suppression_ledger": {
+    "above_threshold_suppression_count": 176,
+    "classification": "SUPPRESSION_LEDGER_READY_WITH_LEGACY_WARNINGS",
+    "error_count": 0,
+    "errors": [],
+    "estimated_avoided_execution_count": 250,
+    "event_count": 519,
+    "ledger_ok": true,
+    "missing": [],
+    "native_suppression_clean": true,
+    "proof_coverage_ratio": 1.0,
+    "suppressed_count": 250,
+    "warning_count": 176
   },
   "tension_decision_calibration": {
     "calibration_ok": true,

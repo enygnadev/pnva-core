@@ -1,5 +1,5 @@
 {
-  "artifact_count": 23,
+  "artifact_count": 24,
   "artifacts": [
     {
       "entry_count": 9,
@@ -166,6 +166,19 @@
       "size_bytes": 94515
     },
     {
+      "classification": "SUPPRESSION_LEDGER_READY_WITH_LEGACY_WARNINGS",
+      "expected": "SUPPRESSION_LEDGER_READY_WITH_LEGACY_WARNINGS",
+      "id": "suppression_ledger",
+      "kind": "json_classification",
+      "pass": true,
+      "path": "reports/pnva-suppression-ledger-2026-05-05.json",
+      "present": true,
+      "reported_pass": true,
+      "required": true,
+      "sha256": "7ae6e9bce64dfd0e8577bb59baf722b2960ee107deddaf17c535598cfdf4e8b8",
+      "size_bytes": 356258
+    },
+    {
       "classification": "NATIVE_EMITTER_READY",
       "expected": "NATIVE_EMITTER_READY",
       "id": "native_emitter",
@@ -309,13 +322,14 @@
     "causal chronology guard",
     "tension-decision calibration",
     "entity no-tick matrix",
+    "suppression ledger",
     "adversarial negative controls",
     "entity and heuristic maturity",
     "sovereign audit consumes this attestation without being part of its hash seed"
   ],
-  "evidence_hash": "sha256:ab9c36eba9d4b7301930615648a44483d3167fd7a268c04355a14d6f7190a55e",
+  "evidence_hash": "sha256:ed7e956a027efd644668c0af9bcb5338c4cb06bbfcef429393f99e455c7ad0fb",
   "failure_count": 0,
-  "generated_at": "2026-05-05T06:57:40Z",
+  "generated_at": "2026-05-05T07:11:22Z",
   "interpretation": {
     "boundary": "This attests repository evidence integrity; it is not a universal proof of all possible PNVA deployments.",
     "hash_policy": "The evidence_hash changes when any tracked artifact hash, classification or pass flag changes.",
@@ -332,7 +346,8 @@
     "Run schema contract validation before attestation so event/entity shape defects become release blockers.",
     "Run causal chronology before attestation so timestamp regressions and batch compaction are explicit.",
     "Run tension-decision calibration before attestation so threshold/decision drift is explicit.",
-    "Run entity no-tick matrix before attestation so suppression and execution are attributable by entity."
+    "Run entity no-tick matrix before attestation so suppression and execution are attributable by entity.",
+    "Run suppression ledger before attestation so avoided execution is proof-backed."
   ],
   "schema_version": "pnva.evidence_attestation.v1"
 }

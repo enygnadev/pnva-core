@@ -98,6 +98,13 @@ EXPECTED_ARTIFACTS = [
         "required": True,
     },
     {
+        "id": "suppression_ledger",
+        "path": "reports/pnva-suppression-ledger-2026-05-05.json",
+        "kind": "json_classification",
+        "expected": "SUPPRESSION_LEDGER_READY_WITH_LEGACY_WARNINGS",
+        "required": True,
+    },
+    {
         "id": "native_emitter",
         "path": "reports/pnva-native-emitter-summary-2026-05-05.json",
         "kind": "json_classification",
@@ -302,6 +309,7 @@ def build_attestation(repo: Path) -> dict[str, Any]:
             "causal chronology guard",
             "tension-decision calibration",
             "entity no-tick matrix",
+            "suppression ledger",
             "adversarial negative controls",
             "entity and heuristic maturity",
             "sovereign audit consumes this attestation without being part of its hash seed",
@@ -321,6 +329,7 @@ def build_attestation(repo: Path) -> dict[str, Any]:
             "Run causal chronology before attestation so timestamp regressions and batch compaction are explicit.",
             "Run tension-decision calibration before attestation so threshold/decision drift is explicit.",
             "Run entity no-tick matrix before attestation so suppression and execution are attributable by entity.",
+            "Run suppression ledger before attestation so avoided execution is proof-backed.",
         ],
     }
 

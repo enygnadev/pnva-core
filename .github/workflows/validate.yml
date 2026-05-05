@@ -130,6 +130,12 @@ jobs:
             --write /tmp/pnva-entity-no-tick-matrix.json \
             >/dev/null
           python3 -m json.tool /tmp/pnva-entity-no-tick-matrix.json >/dev/null
+      - name: Run suppression ledger
+        run: |
+          python3 tools/pnva_suppression_ledger.py \
+            --write /tmp/pnva-suppression-ledger.json \
+            >/dev/null
+          python3 -m json.tool /tmp/pnva-suppression-ledger.json >/dev/null
       - name: Run evidence attestor
         run: |
           python3 tools/pnva_evidence_attestor.py \

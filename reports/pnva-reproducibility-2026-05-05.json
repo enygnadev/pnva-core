@@ -1,7 +1,7 @@
 {
   "author": "Gustavo de Aguiar Martins",
   "classification": "REPRODUCIBILITY_READY",
-  "command_count": 19,
+  "command_count": 20,
   "command_failure_count": 0,
   "command_failures": [],
   "commands": {
@@ -131,6 +131,13 @@
       "parse_error": "",
       "pass": true
     },
+    "suppression_ledger": {
+      "classification": "SUPPRESSION_LEDGER_READY_WITH_LEGACY_WARNINGS",
+      "command": "tools/pnva_suppression_ledger.py --write <TEMP>/suppression-ledger.json",
+      "exit_code": 0,
+      "parse_error": "",
+      "pass": true
+    },
     "tension_decision": {
       "classification": "TENSION_DECISION_READY_WITH_LEGACY_WARNINGS",
       "command": "tools/pnva_tension_decision_calibrator.py --write <TEMP>/tension-decision.json",
@@ -139,7 +146,7 @@
       "pass": true
     }
   },
-  "comparison_count": 155,
+  "comparison_count": 165,
   "comparison_failure_count": 0,
   "comparison_failures": [],
   "comparisons": [
@@ -1035,6 +1042,76 @@
     {
       "field": "classification",
       "pass": true,
+      "published": "SUPPRESSION_LEDGER_READY_WITH_LEGACY_WARNINGS",
+      "report": "suppression_ledger",
+      "reproduced": "SUPPRESSION_LEDGER_READY_WITH_LEGACY_WARNINGS"
+    },
+    {
+      "field": "pass",
+      "pass": true,
+      "published": true,
+      "report": "suppression_ledger",
+      "reproduced": true
+    },
+    {
+      "field": "scope_count",
+      "pass": true,
+      "published": 2,
+      "report": "suppression_ledger",
+      "reproduced": 2
+    },
+    {
+      "field": "event_count",
+      "pass": true,
+      "published": 519,
+      "report": "suppression_ledger",
+      "reproduced": 519
+    },
+    {
+      "field": "suppressed_count",
+      "pass": true,
+      "published": 250,
+      "report": "suppression_ledger",
+      "reproduced": 250
+    },
+    {
+      "field": "estimated_avoided_execution_count",
+      "pass": true,
+      "published": 250,
+      "report": "suppression_ledger",
+      "reproduced": 250
+    },
+    {
+      "field": "proof_coverage_ratio",
+      "pass": true,
+      "published": 1.0,
+      "report": "suppression_ledger",
+      "reproduced": 1.0
+    },
+    {
+      "field": "above_threshold_suppression_count",
+      "pass": true,
+      "published": 176,
+      "report": "suppression_ledger",
+      "reproduced": 176
+    },
+    {
+      "field": "warning_count",
+      "pass": true,
+      "published": 176,
+      "report": "suppression_ledger",
+      "reproduced": 176
+    },
+    {
+      "field": "native_suppression_clean",
+      "pass": true,
+      "published": true,
+      "report": "suppression_ledger",
+      "reproduced": true
+    },
+    {
+      "field": "classification",
+      "pass": true,
       "published": "ADVERSARIAL_VALIDATION_PASS",
       "report": "adversarial",
       "reproduced": "ADVERSARIAL_VALIDATION_PASS"
@@ -1161,9 +1238,9 @@
     {
       "field": "artifact_count",
       "pass": true,
-      "published": 23,
+      "published": 24,
       "report": "attestation",
-      "reproduced": 23
+      "reproduced": 24
     },
     {
       "field": "failure_count",
@@ -1175,9 +1252,9 @@
     {
       "field": "evidence_hash",
       "pass": true,
-      "published": "sha256:ab9c36eba9d4b7301930615648a44483d3167fd7a268c04355a14d6f7190a55e",
+      "published": "sha256:ed7e956a027efd644668c0af9bcb5338c4cb06bbfcef429393f99e455c7ad0fb",
       "report": "attestation",
-      "reproduced": "sha256:ab9c36eba9d4b7301930615648a44483d3167fd7a268c04355a14d6f7190a55e"
+      "reproduced": "sha256:ed7e956a027efd644668c0af9bcb5338c4cb06bbfcef429393f99e455c7ad0fb"
     },
     {
       "field": "classification",
@@ -1196,9 +1273,9 @@
     {
       "field": "check_count",
       "pass": true,
-      "published": 102,
+      "published": 113,
       "report": "semantic",
-      "reproduced": 102
+      "reproduced": 113
     },
     {
       "field": "error_count",
@@ -1230,7 +1307,7 @@
     }
   ],
   "failure_count": 0,
-  "generated_at": "2026-05-05T06:58:05Z",
+  "generated_at": "2026-05-05T07:11:54Z",
   "interpretation": {
     "boundary": "Generated timestamps, temporary paths and non-semantic ordering are intentionally excluded from comparison.",
     "purpose": "Regenerate PNVA evidence reports with current tools and compare stable fields against the published evidence package.",
@@ -1245,7 +1322,7 @@
   ],
   "schema_version": "pnva.reproducibility_guard.v1",
   "summary": {
-    "published_attestation_hash": "sha256:ab9c36eba9d4b7301930615648a44483d3167fd7a268c04355a14d6f7190a55e",
+    "published_attestation_hash": "sha256:ed7e956a027efd644668c0af9bcb5338c4cb06bbfcef429393f99e455c7ad0fb",
     "reports_reproduced": [
       "adversarial",
       "attestation",
@@ -1265,9 +1342,10 @@
       "replay",
       "schema_contract",
       "semantic",
+      "suppression_ledger",
       "tension_decision"
     ],
-    "reproduced_attestation_hash": "sha256:ab9c36eba9d4b7301930615648a44483d3167fd7a268c04355a14d6f7190a55e",
-    "stable_fields_compared": 155
+    "reproduced_attestation_hash": "sha256:ed7e956a027efd644668c0af9bcb5338c4cb06bbfcef429393f99e455c7ad0fb",
+    "stable_fields_compared": 165
   }
 }

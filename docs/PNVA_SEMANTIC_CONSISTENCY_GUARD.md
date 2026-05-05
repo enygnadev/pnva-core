@@ -32,6 +32,7 @@ schema contract validation
 causal chronology guard
 tension-decision calibration
 entity no-tick matrix
+suppression ledger
 adversarial validation
 entity and heuristic maturity
 evidence attestation
@@ -57,7 +58,7 @@ SEMANTIC_CONSISTENCY_READY
 Current result:
 
 ```text
-check_count: 102
+check_count: 113
 error_count: 0
 warning_count: 0
 ```
@@ -74,6 +75,7 @@ schema contract report vs Manifest and attestation
 causal chronology report vs Manifest and attestation
 tension-decision calibration report vs Manifest, attestation and audit
 entity no-tick matrix vs Manifest, attestation and audit
+suppression ledger vs Manifest, attestation and audit
 maturity aggregate math vs canonical + native reports
 attestation artifact count vs artifact list
 audit summary vs attestation and maturity report
@@ -86,6 +88,7 @@ Examples:
 512 canonical events must match bridge, replay, no-tick, policy, graph and proof-chain.
 7 native events must match native emitter, native no-tick, native policy, native graph and native proof-chain.
 250 total suppressions must equal 246 canonical suppressions + 4 native suppressions.
+250 avoided executions must equal 250 ledger suppressions.
 304 strong decisions must equal 299 canonical + 5 native.
 269 hard-authority strong decisions must equal 304 - 35 legacy low-authority warnings.
 ```

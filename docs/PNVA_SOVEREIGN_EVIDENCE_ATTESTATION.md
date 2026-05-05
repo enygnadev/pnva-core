@@ -21,6 +21,7 @@ schema contract validation
 causal chronology guard
 tension-decision calibration
 entity no-tick matrix
+suppression ledger
 adversarial validation
 entity and heuristic maturity
 sovereign audit
@@ -62,7 +63,7 @@ Current result:
 ```text
 classification: PNVA_SOVEREIGN_EVIDENCE_ATTESTED
 pass: true
-artifact_count: 23
+artifact_count: 24
 failure_count: 0
 ```
 

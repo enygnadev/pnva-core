@@ -34,6 +34,7 @@ PUBLISHED_REPORTS = {
     "causal_chronology": "reports/pnva-causal-chronology-2026-05-05.json",
     "tension_decision": "reports/pnva-tension-decision-calibration-2026-05-05.json",
     "entity_no_tick_matrix": "reports/pnva-entity-no-tick-matrix-2026-05-05.json",
+    "suppression_ledger": "reports/pnva-suppression-ledger-2026-05-05.json",
     "adversarial": "reports/pnva-adversarial-validation-2026-05-05.json",
     "maturity": "reports/pnva-entity-heuristic-maturity-2026-05-05.json",
     "attestation": "reports/pnva-sovereign-evidence-attestation-2026-05-05.json",
@@ -199,6 +200,18 @@ STABLE_PATHS = {
         ["native_matrix_clean"],
         ["legacy_low_authority_warning_count"],
     ],
+    "suppression_ledger": [
+        ["classification"],
+        ["pass"],
+        ["scope_count"],
+        ["event_count"],
+        ["suppressed_count"],
+        ["estimated_avoided_execution_count"],
+        ["proof_coverage_ratio"],
+        ["above_threshold_suppression_count"],
+        ["warning_count"],
+        ["native_suppression_clean"],
+    ],
     "adversarial": [
         ["classification"],
         ["pass"],
@@ -336,6 +349,7 @@ def build_report(repo: Path) -> dict[str, Any]:
             "causal_chronology": tmp / "causal-chronology.json",
             "tension_decision": tmp / "tension-decision.json",
             "entity_no_tick_matrix": tmp / "entity-no-tick-matrix.json",
+            "suppression_ledger": tmp / "suppression-ledger.json",
             "adversarial": tmp / "adversarial.json",
             "maturity": tmp / "maturity.json",
             "attestation": tmp / "attestation.json",
@@ -370,6 +384,7 @@ def build_report(repo: Path) -> dict[str, Any]:
         commands["causal_chronology"] = _run(repo, ["tools/pnva_causal_chronology_guard.py"], outputs["causal_chronology"])
         commands["tension_decision"] = _run(repo, ["tools/pnva_tension_decision_calibrator.py"], outputs["tension_decision"])
         commands["entity_no_tick_matrix"] = _run(repo, ["tools/pnva_entity_no_tick_matrix.py"], outputs["entity_no_tick_matrix"])
+        commands["suppression_ledger"] = _run(repo, ["tools/pnva_suppression_ledger.py"], outputs["suppression_ledger"])
         commands["adversarial"] = _run(repo, ["tools/pnva_adversarial_validator.py"], outputs["adversarial"])
         commands["maturity"] = _run(repo, ["tools/pnva_entity_heuristic_maturity.py"], outputs["maturity"])
         commands["attestation"] = _run(repo, ["tools/pnva_evidence_attestor.py"], outputs["attestation"])

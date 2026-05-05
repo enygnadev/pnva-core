@@ -553,12 +553,52 @@ Production interpretation:
 
 PNVA/no-tick becomes more robust when non-execution is not only counted globally, but attributed to an entity, heuristic rule, authority level and proof. The matrix shows that 9 of 12 observed entity rows participated in suppression. The canonical bridge keeps 35 low-authority legacy warnings visible; the native matrix is clean.
 
-## 18. Sovereign Evidence Attestation
+## 18. Suppression Ledger
+
+After the entity matrix attributes suppression to actors, make every avoided execution auditable:
+
+```text
+suppressed event + entity + rules + proof + threshold delta -> avoided execution ledger
+```
+
+Current report:
+
+```text
+reports/pnva-suppression-ledger-2026-05-05.json
+```
+
+Current classification:
+
+```text
+SUPPRESSION_LEDGER_READY_WITH_LEGACY_WARNINGS
+```
+
+Current result:
+
+```text
+event_count: 519
+suppressed_count: 250
+estimated_avoided_execution_count: 250
+proof_valid_count: 250
+proof_coverage_ratio: 1.0
+below_threshold_suppression_count: 74
+above_threshold_suppression_count: 176
+aggregate_no_tick_suppression_ratio: 0.481696
+error_count: 0
+warning_count: 176
+native_suppression_clean: true
+```
+
+Production interpretation:
+
+PNVA/no-tick becomes academically stronger when non-execution is treated as a first-class proof artifact. The current ledger shows 250 proof-backed suppressions, interpreted as 250 avoided executions. The native path has no above-threshold suppression drift; the 176 warnings remain visible as legacy bridge evidence instead of being erased.
+
+## 19. Sovereign Evidence Attestation
 
 After all validators run, bind the evidence package:
 
 ```text
-proofs + events + replay + invariants + policy + chains + graphs + schema contract + chronology + tension decision + entity matrix -> evidence_hash
+proofs + events + replay + invariants + policy + chains + graphs + schema contract + chronology + tension decision + entity matrix + suppression ledger -> evidence_hash
 ```
 
 The attestation lists each tracked artifact with:
@@ -580,7 +620,7 @@ PNVA_SOVEREIGN_EVIDENCE_ATTESTED
 Current package:
 
 ```text
-23 tracked artifacts
+24 tracked artifacts
 0 failures
 ```
 
@@ -590,7 +630,7 @@ PNVA evidence should be cited by a single aggregate hash, while still preserving
 
 The sovereign audit is not included inside that aggregate hash because it consumes the attestation. This avoids circular hashing.
 
-## 19. Adversarial Validation
+## 20. Adversarial Validation
 
 A sovereign validator must prove that it rejects bad evidence, not only that it accepts clean evidence.
 
@@ -628,7 +668,7 @@ Production interpretation:
 
 PNVA evidence becomes more sovereign when validators have negative controls. A `PASS` is stronger when the same tooling can also show why corrupted proof, weak authority, invalid topology, duplicate identity, reordered sequence or malformed JSON does not pass silently.
 
-## 20. Entity And Heuristic Maturity
+## 21. Entity And Heuristic Maturity
 
 After validation and adversarial controls, score the maturity of the actors and rules:
 
@@ -666,7 +706,7 @@ Production interpretation:
 
 The canonical legacy bridge preserves 35 low-authority strong decisions as warnings. The native runtime path has zero low-authority legacy warnings. This creates a clean migration rule: old evidence stays honest; new PNVA runtimes must emit native events with H2/H3 authority.
 
-## 21. Semantic Consistency Guard
+## 22. Semantic Consistency Guard
 
 After all evidence reports are generated, check whether they agree as a system:
 
@@ -689,18 +729,18 @@ SEMANTIC_CONSISTENCY_READY
 Current result:
 
 ```text
-check_count: 102
+check_count: 113
 error_count: 0
 warning_count: 0
 ```
 
 Production interpretation:
 
-PNVA evidence should not pass only as isolated files. The release is stronger when event counts, suppression counts, strong-decision counts, graph counts, chronology, tension-decision calibration, entity no-tick matrix, maturity math, Manifest metadata, audit summaries and attestation hashes all agree.
+PNVA evidence should not pass only as isolated files. The release is stronger when event counts, suppression counts, avoided-execution counts, strong-decision counts, graph counts, chronology, tension-decision calibration, entity no-tick matrix, suppression ledger, maturity math, Manifest metadata, audit summaries and attestation hashes all agree.
 
 The semantic consistency report is not included in the attestation hash seed because it consumes the attestation.
 
-## 22. Reproducibility Guard
+## 23. Reproducibility Guard
 
 After semantic consistency, rerun the current tools and compare stable fields against published reports:
 
@@ -723,8 +763,8 @@ REPRODUCIBILITY_READY
 Current result:
 
 ```text
-command_count: 19
-comparison_count: 155
+command_count: 20
+comparison_count: 165
 failure_count: 0
 command_failure_count: 0
 comparison_failure_count: 0
@@ -732,11 +772,11 @@ comparison_failure_count: 0
 
 Production interpretation:
 
-PNVA evidence becomes stronger when reports are not only internally consistent, but reproducible from the repository commands. This checks that replay, no-tick invariants, native emission, policy, proof-chain, graph, schema contract, chronology, tension-decision calibration, entity no-tick matrix, adversarial validation, maturity, attestation and semantic consistency can be regenerated without stable-field drift.
+PNVA evidence becomes stronger when reports are not only internally consistent, but reproducible from the repository commands. This checks that replay, no-tick invariants, native emission, policy, proof-chain, graph, schema contract, chronology, tension-decision calibration, entity no-tick matrix, suppression ledger, adversarial validation, maturity, attestation and semantic consistency can be regenerated without stable-field drift.
 
 The reproducibility report is not included in the attestation hash seed because it consumes the attestation. This keeps the evidence graph acyclic.
 
-## 23. Public Safety
+## 24. Public Safety
 
 Public repositories should expose:
 
@@ -763,7 +803,7 @@ wallets
 host-specific automation
 ```
 
-## 24. Principle
+## 25. Principle
 
 PNVA becomes sovereign when every action can answer:
 
