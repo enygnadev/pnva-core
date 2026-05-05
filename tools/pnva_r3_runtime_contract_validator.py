@@ -82,6 +82,7 @@ REQUIRED_ENFORCED_CONTROLS = {
     "source_format_required": "native_pnva_event_v1",
     "source_file_name_required": True,
     "source_line_required": True,
+    "source_location_unique_required": True,
     "source_sanitized_required": True,
     "r3_runtime_slot_id_required": True,
     "commit_min_authority": "H2",
@@ -195,6 +196,7 @@ def _template_checks(checks: list[dict[str, Any]], contract: dict[str, Any]) -> 
     _add_check(checks, "template", f"{contract_id}_commit_rules_nonempty", bool(commit.get("required_rules")), True)
     _add_check(checks, "pairing", f"{contract_id}_timestamp_iso8601_required", pairing.get("timestamp_iso8601_required"), True)
     _add_check(checks, "pairing", f"{contract_id}_duplicate_event_id_forbidden", pairing.get("duplicate_event_id_forbidden"), True)
+    _add_check(checks, "pairing", f"{contract_id}_source_location_unique_required", pairing.get("source_location_unique_required"), True)
     _add_check(checks, "pairing", f"{contract_id}_same_causal_chain_id_required", pairing.get("same_causal_chain_id_required"), True)
     _add_check(checks, "pairing", f"{contract_id}_commit_timestamp_after_precheck_required", pairing.get("commit_timestamp_after_precheck_required"), True)
     _add_check(checks, "pairing", f"{contract_id}_commit_source_line_after_precheck_required", pairing.get("commit_source_line_after_precheck_required"), True)

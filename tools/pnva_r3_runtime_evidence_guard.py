@@ -504,6 +504,7 @@ def _validate_runtime_events(matrix: dict[str, Any], events: list[dict[str, Any]
     seen_event_lines: dict[str, int] = {}
     seen_proof_hash_lines: dict[str, int] = {}
     seen_proof_ref_lines: dict[str, int] = {}
+    seen_source_location_lines: dict[tuple[str, int], int] = {}
 
     for event in events:
         event_id = str(event.get("event_id") or "")
@@ -525,6 +526,20 @@ def _validate_runtime_events(matrix: dict[str, Any], events: list[dict[str, Any]
                 stream_codes.append("DUPLICATE_PROOF_REF")
             else:
                 seen_proof_ref_lines[proof_ref] = int(event.get("_line", 0) or 0)
+        source_file_name = _source(event).get("file_name")
+        source_line = _source(event).get("line")
+        if (
+            isinstance(source_file_name, str)
+            and source_file_name.strip()
+            and isinstance(source_line, int)
+            and not isinstance(source_line, bool)
+            and source_line > 0
+        ):
+            source_location = (source_file_name.strip(), source_line)
+            if source_location in seen_source_location_lines:
+                stream_codes.append("DUPLICATE_SOURCE_LOCATION")
+            else:
+                seen_source_location_lines[source_location] = int(event.get("_line", 0) or 0)
         original = _original_id(event)
         if original not in slots:
             codes = [*stream_codes, "UNKNOWN_ORIGINAL_EVENT_ID"]
@@ -600,6 +615,7 @@ def _validate_runtime_events(matrix: dict[str, Any], events: list[dict[str, Any]
     duplicate_event_rejection_count = sum(1 for rejection in rejections if "DUPLICATE_EVENT_ID" in rejection.get("codes", []))
     duplicate_proof_hash_rejection_count = sum(1 for rejection in rejections if "DUPLICATE_PROOF_HASH" in rejection.get("codes", []))
     duplicate_proof_ref_rejection_count = sum(1 for rejection in rejections if "DUPLICATE_PROOF_REF" in rejection.get("codes", []))
+    duplicate_source_location_rejection_count = sum(1 for rejection in rejections if "DUPLICATE_SOURCE_LOCATION" in rejection.get("codes", []))
     return {
         "runtime_event_count": len(events),
         "bad_json_line_count": len(bad_lines),
@@ -610,6 +626,7 @@ def _validate_runtime_events(matrix: dict[str, Any], events: list[dict[str, Any]
         "duplicate_event_rejection_count": duplicate_event_rejection_count,
         "duplicate_proof_hash_rejection_count": duplicate_proof_hash_rejection_count,
         "duplicate_proof_ref_rejection_count": duplicate_proof_ref_rejection_count,
+        "duplicate_source_location_rejection_count": duplicate_source_location_rejection_count,
         "no_tick_pair_integrity_count": no_tick_pair_integrity_count,
         "no_tick_pair_failure_count": no_tick_pair_failure_count,
         "event_type_mix": event_type_mix.most_common(),
@@ -789,6 +806,12 @@ def _negative_controls(matrix: dict[str, Any]) -> dict[str, Any]:
     duplicate_ref_commit["proof"]["proof_ref"] = duplicate_ref_precheck["proof"]["proof_ref"]
     run_stream_control("reject_duplicate_proof_ref", [duplicate_ref_precheck, duplicate_ref_commit], "DUPLICATE_PROOF_REF")
 
+    duplicate_source_precheck = _sample_event(slot, role="precheck", control="duplicate_source")
+    duplicate_source_commit = _sample_event(slot, role="commit", control="duplicate_source")
+    duplicate_source_commit["source"]["line"] = duplicate_source_precheck["source"]["line"]
+    rebind_proof_hash(duplicate_source_commit)
+    run_stream_control("reject_duplicate_source_location", [duplicate_source_precheck, duplicate_source_commit], "DUPLICATE_SOURCE_LOCATION")
+
     chain_precheck = _sample_event(slot, role="precheck", control="chain")
     chain_commit = _sample_event(slot, role="commit", control="chain")
     chain_commit["causal_chain_id"] = "chain_wrong_for_pair"
@@ -918,6 +941,7 @@ def build_report(repo: Path, runtime_events_path: Path | None = None) -> dict[st
         "duplicate_event_rejection_count": runtime["duplicate_event_rejection_count"],
         "duplicate_proof_hash_rejection_count": runtime["duplicate_proof_hash_rejection_count"],
         "duplicate_proof_ref_rejection_count": runtime["duplicate_proof_ref_rejection_count"],
+        "duplicate_source_location_rejection_count": runtime["duplicate_source_location_rejection_count"],
         "no_tick_pair_integrity_count": runtime["no_tick_pair_integrity_count"],
         "no_tick_pair_failure_count": runtime["no_tick_pair_failure_count"],
         "negative_control_count": negative["negative_control_count"],
@@ -954,6 +978,7 @@ def build_report(repo: Path, runtime_events_path: Path | None = None) -> dict[st
             "source_format_required": "native_pnva_event_v1",
             "source_file_name_required": True,
             "source_line_required": True,
+            "source_location_unique_required": True,
             "source_sanitized_required": True,
             "r3_runtime_slot_id_required": True,
             "commit_min_authority": "H2",
@@ -1003,6 +1028,7 @@ def build_report(repo: Path, runtime_events_path: Path | None = None) -> dict[st
             "duplicate_event_rejection_count": runtime["duplicate_event_rejection_count"],
             "duplicate_proof_hash_rejection_count": runtime["duplicate_proof_hash_rejection_count"],
             "duplicate_proof_ref_rejection_count": runtime["duplicate_proof_ref_rejection_count"],
+            "duplicate_source_location_rejection_count": runtime["duplicate_source_location_rejection_count"],
             "no_tick_pair_integrity_count": runtime["no_tick_pair_integrity_count"],
             "no_tick_pair_failure_count": runtime["no_tick_pair_failure_count"],
             "negative_control_detected_count": negative["detected_count"],
@@ -1012,7 +1038,7 @@ def build_report(repo: Path, runtime_events_path: Path | None = None) -> dict[st
         },
         "interpretation": {
             "purpose": "Protect the R3 runtime intake boundary before fresh events are accepted as legacy-free evidence.",
-            "sovereignty": "PNVA becomes harder to fake when projected proofs, malformed, duplicated or content-unbound proof hashes, wrong proof-ref slot roles, wrong event types, wrong decision reasons, wrong role state transitions, malformed or inconsistent tension values, invalid gate signs, duplicate events, entity or slot mismatches, missing or reversed source location order, unsanitized sources, unknown heuristic rules, invalid risk flags, weak authority, missing target rules, missing precheck or commit target risk flags, extra runtime events and causally broken no-tick pairs are rejected before cutover.",
+            "sovereignty": "PNVA becomes harder to fake when projected proofs, malformed, duplicated or content-unbound proof hashes, wrong proof-ref slot roles, wrong event types, wrong decision reasons, wrong role state transitions, malformed or inconsistent tension values, invalid gate signs, duplicate events, duplicated source locations, entity or slot mismatches, missing or reversed source location order, unsanitized sources, unknown heuristic rules, invalid risk flags, weak authority, missing target rules, missing precheck or commit target risk flags, extra runtime events and causally broken no-tick pairs are rejected before cutover.",
             "boundary": "Without a runtime-events file this guard certifies the intake contract only; it does not claim final runtime completion.",
         },
         "recommendations": [
@@ -1025,6 +1051,7 @@ def build_report(repo: Path, runtime_events_path: Path | None = None) -> dict[st
             "Require decision.reason to distinguish native no-tick prechecks from native runtime commits.",
             "Require field.state_after to prove no-tick precheck suppression and commit completion.",
             "Reject duplicate event_id, proof_hash and proof_ref values before accepting runtime coverage.",
+            "Reject duplicate source.file_name plus source.line locations before accepting runtime coverage.",
             "Reject runtime events whose proof_hash does not bind to the canonical event identity and source-location payload.",
             "Reject no-tick pairs whose commit source.line does not follow the precheck source.line.",
             "Require proof_ref to match runtime:<slot-id>:precheck or runtime:<slot-id>:commit.",

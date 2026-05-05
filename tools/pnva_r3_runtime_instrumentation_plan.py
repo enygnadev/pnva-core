@@ -104,6 +104,7 @@ def _action_contracts(slots: list[dict[str, Any]]) -> list[dict[str, Any]]:
                 "pairing_policy": {
                     "timestamp_iso8601_required": True,
                     "duplicate_event_id_forbidden": True,
+                    "source_location_unique_required": True,
                     "same_causal_chain_id_required": True,
                     "commit_timestamp_after_precheck_required": True,
                     "commit_source_line_after_precheck_required": True,
@@ -323,6 +324,7 @@ def build_report(repo: Path) -> dict[str, Any]:
             "Emit fixed decision.reason values so no-tick prechecks and runtime commits remain semantically distinct.",
             "Emit fixed field.state_after values so prechecks prove suppression and commits prove completion.",
             "Emit source.line as a monotonic runtime sequence so each commit follows its no-tick precheck physically in the log.",
+            "Keep each source.file_name plus source.line pair unique across the final runtime JSONL.",
             "Run the runtime evidence guard before replay, policy, no-tick and proof-chain validators.",
         ],
     }

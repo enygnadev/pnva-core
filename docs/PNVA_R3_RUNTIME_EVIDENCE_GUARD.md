@@ -49,8 +49,8 @@ duplicate_proof_hash_rejection_count: 0
 duplicate_proof_ref_rejection_count: 0
 no_tick_pair_integrity_count: 0
 no_tick_pair_failure_count: 0
-negative_control_detected_count: 51
-negative_control_count: 51
+negative_control_detected_count: 52
+negative_control_count: 52
 positive_control_passed_count: 6
 positive_control_count: 6
 positive_controls_fixture_only: true
@@ -77,6 +77,7 @@ missing proof_hash
 invalid proof_hash format
 duplicate proof_hash
 duplicate proof_ref
+duplicate source.file_name + source.line
 missing proof.native=true
 invalid source.format
 missing source.file_name
@@ -118,6 +119,7 @@ commit source.line > precheck source.line
 unique event_id values
 unique proof_hash values
 unique proof_ref values
+unique source.file_name + source.line values
 known and unique heuristic rules
 proof_ref in runtime:<slot-id>:<role> form
 proof_hash bound to the event identity and source-location payload
@@ -188,6 +190,7 @@ reject_unsanitized_source
 reject_duplicate_event_id
 reject_duplicate_proof_hash
 reject_duplicate_proof_ref
+reject_duplicate_source_location
 reject_no_tick_pair_chain_mismatch
 reject_commit_before_precheck
 reject_commit_source_line_before_precheck
@@ -201,7 +204,7 @@ reject_precheck_missing_target_risk_flags
 Current result:
 
 ```text
-51/51 detected
+52/52 detected
 ```
 
 ## Positive Controls

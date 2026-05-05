@@ -41,10 +41,10 @@ action_contract_count: 3
 required_runtime_event_count: 70
 event_template_count: 6
 mandatory_field_count: 28
-negative_control_detected_count: 51
+negative_control_detected_count: 52
 positive_control_passed_count: 6
-enforced_control_count: 48
-contract_check_count: 271
+enforced_control_count: 49
+contract_check_count: 275
 failure_count: 0
 ```
 
@@ -79,6 +79,7 @@ proof.native=true
 source.file_name is present
 source.format=native_pnva_event_v1
 source.line is present
+source.file_name + source.line is unique in the runtime stream
 source.sanitized=true
 field.state_before and field.state_after are required
 tension.gate_delta is required
