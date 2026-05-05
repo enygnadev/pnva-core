@@ -94,6 +94,12 @@ jobs:
             >/tmp/pnva-native-causal-graph.json
           python3 -m json.tool /tmp/pnva-causal-graph.json >/dev/null
           python3 -m json.tool /tmp/pnva-native-causal-graph.json >/dev/null
+      - name: Run adversarial validator
+        run: |
+          python3 tools/pnva_adversarial_validator.py \
+            --write /tmp/pnva-adversarial-validation.json \
+            >/dev/null
+          python3 -m json.tool /tmp/pnva-adversarial-validation.json >/dev/null
       - name: Run evidence attestor
         run: |
           python3 tools/pnva_evidence_attestor.py \

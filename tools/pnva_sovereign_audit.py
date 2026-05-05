@@ -48,6 +48,7 @@ PUBLIC_DOCS = [
     "docs/PNVA_PROOF_CHAIN_SEALING.md",
     "docs/PNVA_CAUSAL_GRAPH_AUDIT.md",
     "docs/PNVA_SOVEREIGN_EVIDENCE_ATTESTATION.md",
+    "docs/PNVA_ADVERSARIAL_VALIDATION.md",
     "paper/PNVA_CORE_OPEN_RESEARCH_PAPER.md",
 ]
 
@@ -110,6 +111,12 @@ EVIDENCE_ATTESTATION_FILES = [
     "tools/pnva_evidence_attestor.py",
     "docs/PNVA_SOVEREIGN_EVIDENCE_ATTESTATION.md",
     "reports/pnva-sovereign-evidence-attestation-2026-05-05.json",
+]
+
+ADVERSARIAL_VALIDATION_FILES = [
+    "tools/pnva_adversarial_validator.py",
+    "docs/PNVA_ADVERSARIAL_VALIDATION.md",
+    "reports/pnva-adversarial-validation-2026-05-05.json",
 ]
 
 LOCAL_LOG_CANDIDATES = [
@@ -539,6 +546,48 @@ def audit_evidence_attestation(repo: Path) -> dict[str, Any]:
     }
 
 
+def audit_adversarial_validation(repo: Path) -> dict[str, Any]:
+    missing = [rel for rel in ADVERSARIAL_VALIDATION_FILES if not (repo / rel).exists()]
+    report_path = repo / "reports" / "pnva-adversarial-validation-2026-05-05.json"
+    if not report_path.exists():
+        return {
+            "adversarial_ok": False,
+            "missing": missing,
+            "classification": "ADVERSARIAL_VALIDATION_MISSING",
+            "errors": ["missing adversarial validation report"],
+        }
+    data = _read_json(report_path)
+    tests = data.get("tests", []) if isinstance(data, dict) else []
+    failed = [item for item in tests if isinstance(item, dict) and item.get("detected") is not True]
+    expected = [
+        "PROOF_HASH_MISMATCH",
+        "LOW_AUTHORITY_STRONG_DECISION",
+        "EVENT_ENTITY_NOT_IN_CATALOG",
+        "RELATION_TARGET_NOT_IN_CATALOG",
+        "DUPLICATE_EVENT_IDS",
+        "CHAIN_HASH_DRIFT",
+        "JSON_PARSE_ERROR",
+    ]
+    observed = [str(item.get("expected_detection")) for item in tests if isinstance(item, dict)]
+    return {
+        "adversarial_ok": (
+            not missing
+            and data.get("pass") is True
+            and data.get("classification") == "ADVERSARIAL_VALIDATION_PASS"
+            and not failed
+            and set(expected).issubset(set(observed))
+        ),
+        "missing": missing,
+        "classification": data.get("classification"),
+        "test_count": int(data.get("test_count", 0)),
+        "detected_count": int(data.get("detected_count", 0)),
+        "failure_count": int(data.get("failure_count", 0)),
+        "expected_detections": observed,
+        "undetected_tests": [item.get("name") for item in failed],
+        "errors": [] if isinstance(data, dict) and data.get("pass") is True else ["adversarial validation failed"],
+    }
+
+
 def sample_jsonl(path: Path, *, max_lines: int = 50000) -> dict[str, Any]:
     events: Counter[str] = Counter()
     decisions: Counter[str] = Counter()
@@ -797,6 +846,7 @@ def build_report(repo: Path, *, strict_public: bool = False) -> dict[str, Any]:
         "proof_chain": audit_proof_chain(repo),
         "causal_graph": audit_causal_graph(repo),
         "evidence_attestation": audit_evidence_attestation(repo),
+        "adversarial_validation": audit_adversarial_validation(repo),
         "local_logs": audit_local_logs(strict_public),
         "sovereignty": audit_sovereignty(repo),
         "recommendations": [
@@ -808,6 +858,7 @@ def build_report(repo: Path, *, strict_public: bool = False) -> dict[str, Any]:
             "Seal canonical and native event sequences with proof-chain hashes before public release.",
             "Audit causal graphs so entity topology is visible, not implicit.",
             "Publish one sovereign evidence attestation hash with every evidence release.",
+            "Run adversarial validation so validators prove tamper detection, not only green-path acceptance.",
             "Keep raw local logs private and publish only sanitized proof summaries.",
             "Track thermal pressure provenance when thermal pressure is high but sensor temperature/power are unavailable.",
             "Treat high RESIZE_BATCH ratio as pressure intelligence, not as a proof failure by itself.",

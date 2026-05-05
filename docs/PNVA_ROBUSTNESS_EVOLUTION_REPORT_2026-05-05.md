@@ -42,6 +42,7 @@ docs/PNVA_SOVEREIGN_POLICY_VALIDATION.md
 docs/PNVA_PROOF_CHAIN_SEALING.md
 docs/PNVA_CAUSAL_GRAPH_AUDIT.md
 docs/PNVA_SOVEREIGN_EVIDENCE_ATTESTATION.md
+docs/PNVA_ADVERSARIAL_VALIDATION.md
 tools/pnva_sovereign_audit.py
 tools/pnva_canonical_bridge.py
 tools/pnva_replay_validator.py
@@ -51,6 +52,7 @@ tools/pnva_sovereign_policy_validator.py
 tools/pnva_proof_chain_sealer.py
 tools/pnva_causal_graph_auditor.py
 tools/pnva_evidence_attestor.py
+tools/pnva_adversarial_validator.py
 reports/pnva-sovereign-audit-2026-05-05.json
 reports/pnva-canonical-events-sample-2026-05-05.jsonl
 reports/pnva-entity-catalog-2026-05-05.json
@@ -69,6 +71,7 @@ reports/pnva-native-proof-chain-2026-05-05.json
 reports/pnva-causal-graph-2026-05-05.json
 reports/pnva-native-causal-graph-2026-05-05.json
 reports/pnva-sovereign-evidence-attestation-2026-05-05.json
+reports/pnva-adversarial-validation-2026-05-05.json
 ```
 
 ## Technical Diagnosis
@@ -332,7 +335,7 @@ Current result:
 
 ```text
 classification: PNVA_SOVEREIGN_EVIDENCE_ATTESTED
-artifact_count: 17
+artifact_count: 18
 failure_count: 0
 ```
 
@@ -345,6 +348,33 @@ evidence_hash
 This hash changes if any tracked artifact changes its file hash, classification or pass flag. It gives PNVA a single citation anchor for the public evidence package.
 
 The sovereign audit consumes this attestation and is intentionally kept outside the attestation hash seed to avoid circular evidence hashing.
+
+### 12. Adversarial validation
+
+The adversarial validator adds negative controls.
+
+Current result:
+
+```text
+classification: ADVERSARIAL_VALIDATION_PASS
+test_count: 7
+detected_count: 7
+failure_count: 0
+```
+
+Controlled mutations:
+
+```text
+PROOF_HASH_MISMATCH
+LOW_AUTHORITY_STRONG_DECISION
+EVENT_ENTITY_NOT_IN_CATALOG
+RELATION_TARGET_NOT_IN_CATALOG
+DUPLICATE_EVENT_IDS
+CHAIN_HASH_DRIFT
+JSON_PARSE_ERROR
+```
+
+This closes a critical proof gap. PNVA validators now demonstrate not only that valid evidence passes, but also that corrupted proof, weak authority, invalid topology, duplicate identity, order tampering and malformed JSON are rejected or exposed.
 
 ## Next Engineering Recommendations
 
@@ -364,6 +394,7 @@ The sovereign audit consumes this attestation and is intentionally kept outside 
 14. Use `tools/pnva_proof_chain_sealer.py` to seal event sequence order before publication.
 15. Use `tools/pnva_causal_graph_auditor.py` to audit entity topology and causal relation flow.
 16. Use `tools/pnva_evidence_attestor.py` to publish one aggregate evidence hash for each release.
+17. Use `tools/pnva_adversarial_validator.py` before release so validator failures are proven, not assumed.
 
 ## Sovereign Rule
 

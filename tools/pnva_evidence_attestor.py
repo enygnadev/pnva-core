@@ -123,6 +123,13 @@ EXPECTED_ARTIFACTS = [
         "expected": "CAUSAL_GRAPH_READY",
         "required": True,
     },
+    {
+        "id": "adversarial_validation",
+        "path": "reports/pnva-adversarial-validation-2026-05-05.json",
+        "kind": "json_classification",
+        "expected": "ADVERSARIAL_VALIDATION_PASS",
+        "required": True,
+    },
 ]
 
 
@@ -256,6 +263,7 @@ def build_attestation(repo: Path) -> dict[str, Any]:
             "sovereign policy validation",
             "proof-chain sealing",
             "causal graph audit",
+            "adversarial negative controls",
             "sovereign audit consumes this attestation without being part of its hash seed",
         ],
         "interpretation": {
@@ -267,6 +275,7 @@ def build_attestation(repo: Path) -> dict[str, Any]:
             "Publish this attestation with every production-evidence release.",
             "Use evidence_hash as the public anchor when citing a PNVA evidence package.",
             "Keep legacy warnings visible while requiring native clean policy for new runtime events.",
+            "Run adversarial negative controls so bad evidence is rejected or exposed before publication.",
         ],
     }
 

@@ -1,0 +1,133 @@
+{
+  "author": "Gustavo de Aguiar Martins",
+  "classification": "ADVERSARIAL_VALIDATION_PASS",
+  "detected_count": 7,
+  "failure_count": 0,
+  "generated_at": "2026-05-05T05:25:42Z",
+  "interpretation": {
+    "boundary": "This is adversarial validation over the public evidence package; it is not a universal security proof for every deployment.",
+    "purpose": "Negative controls prove that PNVA validators reject or expose controlled evidence mutations.",
+    "sovereignty": "A sovereign validator must fail on bad proof hashes, weak authority, unknown entities, invalid graph relations, duplicate event IDs and malformed logs."
+  },
+  "pass": true,
+  "project": "PNVA-Core",
+  "recommendations": [
+    "Run adversarial validation before every public evidence release.",
+    "Treat a missing adversarial detection as a validator bug or a documented blind spot.",
+    "Keep mutated test files temporary so public evidence stays clean and auditable."
+  ],
+  "schema_version": "pnva.adversarial_validation.v1",
+  "test_count": 7,
+  "tests": [
+    {
+      "command": "tools/pnva_replay_validator.py --events <TEMP>/proof-hash-tamper.jsonl --entity-catalog reports/pnva-entity-catalog-2026-05-05.json",
+      "command_exit_code": 1,
+      "detected": true,
+      "expected_detection": "PROOF_HASH_MISMATCH",
+      "mutation": "Changed the first canonical event proof_hash to an impossible sha256 value.",
+      "name": "replay_proof_hash_tamper",
+      "observed_classification": "REPLAY_INVALID",
+      "observed_error_codes": [
+        "PROOF_HASH_MISMATCH"
+      ],
+      "observed_pass": false,
+      "observed_warning_codes": [
+        "CHAIN_TIMESTAMP_DISORDER",
+        "GLOBAL_TIMESTAMP_DISORDER"
+      ],
+      "target_tool": "tools/pnva_replay_validator.py"
+    },
+    {
+      "command": "tools/pnva_sovereign_policy_validator.py --events <TEMP>/native-low-authority.jsonl --entity-catalog reports/pnva-native-entity-catalog-demo-2026-05-05.json",
+      "command_exit_code": 1,
+      "detected": true,
+      "expected_detection": "LOW_AUTHORITY_STRONG_DECISION",
+      "mutation": "Downgraded a native collapse/block/prove event to legacy_observer authority.",
+      "name": "native_low_authority_strong_decision",
+      "observed_classification": "SOVEREIGN_POLICY_FAIL",
+      "observed_error_codes": [
+        "GUARD_EVENT_WITHOUT_GUARD_AUTHORITY",
+        "LOW_AUTHORITY_STRONG_DECISION"
+      ],
+      "observed_pass": false,
+      "observed_warning_codes": [],
+      "target_tool": "tools/pnva_sovereign_policy_validator.py"
+    },
+    {
+      "command": "tools/pnva_causal_graph_auditor.py --events <TEMP>/graph-missing-entity.jsonl --entity-catalog reports/pnva-native-entity-catalog-demo-2026-05-05.json",
+      "command_exit_code": 1,
+      "detected": true,
+      "expected_detection": "EVENT_ENTITY_NOT_IN_CATALOG",
+      "mutation": "Moved one native event onto an entity_id absent from the catalog.",
+      "name": "graph_missing_entity",
+      "observed_classification": "CAUSAL_GRAPH_INVALID",
+      "observed_error_codes": [
+        "EVENT_ENTITY_NOT_IN_CATALOG"
+      ],
+      "observed_pass": false,
+      "observed_warning_codes": [],
+      "target_tool": "tools/pnva_causal_graph_auditor.py"
+    },
+    {
+      "command": "tools/pnva_causal_graph_auditor.py --events <TEMP>/graph-bad-relation.jsonl --entity-catalog reports/pnva-native-entity-catalog-demo-2026-05-05.json",
+      "command_exit_code": 1,
+      "detected": true,
+      "expected_detection": "RELATION_TARGET_NOT_IN_CATALOG",
+      "mutation": "Changed a relation target to an entity absent from the catalog.",
+      "name": "graph_bad_relation_target",
+      "observed_classification": "CAUSAL_GRAPH_INVALID",
+      "observed_error_codes": [
+        "RELATION_TARGET_NOT_IN_CATALOG"
+      ],
+      "observed_pass": false,
+      "observed_warning_codes": [],
+      "target_tool": "tools/pnva_causal_graph_auditor.py"
+    },
+    {
+      "command": "tools/pnva_proof_chain_sealer.py --events <TEMP>/proof-chain-duplicate-event-id.jsonl",
+      "command_exit_code": 1,
+      "detected": true,
+      "expected_detection": "DUPLICATE_EVENT_IDS",
+      "mutation": "Appended a duplicate native event_id to the sequence.",
+      "name": "proof_chain_duplicate_event_id",
+      "observed_classification": "PROOF_CHAIN_INVALID",
+      "observed_error_codes": [
+        "DUPLICATE_EVENT_IDS"
+      ],
+      "observed_pass": false,
+      "observed_warning_codes": [],
+      "target_tool": "tools/pnva_proof_chain_sealer.py"
+    },
+    {
+      "baseline_hash": "a3088ad4f8fc51655dc3944fe419c39e8b94770a4882f50c8281a0bd1064d4b7",
+      "command": "tools/pnva_proof_chain_sealer.py --events <TEMP>/proof-chain-order-tamper.jsonl",
+      "command_exit_code": 0,
+      "detected": true,
+      "expected_detection": "CHAIN_HASH_DRIFT",
+      "hash_changed": true,
+      "mutation": "Swapped the first two canonical events without changing their contents.",
+      "name": "proof_chain_order_tamper",
+      "observed_classification": "PROOF_CHAIN_SEALED",
+      "observed_error_codes": [],
+      "observed_hash": "401f639ddfa6d451d1c7b1f0d8440cab3cacaa3dea03143be3be3885c33c1657",
+      "observed_pass": true,
+      "observed_warning_codes": [],
+      "target_tool": "tools/pnva_proof_chain_sealer.py"
+    },
+    {
+      "command": "tools/pnva_replay_validator.py --events <TEMP>/json-parse-error.jsonl --entity-catalog reports/pnva-entity-catalog-2026-05-05.json",
+      "command_exit_code": 1,
+      "detected": true,
+      "expected_detection": "JSON_PARSE_ERROR",
+      "mutation": "Appended one malformed JSON line to an otherwise valid event sequence.",
+      "name": "json_parse_error",
+      "observed_classification": "REPLAY_INVALID",
+      "observed_error_codes": [
+        "JSON_PARSE_ERROR"
+      ],
+      "observed_pass": false,
+      "observed_warning_codes": [],
+      "target_tool": "tools/pnva_replay_validator.py"
+    }
+  ]
+}

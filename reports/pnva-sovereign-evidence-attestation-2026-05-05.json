@@ -1,5 +1,5 @@
 {
-  "artifact_count": 17,
+  "artifact_count": 18,
   "artifacts": [
     {
       "entry_count": 9,
@@ -214,6 +214,19 @@
       "required": true,
       "sha256": "473f9ea995fc665ee25303e90e07f3ef420bcb7063dfc46ba72341833c21dbf5",
       "size_bytes": 5976
+    },
+    {
+      "classification": "ADVERSARIAL_VALIDATION_PASS",
+      "expected": "ADVERSARIAL_VALIDATION_PASS",
+      "id": "adversarial_validation",
+      "kind": "json_classification",
+      "pass": true,
+      "path": "reports/pnva-adversarial-validation-2026-05-05.json",
+      "present": true,
+      "reported_pass": true,
+      "required": true,
+      "sha256": "5118d6f396a325dcde26ba14285d75f493d0b538d6ef9843a35b0c57c322e050",
+      "size_bytes": 5917
     }
   ],
   "author": "Gustavo de Aguiar Martins",
@@ -227,11 +240,12 @@
     "sovereign policy validation",
     "proof-chain sealing",
     "causal graph audit",
+    "adversarial negative controls",
     "sovereign audit consumes this attestation without being part of its hash seed"
   ],
-  "evidence_hash": "sha256:15d15eea32f5dbc98a37ae4e1dfe664583355dcbc69be5e0ab5f5d40c96ff4d2",
+  "evidence_hash": "sha256:cc28cbd7a76fcd4300e779573944b980fa48cf9e0468d80d982697cbd636b721",
   "failure_count": 0,
-  "generated_at": "2026-05-05T05:14:47Z",
+  "generated_at": "2026-05-05T05:25:42Z",
   "interpretation": {
     "boundary": "This attests repository evidence integrity; it is not a universal proof of all possible PNVA deployments.",
     "hash_policy": "The evidence_hash changes when any tracked artifact hash, classification or pass flag changes.",
@@ -242,7 +256,8 @@
   "recommendations": [
     "Publish this attestation with every production-evidence release.",
     "Use evidence_hash as the public anchor when citing a PNVA evidence package.",
-    "Keep legacy warnings visible while requiring native clean policy for new runtime events."
+    "Keep legacy warnings visible while requiring native clean policy for new runtime events.",
+    "Run adversarial negative controls so bad evidence is rejected or exposed before publication."
   ],
   "schema_version": "pnva.evidence_attestation.v1"
 }

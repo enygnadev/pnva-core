@@ -437,7 +437,7 @@ PNVA_SOVEREIGN_EVIDENCE_ATTESTED
 Current package:
 
 ```text
-17 tracked artifacts
+18 tracked artifacts
 0 failures
 ```
 
@@ -447,7 +447,45 @@ PNVA evidence should be cited by a single aggregate hash, while still preserving
 
 The sovereign audit is not included inside that aggregate hash because it consumes the attestation. This avoids circular hashing.
 
-## 9. Public Safety
+## 15. Adversarial Validation
+
+A sovereign validator must prove that it rejects bad evidence, not only that it accepts clean evidence.
+
+The adversarial validation layer runs controlled mutations against the public validators:
+
+```text
+proof hash tamper
+low-authority strong decision
+missing event entity
+bad relation target
+duplicate event id
+event order tamper
+malformed JSON line
+```
+
+Current report:
+
+```text
+reports/pnva-adversarial-validation-2026-05-05.json
+```
+
+Current classification:
+
+```text
+ADVERSARIAL_VALIDATION_PASS
+```
+
+Current result:
+
+```text
+7 detected mutations over 7 tests
+```
+
+Production interpretation:
+
+PNVA evidence becomes more sovereign when validators have negative controls. A `PASS` is stronger when the same tooling can also show why corrupted proof, weak authority, invalid topology, duplicate identity, reordered sequence or malformed JSON does not pass silently.
+
+## 16. Public Safety
 
 Public repositories should expose:
 
@@ -474,7 +512,7 @@ wallets
 host-specific automation
 ```
 
-## 10. Principle
+## 17. Principle
 
 PNVA becomes sovereign when every action can answer:
 
