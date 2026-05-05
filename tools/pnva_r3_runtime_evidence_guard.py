@@ -7,6 +7,7 @@ import json
 import math
 import time
 from collections import Counter, defaultdict
+from datetime import datetime
 from pathlib import Path
 from typing import Any
 
@@ -129,6 +130,22 @@ def _finite_number(value: Any) -> bool:
     return isinstance(value, (int, float)) and not isinstance(value, bool) and math.isfinite(float(value))
 
 
+def _timestamp_epoch(event: dict[str, Any]) -> float | None:
+    value = event.get("timestamp")
+    if not isinstance(value, str) or not value.strip():
+        return None
+    normalized = value.strip()
+    if normalized.endswith("Z"):
+        normalized = normalized[:-1] + "+00:00"
+    try:
+        parsed = datetime.fromisoformat(normalized)
+    except ValueError:
+        return None
+    if parsed.tzinfo is None:
+        return None
+    return parsed.timestamp()
+
+
 def _field_state_valid(event: dict[str, Any]) -> bool:
     field = event.get("field")
     return isinstance(field, dict) and bool(field.get("state_before")) and bool(field.get("state_after"))
@@ -169,6 +186,8 @@ def _event_codes(event: dict[str, Any], slot: dict[str, Any]) -> list[str]:
         codes.append("MISSING_EVENT_ID")
     if not event.get("timestamp"):
         codes.append("MISSING_TIMESTAMP")
+    elif _timestamp_epoch(event) is None:
+        codes.append("TIMESTAMP_INVALID")
     if not event.get("entity_id"):
         codes.append("MISSING_ENTITY_ID")
     if not event.get("causal_chain_id"):
@@ -230,6 +249,41 @@ def _event_codes(event: dict[str, Any], slot: dict[str, Any]) -> list[str]:
     return codes
 
 
+def _pair_evidence(prechecks: list[dict[str, Any]], commits: list[dict[str, Any]]) -> dict[str, Any]:
+    matching_chain_count = 0
+    ordered_pair_count = 0
+    shared_chains: set[str] = set()
+    for precheck in prechecks:
+        precheck_chain = str(precheck.get("causal_chain_id") or "")
+        precheck_time = _timestamp_epoch(precheck)
+        for commit in commits:
+            commit_chain = str(commit.get("causal_chain_id") or "")
+            if not precheck_chain or precheck_chain != commit_chain:
+                continue
+            matching_chain_count += 1
+            shared_chains.add(precheck_chain)
+            commit_time = _timestamp_epoch(commit)
+            if precheck_time is not None and commit_time is not None and commit_time >= precheck_time:
+                ordered_pair_count += 1
+
+    if ordered_pair_count > 0:
+        reason = ""
+    elif prechecks and commits and not shared_chains:
+        reason = "NO_TICK_PAIR_CAUSAL_CHAIN_MISMATCH"
+    elif prechecks and commits:
+        reason = "NO_TICK_PAIR_ORDER_INVALID"
+    else:
+        reason = "NO_TICK_PAIR_INCOMPLETE"
+
+    return {
+        "valid": ordered_pair_count > 0,
+        "matching_chain_count": matching_chain_count,
+        "ordered_pair_count": ordered_pair_count,
+        "shared_causal_chain_count": len(shared_chains),
+        "failure_reason": reason,
+    }
+
+
 def _validate_runtime_events(matrix: dict[str, Any], events: list[dict[str, Any]], bad_lines: list[dict[str, Any]]) -> dict[str, Any]:
     slots = _slot_map(matrix)
     by_slot: dict[str, dict[str, list[dict[str, Any]]]] = {
@@ -240,21 +294,31 @@ def _validate_runtime_events(matrix: dict[str, Any], events: list[dict[str, Any]
     event_type_mix: Counter[str] = Counter()
     action_mix: Counter[str] = Counter()
     rule_mix: Counter[str] = Counter()
+    seen_event_lines: dict[str, int] = {}
 
     for event in events:
+        event_id = str(event.get("event_id") or "")
+        stream_codes: list[str] = []
+        if event_id:
+            if event_id in seen_event_lines:
+                stream_codes.append("DUPLICATE_EVENT_ID")
+            else:
+                seen_event_lines[event_id] = int(event.get("_line", 0) or 0)
         original = _original_id(event)
         if original not in slots:
+            codes = [*stream_codes, "UNKNOWN_ORIGINAL_EVENT_ID"]
             rejections.append(
                 {
                     "line": event.get("_line", 0),
                     "event_id": event.get("event_id"),
                     "code": "UNKNOWN_ORIGINAL_EVENT_ID",
+                    "codes": codes,
                     "original_event_id": original,
                 }
             )
             continue
         slot = slots[original]
-        codes = _event_codes(event, slot)
+        codes = [*stream_codes, *_event_codes(event, slot)]
         role = _role(event, slot)
         event_type_mix[str(event.get("event_type") or "unknown")] += 1
         action_mix[_decision_action(event)] += 1
@@ -275,12 +339,17 @@ def _validate_runtime_events(matrix: dict[str, Any], events: list[dict[str, Any]
 
     slot_rows = []
     accepted_slot_count = 0
+    no_tick_pair_integrity_count = 0
+    no_tick_pair_failure_count = 0
     for original, slot in slots.items():
         row = by_slot[original]
         precheck_count = len(row["precheck"])
         commit_count = len(row["commit"])
         rejected_count = len(row["rejected"])
-        accepted = precheck_count >= 1 and commit_count >= 1 and rejected_count == 0
+        pair = _pair_evidence(row["precheck"], row["commit"])
+        no_tick_pair_integrity_count += 1 if pair["valid"] else 0
+        no_tick_pair_failure_count += 1 if precheck_count > 0 and commit_count > 0 and not pair["valid"] else 0
+        accepted = precheck_count >= 1 and commit_count >= 1 and rejected_count == 0 and pair["valid"]
         accepted_slot_count += 1 if accepted else 0
         slot_rows.append(
             {
@@ -294,10 +363,16 @@ def _validate_runtime_events(matrix: dict[str, Any], events: list[dict[str, Any]
                 "rejected_count": rejected_count,
                 "missing_precheck": precheck_count == 0,
                 "missing_commit": commit_count == 0,
+                "no_tick_pair_valid": pair["valid"],
+                "matching_causal_chain_pair_count": pair["matching_chain_count"],
+                "ordered_no_tick_pair_count": pair["ordered_pair_count"],
+                "shared_causal_chain_count": pair["shared_causal_chain_count"],
+                "pair_failure_reason": pair["failure_reason"],
             }
         )
 
     pending_slot_count = len(slots) - accepted_slot_count
+    duplicate_event_rejection_count = sum(1 for rejection in rejections if "DUPLICATE_EVENT_ID" in rejection.get("codes", []))
     return {
         "runtime_event_count": len(events),
         "bad_json_line_count": len(bad_lines),
@@ -305,6 +380,9 @@ def _validate_runtime_events(matrix: dict[str, Any], events: list[dict[str, Any]
         "pending_slot_count": pending_slot_count,
         "slot_failure_count": pending_slot_count,
         "rejected_event_count": len(rejections),
+        "duplicate_event_rejection_count": duplicate_event_rejection_count,
+        "no_tick_pair_integrity_count": no_tick_pair_integrity_count,
+        "no_tick_pair_failure_count": no_tick_pair_failure_count,
         "event_type_mix": event_type_mix.most_common(),
         "decision_action_mix": action_mix.most_common(),
         "heuristic_rule_mix": rule_mix.most_common(),
@@ -391,8 +469,29 @@ def _negative_controls(matrix: dict[str, Any]) -> dict[str, Any]:
             }
         )
 
+    def run_stream_control(name: str, events: list[dict[str, Any]], expected_code: str) -> None:
+        runtime = _validate_runtime_events(matrix, events, [])
+        codes: list[str] = []
+        for rejection in runtime["rejections"]:
+            codes.extend(str(code) for code in rejection.get("codes", []) if str(code))
+            if rejection.get("code"):
+                codes.append(str(rejection["code"]))
+        for row in runtime["slot_rows"]:
+            if row.get("pair_failure_reason"):
+                codes.append(str(row["pair_failure_reason"]))
+        detected = expected_code in set(codes)
+        controls.append(
+            {
+                "name": name,
+                "expected_detection": expected_code,
+                "detected": detected,
+                "codes": sorted(set(codes)),
+            }
+        )
+
     run_control("reject_projection_true", "commit", lambda event: event["proof"].update({"projection": True}), "PROJECTED_PROOF_FORBIDDEN")
     run_control("reject_missing_timestamp", "commit", lambda event: event.pop("timestamp", None), "MISSING_TIMESTAMP")
+    run_control("reject_invalid_timestamp", "commit", lambda event: event.update({"timestamp": "not-a-valid-iso8601-timestamp"}), "TIMESTAMP_INVALID")
     run_control("reject_missing_field_state", "commit", lambda event: event.pop("field", None), "FIELD_STATE_INVALID")
     run_control("reject_missing_gate_delta", "commit", lambda event: event["tension"].pop("gate_delta", None), "TENSION_GATE_DELTA_INVALID")
     run_control("reject_nonfinite_tension_score", "commit", lambda event: event["tension"].update({"score": float("nan")}), "TENSION_SCORE_INVALID")
@@ -410,6 +509,22 @@ def _negative_controls(matrix: dict[str, Any]) -> dict[str, Any]:
     run_control("reject_original_event_mismatch", "commit", lambda event: event["tension"]["components"].update({"original_event_id": "evt_wrong"}), "ORIGINAL_EVENT_MISMATCH")
     run_control("reject_missing_native_proof", "commit", lambda event: event["proof"].pop("native", None), "PROOF_NATIVE_REQUIRED")
     run_control("reject_invalid_source_format", "commit", lambda event: event["source"].update({"format": "legacy_bridge"}), "SOURCE_FORMAT_INVALID")
+
+    duplicate_precheck = _sample_event(slot, role="precheck", control="duplicate")
+    duplicate_commit = _sample_event(slot, role="commit", control="duplicate")
+    duplicate_commit["event_id"] = duplicate_precheck["event_id"]
+    run_stream_control("reject_duplicate_event_id", [duplicate_precheck, duplicate_commit], "DUPLICATE_EVENT_ID")
+
+    chain_precheck = _sample_event(slot, role="precheck", control="chain")
+    chain_commit = _sample_event(slot, role="commit", control="chain")
+    chain_commit["causal_chain_id"] = "chain_wrong_for_pair"
+    run_stream_control("reject_no_tick_pair_chain_mismatch", [chain_precheck, chain_commit], "NO_TICK_PAIR_CAUSAL_CHAIN_MISMATCH")
+
+    order_precheck = _sample_event(slot, role="precheck", control="order")
+    order_commit = _sample_event(slot, role="commit", control="order")
+    order_precheck["timestamp"] = "2026-05-05T00:00:02Z"
+    order_commit["timestamp"] = "2026-05-05T00:00:01Z"
+    run_stream_control("reject_commit_before_precheck", [order_precheck, order_commit], "NO_TICK_PAIR_ORDER_INVALID")
 
     detected_count = sum(1 for item in controls if item["detected"])
     return {
@@ -515,6 +630,9 @@ def build_report(repo: Path, runtime_events_path: Path | None = None) -> dict[st
         "slot_failure_count": runtime["slot_failure_count"],
         "rejected_event_count": runtime["rejected_event_count"],
         "bad_json_line_count": runtime["bad_json_line_count"],
+        "duplicate_event_rejection_count": runtime["duplicate_event_rejection_count"],
+        "no_tick_pair_integrity_count": runtime["no_tick_pair_integrity_count"],
+        "no_tick_pair_failure_count": runtime["no_tick_pair_failure_count"],
         "negative_control_count": negative["negative_control_count"],
         "negative_control_detected_count": negative["detected_count"],
         "negative_controls_pass": negative["pass"],
@@ -525,6 +643,8 @@ def build_report(repo: Path, runtime_events_path: Path | None = None) -> dict[st
         "enforced_controls": {
             "schema_version_required": "pnva.event.v1",
             "timestamp_required": True,
+            "timestamp_iso8601_required": True,
+            "duplicate_event_id_forbidden": True,
             "field_state_required": True,
             "entity_id_required": True,
             "causal_chain_id_required": True,
@@ -536,6 +656,8 @@ def build_report(repo: Path, runtime_events_path: Path | None = None) -> dict[st
             "r3_runtime_slot_id_required": True,
             "commit_min_authority": "H2",
             "precheck_must_be_no_tick": True,
+            "no_tick_pair_causal_chain_required": True,
+            "no_tick_pair_commit_after_precheck_required": True,
             "commit_must_match_slot_action": True,
             "target_rules_required_on_commit": True,
         },
@@ -561,6 +683,9 @@ def build_report(repo: Path, runtime_events_path: Path | None = None) -> dict[st
             "accepted_slot_count": runtime["accepted_slot_count"],
             "pending_slot_count": runtime["pending_slot_count"],
             "rejected_event_count": runtime["rejected_event_count"],
+            "duplicate_event_rejection_count": runtime["duplicate_event_rejection_count"],
+            "no_tick_pair_integrity_count": runtime["no_tick_pair_integrity_count"],
+            "no_tick_pair_failure_count": runtime["no_tick_pair_failure_count"],
             "negative_control_detected_count": negative["detected_count"],
             "negative_control_count": negative["negative_control_count"],
             "positive_control_passed_count": positive["passed_count"],
@@ -568,14 +693,15 @@ def build_report(repo: Path, runtime_events_path: Path | None = None) -> dict[st
         },
         "interpretation": {
             "purpose": "Protect the R3 runtime intake boundary before fresh events are accepted as legacy-free evidence.",
-            "sovereignty": "PNVA becomes harder to fake when projected proofs, malformed tension values, entity or slot mismatches, weak authority, missing target rules and incomplete no-tick pairs are rejected before cutover.",
+            "sovereignty": "PNVA becomes harder to fake when projected proofs, malformed tension values, duplicate events, entity or slot mismatches, weak authority, missing target rules and causally broken no-tick pairs are rejected before cutover.",
             "boundary": "Without a runtime-events file this guard certifies the intake contract only; it does not claim final runtime completion.",
         },
         "recommendations": [
             "Feed fresh runtime JSONL through this guard before rerunning R3 cutover approval.",
             "Reject any event with proof.projection=true in final runtime evidence.",
             "Reject any event with non-finite tension values, entity mismatch, slot mismatch or original-event mismatch.",
-            "Require every slot to contain one native no-tick precheck and one H2+ commit.",
+            "Require every slot to contain one native no-tick precheck and one H2+ commit in the same causal_chain_id, with commit timestamp at or after precheck timestamp.",
+            "Reject duplicate event_id values before accepting runtime coverage.",
             "Keep entity_id, causal_chain_id and proof_hash mandatory for every runtime event.",
         ],
     }

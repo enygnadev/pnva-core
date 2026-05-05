@@ -75,6 +75,12 @@
         "evt_276e496e_000122_197aa047",
         "evt_276e496e_000127_2ae25618"
       ],
+      "pairing_policy": {
+        "commit_timestamp_after_precheck_required": true,
+        "duplicate_event_id_forbidden": true,
+        "same_causal_chain_id_required": true,
+        "timestamp_iso8601_required": true
+      },
       "precheck_template": {
         "decision": {
           "action": "NO_ACTION",
@@ -198,6 +204,12 @@
         "evt_276e496e_000071_4bf4fe50",
         "evt_276e496e_000078_933bffc6"
       ],
+      "pairing_policy": {
+        "commit_timestamp_after_precheck_required": true,
+        "duplicate_event_id_forbidden": true,
+        "same_causal_chain_id_required": true,
+        "timestamp_iso8601_required": true
+      },
       "precheck_template": {
         "decision": {
           "action": "NO_ACTION",
@@ -286,6 +298,12 @@
       "original_event_ids": [
         "evt_276e496e_000073_bc920d9e"
       ],
+      "pairing_policy": {
+        "commit_timestamp_after_precheck_required": true,
+        "duplicate_event_id_forbidden": true,
+        "same_causal_chain_id_required": true,
+        "timestamp_iso8601_required": true
+      },
       "precheck_template": {
         "decision": {
           "action": "NO_ACTION",
@@ -334,7 +352,7 @@
   "classification": "R3_RUNTIME_INSTRUMENTATION_PLAN_READY",
   "entity_target_count": 1,
   "event_template_count": 6,
-  "generated_at": "2026-05-05T11:23:50Z",
+  "generated_at": "2026-05-05T11:35:43Z",
   "instrumentation_plan_ready": true,
   "interpretation": {
     "boundary": "This plan is not runtime evidence and does not approve R3 cutover; it defines how fresh runtime evidence must be emitted and validated.",
@@ -368,8 +386,8 @@
     "source.format"
   ],
   "mandatory_field_count": 24,
-  "negative_control_count": 19,
-  "negative_control_detected_count": 19,
+  "negative_control_count": 23,
+  "negative_control_detected_count": 23,
   "pass": true,
   "positive_control_count": 6,
   "positive_control_passed_count": 6,
@@ -426,7 +444,7 @@
     "event_template_count": 6,
     "instrumentation_plan_ready": true,
     "mandatory_field_count": 24,
-    "negative_control_detected_count": 19,
+    "negative_control_detected_count": 23,
     "positive_control_passed_count": 6,
     "required_runtime_event_count": 70
   },

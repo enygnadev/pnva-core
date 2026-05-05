@@ -2337,16 +2337,16 @@
     {
       "field": "negative_control_count",
       "pass": true,
-      "published": 19,
+      "published": 23,
       "report": "r3_runtime_evidence_guard",
-      "reproduced": 19
+      "reproduced": 23
     },
     {
       "field": "negative_control_detected_count",
       "pass": true,
-      "published": 19,
+      "published": 23,
       "report": "r3_runtime_evidence_guard",
-      "reproduced": 19
+      "reproduced": 23
     },
     {
       "field": "negative_controls_pass",
@@ -2498,16 +2498,16 @@
     {
       "field": "negative_control_count",
       "pass": true,
-      "published": 19,
+      "published": 23,
       "report": "r3_runtime_instrumentation_plan",
-      "reproduced": 19
+      "reproduced": 23
     },
     {
       "field": "negative_control_detected_count",
       "pass": true,
-      "published": 19,
+      "published": 23,
       "report": "r3_runtime_instrumentation_plan",
-      "reproduced": 19
+      "reproduced": 23
     },
     {
       "field": "positive_control_count",
@@ -2624,23 +2624,23 @@
     {
       "field": "enforced_control_count",
       "pass": true,
-      "published": 15,
+      "published": 19,
       "report": "r3_runtime_contract_validation",
-      "reproduced": 15
+      "reproduced": 19
     },
     {
       "field": "negative_control_count",
       "pass": true,
-      "published": 19,
+      "published": 23,
       "report": "r3_runtime_contract_validation",
-      "reproduced": 19
+      "reproduced": 23
     },
     {
       "field": "negative_control_detected_count",
       "pass": true,
-      "published": 19,
+      "published": 23,
       "report": "r3_runtime_contract_validation",
-      "reproduced": 19
+      "reproduced": 23
     },
     {
       "field": "positive_control_count",
@@ -2666,9 +2666,9 @@
     {
       "field": "contract_check_count",
       "pass": true,
-      "published": 106,
+      "published": 122,
       "report": "r3_runtime_contract_validation",
-      "reproduced": 106
+      "reproduced": 122
     },
     {
       "field": "failure_count",
@@ -2778,9 +2778,9 @@
     {
       "field": "runtime_contract_check_count",
       "pass": true,
-      "published": 106,
+      "published": 122,
       "report": "sovereign_evolution_ledger",
-      "reproduced": 106
+      "reproduced": 122
     },
     {
       "field": "runtime_contract_failure_count",
@@ -2792,16 +2792,16 @@
     {
       "field": "runtime_negative_control_count",
       "pass": true,
-      "published": 19,
+      "published": 23,
       "report": "sovereign_evolution_ledger",
-      "reproduced": 19
+      "reproduced": 23
     },
     {
       "field": "runtime_negative_control_detected_count",
       "pass": true,
-      "published": 19,
+      "published": 23,
       "report": "sovereign_evolution_ledger",
-      "reproduced": 19
+      "reproduced": 23
     },
     {
       "field": "runtime_positive_control_count",
@@ -2827,9 +2827,9 @@
     {
       "field": "runtime_enforced_control_count",
       "pass": true,
-      "published": 15,
+      "published": 19,
       "report": "sovereign_evolution_ledger",
-      "reproduced": 15
+      "reproduced": 19
     },
     {
       "field": "legacy_debt_count",
@@ -3044,9 +3044,9 @@
     {
       "field": "evidence_hash",
       "pass": true,
-      "published": "sha256:a001c9ee16fb65e15a2ff453b8ddce8765d8dceafd8e1951db7e0e8020ec2edc",
+      "published": "sha256:b51bd1c55dea4ca640f569b58f1d7040f9cd95fbc015dbf148d544c6c40acdd4",
       "report": "attestation",
-      "reproduced": "sha256:a001c9ee16fb65e15a2ff453b8ddce8765d8dceafd8e1951db7e0e8020ec2edc"
+      "reproduced": "sha256:b51bd1c55dea4ca640f569b58f1d7040f9cd95fbc015dbf148d544c6c40acdd4"
     },
     {
       "field": "classification",
@@ -3099,7 +3099,7 @@
     }
   ],
   "failure_count": 0,
-  "generated_at": "2026-05-05T11:27:22Z",
+  "generated_at": "2026-05-05T11:39:14Z",
   "interpretation": {
     "boundary": "Generated timestamps, temporary paths and non-semantic ordering are intentionally excluded from comparison.",
     "purpose": "Regenerate PNVA evidence reports with current tools and compare stable fields against the published evidence package.",
@@ -3114,7 +3114,7 @@
   ],
   "schema_version": "pnva.reproducibility_guard.v1",
   "summary": {
-    "published_attestation_hash": "sha256:a001c9ee16fb65e15a2ff453b8ddce8765d8dceafd8e1951db7e0e8020ec2edc",
+    "published_attestation_hash": "sha256:b51bd1c55dea4ca640f569b58f1d7040f9cd95fbc015dbf148d544c6c40acdd4",
     "reports_reproduced": [
       "adversarial",
       "attestation",
@@ -3152,7 +3152,7 @@
       "suppression_ledger",
       "tension_decision"
     ],
-    "reproduced_attestation_hash": "sha256:a001c9ee16fb65e15a2ff453b8ddce8765d8dceafd8e1951db7e0e8020ec2edc",
+    "reproduced_attestation_hash": "sha256:b51bd1c55dea4ca640f569b58f1d7040f9cd95fbc015dbf148d544c6c40acdd4",
     "stable_fields_compared": 406
   }
 }

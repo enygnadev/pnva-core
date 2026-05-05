@@ -41,10 +41,10 @@ action_contract_count: 3
 required_runtime_event_count: 70
 event_template_count: 6
 mandatory_field_count: 24
-negative_control_detected_count: 19
+negative_control_detected_count: 23
 positive_control_passed_count: 6
-enforced_control_count: 15
-contract_check_count: 106
+enforced_control_count: 19
+contract_check_count: 122
 failure_count: 0
 ```
 
@@ -61,7 +61,7 @@ runtime approval remains false
 70 required runtime events remain paired
 6 templates remain two per action contract
 24 mandatory runtime fields are present
-19 negative controls are detected
+23 negative controls are detected
 6 positive controls are accepted as fixture-only guard controls
 guard enforced controls match the runtime contract
 contract slot IDs cover the matrix
@@ -74,6 +74,10 @@ source.format=native_pnva_event_v1
 field.state_before and field.state_after are required
 tension.gate_delta is required
 tension.components.r3_runtime_slot_id is required
+timestamps must be parseable ISO-8601 values
+duplicate event_id values are forbidden
+precheck and commit must share causal_chain_id
+commit timestamp must be at or after precheck timestamp
 ```
 
 ## Why This Matters

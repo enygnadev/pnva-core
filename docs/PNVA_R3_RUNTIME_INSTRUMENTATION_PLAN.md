@@ -46,7 +46,7 @@ required_no_tick_precheck_count: 35
 required_collapse_commit_count: 35
 event_template_count: 6
 mandatory_field_count: 24
-negative_control_detected_count: 19
+negative_control_detected_count: 23
 positive_control_passed_count: 6
 ```
 
@@ -71,6 +71,9 @@ source.format=native_pnva_event_v1
 commit authority >= H2
 entity_id present
 causal_chain_id present
+same causal_chain_id across precheck and commit
+commit timestamp >= precheck timestamp
+unique event_id values
 proof_hash present
 tension.components.original_event_id present
 tension.components.r3_runtime_slot_id present
@@ -132,7 +135,7 @@ Current result:
 
 ```text
 R3_RUNTIME_CONTRACT_VALIDATED_READY
-106 contract checks
+122 contract checks
 0 failures
 ```
 

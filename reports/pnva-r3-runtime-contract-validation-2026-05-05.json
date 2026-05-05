@@ -95,11 +95,11 @@
     },
     {
       "group": "controls",
-      "left": 19,
+      "left": 23,
       "left_ref": "negative_controls_complete",
       "name": "negative_controls_complete",
       "pass": true,
-      "right": 19,
+      "right": 23,
       "right_ref": "expected"
     },
     {
@@ -227,6 +227,24 @@
     {
       "group": "enforced_controls",
       "left": true,
+      "left_ref": "enforced_timestamp_iso8601_required",
+      "name": "enforced_timestamp_iso8601_required",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "enforced_controls",
+      "left": true,
+      "left_ref": "enforced_duplicate_event_id_forbidden",
+      "name": "enforced_duplicate_event_id_forbidden",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "enforced_controls",
+      "left": true,
       "left_ref": "enforced_field_state_required",
       "name": "enforced_field_state_required",
       "pass": true,
@@ -319,6 +337,24 @@
       "left": true,
       "left_ref": "enforced_precheck_must_be_no_tick",
       "name": "enforced_precheck_must_be_no_tick",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "enforced_controls",
+      "left": true,
+      "left_ref": "enforced_no_tick_pair_causal_chain_required",
+      "name": "enforced_no_tick_pair_causal_chain_required",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "enforced_controls",
+      "left": true,
+      "left_ref": "enforced_no_tick_pair_commit_after_precheck_required",
+      "name": "enforced_no_tick_pair_commit_after_precheck_required",
       "pass": true,
       "right": true,
       "right_ref": "expected"
@@ -561,6 +597,42 @@
       "right_ref": "expected"
     },
     {
+      "group": "pairing",
+      "left": true,
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_timestamp_iso8601_required",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_timestamp_iso8601_required",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "pairing",
+      "left": true,
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_duplicate_event_id_forbidden",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_duplicate_event_id_forbidden",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "pairing",
+      "left": true,
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_same_causal_chain_id_required",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_same_causal_chain_id_required",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "pairing",
+      "left": true,
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_commit_timestamp_after_precheck_required",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_commit_timestamp_after_precheck_required",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
       "group": "contract",
       "left": 2,
       "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_precheck_count",
@@ -775,6 +847,42 @@
       "left": true,
       "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_commit_rules_nonempty",
       "name": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_commit_rules_nonempty",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "pairing",
+      "left": true,
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_timestamp_iso8601_required",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_timestamp_iso8601_required",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "pairing",
+      "left": true,
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_duplicate_event_id_forbidden",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_duplicate_event_id_forbidden",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "pairing",
+      "left": true,
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_same_causal_chain_id_required",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_same_causal_chain_id_required",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "pairing",
+      "left": true,
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_commit_timestamp_after_precheck_required",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_commit_timestamp_after_precheck_required",
       "pass": true,
       "right": true,
       "right_ref": "expected"
@@ -999,6 +1107,42 @@
       "right_ref": "expected"
     },
     {
+      "group": "pairing",
+      "left": true,
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-execute_timestamp_iso8601_required",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-execute_timestamp_iso8601_required",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "pairing",
+      "left": true,
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-execute_duplicate_event_id_forbidden",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-execute_duplicate_event_id_forbidden",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "pairing",
+      "left": true,
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-execute_same_causal_chain_id_required",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-execute_same_causal_chain_id_required",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "pairing",
+      "left": true,
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-execute_commit_timestamp_after_precheck_required",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-execute_commit_timestamp_after_precheck_required",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
       "group": "contract",
       "left": 3,
       "left_ref": "contract_count",
@@ -1189,21 +1333,21 @@
     }
   ],
   "classification": "R3_RUNTIME_CONTRACT_VALIDATED_READY",
-  "contract_check_count": 106,
+  "contract_check_count": 122,
   "contract_validation_ready": true,
-  "enforced_control_count": 15,
+  "enforced_control_count": 19,
   "event_template_count": 6,
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-05-05T11:23:50Z",
+  "generated_at": "2026-05-05T11:35:43Z",
   "interpretation": {
     "boundary": "This is a contract validator, not runtime evidence and not final R3 cutover approval.",
     "purpose": "Validate that the R3 runtime capture matrix, evidence guard and instrumentation plan form one coherent runtime contract.",
     "sovereignty": "The final runtime path becomes harder to mislabel because the contract itself is checked before fresh runtime evidence is accepted."
   },
   "mandatory_field_count": 24,
-  "negative_control_count": 19,
-  "negative_control_detected_count": 19,
+  "negative_control_count": 23,
+  "negative_control_detected_count": 23,
   "pass": true,
   "positive_control_count": 6,
   "positive_control_passed_count": 6,
@@ -1231,11 +1375,11 @@
   "summary": {
     "action_contract_count": 3,
     "capture_slot_count": 35,
-    "contract_check_count": 106,
+    "contract_check_count": 122,
     "contract_validation_ready": true,
     "failure_count": 0,
     "mandatory_field_count": 24,
-    "negative_control_detected_count": 19,
+    "negative_control_detected_count": 23,
     "positive_control_passed_count": 6,
     "required_runtime_event_count": 70
   }

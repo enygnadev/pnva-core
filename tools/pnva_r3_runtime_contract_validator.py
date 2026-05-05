@@ -50,6 +50,8 @@ REQUIRED_COMPONENTS = [
 REQUIRED_ENFORCED_CONTROLS = {
     "schema_version_required": "pnva.event.v1",
     "timestamp_required": True,
+    "timestamp_iso8601_required": True,
+    "duplicate_event_id_forbidden": True,
     "field_state_required": True,
     "entity_id_required": True,
     "causal_chain_id_required": True,
@@ -61,6 +63,8 @@ REQUIRED_ENFORCED_CONTROLS = {
     "r3_runtime_slot_id_required": True,
     "commit_min_authority": "H2",
     "precheck_must_be_no_tick": True,
+    "no_tick_pair_causal_chain_required": True,
+    "no_tick_pair_commit_after_precheck_required": True,
     "commit_must_match_slot_action": True,
     "target_rules_required_on_commit": True,
 }
@@ -108,6 +112,7 @@ def _template_checks(checks: list[dict[str, Any]], contract: dict[str, Any]) -> 
     slot_count = int(contract.get("slot_count", 0))
     precheck = contract.get("precheck_template") if isinstance(contract.get("precheck_template"), dict) else {}
     commit = contract.get("commit_template") if isinstance(contract.get("commit_template"), dict) else {}
+    pairing = contract.get("pairing_policy") if isinstance(contract.get("pairing_policy"), dict) else {}
     slot_ids = contract.get("slot_ids") if isinstance(contract.get("slot_ids"), list) else []
     original_ids = contract.get("original_event_ids") if isinstance(contract.get("original_event_ids"), list) else []
 
@@ -131,6 +136,10 @@ def _template_checks(checks: list[dict[str, Any]], contract: dict[str, Any]) -> 
     _add_check(checks, "template", f"{contract_id}_commit_min_authority", commit.get("min_authority"), "H2")
     _add_check(checks, "template", f"{contract_id}_precheck_native_rule", "native_event_emitter" in set(precheck.get("required_rules", [])), True)
     _add_check(checks, "template", f"{contract_id}_commit_rules_nonempty", bool(commit.get("required_rules")), True)
+    _add_check(checks, "pairing", f"{contract_id}_timestamp_iso8601_required", pairing.get("timestamp_iso8601_required"), True)
+    _add_check(checks, "pairing", f"{contract_id}_duplicate_event_id_forbidden", pairing.get("duplicate_event_id_forbidden"), True)
+    _add_check(checks, "pairing", f"{contract_id}_same_causal_chain_id_required", pairing.get("same_causal_chain_id_required"), True)
+    _add_check(checks, "pairing", f"{contract_id}_commit_timestamp_after_precheck_required", pairing.get("commit_timestamp_after_precheck_required"), True)
 
 
 def build_report(repo: Path) -> dict[str, Any]:

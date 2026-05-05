@@ -44,8 +44,11 @@ required_collapse_commit_count: 35
 accepted_slot_count: 0
 pending_slot_count: 35
 rejected_event_count: 0
-negative_control_detected_count: 19
-negative_control_count: 19
+duplicate_event_rejection_count: 0
+no_tick_pair_integrity_count: 0
+no_tick_pair_failure_count: 0
+negative_control_detected_count: 23
+negative_control_count: 23
 positive_control_passed_count: 6
 positive_control_count: 6
 positive_controls_fixture_only: true
@@ -61,6 +64,8 @@ It rejects final runtime evidence when any event has:
 proof.projection=true
 missing schema_version
 missing timestamp
+invalid timestamp
+duplicate event_id
 missing entity_id
 missing causal_chain_id
 missing field.state_before or field.state_after
@@ -76,6 +81,8 @@ missing r3_runtime_slot_id
 original event mismatch
 R3 runtime slot mismatch
 entity mismatch
+precheck and commit without shared causal_chain_id
+commit timestamp before precheck timestamp
 commit authority below H2
 commit action mismatch
 missing native target rules
@@ -89,6 +96,9 @@ Every R3 slot must contain:
 ```text
 1 native no-tick precheck event
 1 native collapse commit event
+same causal_chain_id
+commit timestamp >= precheck timestamp
+unique event_id values
 ```
 
 The precheck proves that PNVA can observe and suppress without waking blindly.
@@ -102,6 +112,7 @@ The guard runs internal rejection controls before it claims readiness:
 ```text
 reject_projection_true
 reject_missing_timestamp
+reject_invalid_timestamp
 reject_missing_field_state
 reject_missing_gate_delta
 reject_nonfinite_tension_score
@@ -119,12 +130,15 @@ reject_slot_id_mismatch
 reject_original_event_mismatch
 reject_missing_native_proof
 reject_invalid_source_format
+reject_duplicate_event_id
+reject_no_tick_pair_chain_mismatch
+reject_commit_before_precheck
 ```
 
 Current result:
 
 ```text
-19/19 detected
+23/23 detected
 ```
 
 ## Positive Controls
@@ -166,7 +180,7 @@ R3_RUNTIME_INSTRUMENTATION_PLAN_READY
 6 event templates
 70 required runtime events
 24 mandatory event fields
-19 negative controls
+23 negative controls
 6 positive controls
 ```
 

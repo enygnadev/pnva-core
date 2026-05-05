@@ -93,6 +93,12 @@ def _action_contracts(slots: list[dict[str, Any]]) -> list[dict[str, Any]]:
                 "event_type_mix": event_types.most_common(),
                 "target_rules": rules,
                 "risk_flags": risk_flags.most_common(),
+                "pairing_policy": {
+                    "timestamp_iso8601_required": True,
+                    "duplicate_event_id_forbidden": True,
+                    "same_causal_chain_id_required": True,
+                    "commit_timestamp_after_precheck_required": True,
+                },
                 "precheck_template": {
                     "schema_version": "pnva.event.v1",
                     "event_type": f"{first.get('event_type')}_authority_precheck",
