@@ -1,0 +1,220 @@
+{
+  "author": "Gustavo de Aguiar Martins",
+  "blocker_count": 0,
+  "blockers": [],
+  "classification": "SOVEREIGN_ROBUSTNESS_GATE_READY_WITH_LEGACY_WARNINGS",
+  "criteria": [
+    {
+      "evidence": {
+        "decision_heuristic_coverage_ratio": 1.0,
+        "decision_proof_coverage_ratio": 1.0,
+        "entity_coverage_ratio": 1.0,
+        "influence_proof_coverage_ratio": 1.0,
+        "suppression_proof_coverage_ratio": 1.0,
+        "trace_coverage_ratio": 1.0
+      },
+      "max_points": 15,
+      "name": "complete_decision_and_proof_coverage",
+      "pass": true,
+      "points": 15
+    },
+    {
+      "evidence": {
+        "aggregate_no_tick_suppression_ratio": 0.481696,
+        "canonical_suppressed_count": 246,
+        "ledger_avoided_execution_count": 250,
+        "ledger_suppressed_count": 250,
+        "native_suppressed_count": 4,
+        "total_suppressed_count": 250
+      },
+      "max_points": 15,
+      "name": "no_tick_suppression_stability",
+      "pass": true,
+      "points": 15
+    },
+    {
+      "evidence": {
+        "clean_count": 8,
+        "native_calibration_clean": true,
+        "native_chronology_clean": true,
+        "native_influence_clean": true,
+        "native_matrix_clean": true,
+        "native_policy_clean": true,
+        "native_proof_chain_clean": true,
+        "native_suppression_clean": true,
+        "native_trace_clean": true,
+        "signal_count": 8
+      },
+      "max_points": 20,
+      "name": "native_runtime_cleanliness",
+      "pass": true,
+      "points": 20
+    },
+    {
+      "evidence": {
+        "adversarial_failures": 0,
+        "canonical_proof_bad": 0,
+        "chronology_errors": 0,
+        "graph_errors": 0,
+        "native_proof_bad": 0,
+        "replay_errors": 0,
+        "schema_errors": 0
+      },
+      "max_points": 15,
+      "name": "causal_integrity",
+      "pass": true,
+      "points": 15
+    },
+    {
+      "evidence": {
+        "aggregate_hard_authority_ratio": 0.884868,
+        "heuristic_hard_authority_edge_ratio": 0.683099,
+        "legacy_uncompensated_strong_events": 35,
+        "total_strong_decision_count": 304,
+        "total_strong_with_hard_authority": 269
+      },
+      "max_points": 15,
+      "name": "authority_governance",
+      "pass": true,
+      "points": 15
+    },
+    {
+      "evidence": {
+        "canonical_low_authority_legacy_count": 35,
+        "legacy_warning_total": 1195,
+        "native_low_authority_legacy_count": 0,
+        "policy": "canonical warnings are migration evidence; native debt is a blocker"
+      },
+      "max_points": 10,
+      "name": "legacy_debt_containment",
+      "pass": true,
+      "points": 7
+    },
+    {
+      "evidence": {
+        "detected_count": 7,
+        "failure_count": 0,
+        "test_count": 7
+      },
+      "max_points": 10,
+      "name": "adversarial_detection",
+      "pass": true,
+      "points": 10
+    }
+  ],
+  "event_count": 519,
+  "generated_at": "2026-05-05T07:57:00Z",
+  "hard_authority_ratio": 0.884868,
+  "interpretation": {
+    "boundary": "This gate validates the published evidence package; it does not claim universal behavior for unmeasured deployments.",
+    "purpose": "Collapse PNVA no-tick, entities, heuristics, proofs and legacy debt into one production-readiness gate.",
+    "sovereignty": "A PNVA runtime is stronger when native execution is clean and legacy risk is explicit, bounded and measurable."
+  },
+  "legacy_debt_count": 35,
+  "legacy_warning_sources": {
+    "chronology_warning_count": 2,
+    "decision_trace_warning_count": 152,
+    "entity_no_tick_warning_count": 35,
+    "heuristic_influence_warning_count": 70,
+    "maturity_warning_count": 35,
+    "schema_contract_warning_count": 341,
+    "suppression_ledger_warning_count": 176,
+    "tension_decision_warning_count": 384
+  },
+  "legacy_warning_total": 1195,
+  "max_score": 100,
+  "migration_targets": [
+    {
+      "action": "replace future H0 strong decisions with H2/H3 native authority",
+      "count": 35,
+      "priority": "high",
+      "target": "legacy_observer_h0_strong_decisions"
+    },
+    {
+      "action": "migrate legacy strong influence edges to adaptive_threshold, field_scheduler or etev_guard authority",
+      "count": 164,
+      "priority": "high",
+      "target": "low_authority_strong_influence_edges"
+    },
+    {
+      "action": "re-emit future suppressions through native calibrated tension thresholds",
+      "count": 176,
+      "priority": "medium",
+      "target": "above_threshold_suppression_events"
+    },
+    {
+      "action": "emit pnva.event.v1 directly instead of relying on bridge normalization",
+      "count": 341,
+      "priority": "medium",
+      "target": "legacy_schema_contract_warnings"
+    }
+  ],
+  "native_clean_signal_count": 8,
+  "native_clean_signal_total": 8,
+  "native_clean_signals": {
+    "native_calibration_clean": true,
+    "native_chronology_clean": true,
+    "native_influence_clean": true,
+    "native_matrix_clean": true,
+    "native_policy_clean": true,
+    "native_proof_chain_clean": true,
+    "native_suppression_clean": true,
+    "native_trace_clean": true
+  },
+  "no_tick_suppression_ratio": 0.481696,
+  "pass": true,
+  "project": "PNVA-Core",
+  "readiness_level": "R2_NATIVE_CLEAN_LEGACY_QUARANTINED",
+  "recommendations": [
+    "Keep this gate after suppression/influence/entity analysis and before evidence attestation.",
+    "Treat native cleanliness regressions as blockers, not warnings.",
+    "Use migration_targets as the next hardening backlog before claiming legacy-free production status.",
+    "Keep no-tick suppression proof-backed and entity-attributed in every new runtime event."
+  ],
+  "reports_checked": {
+    "adversarial": "reports/pnva-adversarial-validation-2026-05-05.json",
+    "causal_chronology": "reports/pnva-causal-chronology-2026-05-05.json",
+    "causal_graph": "reports/pnva-causal-graph-2026-05-05.json",
+    "decision_trace_index": "reports/pnva-decision-trace-index-2026-05-05.json",
+    "entity_no_tick_matrix": "reports/pnva-entity-no-tick-matrix-2026-05-05.json",
+    "heuristic_influence_map": "reports/pnva-heuristic-influence-map-2026-05-05.json",
+    "maturity": "reports/pnva-entity-heuristic-maturity-2026-05-05.json",
+    "native_causal_graph": "reports/pnva-native-causal-graph-2026-05-05.json",
+    "native_no_tick": "reports/pnva-native-no-tick-invariants-2026-05-05.json",
+    "native_policy": "reports/pnva-native-sovereign-policy-2026-05-05.json",
+    "native_proof_chain": "reports/pnva-native-proof-chain-2026-05-05.json",
+    "no_tick": "reports/pnva-no-tick-invariants-2026-05-05.json",
+    "policy": "reports/pnva-sovereign-policy-2026-05-05.json",
+    "proof_chain": "reports/pnva-proof-chain-2026-05-05.json",
+    "replay": "reports/pnva-replay-validation-2026-05-05.json",
+    "schema_contract": "reports/pnva-schema-contract-validation-2026-05-05.json",
+    "suppression_ledger": "reports/pnva-suppression-ledger-2026-05-05.json",
+    "tension_decision": "reports/pnva-tension-decision-calibration-2026-05-05.json"
+  },
+  "robustness_score": 97,
+  "schema_version": "pnva.sovereign_robustness_gate.v1",
+  "summary": {
+    "aggregate_hard_authority_ratio": 0.884868,
+    "aggregate_no_tick_suppression_ratio": 0.481696,
+    "canonical_low_authority_legacy_count": 35,
+    "max_score": 100,
+    "native_clean_signal_count": 8,
+    "native_clean_signal_total": 8,
+    "native_low_authority_legacy_count": 0,
+    "robustness_score": 97,
+    "total_event_count": 519,
+    "total_strong_decision_count": 304,
+    "total_strong_with_hard_authority": 269,
+    "total_suppressed_count": 250
+  },
+  "suppressed_count": 250,
+  "warning_count": 1,
+  "warnings": [
+    {
+      "canonical_low_authority_legacy_count": 35,
+      "code": "CANONICAL_LEGACY_DEBT_QUARANTINED",
+      "legacy_warning_total": 1195,
+      "native_low_authority_legacy_count": 0
+    }
+  ]
+}

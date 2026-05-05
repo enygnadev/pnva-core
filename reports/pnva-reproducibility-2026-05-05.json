@@ -1,7 +1,7 @@
 {
   "author": "Gustavo de Aguiar Martins",
   "classification": "REPRODUCIBILITY_READY",
-  "command_count": 22,
+  "command_count": 23,
   "command_failure_count": 0,
   "command_failures": [],
   "commands": {
@@ -145,6 +145,13 @@
       "parse_error": "",
       "pass": true
     },
+    "sovereign_robustness_gate": {
+      "classification": "SOVEREIGN_ROBUSTNESS_GATE_READY_WITH_LEGACY_WARNINGS",
+      "command": "tools/pnva_sovereign_robustness_gate.py --write <TEMP>/sovereign-robustness-gate.json",
+      "exit_code": 0,
+      "parse_error": "",
+      "pass": true
+    },
     "suppression_ledger": {
       "classification": "SUPPRESSION_LEDGER_READY_WITH_LEGACY_WARNINGS",
       "command": "tools/pnva_suppression_ledger.py --write <TEMP>/suppression-ledger.json",
@@ -160,7 +167,7 @@
       "pass": true
     }
   },
-  "comparison_count": 190,
+  "comparison_count": 204,
   "comparison_failure_count": 0,
   "comparison_failures": [],
   "comparisons": [
@@ -1301,6 +1308,104 @@
     {
       "field": "classification",
       "pass": true,
+      "published": "SOVEREIGN_ROBUSTNESS_GATE_READY_WITH_LEGACY_WARNINGS",
+      "report": "sovereign_robustness_gate",
+      "reproduced": "SOVEREIGN_ROBUSTNESS_GATE_READY_WITH_LEGACY_WARNINGS"
+    },
+    {
+      "field": "pass",
+      "pass": true,
+      "published": true,
+      "report": "sovereign_robustness_gate",
+      "reproduced": true
+    },
+    {
+      "field": "readiness_level",
+      "pass": true,
+      "published": "R2_NATIVE_CLEAN_LEGACY_QUARANTINED",
+      "report": "sovereign_robustness_gate",
+      "reproduced": "R2_NATIVE_CLEAN_LEGACY_QUARANTINED"
+    },
+    {
+      "field": "robustness_score",
+      "pass": true,
+      "published": 97,
+      "report": "sovereign_robustness_gate",
+      "reproduced": 97
+    },
+    {
+      "field": "max_score",
+      "pass": true,
+      "published": 100,
+      "report": "sovereign_robustness_gate",
+      "reproduced": 100
+    },
+    {
+      "field": "event_count",
+      "pass": true,
+      "published": 519,
+      "report": "sovereign_robustness_gate",
+      "reproduced": 519
+    },
+    {
+      "field": "suppressed_count",
+      "pass": true,
+      "published": 250,
+      "report": "sovereign_robustness_gate",
+      "reproduced": 250
+    },
+    {
+      "field": "no_tick_suppression_ratio",
+      "pass": true,
+      "published": 0.481696,
+      "report": "sovereign_robustness_gate",
+      "reproduced": 0.481696
+    },
+    {
+      "field": "native_clean_signal_count",
+      "pass": true,
+      "published": 8,
+      "report": "sovereign_robustness_gate",
+      "reproduced": 8
+    },
+    {
+      "field": "native_clean_signal_total",
+      "pass": true,
+      "published": 8,
+      "report": "sovereign_robustness_gate",
+      "reproduced": 8
+    },
+    {
+      "field": "legacy_debt_count",
+      "pass": true,
+      "published": 35,
+      "report": "sovereign_robustness_gate",
+      "reproduced": 35
+    },
+    {
+      "field": "blocker_count",
+      "pass": true,
+      "published": 0,
+      "report": "sovereign_robustness_gate",
+      "reproduced": 0
+    },
+    {
+      "field": "warning_count",
+      "pass": true,
+      "published": 1,
+      "report": "sovereign_robustness_gate",
+      "reproduced": 1
+    },
+    {
+      "field": "hard_authority_ratio",
+      "pass": true,
+      "published": 0.884868,
+      "report": "sovereign_robustness_gate",
+      "reproduced": 0.884868
+    },
+    {
+      "field": "classification",
+      "pass": true,
       "published": "ADVERSARIAL_VALIDATION_PASS",
       "report": "adversarial",
       "reproduced": "ADVERSARIAL_VALIDATION_PASS"
@@ -1427,9 +1532,9 @@
     {
       "field": "artifact_count",
       "pass": true,
-      "published": 26,
+      "published": 27,
       "report": "attestation",
-      "reproduced": 26
+      "reproduced": 27
     },
     {
       "field": "failure_count",
@@ -1441,9 +1546,9 @@
     {
       "field": "evidence_hash",
       "pass": true,
-      "published": "sha256:c892d5b8f9de3012a47baacb291b9e79bc509142d1919eb58493793c85453183",
+      "published": "sha256:83c245d18da49eefd61c207bce2663c96760f2a581f0c9baac09ad3bc1dad8f1",
       "report": "attestation",
-      "reproduced": "sha256:c892d5b8f9de3012a47baacb291b9e79bc509142d1919eb58493793c85453183"
+      "reproduced": "sha256:83c245d18da49eefd61c207bce2663c96760f2a581f0c9baac09ad3bc1dad8f1"
     },
     {
       "field": "classification",
@@ -1462,9 +1567,9 @@
     {
       "field": "check_count",
       "pass": true,
-      "published": 143,
+      "published": 159,
       "report": "semantic",
-      "reproduced": 143
+      "reproduced": 159
     },
     {
       "field": "error_count",
@@ -1496,7 +1601,7 @@
     }
   ],
   "failure_count": 0,
-  "generated_at": "2026-05-05T07:41:42Z",
+  "generated_at": "2026-05-05T07:58:46Z",
   "interpretation": {
     "boundary": "Generated timestamps, temporary paths and non-semantic ordering are intentionally excluded from comparison.",
     "purpose": "Regenerate PNVA evidence reports with current tools and compare stable fields against the published evidence package.",
@@ -1511,7 +1616,7 @@
   ],
   "schema_version": "pnva.reproducibility_guard.v1",
   "summary": {
-    "published_attestation_hash": "sha256:c892d5b8f9de3012a47baacb291b9e79bc509142d1919eb58493793c85453183",
+    "published_attestation_hash": "sha256:83c245d18da49eefd61c207bce2663c96760f2a581f0c9baac09ad3bc1dad8f1",
     "reports_reproduced": [
       "adversarial",
       "attestation",
@@ -1533,10 +1638,11 @@
       "replay",
       "schema_contract",
       "semantic",
+      "sovereign_robustness_gate",
       "suppression_ledger",
       "tension_decision"
     ],
-    "reproduced_attestation_hash": "sha256:c892d5b8f9de3012a47baacb291b9e79bc509142d1919eb58493793c85453183",
-    "stable_fields_compared": 190
+    "reproduced_attestation_hash": "sha256:83c245d18da49eefd61c207bce2663c96760f2a581f0c9baac09ad3bc1dad8f1",
+    "stable_fields_compared": 204
   }
 }

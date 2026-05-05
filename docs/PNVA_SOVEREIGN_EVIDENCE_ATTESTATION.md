@@ -24,6 +24,7 @@ decision trace index
 heuristic influence map
 entity no-tick matrix
 suppression ledger
+sovereign robustness gate
 adversarial validation
 entity and heuristic maturity
 sovereign audit
@@ -65,7 +66,7 @@ Current result:
 ```text
 classification: PNVA_SOVEREIGN_EVIDENCE_ATTESTED
 pass: true
-artifact_count: 26
+artifact_count: 27
 failure_count: 0
 ```
 

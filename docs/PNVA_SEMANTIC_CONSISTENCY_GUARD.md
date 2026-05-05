@@ -35,6 +35,7 @@ decision trace index
 heuristic influence map
 entity no-tick matrix
 suppression ledger
+sovereign robustness gate
 adversarial validation
 entity and heuristic maturity
 evidence attestation
@@ -60,7 +61,7 @@ SEMANTIC_CONSISTENCY_READY
 Current result:
 
 ```text
-check_count: 143
+check_count: 155
 error_count: 0
 warning_count: 0
 ```
@@ -80,6 +81,7 @@ decision trace index vs Manifest, attestation and audit
 heuristic influence map vs Manifest, attestation and audit
 entity no-tick matrix vs Manifest, attestation and audit
 suppression ledger vs Manifest, attestation and audit
+sovereign robustness gate vs Manifest, attestation, maturity and audit
 maturity aggregate math vs canonical + native reports
 attestation artifact count vs artifact list
 audit summary vs attestation and maturity report
@@ -95,6 +97,7 @@ Examples:
 519 traced events must equal canonical + native event count.
 9 heuristic rules must match schema contract heuristic rule count.
 250 avoided executions must equal 250 ledger suppressions.
+97 robustness score must preserve 8/8 native clean signals and 0 blockers.
 304 strong decisions must equal 299 canonical + 5 native.
 269 hard-authority strong decisions must equal 304 - 35 legacy low-authority warnings.
 ```

@@ -31,8 +31,8 @@ REPRODUCIBILITY_READY
 Current result:
 
 ```text
-command_count: 22
-comparison_count: 190
+command_count: 23
+comparison_count: 204
 failure_count: 0
 command_failure_count: 0
 comparison_failure_count: 0
@@ -61,6 +61,7 @@ decision trace index
 heuristic influence map
 entity no-tick matrix
 suppression ledger
+sovereign robustness gate
 adversarial validation
 entity and heuristic maturity
 evidence attestation
@@ -93,6 +94,7 @@ decision trace coverage
 heuristic influence edge count
 entity no-tick matrix suppression count
 suppression ledger avoided execution count
+sovereign robustness score and native clean signal count
 ```
 
 The guard intentionally ignores:

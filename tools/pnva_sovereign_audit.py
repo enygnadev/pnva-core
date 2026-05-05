@@ -54,6 +54,7 @@ PUBLIC_DOCS = [
     "docs/PNVA_HEURISTIC_INFLUENCE_MAP.md",
     "docs/PNVA_ENTITY_NO_TICK_MATRIX.md",
     "docs/PNVA_SUPPRESSION_LEDGER.md",
+    "docs/PNVA_SOVEREIGN_ROBUSTNESS_GATE.md",
     "docs/PNVA_SOVEREIGN_EVIDENCE_ATTESTATION.md",
     "docs/PNVA_ADVERSARIAL_VALIDATION.md",
     "docs/PNVA_ENTITY_HEURISTIC_MATURITY.md",
@@ -157,6 +158,12 @@ SUPPRESSION_LEDGER_FILES = [
     "tools/pnva_suppression_ledger.py",
     "docs/PNVA_SUPPRESSION_LEDGER.md",
     "reports/pnva-suppression-ledger-2026-05-05.json",
+]
+
+SOVEREIGN_ROBUSTNESS_GATE_FILES = [
+    "tools/pnva_sovereign_robustness_gate.py",
+    "docs/PNVA_SOVEREIGN_ROBUSTNESS_GATE.md",
+    "reports/pnva-sovereign-robustness-gate-2026-05-05.json",
 ]
 
 EVIDENCE_ATTESTATION_FILES = [
@@ -957,6 +964,42 @@ def audit_suppression_ledger(repo: Path) -> dict[str, Any]:
     }
 
 
+def audit_sovereign_robustness_gate(repo: Path) -> dict[str, Any]:
+    missing = [rel for rel in SOVEREIGN_ROBUSTNESS_GATE_FILES if not (repo / rel).exists()]
+    report_path = repo / "reports" / "pnva-sovereign-robustness-gate-2026-05-05.json"
+    if not report_path.exists():
+        return {
+            "robustness_gate_ok": False,
+            "missing": missing,
+            "classification": "SOVEREIGN_ROBUSTNESS_GATE_MISSING",
+            "errors": ["missing sovereign robustness gate report"],
+        }
+    data = _read_json(report_path)
+    return {
+        "robustness_gate_ok": (
+            not missing
+            and data.get("pass") is True
+            and str(data.get("classification", "")).startswith("SOVEREIGN_ROBUSTNESS_GATE_READY")
+            and int(data.get("blocker_count", 1)) == 0
+            and int(data.get("native_clean_signal_count", 0)) == int(data.get("native_clean_signal_total", 1))
+            and int(data.get("robustness_score", 0)) >= 90
+        ),
+        "missing": missing,
+        "classification": data.get("classification"),
+        "readiness_level": data.get("readiness_level"),
+        "robustness_score": int(data.get("robustness_score", 0)),
+        "event_count": int(data.get("event_count", 0)),
+        "suppressed_count": int(data.get("suppressed_count", 0)),
+        "no_tick_suppression_ratio": float(data.get("no_tick_suppression_ratio", 0.0)),
+        "native_clean_signal_count": int(data.get("native_clean_signal_count", 0)),
+        "native_clean_signal_total": int(data.get("native_clean_signal_total", 0)),
+        "legacy_debt_count": int(data.get("legacy_debt_count", 0)),
+        "blocker_count": int(data.get("blocker_count", 0)),
+        "warning_count": int(data.get("warning_count", 0)),
+        "errors": [] if isinstance(data, dict) and data.get("pass") is True else ["sovereign robustness gate failed"],
+    }
+
+
 def audit_reproducibility(repo: Path) -> dict[str, Any]:
     missing = [rel for rel in REPRODUCIBILITY_FILES if not (repo / rel).exists()]
     report_path = repo / "reports" / "pnva-reproducibility-2026-05-05.json"
@@ -1192,6 +1235,8 @@ def score_report(report: dict[str, Any]) -> dict[str, Any]:
         scores["actionability"] += 0
     if report.get("suppression_ledger", {}).get("ledger_ok"):
         scores["actionability"] += 0
+    if report.get("sovereign_robustness_gate", {}).get("robustness_gate_ok"):
+        scores["actionability"] += 0
     if report.get("sovereign_policy", {}).get("policy_ok"):
         scores["actionability"] += 0
     if report.get("proof_chain", {}).get("chain_ok"):
@@ -1266,6 +1311,7 @@ def build_report(repo: Path, *, strict_public: bool = False) -> dict[str, Any]:
         "heuristic_influence_map": audit_heuristic_influence_map(repo),
         "entity_no_tick_matrix": audit_entity_no_tick_matrix(repo),
         "suppression_ledger": audit_suppression_ledger(repo),
+        "sovereign_robustness_gate": audit_sovereign_robustness_gate(repo),
         "evidence_attestation": audit_evidence_attestation(repo),
         "adversarial_validation": audit_adversarial_validation(repo),
         "entity_heuristic_maturity": audit_entity_heuristic_maturity(repo),
@@ -1288,6 +1334,7 @@ def build_report(repo: Path, *, strict_public: bool = False) -> dict[str, Any]:
             "Run heuristic influence map so rule authority, decision mix and entity reach remain measurable.",
             "Run entity no-tick matrix so suppression and execution remain attributable by entity.",
             "Run suppression ledger so avoided execution is proof-backed.",
+            "Run sovereign robustness gate so native cleanliness and legacy debt collapse into one readiness decision.",
             "Publish one sovereign evidence attestation hash with every evidence release.",
             "Run adversarial validation so validators prove tamper detection, not only green-path acceptance.",
             "Track entity and heuristic maturity so no-tick suppression stays attributable to actors and authority.",

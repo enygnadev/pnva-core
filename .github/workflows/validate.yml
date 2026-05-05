@@ -148,6 +148,12 @@ jobs:
             --write /tmp/pnva-suppression-ledger.json \
             >/dev/null
           python3 -m json.tool /tmp/pnva-suppression-ledger.json >/dev/null
+      - name: Run sovereign robustness gate
+        run: |
+          python3 tools/pnva_sovereign_robustness_gate.py \
+            --write /tmp/pnva-sovereign-robustness-gate.json \
+            >/dev/null
+          python3 -m json.tool /tmp/pnva-sovereign-robustness-gate.json >/dev/null
       - name: Run evidence attestor
         run: |
           python3 tools/pnva_evidence_attestor.py \

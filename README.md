@@ -128,6 +128,7 @@ docs/
   PNVA_HEURISTIC_INFLUENCE_MAP.md
   PNVA_ENTITY_NO_TICK_MATRIX.md
   PNVA_SUPPRESSION_LEDGER.md
+  PNVA_SOVEREIGN_ROBUSTNESS_GATE.md
   PNVA_SOVEREIGN_EVIDENCE_ATTESTATION.md
   PNVA_ADVERSARIAL_VALIDATION.md
   PNVA_ENTITY_HEURISTIC_MATURITY.md
@@ -177,6 +178,7 @@ reports/
   pnva-heuristic-influence-map-2026-05-05.json
   pnva-entity-no-tick-matrix-2026-05-05.json
   pnva-suppression-ledger-2026-05-05.json
+  pnva-sovereign-robustness-gate-2026-05-05.json
   pnva-sovereign-evidence-attestation-2026-05-05.json
   pnva-adversarial-validation-2026-05-05.json
   pnva-entity-heuristic-maturity-2026-05-05.json
@@ -204,6 +206,7 @@ tools/
   pnva_heuristic_influence_map.py
   pnva_entity_no_tick_matrix.py
   pnva_suppression_ledger.py
+  pnva_sovereign_robustness_gate.py
   pnva_evidence_attestor.py
   pnva_adversarial_validator.py
   pnva_entity_heuristic_maturity.py
@@ -334,11 +337,13 @@ The entity no-tick matrix attributes execution and suppression by entity, heuris
 
 The suppression ledger treats non-execution as proof-backed work avoidance. The current package is `SUPPRESSION_LEDGER_READY_WITH_LEGACY_WARNINGS` with `250` suppressions, `250` estimated avoided executions, proof coverage `1.0`, `0` errors and `176` preserved legacy threshold warnings; native suppression is clean.
 
+The sovereign robustness gate collapses no-tick, trace coverage, heuristic influence, entity attribution, suppression ledger, causal integrity, adversarial validation and legacy debt into one readiness decision. The current package is `SOVEREIGN_ROBUSTNESS_GATE_READY_WITH_LEGACY_WARNINGS` with score `97/100`, `519` events, `250` suppressions, `8/8` native clean signals, `0` blockers and `35` quarantined legacy low-authority strong decisions.
+
 The adversarial validator runs negative controls against the public validators. The current package is `ADVERSARIAL_VALIDATION_PASS` with `7` detections over `7` controlled mutations.
 
 The entity and heuristic maturity auditor scores actor/rule readiness across entity coverage, proof coverage, no-tick suppression, authority and causal relations. The current package is `ENTITY_HEURISTIC_MATURITY_READY_WITH_LEGACY_WARNINGS` with score `94.59`, `0` errors and `35` preserved legacy warnings.
 
-The semantic consistency guard checks cross-report agreement across Manifest, replay, no-tick, policy, proof-chain, graph, schema contract, causal chronology, tension-decision calibration, decision trace index, heuristic influence map, entity no-tick matrix, suppression ledger, maturity, adversarial validation, attestation and audit. The current package is `SEMANTIC_CONSISTENCY_READY` with the public report's check count, `0` errors and `0` warnings.
+The semantic consistency guard checks cross-report agreement across Manifest, replay, no-tick, policy, proof-chain, graph, schema contract, causal chronology, tension-decision calibration, decision trace index, heuristic influence map, entity no-tick matrix, suppression ledger, robustness gate, maturity, adversarial validation, attestation and audit. The current package is `SEMANTIC_CONSISTENCY_READY` with the public report's check count, `0` errors and `0` warnings.
 
 The reproducibility guard reruns the current evidence commands and compares stable fields against the published reports. The current package is `REPRODUCIBILITY_READY` with the public report's command/comparison counts and `0` failures.
 

@@ -677,12 +677,49 @@ Production interpretation:
 
 PNVA/no-tick becomes academically stronger when non-execution is treated as a first-class proof artifact. The current ledger shows 250 proof-backed suppressions, interpreted as 250 avoided executions. The native path has no above-threshold suppression drift; the 176 warnings remain visible as legacy bridge evidence instead of being erased.
 
-## 21. Sovereign Evidence Attestation
+## 21. Sovereign Robustness Gate
+
+After suppression, entity and heuristic evidence is visible, collapse the release posture into one readiness gate:
+
+```text
+no-tick + traces + heuristics + entities + proof + native cleanliness + legacy debt -> robustness gate
+```
+
+Current report:
+
+```text
+reports/pnva-sovereign-robustness-gate-2026-05-05.json
+```
+
+Current classification:
+
+```text
+SOVEREIGN_ROBUSTNESS_GATE_READY_WITH_LEGACY_WARNINGS
+```
+
+Current result:
+
+```text
+readiness_level: R2_NATIVE_CLEAN_LEGACY_QUARANTINED
+robustness_score: 97 / 100
+event_count: 519
+suppressed_count: 250
+no_tick_suppression_ratio: 0.481696
+native_clean_signal_count: 8 / 8
+legacy_debt_count: 35
+blocker_count: 0
+```
+
+Production interpretation:
+
+This is the strongest honest summary of the current package: native PNVA evidence is clean; historical canonical evidence still carries bounded migration debt. New production events should target `R3_NATIVE_CLEAN_LEGACY_FREE` by removing the remaining 35 low-authority strong legacy decisions.
+
+## 22. Sovereign Evidence Attestation
 
 After all validators run, bind the evidence package:
 
 ```text
-proofs + events + replay + invariants + policy + chains + graphs + schema contract + chronology + tension decision + decision trace + heuristic influence + entity matrix + suppression ledger -> evidence_hash
+proofs + events + replay + invariants + policy + chains + graphs + schema contract + chronology + tension decision + decision trace + heuristic influence + entity matrix + suppression ledger + robustness gate -> evidence_hash
 ```
 
 The attestation lists each tracked artifact with:
@@ -704,7 +741,7 @@ PNVA_SOVEREIGN_EVIDENCE_ATTESTED
 Current package:
 
 ```text
-26 tracked artifacts
+27 tracked artifacts
 0 failures
 ```
 
@@ -714,7 +751,7 @@ PNVA evidence should be cited by a single aggregate hash, while still preserving
 
 The sovereign audit is not included inside that aggregate hash because it consumes the attestation. This avoids circular hashing.
 
-## 22. Adversarial Validation
+## 23. Adversarial Validation
 
 A sovereign validator must prove that it rejects bad evidence, not only that it accepts clean evidence.
 
@@ -752,7 +789,7 @@ Production interpretation:
 
 PNVA evidence becomes more sovereign when validators have negative controls. A `PASS` is stronger when the same tooling can also show why corrupted proof, weak authority, invalid topology, duplicate identity, reordered sequence or malformed JSON does not pass silently.
 
-## 23. Entity And Heuristic Maturity
+## 24. Entity And Heuristic Maturity
 
 After validation and adversarial controls, score the maturity of the actors and rules:
 
@@ -790,7 +827,7 @@ Production interpretation:
 
 The canonical legacy bridge preserves 35 low-authority strong decisions as warnings. The native runtime path has zero low-authority legacy warnings. This creates a clean migration rule: old evidence stays honest; new PNVA runtimes must emit native events with H2/H3 authority.
 
-## 24. Semantic Consistency Guard
+## 25. Semantic Consistency Guard
 
 After all evidence reports are generated, check whether they agree as a system:
 
@@ -813,18 +850,18 @@ SEMANTIC_CONSISTENCY_READY
 Current result:
 
 ```text
-check_count: 143
+check_count: 159
 error_count: 0
 warning_count: 0
 ```
 
 Production interpretation:
 
-PNVA evidence should not pass only as isolated files. The release is stronger when event counts, trace coverage, heuristic influence, suppression counts, avoided-execution counts, strong-decision counts, graph counts, chronology, tension-decision calibration, decision trace index, entity no-tick matrix, suppression ledger, maturity math, Manifest metadata, audit summaries and attestation hashes all agree.
+PNVA evidence should not pass only as isolated files. The release is stronger when event counts, trace coverage, heuristic influence, suppression counts, avoided-execution counts, strong-decision counts, graph counts, chronology, tension-decision calibration, decision trace index, entity no-tick matrix, suppression ledger, robustness gate, maturity math, Manifest metadata, audit summaries and attestation hashes all agree.
 
 The semantic consistency report is not included in the attestation hash seed because it consumes the attestation.
 
-## 25. Reproducibility Guard
+## 26. Reproducibility Guard
 
 After semantic consistency, rerun the current tools and compare stable fields against published reports:
 
@@ -847,8 +884,8 @@ REPRODUCIBILITY_READY
 Current result:
 
 ```text
-command_count: 22
-comparison_count: 190
+command_count: 23
+comparison_count: 204
 failure_count: 0
 command_failure_count: 0
 comparison_failure_count: 0
@@ -856,11 +893,11 @@ comparison_failure_count: 0
 
 Production interpretation:
 
-PNVA evidence becomes stronger when reports are not only internally consistent, but reproducible from the repository commands. This checks that replay, no-tick invariants, native emission, policy, proof-chain, graph, schema contract, chronology, tension-decision calibration, decision trace index, heuristic influence map, entity no-tick matrix, suppression ledger, adversarial validation, maturity, attestation and semantic consistency can be regenerated without stable-field drift.
+PNVA evidence becomes stronger when reports are not only internally consistent, but reproducible from the repository commands. This checks that replay, no-tick invariants, native emission, policy, proof-chain, graph, schema contract, chronology, tension-decision calibration, decision trace index, heuristic influence map, entity no-tick matrix, suppression ledger, robustness gate, adversarial validation, maturity, attestation and semantic consistency can be regenerated without stable-field drift.
 
 The reproducibility report is not included in the attestation hash seed because it consumes the attestation. This keeps the evidence graph acyclic.
 
-## 26. Public Safety
+## 27. Public Safety
 
 Public repositories should expose:
 

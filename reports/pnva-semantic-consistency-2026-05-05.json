@@ -1,6 +1,6 @@
 {
   "author": "Gustavo de Aguiar Martins",
-  "check_count": 143,
+  "check_count": 159,
   "checks": [
     {
       "group": "classification",
@@ -344,6 +344,26 @@
     },
     {
       "group": "classification",
+      "left": "SOVEREIGN_ROBUSTNESS_GATE_READY_WITH_LEGACY_WARNINGS",
+      "left_ref": "reports/pnva-sovereign-robustness-gate-2026-05-05.json:classification",
+      "name": "sovereign_robustness_gate_classification",
+      "pass": true,
+      "right": "SOVEREIGN_ROBUSTNESS_GATE_READY_WITH_LEGACY_WARNINGS",
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "classification",
+      "left": true,
+      "left_ref": "reports/pnva-sovereign-robustness-gate-2026-05-05.json:pass",
+      "name": "sovereign_robustness_gate_pass_flag",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "classification",
       "left": "ADVERSARIAL_VALIDATION_PASS",
       "left_ref": "reports/pnva-adversarial-validation-2026-05-05.json:classification",
       "name": "adversarial_classification",
@@ -515,21 +535,21 @@
     },
     {
       "group": "manifest",
-      "left": 26,
+      "left": 27,
       "left_ref": "MANIFEST:sovereign_evidence_attestation.artifact_count",
       "name": "manifest_attestation_artifact_count",
       "pass": true,
-      "right": 26,
+      "right": 27,
       "right_ref": "attestation:artifact_count",
       "severity": "error"
     },
     {
       "group": "manifest",
-      "left": "sha256:c892d5b8f9de3012a47baacb291b9e79bc509142d1919eb58493793c85453183",
+      "left": "sha256:83c245d18da49eefd61c207bce2663c96760f2a581f0c9baac09ad3bc1dad8f1",
       "left_ref": "MANIFEST:sovereign_evidence_attestation.evidence_hash",
       "name": "manifest_attestation_hash",
       "pass": true,
-      "right": "sha256:c892d5b8f9de3012a47baacb291b9e79bc509142d1919eb58493793c85453183",
+      "right": "sha256:83c245d18da49eefd61c207bce2663c96760f2a581f0c9baac09ad3bc1dad8f1",
       "right_ref": "attestation:evidence_hash",
       "severity": "error"
     },
@@ -772,6 +792,56 @@
       "pass": true,
       "right": true,
       "right_ref": "suppression_ledger:native_suppression_clean",
+      "severity": "error"
+    },
+    {
+      "group": "manifest",
+      "left": 97,
+      "left_ref": "MANIFEST:sovereign_robustness_gate.robustness_score",
+      "name": "manifest_robustness_score",
+      "pass": true,
+      "right": 97,
+      "right_ref": "sovereign_robustness_gate:robustness_score",
+      "severity": "error"
+    },
+    {
+      "group": "manifest",
+      "left": 519,
+      "left_ref": "MANIFEST:sovereign_robustness_gate.event_count",
+      "name": "manifest_robustness_event_count",
+      "pass": true,
+      "right": 519,
+      "right_ref": "sovereign_robustness_gate:event_count",
+      "severity": "error"
+    },
+    {
+      "group": "manifest",
+      "left": 250,
+      "left_ref": "MANIFEST:sovereign_robustness_gate.suppressed_count",
+      "name": "manifest_robustness_suppressed_count",
+      "pass": true,
+      "right": 250,
+      "right_ref": "sovereign_robustness_gate:suppressed_count",
+      "severity": "error"
+    },
+    {
+      "group": "manifest",
+      "left": 8,
+      "left_ref": "MANIFEST:sovereign_robustness_gate.native_clean_signal_count",
+      "name": "manifest_robustness_native_clean_count",
+      "pass": true,
+      "right": 8,
+      "right_ref": "sovereign_robustness_gate:native_clean_signal_count",
+      "severity": "error"
+    },
+    {
+      "group": "manifest",
+      "left": 35,
+      "left_ref": "MANIFEST:sovereign_robustness_gate.legacy_debt_count",
+      "name": "manifest_robustness_legacy_debt_count",
+      "pass": true,
+      "right": 35,
+      "right_ref": "sovereign_robustness_gate:legacy_debt_count",
       "severity": "error"
     },
     {
@@ -1151,6 +1221,77 @@
       "severity": "error"
     },
     {
+      "group": "sovereign_robustness_gate",
+      "left": 519,
+      "left_ref": "sovereign_robustness_gate:event_count",
+      "name": "robustness_total_event_count",
+      "pass": true,
+      "right": 519,
+      "right_ref": "canonical_events+native_events",
+      "severity": "error"
+    },
+    {
+      "group": "sovereign_robustness_gate",
+      "left": 250,
+      "left_ref": "sovereign_robustness_gate:suppressed_count",
+      "name": "robustness_total_suppressed_count",
+      "pass": true,
+      "right": 250,
+      "right_ref": "canonical_suppressed+native_suppressed",
+      "severity": "error"
+    },
+    {
+      "group": "sovereign_robustness_gate",
+      "left": 0.481696,
+      "left_ref": "sovereign_robustness_gate:no_tick_suppression_ratio",
+      "name": "robustness_suppression_ratio",
+      "pass": true,
+      "right": 0.481696,
+      "right_ref": "total_suppressed/total_events",
+      "severity": "error",
+      "tolerance": 1e-06
+    },
+    {
+      "group": "sovereign_robustness_gate",
+      "left": 8,
+      "left_ref": "sovereign_robustness_gate:native_clean_signal_count",
+      "name": "robustness_native_all_clean",
+      "pass": true,
+      "right": 8,
+      "right_ref": "sovereign_robustness_gate:native_clean_signal_total",
+      "severity": "error"
+    },
+    {
+      "group": "sovereign_robustness_gate",
+      "left": 35,
+      "left_ref": "sovereign_robustness_gate:legacy_debt_count",
+      "name": "robustness_legacy_debt_matches_maturity",
+      "pass": true,
+      "right": 35,
+      "right_ref": "maturity:canonical_low_authority_legacy_count",
+      "severity": "error"
+    },
+    {
+      "group": "sovereign_robustness_gate",
+      "left": 0,
+      "left_ref": "sovereign_robustness_gate:blocker_count",
+      "name": "robustness_blocker_count_zero",
+      "pass": true,
+      "right": 0,
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "sovereign_robustness_gate",
+      "left": 97,
+      "left_ref": "sovereign_robustness_gate:robustness_score",
+      "name": "robustness_score_expected",
+      "pass": true,
+      "right": 97,
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
       "group": "maturity_math",
       "left": 519,
       "left_ref": "maturity:summary.total_event_count",
@@ -1214,11 +1355,11 @@
     },
     {
       "group": "attestation",
-      "left": 26,
+      "left": 27,
       "left_ref": "attestation:artifact_count",
       "name": "artifact_count_matches_list",
       "pass": true,
-      "right": 26,
+      "right": 27,
       "right_ref": "len(attestation.artifacts)",
       "severity": "error"
     },
@@ -1306,6 +1447,16 @@
       "group": "attestation",
       "left": true,
       "left_ref": "attestation:artifact_ids",
+      "name": "attestation_contains_sovereign_robustness_gate",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "attestation",
+      "left": true,
+      "left_ref": "attestation:artifact_ids",
       "name": "attestation_contains_adversarial_validation",
       "pass": true,
       "right": true,
@@ -1334,11 +1485,11 @@
     },
     {
       "group": "audit",
-      "left": "sha256:c892d5b8f9de3012a47baacb291b9e79bc509142d1919eb58493793c85453183",
+      "left": "sha256:83c245d18da49eefd61c207bce2663c96760f2a581f0c9baac09ad3bc1dad8f1",
       "left_ref": "audit:evidence_attestation.evidence_hash",
       "name": "audit_attestation_hash_matches",
       "pass": true,
-      "right": "sha256:c892d5b8f9de3012a47baacb291b9e79bc509142d1919eb58493793c85453183",
+      "right": "sha256:83c245d18da49eefd61c207bce2663c96760f2a581f0c9baac09ad3bc1dad8f1",
       "right_ref": "attestation:evidence_hash",
       "severity": "error"
     },
@@ -1424,6 +1575,16 @@
       "severity": "error"
     },
     {
+      "group": "audit",
+      "left": "SOVEREIGN_ROBUSTNESS_GATE_READY_WITH_LEGACY_WARNINGS",
+      "left_ref": "audit:sovereign_robustness_gate.classification",
+      "name": "audit_robustness_gate_matches",
+      "pass": true,
+      "right": "SOVEREIGN_ROBUSTNESS_GATE_READY_WITH_LEGACY_WARNINGS",
+      "right_ref": "sovereign_robustness_gate:classification",
+      "severity": "error"
+    },
+    {
       "group": "manifest_hygiene",
       "left": [],
       "left_ref": "MANIFEST:files duplicates",
@@ -1447,7 +1608,7 @@
   "classification": "SEMANTIC_CONSISTENCY_READY",
   "error_count": 0,
   "errors": [],
-  "generated_at": "2026-05-05T07:41:38Z",
+  "generated_at": "2026-05-05T07:58:43Z",
   "interpretation": {
     "boundary": "This guard checks semantic consistency of the public evidence package; it does not replace runtime execution tests.",
     "purpose": "Detect drift between PNVA public evidence reports, manifest metadata, attestation and audit summaries.",
@@ -1482,12 +1643,13 @@
     "proof_chain": "reports/pnva-proof-chain-2026-05-05.json",
     "replay": "reports/pnva-replay-validation-2026-05-05.json",
     "schema_contract": "reports/pnva-schema-contract-validation-2026-05-05.json",
+    "sovereign_robustness_gate": "reports/pnva-sovereign-robustness-gate-2026-05-05.json",
     "suppression_ledger": "reports/pnva-suppression-ledger-2026-05-05.json",
     "tension_decision": "reports/pnva-tension-decision-calibration-2026-05-05.json"
   },
   "schema_version": "pnva.semantic_consistency.v1",
   "summary": {
-    "attestation_artifact_count": 26,
+    "attestation_artifact_count": 27,
     "audit_score": 100,
     "canonical_event_count": 512,
     "canonical_suppressed_count": 246,
@@ -1506,6 +1668,10 @@
     "native_suppressed_count": 4,
     "schema_contract_event_count": 519,
     "schema_contract_warning_count": 341,
+    "sovereign_robustness_event_count": 519,
+    "sovereign_robustness_legacy_debt_count": 35,
+    "sovereign_robustness_score": 97,
+    "sovereign_robustness_suppressed_count": 250,
     "suppression_ledger_event_count": 519,
     "suppression_ledger_suppressed_count": 250,
     "suppression_ledger_warning_count": 176,

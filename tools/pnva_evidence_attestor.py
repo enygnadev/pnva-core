@@ -119,6 +119,13 @@ EXPECTED_ARTIFACTS = [
         "required": True,
     },
     {
+        "id": "sovereign_robustness_gate",
+        "path": "reports/pnva-sovereign-robustness-gate-2026-05-05.json",
+        "kind": "json_classification",
+        "expected": "SOVEREIGN_ROBUSTNESS_GATE_READY_WITH_LEGACY_WARNINGS",
+        "required": True,
+    },
+    {
         "id": "native_emitter",
         "path": "reports/pnva-native-emitter-summary-2026-05-05.json",
         "kind": "json_classification",
@@ -326,6 +333,7 @@ def build_attestation(repo: Path) -> dict[str, Any]:
             "heuristic influence map",
             "entity no-tick matrix",
             "suppression ledger",
+            "sovereign robustness gate",
             "adversarial negative controls",
             "entity and heuristic maturity",
             "sovereign audit consumes this attestation without being part of its hash seed",
@@ -348,6 +356,7 @@ def build_attestation(repo: Path) -> dict[str, Any]:
             "Run heuristic influence map before attestation so rule authority and decision influence stay measurable.",
             "Run entity no-tick matrix before attestation so suppression and execution are attributable by entity.",
             "Run suppression ledger before attestation so avoided execution is proof-backed.",
+            "Run sovereign robustness gate before attestation so native cleanliness and legacy debt are collapsed into one readiness decision.",
         ],
     }
 
