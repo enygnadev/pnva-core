@@ -21,6 +21,9 @@
           "tension.components.original_event_id",
           "tension.components.r3_runtime_slot_id"
         ],
+        "required_risk_flags": [
+          "RESIZE_BATCH_PRESSURE"
+        ],
         "required_rules": [
           "native_event_emitter",
           "adaptive_threshold",
@@ -47,8 +50,12 @@
         "precheck_event_type_must_equal_slot_event_type_plus_authority_precheck": true
       },
       "heuristic_policy": {
+        "commit_target_risk_flags_required": true,
+        "duplicate_risk_flags_forbidden": true,
         "duplicate_rules_forbidden": true,
-        "known_rules_only": true
+        "known_risk_flags_only": true,
+        "known_rules_only": true,
+        "risk_flags_list_required": true
       },
       "original_event_ids": [
         "evt_276e496e_000001_5f5d2586",
@@ -110,6 +117,9 @@
         "required_components": [
           "tension.components.original_event_id",
           "tension.components.r3_runtime_slot_id"
+        ],
+        "required_risk_flags": [
+          "RESIZE_BATCH_PRESSURE"
         ],
         "required_rules": [
           "adaptive_threshold",
@@ -204,6 +214,7 @@
           "tension.components.original_event_id",
           "tension.components.r3_runtime_slot_id"
         ],
+        "required_risk_flags": [],
         "required_rules": [
           "native_event_emitter",
           "power_orchestrator",
@@ -231,8 +242,12 @@
         "precheck_event_type_must_equal_slot_event_type_plus_authority_precheck": true
       },
       "heuristic_policy": {
+        "commit_target_risk_flags_required": true,
+        "duplicate_risk_flags_forbidden": true,
         "duplicate_rules_forbidden": true,
-        "known_rules_only": true
+        "known_risk_flags_only": true,
+        "known_rules_only": true,
+        "risk_flags_list_required": true
       },
       "original_event_ids": [
         "evt_276e496e_000071_4bf4fe50",
@@ -265,6 +280,7 @@
           "tension.components.original_event_id",
           "tension.components.r3_runtime_slot_id"
         ],
+        "required_risk_flags": [],
         "required_rules": [
           "adaptive_threshold",
           "field_scheduler",
@@ -325,6 +341,7 @@
           "tension.components.original_event_id",
           "tension.components.r3_runtime_slot_id"
         ],
+        "required_risk_flags": [],
         "required_rules": [
           "native_event_emitter",
           "adaptive_threshold",
@@ -351,8 +368,12 @@
         "precheck_event_type_must_equal_slot_event_type_plus_authority_precheck": true
       },
       "heuristic_policy": {
+        "commit_target_risk_flags_required": true,
+        "duplicate_risk_flags_forbidden": true,
         "duplicate_rules_forbidden": true,
-        "known_rules_only": true
+        "known_risk_flags_only": true,
+        "known_rules_only": true,
+        "risk_flags_list_required": true
       },
       "original_event_ids": [
         "evt_276e496e_000073_bc920d9e"
@@ -384,6 +405,7 @@
           "tension.components.original_event_id",
           "tension.components.r3_runtime_slot_id"
         ],
+        "required_risk_flags": [],
         "required_rules": [
           "adaptive_threshold",
           "field_scheduler",
@@ -427,7 +449,7 @@
   "classification": "R3_RUNTIME_INSTRUMENTATION_PLAN_READY",
   "entity_target_count": 1,
   "event_template_count": 6,
-  "generated_at": "2026-05-05T12:16:01Z",
+  "generated_at": "2026-05-05T12:26:22Z",
   "instrumentation_plan_ready": true,
   "interpretation": {
     "boundary": "This plan is not runtime evidence and does not approve R3 cutover; it defines how fresh runtime evidence must be emitted and validated.",
@@ -448,6 +470,7 @@
     "decision.action",
     "decision.reason",
     "heuristics.rules",
+    "heuristics.risk_flags",
     "tension.score",
     "tension.threshold",
     "tension.gate_delta",
@@ -461,9 +484,9 @@
     "source.format",
     "source.sanitized"
   ],
-  "mandatory_field_count": 25,
-  "negative_control_count": 38,
-  "negative_control_detected_count": 38,
+  "mandatory_field_count": 26,
+  "negative_control_count": 42,
+  "negative_control_detected_count": 42,
   "pass": true,
   "positive_control_count": 6,
   "positive_control_passed_count": 6,
@@ -519,8 +542,8 @@
     "entity_target_count": 1,
     "event_template_count": 6,
     "instrumentation_plan_ready": true,
-    "mandatory_field_count": 25,
-    "negative_control_detected_count": 38,
+    "mandatory_field_count": 26,
+    "negative_control_detected_count": 42,
     "positive_control_passed_count": 6,
     "required_runtime_event_count": 70
   },

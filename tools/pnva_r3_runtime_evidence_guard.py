@@ -96,6 +96,13 @@ def _rules(event: dict[str, Any]) -> list[str]:
     return [str(item) for item in value if str(item)]
 
 
+def _risk_flags(event: dict[str, Any]) -> list[str]:
+    value = _heuristics(event).get("risk_flags")
+    if not isinstance(value, list):
+        return []
+    return [item.strip() for item in value if isinstance(item, str) and item.strip()]
+
+
 def _authority(rule: str) -> str:
     return RULE_AUTHORITY.get(rule, "H1")
 
@@ -167,6 +174,7 @@ def _proof_hash_payload(event: dict[str, Any]) -> dict[str, Any]:
         },
         "heuristics": {
             "rules": _rules(event),
+            "risk_flags": _risk_flags(event),
         },
         "tension": {
             "score": _tension(event).get("score"),
@@ -245,6 +253,24 @@ def _heuristic_rule_codes(event: dict[str, Any]) -> list[str]:
         codes.append("HEURISTIC_RULE_DUPLICATE")
     if any(rule not in RULE_AUTHORITY for rule in rules):
         codes.append("HEURISTIC_RULE_UNKNOWN")
+    return codes
+
+
+def _heuristic_risk_flag_codes(event: dict[str, Any], slot: dict[str, Any]) -> list[str]:
+    value = _heuristics(event).get("risk_flags")
+    if not isinstance(value, list):
+        return ["RISK_FLAGS_INVALID"]
+
+    flags = [item.strip() for item in value if isinstance(item, str) and item.strip()]
+    codes: list[str] = []
+    if len(flags) != len(value):
+        codes.append("RISK_FLAGS_INVALID")
+    if len(set(flags)) != len(flags):
+        codes.append("RISK_FLAG_DUPLICATE")
+
+    allowed_flags = {str(flag).strip() for flag in slot.get("risk_flags", []) if str(flag).strip()}
+    if any(flag not in allowed_flags for flag in flags):
+        codes.append("RISK_FLAG_UNKNOWN")
     return codes
 
 
@@ -336,10 +362,13 @@ def _event_codes(event: dict[str, Any], slot: dict[str, Any]) -> list[str]:
     if str(event.get("entity_type") or "") != str(slot.get("entity_type") or ""):
         codes.append("ENTITY_TYPE_MISMATCH")
     codes.extend(_heuristic_rule_codes(event))
+    codes.extend(_heuristic_risk_flag_codes(event, slot))
 
     role = _role(event, slot)
     rules = set(_rules(event))
+    risk_flags = set(_risk_flags(event))
     target_rules = set(str(rule) for rule in slot.get("target_rules", []) if str(rule))
+    target_risk_flags = {str(flag).strip() for flag in slot.get("risk_flags", []) if str(flag).strip()}
     if role in {"precheck", "commit"} and not _proof_ref_role_valid(event, slot, role):
         codes.append("PROOF_REF_ROLE_MISMATCH")
     if role == "precheck":
@@ -367,6 +396,9 @@ def _event_codes(event: dict[str, Any], slot: dict[str, Any]) -> list[str]:
         missing_target_rules = sorted(target_rules - rules)
         if missing_target_rules:
             codes.append("COMMIT_TARGET_RULES_MISSING")
+        missing_target_risk_flags = sorted(target_risk_flags - risk_flags)
+        if missing_target_risk_flags:
+            codes.append("COMMIT_TARGET_RISK_FLAGS_MISSING")
     else:
         if _decision_kind(event) == str(slot.get("decision_kind") or "") and _decision_action(event) != str(slot.get("decision_action") or ""):
             codes.append("COMMIT_ACTION_MISMATCH")
@@ -665,6 +697,10 @@ def _negative_controls(matrix: dict[str, Any]) -> dict[str, Any]:
     run_control("reject_missing_target_rules", "commit", lambda event: event["heuristics"].update({"rules": ["native_event_emitter"]}), "COMMIT_TARGET_RULES_MISSING")
     run_control("reject_unknown_heuristic_rule", "commit", lambda event: event["heuristics"].update({"rules": list(slot.get("target_rules") or []) + ["unknown_rule"]}), "HEURISTIC_RULE_UNKNOWN")
     run_control("reject_duplicate_heuristic_rule", "commit", lambda event: event["heuristics"].update({"rules": list(slot.get("target_rules") or []) + [str((slot.get("target_rules") or ["native_event_emitter"])[0])]}), "HEURISTIC_RULE_DUPLICATE")
+    run_control("reject_invalid_risk_flags", "commit", lambda event: event["heuristics"].update({"risk_flags": "not-a-list"}), "RISK_FLAGS_INVALID")
+    run_control("reject_duplicate_risk_flag", "commit", lambda event: event["heuristics"].update({"risk_flags": list(slot.get("risk_flags") or []) + [str((slot.get("risk_flags") or ["RESIZE_BATCH_PRESSURE"])[0])]}), "RISK_FLAG_DUPLICATE")
+    run_control("reject_unknown_risk_flag", "commit", lambda event: event["heuristics"].update({"risk_flags": list(slot.get("risk_flags") or []) + ["UNKNOWN_RISK_FLAG"]}), "RISK_FLAG_UNKNOWN")
+    run_control("reject_missing_target_risk_flags", "commit", lambda event: event["heuristics"].update({"risk_flags": []}), "COMMIT_TARGET_RISK_FLAGS_MISSING")
     run_control("reject_wrong_action", "commit", lambda event: event["decision"].update({"action": "WRONG_ACTION"}), "COMMIT_ACTION_MISMATCH")
     run_control("reject_precheck_event_type_mismatch", "precheck", lambda event: event.update({"event_type": "wrong_precheck_event_type"}), "PRECHECK_EVENT_TYPE_MISMATCH")
     run_control("reject_commit_event_type_mismatch", "commit", lambda event: event.update({"event_type": "wrong_commit_event_type"}), "COMMIT_EVENT_TYPE_MISMATCH")
@@ -859,6 +895,10 @@ def build_report(repo: Path, runtime_events_path: Path | None = None) -> dict[st
             "target_rules_required_on_commit": True,
             "heuristic_rules_known_required": True,
             "heuristic_rules_unique_required": True,
+            "risk_flags_list_required": True,
+            "risk_flags_known_required": True,
+            "risk_flags_unique_required": True,
+            "target_risk_flags_required_on_commit": True,
         },
         "runtime_mix": {
             "event_type_mix": runtime["event_type_mix"],
@@ -894,7 +934,7 @@ def build_report(repo: Path, runtime_events_path: Path | None = None) -> dict[st
         },
         "interpretation": {
             "purpose": "Protect the R3 runtime intake boundary before fresh events are accepted as legacy-free evidence.",
-            "sovereignty": "PNVA becomes harder to fake when projected proofs, malformed, duplicated or content-unbound proof hashes, wrong proof-ref slot roles, wrong event types, malformed or inconsistent tension values, invalid gate signs, duplicate events, entity or slot mismatches, unsanitized sources, unknown heuristic rules, weak authority, missing target rules, extra runtime events and causally broken no-tick pairs are rejected before cutover.",
+            "sovereignty": "PNVA becomes harder to fake when projected proofs, malformed, duplicated or content-unbound proof hashes, wrong proof-ref slot roles, wrong event types, malformed or inconsistent tension values, invalid gate signs, duplicate events, entity or slot mismatches, unsanitized sources, unknown heuristic rules, invalid risk flags, weak authority, missing target rules, missing target risk flags, extra runtime events and causally broken no-tick pairs are rejected before cutover.",
             "boundary": "Without a runtime-events file this guard certifies the intake contract only; it does not claim final runtime completion.",
         },
         "recommendations": [
@@ -909,6 +949,7 @@ def build_report(repo: Path, runtime_events_path: Path | None = None) -> dict[st
             "Require proof_ref to match runtime:<slot-id>:precheck or runtime:<slot-id>:commit.",
             "Require gate_delta to equal score minus threshold, with nonpositive prechecks and nonnegative commits.",
             "Reject unknown or duplicated heuristic rules before accepting runtime coverage.",
+            "Reject malformed, unknown, duplicated or missing target risk flags before accepting runtime coverage.",
             "Keep entity_id, causal_chain_id, source.sanitized and proof_hash mandatory for every runtime event.",
         ],
     }

@@ -45,8 +45,8 @@ required_runtime_event_count: 70
 required_no_tick_precheck_count: 35
 required_collapse_commit_count: 35
 event_template_count: 6
-mandatory_field_count: 25
-negative_control_detected_count: 38
+mandatory_field_count: 26
+negative_control_detected_count: 42
 positive_control_passed_count: 6
 ```
 
@@ -107,6 +107,7 @@ decision.kind
 decision.action
 decision.reason
 heuristics.rules
+heuristics.risk_flags
 tension.score
 tension.threshold
 tension.gate_delta
@@ -146,7 +147,7 @@ Current result:
 
 ```text
 R3_RUNTIME_CONTRACT_VALIDATED_READY
-195 contract checks
+217 contract checks
 0 failures
 ```
 

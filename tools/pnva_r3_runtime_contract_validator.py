@@ -29,6 +29,7 @@ REQUIRED_MANDATORY_FIELDS = [
     "decision.action",
     "decision.reason",
     "heuristics.rules",
+    "heuristics.risk_flags",
     "tension.score",
     "tension.threshold",
     "tension.gate_delta",
@@ -84,6 +85,10 @@ REQUIRED_ENFORCED_CONTROLS = {
     "target_rules_required_on_commit": True,
     "heuristic_rules_known_required": True,
     "heuristic_rules_unique_required": True,
+    "risk_flags_list_required": True,
+    "risk_flags_known_required": True,
+    "risk_flags_unique_required": True,
+    "target_risk_flags_required_on_commit": True,
 }
 
 
@@ -138,6 +143,8 @@ def _template_checks(checks: list[dict[str, Any]], contract: dict[str, Any]) -> 
     original_ids = contract.get("original_event_ids") if isinstance(contract.get("original_event_ids"), list) else []
     event_type_mix = contract.get("event_type_mix") if isinstance(contract.get("event_type_mix"), list) else []
     target_event_types = sorted(str(item[0]) for item in event_type_mix if isinstance(item, list) and item and str(item[0]))
+    risk_flag_mix = contract.get("risk_flags") if isinstance(contract.get("risk_flags"), list) else []
+    target_risk_flags = sorted(str(item[0]) for item in risk_flag_mix if isinstance(item, list) and item and str(item[0]))
 
     _add_check(checks, "contract", f"{contract_id}_precheck_count", int(contract.get("required_precheck_count", 0)), slot_count)
     _add_check(checks, "contract", f"{contract_id}_commit_count", int(contract.get("required_commit_count", 0)), slot_count)
@@ -153,6 +160,7 @@ def _template_checks(checks: list[dict[str, Any]], contract: dict[str, Any]) -> 
         _add_check(checks, "template", f"{contract_id}_{template_name}_source_format", _dig(template, ["source", "format"]), "native_pnva_event_v1")
         _add_check(checks, "template", f"{contract_id}_{template_name}_source_sanitized", _dig(template, ["source", "sanitized"]), True)
         _add_check(checks, "template", f"{contract_id}_{template_name}_components", sorted(template.get("required_components", [])), sorted(REQUIRED_COMPONENTS))
+        _add_check(checks, "template", f"{contract_id}_{template_name}_risk_flags", sorted(template.get("required_risk_flags", [])), target_risk_flags)
 
     _add_check(checks, "template", f"{contract_id}_precheck_kind", _dig(precheck, ["decision", "kind"]), "observe")
     _add_check(checks, "template", f"{contract_id}_precheck_action", _dig(precheck, ["decision", "action"]), "NO_ACTION")
@@ -181,6 +189,10 @@ def _template_checks(checks: list[dict[str, Any]], contract: dict[str, Any]) -> 
     _add_check(checks, "proof_policy", f"{contract_id}_proof_ref_runtime_slot_role_required", proof_policy.get("proof_ref_runtime_slot_role_required"), True)
     _add_check(checks, "heuristic_policy", f"{contract_id}_known_rules_only", heuristic_policy.get("known_rules_only"), True)
     _add_check(checks, "heuristic_policy", f"{contract_id}_duplicate_rules_forbidden", heuristic_policy.get("duplicate_rules_forbidden"), True)
+    _add_check(checks, "heuristic_policy", f"{contract_id}_risk_flags_list_required", heuristic_policy.get("risk_flags_list_required"), True)
+    _add_check(checks, "heuristic_policy", f"{contract_id}_known_risk_flags_only", heuristic_policy.get("known_risk_flags_only"), True)
+    _add_check(checks, "heuristic_policy", f"{contract_id}_duplicate_risk_flags_forbidden", heuristic_policy.get("duplicate_risk_flags_forbidden"), True)
+    _add_check(checks, "heuristic_policy", f"{contract_id}_commit_target_risk_flags_required", heuristic_policy.get("commit_target_risk_flags_required"), True)
 
 
 def build_report(repo: Path) -> dict[str, Any]:

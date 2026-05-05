@@ -29,6 +29,7 @@ MANDATORY_EVENT_FIELDS = [
     "decision.action",
     "decision.reason",
     "heuristics.rules",
+    "heuristics.risk_flags",
     "tension.score",
     "tension.threshold",
     "tension.gate_delta",
@@ -122,6 +123,10 @@ def _action_contracts(slots: list[dict[str, Any]]) -> list[dict[str, Any]]:
                 "heuristic_policy": {
                     "known_rules_only": True,
                     "duplicate_rules_forbidden": True,
+                    "risk_flags_list_required": True,
+                    "known_risk_flags_only": True,
+                    "duplicate_risk_flags_forbidden": True,
+                    "commit_target_risk_flags_required": True,
                 },
                 "precheck_template": {
                     "schema_version": "pnva.event.v1",
@@ -143,6 +148,7 @@ def _action_contracts(slots: list[dict[str, Any]]) -> list[dict[str, Any]]:
                         "sanitized": True,
                     },
                     "required_rules": sorted(set(["native_event_emitter", *rules])),
+                    "required_risk_flags": [flag for flag, _count in risk_flags.most_common()],
                     "required_components": [
                         "tension.components.original_event_id",
                         "tension.components.r3_runtime_slot_id",
@@ -169,6 +175,7 @@ def _action_contracts(slots: list[dict[str, Any]]) -> list[dict[str, Any]]:
                     },
                     "min_authority": "H2",
                     "required_rules": rules,
+                    "required_risk_flags": [flag for flag, _count in risk_flags.most_common()],
                     "required_components": [
                         "tension.components.original_event_id",
                         "tension.components.r3_runtime_slot_id",
