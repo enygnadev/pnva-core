@@ -38,6 +38,7 @@ suppression ledger
 sovereign robustness gate
 R3 migration plan
 authority migration ledger
+R3 authority projection
 adversarial validation
 entity and heuristic maturity
 evidence attestation
@@ -63,7 +64,7 @@ SEMANTIC_CONSISTENCY_READY
 Current result:
 
 ```text
-check_count: 188
+check_count: 217
 error_count: 0
 warning_count: 0
 ```
@@ -86,6 +87,7 @@ suppression ledger vs Manifest, attestation and audit
 sovereign robustness gate vs Manifest, attestation, maturity and audit
 R3 migration plan vs Manifest, attestation, robustness gate and audit
 authority migration ledger vs Manifest, R3 plan, policy, heuristic influence, attestation and audit
+R3 authority projection vs Manifest, authority migration ledger, replay, policy, no-tick, attestation and audit
 maturity aggregate math vs canonical + native reports
 attestation artifact count vs artifact list
 audit summary vs attestation and maturity report
@@ -106,6 +108,7 @@ Examples:
 269 hard-authority strong decisions must equal 304 - 35 legacy low-authority warnings.
 R3 migration starts at R2_NATIVE_CLEAN_LEGACY_QUARANTINED, targets R3_NATIVE_CLEAN_LEGACY_FREE and preserves the 35 primary legacy debt count until the native path replaces it.
 35 authority migration candidates must match R3 primary debt, policy low-authority legacy count and heuristic influence uncompensated low-authority strong count.
+70 projected native R3 authority events must equal 35 prechecks + 35 commits, preserve 0 projected low-authority strong decisions and pass replay, sovereign policy and no-tick validation.
 ```
 
 ## Attestation Boundary

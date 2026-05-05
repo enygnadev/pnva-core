@@ -61,6 +61,7 @@ Gustavo de Aguiar Martins. PNVA-Core: A Post-Temporal Causal Architecture for St
 - docs/PNVA_SOVEREIGN_ROBUSTNESS_GATE.md
 - docs/PNVA_R3_MIGRATION_PLAN.md
 - docs/PNVA_AUTHORITY_MIGRATION_LEDGER.md
+- docs/PNVA_R3_AUTHORITY_PROJECTION.md
 - docs/PNVA_SOVEREIGN_EVIDENCE_ATTESTATION.md
 - docs/PNVA_ADVERSARIAL_VALIDATION.md
 - docs/PNVA_ENTITY_HEURISTIC_MATURITY.md
@@ -91,6 +92,7 @@ Gustavo de Aguiar Martins. PNVA-Core: A Post-Temporal Causal Architecture for St
 - tools/pnva_sovereign_robustness_gate.py
 - tools/pnva_r3_migration_planner.py
 - tools/pnva_authority_migration_ledger.py
+- tools/pnva_r3_authority_projection.py
 - tools/pnva_evidence_attestor.py
 - tools/pnva_adversarial_validator.py
 - tools/pnva_entity_heuristic_maturity.py
@@ -123,6 +125,12 @@ Gustavo de Aguiar Martins. PNVA-Core: A Post-Temporal Causal Architecture for St
 - reports/pnva-sovereign-robustness-gate-2026-05-05.json
 - reports/pnva-r3-migration-plan-2026-05-05.json
 - reports/pnva-authority-migration-ledger-2026-05-05.json
+- reports/pnva-r3-authority-projection-summary-2026-05-05.json
+- reports/pnva-r3-authority-projection-events-2026-05-05.jsonl
+- reports/pnva-r3-authority-projection-entities-2026-05-05.json
+- reports/pnva-r3-authority-projection-replay-2026-05-05.json
+- reports/pnva-r3-authority-projection-policy-2026-05-05.json
+- reports/pnva-r3-authority-projection-no-tick-2026-05-05.json
 - reports/pnva-sovereign-evidence-attestation-2026-05-05.json
 - reports/pnva-adversarial-validation-2026-05-05.json
 - reports/pnva-entity-heuristic-maturity-2026-05-05.json
@@ -167,15 +175,17 @@ The R3 migration plan turns the remaining legacy debt into an explicit backlog. 
 
 The authority migration ledger maps the primary R3 authority debt to concrete entity/action targets. The current public classification is AUTHORITY_MIGRATION_LEDGER_READY_WITH_LEGACY_WARNINGS, with 35 H0 strong candidates, 1 affected entity, 3 affected actions, native low-authority strong debt 0 and full migration/proof coverage.
 
+The R3 authority projection converts the 35 mapped H0 candidates into a native hard-authority candidate sample. The current public classification is R3_AUTHORITY_PROJECTION_READY, with 70 projected native events, 35 no-tick prechecks, 35 collapse commits, replay valid, policy ready and no-tick ready.
+
 The adversarial validator runs negative controls against proof, policy, graph, proof-chain and JSON parsing validators. The current public classification is ADVERSARIAL_VALIDATION_PASS.
 
 The entity and heuristic maturity auditor scores actor/rule readiness across entity coverage, authority, proof coverage, no-tick suppression and causal relations. The current public classification is ENTITY_HEURISTIC_MATURITY_READY_WITH_LEGACY_WARNINGS.
 
-The semantic consistency guard checks cross-report agreement across Manifest, replay, no-tick, policy, proof-chain, graph, schema contract, causal chronology, tension-decision calibration, decision trace index, heuristic influence map, entity no-tick matrix, suppression ledger, robustness gate, R3 migration plan, authority migration ledger, maturity, adversarial validation, attestation and audit. The current public classification is SEMANTIC_CONSISTENCY_READY with 188 checks and zero errors/warnings.
+The semantic consistency guard checks cross-report agreement across Manifest, replay, no-tick, policy, proof-chain, graph, schema contract, causal chronology, tension-decision calibration, decision trace index, heuristic influence map, entity no-tick matrix, suppression ledger, robustness gate, R3 migration plan, authority migration ledger, R3 authority projection, maturity, adversarial validation, attestation and audit. The current public classification is SEMANTIC_CONSISTENCY_READY with 217 checks and zero errors/warnings.
 
-The reproducibility guard reruns 25 evidence commands and compares 237 stable fields against the published reports. The current public classification is REPRODUCIBILITY_READY with zero failures.
+The reproducibility guard reruns the public evidence commands and compares stable fields against the published reports. The current public classification is REPRODUCIBILITY_READY with 29 commands, 275 stable-field comparisons and zero failures.
 
-The sovereign evidence attestor aggregates the public evidence package into one hashable attestation. The current classification is PNVA_SOVEREIGN_EVIDENCE_ATTESTED with 29 tracked artifacts.
+The sovereign evidence attestor aggregates the public evidence package into one hashable attestation. The current classification is PNVA_SOVEREIGN_EVIDENCE_ATTESTED with 35 tracked artifacts.
 
 ## Boundaries
 

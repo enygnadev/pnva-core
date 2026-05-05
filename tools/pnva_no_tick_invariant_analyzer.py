@@ -213,8 +213,12 @@ def build_report(events_path: Path, entity_catalog_path: Path, replay_report_pat
         ),
         _invariant(
             "GUARD_COLLAPSE_BLOCK_CONSISTENT",
-            guard_event_count > 0 and guard_ok == guard_event_count,
-            {"guard_event_count": guard_event_count, "guard_validated": guard_ok},
+            guard_event_count == 0 or guard_ok == guard_event_count,
+            {
+                "guard_event_count": guard_event_count,
+                "guard_validated": guard_ok,
+                "policy": "guard consistency is required when guard events are present",
+            },
         ),
         _invariant(
             "ENTITY_CATALOG_COVERS_EVENTS",

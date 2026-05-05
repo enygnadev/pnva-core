@@ -166,6 +166,31 @@ jobs:
             --write /tmp/pnva-authority-migration-ledger.json \
             >/dev/null
           python3 -m json.tool /tmp/pnva-authority-migration-ledger.json >/dev/null
+      - name: Run R3 authority projection
+        run: |
+          python3 tools/pnva_r3_authority_projection.py \
+            --events /tmp/pnva-r3-authority-projection-events.jsonl \
+            --entity-catalog /tmp/pnva-r3-authority-projection-entities.json \
+            --summary /tmp/pnva-r3-authority-projection-summary.json \
+            >/dev/null
+          python3 tools/pnva_replay_validator.py \
+            --events /tmp/pnva-r3-authority-projection-events.jsonl \
+            --entity-catalog /tmp/pnva-r3-authority-projection-entities.json \
+            --write /tmp/pnva-r3-authority-projection-replay.json >/dev/null
+          python3 tools/pnva_sovereign_policy_validator.py \
+            --events /tmp/pnva-r3-authority-projection-events.jsonl \
+            --entity-catalog /tmp/pnva-r3-authority-projection-entities.json \
+            --write /tmp/pnva-r3-authority-projection-policy.json >/dev/null
+          python3 tools/pnva_no_tick_invariant_analyzer.py \
+            --events /tmp/pnva-r3-authority-projection-events.jsonl \
+            --entity-catalog /tmp/pnva-r3-authority-projection-entities.json \
+            --replay-report /tmp/pnva-r3-authority-projection-replay.json \
+            --write /tmp/pnva-r3-authority-projection-no-tick.json >/dev/null
+          python3 -m json.tool /tmp/pnva-r3-authority-projection-summary.json >/dev/null
+          python3 -m json.tool /tmp/pnva-r3-authority-projection-entities.json >/dev/null
+          python3 -m json.tool /tmp/pnva-r3-authority-projection-replay.json >/dev/null
+          python3 -m json.tool /tmp/pnva-r3-authority-projection-policy.json >/dev/null
+          python3 -m json.tool /tmp/pnva-r3-authority-projection-no-tick.json >/dev/null
       - name: Run evidence attestor
         run: |
           python3 tools/pnva_evidence_attestor.py \

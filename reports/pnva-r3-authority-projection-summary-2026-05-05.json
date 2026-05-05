@@ -1,0 +1,98 @@
+{
+  "action_mix": [
+    [
+      "NO_ACTION",
+      35
+    ],
+    [
+      "RESIZE_BATCH",
+      32
+    ],
+    [
+      "COOLDOWN_GPU",
+      2
+    ],
+    [
+      "EXECUTE",
+      1
+    ]
+  ],
+  "author": "Gustavo de Aguiar Martins",
+  "candidate_count_matches_ledger": true,
+  "classification": "R3_AUTHORITY_PROJECTION_READY",
+  "decision_mix": [
+    [
+      "observe",
+      35
+    ],
+    [
+      "collapse",
+      35
+    ]
+  ],
+  "entity_catalog_ref": "reports/pnva-r3-authority-projection-entities-2026-05-05.json",
+  "entity_count": 1,
+  "events_ref": "reports/pnva-r3-authority-projection-events-2026-05-05.jsonl",
+  "generated_at": "2026-05-05T08:47:18Z",
+  "interpretation": {
+    "boundary": "This is a reproducible projection, not a claim that historical H0 events were originally native H2 events.",
+    "no_tick": "Each migrated strong decision receives a native observe precheck before the native collapse event.",
+    "purpose": "Project the R3-A1 authority migration debt into native hard-authority pnva.event.v1 evidence before runtime replacement."
+  },
+  "ledger_candidate_count": 35,
+  "pass": true,
+  "project": "PNVA-Core",
+  "projected_commit_count": 35,
+  "projected_event_count": 70,
+  "projected_low_authority_strong_count": 0,
+  "projected_native_event_count": 70,
+  "projected_no_tick_suppression_count": 35,
+  "projected_no_tick_suppression_ratio": 0.5,
+  "projected_precheck_count": 35,
+  "projected_strong_decision_count": 35,
+  "proof_coverage_ratio": 1.0,
+  "proof_valid_count": 70,
+  "recommendations": [
+    "Use this projection as the implementation contract for the runtime cuda_slot_scan native emitter.",
+    "Keep the legacy sample unchanged until fresh runtime evidence replaces the projected candidate.",
+    "Require policy, replay and no-tick validation before claiming R3_NATIVE_CLEAN_LEGACY_FREE."
+  ],
+  "reports_checked": {
+    "authority_migration_ledger": "reports/pnva-authority-migration-ledger-2026-05-05.json",
+    "canonical_events": "reports/pnva-canonical-events-sample-2026-05-05.jsonl"
+  },
+  "risk_flags": [
+    [
+      "RESIZE_BATCH_PRESSURE",
+      64
+    ],
+    [
+      "R3_AUTHORITY_PREFLIGHT",
+      35
+    ],
+    [
+      "R3_AUTHORITY_PROJECTED",
+      35
+    ]
+  ],
+  "rule_mix": [
+    [
+      "adaptive_threshold",
+      70
+    ],
+    [
+      "field_scheduler",
+      70
+    ],
+    [
+      "native_event_emitter",
+      70
+    ],
+    [
+      "power_orchestrator",
+      4
+    ]
+  ],
+  "schema_version": "pnva.r3_authority_projection_summary.v1",
+  "source_candidate_count": 35
+}

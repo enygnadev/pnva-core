@@ -1,5 +1,5 @@
 {
-  "artifact_count": 29,
+  "artifact_count": 35,
   "artifacts": [
     {
       "entry_count": 9,
@@ -244,6 +244,82 @@
       "size_bytes": 15853
     },
     {
+      "classification": "R3_AUTHORITY_PROJECTION_READY",
+      "expected": "R3_AUTHORITY_PROJECTION_READY",
+      "id": "r3_authority_projection_summary",
+      "kind": "json_classification",
+      "pass": true,
+      "path": "reports/pnva-r3-authority-projection-summary-2026-05-05.json",
+      "present": true,
+      "reported_pass": true,
+      "required": true,
+      "sha256": "132a3a6cdc11e6319207de82a3d5cdd8a941a75f0d913f00d93cd0b010590a15",
+      "size_bytes": 2544
+    },
+    {
+      "bad_json_lines": 0,
+      "id": "r3_authority_projection_events",
+      "kind": "jsonl",
+      "line_count": 70,
+      "pass": true,
+      "path": "reports/pnva-r3-authority-projection-events-2026-05-05.jsonl",
+      "present": true,
+      "required": true,
+      "sha256": "7ea8d88b89b9e4b30dc0f116996a4312dba3cbab5188f5636145ac5070c92d9d",
+      "size_bytes": 97571
+    },
+    {
+      "entity_count": 1,
+      "id": "r3_authority_projection_entities",
+      "kind": "entity_catalog",
+      "pass": true,
+      "path": "reports/pnva-r3-authority-projection-entities-2026-05-05.json",
+      "present": true,
+      "required": true,
+      "schema_version": "pnva.entity_catalog.v1",
+      "sha256": "6f337385bcc26ab18165dedd466fd0f254625f82ef468ce6a9c18c367413ae0b",
+      "size_bytes": 2040
+    },
+    {
+      "classification": "REPLAY_VALID",
+      "expected": "REPLAY_VALID",
+      "id": "r3_authority_projection_replay",
+      "kind": "json_classification",
+      "pass": true,
+      "path": "reports/pnva-r3-authority-projection-replay-2026-05-05.json",
+      "present": true,
+      "reported_pass": true,
+      "required": true,
+      "sha256": "699ad9c7980f1f749b7141c846439b4e28dbc86d48f79a14e3544323449d1def",
+      "size_bytes": 2484
+    },
+    {
+      "classification": "SOVEREIGN_POLICY_READY",
+      "expected": "SOVEREIGN_POLICY_READY",
+      "id": "r3_authority_projection_policy",
+      "kind": "json_classification",
+      "pass": true,
+      "path": "reports/pnva-r3-authority-projection-policy-2026-05-05.json",
+      "present": true,
+      "reported_pass": true,
+      "required": true,
+      "sha256": "e83037766e5011ee771174ba05d82aaffa394f6b4027056d7acf2a53f6e1d515",
+      "size_bytes": 2776
+    },
+    {
+      "classification": "SOVEREIGN_NO_TICK_READY",
+      "expected": "SOVEREIGN_NO_TICK_READY",
+      "id": "r3_authority_projection_no_tick",
+      "kind": "json_classification",
+      "pass": true,
+      "path": "reports/pnva-r3-authority-projection-no-tick-2026-05-05.json",
+      "present": true,
+      "reported_pass": true,
+      "required": true,
+      "sha256": "acc51c852bf96d828124973d7719f3c2fe396f086a6bf4f8b561ae45750d3a09",
+      "size_bytes": 6974
+    },
+    {
       "classification": "NATIVE_EMITTER_READY",
       "expected": "NATIVE_EMITTER_READY",
       "id": "native_emitter",
@@ -393,13 +469,14 @@
     "sovereign robustness gate",
     "R3 migration plan",
     "authority migration ledger",
+    "R3 authority projection",
     "adversarial negative controls",
     "entity and heuristic maturity",
     "sovereign audit consumes this attestation without being part of its hash seed"
   ],
-  "evidence_hash": "sha256:9373cde170c630fadbbc53fe3c46b877df05c80f0575720e97b26bda6460b93b",
+  "evidence_hash": "sha256:5f1b6f2bcffb5e60a8e0371964077507d32cce1422006b68a158ced0d4bdbbd0",
   "failure_count": 0,
-  "generated_at": "2026-05-05T08:29:02Z",
+  "generated_at": "2026-05-05T08:47:18Z",
   "interpretation": {
     "boundary": "This attests repository evidence integrity; it is not a universal proof of all possible PNVA deployments.",
     "hash_policy": "The evidence_hash changes when any tracked artifact hash, classification or pass flag changes.",
@@ -422,7 +499,8 @@
     "Run suppression ledger before attestation so avoided execution is proof-backed.",
     "Run sovereign robustness gate before attestation so native cleanliness and legacy debt are collapsed into one readiness decision.",
     "Run R3 migration planner before attestation so the next legacy-free target is measurable.",
-    "Run authority migration ledger before attestation so H0 strong decisions become entity/action-specific native targets."
+    "Run authority migration ledger before attestation so H0 strong decisions become entity/action-specific native targets.",
+    "Run R3 authority projection before attestation so mapped debt has replay, policy and no-tick native proof."
   ],
   "schema_version": "pnva.evidence_attestation.v1"
 }

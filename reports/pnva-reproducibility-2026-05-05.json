@@ -1,7 +1,7 @@
 {
   "author": "Gustavo de Aguiar Martins",
   "classification": "REPRODUCIBILITY_READY",
-  "command_count": 25,
+  "command_count": 29,
   "command_failure_count": 0,
   "command_failures": [],
   "commands": {
@@ -131,6 +131,34 @@
       "parse_error": "",
       "pass": true
     },
+    "r3_authority_projection": {
+      "classification": "R3_AUTHORITY_PROJECTION_READY",
+      "command": "tools/pnva_r3_authority_projection.py --events <TEMP>/r3-authority-projection-events.jsonl --entity-catalog <TEMP>/r3-authority-projection-entities.json --summary <TEMP>/r3-authority-projection-summary.json",
+      "exit_code": 0,
+      "parse_error": "",
+      "pass": true
+    },
+    "r3_authority_projection_no_tick": {
+      "classification": "SOVEREIGN_NO_TICK_READY",
+      "command": "tools/pnva_no_tick_invariant_analyzer.py --events <TEMP>/r3-authority-projection-events.jsonl --entity-catalog <TEMP>/r3-authority-projection-entities.json --replay-report <TEMP>/r3-authority-projection-replay.json --write <TEMP>/r3-authority-projection-no-tick.json",
+      "exit_code": 0,
+      "parse_error": "",
+      "pass": true
+    },
+    "r3_authority_projection_policy": {
+      "classification": "SOVEREIGN_POLICY_READY",
+      "command": "tools/pnva_sovereign_policy_validator.py --events <TEMP>/r3-authority-projection-events.jsonl --entity-catalog <TEMP>/r3-authority-projection-entities.json --write <TEMP>/r3-authority-projection-policy.json",
+      "exit_code": 0,
+      "parse_error": "",
+      "pass": true
+    },
+    "r3_authority_projection_replay": {
+      "classification": "REPLAY_VALID",
+      "command": "tools/pnva_replay_validator.py --events <TEMP>/r3-authority-projection-events.jsonl --entity-catalog <TEMP>/r3-authority-projection-entities.json --write <TEMP>/r3-authority-projection-replay.json",
+      "exit_code": 0,
+      "parse_error": "",
+      "pass": true
+    },
     "r3_migration_plan": {
       "classification": "R3_MIGRATION_PLAN_READY",
       "command": "tools/pnva_r3_migration_planner.py --write <TEMP>/r3-migration-plan.json",
@@ -181,7 +209,7 @@
       "pass": true
     }
   },
-  "comparison_count": 237,
+  "comparison_count": 275,
   "comparison_failure_count": 0,
   "comparison_failures": [],
   "comparisons": [
@@ -1651,6 +1679,272 @@
     {
       "field": "classification",
       "pass": true,
+      "published": "R3_AUTHORITY_PROJECTION_READY",
+      "report": "r3_authority_projection",
+      "reproduced": "R3_AUTHORITY_PROJECTION_READY"
+    },
+    {
+      "field": "pass",
+      "pass": true,
+      "published": true,
+      "report": "r3_authority_projection",
+      "reproduced": true
+    },
+    {
+      "field": "source_candidate_count",
+      "pass": true,
+      "published": 35,
+      "report": "r3_authority_projection",
+      "reproduced": 35
+    },
+    {
+      "field": "ledger_candidate_count",
+      "pass": true,
+      "published": 35,
+      "report": "r3_authority_projection",
+      "reproduced": 35
+    },
+    {
+      "field": "candidate_count_matches_ledger",
+      "pass": true,
+      "published": true,
+      "report": "r3_authority_projection",
+      "reproduced": true
+    },
+    {
+      "field": "projected_event_count",
+      "pass": true,
+      "published": 70,
+      "report": "r3_authority_projection",
+      "reproduced": 70
+    },
+    {
+      "field": "projected_native_event_count",
+      "pass": true,
+      "published": 70,
+      "report": "r3_authority_projection",
+      "reproduced": 70
+    },
+    {
+      "field": "projected_precheck_count",
+      "pass": true,
+      "published": 35,
+      "report": "r3_authority_projection",
+      "reproduced": 35
+    },
+    {
+      "field": "projected_commit_count",
+      "pass": true,
+      "published": 35,
+      "report": "r3_authority_projection",
+      "reproduced": 35
+    },
+    {
+      "field": "projected_strong_decision_count",
+      "pass": true,
+      "published": 35,
+      "report": "r3_authority_projection",
+      "reproduced": 35
+    },
+    {
+      "field": "projected_low_authority_strong_count",
+      "pass": true,
+      "published": 0,
+      "report": "r3_authority_projection",
+      "reproduced": 0
+    },
+    {
+      "field": "projected_no_tick_suppression_count",
+      "pass": true,
+      "published": 35,
+      "report": "r3_authority_projection",
+      "reproduced": 35
+    },
+    {
+      "field": "projected_no_tick_suppression_ratio",
+      "pass": true,
+      "published": 0.5,
+      "report": "r3_authority_projection",
+      "reproduced": 0.5
+    },
+    {
+      "field": "proof_valid_count",
+      "pass": true,
+      "published": 70,
+      "report": "r3_authority_projection",
+      "reproduced": 70
+    },
+    {
+      "field": "proof_coverage_ratio",
+      "pass": true,
+      "published": 1.0,
+      "report": "r3_authority_projection",
+      "reproduced": 1.0
+    },
+    {
+      "field": "entity_count",
+      "pass": true,
+      "published": 1,
+      "report": "r3_authority_projection",
+      "reproduced": 1
+    },
+    {
+      "field": "classification",
+      "pass": true,
+      "published": "REPLAY_VALID",
+      "report": "r3_authority_projection_replay",
+      "reproduced": "REPLAY_VALID"
+    },
+    {
+      "field": "pass",
+      "pass": true,
+      "published": true,
+      "report": "r3_authority_projection_replay",
+      "reproduced": true
+    },
+    {
+      "field": "summary.event_count",
+      "pass": true,
+      "published": 70,
+      "report": "r3_authority_projection_replay",
+      "reproduced": 70
+    },
+    {
+      "field": "summary.unique_event_ids",
+      "pass": true,
+      "published": 70,
+      "report": "r3_authority_projection_replay",
+      "reproduced": 70
+    },
+    {
+      "field": "summary.proof_hash_ok",
+      "pass": true,
+      "published": 70,
+      "report": "r3_authority_projection_replay",
+      "reproduced": 70
+    },
+    {
+      "field": "summary.proof_hash_bad",
+      "pass": true,
+      "published": 0,
+      "report": "r3_authority_projection_replay",
+      "reproduced": 0
+    },
+    {
+      "field": "classification",
+      "pass": true,
+      "published": "SOVEREIGN_POLICY_READY",
+      "report": "r3_authority_projection_policy",
+      "reproduced": "SOVEREIGN_POLICY_READY"
+    },
+    {
+      "field": "pass",
+      "pass": true,
+      "published": true,
+      "report": "r3_authority_projection_policy",
+      "reproduced": true
+    },
+    {
+      "field": "summary.event_count",
+      "pass": true,
+      "published": 70,
+      "report": "r3_authority_projection_policy",
+      "reproduced": 70
+    },
+    {
+      "field": "summary.native_event_count",
+      "pass": true,
+      "published": 70,
+      "report": "r3_authority_projection_policy",
+      "reproduced": 70
+    },
+    {
+      "field": "summary.strong_decision_count",
+      "pass": true,
+      "published": 35,
+      "report": "r3_authority_projection_policy",
+      "reproduced": 35
+    },
+    {
+      "field": "summary.low_authority_legacy_count",
+      "pass": true,
+      "published": 0,
+      "report": "r3_authority_projection_policy",
+      "reproduced": 0
+    },
+    {
+      "field": "summary.proof_policy_bad",
+      "pass": true,
+      "published": 0,
+      "report": "r3_authority_projection_policy",
+      "reproduced": 0
+    },
+    {
+      "field": "summary.entity_missing_count",
+      "pass": true,
+      "published": 0,
+      "report": "r3_authority_projection_policy",
+      "reproduced": 0
+    },
+    {
+      "field": "classification",
+      "pass": true,
+      "published": "SOVEREIGN_NO_TICK_READY",
+      "report": "r3_authority_projection_no_tick",
+      "reproduced": "SOVEREIGN_NO_TICK_READY"
+    },
+    {
+      "field": "pass",
+      "pass": true,
+      "published": true,
+      "report": "r3_authority_projection_no_tick",
+      "reproduced": true
+    },
+    {
+      "field": "no_tick_efficiency.event_count",
+      "pass": true,
+      "published": 70,
+      "report": "r3_authority_projection_no_tick",
+      "reproduced": 70
+    },
+    {
+      "field": "no_tick_efficiency.collapse_count",
+      "pass": true,
+      "published": 35,
+      "report": "r3_authority_projection_no_tick",
+      "reproduced": 35
+    },
+    {
+      "field": "no_tick_efficiency.observe_count",
+      "pass": true,
+      "published": 35,
+      "report": "r3_authority_projection_no_tick",
+      "reproduced": 35
+    },
+    {
+      "field": "no_tick_efficiency.suppressed_count",
+      "pass": true,
+      "published": 35,
+      "report": "r3_authority_projection_no_tick",
+      "reproduced": 35
+    },
+    {
+      "field": "no_tick_efficiency.no_tick_suppression_ratio",
+      "pass": true,
+      "published": 0.5,
+      "report": "r3_authority_projection_no_tick",
+      "reproduced": 0.5
+    },
+    {
+      "field": "no_tick_efficiency.proof_integrity_ratio",
+      "pass": true,
+      "published": 1.0,
+      "report": "r3_authority_projection_no_tick",
+      "reproduced": 1.0
+    },
+    {
+      "field": "classification",
+      "pass": true,
       "published": "ADVERSARIAL_VALIDATION_PASS",
       "report": "adversarial",
       "reproduced": "ADVERSARIAL_VALIDATION_PASS"
@@ -1777,9 +2071,9 @@
     {
       "field": "artifact_count",
       "pass": true,
-      "published": 29,
+      "published": 35,
       "report": "attestation",
-      "reproduced": 29
+      "reproduced": 35
     },
     {
       "field": "failure_count",
@@ -1791,9 +2085,9 @@
     {
       "field": "evidence_hash",
       "pass": true,
-      "published": "sha256:9373cde170c630fadbbc53fe3c46b877df05c80f0575720e97b26bda6460b93b",
+      "published": "sha256:5f1b6f2bcffb5e60a8e0371964077507d32cce1422006b68a158ced0d4bdbbd0",
       "report": "attestation",
-      "reproduced": "sha256:9373cde170c630fadbbc53fe3c46b877df05c80f0575720e97b26bda6460b93b"
+      "reproduced": "sha256:5f1b6f2bcffb5e60a8e0371964077507d32cce1422006b68a158ced0d4bdbbd0"
     },
     {
       "field": "classification",
@@ -1812,9 +2106,9 @@
     {
       "field": "check_count",
       "pass": true,
-      "published": 188,
+      "published": 217,
       "report": "semantic",
-      "reproduced": 188
+      "reproduced": 217
     },
     {
       "field": "error_count",
@@ -1846,7 +2140,7 @@
     }
   ],
   "failure_count": 0,
-  "generated_at": "2026-05-05T08:30:32Z",
+  "generated_at": "2026-05-05T08:49:49Z",
   "interpretation": {
     "boundary": "Generated timestamps, temporary paths and non-semantic ordering are intentionally excluded from comparison.",
     "purpose": "Regenerate PNVA evidence reports with current tools and compare stable fields against the published evidence package.",
@@ -1861,7 +2155,7 @@
   ],
   "schema_version": "pnva.reproducibility_guard.v1",
   "summary": {
-    "published_attestation_hash": "sha256:9373cde170c630fadbbc53fe3c46b877df05c80f0575720e97b26bda6460b93b",
+    "published_attestation_hash": "sha256:5f1b6f2bcffb5e60a8e0371964077507d32cce1422006b68a158ced0d4bdbbd0",
     "reports_reproduced": [
       "adversarial",
       "attestation",
@@ -1881,6 +2175,10 @@
       "no_tick",
       "policy",
       "proof_chain",
+      "r3_authority_projection",
+      "r3_authority_projection_no_tick",
+      "r3_authority_projection_policy",
+      "r3_authority_projection_replay",
       "r3_migration_plan",
       "replay",
       "schema_contract",
@@ -1889,7 +2187,7 @@
       "suppression_ledger",
       "tension_decision"
     ],
-    "reproduced_attestation_hash": "sha256:9373cde170c630fadbbc53fe3c46b877df05c80f0575720e97b26bda6460b93b",
-    "stable_fields_compared": 237
+    "reproduced_attestation_hash": "sha256:5f1b6f2bcffb5e60a8e0371964077507d32cce1422006b68a158ced0d4bdbbd0",
+    "stable_fields_compared": 275
   }
 }

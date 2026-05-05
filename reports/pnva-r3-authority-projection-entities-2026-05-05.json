@@ -1,0 +1,93 @@
+{
+  "author": "Gustavo de Aguiar Martins",
+  "entities": [
+    {
+      "capabilities": [
+        "emit_native_pnva_event",
+        "r3_authority_projection",
+        "hard_authority_decision",
+        "no_tick_precheck"
+      ],
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "evidence": {
+        "confidence": 0.94,
+        "last_seen": "2026-05-03T06:38:48Z",
+        "notes": "R3 authority projection entity derived from public canonical legacy debt.",
+        "proof_ref": "reports/pnva-r3-authority-projection-events-2026-05-05.jsonl"
+      },
+      "schema_version": "pnva.entity.v1",
+      "sovereignty_domain": "runtime",
+      "state": "candidate",
+      "stats": {
+        "decision_mix": [
+          [
+            "observe",
+            35
+          ],
+          [
+            "collapse",
+            35
+          ]
+        ],
+        "event_count": 70,
+        "first_seen": "2026-05-03T06:32:27Z",
+        "last_seen": "2026-05-03T06:38:48Z",
+        "risk_flags": [
+          [
+            "RESIZE_BATCH_PRESSURE",
+            64
+          ],
+          [
+            "R3_AUTHORITY_PREFLIGHT",
+            35
+          ],
+          [
+            "R3_AUTHORITY_PROJECTED",
+            35
+          ]
+        ],
+        "top_actions": [
+          [
+            "NO_ACTION",
+            35
+          ],
+          [
+            "RESIZE_BATCH",
+            32
+          ],
+          [
+            "COOLDOWN_GPU",
+            2
+          ],
+          [
+            "EXECUTE",
+            1
+          ]
+        ],
+        "top_rules": [
+          [
+            "adaptive_threshold",
+            70
+          ],
+          [
+            "field_scheduler",
+            70
+          ],
+          [
+            "native_event_emitter",
+            70
+          ],
+          [
+            "power_orchestrator",
+            4
+          ]
+        ]
+      }
+    }
+  ],
+  "entity_count": 1,
+  "generated_at": "2026-05-05T08:47:18Z",
+  "project": "PNVA-Core",
+  "schema_version": "pnva.entity_catalog.v1"
+}

@@ -120,7 +120,7 @@
     "robots_missing_tokens": [],
     "robots_ok": true,
     "sitemap_ok": true,
-    "sitemap_url_count": 64,
+    "sitemap_url_count": 71,
     "sitemap_urls": [
       "https://enygnadev.github.io/pnva-core/",
       "https://enygnadev.github.io/pnva-core/author.html",
@@ -146,6 +146,7 @@
       "https://enygnadev.github.io/pnva-core/docs/PNVA_SOVEREIGN_ROBUSTNESS_GATE.md",
       "https://enygnadev.github.io/pnva-core/docs/PNVA_R3_MIGRATION_PLAN.md",
       "https://enygnadev.github.io/pnva-core/docs/PNVA_AUTHORITY_MIGRATION_LEDGER.md",
+      "https://enygnadev.github.io/pnva-core/docs/PNVA_R3_AUTHORITY_PROJECTION.md",
       "https://enygnadev.github.io/pnva-core/docs/PNVA_SOVEREIGN_EVIDENCE_ATTESTATION.md",
       "https://enygnadev.github.io/pnva-core/docs/PNVA_ADVERSARIAL_VALIDATION.md",
       "https://enygnadev.github.io/pnva-core/docs/PNVA_ENTITY_HEURISTIC_MATURITY.md",
@@ -183,6 +184,12 @@
       "https://enygnadev.github.io/pnva-core/reports/pnva-entity-heuristic-maturity-2026-05-05.json",
       "https://enygnadev.github.io/pnva-core/reports/pnva-r3-migration-plan-2026-05-05.json",
       "https://enygnadev.github.io/pnva-core/reports/pnva-authority-migration-ledger-2026-05-05.json",
+      "https://enygnadev.github.io/pnva-core/reports/pnva-r3-authority-projection-summary-2026-05-05.json",
+      "https://enygnadev.github.io/pnva-core/reports/pnva-r3-authority-projection-events-2026-05-05.jsonl",
+      "https://enygnadev.github.io/pnva-core/reports/pnva-r3-authority-projection-entities-2026-05-05.json",
+      "https://enygnadev.github.io/pnva-core/reports/pnva-r3-authority-projection-replay-2026-05-05.json",
+      "https://enygnadev.github.io/pnva-core/reports/pnva-r3-authority-projection-policy-2026-05-05.json",
+      "https://enygnadev.github.io/pnva-core/reports/pnva-r3-authority-projection-no-tick-2026-05-05.json",
       "https://enygnadev.github.io/pnva-core/reports/pnva-semantic-consistency-2026-05-05.json",
       "https://enygnadev.github.io/pnva-core/reports/pnva-reproducibility-2026-05-05.json",
       "https://enygnadev.github.io/pnva-core/reports/pnva-sovereign-evidence-attestation-2026-05-05.json"
@@ -219,16 +226,16 @@
     "warning_count": 35
   },
   "evidence_attestation": {
-    "artifact_count": 29,
+    "artifact_count": 35,
     "attestation_ok": true,
     "classification": "PNVA_SOVEREIGN_EVIDENCE_ATTESTED",
     "errors": [],
-    "evidence_hash": "sha256:9373cde170c630fadbbc53fe3c46b877df05c80f0575720e97b26bda6460b93b",
+    "evidence_hash": "sha256:5f1b6f2bcffb5e60a8e0371964077507d32cce1422006b68a158ced0d4bdbbd0",
     "failure_count": 0,
     "missing": [],
-    "tracked_artifacts": 29
+    "tracked_artifacts": 35
   },
-  "generated_at": "2026-05-05T08:30:39Z",
+  "generated_at": "2026-05-05T08:53:06Z",
   "heuristic_influence_map": {
     "classification": "HEURISTIC_INFLUENCE_MAP_READY_WITH_LEGACY_WARNINGS",
     "error_count": 0,
@@ -1009,6 +1016,25 @@
     "proof_count": 9,
     "required_count": 9
   },
+  "r3_authority_projection": {
+    "classification": "R3_AUTHORITY_PROJECTION_READY",
+    "errors": [],
+    "ledger_candidate_count": 35,
+    "missing": [],
+    "no_tick_classification": "SOVEREIGN_NO_TICK_READY",
+    "policy_classification": "SOVEREIGN_POLICY_READY",
+    "projected_commit_count": 35,
+    "projected_event_count": 70,
+    "projected_low_authority_strong_count": 0,
+    "projected_no_tick_suppression_count": 35,
+    "projected_no_tick_suppression_ratio": 0.5,
+    "projected_precheck_count": 35,
+    "projected_strong_decision_count": 35,
+    "proof_coverage_ratio": 1.0,
+    "r3_authority_projection_ok": true,
+    "replay_classification": "REPLAY_VALID",
+    "source_candidate_count": 35
+  },
   "r3_migration_plan": {
     "blocker_count": 0,
     "classification": "R3_MIGRATION_PLAN_READY",
@@ -1044,6 +1070,7 @@
     "Run sovereign robustness gate so native cleanliness and legacy debt collapse into one readiness decision.",
     "Run R3 migration planner so the path from R2 quarantined legacy to R3 legacy-free is measurable.",
     "Run authority migration ledger so H0 strong decisions become entity/action-specific native targets.",
+    "Run R3 authority projection so mapped H0 debt has native replay, policy and no-tick validation before runtime replacement.",
     "Publish one sovereign evidence attestation hash with every evidence release.",
     "Run adversarial validation so validators prove tamper detection, not only green-path acceptance.",
     "Track entity and heuristic maturity so no-tick suppression stays attributable to actors and authority.",
@@ -1069,9 +1096,9 @@
   "repo_path": "<REPO>",
   "reproducibility": {
     "classification": "REPRODUCIBILITY_READY",
-    "command_count": 25,
+    "command_count": 29,
     "command_failure_count": 0,
-    "comparison_count": 237,
+    "comparison_count": 275,
     "comparison_failure_count": 0,
     "errors": [],
     "failure_count": 0,
@@ -1105,7 +1132,7 @@
     "total": 100
   },
   "semantic_consistency": {
-    "check_count": 188,
+    "check_count": 217,
     "classification": "SEMANTIC_CONSISTENCY_READY",
     "consistency_ok": true,
     "error_count": 0,

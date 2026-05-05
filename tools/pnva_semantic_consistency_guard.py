@@ -32,6 +32,10 @@ REPORTS = {
     "sovereign_robustness_gate": "reports/pnva-sovereign-robustness-gate-2026-05-05.json",
     "r3_migration_plan": "reports/pnva-r3-migration-plan-2026-05-05.json",
     "authority_migration_ledger": "reports/pnva-authority-migration-ledger-2026-05-05.json",
+    "r3_authority_projection": "reports/pnva-r3-authority-projection-summary-2026-05-05.json",
+    "r3_authority_projection_replay": "reports/pnva-r3-authority-projection-replay-2026-05-05.json",
+    "r3_authority_projection_policy": "reports/pnva-r3-authority-projection-policy-2026-05-05.json",
+    "r3_authority_projection_no_tick": "reports/pnva-r3-authority-projection-no-tick-2026-05-05.json",
     "adversarial": "reports/pnva-adversarial-validation-2026-05-05.json",
     "maturity": "reports/pnva-entity-heuristic-maturity-2026-05-05.json",
     "attestation": "reports/pnva-sovereign-evidence-attestation-2026-05-05.json",
@@ -59,6 +63,10 @@ EXPECTED_CLASSIFICATIONS = {
     "sovereign_robustness_gate": "SOVEREIGN_ROBUSTNESS_GATE_READY_WITH_LEGACY_WARNINGS",
     "r3_migration_plan": "R3_MIGRATION_PLAN_READY",
     "authority_migration_ledger": "AUTHORITY_MIGRATION_LEDGER_READY_WITH_LEGACY_WARNINGS",
+    "r3_authority_projection": "R3_AUTHORITY_PROJECTION_READY",
+    "r3_authority_projection_replay": "REPLAY_VALID",
+    "r3_authority_projection_policy": "SOVEREIGN_POLICY_READY",
+    "r3_authority_projection_no_tick": "SOVEREIGN_NO_TICK_READY",
     "adversarial": "ADVERSARIAL_VALIDATION_PASS",
     "maturity": "ENTITY_HEURISTIC_MATURITY_READY_WITH_LEGACY_WARNINGS",
     "attestation": "PNVA_SOVEREIGN_EVIDENCE_ATTESTED",
@@ -218,6 +226,10 @@ def build_report(repo: Path) -> dict[str, Any]:
     check_error(group="manifest", name="manifest_authority_migration_entity_count", left_ref="MANIFEST:authority_migration_ledger.entity_candidate_count", left=_dig(manifest_summary, ["authority_migration_ledger", "entity_candidate_count"]), right_ref="authority_migration_ledger:entity_candidate_count", right=data["authority_migration_ledger"].get("entity_candidate_count"))
     check_error(group="manifest", name="manifest_authority_migration_coverage", left_ref="MANIFEST:authority_migration_ledger.migration_coverage_ratio", left=_dig(manifest_summary, ["authority_migration_ledger", "migration_coverage_ratio"]), right_ref="authority_migration_ledger:migration_coverage_ratio", right=data["authority_migration_ledger"].get("migration_coverage_ratio"), tolerance=0.000001)
     check_error(group="manifest", name="manifest_authority_migration_native_debt", left_ref="MANIFEST:authority_migration_ledger.native_low_authority_strong_count", left=_dig(manifest_summary, ["authority_migration_ledger", "native_low_authority_strong_count"]), right_ref="authority_migration_ledger:native_low_authority_strong_count", right=data["authority_migration_ledger"].get("native_low_authority_strong_count"))
+    check_error(group="manifest", name="manifest_r3_projection_event_count", left_ref="MANIFEST:r3_authority_projection.projected_event_count", left=_dig(manifest_summary, ["r3_authority_projection", "projected_event_count"]), right_ref="r3_authority_projection:projected_event_count", right=data["r3_authority_projection"].get("projected_event_count"))
+    check_error(group="manifest", name="manifest_r3_projection_commit_count", left_ref="MANIFEST:r3_authority_projection.projected_commit_count", left=_dig(manifest_summary, ["r3_authority_projection", "projected_commit_count"]), right_ref="r3_authority_projection:projected_commit_count", right=data["r3_authority_projection"].get("projected_commit_count"))
+    check_error(group="manifest", name="manifest_r3_projection_suppression_count", left_ref="MANIFEST:r3_authority_projection.projected_no_tick_suppression_count", left=_dig(manifest_summary, ["r3_authority_projection", "projected_no_tick_suppression_count"]), right_ref="r3_authority_projection:projected_no_tick_suppression_count", right=data["r3_authority_projection"].get("projected_no_tick_suppression_count"))
+    check_error(group="manifest", name="manifest_r3_projection_low_authority_zero", left_ref="MANIFEST:r3_authority_projection.projected_low_authority_strong_count", left=_dig(manifest_summary, ["r3_authority_projection", "projected_low_authority_strong_count"]), right_ref="r3_authority_projection:projected_low_authority_strong_count", right=data["r3_authority_projection"].get("projected_low_authority_strong_count"))
 
     # Canonical report agreement.
     for key, report_name in (
@@ -291,6 +303,16 @@ def build_report(repo: Path) -> dict[str, Any]:
     check_error(group="authority_migration_ledger", name="authority_migration_full_coverage", left_ref="authority_migration_ledger:migration_coverage_ratio", left=data["authority_migration_ledger"].get("migration_coverage_ratio"), right_ref="expected", right=1.0, tolerance=0.000001)
     check_error(group="authority_migration_ledger", name="authority_proof_full_coverage", left_ref="authority_migration_ledger:proof_coverage_ratio", left=data["authority_migration_ledger"].get("proof_coverage_ratio"), right_ref="expected", right=1.0, tolerance=0.000001)
     check_error(group="authority_migration_ledger", name="authority_unmapped_zero", left_ref="authority_migration_ledger:unmapped_candidate_count", left=data["authority_migration_ledger"].get("unmapped_candidate_count"), right_ref="expected", right=0)
+    check_error(group="r3_authority_projection", name="projection_source_matches_authority_ledger", left_ref="r3_authority_projection:source_candidate_count", left=data["r3_authority_projection"].get("source_candidate_count"), right_ref="authority_migration_ledger:candidate_event_count", right=data["authority_migration_ledger"].get("candidate_event_count"))
+    check_error(group="r3_authority_projection", name="projection_commit_matches_authority_ledger", left_ref="r3_authority_projection:projected_commit_count", left=data["r3_authority_projection"].get("projected_commit_count"), right_ref="authority_migration_ledger:candidate_event_count", right=data["authority_migration_ledger"].get("candidate_event_count"))
+    check_error(group="r3_authority_projection", name="projection_event_count_is_precheck_plus_commit", left_ref="r3_authority_projection:projected_event_count", left=data["r3_authority_projection"].get("projected_event_count"), right_ref="precheck+commit", right=int(data["r3_authority_projection"].get("projected_precheck_count", 0)) + int(data["r3_authority_projection"].get("projected_commit_count", 0)))
+    check_error(group="r3_authority_projection", name="projection_low_authority_strong_zero", left_ref="r3_authority_projection:projected_low_authority_strong_count", left=data["r3_authority_projection"].get("projected_low_authority_strong_count"), right_ref="expected", right=0)
+    check_error(group="r3_authority_projection", name="projection_proof_full_coverage", left_ref="r3_authority_projection:proof_coverage_ratio", left=data["r3_authority_projection"].get("proof_coverage_ratio"), right_ref="expected", right=1.0, tolerance=0.000001)
+    check_error(group="r3_authority_projection", name="projection_replay_event_count_matches", left_ref="r3_authority_projection_replay:summary.event_count", left=_dig(data["r3_authority_projection_replay"], ["summary", "event_count"]), right_ref="r3_authority_projection:projected_event_count", right=data["r3_authority_projection"].get("projected_event_count"))
+    check_error(group="r3_authority_projection", name="projection_policy_strong_matches_commit", left_ref="r3_authority_projection_policy:summary.strong_decision_count", left=_dig(data["r3_authority_projection_policy"], ["summary", "strong_decision_count"]), right_ref="r3_authority_projection:projected_commit_count", right=data["r3_authority_projection"].get("projected_commit_count"))
+    check_error(group="r3_authority_projection", name="projection_policy_low_authority_zero", left_ref="r3_authority_projection_policy:summary.low_authority_legacy_count", left=_dig(data["r3_authority_projection_policy"], ["summary", "low_authority_legacy_count"]), right_ref="expected", right=0)
+    check_error(group="r3_authority_projection", name="projection_no_tick_event_count_matches", left_ref="r3_authority_projection_no_tick:summary.event_count", left=_dig(data["r3_authority_projection_no_tick"], ["summary", "event_count"]), right_ref="r3_authority_projection:projected_event_count", right=data["r3_authority_projection"].get("projected_event_count"))
+    check_error(group="r3_authority_projection", name="projection_no_tick_suppression_matches_precheck", left_ref="r3_authority_projection_no_tick:no_tick_efficiency.suppressed_count", left=_dig(data["r3_authority_projection_no_tick"], ["no_tick_efficiency", "suppressed_count"]), right_ref="r3_authority_projection:projected_precheck_count", right=data["r3_authority_projection"].get("projected_precheck_count"))
 
     # Maturity aggregate math.
     maturity_summary = data["maturity"].get("summary", {})
@@ -306,7 +328,7 @@ def build_report(repo: Path) -> dict[str, Any]:
     artifact_ids = [str(item.get("id")) for item in artifacts if isinstance(item, dict)]
     check_error(group="attestation", name="artifact_count_matches_list", left_ref="attestation:artifact_count", left=data["attestation"].get("artifact_count"), right_ref="len(attestation.artifacts)", right=len(artifacts))
     check_error(group="attestation", name="failure_count_zero", left_ref="attestation:failure_count", left=data["attestation"].get("failure_count"), right_ref="expected", right=0)
-    for required_id in ("schema_contract_validation", "causal_chronology", "tension_decision_calibration", "decision_trace_index", "heuristic_influence_map", "entity_no_tick_matrix", "suppression_ledger", "sovereign_robustness_gate", "r3_migration_plan", "authority_migration_ledger", "adversarial_validation", "entity_heuristic_maturity"):
+    for required_id in ("schema_contract_validation", "causal_chronology", "tension_decision_calibration", "decision_trace_index", "heuristic_influence_map", "entity_no_tick_matrix", "suppression_ledger", "sovereign_robustness_gate", "r3_migration_plan", "authority_migration_ledger", "r3_authority_projection_summary", "r3_authority_projection_events", "r3_authority_projection_entities", "r3_authority_projection_replay", "r3_authority_projection_policy", "r3_authority_projection_no_tick", "adversarial_validation", "entity_heuristic_maturity"):
         check_error(group="attestation", name=f"attestation_contains_{required_id}", left_ref="attestation:artifact_ids", left=required_id in artifact_ids, right_ref="expected", right=True)
     check_error(group="audit", name="audit_score_ready", left_ref="audit:score.classification", left=_dig(data["audit"], ["score", "classification"]), right_ref="expected", right="SOVEREIGN_READY")
     check_error(group="audit", name="audit_attestation_hash_matches", left_ref="audit:evidence_attestation.evidence_hash", left=_dig(data["audit"], ["evidence_attestation", "evidence_hash"]), right_ref="attestation:evidence_hash", right=data["attestation"].get("evidence_hash"))
@@ -321,6 +343,7 @@ def build_report(repo: Path) -> dict[str, Any]:
     check_error(group="audit", name="audit_robustness_gate_matches", left_ref="audit:sovereign_robustness_gate.classification", left=_dig(data["audit"], ["sovereign_robustness_gate", "classification"]), right_ref="sovereign_robustness_gate:classification", right=data["sovereign_robustness_gate"].get("classification"))
     check_error(group="audit", name="audit_r3_migration_plan_matches", left_ref="audit:r3_migration_plan.classification", left=_dig(data["audit"], ["r3_migration_plan", "classification"]), right_ref="r3_migration_plan:classification", right=data["r3_migration_plan"].get("classification"))
     check_error(group="audit", name="audit_authority_migration_ledger_matches", left_ref="audit:authority_migration_ledger.classification", left=_dig(data["audit"], ["authority_migration_ledger", "classification"]), right_ref="authority_migration_ledger:classification", right=data["authority_migration_ledger"].get("classification"))
+    check_error(group="audit", name="audit_r3_authority_projection_matches", left_ref="audit:r3_authority_projection.classification", left=_dig(data["audit"], ["r3_authority_projection", "classification"]), right_ref="r3_authority_projection:classification", right=data["r3_authority_projection"].get("classification"))
 
     manifest_files = data["manifest"].get("files", []) if isinstance(data["manifest"], dict) else []
     duplicate_files = sorted({item for item in manifest_files if manifest_files.count(item) > 1})
@@ -379,6 +402,10 @@ def build_report(repo: Path) -> dict[str, Any]:
             "authority_migration_entity_candidate_count": data["authority_migration_ledger"].get("entity_candidate_count"),
             "authority_migration_action_candidate_count": data["authority_migration_ledger"].get("action_candidate_count"),
             "authority_migration_coverage_ratio": data["authority_migration_ledger"].get("migration_coverage_ratio"),
+            "r3_authority_projection_event_count": data["r3_authority_projection"].get("projected_event_count"),
+            "r3_authority_projection_commit_count": data["r3_authority_projection"].get("projected_commit_count"),
+            "r3_authority_projection_suppression_count": data["r3_authority_projection"].get("projected_no_tick_suppression_count"),
+            "r3_authority_projection_low_authority_strong_count": data["r3_authority_projection"].get("projected_low_authority_strong_count"),
             "attestation_artifact_count": data["attestation"].get("artifact_count"),
             "audit_score": _dig(data["audit"], ["score", "total"]),
         },

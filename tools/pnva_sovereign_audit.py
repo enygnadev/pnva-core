@@ -57,6 +57,7 @@ PUBLIC_DOCS = [
     "docs/PNVA_SOVEREIGN_ROBUSTNESS_GATE.md",
     "docs/PNVA_R3_MIGRATION_PLAN.md",
     "docs/PNVA_AUTHORITY_MIGRATION_LEDGER.md",
+    "docs/PNVA_R3_AUTHORITY_PROJECTION.md",
     "docs/PNVA_SOVEREIGN_EVIDENCE_ATTESTATION.md",
     "docs/PNVA_ADVERSARIAL_VALIDATION.md",
     "docs/PNVA_ENTITY_HEURISTIC_MATURITY.md",
@@ -178,6 +179,17 @@ AUTHORITY_MIGRATION_LEDGER_FILES = [
     "tools/pnva_authority_migration_ledger.py",
     "docs/PNVA_AUTHORITY_MIGRATION_LEDGER.md",
     "reports/pnva-authority-migration-ledger-2026-05-05.json",
+]
+
+R3_AUTHORITY_PROJECTION_FILES = [
+    "tools/pnva_r3_authority_projection.py",
+    "docs/PNVA_R3_AUTHORITY_PROJECTION.md",
+    "reports/pnva-r3-authority-projection-summary-2026-05-05.json",
+    "reports/pnva-r3-authority-projection-events-2026-05-05.jsonl",
+    "reports/pnva-r3-authority-projection-entities-2026-05-05.json",
+    "reports/pnva-r3-authority-projection-replay-2026-05-05.json",
+    "reports/pnva-r3-authority-projection-policy-2026-05-05.json",
+    "reports/pnva-r3-authority-projection-no-tick-2026-05-05.json",
 ]
 
 EVIDENCE_ATTESTATION_FILES = [
@@ -1091,6 +1103,58 @@ def audit_authority_migration_ledger(repo: Path) -> dict[str, Any]:
     }
 
 
+def audit_r3_authority_projection(repo: Path) -> dict[str, Any]:
+    missing = [rel for rel in R3_AUTHORITY_PROJECTION_FILES if not (repo / rel).exists()]
+    summary_path = repo / "reports" / "pnva-r3-authority-projection-summary-2026-05-05.json"
+    replay_path = repo / "reports" / "pnva-r3-authority-projection-replay-2026-05-05.json"
+    policy_path = repo / "reports" / "pnva-r3-authority-projection-policy-2026-05-05.json"
+    no_tick_path = repo / "reports" / "pnva-r3-authority-projection-no-tick-2026-05-05.json"
+    if not all(path.exists() for path in (summary_path, replay_path, policy_path, no_tick_path)):
+        return {
+            "r3_authority_projection_ok": False,
+            "missing": missing,
+            "classification": "R3_AUTHORITY_PROJECTION_MISSING",
+            "errors": ["missing R3 authority projection report"],
+        }
+    summary = _read_json(summary_path)
+    replay = _read_json(replay_path)
+    policy = _read_json(policy_path)
+    no_tick = _read_json(no_tick_path)
+    ok = (
+        not missing
+        and summary.get("pass") is True
+        and summary.get("classification") == "R3_AUTHORITY_PROJECTION_READY"
+        and replay.get("classification") == "REPLAY_VALID"
+        and replay.get("pass") is True
+        and policy.get("classification") == "SOVEREIGN_POLICY_READY"
+        and policy.get("pass") is True
+        and no_tick.get("classification") == "SOVEREIGN_NO_TICK_READY"
+        and no_tick.get("pass") is True
+        and int(summary.get("projected_low_authority_strong_count", 1)) == 0
+        and int(summary.get("projected_commit_count", 0)) == int(summary.get("source_candidate_count", -1))
+        and float(summary.get("proof_coverage_ratio", 0.0)) == 1.0
+    )
+    return {
+        "r3_authority_projection_ok": ok,
+        "missing": missing,
+        "classification": summary.get("classification"),
+        "projected_event_count": int(summary.get("projected_event_count", 0)),
+        "source_candidate_count": int(summary.get("source_candidate_count", 0)),
+        "ledger_candidate_count": int(summary.get("ledger_candidate_count", 0)),
+        "projected_precheck_count": int(summary.get("projected_precheck_count", 0)),
+        "projected_commit_count": int(summary.get("projected_commit_count", 0)),
+        "projected_strong_decision_count": int(summary.get("projected_strong_decision_count", 0)),
+        "projected_low_authority_strong_count": int(summary.get("projected_low_authority_strong_count", 0)),
+        "projected_no_tick_suppression_count": int(summary.get("projected_no_tick_suppression_count", 0)),
+        "projected_no_tick_suppression_ratio": float(summary.get("projected_no_tick_suppression_ratio", 0.0)),
+        "proof_coverage_ratio": float(summary.get("proof_coverage_ratio", 0.0)),
+        "replay_classification": replay.get("classification"),
+        "policy_classification": policy.get("classification"),
+        "no_tick_classification": no_tick.get("classification"),
+        "errors": [] if ok else ["R3 authority projection failed"],
+    }
+
+
 def audit_reproducibility(repo: Path) -> dict[str, Any]:
     missing = [rel for rel in REPRODUCIBILITY_FILES if not (repo / rel).exists()]
     report_path = repo / "reports" / "pnva-reproducibility-2026-05-05.json"
@@ -1332,6 +1396,8 @@ def score_report(report: dict[str, Any]) -> dict[str, Any]:
         scores["actionability"] += 0
     if report.get("authority_migration_ledger", {}).get("authority_migration_ledger_ok"):
         scores["actionability"] += 0
+    if report.get("r3_authority_projection", {}).get("r3_authority_projection_ok"):
+        scores["actionability"] += 0
     if report.get("sovereign_policy", {}).get("policy_ok"):
         scores["actionability"] += 0
     if report.get("proof_chain", {}).get("chain_ok"):
@@ -1409,6 +1475,7 @@ def build_report(repo: Path, *, strict_public: bool = False) -> dict[str, Any]:
         "sovereign_robustness_gate": audit_sovereign_robustness_gate(repo),
         "r3_migration_plan": audit_r3_migration_plan(repo),
         "authority_migration_ledger": audit_authority_migration_ledger(repo),
+        "r3_authority_projection": audit_r3_authority_projection(repo),
         "evidence_attestation": audit_evidence_attestation(repo),
         "adversarial_validation": audit_adversarial_validation(repo),
         "entity_heuristic_maturity": audit_entity_heuristic_maturity(repo),
@@ -1434,6 +1501,7 @@ def build_report(repo: Path, *, strict_public: bool = False) -> dict[str, Any]:
             "Run sovereign robustness gate so native cleanliness and legacy debt collapse into one readiness decision.",
             "Run R3 migration planner so the path from R2 quarantined legacy to R3 legacy-free is measurable.",
             "Run authority migration ledger so H0 strong decisions become entity/action-specific native targets.",
+            "Run R3 authority projection so mapped H0 debt has native replay, policy and no-tick validation before runtime replacement.",
             "Publish one sovereign evidence attestation hash with every evidence release.",
             "Run adversarial validation so validators prove tamper detection, not only green-path acceptance.",
             "Track entity and heuristic maturity so no-tick suppression stays attributable to actors and authority.",

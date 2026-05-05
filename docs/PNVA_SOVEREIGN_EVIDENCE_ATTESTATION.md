@@ -27,6 +27,7 @@ suppression ledger
 sovereign robustness gate
 R3 migration plan
 authority migration ledger
+R3 authority projection
 adversarial validation
 entity and heuristic maturity
 sovereign audit
@@ -68,7 +69,7 @@ Current result:
 ```text
 classification: PNVA_SOVEREIGN_EVIDENCE_ATTESTED
 pass: true
-artifact_count: 29
+artifact_count: 35
 failure_count: 0
 ```
 

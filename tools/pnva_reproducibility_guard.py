@@ -40,6 +40,10 @@ PUBLISHED_REPORTS = {
     "sovereign_robustness_gate": "reports/pnva-sovereign-robustness-gate-2026-05-05.json",
     "r3_migration_plan": "reports/pnva-r3-migration-plan-2026-05-05.json",
     "authority_migration_ledger": "reports/pnva-authority-migration-ledger-2026-05-05.json",
+    "r3_authority_projection": "reports/pnva-r3-authority-projection-summary-2026-05-05.json",
+    "r3_authority_projection_replay": "reports/pnva-r3-authority-projection-replay-2026-05-05.json",
+    "r3_authority_projection_policy": "reports/pnva-r3-authority-projection-policy-2026-05-05.json",
+    "r3_authority_projection_no_tick": "reports/pnva-r3-authority-projection-no-tick-2026-05-05.json",
     "adversarial": "reports/pnva-adversarial-validation-2026-05-05.json",
     "maturity": "reports/pnva-entity-heuristic-maturity-2026-05-05.json",
     "attestation": "reports/pnva-sovereign-evidence-attestation-2026-05-05.json",
@@ -299,6 +303,52 @@ STABLE_PATHS = {
         ["warning_count"],
         ["error_count"],
     ],
+    "r3_authority_projection": [
+        ["classification"],
+        ["pass"],
+        ["source_candidate_count"],
+        ["ledger_candidate_count"],
+        ["candidate_count_matches_ledger"],
+        ["projected_event_count"],
+        ["projected_native_event_count"],
+        ["projected_precheck_count"],
+        ["projected_commit_count"],
+        ["projected_strong_decision_count"],
+        ["projected_low_authority_strong_count"],
+        ["projected_no_tick_suppression_count"],
+        ["projected_no_tick_suppression_ratio"],
+        ["proof_valid_count"],
+        ["proof_coverage_ratio"],
+        ["entity_count"],
+    ],
+    "r3_authority_projection_replay": [
+        ["classification"],
+        ["pass"],
+        ["summary", "event_count"],
+        ["summary", "unique_event_ids"],
+        ["summary", "proof_hash_ok"],
+        ["summary", "proof_hash_bad"],
+    ],
+    "r3_authority_projection_policy": [
+        ["classification"],
+        ["pass"],
+        ["summary", "event_count"],
+        ["summary", "native_event_count"],
+        ["summary", "strong_decision_count"],
+        ["summary", "low_authority_legacy_count"],
+        ["summary", "proof_policy_bad"],
+        ["summary", "entity_missing_count"],
+    ],
+    "r3_authority_projection_no_tick": [
+        ["classification"],
+        ["pass"],
+        ["no_tick_efficiency", "event_count"],
+        ["no_tick_efficiency", "collapse_count"],
+        ["no_tick_efficiency", "observe_count"],
+        ["no_tick_efficiency", "suppressed_count"],
+        ["no_tick_efficiency", "no_tick_suppression_ratio"],
+        ["no_tick_efficiency", "proof_integrity_ratio"],
+    ],
     "adversarial": [
         ["classification"],
         ["pass"],
@@ -442,6 +492,12 @@ def build_report(repo: Path) -> dict[str, Any]:
             "sovereign_robustness_gate": tmp / "sovereign-robustness-gate.json",
             "r3_migration_plan": tmp / "r3-migration-plan.json",
             "authority_migration_ledger": tmp / "authority-migration-ledger.json",
+            "r3_authority_projection": tmp / "r3-authority-projection-summary.json",
+            "r3_authority_projection_events": tmp / "r3-authority-projection-events.jsonl",
+            "r3_authority_projection_entities": tmp / "r3-authority-projection-entities.json",
+            "r3_authority_projection_replay": tmp / "r3-authority-projection-replay.json",
+            "r3_authority_projection_policy": tmp / "r3-authority-projection-policy.json",
+            "r3_authority_projection_no_tick": tmp / "r3-authority-projection-no-tick.json",
             "adversarial": tmp / "adversarial.json",
             "maturity": tmp / "maturity.json",
             "attestation": tmp / "attestation.json",
@@ -482,6 +538,55 @@ def build_report(repo: Path) -> dict[str, Any]:
         commands["sovereign_robustness_gate"] = _run(repo, ["tools/pnva_sovereign_robustness_gate.py"], outputs["sovereign_robustness_gate"])
         commands["r3_migration_plan"] = _run(repo, ["tools/pnva_r3_migration_planner.py"], outputs["r3_migration_plan"])
         commands["authority_migration_ledger"] = _run(repo, ["tools/pnva_authority_migration_ledger.py"], outputs["authority_migration_ledger"])
+        commands["r3_authority_projection"] = _run(
+            repo,
+            [
+                "tools/pnva_r3_authority_projection.py",
+                "--events",
+                str(outputs["r3_authority_projection_events"]),
+                "--entity-catalog",
+                str(outputs["r3_authority_projection_entities"]),
+                "--summary",
+                str(outputs["r3_authority_projection"]),
+            ],
+            outputs["r3_authority_projection"],
+            write_flag=None,
+        )
+        commands["r3_authority_projection_replay"] = _run(
+            repo,
+            [
+                "tools/pnva_replay_validator.py",
+                "--events",
+                str(outputs["r3_authority_projection_events"]),
+                "--entity-catalog",
+                str(outputs["r3_authority_projection_entities"]),
+            ],
+            outputs["r3_authority_projection_replay"],
+        )
+        commands["r3_authority_projection_policy"] = _run(
+            repo,
+            [
+                "tools/pnva_sovereign_policy_validator.py",
+                "--events",
+                str(outputs["r3_authority_projection_events"]),
+                "--entity-catalog",
+                str(outputs["r3_authority_projection_entities"]),
+            ],
+            outputs["r3_authority_projection_policy"],
+        )
+        commands["r3_authority_projection_no_tick"] = _run(
+            repo,
+            [
+                "tools/pnva_no_tick_invariant_analyzer.py",
+                "--events",
+                str(outputs["r3_authority_projection_events"]),
+                "--entity-catalog",
+                str(outputs["r3_authority_projection_entities"]),
+                "--replay-report",
+                str(outputs["r3_authority_projection_replay"]),
+            ],
+            outputs["r3_authority_projection_no_tick"],
+        )
         commands["adversarial"] = _run(repo, ["tools/pnva_adversarial_validator.py"], outputs["adversarial"])
         commands["maturity"] = _run(repo, ["tools/pnva_entity_heuristic_maturity.py"], outputs["maturity"])
         commands["attestation"] = _run(repo, ["tools/pnva_evidence_attestor.py"], outputs["attestation"])

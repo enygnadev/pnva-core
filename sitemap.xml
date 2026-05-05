@@ -97,6 +97,10 @@
     <lastmod>2026-05-05</lastmod>
   </url>
   <url>
+    <loc>https://enygnadev.github.io/pnva-core/docs/PNVA_R3_AUTHORITY_PROJECTION.md</loc>
+    <lastmod>2026-05-05</lastmod>
+  </url>
+  <url>
     <loc>https://enygnadev.github.io/pnva-core/docs/PNVA_SOVEREIGN_EVIDENCE_ATTESTATION.md</loc>
     <lastmod>2026-05-05</lastmod>
   </url>
@@ -242,6 +246,30 @@
   </url>
   <url>
     <loc>https://enygnadev.github.io/pnva-core/reports/pnva-authority-migration-ledger-2026-05-05.json</loc>
+    <lastmod>2026-05-05</lastmod>
+  </url>
+  <url>
+    <loc>https://enygnadev.github.io/pnva-core/reports/pnva-r3-authority-projection-summary-2026-05-05.json</loc>
+    <lastmod>2026-05-05</lastmod>
+  </url>
+  <url>
+    <loc>https://enygnadev.github.io/pnva-core/reports/pnva-r3-authority-projection-events-2026-05-05.jsonl</loc>
+    <lastmod>2026-05-05</lastmod>
+  </url>
+  <url>
+    <loc>https://enygnadev.github.io/pnva-core/reports/pnva-r3-authority-projection-entities-2026-05-05.json</loc>
+    <lastmod>2026-05-05</lastmod>
+  </url>
+  <url>
+    <loc>https://enygnadev.github.io/pnva-core/reports/pnva-r3-authority-projection-replay-2026-05-05.json</loc>
+    <lastmod>2026-05-05</lastmod>
+  </url>
+  <url>
+    <loc>https://enygnadev.github.io/pnva-core/reports/pnva-r3-authority-projection-policy-2026-05-05.json</loc>
+    <lastmod>2026-05-05</lastmod>
+  </url>
+  <url>
+    <loc>https://enygnadev.github.io/pnva-core/reports/pnva-r3-authority-projection-no-tick-2026-05-05.json</loc>
     <lastmod>2026-05-05</lastmod>
   </url>
   <url>

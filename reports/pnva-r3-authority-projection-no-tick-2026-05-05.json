@@ -1,0 +1,328 @@
+{
+  "author": "Gustavo de Aguiar Martins",
+  "classification": "SOVEREIGN_NO_TICK_READY",
+  "entity_catalog_ref": "reports/pnva-r3-authority-projection-entities-2026-05-05.json",
+  "entity_health": [
+    {
+      "attention": [
+        "HIGH_RISK_FLAG_DENSITY"
+      ],
+      "block_ratio": 0.0,
+      "decision_mix": [
+        [
+          "observe",
+          35
+        ],
+        [
+          "collapse",
+          35
+        ]
+      ],
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "event_source",
+      "event_count": 70,
+      "risk_flag_density": 1.9143,
+      "risk_flags": [
+        [
+          "RESIZE_BATCH_PRESSURE",
+          64
+        ],
+        [
+          "R3_AUTHORITY_PREFLIGHT",
+          35
+        ],
+        [
+          "R3_AUTHORITY_PROJECTED",
+          35
+        ]
+      ],
+      "status": "pressure_visible",
+      "top_actions": [
+        [
+          "NO_ACTION",
+          35
+        ],
+        [
+          "RESIZE_BATCH",
+          32
+        ],
+        [
+          "COOLDOWN_GPU",
+          2
+        ],
+        [
+          "EXECUTE",
+          1
+        ]
+      ],
+      "top_rules": [
+        [
+          "adaptive_threshold",
+          70
+        ],
+        [
+          "field_scheduler",
+          70
+        ],
+        [
+          "native_event_emitter",
+          70
+        ],
+        [
+          "power_orchestrator",
+          4
+        ]
+      ]
+    }
+  ],
+  "events_ref": "reports/pnva-r3-authority-projection-events-2026-05-05.jsonl",
+  "failed_invariants": [],
+  "generated_at": "2026-05-05T08:47:18Z",
+  "heuristic_classes": {
+    "adaptive_threshold": {
+      "class": "H2_GUARDED_THRESHOLD",
+      "count": 70
+    },
+    "field_scheduler": {
+      "class": "H2_GUARDED_ACTION",
+      "count": 70
+    },
+    "native_event_emitter": {
+      "class": "H1_ADVISORY_SIGNAL",
+      "count": 70
+    },
+    "power_orchestrator": {
+      "class": "H2_GUARDED_ACTION",
+      "count": 4
+    }
+  },
+  "interpretation": {
+    "entities": "Entity health is derived from canonical event evidence and does not expose raw local identifiers.",
+    "heuristics": "Heuristics are not treated as magic intelligence; each rule is classified by allowed authority level.",
+    "no_tick": "Observe and block decisions are counted as causal suppression because the runtime records why it did not execute."
+  },
+  "invariants": [
+    {
+      "evidence": {
+        "event_count": 70,
+        "parse_errors": 0,
+        "replay_classification": "REPLAY_VALID"
+      },
+      "name": "CANONICAL_SCHEMA_REPLAYED",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "proof_hash_bad": 0,
+        "proof_hash_ok": 70
+      },
+      "name": "PROOF_HASH_STABLE",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "suppressed_count": 35,
+        "suppression_ratio": 0.5
+      },
+      "name": "NO_TICK_SUPPRESSION_OBSERVED",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "guard_event_count": 0,
+        "guard_validated": 0,
+        "policy": "guard consistency is required when guard events are present"
+      },
+      "name": "GUARD_COLLAPSE_BLOCK_CONSISTENT",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "catalog_entity_count": 1,
+        "missing_entities": [],
+        "observed_entity_count": 1
+      },
+      "name": "ENTITY_CATALOG_COVERS_EVENTS",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "risk_flag_count": 134,
+        "rule_count": 214,
+        "top_risks": [
+          [
+            "RESIZE_BATCH_PRESSURE",
+            64
+          ],
+          [
+            "R3_AUTHORITY_PREFLIGHT",
+            35
+          ],
+          [
+            "R3_AUTHORITY_PROJECTED",
+            35
+          ]
+        ],
+        "top_rules": [
+          [
+            "adaptive_threshold",
+            70
+          ],
+          [
+            "field_scheduler",
+            70
+          ],
+          [
+            "native_event_emitter",
+            70
+          ],
+          [
+            "power_orchestrator",
+            4
+          ]
+        ]
+      },
+      "name": "HEURISTIC_VISIBILITY_PRESENT",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "checked_events": 70,
+        "policy": "source.file_name must be basename only"
+      },
+      "name": "PUBLIC_SAFE_EVENT_REFERENCES",
+      "pass": true
+    }
+  ],
+  "no_tick_efficiency": {
+    "block_count": 0,
+    "causal_execution_ratio": 0.5,
+    "collapse_count": 35,
+    "event_count": 70,
+    "guard_consistency_ratio": 0.0,
+    "no_tick_suppression_ratio": 0.5,
+    "observe_count": 35,
+    "proof_integrity_ratio": 1.0,
+    "suppressed_count": 35
+  },
+  "parse_errors": [],
+  "pass": true,
+  "project": "PNVA-Core",
+  "recommendations": [
+    "Emit pnva.event.v1 directly from the runtime so replay validation does not depend on a legacy bridge.",
+    "Promote guard and thermal pressure into explicit runtime entities when sensor provenance is available.",
+    "Keep observe/block records; they are the audit trail that proves no-tick suppression without hiding decisions."
+  ],
+  "replay_report_ref": "reports/pnva-r3-authority-projection-replay-2026-05-05.json",
+  "schema_version": "pnva.no_tick_invariants.v1",
+  "summary": {
+    "causal_chain_count": 35,
+    "entity_count_catalog": 1,
+    "entity_count_observed": 1,
+    "event_count": 70,
+    "top_actions": [
+      [
+        "NO_ACTION",
+        35
+      ],
+      [
+        "RESIZE_BATCH",
+        32
+      ],
+      [
+        "COOLDOWN_GPU",
+        2
+      ],
+      [
+        "EXECUTE",
+        1
+      ]
+    ],
+    "top_chains": [
+      [
+        "chain_r3_authority_projection_81a618f03101",
+        2
+      ],
+      [
+        "chain_r3_authority_projection_7c450db1e30d",
+        2
+      ],
+      [
+        "chain_r3_authority_projection_5430f69337ee",
+        2
+      ],
+      [
+        "chain_r3_authority_projection_52d16a07f5b0",
+        2
+      ],
+      [
+        "chain_r3_authority_projection_7298af91bdbc",
+        2
+      ],
+      [
+        "chain_r3_authority_projection_e1e88028aab2",
+        2
+      ],
+      [
+        "chain_r3_authority_projection_d4514098e855",
+        2
+      ],
+      [
+        "chain_r3_authority_projection_86dabe963209",
+        2
+      ]
+    ],
+    "top_decisions": [
+      [
+        "observe",
+        35
+      ],
+      [
+        "collapse",
+        35
+      ]
+    ],
+    "top_event_types": [
+      [
+        "cuda_slot_scan_authority_precheck",
+        35
+      ],
+      [
+        "cuda_slot_scan",
+        35
+      ]
+    ],
+    "top_heuristic_rules": [
+      [
+        "adaptive_threshold",
+        70
+      ],
+      [
+        "field_scheduler",
+        70
+      ],
+      [
+        "native_event_emitter",
+        70
+      ],
+      [
+        "power_orchestrator",
+        4
+      ]
+    ],
+    "top_risk_flags": [
+      [
+        "RESIZE_BATCH_PRESSURE",
+        64
+      ],
+      [
+        "R3_AUTHORITY_PREFLIGHT",
+        35
+      ],
+      [
+        "R3_AUTHORITY_PROJECTED",
+        35
+      ]
+    ]
+  }
+}

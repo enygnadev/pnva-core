@@ -1,6 +1,6 @@
 {
   "author": "Gustavo de Aguiar Martins",
-  "check_count": 188,
+  "check_count": 217,
   "checks": [
     {
       "group": "classification",
@@ -404,6 +404,86 @@
     },
     {
       "group": "classification",
+      "left": "R3_AUTHORITY_PROJECTION_READY",
+      "left_ref": "reports/pnva-r3-authority-projection-summary-2026-05-05.json:classification",
+      "name": "r3_authority_projection_classification",
+      "pass": true,
+      "right": "R3_AUTHORITY_PROJECTION_READY",
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "classification",
+      "left": true,
+      "left_ref": "reports/pnva-r3-authority-projection-summary-2026-05-05.json:pass",
+      "name": "r3_authority_projection_pass_flag",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "classification",
+      "left": "REPLAY_VALID",
+      "left_ref": "reports/pnva-r3-authority-projection-replay-2026-05-05.json:classification",
+      "name": "r3_authority_projection_replay_classification",
+      "pass": true,
+      "right": "REPLAY_VALID",
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "classification",
+      "left": true,
+      "left_ref": "reports/pnva-r3-authority-projection-replay-2026-05-05.json:pass",
+      "name": "r3_authority_projection_replay_pass_flag",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "classification",
+      "left": "SOVEREIGN_POLICY_READY",
+      "left_ref": "reports/pnva-r3-authority-projection-policy-2026-05-05.json:classification",
+      "name": "r3_authority_projection_policy_classification",
+      "pass": true,
+      "right": "SOVEREIGN_POLICY_READY",
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "classification",
+      "left": true,
+      "left_ref": "reports/pnva-r3-authority-projection-policy-2026-05-05.json:pass",
+      "name": "r3_authority_projection_policy_pass_flag",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "classification",
+      "left": "SOVEREIGN_NO_TICK_READY",
+      "left_ref": "reports/pnva-r3-authority-projection-no-tick-2026-05-05.json:classification",
+      "name": "r3_authority_projection_no_tick_classification",
+      "pass": true,
+      "right": "SOVEREIGN_NO_TICK_READY",
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "classification",
+      "left": true,
+      "left_ref": "reports/pnva-r3-authority-projection-no-tick-2026-05-05.json:pass",
+      "name": "r3_authority_projection_no_tick_pass_flag",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "classification",
       "left": "ADVERSARIAL_VALIDATION_PASS",
       "left_ref": "reports/pnva-adversarial-validation-2026-05-05.json:classification",
       "name": "adversarial_classification",
@@ -575,21 +655,21 @@
     },
     {
       "group": "manifest",
-      "left": 29,
+      "left": 35,
       "left_ref": "MANIFEST:sovereign_evidence_attestation.artifact_count",
       "name": "manifest_attestation_artifact_count",
       "pass": true,
-      "right": 29,
+      "right": 35,
       "right_ref": "attestation:artifact_count",
       "severity": "error"
     },
     {
       "group": "manifest",
-      "left": "sha256:9373cde170c630fadbbc53fe3c46b877df05c80f0575720e97b26bda6460b93b",
+      "left": "sha256:5f1b6f2bcffb5e60a8e0371964077507d32cce1422006b68a158ced0d4bdbbd0",
       "left_ref": "MANIFEST:sovereign_evidence_attestation.evidence_hash",
       "name": "manifest_attestation_hash",
       "pass": true,
-      "right": "sha256:9373cde170c630fadbbc53fe3c46b877df05c80f0575720e97b26bda6460b93b",
+      "right": "sha256:5f1b6f2bcffb5e60a8e0371964077507d32cce1422006b68a158ced0d4bdbbd0",
       "right_ref": "attestation:evidence_hash",
       "severity": "error"
     },
@@ -963,6 +1043,46 @@
       "pass": true,
       "right": 0,
       "right_ref": "authority_migration_ledger:native_low_authority_strong_count",
+      "severity": "error"
+    },
+    {
+      "group": "manifest",
+      "left": 70,
+      "left_ref": "MANIFEST:r3_authority_projection.projected_event_count",
+      "name": "manifest_r3_projection_event_count",
+      "pass": true,
+      "right": 70,
+      "right_ref": "r3_authority_projection:projected_event_count",
+      "severity": "error"
+    },
+    {
+      "group": "manifest",
+      "left": 35,
+      "left_ref": "MANIFEST:r3_authority_projection.projected_commit_count",
+      "name": "manifest_r3_projection_commit_count",
+      "pass": true,
+      "right": 35,
+      "right_ref": "r3_authority_projection:projected_commit_count",
+      "severity": "error"
+    },
+    {
+      "group": "manifest",
+      "left": 35,
+      "left_ref": "MANIFEST:r3_authority_projection.projected_no_tick_suppression_count",
+      "name": "manifest_r3_projection_suppression_count",
+      "pass": true,
+      "right": 35,
+      "right_ref": "r3_authority_projection:projected_no_tick_suppression_count",
+      "severity": "error"
+    },
+    {
+      "group": "manifest",
+      "left": 0,
+      "left_ref": "MANIFEST:r3_authority_projection.projected_low_authority_strong_count",
+      "name": "manifest_r3_projection_low_authority_zero",
+      "pass": true,
+      "right": 0,
+      "right_ref": "r3_authority_projection:projected_low_authority_strong_count",
       "severity": "error"
     },
     {
@@ -1545,6 +1665,107 @@
       "severity": "error"
     },
     {
+      "group": "r3_authority_projection",
+      "left": 35,
+      "left_ref": "r3_authority_projection:source_candidate_count",
+      "name": "projection_source_matches_authority_ledger",
+      "pass": true,
+      "right": 35,
+      "right_ref": "authority_migration_ledger:candidate_event_count",
+      "severity": "error"
+    },
+    {
+      "group": "r3_authority_projection",
+      "left": 35,
+      "left_ref": "r3_authority_projection:projected_commit_count",
+      "name": "projection_commit_matches_authority_ledger",
+      "pass": true,
+      "right": 35,
+      "right_ref": "authority_migration_ledger:candidate_event_count",
+      "severity": "error"
+    },
+    {
+      "group": "r3_authority_projection",
+      "left": 70,
+      "left_ref": "r3_authority_projection:projected_event_count",
+      "name": "projection_event_count_is_precheck_plus_commit",
+      "pass": true,
+      "right": 70,
+      "right_ref": "precheck+commit",
+      "severity": "error"
+    },
+    {
+      "group": "r3_authority_projection",
+      "left": 0,
+      "left_ref": "r3_authority_projection:projected_low_authority_strong_count",
+      "name": "projection_low_authority_strong_zero",
+      "pass": true,
+      "right": 0,
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "r3_authority_projection",
+      "left": 1.0,
+      "left_ref": "r3_authority_projection:proof_coverage_ratio",
+      "name": "projection_proof_full_coverage",
+      "pass": true,
+      "right": 1.0,
+      "right_ref": "expected",
+      "severity": "error",
+      "tolerance": 1e-06
+    },
+    {
+      "group": "r3_authority_projection",
+      "left": 70,
+      "left_ref": "r3_authority_projection_replay:summary.event_count",
+      "name": "projection_replay_event_count_matches",
+      "pass": true,
+      "right": 70,
+      "right_ref": "r3_authority_projection:projected_event_count",
+      "severity": "error"
+    },
+    {
+      "group": "r3_authority_projection",
+      "left": 35,
+      "left_ref": "r3_authority_projection_policy:summary.strong_decision_count",
+      "name": "projection_policy_strong_matches_commit",
+      "pass": true,
+      "right": 35,
+      "right_ref": "r3_authority_projection:projected_commit_count",
+      "severity": "error"
+    },
+    {
+      "group": "r3_authority_projection",
+      "left": 0,
+      "left_ref": "r3_authority_projection_policy:summary.low_authority_legacy_count",
+      "name": "projection_policy_low_authority_zero",
+      "pass": true,
+      "right": 0,
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "r3_authority_projection",
+      "left": 70,
+      "left_ref": "r3_authority_projection_no_tick:summary.event_count",
+      "name": "projection_no_tick_event_count_matches",
+      "pass": true,
+      "right": 70,
+      "right_ref": "r3_authority_projection:projected_event_count",
+      "severity": "error"
+    },
+    {
+      "group": "r3_authority_projection",
+      "left": 35,
+      "left_ref": "r3_authority_projection_no_tick:no_tick_efficiency.suppressed_count",
+      "name": "projection_no_tick_suppression_matches_precheck",
+      "pass": true,
+      "right": 35,
+      "right_ref": "r3_authority_projection:projected_precheck_count",
+      "severity": "error"
+    },
+    {
       "group": "maturity_math",
       "left": 519,
       "left_ref": "maturity:summary.total_event_count",
@@ -1608,11 +1829,11 @@
     },
     {
       "group": "attestation",
-      "left": 29,
+      "left": 35,
       "left_ref": "attestation:artifact_count",
       "name": "artifact_count_matches_list",
       "pass": true,
-      "right": 29,
+      "right": 35,
       "right_ref": "len(attestation.artifacts)",
       "severity": "error"
     },
@@ -1730,6 +1951,66 @@
       "group": "attestation",
       "left": true,
       "left_ref": "attestation:artifact_ids",
+      "name": "attestation_contains_r3_authority_projection_summary",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "attestation",
+      "left": true,
+      "left_ref": "attestation:artifact_ids",
+      "name": "attestation_contains_r3_authority_projection_events",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "attestation",
+      "left": true,
+      "left_ref": "attestation:artifact_ids",
+      "name": "attestation_contains_r3_authority_projection_entities",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "attestation",
+      "left": true,
+      "left_ref": "attestation:artifact_ids",
+      "name": "attestation_contains_r3_authority_projection_replay",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "attestation",
+      "left": true,
+      "left_ref": "attestation:artifact_ids",
+      "name": "attestation_contains_r3_authority_projection_policy",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "attestation",
+      "left": true,
+      "left_ref": "attestation:artifact_ids",
+      "name": "attestation_contains_r3_authority_projection_no_tick",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "attestation",
+      "left": true,
+      "left_ref": "attestation:artifact_ids",
       "name": "attestation_contains_adversarial_validation",
       "pass": true,
       "right": true,
@@ -1758,11 +2039,11 @@
     },
     {
       "group": "audit",
-      "left": "sha256:9373cde170c630fadbbc53fe3c46b877df05c80f0575720e97b26bda6460b93b",
+      "left": "sha256:5f1b6f2bcffb5e60a8e0371964077507d32cce1422006b68a158ced0d4bdbbd0",
       "left_ref": "audit:evidence_attestation.evidence_hash",
       "name": "audit_attestation_hash_matches",
       "pass": true,
-      "right": "sha256:9373cde170c630fadbbc53fe3c46b877df05c80f0575720e97b26bda6460b93b",
+      "right": "sha256:5f1b6f2bcffb5e60a8e0371964077507d32cce1422006b68a158ced0d4bdbbd0",
       "right_ref": "attestation:evidence_hash",
       "severity": "error"
     },
@@ -1878,6 +2159,16 @@
       "severity": "error"
     },
     {
+      "group": "audit",
+      "left": "R3_AUTHORITY_PROJECTION_READY",
+      "left_ref": "audit:r3_authority_projection.classification",
+      "name": "audit_r3_authority_projection_matches",
+      "pass": true,
+      "right": "R3_AUTHORITY_PROJECTION_READY",
+      "right_ref": "r3_authority_projection:classification",
+      "severity": "error"
+    },
+    {
       "group": "manifest_hygiene",
       "left": [],
       "left_ref": "MANIFEST:files duplicates",
@@ -1901,7 +2192,7 @@
   "classification": "SEMANTIC_CONSISTENCY_READY",
   "error_count": 0,
   "errors": [],
-  "generated_at": "2026-05-05T08:30:18Z",
+  "generated_at": "2026-05-05T08:53:06Z",
   "interpretation": {
     "boundary": "This guard checks semantic consistency of the public evidence package; it does not replace runtime execution tests.",
     "purpose": "Detect drift between PNVA public evidence reports, manifest metadata, attestation and audit summaries.",
@@ -1935,6 +2226,10 @@
     "no_tick": "reports/pnva-no-tick-invariants-2026-05-05.json",
     "policy": "reports/pnva-sovereign-policy-2026-05-05.json",
     "proof_chain": "reports/pnva-proof-chain-2026-05-05.json",
+    "r3_authority_projection": "reports/pnva-r3-authority-projection-summary-2026-05-05.json",
+    "r3_authority_projection_no_tick": "reports/pnva-r3-authority-projection-no-tick-2026-05-05.json",
+    "r3_authority_projection_policy": "reports/pnva-r3-authority-projection-policy-2026-05-05.json",
+    "r3_authority_projection_replay": "reports/pnva-r3-authority-projection-replay-2026-05-05.json",
     "r3_migration_plan": "reports/pnva-r3-migration-plan-2026-05-05.json",
     "replay": "reports/pnva-replay-validation-2026-05-05.json",
     "schema_contract": "reports/pnva-schema-contract-validation-2026-05-05.json",
@@ -1944,7 +2239,7 @@
   },
   "schema_version": "pnva.semantic_consistency.v1",
   "summary": {
-    "attestation_artifact_count": 29,
+    "attestation_artifact_count": 35,
     "audit_score": 100,
     "authority_migration_action_candidate_count": 3,
     "authority_migration_candidate_count": 35,
@@ -1965,6 +2260,10 @@
     "heuristic_influence_warning_count": 70,
     "native_event_count": 7,
     "native_suppressed_count": 4,
+    "r3_authority_projection_commit_count": 35,
+    "r3_authority_projection_event_count": 70,
+    "r3_authority_projection_low_authority_strong_count": 0,
+    "r3_authority_projection_suppression_count": 35,
     "r3_migration_action_count": 6,
     "r3_migration_current_score": 97,
     "r3_migration_primary_debt_count": 35,
