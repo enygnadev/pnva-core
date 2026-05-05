@@ -35,6 +35,7 @@ Gustavo de Aguiar Martins. PNVA-Core: A Post-Temporal Causal Architecture for St
 
 - https://enygnadev.github.io/pnva-core/
 - https://enygnadev.github.io/pnva-core/author.html
+- https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.html
 - https://enygnadev.github.io/pnva-core/pnva-core.html
 - https://enygnadev.github.io/pnva-core/proofs.html
 - https://enygnadev.github.io/pnva-core/veonic-model.html
@@ -44,6 +45,7 @@ Gustavo de Aguiar Martins. PNVA-Core: A Post-Temporal Causal Architecture for St
 
 ## Key Repository Files
 
+- gustavo-martins-pnva.html
 - README.md
 - docs/PNVA_ARCHITECTURE.md
 - docs/VALIDATION_PROTOCOL.md
@@ -111,6 +113,7 @@ Gustavo de Aguiar Martins. PNVA-Core: A Post-Temporal Causal Architecture for St
 - docs/VEON_MODEL_VALIDATION.md
 - docs/PNVA_POST_TEMPORAL_CIVILIZATION.md
 - docs/PNVA_ZENODO_DOI.md
+- docs/GUSTAVO_MARTINS_PNVA_DISCOVERY_PASS.md
 - paper/PNVA_CORE_OPEN_RESEARCH_PAPER.md
 - proofs/sanitized/INDEX.json
 - schemas/pnva-event.schema.json
