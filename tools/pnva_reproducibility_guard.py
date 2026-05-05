@@ -38,6 +38,7 @@ PUBLISHED_REPORTS = {
     "entity_no_tick_matrix": "reports/pnva-entity-no-tick-matrix-2026-05-05.json",
     "suppression_ledger": "reports/pnva-suppression-ledger-2026-05-05.json",
     "sovereign_robustness_gate": "reports/pnva-sovereign-robustness-gate-2026-05-05.json",
+    "r3_migration_plan": "reports/pnva-r3-migration-plan-2026-05-05.json",
     "adversarial": "reports/pnva-adversarial-validation-2026-05-05.json",
     "maturity": "reports/pnva-entity-heuristic-maturity-2026-05-05.json",
     "attestation": "reports/pnva-sovereign-evidence-attestation-2026-05-05.json",
@@ -260,6 +261,24 @@ STABLE_PATHS = {
         ["warning_count"],
         ["hard_authority_ratio"],
     ],
+    "r3_migration_plan": [
+        ["classification"],
+        ["pass"],
+        ["current_readiness_level"],
+        ["target_readiness_level"],
+        ["current_robustness_score"],
+        ["target_robustness_score"],
+        ["source_event_count"],
+        ["native_clean_signal_count"],
+        ["native_clean_signal_total"],
+        ["primary_blocking_debt_count"],
+        ["migration_action_count"],
+        ["raw_migration_signal_count"],
+        ["primary_required_remaining_count"],
+        ["estimated_r3_candidate"],
+        ["blocker_count"],
+        ["warning_count"],
+    ],
     "adversarial": [
         ["classification"],
         ["pass"],
@@ -401,6 +420,7 @@ def build_report(repo: Path) -> dict[str, Any]:
             "entity_no_tick_matrix": tmp / "entity-no-tick-matrix.json",
             "suppression_ledger": tmp / "suppression-ledger.json",
             "sovereign_robustness_gate": tmp / "sovereign-robustness-gate.json",
+            "r3_migration_plan": tmp / "r3-migration-plan.json",
             "adversarial": tmp / "adversarial.json",
             "maturity": tmp / "maturity.json",
             "attestation": tmp / "attestation.json",
@@ -439,6 +459,7 @@ def build_report(repo: Path) -> dict[str, Any]:
         commands["entity_no_tick_matrix"] = _run(repo, ["tools/pnva_entity_no_tick_matrix.py"], outputs["entity_no_tick_matrix"])
         commands["suppression_ledger"] = _run(repo, ["tools/pnva_suppression_ledger.py"], outputs["suppression_ledger"])
         commands["sovereign_robustness_gate"] = _run(repo, ["tools/pnva_sovereign_robustness_gate.py"], outputs["sovereign_robustness_gate"])
+        commands["r3_migration_plan"] = _run(repo, ["tools/pnva_r3_migration_planner.py"], outputs["r3_migration_plan"])
         commands["adversarial"] = _run(repo, ["tools/pnva_adversarial_validator.py"], outputs["adversarial"])
         commands["maturity"] = _run(repo, ["tools/pnva_entity_heuristic_maturity.py"], outputs["maturity"])
         commands["attestation"] = _run(repo, ["tools/pnva_evidence_attestor.py"], outputs["attestation"])

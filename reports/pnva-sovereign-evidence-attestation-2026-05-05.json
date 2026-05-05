@@ -1,5 +1,5 @@
 {
-  "artifact_count": 27,
+  "artifact_count": 28,
   "artifacts": [
     {
       "entry_count": 9,
@@ -218,6 +218,19 @@
       "size_bytes": 7835
     },
     {
+      "classification": "R3_MIGRATION_PLAN_READY",
+      "expected": "R3_MIGRATION_PLAN_READY",
+      "id": "r3_migration_plan",
+      "kind": "json_classification",
+      "pass": true,
+      "path": "reports/pnva-r3-migration-plan-2026-05-05.json",
+      "present": true,
+      "reported_pass": true,
+      "required": true,
+      "sha256": "f2e38f471db88825123babf7a25b80b7f04c86131957e6c9e43e15661b556a54",
+      "size_bytes": 7209
+    },
+    {
       "classification": "NATIVE_EMITTER_READY",
       "expected": "NATIVE_EMITTER_READY",
       "id": "native_emitter",
@@ -365,13 +378,14 @@
     "entity no-tick matrix",
     "suppression ledger",
     "sovereign robustness gate",
+    "R3 migration plan",
     "adversarial negative controls",
     "entity and heuristic maturity",
     "sovereign audit consumes this attestation without being part of its hash seed"
   ],
-  "evidence_hash": "sha256:83c245d18da49eefd61c207bce2663c96760f2a581f0c9baac09ad3bc1dad8f1",
+  "evidence_hash": "sha256:c92a8d126e658c88731dda90ce33b5d1105983ea4c28ac1ae23c788512657865",
   "failure_count": 0,
-  "generated_at": "2026-05-05T07:57:00Z",
+  "generated_at": "2026-05-05T08:11:58Z",
   "interpretation": {
     "boundary": "This attests repository evidence integrity; it is not a universal proof of all possible PNVA deployments.",
     "hash_policy": "The evidence_hash changes when any tracked artifact hash, classification or pass flag changes.",
@@ -392,7 +406,8 @@
     "Run heuristic influence map before attestation so rule authority and decision influence stay measurable.",
     "Run entity no-tick matrix before attestation so suppression and execution are attributable by entity.",
     "Run suppression ledger before attestation so avoided execution is proof-backed.",
-    "Run sovereign robustness gate before attestation so native cleanliness and legacy debt are collapsed into one readiness decision."
+    "Run sovereign robustness gate before attestation so native cleanliness and legacy debt are collapsed into one readiness decision.",
+    "Run R3 migration planner before attestation so the next legacy-free target is measurable."
   ],
   "schema_version": "pnva.evidence_attestation.v1"
 }

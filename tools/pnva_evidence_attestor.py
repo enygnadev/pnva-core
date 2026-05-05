@@ -126,6 +126,13 @@ EXPECTED_ARTIFACTS = [
         "required": True,
     },
     {
+        "id": "r3_migration_plan",
+        "path": "reports/pnva-r3-migration-plan-2026-05-05.json",
+        "kind": "json_classification",
+        "expected": "R3_MIGRATION_PLAN_READY",
+        "required": True,
+    },
+    {
         "id": "native_emitter",
         "path": "reports/pnva-native-emitter-summary-2026-05-05.json",
         "kind": "json_classification",
@@ -334,6 +341,7 @@ def build_attestation(repo: Path) -> dict[str, Any]:
             "entity no-tick matrix",
             "suppression ledger",
             "sovereign robustness gate",
+            "R3 migration plan",
             "adversarial negative controls",
             "entity and heuristic maturity",
             "sovereign audit consumes this attestation without being part of its hash seed",
@@ -357,6 +365,7 @@ def build_attestation(repo: Path) -> dict[str, Any]:
             "Run entity no-tick matrix before attestation so suppression and execution are attributable by entity.",
             "Run suppression ledger before attestation so avoided execution is proof-backed.",
             "Run sovereign robustness gate before attestation so native cleanliness and legacy debt are collapsed into one readiness decision.",
+            "Run R3 migration planner before attestation so the next legacy-free target is measurable.",
         ],
     }
 

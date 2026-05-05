@@ -55,6 +55,7 @@ PUBLIC_DOCS = [
     "docs/PNVA_ENTITY_NO_TICK_MATRIX.md",
     "docs/PNVA_SUPPRESSION_LEDGER.md",
     "docs/PNVA_SOVEREIGN_ROBUSTNESS_GATE.md",
+    "docs/PNVA_R3_MIGRATION_PLAN.md",
     "docs/PNVA_SOVEREIGN_EVIDENCE_ATTESTATION.md",
     "docs/PNVA_ADVERSARIAL_VALIDATION.md",
     "docs/PNVA_ENTITY_HEURISTIC_MATURITY.md",
@@ -164,6 +165,12 @@ SOVEREIGN_ROBUSTNESS_GATE_FILES = [
     "tools/pnva_sovereign_robustness_gate.py",
     "docs/PNVA_SOVEREIGN_ROBUSTNESS_GATE.md",
     "reports/pnva-sovereign-robustness-gate-2026-05-05.json",
+]
+
+R3_MIGRATION_PLAN_FILES = [
+    "tools/pnva_r3_migration_planner.py",
+    "docs/PNVA_R3_MIGRATION_PLAN.md",
+    "reports/pnva-r3-migration-plan-2026-05-05.json",
 ]
 
 EVIDENCE_ATTESTATION_FILES = [
@@ -1000,6 +1007,42 @@ def audit_sovereign_robustness_gate(repo: Path) -> dict[str, Any]:
     }
 
 
+def audit_r3_migration_plan(repo: Path) -> dict[str, Any]:
+    missing = [rel for rel in R3_MIGRATION_PLAN_FILES if not (repo / rel).exists()]
+    report_path = repo / "reports" / "pnva-r3-migration-plan-2026-05-05.json"
+    if not report_path.exists():
+        return {
+            "r3_migration_plan_ok": False,
+            "missing": missing,
+            "classification": "R3_MIGRATION_PLAN_MISSING",
+            "errors": ["missing R3 migration plan report"],
+        }
+    data = _read_json(report_path)
+    return {
+        "r3_migration_plan_ok": (
+            not missing
+            and data.get("pass") is True
+            and data.get("classification") == "R3_MIGRATION_PLAN_READY"
+            and int(data.get("blocker_count", 1)) == 0
+            and int(data.get("migration_action_count", 0)) >= 4
+        ),
+        "missing": missing,
+        "classification": data.get("classification"),
+        "current_readiness_level": data.get("current_readiness_level"),
+        "target_readiness_level": data.get("target_readiness_level"),
+        "current_robustness_score": int(data.get("current_robustness_score", 0)),
+        "target_robustness_score": int(data.get("target_robustness_score", 0)),
+        "source_event_count": int(data.get("source_event_count", 0)),
+        "primary_blocking_debt_count": int(data.get("primary_blocking_debt_count", 0)),
+        "migration_action_count": int(data.get("migration_action_count", 0)),
+        "raw_migration_signal_count": int(data.get("raw_migration_signal_count", 0)),
+        "estimated_r3_candidate": bool(data.get("estimated_r3_candidate")),
+        "blocker_count": int(data.get("blocker_count", 0)),
+        "warning_count": int(data.get("warning_count", 0)),
+        "errors": [] if isinstance(data, dict) and data.get("pass") is True else ["R3 migration plan failed"],
+    }
+
+
 def audit_reproducibility(repo: Path) -> dict[str, Any]:
     missing = [rel for rel in REPRODUCIBILITY_FILES if not (repo / rel).exists()]
     report_path = repo / "reports" / "pnva-reproducibility-2026-05-05.json"
@@ -1237,6 +1280,8 @@ def score_report(report: dict[str, Any]) -> dict[str, Any]:
         scores["actionability"] += 0
     if report.get("sovereign_robustness_gate", {}).get("robustness_gate_ok"):
         scores["actionability"] += 0
+    if report.get("r3_migration_plan", {}).get("r3_migration_plan_ok"):
+        scores["actionability"] += 0
     if report.get("sovereign_policy", {}).get("policy_ok"):
         scores["actionability"] += 0
     if report.get("proof_chain", {}).get("chain_ok"):
@@ -1312,6 +1357,7 @@ def build_report(repo: Path, *, strict_public: bool = False) -> dict[str, Any]:
         "entity_no_tick_matrix": audit_entity_no_tick_matrix(repo),
         "suppression_ledger": audit_suppression_ledger(repo),
         "sovereign_robustness_gate": audit_sovereign_robustness_gate(repo),
+        "r3_migration_plan": audit_r3_migration_plan(repo),
         "evidence_attestation": audit_evidence_attestation(repo),
         "adversarial_validation": audit_adversarial_validation(repo),
         "entity_heuristic_maturity": audit_entity_heuristic_maturity(repo),
@@ -1335,6 +1381,7 @@ def build_report(repo: Path, *, strict_public: bool = False) -> dict[str, Any]:
             "Run entity no-tick matrix so suppression and execution remain attributable by entity.",
             "Run suppression ledger so avoided execution is proof-backed.",
             "Run sovereign robustness gate so native cleanliness and legacy debt collapse into one readiness decision.",
+            "Run R3 migration planner so the path from R2 quarantined legacy to R3 legacy-free is measurable.",
             "Publish one sovereign evidence attestation hash with every evidence release.",
             "Run adversarial validation so validators prove tamper detection, not only green-path acceptance.",
             "Track entity and heuristic maturity so no-tick suppression stays attributable to actors and authority.",

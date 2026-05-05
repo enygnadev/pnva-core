@@ -154,6 +154,12 @@ jobs:
             --write /tmp/pnva-sovereign-robustness-gate.json \
             >/dev/null
           python3 -m json.tool /tmp/pnva-sovereign-robustness-gate.json >/dev/null
+      - name: Run R3 migration planner
+        run: |
+          python3 tools/pnva_r3_migration_planner.py \
+            --write /tmp/pnva-r3-migration-plan.json \
+            >/dev/null
+          python3 -m json.tool /tmp/pnva-r3-migration-plan.json >/dev/null
       - name: Run evidence attestor
         run: |
           python3 tools/pnva_evidence_attestor.py \

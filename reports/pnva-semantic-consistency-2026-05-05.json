@@ -1,6 +1,6 @@
 {
   "author": "Gustavo de Aguiar Martins",
-  "check_count": 159,
+  "check_count": 173,
   "checks": [
     {
       "group": "classification",
@@ -364,6 +364,26 @@
     },
     {
       "group": "classification",
+      "left": "R3_MIGRATION_PLAN_READY",
+      "left_ref": "reports/pnva-r3-migration-plan-2026-05-05.json:classification",
+      "name": "r3_migration_plan_classification",
+      "pass": true,
+      "right": "R3_MIGRATION_PLAN_READY",
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "classification",
+      "left": true,
+      "left_ref": "reports/pnva-r3-migration-plan-2026-05-05.json:pass",
+      "name": "r3_migration_plan_pass_flag",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "classification",
       "left": "ADVERSARIAL_VALIDATION_PASS",
       "left_ref": "reports/pnva-adversarial-validation-2026-05-05.json:classification",
       "name": "adversarial_classification",
@@ -535,21 +555,21 @@
     },
     {
       "group": "manifest",
-      "left": 27,
+      "left": 28,
       "left_ref": "MANIFEST:sovereign_evidence_attestation.artifact_count",
       "name": "manifest_attestation_artifact_count",
       "pass": true,
-      "right": 27,
+      "right": 28,
       "right_ref": "attestation:artifact_count",
       "severity": "error"
     },
     {
       "group": "manifest",
-      "left": "sha256:83c245d18da49eefd61c207bce2663c96760f2a581f0c9baac09ad3bc1dad8f1",
+      "left": "sha256:c92a8d126e658c88731dda90ce33b5d1105983ea4c28ac1ae23c788512657865",
       "left_ref": "MANIFEST:sovereign_evidence_attestation.evidence_hash",
       "name": "manifest_attestation_hash",
       "pass": true,
-      "right": "sha256:83c245d18da49eefd61c207bce2663c96760f2a581f0c9baac09ad3bc1dad8f1",
+      "right": "sha256:c92a8d126e658c88731dda90ce33b5d1105983ea4c28ac1ae23c788512657865",
       "right_ref": "attestation:evidence_hash",
       "severity": "error"
     },
@@ -842,6 +862,46 @@
       "pass": true,
       "right": 35,
       "right_ref": "sovereign_robustness_gate:legacy_debt_count",
+      "severity": "error"
+    },
+    {
+      "group": "manifest",
+      "left": 97,
+      "left_ref": "MANIFEST:r3_migration_plan.current_robustness_score",
+      "name": "manifest_r3_current_score",
+      "pass": true,
+      "right": 97,
+      "right_ref": "r3_migration_plan:current_robustness_score",
+      "severity": "error"
+    },
+    {
+      "group": "manifest",
+      "left": 35,
+      "left_ref": "MANIFEST:r3_migration_plan.primary_blocking_debt_count",
+      "name": "manifest_r3_primary_debt",
+      "pass": true,
+      "right": 35,
+      "right_ref": "r3_migration_plan:primary_blocking_debt_count",
+      "severity": "error"
+    },
+    {
+      "group": "manifest",
+      "left": 6,
+      "left_ref": "MANIFEST:r3_migration_plan.migration_action_count",
+      "name": "manifest_r3_action_count",
+      "pass": true,
+      "right": 6,
+      "right_ref": "r3_migration_plan:migration_action_count",
+      "severity": "error"
+    },
+    {
+      "group": "manifest",
+      "left": 903,
+      "left_ref": "MANIFEST:r3_migration_plan.raw_migration_signal_count",
+      "name": "manifest_r3_raw_signal_count",
+      "pass": true,
+      "right": 903,
+      "right_ref": "r3_migration_plan:raw_migration_signal_count",
       "severity": "error"
     },
     {
@@ -1292,6 +1352,66 @@
       "severity": "error"
     },
     {
+      "group": "r3_migration_plan",
+      "left": 519,
+      "left_ref": "r3_migration_plan:source_event_count",
+      "name": "r3_source_event_count",
+      "pass": true,
+      "right": 519,
+      "right_ref": "sovereign_robustness_gate:event_count",
+      "severity": "error"
+    },
+    {
+      "group": "r3_migration_plan",
+      "left": 97,
+      "left_ref": "r3_migration_plan:current_robustness_score",
+      "name": "r3_current_score_matches_robustness",
+      "pass": true,
+      "right": 97,
+      "right_ref": "sovereign_robustness_gate:robustness_score",
+      "severity": "error"
+    },
+    {
+      "group": "r3_migration_plan",
+      "left": 35,
+      "left_ref": "r3_migration_plan:primary_blocking_debt_count",
+      "name": "r3_primary_debt_matches_robustness",
+      "pass": true,
+      "right": 35,
+      "right_ref": "sovereign_robustness_gate:legacy_debt_count",
+      "severity": "error"
+    },
+    {
+      "group": "r3_migration_plan",
+      "left": 8,
+      "left_ref": "r3_migration_plan:native_clean_signal_count",
+      "name": "r3_native_clean_count_matches_robustness",
+      "pass": true,
+      "right": 8,
+      "right_ref": "sovereign_robustness_gate:native_clean_signal_count",
+      "severity": "error"
+    },
+    {
+      "group": "r3_migration_plan",
+      "left": 6,
+      "left_ref": "r3_migration_plan:migration_action_count",
+      "name": "r3_action_count_expected",
+      "pass": true,
+      "right": 6,
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "r3_migration_plan",
+      "left": false,
+      "left_ref": "r3_migration_plan:estimated_r3_candidate",
+      "name": "r3_not_candidate_while_debt_exists",
+      "pass": true,
+      "right": false,
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
       "group": "maturity_math",
       "left": 519,
       "left_ref": "maturity:summary.total_event_count",
@@ -1355,11 +1475,11 @@
     },
     {
       "group": "attestation",
-      "left": 27,
+      "left": 28,
       "left_ref": "attestation:artifact_count",
       "name": "artifact_count_matches_list",
       "pass": true,
-      "right": 27,
+      "right": 28,
       "right_ref": "len(attestation.artifacts)",
       "severity": "error"
     },
@@ -1457,6 +1577,16 @@
       "group": "attestation",
       "left": true,
       "left_ref": "attestation:artifact_ids",
+      "name": "attestation_contains_r3_migration_plan",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "attestation",
+      "left": true,
+      "left_ref": "attestation:artifact_ids",
       "name": "attestation_contains_adversarial_validation",
       "pass": true,
       "right": true,
@@ -1485,11 +1615,11 @@
     },
     {
       "group": "audit",
-      "left": "sha256:83c245d18da49eefd61c207bce2663c96760f2a581f0c9baac09ad3bc1dad8f1",
+      "left": "sha256:c92a8d126e658c88731dda90ce33b5d1105983ea4c28ac1ae23c788512657865",
       "left_ref": "audit:evidence_attestation.evidence_hash",
       "name": "audit_attestation_hash_matches",
       "pass": true,
-      "right": "sha256:83c245d18da49eefd61c207bce2663c96760f2a581f0c9baac09ad3bc1dad8f1",
+      "right": "sha256:c92a8d126e658c88731dda90ce33b5d1105983ea4c28ac1ae23c788512657865",
       "right_ref": "attestation:evidence_hash",
       "severity": "error"
     },
@@ -1585,6 +1715,16 @@
       "severity": "error"
     },
     {
+      "group": "audit",
+      "left": "R3_MIGRATION_PLAN_READY",
+      "left_ref": "audit:r3_migration_plan.classification",
+      "name": "audit_r3_migration_plan_matches",
+      "pass": true,
+      "right": "R3_MIGRATION_PLAN_READY",
+      "right_ref": "r3_migration_plan:classification",
+      "severity": "error"
+    },
+    {
       "group": "manifest_hygiene",
       "left": [],
       "left_ref": "MANIFEST:files duplicates",
@@ -1608,7 +1748,7 @@
   "classification": "SEMANTIC_CONSISTENCY_READY",
   "error_count": 0,
   "errors": [],
-  "generated_at": "2026-05-05T07:58:43Z",
+  "generated_at": "2026-05-05T08:12:32Z",
   "interpretation": {
     "boundary": "This guard checks semantic consistency of the public evidence package; it does not replace runtime execution tests.",
     "purpose": "Detect drift between PNVA public evidence reports, manifest metadata, attestation and audit summaries.",
@@ -1641,6 +1781,7 @@
     "no_tick": "reports/pnva-no-tick-invariants-2026-05-05.json",
     "policy": "reports/pnva-sovereign-policy-2026-05-05.json",
     "proof_chain": "reports/pnva-proof-chain-2026-05-05.json",
+    "r3_migration_plan": "reports/pnva-r3-migration-plan-2026-05-05.json",
     "replay": "reports/pnva-replay-validation-2026-05-05.json",
     "schema_contract": "reports/pnva-schema-contract-validation-2026-05-05.json",
     "sovereign_robustness_gate": "reports/pnva-sovereign-robustness-gate-2026-05-05.json",
@@ -1649,7 +1790,7 @@
   },
   "schema_version": "pnva.semantic_consistency.v1",
   "summary": {
-    "attestation_artifact_count": 27,
+    "attestation_artifact_count": 28,
     "audit_score": 100,
     "canonical_event_count": 512,
     "canonical_suppressed_count": 246,
@@ -1666,6 +1807,10 @@
     "heuristic_influence_warning_count": 70,
     "native_event_count": 7,
     "native_suppressed_count": 4,
+    "r3_migration_action_count": 6,
+    "r3_migration_current_score": 97,
+    "r3_migration_primary_debt_count": 35,
+    "r3_migration_raw_signal_count": 903,
     "schema_contract_event_count": 519,
     "schema_contract_warning_count": 341,
     "sovereign_robustness_event_count": 519,

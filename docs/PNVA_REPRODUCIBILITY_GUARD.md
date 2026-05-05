@@ -31,8 +31,8 @@ REPRODUCIBILITY_READY
 Current result:
 
 ```text
-command_count: 23
-comparison_count: 204
+command_count: 24
+comparison_count: 220
 failure_count: 0
 command_failure_count: 0
 comparison_failure_count: 0
@@ -62,6 +62,7 @@ heuristic influence map
 entity no-tick matrix
 suppression ledger
 sovereign robustness gate
+R3 migration plan
 adversarial validation
 entity and heuristic maturity
 evidence attestation
@@ -95,6 +96,7 @@ heuristic influence edge count
 entity no-tick matrix suppression count
 suppression ledger avoided execution count
 sovereign robustness score and native clean signal count
+R3 current readiness, target readiness, migration action count and primary debt
 ```
 
 The guard intentionally ignores:
