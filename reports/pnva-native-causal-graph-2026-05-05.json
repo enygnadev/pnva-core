@@ -1,0 +1,253 @@
+{
+  "author": "Gustavo de Aguiar Martins",
+  "classification": "CAUSAL_GRAPH_READY",
+  "entity_catalog_ref": "reports/pnva-native-entity-catalog-demo-2026-05-05.json",
+  "errors": [],
+  "events_ref": "reports/pnva-native-events-demo-2026-05-05.jsonl",
+  "generated_at": "2026-05-05T05:06:40Z",
+  "graph": {
+    "catalog_entity_count": 6,
+    "chain_count": 1,
+    "chain_edge_count": 6,
+    "chain_edges": [
+      {
+        "count": 1,
+        "relation": "precedes:chain_native_runtime_demo",
+        "source": "pnva-etev-guard",
+        "target": "zano-entity-00"
+      },
+      {
+        "count": 1,
+        "relation": "precedes:chain_native_runtime_demo",
+        "source": "pnva-etev-guard",
+        "target": "zano-entity-01"
+      },
+      {
+        "count": 1,
+        "relation": "precedes:chain_native_runtime_demo",
+        "source": "pnva-field-demo",
+        "target": "pnva-etev-guard"
+      },
+      {
+        "count": 1,
+        "relation": "precedes:chain_native_runtime_demo",
+        "source": "pnva-thermal-guard",
+        "target": "pnva-etev-guard"
+      },
+      {
+        "count": 1,
+        "relation": "precedes:chain_native_runtime_demo",
+        "source": "zano-entity-00",
+        "target": "pnva-thermal-guard"
+      },
+      {
+        "count": 1,
+        "relation": "precedes:chain_native_runtime_demo",
+        "source": "zano-entity-01",
+        "target": "pnva-proof-native-demo"
+      }
+    ],
+    "chain_lengths": [
+      [
+        "chain_native_runtime_demo",
+        7
+      ]
+    ],
+    "graph_hash": "sha256:0ca08dc37c60e7599510e791bdab6fdd98c6d66ed996c29c9ddd014083b69d05",
+    "isolated_observed_entities": [],
+    "missing_event_entities": [],
+    "missing_relation_targets": [],
+    "nodes": [
+      {
+        "chain_count": 1,
+        "decision_mix": [
+          [
+            "collapse",
+            1
+          ],
+          [
+            "block",
+            1
+          ]
+        ],
+        "entity_id": "pnva-etev-guard",
+        "entity_type": "guard",
+        "event_count": 2,
+        "incoming_edges": 2,
+        "observed": true,
+        "outgoing_edges": 4,
+        "risk_flags": [
+          [
+            "STALE_PRESSURE",
+            1
+          ]
+        ],
+        "top_event_types": [
+          [
+            "ETEV_GUARD_PASS",
+            1
+          ],
+          [
+            "ETEV_GUARD_BLOCK",
+            1
+          ]
+        ]
+      },
+      {
+        "chain_count": 1,
+        "decision_mix": [
+          [
+            "observe",
+            1
+          ]
+        ],
+        "entity_id": "pnva-field-demo",
+        "entity_type": "field",
+        "event_count": 1,
+        "incoming_edges": 0,
+        "observed": true,
+        "outgoing_edges": 1,
+        "risk_flags": [],
+        "top_event_types": [
+          [
+            "FIELD_OBSERVED",
+            1
+          ]
+        ]
+      },
+      {
+        "chain_count": 1,
+        "decision_mix": [
+          [
+            "prove",
+            1
+          ]
+        ],
+        "entity_id": "pnva-proof-native-demo",
+        "entity_type": "proof",
+        "event_count": 1,
+        "incoming_edges": 1,
+        "observed": true,
+        "outgoing_edges": 0,
+        "risk_flags": [],
+        "top_event_types": [
+          [
+            "PROOF_SEALED",
+            1
+          ]
+        ]
+      },
+      {
+        "chain_count": 1,
+        "decision_mix": [
+          [
+            "observe",
+            1
+          ]
+        ],
+        "entity_id": "pnva-thermal-guard",
+        "entity_type": "guard",
+        "event_count": 1,
+        "incoming_edges": 1,
+        "observed": true,
+        "outgoing_edges": 1,
+        "risk_flags": [
+          [
+            "THERMAL_PRESSURE",
+            1
+          ]
+        ],
+        "top_event_types": [
+          [
+            "THERMAL_PRESSURE",
+            1
+          ]
+        ]
+      },
+      {
+        "chain_count": 1,
+        "decision_mix": [
+          [
+            "collapse",
+            1
+          ]
+        ],
+        "entity_id": "zano-entity-00",
+        "entity_type": "worker",
+        "event_count": 1,
+        "incoming_edges": 2,
+        "observed": true,
+        "outgoing_edges": 1,
+        "risk_flags": [],
+        "top_event_types": [
+          [
+            "RUNTIME_COLLAPSE",
+            1
+          ]
+        ]
+      },
+      {
+        "chain_count": 1,
+        "decision_mix": [
+          [
+            "block",
+            1
+          ]
+        ],
+        "entity_id": "zano-entity-01",
+        "entity_type": "worker",
+        "event_count": 1,
+        "incoming_edges": 2,
+        "observed": true,
+        "outgoing_edges": 1,
+        "risk_flags": [
+          [
+            "STALE_PRESSURE",
+            1
+          ]
+        ],
+        "top_event_types": [
+          [
+            "STALE_JOB_PRESSURE",
+            1
+          ]
+        ]
+      }
+    ],
+    "observed_entity_count": 6,
+    "relation_edge_count": 2,
+    "relation_edges": [
+      {
+        "count": 1,
+        "relation": "guards",
+        "source": "pnva-etev-guard",
+        "target": "zano-entity-00"
+      },
+      {
+        "count": 1,
+        "relation": "guards",
+        "source": "pnva-etev-guard",
+        "target": "zano-entity-01"
+      }
+    ]
+  },
+  "interpretation": {
+    "entity_meaning": "Every observed event should map to a cataloged PNVA entity.",
+    "graph_hash": "The graph hash is a stable public digest over nodes and edges.",
+    "relation_meaning": "Relations expose guard, routing and causal links instead of leaving entities as isolated labels."
+  },
+  "pass": true,
+  "project": "PNVA-Core",
+  "schema_version": "pnva.causal_graph.v1",
+  "summary": {
+    "catalog_entity_count": 6,
+    "chain_count": 1,
+    "chain_edge_count": 6,
+    "event_count": 7,
+    "graph_hash": "sha256:0ca08dc37c60e7599510e791bdab6fdd98c6d66ed996c29c9ddd014083b69d05",
+    "isolated_observed_entity_count": 0,
+    "observed_entity_count": 6,
+    "relation_edge_count": 2
+  },
+  "warnings": []
+}

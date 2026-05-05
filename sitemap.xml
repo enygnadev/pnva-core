@@ -53,6 +53,10 @@
     <lastmod>2026-05-05</lastmod>
   </url>
   <url>
+    <loc>https://enygnadev.github.io/pnva-core/docs/PNVA_CAUSAL_GRAPH_AUDIT.md</loc>
+    <lastmod>2026-05-05</lastmod>
+  </url>
+  <url>
     <loc>https://enygnadev.github.io/pnva-core/docs/PNVA_ROBUSTNESS_EVOLUTION_REPORT_2026-05-05.md</loc>
     <lastmod>2026-05-05</lastmod>
   </url>
@@ -122,6 +126,14 @@
   </url>
   <url>
     <loc>https://enygnadev.github.io/pnva-core/reports/pnva-native-proof-chain-2026-05-05.json</loc>
+    <lastmod>2026-05-05</lastmod>
+  </url>
+  <url>
+    <loc>https://enygnadev.github.io/pnva-core/reports/pnva-causal-graph-2026-05-05.json</loc>
+    <lastmod>2026-05-05</lastmod>
+  </url>
+  <url>
+    <loc>https://enygnadev.github.io/pnva-core/reports/pnva-native-causal-graph-2026-05-05.json</loc>
     <lastmod>2026-05-05</lastmod>
   </url>
 </urlset>

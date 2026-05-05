@@ -46,6 +46,7 @@ PUBLIC_DOCS = [
     "docs/PNVA_NATIVE_EVENT_EMITTER.md",
     "docs/PNVA_SOVEREIGN_POLICY_VALIDATION.md",
     "docs/PNVA_PROOF_CHAIN_SEALING.md",
+    "docs/PNVA_CAUSAL_GRAPH_AUDIT.md",
     "paper/PNVA_CORE_OPEN_RESEARCH_PAPER.md",
 ]
 
@@ -95,6 +96,13 @@ PROOF_CHAIN_FILES = [
     "docs/PNVA_PROOF_CHAIN_SEALING.md",
     "reports/pnva-proof-chain-2026-05-05.json",
     "reports/pnva-native-proof-chain-2026-05-05.json",
+]
+
+CAUSAL_GRAPH_FILES = [
+    "tools/pnva_causal_graph_auditor.py",
+    "docs/PNVA_CAUSAL_GRAPH_AUDIT.md",
+    "reports/pnva-causal-graph-2026-05-05.json",
+    "reports/pnva-native-causal-graph-2026-05-05.json",
 ]
 
 LOCAL_LOG_CANDIDATES = [
@@ -460,6 +468,46 @@ def audit_proof_chain(repo: Path) -> dict[str, Any]:
     }
 
 
+def audit_causal_graph(repo: Path) -> dict[str, Any]:
+    missing = [rel for rel in CAUSAL_GRAPH_FILES if not (repo / rel).exists()]
+    canonical_path = repo / "reports" / "pnva-causal-graph-2026-05-05.json"
+    native_path = repo / "reports" / "pnva-native-causal-graph-2026-05-05.json"
+    if not canonical_path.exists() or not native_path.exists():
+        return {
+            "graph_ok": False,
+            "missing": missing,
+            "classification": "CAUSAL_GRAPH_MISSING",
+            "errors": ["missing causal graph reports"],
+        }
+    canonical = _read_json(canonical_path)
+    native = _read_json(native_path)
+    canonical_summary = canonical.get("summary", {}) if isinstance(canonical, dict) else {}
+    native_summary = native.get("summary", {}) if isinstance(native, dict) else {}
+    canonical_errors = canonical.get("errors", []) if isinstance(canonical, dict) else ["invalid canonical graph report"]
+    native_errors = native.get("errors", []) if isinstance(native, dict) else ["invalid native graph report"]
+    return {
+        "graph_ok": not missing and canonical.get("pass") is True and native.get("pass") is True and not canonical_errors and not native_errors,
+        "missing": missing,
+        "classification": canonical.get("classification"),
+        "native_classification": native.get("classification"),
+        "canonical_event_count": int(canonical_summary.get("event_count", 0)),
+        "canonical_observed_entity_count": int(canonical_summary.get("observed_entity_count", 0)),
+        "canonical_catalog_entity_count": int(canonical_summary.get("catalog_entity_count", 0)),
+        "canonical_chain_count": int(canonical_summary.get("chain_count", 0)),
+        "canonical_relation_edge_count": int(canonical_summary.get("relation_edge_count", 0)),
+        "canonical_chain_edge_count": int(canonical_summary.get("chain_edge_count", 0)),
+        "canonical_graph_hash": canonical_summary.get("graph_hash"),
+        "native_event_count": int(native_summary.get("event_count", 0)),
+        "native_observed_entity_count": int(native_summary.get("observed_entity_count", 0)),
+        "native_catalog_entity_count": int(native_summary.get("catalog_entity_count", 0)),
+        "native_chain_count": int(native_summary.get("chain_count", 0)),
+        "native_relation_edge_count": int(native_summary.get("relation_edge_count", 0)),
+        "native_chain_edge_count": int(native_summary.get("chain_edge_count", 0)),
+        "native_graph_hash": native_summary.get("graph_hash"),
+        "errors": canonical_errors + native_errors,
+    }
+
+
 def sample_jsonl(path: Path, *, max_lines: int = 50000) -> dict[str, Any]:
     events: Counter[str] = Counter()
     decisions: Counter[str] = Counter()
@@ -655,6 +703,8 @@ def score_report(report: dict[str, Any]) -> dict[str, Any]:
     if report.get("sovereign_policy", {}).get("policy_ok"):
         scores["actionability"] += 0
     if report.get("proof_chain", {}).get("chain_ok"):
+        scores["actionability"] += 0
+    if report.get("causal_graph", {}).get("graph_ok"):
         scores["actionability"] += 1
 
     local = report["local_logs"]
@@ -712,6 +762,7 @@ def build_report(repo: Path, *, strict_public: bool = False) -> dict[str, Any]:
         "native_emitter": audit_native_emitter(repo),
         "sovereign_policy": audit_sovereign_policy(repo),
         "proof_chain": audit_proof_chain(repo),
+        "causal_graph": audit_causal_graph(repo),
         "local_logs": audit_local_logs(strict_public),
         "sovereignty": audit_sovereignty(repo),
         "recommendations": [
@@ -721,6 +772,7 @@ def build_report(repo: Path, *, strict_public: bool = False) -> dict[str, Any]:
             "Run no-tick invariant analysis after replay validation to prove causal suppression, not only execution.",
             "Run sovereign policy validation to separate production-grade authority from legacy-tolerated authority.",
             "Seal canonical and native event sequences with proof-chain hashes before public release.",
+            "Audit causal graphs so entity topology is visible, not implicit.",
             "Keep raw local logs private and publish only sanitized proof summaries.",
             "Track thermal pressure provenance when thermal pressure is high but sensor temperature/power are unavailable.",
             "Treat high RESIZE_BATCH ratio as pressure intelligence, not as a proof failure by itself.",

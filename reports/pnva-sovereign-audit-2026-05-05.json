@@ -10,6 +10,27 @@
     "public_safety_ok": true,
     "summary_ok": true
   },
+  "causal_graph": {
+    "canonical_catalog_entity_count": 6,
+    "canonical_chain_count": 14,
+    "canonical_chain_edge_count": 230,
+    "canonical_event_count": 512,
+    "canonical_graph_hash": "sha256:e3fbc1fafc15203b32b6bd3106b63c3b6a36213b3be77d9c7b862a8c16957106",
+    "canonical_observed_entity_count": 6,
+    "canonical_relation_edge_count": 68,
+    "classification": "CAUSAL_GRAPH_READY",
+    "errors": [],
+    "graph_ok": true,
+    "missing": [],
+    "native_catalog_entity_count": 6,
+    "native_chain_count": 1,
+    "native_chain_edge_count": 6,
+    "native_classification": "CAUSAL_GRAPH_READY",
+    "native_event_count": 7,
+    "native_graph_hash": "sha256:0ca08dc37c60e7599510e791bdab6fdd98c6d66ed996c29c9ddd014083b69d05",
+    "native_observed_entity_count": 6,
+    "native_relation_edge_count": 2
+  },
   "contract": {
     "invalid": [],
     "missing": [],
@@ -32,7 +53,7 @@
     "robots_missing_tokens": [],
     "robots_ok": true,
     "sitemap_ok": true,
-    "sitemap_url_count": 31,
+    "sitemap_url_count": 34,
     "sitemap_urls": [
       "https://enygnadev.github.io/pnva-core/",
       "https://enygnadev.github.io/pnva-core/author.html",
@@ -47,6 +68,7 @@
       "https://enygnadev.github.io/pnva-core/docs/PNVA_NATIVE_EVENT_EMITTER.md",
       "https://enygnadev.github.io/pnva-core/docs/PNVA_SOVEREIGN_POLICY_VALIDATION.md",
       "https://enygnadev.github.io/pnva-core/docs/PNVA_PROOF_CHAIN_SEALING.md",
+      "https://enygnadev.github.io/pnva-core/docs/PNVA_CAUSAL_GRAPH_AUDIT.md",
       "https://enygnadev.github.io/pnva-core/docs/PNVA_ROBUSTNESS_EVOLUTION_REPORT_2026-05-05.md",
       "https://enygnadev.github.io/pnva-core/schemas/pnva-event.schema.json",
       "https://enygnadev.github.io/pnva-core/schemas/pnva-entity.schema.json",
@@ -64,10 +86,12 @@
       "https://enygnadev.github.io/pnva-core/reports/pnva-sovereign-policy-2026-05-05.json",
       "https://enygnadev.github.io/pnva-core/reports/pnva-native-sovereign-policy-2026-05-05.json",
       "https://enygnadev.github.io/pnva-core/reports/pnva-proof-chain-2026-05-05.json",
-      "https://enygnadev.github.io/pnva-core/reports/pnva-native-proof-chain-2026-05-05.json"
+      "https://enygnadev.github.io/pnva-core/reports/pnva-native-proof-chain-2026-05-05.json",
+      "https://enygnadev.github.io/pnva-core/reports/pnva-causal-graph-2026-05-05.json",
+      "https://enygnadev.github.io/pnva-core/reports/pnva-native-causal-graph-2026-05-05.json"
     ]
   },
-  "generated_at": "2026-05-05T04:59:16Z",
+  "generated_at": "2026-05-05T05:06:40Z",
   "local_logs": {
     "available": true,
     "bad_json_ratio": 0.0,
@@ -836,6 +860,7 @@
     "Run no-tick invariant analysis after replay validation to prove causal suppression, not only execution.",
     "Run sovereign policy validation to separate production-grade authority from legacy-tolerated authority.",
     "Seal canonical and native event sequences with proof-chain hashes before public release.",
+    "Audit causal graphs so entity topology is visible, not implicit.",
     "Keep raw local logs private and publish only sanitized proof summaries.",
     "Track thermal pressure provenance when thermal pressure is high but sensor temperature/power are unavailable.",
     "Treat high RESIZE_BATCH ratio as pressure intelligence, not as a proof failure by itself."

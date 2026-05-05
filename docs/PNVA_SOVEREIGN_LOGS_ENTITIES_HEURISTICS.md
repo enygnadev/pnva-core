@@ -367,6 +367,49 @@ Production interpretation:
 
 PNVA evidence should not only be valid event by event. It should be sealed as a sequence.
 
+## 13. Causal Graph Audit
+
+Entity sovereignty requires topology.
+
+After event validation and sequence sealing, build the causal graph:
+
+```text
+entities + relations + causal_chain_id -> causal graph
+```
+
+The graph audit checks:
+
+```text
+event entities exist in catalog
+relation targets exist in catalog
+observed entities are connected by chain or relation edges
+graph_hash is stable
+```
+
+Current canonical graph:
+
+```text
+CAUSAL_GRAPH_READY
+512 events
+6 observed entities
+68 relation edges
+230 chain edges
+```
+
+Current native graph:
+
+```text
+CAUSAL_GRAPH_READY
+7 events
+6 observed entities
+2 relation edges
+6 chain edges
+```
+
+Production interpretation:
+
+PNVA should expose not only decisions, but the topology of the field that made those decisions possible.
+
 ## 9. Public Safety
 
 Public repositories should expose:

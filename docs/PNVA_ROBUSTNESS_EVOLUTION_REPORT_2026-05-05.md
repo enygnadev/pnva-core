@@ -40,6 +40,7 @@ docs/PNVA_NO_TICK_INVARIANTS.md
 docs/PNVA_NATIVE_EVENT_EMITTER.md
 docs/PNVA_SOVEREIGN_POLICY_VALIDATION.md
 docs/PNVA_PROOF_CHAIN_SEALING.md
+docs/PNVA_CAUSAL_GRAPH_AUDIT.md
 tools/pnva_sovereign_audit.py
 tools/pnva_canonical_bridge.py
 tools/pnva_replay_validator.py
@@ -47,6 +48,7 @@ tools/pnva_no_tick_invariant_analyzer.py
 tools/pnva_native_event_emitter.py
 tools/pnva_sovereign_policy_validator.py
 tools/pnva_proof_chain_sealer.py
+tools/pnva_causal_graph_auditor.py
 reports/pnva-sovereign-audit-2026-05-05.json
 reports/pnva-canonical-events-sample-2026-05-05.jsonl
 reports/pnva-entity-catalog-2026-05-05.json
@@ -62,6 +64,8 @@ reports/pnva-sovereign-policy-2026-05-05.json
 reports/pnva-native-sovereign-policy-2026-05-05.json
 reports/pnva-proof-chain-2026-05-05.json
 reports/pnva-native-proof-chain-2026-05-05.json
+reports/pnva-causal-graph-2026-05-05.json
+reports/pnva-native-causal-graph-2026-05-05.json
 ```
 
 ## Technical Diagnosis
@@ -283,6 +287,40 @@ checkpoints: 2
 
 This does not rewrite event history. It creates a public chain anchor where any content, proof or order mutation changes the final hash.
 
+### 10. Causal graph audit
+
+The causal graph auditor exposes entity topology.
+
+Current canonical result:
+
+```text
+classification: CAUSAL_GRAPH_READY
+event_count: 512
+catalog_entity_count: 6
+observed_entity_count: 6
+chain_count: 14
+relation_edge_count: 68
+chain_edge_count: 230
+errors: 0
+warnings: 0
+```
+
+Current native result:
+
+```text
+classification: CAUSAL_GRAPH_READY
+event_count: 7
+catalog_entity_count: 6
+observed_entity_count: 6
+chain_count: 1
+relation_edge_count: 2
+chain_edge_count: 6
+errors: 0
+warnings: 0
+```
+
+This makes PNVA entity flow explicit: guards, workers, chains and relation edges become inspectable instead of remaining implicit log fields.
+
 ## Next Engineering Recommendations
 
 1. Add schema version to every new JSONL event.
@@ -299,6 +337,7 @@ This does not rewrite event history. It creates a public chain anchor where any 
 12. Use `tools/pnva_native_event_emitter.py` as the reference pattern for new runtime emitters.
 13. Use `tools/pnva_sovereign_policy_validator.py` to enforce H2/H3 authority for future strong decisions.
 14. Use `tools/pnva_proof_chain_sealer.py` to seal event sequence order before publication.
+15. Use `tools/pnva_causal_graph_auditor.py` to audit entity topology and causal relation flow.
 
 ## Sovereign Rule
 

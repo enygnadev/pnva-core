@@ -1,0 +1,708 @@
+{
+  "author": "Gustavo de Aguiar Martins",
+  "classification": "CAUSAL_GRAPH_READY",
+  "entity_catalog_ref": "reports/pnva-entity-catalog-2026-05-05.json",
+  "errors": [],
+  "events_ref": "reports/pnva-canonical-events-sample-2026-05-05.jsonl",
+  "generated_at": "2026-05-05T05:06:40Z",
+  "graph": {
+    "catalog_entity_count": 6,
+    "chain_count": 14,
+    "chain_edge_count": 230,
+    "chain_edges": [
+      {
+        "count": 1,
+        "relation": "precedes:chain_92287533f69d",
+        "source": "entity_4c3ade60ea78",
+        "target": "entity_8ba8a9970d6a"
+      },
+      {
+        "count": 1,
+        "relation": "precedes:chain_9ce61292fa5a",
+        "source": "entity_4c3ade60ea78",
+        "target": "entity_8ba8a9970d6a"
+      },
+      {
+        "count": 1,
+        "relation": "precedes:chain_92287533f69d",
+        "source": "entity_4c3ade60ea78",
+        "target": "entity_9ad2a10c30be"
+      },
+      {
+        "count": 3,
+        "relation": "precedes:chain_08fb2e218d52",
+        "source": "entity_4c3ade60ea78",
+        "target": "zano-entity-00"
+      },
+      {
+        "count": 4,
+        "relation": "precedes:chain_482433f85efe",
+        "source": "entity_4c3ade60ea78",
+        "target": "zano-entity-00"
+      },
+      {
+        "count": 1,
+        "relation": "precedes:chain_92287533f69d",
+        "source": "entity_4c3ade60ea78",
+        "target": "zano-entity-00"
+      },
+      {
+        "count": 4,
+        "relation": "precedes:chain_9ce61292fa5a",
+        "source": "entity_4c3ade60ea78",
+        "target": "zano-entity-00"
+      },
+      {
+        "count": 6,
+        "relation": "precedes:chain_08fb2e218d52",
+        "source": "entity_4c3ade60ea78",
+        "target": "zano-entity-01"
+      },
+      {
+        "count": 5,
+        "relation": "precedes:chain_482433f85efe",
+        "source": "entity_4c3ade60ea78",
+        "target": "zano-entity-01"
+      },
+      {
+        "count": 4,
+        "relation": "precedes:chain_92287533f69d",
+        "source": "entity_4c3ade60ea78",
+        "target": "zano-entity-01"
+      },
+      {
+        "count": 4,
+        "relation": "precedes:chain_9ce61292fa5a",
+        "source": "entity_4c3ade60ea78",
+        "target": "zano-entity-01"
+      },
+      {
+        "count": 4,
+        "relation": "precedes:chain_92287533f69d",
+        "source": "entity_8ba8a9970d6a",
+        "target": "entity_4c3ade60ea78"
+      },
+      {
+        "count": 7,
+        "relation": "precedes:chain_9ce61292fa5a",
+        "source": "entity_8ba8a9970d6a",
+        "target": "entity_4c3ade60ea78"
+      },
+      {
+        "count": 1,
+        "relation": "precedes:chain_db1f2986d74b",
+        "source": "entity_8ba8a9970d6a",
+        "target": "entity_9ad2a10c30be"
+      },
+      {
+        "count": 1,
+        "relation": "precedes:chain_db1f2986d74b",
+        "source": "entity_8ba8a9970d6a",
+        "target": "zano-entity-00"
+      },
+      {
+        "count": 12,
+        "relation": "precedes:chain_021c088f7853",
+        "source": "entity_9030cf1aa9f6",
+        "target": "entity_9ad2a10c30be"
+      },
+      {
+        "count": 1,
+        "relation": "precedes:chain_92287533f69d",
+        "source": "entity_9030cf1aa9f6",
+        "target": "entity_9ad2a10c30be"
+      },
+      {
+        "count": 3,
+        "relation": "precedes:chain_9ce61292fa5a",
+        "source": "entity_9030cf1aa9f6",
+        "target": "entity_9ad2a10c30be"
+      },
+      {
+        "count": 12,
+        "relation": "precedes:chain_021c088f7853",
+        "source": "entity_9030cf1aa9f6",
+        "target": "zano-entity-00"
+      },
+      {
+        "count": 1,
+        "relation": "precedes:chain_92287533f69d",
+        "source": "entity_9030cf1aa9f6",
+        "target": "zano-entity-00"
+      },
+      {
+        "count": 2,
+        "relation": "precedes:chain_9ce61292fa5a",
+        "source": "entity_9030cf1aa9f6",
+        "target": "zano-entity-00"
+      },
+      {
+        "count": 1,
+        "relation": "precedes:chain_021c088f7853",
+        "source": "entity_9030cf1aa9f6",
+        "target": "zano-entity-01"
+      },
+      {
+        "count": 1,
+        "relation": "precedes:chain_9ce61292fa5a",
+        "source": "entity_9030cf1aa9f6",
+        "target": "zano-entity-01"
+      },
+      {
+        "count": 13,
+        "relation": "precedes:chain_021c088f7853",
+        "source": "entity_9ad2a10c30be",
+        "target": "entity_9030cf1aa9f6"
+      },
+      {
+        "count": 1,
+        "relation": "precedes:chain_92287533f69d",
+        "source": "entity_9ad2a10c30be",
+        "target": "entity_9030cf1aa9f6"
+      },
+      {
+        "count": 3,
+        "relation": "precedes:chain_9ce61292fa5a",
+        "source": "entity_9ad2a10c30be",
+        "target": "entity_9030cf1aa9f6"
+      },
+      {
+        "count": 1,
+        "relation": "precedes:chain_92287533f69d",
+        "source": "entity_9ad2a10c30be",
+        "target": "zano-entity-00"
+      },
+      {
+        "count": 1,
+        "relation": "precedes:chain_db1f2986d74b",
+        "source": "entity_9ad2a10c30be",
+        "target": "zano-entity-00"
+      },
+      {
+        "count": 12,
+        "relation": "precedes:chain_021c088f7853",
+        "source": "entity_9ad2a10c30be",
+        "target": "zano-entity-01"
+      },
+      {
+        "count": 1,
+        "relation": "precedes:chain_92287533f69d",
+        "source": "entity_9ad2a10c30be",
+        "target": "zano-entity-01"
+      },
+      {
+        "count": 3,
+        "relation": "precedes:chain_9ce61292fa5a",
+        "source": "entity_9ad2a10c30be",
+        "target": "zano-entity-01"
+      },
+      {
+        "count": 5,
+        "relation": "precedes:chain_08fb2e218d52",
+        "source": "zano-entity-00",
+        "target": "entity_4c3ade60ea78"
+      },
+      {
+        "count": 5,
+        "relation": "precedes:chain_482433f85efe",
+        "source": "zano-entity-00",
+        "target": "entity_4c3ade60ea78"
+      },
+      {
+        "count": 1,
+        "relation": "precedes:chain_92287533f69d",
+        "source": "zano-entity-00",
+        "target": "entity_4c3ade60ea78"
+      },
+      {
+        "count": 3,
+        "relation": "precedes:chain_92287533f69d",
+        "source": "zano-entity-00",
+        "target": "entity_8ba8a9970d6a"
+      },
+      {
+        "count": 2,
+        "relation": "precedes:chain_9ce61292fa5a",
+        "source": "zano-entity-00",
+        "target": "entity_8ba8a9970d6a"
+      },
+      {
+        "count": 11,
+        "relation": "precedes:chain_021c088f7853",
+        "source": "zano-entity-00",
+        "target": "entity_9030cf1aa9f6"
+      },
+      {
+        "count": 3,
+        "relation": "precedes:chain_9ce61292fa5a",
+        "source": "zano-entity-00",
+        "target": "entity_9030cf1aa9f6"
+      },
+      {
+        "count": 3,
+        "relation": "precedes:chain_9ce61292fa5a",
+        "source": "zano-entity-00",
+        "target": "entity_9ad2a10c30be"
+      },
+      {
+        "count": 3,
+        "relation": "precedes:chain_08fb2e218d52",
+        "source": "zano-entity-00",
+        "target": "zano-entity-01"
+      },
+      {
+        "count": 4,
+        "relation": "precedes:chain_482433f85efe",
+        "source": "zano-entity-00",
+        "target": "zano-entity-01"
+      },
+      {
+        "count": 5,
+        "relation": "precedes:chain_92287533f69d",
+        "source": "zano-entity-00",
+        "target": "zano-entity-01"
+      },
+      {
+        "count": 9,
+        "relation": "precedes:chain_9ce61292fa5a",
+        "source": "zano-entity-00",
+        "target": "zano-entity-01"
+      },
+      {
+        "count": 1,
+        "relation": "precedes:chain_db1f2986d74b",
+        "source": "zano-entity-00",
+        "target": "zano-entity-01"
+      },
+      {
+        "count": 3,
+        "relation": "precedes:chain_08fb2e218d52",
+        "source": "zano-entity-01",
+        "target": "entity_4c3ade60ea78"
+      },
+      {
+        "count": 4,
+        "relation": "precedes:chain_482433f85efe",
+        "source": "zano-entity-01",
+        "target": "entity_4c3ade60ea78"
+      },
+      {
+        "count": 1,
+        "relation": "precedes:chain_92287533f69d",
+        "source": "zano-entity-01",
+        "target": "entity_4c3ade60ea78"
+      },
+      {
+        "count": 1,
+        "relation": "precedes:chain_9ce61292fa5a",
+        "source": "zano-entity-01",
+        "target": "entity_4c3ade60ea78"
+      },
+      {
+        "count": 4,
+        "relation": "precedes:chain_9ce61292fa5a",
+        "source": "zano-entity-01",
+        "target": "entity_8ba8a9970d6a"
+      },
+      {
+        "count": 1,
+        "relation": "precedes:chain_db1f2986d74b",
+        "source": "zano-entity-01",
+        "target": "entity_8ba8a9970d6a"
+      },
+      {
+        "count": 1,
+        "relation": "precedes:chain_021c088f7853",
+        "source": "zano-entity-01",
+        "target": "entity_9030cf1aa9f6"
+      },
+      {
+        "count": 1,
+        "relation": "precedes:chain_92287533f69d",
+        "source": "zano-entity-01",
+        "target": "entity_9030cf1aa9f6"
+      },
+      {
+        "count": 13,
+        "relation": "precedes:chain_021c088f7853",
+        "source": "zano-entity-01",
+        "target": "entity_9ad2a10c30be"
+      },
+      {
+        "count": 1,
+        "relation": "precedes:chain_92287533f69d",
+        "source": "zano-entity-01",
+        "target": "entity_9ad2a10c30be"
+      },
+      {
+        "count": 6,
+        "relation": "precedes:chain_08fb2e218d52",
+        "source": "zano-entity-01",
+        "target": "zano-entity-00"
+      },
+      {
+        "count": 5,
+        "relation": "precedes:chain_482433f85efe",
+        "source": "zano-entity-01",
+        "target": "zano-entity-00"
+      },
+      {
+        "count": 7,
+        "relation": "precedes:chain_92287533f69d",
+        "source": "zano-entity-01",
+        "target": "zano-entity-00"
+      },
+      {
+        "count": 12,
+        "relation": "precedes:chain_9ce61292fa5a",
+        "source": "zano-entity-01",
+        "target": "zano-entity-00"
+      }
+    ],
+    "chain_lengths": [
+      [
+        "chain_021c088f7853",
+        128
+      ],
+      [
+        "chain_9ce61292fa5a",
+        71
+      ],
+      [
+        "chain_08fb2e218d52",
+        64
+      ],
+      [
+        "chain_482433f85efe",
+        64
+      ],
+      [
+        "chain_92287533f69d",
+        52
+      ],
+      [
+        "chain_1988457c3d12",
+        29
+      ],
+      [
+        "chain_8bfdbf9faf43",
+        23
+      ],
+      [
+        "chain_6709c2ff5904",
+        20
+      ],
+      [
+        "chain_5eb925c72f32",
+        16
+      ],
+      [
+        "chain_d5823b382ff9",
+        15
+      ],
+      [
+        "chain_db1f2986d74b",
+        10
+      ],
+      [
+        "chain_fb758c5cf4a9",
+        9
+      ],
+      [
+        "chain_b62a4fa8414b",
+        6
+      ],
+      [
+        "chain_f0b08ea5ba08",
+        5
+      ]
+    ],
+    "graph_hash": "sha256:e3fbc1fafc15203b32b6bd3106b63c3b6a36213b3be77d9c7b862a8c16957106",
+    "isolated_observed_entities": [],
+    "missing_event_entities": [],
+    "missing_relation_targets": [],
+    "nodes": [
+      {
+        "chain_count": 4,
+        "decision_mix": [
+          [
+            "collapse",
+            103
+          ],
+          [
+            "observe",
+            29
+          ]
+        ],
+        "entity_id": "entity_4c3ade60ea78",
+        "entity_type": "field",
+        "event_count": 132,
+        "incoming_edges": 9,
+        "observed": true,
+        "outgoing_edges": 11,
+        "risk_flags": [
+          [
+            "RESIZE_BATCH_PRESSURE",
+            90
+          ],
+          [
+            "THERMAL_PRESSURE",
+            52
+          ]
+        ],
+        "top_event_types": [
+          [
+            "pnva_decision",
+            53
+          ],
+          [
+            "cuda_slot_scan",
+            35
+          ],
+          [
+            "network_state_changed",
+            19
+          ],
+          [
+            "runtime_status",
+            15
+          ],
+          [
+            "STRATUM_JOB",
+            2
+          ],
+          [
+            "pool_authorized",
+            2
+          ],
+          [
+            "job_received",
+            2
+          ],
+          [
+            "range_ledger",
+            2
+          ]
+        ]
+      },
+      {
+        "chain_count": 3,
+        "decision_mix": [
+          [
+            "observe",
+            13
+          ]
+        ],
+        "entity_id": "entity_8ba8a9970d6a",
+        "entity_type": "field",
+        "event_count": 13,
+        "incoming_edges": 6,
+        "observed": true,
+        "outgoing_edges": 4,
+        "risk_flags": [],
+        "top_event_types": [
+          [
+            "runtime_snapshot",
+            10
+          ],
+          [
+            "job_received",
+            3
+          ]
+        ]
+      },
+      {
+        "chain_count": 3,
+        "decision_mix": [
+          [
+            "block",
+            33
+          ]
+        ],
+        "entity_id": "entity_9030cf1aa9f6",
+        "entity_type": "guard",
+        "event_count": 33,
+        "incoming_edges": 7,
+        "observed": true,
+        "outgoing_edges": 10,
+        "risk_flags": [],
+        "top_event_types": [
+          [
+            "ETEV_GUARD_BLOCK",
+            33
+          ]
+        ]
+      },
+      {
+        "chain_count": 4,
+        "decision_mix": [
+          [
+            "collapse",
+            35
+          ]
+        ],
+        "entity_id": "entity_9ad2a10c30be",
+        "entity_type": "guard",
+        "event_count": 35,
+        "incoming_edges": 8,
+        "observed": true,
+        "outgoing_edges": 10,
+        "risk_flags": [],
+        "top_event_types": [
+          [
+            "ETEV_GUARD_PASS",
+            35
+          ]
+        ]
+      },
+      {
+        "chain_count": 14,
+        "decision_mix": [
+          [
+            "collapse",
+            128
+          ],
+          [
+            "observe",
+            84
+          ]
+        ],
+        "entity_id": "zano-entity-00",
+        "entity_type": "field",
+        "event_count": 212,
+        "incoming_edges": 16,
+        "observed": true,
+        "outgoing_edges": 13,
+        "risk_flags": [
+          [
+            "VEONIC_TRACE",
+            128
+          ],
+          [
+            "RESIZE_BATCH_PRESSURE",
+            86
+          ],
+          [
+            "THERMAL_PRESSURE",
+            86
+          ]
+        ],
+        "top_event_types": [
+          [
+            "range_plan_built",
+            123
+          ],
+          [
+            "pnva_engine_evaluated",
+            37
+          ],
+          [
+            "range_ledger",
+            18
+          ],
+          [
+            "entity_range_assigned",
+            11
+          ],
+          [
+            "kernel_completed",
+            9
+          ],
+          [
+            "kernel_launched",
+            9
+          ],
+          [
+            "serialized_cohort_fragile_hold",
+            5
+          ]
+        ]
+      },
+      {
+        "chain_count": 6,
+        "decision_mix": [
+          [
+            "observe",
+            87
+          ]
+        ],
+        "entity_id": "zano-entity-01",
+        "entity_type": "field",
+        "event_count": 87,
+        "incoming_edges": 16,
+        "observed": true,
+        "outgoing_edges": 14,
+        "risk_flags": [],
+        "top_event_types": [
+          [
+            "pnva_engine_evaluated",
+            41
+          ],
+          [
+            "range_ledger",
+            18
+          ],
+          [
+            "entity_range_assigned",
+            11
+          ],
+          [
+            "kernel_launched",
+            9
+          ],
+          [
+            "kernel_completed",
+            8
+          ]
+        ]
+      }
+    ],
+    "observed_entity_count": 6,
+    "relation_edge_count": 68,
+    "relation_edges": [
+      {
+        "count": 16,
+        "relation": "guards",
+        "source": "entity_9030cf1aa9f6",
+        "target": "zano-entity-00"
+      },
+      {
+        "count": 17,
+        "relation": "guards",
+        "source": "entity_9030cf1aa9f6",
+        "target": "zano-entity-01"
+      },
+      {
+        "count": 19,
+        "relation": "guards",
+        "source": "entity_9ad2a10c30be",
+        "target": "zano-entity-00"
+      },
+      {
+        "count": 16,
+        "relation": "guards",
+        "source": "entity_9ad2a10c30be",
+        "target": "zano-entity-01"
+      }
+    ]
+  },
+  "interpretation": {
+    "entity_meaning": "Every observed event should map to a cataloged PNVA entity.",
+    "graph_hash": "The graph hash is a stable public digest over nodes and edges.",
+    "relation_meaning": "Relations expose guard, routing and causal links instead of leaving entities as isolated labels."
+  },
+  "pass": true,
+  "project": "PNVA-Core",
+  "schema_version": "pnva.causal_graph.v1",
+  "summary": {
+    "catalog_entity_count": 6,
+    "chain_count": 14,
+    "chain_edge_count": 230,
+    "event_count": 512,
+    "graph_hash": "sha256:e3fbc1fafc15203b32b6bd3106b63c3b6a36213b3be77d9c7b862a8c16957106",
+    "isolated_observed_entity_count": 0,
+    "observed_entity_count": 6,
+    "relation_edge_count": 68
+  },
+  "warnings": []
+}
