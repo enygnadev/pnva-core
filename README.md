@@ -47,6 +47,28 @@ Record URL: https://zenodo.org/records/20044503
 
 DOI URL: https://doi.org/10.5281/zenodo.20044503
 
+## Fast Reproduction
+
+```bash
+git clone https://github.com/enygnadev/pnva-core
+cd pnva-core
+python3 tools/pnva_quick_verify.py
+```
+
+Expected:
+
+```text
+PNVA_QUICK_VERIFY_PASS
+```
+
+## Public Entry Points
+
+- Search identity: https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.html
+- Interactive demo: https://enygnadev.github.io/pnva-core/demo.html
+- Paper PDF: `paper/PNVA_CORE_OPEN_RESEARCH_PAPER_2026-05-05.pdf`
+- LinkedIn post text and image: `release/POST_02_LINKEDIN_PNVA_CORE_DOI.md`, `assets/pnva-linkedin-launch.png`
+- Indexing pack: `docs/INDEXING_SUBMISSION_PACK.md`
+
 ## Production Evidence
 
 This repository publishes the sanitized evidence layer of a local live-field validation.

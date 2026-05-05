@@ -1350,6 +1350,16 @@
       "failure_count": 0,
       "evidence_hash": "sha256:9f38e4089290b13df2093b0bc190dbb5970b5827eee92caf20af591534f34400",
       "hash_policy": "sovereign audit consumes this attestation and is excluded from the attestation seed to avoid circular hashing"
+    },
+    "parallel_publication_layer": {
+      "status": "ADDED",
+      "indexing_pack": "docs/INDEXING_SUBMISSION_PACK.md",
+      "linkedin_post": "release/POST_02_LINKEDIN_PNVA_CORE_DOI.md",
+      "reproducibility_quickstart": "docs/REPRODUCIBILITY_QUICKSTART.md",
+      "quick_verify": "tools/pnva_quick_verify.py",
+      "paper_pdf": "paper/PNVA_CORE_OPEN_RESEARCH_PAPER_2026-05-05.pdf",
+      "interactive_demo": "demo.html",
+      "social_image": "assets/pnva-linkedin-launch.png"
     }
   },
   "files": [
@@ -1613,7 +1623,16 @@
     "tools/pnva_suppression_ledger.py",
     "tools/pnva_tension_decision_calibrator.py",
     "tools/sanitize_proofs.py",
-    "veonic-model.html"
+    "veonic-model.html",
+    "assets/pnva-linkedin-launch.png",
+    "demo.html",
+    "docs/INDEXING_SUBMISSION_PACK.md",
+    "docs/REPRODUCIBILITY_QUICKSTART.md",
+    "paper/PREPRINT_SUBMISSION_PACK.md",
+    "paper/PNVA_CORE_OPEN_RESEARCH_PAPER_2026-05-05.html",
+    "paper/PNVA_CORE_OPEN_RESEARCH_PAPER_2026-05-05.pdf",
+    "release/POST_02_LINKEDIN_PNVA_CORE_DOI.md",
+    "tools/pnva_quick_verify.py"
   ],
   "checksums": "SHA256SUMS.txt",
   "public_data_policy": {

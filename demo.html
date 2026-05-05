@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PNVA-Core Live Demo</title>
+  <meta name="description" content="Interactive PNVA-Core causal no-tick demo: state, event, tension, collapse and proof.">
+  <meta name="author" content="Gustavo de Aguiar Martins">
+  <meta name="citation_doi" content="10.5281/zenodo.20044503">
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
+  <link rel="canonical" href="https://enygnadev.github.io/pnva-core/demo.html">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .demo-shell {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(280px, 0.7fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+    .demo-stage {
+      min-height: 520px;
+      border: 1px solid rgba(214, 183, 91, 0.3);
+      border-radius: 8px;
+      background: radial-gradient(circle at 50% 50%, rgba(88, 166, 255, 0.12), rgba(5, 8, 18, 0.95) 58%);
+      overflow: hidden;
+      position: relative;
+    }
+    canvas {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+    .demo-panel {
+      border: 1px solid rgba(214, 183, 91, 0.3);
+      border-radius: 8px;
+      padding: 18px;
+      background: rgba(8, 13, 27, 0.88);
+    }
+    .demo-metric {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      border-bottom: 1px solid rgba(214, 183, 91, 0.14);
+      padding: 10px 0;
+    }
+    .demo-metric strong {
+      color: var(--gold);
+    }
+    .demo-button {
+      width: 100%;
+      min-height: 46px;
+      border: 1px solid rgba(214, 183, 91, 0.46);
+      border-radius: 8px;
+      background: #0b1428;
+      color: var(--text);
+      font-weight: 800;
+      cursor: pointer;
+      margin-top: 14px;
+    }
+    .demo-button:hover {
+      border-color: var(--gold);
+    }
+    @media (max-width: 880px) {
+      .demo-shell {
+        grid-template-columns: 1fr;
+      }
+      .demo-stage {
+        min-height: 420px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="shell nav">
+      <a class="brand" href="./"><img src="assets/pnva-core-mark.svg" alt="">PNVA-Core</a>
+      <div class="links">
+        <a href="gustavo-martins-pnva.html">Gustavo Martins PNVA</a>
+        <a href="demo.html">Demo</a>
+        <a href="proofs.html">Proofs</a>
+        <a href="https://doi.org/10.5281/zenodo.20044503">DOI</a>
+        <a href="https://github.com/enygnadev/pnva-core">GitHub</a>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <section class="hero">
+      <div class="shell">
+        <div class="eyebrow">Interactive Causal Field</div>
+        <h1>PNVA-Core Demo</h1>
+        <p class="lead">A visual, browser-native demonstration of PNVA's causal chain: state, event, tension, collapse, execution and proof.</p>
+      </div>
+    </section>
+    <section class="section">
+      <div class="shell demo-shell">
+        <div class="demo-stage">
+          <canvas id="pnva-demo" aria-label="PNVA causal no-tick field animation"></canvas>
+        </div>
+        <aside class="demo-panel">
+          <h2>Field State</h2>
+          <div class="demo-metric"><span>mode</span><strong id="mode">observe</strong></div>
+          <div class="demo-metric"><span>event</span><strong id="event">latent</strong></div>
+          <div class="demo-metric"><span>tension</span><strong id="tension">0.00</strong></div>
+          <div class="demo-metric"><span>threshold</span><strong>0.62</strong></div>
+          <div class="demo-metric"><span>collapse</span><strong id="collapse">no</strong></div>
+          <div class="demo-metric"><span>proof</span><strong id="proof">waiting</strong></div>
+          <button class="demo-button" id="inject">Inject Event</button>
+          <p>PNVA avoids execution while tension remains below threshold. When the field changes enough, the event collapses into restricted execution and emits proof.</p>
+          <p><a href="docs/REPRODUCIBILITY_QUICKSTART.md">Run the verifier</a> · <a href="https://zenodo.org/records/20044503">Zenodo record</a></p>
+        </aside>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="shell">Gustavo de Aguiar Martins - Enygnalab / EnyOS / PNVA-Core</div>
+  </footer>
+  <script>
+    const canvas = document.getElementById("pnva-demo");
+    const ctx = canvas.getContext("2d");
+    const els = {
+      mode: document.getElementById("mode"),
+      event: document.getElementById("event"),
+      tension: document.getElementById("tension"),
+      collapse: document.getElementById("collapse"),
+      proof: document.getElementById("proof")
+    };
+    let tension = 0.18;
+    let pulse = 0;
+    let proofCount = 0;
+    const threshold = 0.62;
+    function resize() {
+      const rect = canvas.parentElement.getBoundingClientRect();
+      canvas.width = Math.floor(rect.width * devicePixelRatio);
+      canvas.height = Math.floor(rect.height * devicePixelRatio);
+      canvas.style.width = rect.width + "px";
+      canvas.style.height = rect.height + "px";
+      ctx.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0);
+    }
+    function inject() {
+      tension = Math.min(1, tension + 0.32 + Math.random() * 0.18);
+      pulse = 1;
+    }
+    document.getElementById("inject").addEventListener("click", inject);
+    window.addEventListener("resize", resize);
+    resize();
+    function draw(now) {
+      const w = canvas.clientWidth;
+      const h = canvas.clientHeight;
+      ctx.clearRect(0, 0, w, h);
+      const cx = w / 2;
+      const cy = h / 2;
+      tension = Math.max(0.14, tension * 0.995 - 0.0005);
+      const collapsed = tension >= threshold;
+      if (collapsed && pulse > 0.15) proofCount += 1;
+      els.mode.textContent = collapsed ? "collapse" : "observe";
+      els.event.textContent = pulse > 0.02 ? "active" : "latent";
+      els.tension.textContent = tension.toFixed(2);
+      els.collapse.textContent = collapsed ? "yes" : "no";
+      els.proof.textContent = collapsed ? `proof_${proofCount}` : "waiting";
+      const rings = 7;
+      for (let i = 0; i < rings; i += 1) {
+        const r = 48 + i * 34 + pulse * 18;
+        ctx.beginPath();
+        ctx.ellipse(cx, cy, r * 1.35, r * 0.45, now / 2600 + i * 0.42, 0, Math.PI * 2);
+        ctx.strokeStyle = `rgba(214, 183, 91, ${0.12 + i * 0.035})`;
+        ctx.lineWidth = 1.2;
+        ctx.stroke();
+      }
+      for (let i = 0; i < 42; i += 1) {
+        const a = now / (1500 + i * 24) + i * 0.9;
+        const rr = 70 + (i % 9) * 24 + Math.sin(now / 900 + i) * 10;
+        const x = cx + Math.cos(a) * rr * 1.55;
+        const y = cy + Math.sin(a) * rr * 0.62;
+        ctx.beginPath();
+        ctx.arc(x, y, 2.2 + (i % 3), 0, Math.PI * 2);
+        ctx.fillStyle = i % 5 === 0 ? "rgba(88,166,255,0.84)" : "rgba(214,183,91,0.78)";
+        ctx.fill();
+      }
+      ctx.beginPath();
+      ctx.arc(cx, cy, 34 + pulse * 18, 0, Math.PI * 2);
+      ctx.fillStyle = collapsed ? "rgba(143,240,178,0.22)" : "rgba(88,166,255,0.18)";
+      ctx.fill();
+      ctx.strokeStyle = collapsed ? "rgba(143,240,178,0.95)" : "rgba(214,183,91,0.72)";
+      ctx.lineWidth = 2;
+      ctx.stroke();
+      ctx.font = "700 13px system-ui";
+      ctx.fillStyle = "#eef4ff";
+      ctx.textAlign = "center";
+      ctx.fillText(collapsed ? "collapse -> proof" : "observe field", cx, cy + 5);
+      pulse *= 0.94;
+      requestAnimationFrame(draw);
+    }
+    requestAnimationFrame(draw);
+  </script>
+</body>
+</html>
