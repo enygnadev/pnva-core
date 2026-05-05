@@ -1,0 +1,29 @@
+{
+  "title": "PNVA-Core: A Post-Temporal Causal Architecture for State/Event-Oriented Computation",
+  "upload_type": "software",
+  "description": "Open Research / Production Evidence release of PNVA-Core, a causal state/event-oriented no-tick architecture with sanitized proof logs and production-candidate PASS evidence.",
+  "creators": [
+    {
+      "name": "Gustavo de Aguiar Martins",
+      "affiliation": "Enygnalab"
+    }
+  ],
+  "license": "MIT",
+  "keywords": [
+    "PNVA",
+    "causal computing",
+    "no-tick",
+    "event-aware runtime",
+    "proof logs",
+    "operating systems",
+    "veonic unit"
+  ],
+  "related_identifiers": [
+    {
+      "relation": "isSupplementTo",
+      "identifier": "https://github.com/enygnadev/pnva-core",
+      "scheme": "url"
+    }
+  ]
+}
+

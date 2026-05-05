@@ -1,0 +1,19 @@
+{
+  "timestamp": "2026-05-04T23:49:40-03:00",
+  "phase_id": "E4",
+  "proof_name": "distribution_gate",
+  "pass": true,
+  "overall_status": "",
+  "checks": {
+    "official_suite_pass": true,
+    "guard_rails_pass": true,
+    "packaging_pass": true,
+    "install_upgrade_rollback_pass": true,
+    "long_run_live_gate_pass": true,
+    "telemetry_cli_pass": true,
+    "release_manifest_generated": true,
+    "required_docs_present": true
+  },
+  "pass_fail_por_item": {},
+  "details": {}
+}

@@ -1,0 +1,26 @@
+{
+  "timestamp": "2026-05-04T11:43:46-03:00",
+  "phase_id": "G1",
+  "proof_name": "real_stable_opportunity_capture",
+  "pass": true,
+  "status": "validated_no_real_opportunity",
+  "classification": "PASS_DETECTOR_VALIDATED_NO_REAL_OPPORTUNITY_SEEN",
+  "checks": {
+    "real_stable_opportunity_captured": false,
+    "stable_opportunity_observer_pass": true,
+    "no_unresolved_real_opportunity_seen": true,
+    "g1_capture_or_validated_absence": true
+  },
+  "monitor": {
+    "timeout_sec": 43200.0,
+    "poll_sec": 2.0,
+    "samples_seen": 21083,
+    "max_same_family_medium_candidate_count": 0,
+    "max_same_family_medium_recovered_count": 0,
+    "max_stable_opportunity_count": 0,
+    "last_runtime_phase": "STEADY",
+    "last_passive_tree_state": "passive_tree_live",
+    "last_recovery_opportunity_state": "PNVA_RECOVERY_OPPORTUNITY_NONE"
+  },
+  "capture": {}
+}

@@ -1,0 +1,18 @@
+{
+  "timestamp": "2026-05-04T23:49:27-0300",
+  "phase_id": "D1",
+  "proof_name": "guard-rails",
+  "pass": true,
+  "overall_status": "PASS",
+  "classification": "PASS_GUARD_RAILS_ALL_ITEMS_PASS",
+  "checks": {},
+  "pass_fail_por_item": {
+    "STEAM_UNTOUCHED": "PASS",
+    "CS2_UNTOUCHED": "PASS",
+    "PROTECTED_PERIPHERAL_WINDOW_UNTOUCHED": "PASS",
+    "SOVEREIGN_TARGET_PATH_INTACT": "PASS",
+    "FIELDCOMMS_REFLECT_ONLY": "PASS",
+    "NETWORK_FIXES_OUTSIDE_PNVA_CORE": "PASS"
+  },
+  "details": {}
+}

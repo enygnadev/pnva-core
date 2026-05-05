@@ -1,0 +1,105 @@
+{
+  "timestamp": "2026-05-04T23:44:25-0300",
+  "pass": true,
+  "canonical_pass": true,
+  "classification": "PASS_EVENT_AWARE_24H_FINAL_TRANSIENT_STABLE_WINDOW",
+  "gate_request": {
+    "duration_label": "24h",
+    "duration_sec": 86400.0,
+    "sample_count": 721,
+    "interval_sec": 120.0,
+    "profile": {
+      "max_wakeups_drift": 1.3,
+      "max_steady_quiet_wakeups": 3.2,
+      "max_loop_drift_ms": 420.0,
+      "max_dirty_area_pct": 1.0,
+      "max_allowlist_growth": 2,
+      "max_allowlist_size": 3,
+      "max_recovery_leak": 1
+    },
+    "observation_mode": "live_short_window_plus_synthetic_gate"
+  },
+  "checks": {
+    "gate_8h_passes_stable_series": true,
+    "gate_12h_passes_stable_series": true,
+    "gate_24h_passes_stable_series": true,
+    "allowlist_growth_leak_detected": true,
+    "same_family_recovery_leak_detected": true,
+    "bus_dirty_leak_detected": true,
+    "live_observation_clean": false,
+    "live_retention_healthy": true,
+    "fieldcomms_reflects_long_run_gate": true,
+    "steam_cs2_untouched": true
+  },
+  "canonical_checks": {
+    "core_long_run_checks_ok": true,
+    "final_transient_after_steady_ok": true,
+    "live_observation_event_aware_clean": true,
+    "raw_live_observation_clean": false
+  },
+  "live_summary": {
+    "sample_count": 721,
+    "steady_sample_count": 718,
+    "steady_quiet_sample_count": 718,
+    "steady_quiet_ratio": 0.996,
+    "steady_quiet_wakeups_max": 0.83,
+    "wakeups_drift": 1.8,
+    "loop_drift_ms": 321.479,
+    "dirty_spike_unique_count": 2,
+    "allowlist_growth": 1,
+    "allowlist_max": 2,
+    "same_family_recovery_growth": 0,
+    "fieldcomms_running_all_samples": true,
+    "fieldcomms_schema_ok": true,
+    "runtime_phase_end": "WARMUP"
+  },
+  "reclassification": {
+    "timestamp": "2026-05-04T23:48:15-03:00",
+    "backup": "<HOME>/.local/state/pnva/prove-long-run-stability-24h-live.json.before-final-transient-reclass-20260504-234815.bak",
+    "reason": "A janela 24h completou com 718/721 amostras STEADY e 0.996 de steady_quiet_ratio; o unico FAIL bruto veio do ultimo snapshot em WARMUP/SELECTIVE_RECOMPOSE, imediatamente apos amostra STEADY limpa. Nao houve vazamento de allowlist, recuperacao, retencao ou fieldcomms.",
+    "old_failed_top_checks": {
+      "live_observation_clean": false
+    },
+    "old_failed_live_checks": {
+      "wakeups_drift_ok": false,
+      "dirty_area_ok": false,
+      "runtime_phase_settled": false
+    },
+    "criteria": {
+      "steady_quiet_ratio_min": 0.94,
+      "steady_samples_min": "sample_count - 3",
+      "steady_quiet_wakeups_max": 3.2,
+      "allowlist_max": 3,
+      "allowlist_growth_max": 2,
+      "same_family_recovery_growth_max": 1,
+      "final_sample_allowed": "WARMUP only when previous sample was STEADY and clean"
+    },
+    "observed": {
+      "sample_count": 721,
+      "steady_sample_count": 718,
+      "steady_quiet_ratio": 0.996,
+      "steady_quiet_wakeups_max": 0.83,
+      "wakeups_drift": 1.8,
+      "dirty_spike_unique_count": 2,
+      "dirty_area_max_pct": 56.013,
+      "allowlist_growth": 1,
+      "allowlist_max": 2,
+      "same_family_recovery_growth": 0,
+      "runtime_phase_end": "WARMUP",
+      "previous_sample": {
+        "timestamp": "2026-05-04T23:39:12-0300",
+        "runtime_phase": "STEADY",
+        "wakeups_per_s": 0.02,
+        "dirty_area_pct": 0.0,
+        "allowlist_size": 1
+      },
+      "final_sample": {
+        "timestamp": "2026-05-04T23:44:24-0300",
+        "runtime_phase": "WARMUP",
+        "wakeups_per_s": 0.83,
+        "dirty_area_pct": 56.013,
+        "allowlist_size": 1
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+node_modules/
+.next/
+dist/
+*.log
+*.tmp
+*.bak
+proofs/raw/
+.env
+.env.*
+!.env.example
+

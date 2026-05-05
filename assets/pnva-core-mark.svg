@@ -1,0 +1,14 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="512" height="512" rx="96" fill="#050812"/>
+  <circle cx="256" cy="256" r="178" stroke="#C9A227" stroke-width="10"/>
+  <circle cx="256" cy="256" r="112" stroke="#2DD4BF" stroke-width="6" stroke-dasharray="12 18"/>
+  <path d="M256 82V430" stroke="#C9A227" stroke-width="8" stroke-linecap="round"/>
+  <path d="M82 256H430" stroke="#C9A227" stroke-width="8" stroke-linecap="round"/>
+  <path d="M154 154L358 358" stroke="#1D4ED8" stroke-width="7" stroke-linecap="round"/>
+  <path d="M358 154L154 358" stroke="#1D4ED8" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="256" cy="256" r="34" fill="#C9A227"/>
+  <circle cx="256" cy="256" r="15" fill="#050812"/>
+  <path d="M256 132C321 132 380 191 380 256C380 321 321 380 256 380C191 380 132 321 132 256C132 191 191 132 256 132Z" stroke="#E5E7EB" stroke-width="3" opacity="0.5"/>
+  <text x="256" y="474" text-anchor="middle" fill="#E5E7EB" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">PNVA</text>
+</svg>
+

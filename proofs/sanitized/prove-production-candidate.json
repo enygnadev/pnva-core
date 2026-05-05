@@ -1,0 +1,17 @@
+{
+  "timestamp": "2026-05-04T23:49:44-03:00",
+  "phase_id": "G3",
+  "proof_name": "production_candidate",
+  "pass": true,
+  "overall_status": "",
+  "checks": {
+    "official_suite_pass": true,
+    "distribution_gate_pass": true,
+    "real_stable_opportunity_capture_pass": true,
+    "comfort_certification_pass": true,
+    "long_run_live_gate_pass": true,
+    "docs_present": true
+  },
+  "pass_fail_por_item": {},
+  "details": {}
+}

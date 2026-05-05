@@ -1,0 +1,13 @@
+name: Technical question
+description: Ask a technical or research question.
+title: "[question]: "
+labels: ["question"]
+body:
+  - type: textarea
+    id: question
+    attributes:
+      label: Question
+      description: Keep it technical and evidence-based.
+    validations:
+      required: true
+

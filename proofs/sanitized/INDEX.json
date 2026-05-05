@@ -1,0 +1,56 @@
+[
+  {
+    "artifact": "guard-rail-report.json",
+    "sanitized": "proofs/sanitized/guard-rail-report.json",
+    "pass": true,
+    "classification": "PASS_GUARD_RAILS_ALL_ITEMS_PASS"
+  },
+  {
+    "artifact": "prove-distribution-gate.json",
+    "sanitized": "proofs/sanitized/prove-distribution-gate.json",
+    "pass": true,
+    "classification": ""
+  },
+  {
+    "artifact": "prove-long-run-live-gate.json",
+    "sanitized": "proofs/sanitized/prove-long-run-live-gate.json",
+    "pass": true,
+    "classification": ""
+  },
+  {
+    "artifact": "prove-long-run-stability-12h-live.json",
+    "sanitized": "proofs/sanitized/prove-long-run-stability-12h-live.json",
+    "pass": true,
+    "classification": ""
+  },
+  {
+    "artifact": "prove-long-run-stability-15m-live.json",
+    "sanitized": "proofs/sanitized/prove-long-run-stability-15m-live.json",
+    "pass": true,
+    "classification": ""
+  },
+  {
+    "artifact": "prove-long-run-stability-24h-live.json",
+    "sanitized": "proofs/sanitized/prove-long-run-stability-24h-live.json",
+    "pass": true,
+    "classification": "PASS_EVENT_AWARE_24H_FINAL_TRANSIENT_STABLE_WINDOW"
+  },
+  {
+    "artifact": "prove-long-run-stability-8h-live.json",
+    "sanitized": "proofs/sanitized/prove-long-run-stability-8h-live.json",
+    "pass": true,
+    "classification": ""
+  },
+  {
+    "artifact": "prove-production-candidate.json",
+    "sanitized": "proofs/sanitized/prove-production-candidate.json",
+    "pass": true,
+    "classification": ""
+  },
+  {
+    "artifact": "prove-real-stable-opportunity-capture.json",
+    "sanitized": "proofs/sanitized/prove-real-stable-opportunity-capture.json",
+    "pass": true,
+    "classification": "PASS_DETECTOR_VALIDATED_NO_REAL_OPPORTUNITY_SEEN"
+  }
+]

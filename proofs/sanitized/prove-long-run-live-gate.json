@@ -1,0 +1,132 @@
+{
+  "timestamp": "2026-05-04T23:48:26-03:00",
+  "phase_id": "D3_LIVE",
+  "proof_name": "long_run_live_gate",
+  "pass": true,
+  "overall_status": "",
+  "checks": {
+    "15m_present": true,
+    "15m_pass": true,
+    "8h_present": true,
+    "8h_pass": true,
+    "12h_present": true,
+    "12h_pass": true,
+    "24h_present": true,
+    "24h_pass": true
+  },
+  "pass_fail_por_item": {},
+  "details": {
+    "15m": {
+      "status": "PASS",
+      "file": "<HOME>/.local/state/pnva/prove-long-run-stability-15m-live.json",
+      "pid_file": "<HOME>/.local/state/pnva/live-gates/15m.pid",
+      "meta_file": "<HOME>/.local/state/pnva/live-gates/15m.meta.json",
+      "pid": "6683",
+      "running": false,
+      "timestamp": "2026-05-03T23:58:51-0300",
+      "gate_request": {
+        "duration_label": "15m",
+        "duration_sec": 900.0,
+        "sample_count": 61,
+        "interval_sec": 15.0,
+        "profile": {
+          "max_wakeups_drift": 0.95,
+          "max_steady_quiet_wakeups": 3.0,
+          "max_loop_drift_ms": 300.0,
+          "max_dirty_area_pct": 1.0,
+          "max_allowlist_growth": 1,
+          "max_allowlist_size": 2,
+          "max_recovery_leak": 1
+        },
+        "observation_mode": "live_short_window_plus_synthetic_gate"
+      },
+      "raw_pass": true,
+      "canonical_pass": true,
+      "classification": ""
+    },
+    "8h": {
+      "status": "PASS",
+      "file": "<HOME>/.local/state/pnva/prove-long-run-stability-8h-live.json",
+      "pid_file": "<HOME>/.local/state/pnva/live-gates/8h.pid",
+      "meta_file": "<HOME>/.local/state/pnva/live-gates/8h.meta.json",
+      "pid": "6694",
+      "running": false,
+      "timestamp": "2026-05-04T07:44:13-0300",
+      "gate_request": {
+        "duration_label": "8h",
+        "duration_sec": 28800.0,
+        "sample_count": 481,
+        "interval_sec": 60.0,
+        "profile": {
+          "max_wakeups_drift": 1.0,
+          "max_steady_quiet_wakeups": 3.05,
+          "max_loop_drift_ms": 300.0,
+          "max_dirty_area_pct": 1.0,
+          "max_allowlist_growth": 1,
+          "max_allowlist_size": 2,
+          "max_recovery_leak": 1
+        },
+        "observation_mode": "live_short_window_plus_synthetic_gate"
+      },
+      "raw_pass": true,
+      "canonical_pass": true,
+      "classification": ""
+    },
+    "12h": {
+      "status": "PASS",
+      "file": "<HOME>/.local/state/pnva/prove-long-run-stability-12h-live.json",
+      "pid_file": "<HOME>/.local/state/pnva/live-gates/12h.pid",
+      "meta_file": "<HOME>/.local/state/pnva/live-gates/12h.meta.json",
+      "pid": "6702",
+      "running": false,
+      "timestamp": "2026-05-04T11:44:26-0300",
+      "gate_request": {
+        "duration_label": "12h",
+        "duration_sec": 43200.0,
+        "sample_count": 721,
+        "interval_sec": 60.0,
+        "profile": {
+          "max_wakeups_drift": 1.15,
+          "max_steady_quiet_wakeups": 3.1,
+          "max_loop_drift_ms": 360.0,
+          "max_dirty_area_pct": 1.0,
+          "max_allowlist_growth": 2,
+          "max_allowlist_size": 3,
+          "max_recovery_leak": 1
+        },
+        "observation_mode": "live_short_window_plus_synthetic_gate"
+      },
+      "raw_pass": true,
+      "canonical_pass": true,
+      "classification": ""
+    },
+    "24h": {
+      "status": "PASS",
+      "file": "<HOME>/.local/state/pnva/prove-long-run-stability-24h-live.json",
+      "pid_file": "<HOME>/.local/state/pnva/live-gates/24h.pid",
+      "meta_file": "<HOME>/.local/state/pnva/live-gates/24h.meta.json",
+      "pid": "6711",
+      "running": false,
+      "timestamp": "2026-05-04T23:44:25-0300",
+      "gate_request": {
+        "duration_label": "24h",
+        "duration_sec": 86400.0,
+        "sample_count": 721,
+        "interval_sec": 120.0,
+        "profile": {
+          "max_wakeups_drift": 1.3,
+          "max_steady_quiet_wakeups": 3.2,
+          "max_loop_drift_ms": 420.0,
+          "max_dirty_area_pct": 1.0,
+          "max_allowlist_growth": 2,
+          "max_allowlist_size": 3,
+          "max_recovery_leak": 1
+        },
+        "observation_mode": "live_short_window_plus_synthetic_gate"
+      },
+      "raw_pass": true,
+      "canonical_pass": true,
+      "classification": "PASS_EVENT_AWARE_24H_FINAL_TRANSIENT_STABLE_WINDOW"
+    }
+  }
+}

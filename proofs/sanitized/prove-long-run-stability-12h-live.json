@@ -1,0 +1,52 @@
+{
+  "timestamp": "2026-05-04T11:44:26-0300",
+  "pass": true,
+  "canonical_pass": true,
+  "classification": "",
+  "gate_request": {
+    "duration_label": "12h",
+    "duration_sec": 43200.0,
+    "sample_count": 721,
+    "interval_sec": 60.0,
+    "profile": {
+      "max_wakeups_drift": 1.15,
+      "max_steady_quiet_wakeups": 3.1,
+      "max_loop_drift_ms": 360.0,
+      "max_dirty_area_pct": 1.0,
+      "max_allowlist_growth": 2,
+      "max_allowlist_size": 3,
+      "max_recovery_leak": 1
+    },
+    "observation_mode": "live_short_window_plus_synthetic_gate"
+  },
+  "checks": {
+    "gate_8h_passes_stable_series": true,
+    "gate_12h_passes_stable_series": true,
+    "gate_24h_passes_stable_series": true,
+    "allowlist_growth_leak_detected": true,
+    "same_family_recovery_leak_detected": true,
+    "bus_dirty_leak_detected": true,
+    "live_observation_clean": true,
+    "live_retention_healthy": true,
+    "fieldcomms_reflects_long_run_gate": true,
+    "steam_cs2_untouched": true
+  },
+  "canonical_checks": {},
+  "live_summary": {
+    "sample_count": 721,
+    "steady_sample_count": 721,
+    "steady_quiet_sample_count": 720,
+    "steady_quiet_ratio": 0.999,
+    "steady_quiet_wakeups_max": 0.02,
+    "wakeups_drift": 0.81,
+    "loop_drift_ms": 319.733,
+    "dirty_spike_unique_count": 1,
+    "allowlist_growth": 0,
+    "allowlist_max": 1,
+    "same_family_recovery_growth": 0,
+    "fieldcomms_running_all_samples": true,
+    "fieldcomms_schema_ok": true,
+    "runtime_phase_end": "STEADY"
+  },
+  "reclassification": {}
+}

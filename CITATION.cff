@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use PNVA-Core, please cite this release."
+title: "PNVA-Core: A Post-Temporal Causal Architecture for State/Event-Oriented Computation"
+authors:
+  - family-names: "de Aguiar Martins"
+    given-names: "Gustavo"
+version: "0.1.0-production-evidence"
+date-released: "2026-05-05"
+license: "MIT"
+repository-code: "https://github.com/enygnadev/pnva-core"
+abstract: "PNVA-Core is a causal runtime architecture for state/event-oriented computation, using tension, collapse and auditable proof logs to validate local live-field no-tick behavior."
+keywords:
+  - causal computing
+  - no-tick runtime
+  - event-aware systems
+  - operating systems
+  - proof logs
+  - PNVA
+  - veonic unit
+
