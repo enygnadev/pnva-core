@@ -28,5 +28,14 @@ jobs:
           PY
       - name: Run sovereign audit
         run: python3 tools/pnva_sovereign_audit.py --repo . --strict-public --min-score 80 >/tmp/pnva-sovereign-audit.json
+      - name: Run canonical bridge demo
+        run: |
+          python3 tools/pnva_canonical_bridge.py --demo \
+            --output /tmp/pnva-events.jsonl \
+            --entity-catalog /tmp/pnva-entities.json \
+            --summary /tmp/pnva-bridge-summary.json
+          test -s /tmp/pnva-events.jsonl
+          python3 -m json.tool /tmp/pnva-entities.json >/dev/null
+          python3 -m json.tool /tmp/pnva-bridge-summary.json >/dev/null
       - name: Check release checksums
         run: sha256sum -c SHA256SUMS.txt

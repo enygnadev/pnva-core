@@ -40,6 +40,7 @@ PUBLIC_DOCS = [
     "docs/LIMITATIONS.md",
     "docs/VEON_MODEL_VALIDATION.md",
     "docs/PNVA_SOVEREIGN_LOGS_ENTITIES_HEURISTICS.md",
+    "docs/PNVA_CANONICAL_EVENT_BRIDGE.md",
     "docs/PNVA_ROBUSTNESS_EVOLUTION_REPORT_2026-05-05.md",
     "paper/PNVA_CORE_OPEN_RESEARCH_PAPER.md",
 ]
@@ -47,6 +48,13 @@ PUBLIC_DOCS = [
 SCHEMAS = [
     "schemas/pnva-event.schema.json",
     "schemas/pnva-entity.schema.json",
+]
+
+BRIDGE_FILES = [
+    "tools/pnva_canonical_bridge.py",
+    "reports/pnva-canonical-events-sample-2026-05-05.jsonl",
+    "reports/pnva-entity-catalog-2026-05-05.json",
+    "reports/pnva-canonical-bridge-summary-2026-05-05.json",
 ]
 
 LOCAL_LOG_CANDIDATES = [
@@ -181,6 +189,67 @@ def audit_contract(repo: Path) -> dict[str, Any]:
         "missing": missing,
         "invalid": invalid,
         "schemas": schema_results,
+    }
+
+
+def audit_canonical_bridge(repo: Path) -> dict[str, Any]:
+    missing = [rel for rel in BRIDGE_FILES if not (repo / rel).exists()]
+    sample_path = repo / "reports" / "pnva-canonical-events-sample-2026-05-05.jsonl"
+    entity_path = repo / "reports" / "pnva-entity-catalog-2026-05-05.json"
+    summary_path = repo / "reports" / "pnva-canonical-bridge-summary-2026-05-05.json"
+    event_count = 0
+    bad_events = 0
+    required = {
+        "schema_version",
+        "event_id",
+        "timestamp",
+        "causal_chain_id",
+        "entity_id",
+        "event_type",
+        "field",
+        "tension",
+        "decision",
+        "proof",
+    }
+    if sample_path.exists():
+        with sample_path.open(encoding="utf-8") as handle:
+            for line in handle:
+                if not line.strip():
+                    continue
+                event_count += 1
+                try:
+                    data = json.loads(line)
+                except Exception:
+                    bad_events += 1
+                    continue
+                if not isinstance(data, dict) or data.get("schema_version") != "pnva.event.v1" or required.difference(data):
+                    bad_events += 1
+    entity_count = 0
+    entity_catalog_ok = False
+    if entity_path.exists():
+        data = _read_json(entity_path)
+        entity_count = int(data.get("entity_count", 0)) if isinstance(data, dict) else 0
+        entity_catalog_ok = isinstance(data, dict) and data.get("schema_version") == "pnva.entity_catalog.v1" and entity_count > 0
+    summary_ok = False
+    public_safety_ok = False
+    if summary_path.exists():
+        data = _read_json(summary_path)
+        summary_ok = isinstance(data, dict) and data.get("schema_version") == "pnva.canonical_bridge_summary.v1"
+        safety = data.get("public_safety", {}) if isinstance(data, dict) else {}
+        public_safety_ok = (
+            safety.get("raw_ids_published") is False
+            and safety.get("raw_paths_published") is False
+            and safety.get("ids_hashed") is True
+        )
+    return {
+        "bridge_ok": not missing and event_count > 0 and bad_events == 0 and entity_catalog_ok and summary_ok and public_safety_ok,
+        "missing": missing,
+        "event_count": event_count,
+        "bad_events": bad_events,
+        "entity_count": entity_count,
+        "entity_catalog_ok": entity_catalog_ok,
+        "summary_ok": summary_ok,
+        "public_safety_ok": public_safety_ok,
     }
 
 
@@ -368,6 +437,8 @@ def score_report(report: dict[str, Any]) -> dict[str, Any]:
         scores["log_contract"] += 10
     if report["sovereignty"].get("docs_ok"):
         scores["log_contract"] += 5
+    if report.get("canonical_bridge", {}).get("bridge_ok"):
+        scores["actionability"] += 10
 
     local = report["local_logs"]
     if local.get("mode") == "strict_public":
@@ -393,9 +464,9 @@ def score_report(report: dict[str, Any]) -> dict[str, Any]:
         scores["sovereignty_hygiene"] += 3
 
     if (report["repo"] / ".github" / "workflows" / "validate.yml").exists():
-        scores["actionability"] += 5
+        scores["actionability"] += 0
     if (report["repo"] / "tools" / "pnva_sovereign_audit.py").exists():
-        scores["actionability"] += 5
+        scores["actionability"] += 0
 
     total = sum(scores.values())
     return {
@@ -418,6 +489,7 @@ def build_report(repo: Path, *, strict_public: bool = False) -> dict[str, Any]:
         "proofs": audit_proofs(repo),
         "discovery": audit_discovery(repo),
         "contract": audit_contract(repo),
+        "canonical_bridge": audit_canonical_bridge(repo),
         "local_logs": audit_local_logs(strict_public),
         "sovereignty": audit_sovereignty(repo),
         "recommendations": [

@@ -1,0 +1,390 @@
+{
+  "author": "Gustavo de Aguiar Martins",
+  "entities": [
+    {
+      "capabilities": [
+        "emit_events",
+        "runtime_observation"
+      ],
+      "entity_id": "entity_4c3ade60ea78",
+      "entity_type": "field",
+      "evidence": {
+        "confidence": 0.9,
+        "last_seen": "2026-05-03T08:22:48Z",
+        "notes": "Sanitized entity derived from canonicalized local PNVA legacy logs.",
+        "proof_ref": "reports/pnva-canonical-events-sample-2026-05-05.jsonl"
+      },
+      "schema_version": "pnva.entity.v1",
+      "sovereignty_domain": "runtime",
+      "state": "active",
+      "stats": {
+        "event_count": 132,
+        "first_seen": "2026-05-03T06:32:27Z",
+        "last_seen": "2026-05-03T08:22:48Z",
+        "risk_flags": [
+          [
+            "RESIZE_BATCH_PRESSURE",
+            90
+          ],
+          [
+            "THERMAL_PRESSURE",
+            52
+          ]
+        ],
+        "top_decisions": [
+          [
+            "RESIZE_BATCH",
+            90
+          ],
+          [
+            "scan_ranges=2",
+            10
+          ],
+          [
+            "EXECUTE",
+            7
+          ],
+          [
+            "COOLDOWN_GPU",
+            4
+          ],
+          [
+            "eth_getWork_sent",
+            2
+          ],
+          [
+            "eth_getWork_response",
+            2
+          ],
+          [
+            "STRATUM_JOB",
+            2
+          ],
+          [
+            "pool_authorized",
+            2
+          ]
+        ],
+        "top_events": [
+          [
+            "pnva_decision",
+            53
+          ],
+          [
+            "cuda_slot_scan",
+            35
+          ],
+          [
+            "network_state_changed",
+            19
+          ],
+          [
+            "runtime_status",
+            15
+          ],
+          [
+            "STRATUM_JOB",
+            2
+          ],
+          [
+            "pool_authorized",
+            2
+          ],
+          [
+            "job_received",
+            2
+          ],
+          [
+            "range_ledger",
+            2
+          ]
+        ]
+      }
+    },
+    {
+      "capabilities": [
+        "emit_events",
+        "runtime_observation"
+      ],
+      "entity_id": "entity_8ba8a9970d6a",
+      "entity_type": "field",
+      "evidence": {
+        "confidence": 0.9,
+        "last_seen": "2026-05-03T08:22:48Z",
+        "notes": "Sanitized entity derived from canonicalized local PNVA legacy logs.",
+        "proof_ref": "reports/pnva-canonical-events-sample-2026-05-05.jsonl"
+      },
+      "schema_version": "pnva.entity.v1",
+      "sovereignty_domain": "runtime",
+      "state": "active",
+      "stats": {
+        "event_count": 13,
+        "first_seen": "2026-05-03T08:18:53Z",
+        "last_seen": "2026-05-03T08:22:48Z",
+        "risk_flags": [],
+        "top_decisions": [
+          [
+            "runtime_snapshot",
+            10
+          ],
+          [
+            "job_received",
+            3
+          ]
+        ],
+        "top_events": [
+          [
+            "runtime_snapshot",
+            10
+          ],
+          [
+            "job_received",
+            3
+          ]
+        ]
+      }
+    },
+    {
+      "capabilities": [
+        "emit_events",
+        "guard_decision"
+      ],
+      "entity_id": "entity_9030cf1aa9f6",
+      "entity_type": "guard",
+      "evidence": {
+        "confidence": 0.9,
+        "last_seen": "2026-05-03T08:22:48Z",
+        "notes": "Sanitized entity derived from canonicalized local PNVA legacy logs.",
+        "proof_ref": "reports/pnva-canonical-events-sample-2026-05-05.jsonl"
+      },
+      "schema_version": "pnva.entity.v1",
+      "sovereignty_domain": "runtime",
+      "state": "active",
+      "stats": {
+        "event_count": 33,
+        "first_seen": "2026-05-02T13:19:00Z",
+        "last_seen": "2026-05-03T08:22:48Z",
+        "risk_flags": [],
+        "top_decisions": [
+          [
+            "ETEV_GUARD_BLOCK",
+            33
+          ]
+        ],
+        "top_events": [
+          [
+            "ETEV_GUARD_BLOCK",
+            33
+          ]
+        ]
+      }
+    },
+    {
+      "capabilities": [
+        "emit_events",
+        "guard_decision"
+      ],
+      "entity_id": "entity_9ad2a10c30be",
+      "entity_type": "guard",
+      "evidence": {
+        "confidence": 0.9,
+        "last_seen": "2026-05-03T08:22:48Z",
+        "notes": "Sanitized entity derived from canonicalized local PNVA legacy logs.",
+        "proof_ref": "reports/pnva-canonical-events-sample-2026-05-05.jsonl"
+      },
+      "schema_version": "pnva.entity.v1",
+      "sovereignty_domain": "runtime",
+      "state": "active",
+      "stats": {
+        "event_count": 35,
+        "first_seen": "2026-05-02T13:19:00Z",
+        "last_seen": "2026-05-03T08:22:48Z",
+        "risk_flags": [],
+        "top_decisions": [
+          [
+            "ETEV_GUARD_PASS",
+            35
+          ]
+        ],
+        "top_events": [
+          [
+            "ETEV_GUARD_PASS",
+            35
+          ]
+        ]
+      }
+    },
+    {
+      "capabilities": [
+        "emit_events",
+        "runtime_observation"
+      ],
+      "entity_id": "zano-entity-00",
+      "entity_type": "field",
+      "evidence": {
+        "confidence": 0.9,
+        "last_seen": "2026-05-03T08:22:48Z",
+        "notes": "Sanitized entity derived from canonicalized local PNVA legacy logs.",
+        "proof_ref": "reports/pnva-canonical-events-sample-2026-05-05.jsonl"
+      },
+      "schema_version": "pnva.entity.v1",
+      "sovereignty_domain": "runtime",
+      "state": "active",
+      "stats": {
+        "event_count": 212,
+        "first_seen": "2026-05-02T13:19:00Z",
+        "last_seen": "2026-05-03T08:22:48Z",
+        "risk_flags": [
+          [
+            "VEONIC_TRACE",
+            128
+          ],
+          [
+            "RESIZE_BATCH_PRESSURE",
+            86
+          ],
+          [
+            "THERMAL_PRESSURE",
+            86
+          ]
+        ],
+        "top_decisions": [
+          [
+            "RESIZE_BATCH",
+            86
+          ],
+          [
+            "pnva_engine_evaluated",
+            37
+          ],
+          [
+            "EXECUTE",
+            35
+          ],
+          [
+            "assigned",
+            18
+          ],
+          [
+            "entity_range_assigned",
+            11
+          ],
+          [
+            "kernel_completed",
+            9
+          ],
+          [
+            "kernel_launched",
+            9
+          ],
+          [
+            "SWITCH_INTENSITY",
+            7
+          ]
+        ],
+        "top_events": [
+          [
+            "range_plan_built",
+            123
+          ],
+          [
+            "pnva_engine_evaluated",
+            37
+          ],
+          [
+            "range_ledger",
+            18
+          ],
+          [
+            "entity_range_assigned",
+            11
+          ],
+          [
+            "kernel_completed",
+            9
+          ],
+          [
+            "kernel_launched",
+            9
+          ],
+          [
+            "serialized_cohort_fragile_hold",
+            5
+          ]
+        ]
+      }
+    },
+    {
+      "capabilities": [
+        "emit_events",
+        "runtime_observation"
+      ],
+      "entity_id": "zano-entity-01",
+      "entity_type": "field",
+      "evidence": {
+        "confidence": 0.9,
+        "last_seen": "2026-05-03T08:22:48Z",
+        "notes": "Sanitized entity derived from canonicalized local PNVA legacy logs.",
+        "proof_ref": "reports/pnva-canonical-events-sample-2026-05-05.jsonl"
+      },
+      "schema_version": "pnva.entity.v1",
+      "sovereignty_domain": "runtime",
+      "state": "active",
+      "stats": {
+        "event_count": 87,
+        "first_seen": "2026-05-02T13:19:00Z",
+        "last_seen": "2026-05-03T08:22:48Z",
+        "risk_flags": [],
+        "top_decisions": [
+          [
+            "pnva_engine_evaluated",
+            41
+          ],
+          [
+            "assigned",
+            18
+          ],
+          [
+            "entity_range_assigned",
+            11
+          ],
+          [
+            "kernel_launched",
+            9
+          ],
+          [
+            "kernel_completed",
+            8
+          ]
+        ],
+        "top_events": [
+          [
+            "pnva_engine_evaluated",
+            41
+          ],
+          [
+            "range_ledger",
+            18
+          ],
+          [
+            "entity_range_assigned",
+            11
+          ],
+          [
+            "kernel_launched",
+            9
+          ],
+          [
+            "kernel_completed",
+            8
+          ]
+        ]
+      }
+    }
+  ],
+  "entity_count": 6,
+  "generated_at": "2026-05-05T04:18:25Z",
+  "project": "PNVA-Core",
+  "schema_version": "pnva.entity_catalog.v1",
+  "source": "sanitized canonical bridge"
+}

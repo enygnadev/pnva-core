@@ -1,0 +1,163 @@
+{
+  "author": "Gustavo de Aguiar Martins",
+  "demo_mode": false,
+  "entity_catalog": "reports/pnva-entity-catalog-2026-05-05.json",
+  "entity_count": 6,
+  "event_count": 512,
+  "generated_at": "2026-05-05T04:18:25Z",
+  "output": "reports/pnva-canonical-events-sample-2026-05-05.jsonl",
+  "project": "PNVA-Core",
+  "public_safety": {
+    "file_names_only": true,
+    "ids_hashed": true,
+    "raw_ids_published": false,
+    "raw_paths_published": false
+  },
+  "risk_flags": [
+    [
+      "RESIZE_BATCH_PRESSURE",
+      176
+    ],
+    [
+      "THERMAL_PRESSURE",
+      138
+    ],
+    [
+      "VEONIC_TRACE",
+      128
+    ]
+  ],
+  "schema_version": "pnva.canonical_bridge_summary.v1",
+  "top_actions": [
+    [
+      "RESIZE_BATCH",
+      176
+    ],
+    [
+      "pnva_engine_evaluated",
+      78
+    ],
+    [
+      "EXECUTE",
+      42
+    ],
+    [
+      "assigned",
+      36
+    ],
+    [
+      "ETEV_GUARD_PASS",
+      35
+    ],
+    [
+      "ETEV_GUARD_BLOCK",
+      33
+    ],
+    [
+      "entity_range_assigned",
+      22
+    ],
+    [
+      "kernel_launched",
+      18
+    ],
+    [
+      "kernel_completed",
+      17
+    ],
+    [
+      "runtime_snapshot",
+      10
+    ],
+    [
+      "scan_ranges=2",
+      10
+    ],
+    [
+      "SWITCH_INTENSITY",
+      9
+    ]
+  ],
+  "top_decision_kinds": [
+    [
+      "collapse",
+      266
+    ],
+    [
+      "observe",
+      213
+    ],
+    [
+      "block",
+      33
+    ]
+  ],
+  "top_entity_types": [
+    [
+      "event_source",
+      177
+    ],
+    [
+      "worker",
+      164
+    ],
+    [
+      "field",
+      103
+    ],
+    [
+      "guard",
+      68
+    ]
+  ],
+  "top_event_types": [
+    [
+      "range_plan_built",
+      123
+    ],
+    [
+      "pnva_engine_evaluated",
+      78
+    ],
+    [
+      "pnva_decision",
+      53
+    ],
+    [
+      "range_ledger",
+      38
+    ],
+    [
+      "ETEV_GUARD_PASS",
+      35
+    ],
+    [
+      "cuda_slot_scan",
+      35
+    ],
+    [
+      "ETEV_GUARD_BLOCK",
+      33
+    ],
+    [
+      "entity_range_assigned",
+      22
+    ],
+    [
+      "network_state_changed",
+      19
+    ],
+    [
+      "kernel_launched",
+      18
+    ],
+    [
+      "kernel_completed",
+      17
+    ],
+    [
+      "runtime_status",
+      15
+    ]
+  ]
+}

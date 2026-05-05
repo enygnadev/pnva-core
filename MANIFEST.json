@@ -81,6 +81,16 @@
       "audit_tool": "tools/pnva_sovereign_audit.py",
       "audit_report": "reports/pnva-sovereign-audit-2026-05-05.json",
       "classification": "SOVEREIGN_READY"
+    },
+    "canonical_event_bridge": {
+      "status": "ADDED",
+      "tool": "tools/pnva_canonical_bridge.py",
+      "event_sample": "reports/pnva-canonical-events-sample-2026-05-05.jsonl",
+      "entity_catalog": "reports/pnva-entity-catalog-2026-05-05.json",
+      "summary": "reports/pnva-canonical-bridge-summary-2026-05-05.json",
+      "event_count": 512,
+      "entity_count": 6,
+      "public_safety": "raw_ids_and_paths_not_published"
     }
   },
   "files": [
@@ -107,6 +117,7 @@
     "docs/LIMITATIONS.md",
     "docs/ONLINE_PUBLICATION.md",
     "docs/PNVA_ARCHITECTURE.md",
+    "docs/PNVA_CANONICAL_EVENT_BRIDGE.md",
     "docs/PNVA_POST_TEMPORAL_CIVILIZATION.md",
     "docs/PNVA_ROBUSTNESS_EVOLUTION_REPORT_2026-05-05.md",
     "docs/PNVA_SOVEREIGNTY_PUBLICATION_SCALE.md",
@@ -134,12 +145,16 @@
     "release/PNVA_FECHAMENTO_PRODUCAO_PASS_FINAL_2026-05-04.md",
     "release/POST_01_HOJE_PNVA_CORE.md",
     "release/POST_01_PROFISSIONAL_AUTORAL.md",
+    "reports/pnva-canonical-bridge-summary-2026-05-05.json",
+    "reports/pnva-canonical-events-sample-2026-05-05.jsonl",
+    "reports/pnva-entity-catalog-2026-05-05.json",
     "reports/pnva-sovereign-audit-2026-05-05.json",
     "robots.txt",
     "schemas/pnva-entity.schema.json",
     "schemas/pnva-event.schema.json",
     "sitemap.xml",
     "styles.css",
+    "tools/pnva_canonical_bridge.py",
     "tools/pnva_sovereign_audit.py",
     "tools/sanitize_proofs.py",
     "veonic-model.html"

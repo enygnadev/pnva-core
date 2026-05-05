@@ -29,6 +29,10 @@
     <lastmod>2026-05-05</lastmod>
   </url>
   <url>
+    <loc>https://enygnadev.github.io/pnva-core/docs/PNVA_CANONICAL_EVENT_BRIDGE.md</loc>
+    <lastmod>2026-05-05</lastmod>
+  </url>
+  <url>
     <loc>https://enygnadev.github.io/pnva-core/docs/PNVA_ROBUSTNESS_EVOLUTION_REPORT_2026-05-05.md</loc>
     <lastmod>2026-05-05</lastmod>
   </url>
@@ -42,6 +46,18 @@
   </url>
   <url>
     <loc>https://enygnadev.github.io/pnva-core/reports/pnva-sovereign-audit-2026-05-05.json</loc>
+    <lastmod>2026-05-05</lastmod>
+  </url>
+  <url>
+    <loc>https://enygnadev.github.io/pnva-core/reports/pnva-canonical-events-sample-2026-05-05.jsonl</loc>
+    <lastmod>2026-05-05</lastmod>
+  </url>
+  <url>
+    <loc>https://enygnadev.github.io/pnva-core/reports/pnva-entity-catalog-2026-05-05.json</loc>
+    <lastmod>2026-05-05</lastmod>
+  </url>
+  <url>
+    <loc>https://enygnadev.github.io/pnva-core/reports/pnva-canonical-bridge-summary-2026-05-05.json</loc>
     <lastmod>2026-05-05</lastmod>
   </url>
 </urlset>

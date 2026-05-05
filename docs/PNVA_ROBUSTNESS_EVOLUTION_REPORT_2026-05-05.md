@@ -34,8 +34,13 @@ New sovereign layer:
 schemas/pnva-event.schema.json
 schemas/pnva-entity.schema.json
 docs/PNVA_SOVEREIGN_LOGS_ENTITIES_HEURISTICS.md
+docs/PNVA_CANONICAL_EVENT_BRIDGE.md
 tools/pnva_sovereign_audit.py
+tools/pnva_canonical_bridge.py
 reports/pnva-sovereign-audit-2026-05-05.json
+reports/pnva-canonical-events-sample-2026-05-05.jsonl
+reports/pnva-entity-catalog-2026-05-05.json
+reports/pnva-canonical-bridge-summary-2026-05-05.json
 ```
 
 ## Technical Diagnosis
@@ -128,6 +133,21 @@ actionability
 
 The audit does not rewrite history. It only reports structure, risk and readiness.
 
+### 4. Canonical bridge
+
+Legacy JSONL logs can now be converted into the public `pnva.event.v1` envelope.
+
+Current sanitized bridge output:
+
+```text
+event_count: 512
+entity_count: 6
+dominant action: RESIZE_BATCH
+dominant risk flags: RESIZE_BATCH_PRESSURE, THERMAL_PRESSURE, VEONIC_TRACE
+```
+
+This converts old lab evidence into a stable event contract without publishing raw local logs.
+
 ## Next Engineering Recommendations
 
 1. Add schema version to every new JSONL event.
@@ -137,6 +157,8 @@ The audit does not rewrite history. It only reports structure, risk and readines
 5. Treat `RESIZE_BATCH` ratio as a pressure metric, not as failure.
 6. Keep raw logs private and publish only sanitized summaries.
 7. Add rollback reference to every H3/H4 heuristic action.
+8. Use `tools/pnva_canonical_bridge.py` before publishing any future event sample.
+9. Compare future runtimes against `pnva.event.v1`, not against ad hoc log keys.
 
 ## Sovereign Rule
 

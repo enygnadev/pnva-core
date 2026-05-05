@@ -1,5 +1,15 @@
 {
   "author": "Gustavo de Aguiar Martins",
+  "canonical_bridge": {
+    "bad_events": 0,
+    "bridge_ok": true,
+    "entity_catalog_ok": true,
+    "entity_count": 6,
+    "event_count": 512,
+    "missing": [],
+    "public_safety_ok": true,
+    "summary_ok": true
+  },
   "contract": {
     "invalid": [],
     "missing": [],
@@ -22,17 +32,26 @@
     "robots_missing_tokens": [],
     "robots_ok": true,
     "sitemap_ok": true,
-    "sitemap_url_count": 6,
+    "sitemap_url_count": 15,
     "sitemap_urls": [
       "https://enygnadev.github.io/pnva-core/",
       "https://enygnadev.github.io/pnva-core/author.html",
       "https://enygnadev.github.io/pnva-core/pnva-core.html",
       "https://enygnadev.github.io/pnva-core/proofs.html",
       "https://enygnadev.github.io/pnva-core/veonic-model.html",
-      "https://enygnadev.github.io/pnva-core/llms.txt"
+      "https://enygnadev.github.io/pnva-core/llms.txt",
+      "https://enygnadev.github.io/pnva-core/docs/PNVA_SOVEREIGN_LOGS_ENTITIES_HEURISTICS.md",
+      "https://enygnadev.github.io/pnva-core/docs/PNVA_CANONICAL_EVENT_BRIDGE.md",
+      "https://enygnadev.github.io/pnva-core/docs/PNVA_ROBUSTNESS_EVOLUTION_REPORT_2026-05-05.md",
+      "https://enygnadev.github.io/pnva-core/schemas/pnva-event.schema.json",
+      "https://enygnadev.github.io/pnva-core/schemas/pnva-entity.schema.json",
+      "https://enygnadev.github.io/pnva-core/reports/pnva-sovereign-audit-2026-05-05.json",
+      "https://enygnadev.github.io/pnva-core/reports/pnva-canonical-events-sample-2026-05-05.jsonl",
+      "https://enygnadev.github.io/pnva-core/reports/pnva-entity-catalog-2026-05-05.json",
+      "https://enygnadev.github.io/pnva-core/reports/pnva-canonical-bridge-summary-2026-05-05.json"
     ]
   },
-  "generated_at": "2026-05-05T04:10:28Z",
+  "generated_at": "2026-05-05T04:20:29Z",
   "local_logs": {
     "available": true,
     "bad_json_ratio": 0.0,
