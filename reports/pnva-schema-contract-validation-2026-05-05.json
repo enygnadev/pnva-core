@@ -1,0 +1,2188 @@
+{
+  "author": "Gustavo de Aguiar Martins",
+  "classification": "SCHEMA_CONTRACT_READY_WITH_LEGACY_WARNINGS",
+  "entity_count": 12,
+  "error_count": 0,
+  "event_count": 519,
+  "generated_at": "2026-05-05T06:13:55Z",
+  "heuristic_rule_count": 9,
+  "interpretation": {
+    "boundary": "This validator checks public contract shape and safety; replay, policy, graph and proof-chain tools remain responsible for deeper causal semantics.",
+    "purpose": "Validate public PNVA event and entity evidence against the canonical contract without external dependencies.",
+    "sovereignty": "A no-tick evidence package is stronger when every public event has schema version, entity identity, causal chain, tension, heuristic context, proof and sanitized source."
+  },
+  "pass": true,
+  "project": "PNVA-Core",
+  "recommendations": [
+    "Run this validator before attestation so contract failures become part of the evidence package.",
+    "Treat any event/entity contract error as release-blocking.",
+    "Keep legacy warnings visible, but require native runtime events to stay warning-light and error-free."
+  ],
+  "relation_count": 70,
+  "schema_version": "pnva.schema_contract_validation.v1",
+  "scope_count": 2,
+  "scopes": [
+    {
+      "decision_counts": {
+        "block": 33,
+        "collapse": 266,
+        "observe": 213
+      },
+      "entity_catalog": "reports/pnva-entity-catalog-2026-05-05.json",
+      "entity_count": 6,
+      "entity_summary": {
+        "declared_entity_count": 6,
+        "entity_count": 6,
+        "entity_state_counts": {
+          "active": 6
+        },
+        "entity_type_counts": {
+          "field": 4,
+          "guard": 2
+        },
+        "unique_entity_ids": 6
+      },
+      "error_count": 0,
+      "errors": [],
+      "event_count": 512,
+      "event_file": "reports/pnva-canonical-events-sample-2026-05-05.jsonl",
+      "heuristic_rule_counts": {
+        "adaptive_threshold": 274,
+        "affinity_router": 78,
+        "etev_guard": 68,
+        "field_scheduler": 264,
+        "legacy_observer": 152,
+        "memory4d": 78,
+        "power_orchestrator": 78,
+        "veonic_layer": 128
+      },
+      "observed_entity_count": 6,
+      "relation_counts": {
+        "guards": 68
+      },
+      "scope": "canonical",
+      "unique_event_ids": 512,
+      "unused_entity_count": 0,
+      "warning_count": 341,
+      "warnings": [
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000002_2eee331e"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000005_03a0b088"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000006_c879b0bf"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000007_6ab85dce"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000008_4e83334a"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000009_2853e213"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000012_57f14fe3"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000013_b2fa757a"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000015_adf9c2c7"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000017_dad5a994"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000018_ce7cda07"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000019_881217aa"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000020_4a5c9fb4"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000021_eef4fb0a"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000022_dffbcf56"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000023_98b08e51"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000024_55ee1f71"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000026_42dca652"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000027_00ca5748"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000030_f34fea81"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000031_0f5cc535"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000032_876d8796"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000033_11961ceb"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000034_9ee927e8"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000035_9fe17f43"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000038_a668c211"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000041_52337bd2"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000042_b0aa6e97"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000043_599d246c"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000044_60df94a0"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000045_be2a43a0"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000048_e7856d1d"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000051_2d7e6197"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000054_0c8770b9"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000055_00d8ee01"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000056_31ae9d31"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000057_e2c66cbc"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000058_ebf961ba"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000061_289c1769"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000064_6b4a830b"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000067_f6ed4d3c"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000068_2506fb2b"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000069_12be0a20"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000070_2d5f51d9"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000071_80a845bc"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000072_1eb4c0fc"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000074_551874bb"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000075_a273b2b5"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000078_f4f6c611"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000080_b8777a1a"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000081_9fc49e5e"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000082_668e5621"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000083_5c412898"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000084_f638205d"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000085_11dbf5a5"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000086_9fec4b6f"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000087_460f3d4a"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000088_f62401b7"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000089_230734cf"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000090_43e7ebb0"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000091_b7fe69d2"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000092_22bfef15"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000094_61453d05"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000095_923f4231"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000096_b22725b7"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000097_3718d2b8"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000099_f79f31c5"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000100_0fa146a8"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000103_6251275f"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000104_9175140f"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000105_4be39e6e"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000106_b3faf303"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000107_3331d707"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000109_0146e455"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000110_9c5ccf23"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000113_a12cadae"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000114_bcc07226"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000115_fb29e999"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000116_ddf91d7f"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000117_7558515a"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000120_ff03db4c"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000123_b6c06389"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000126_9ee0f5d7"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000127_b58c4cb7"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_c1c0564a_000128_7bcb2fe9"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000001_6fae5dcf"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000002_46645d30"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000003_0856dcc0"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000004_59c7a9f2"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000005_2e25140a"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000006_b9b75d16"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000007_9ba2d0e3"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000008_38e90470"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000009_81d483e2"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000010_8ce244db"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000011_74f7e82c"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000012_c64a5fce"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000013_2d10d951"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000014_bd4ac355"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000015_5579ab1b"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000016_08184ab7"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000017_c4ddf9f1"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000018_d48dc628"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000019_66a6bf89"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000020_7d5fe1e5"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000021_c9fcbbf6"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000022_885c7fc6"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000023_76f4c0d8"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000024_09c8f25a"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000025_35a5b986"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000026_49d73b60"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000027_3d2ee416"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000028_fc593e7a"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000029_ece0bca2"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000030_176d62bc"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000031_5162e0dd"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000032_40378604"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000033_d933ad55"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000034_ff9d1784"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000035_c4c9fdab"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000036_be57c1cb"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000037_c3344c24"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000038_03bf3f29"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000039_47c9fbb2"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000040_b7203cf0"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000041_975f9682"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000042_722e0daf"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000043_d221d110"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000044_7caa089c"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000045_33b084bb"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000046_d8543903"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000047_16b5f1f0"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000048_4478841b"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000049_8039dc69"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000050_e8bf4134"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000051_79e1105d"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000052_cb4b3053"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000053_932427d6"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000054_42c3e9bb"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000055_1800795b"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000056_e978aece"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000057_bfa26622"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000058_734bbfd1"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000059_b56056fd"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000060_d2dd612b"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000061_a66fcada"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000062_1a4c0375"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000063_9af0b3a7"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000064_9ecae8e3"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000065_cac44b48"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000066_9d4b1e81"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000067_be68b958"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000068_7db886d8"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000069_238083d1"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000070_18905cdc"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000071_eef51317"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000072_9d4ef16f"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000073_f5bb5e8a"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000074_0f2060cd"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000075_eda78f1d"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000076_2c0de70a"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000077_f5d79e0b"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000078_1eba4748"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000079_96c2eb7d"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000080_11e665ae"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000081_9e66be0e"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000082_e06899b0"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000083_6f9e2230"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000084_e46d3fa9"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000085_d3667aa4"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000086_50b6bf8c"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000087_6e97b7cc"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000088_566ef8be"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000089_f1f00cf4"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000090_31b53b25"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000091_7cb8f6ae"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000092_279df346"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000093_af10aaa9"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000094_31a09820"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000095_903d5116"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000096_ab7cb215"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000097_39e340f2"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000098_fab6d052"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000099_e5df25d1"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000100_e7f44e23"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000101_f658a9db"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000102_64b602dd"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000103_bbe98953"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000104_ca6cee84"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000105_8bc2aaa8"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000106_b1fb856d"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000107_28ceda0e"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000108_a756a081"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000109_75ed7bd9"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000110_1767b5ff"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000111_9f31f141"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000112_b2be43ae"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000113_0f40c0e2"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000114_cffa4d59"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000115_b4fbed2c"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000116_9f03a07d"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000117_3081c85a"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000118_ce2f7eda"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000119_4a1256d5"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000120_137a965b"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000121_313e7138"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000122_9ed5f542"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000123_9d1dfa14"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000124_b20bb751"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000125_191be134"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000126_94f51dab"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000127_41cd469c"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_d5de6f41_000128_6f95b5e5"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000001_5f5d2586"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000002_9bad1d6d"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000003_392d3b13"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000004_49b02ecf"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000005_38800fcd"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000006_05205fce"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000007_4e666019"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000008_597a2713"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000009_cdb154d4"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000010_54e369e9"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000011_099e33f7"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000012_cd9f4b94"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000013_e7c663a7"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000014_4fe75da2"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000015_ddd7919f"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000016_5b4cea16"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000017_b19df11f"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000018_36d5ca6c"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000019_9c0aacf1"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000020_0756c5a0"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000021_b9b6a286"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000022_460f742b"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000023_c5672091"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000024_b9380e24"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000025_7cdcbfe6"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000026_4a1ea47f"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000027_79d94c7e"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000028_d519076e"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000029_e115771c"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000030_c15ed223"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000031_f7f54e57"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000032_7ed5fb05"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000033_31090bdf"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000034_4423414b"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000035_8c17ba89"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000036_93c31eb0"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000037_3b0841c5"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000038_704394c1"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000039_bfb23b7a"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000040_456190e1"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000041_6bed9ef3"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000042_b82816f1"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000043_379ba139"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000044_082bb2b1"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000045_044db479"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000046_523f215b"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000047_2f09ade1"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000048_2053ced2"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000049_27b7e8e9"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000050_28822306"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000051_b73b140a"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000052_18bf554d"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000053_eeef2b8a"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000054_3898d4c2"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000055_7f072fd4"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000056_cd40ca1c"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000057_452fa0e8"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000058_59f5052b"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000059_01f7a41e"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000060_7c898008"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000061_1a9c106c"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000062_84c7cc5f"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000063_1312d521"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000064_0112dbf6"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000065_01b286cf"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000066_6bce43f6"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000067_7da00ca4"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000068_5ed40bfe"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000069_40451d50"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000070_ff87a575"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000071_4bf4fe50"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000072_7ec0112e"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000073_bc920d9e"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000074_4b8134aa"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000075_d7c0c70d"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000076_4339f697"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000077_7f87e347"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000078_933bffc6"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000079_f52ae7aa"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000080_7f5c085d"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000081_423c489b"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000082_3422635e"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000083_0ac24485"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000084_98fde210"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000085_2950be7a"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000086_6bf1cd79"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000087_2b862356"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000088_d5325eab"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000089_4696bce2"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000090_53237642"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000091_7320e4e2"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000092_7c509ec7"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000093_b0b3eaa6"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000094_7cdd1632"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000095_33b8116e"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000096_5c1eac8e"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000097_156dc48a"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000098_5ead11ab"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000099_a59ef6d5"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000100_4e491161"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000101_8ad59514"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000102_c90c72f0"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000103_59618fc7"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000104_ed12953f"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000105_7b615dc9"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000106_d4230bdb"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000107_642c7080"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000108_25063b2d"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000109_39facaa4"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000110_39eafda5"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000111_93e7dcae"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000112_dedb4d64"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000113_4a44cb7a"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000114_d2f7472c"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000115_cba9a5dc"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000116_1fbae054"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000117_82dc18f1"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000118_10bb212d"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000119_caec175a"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000120_ef36629d"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000121_a25ffe37"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000122_197aa047"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000123_9e321ee1"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000124_e3b3ff88"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=worker catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000125_94268649"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000126_73e593c6"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000127_2ae25618"
+        },
+        {
+          "code": "EVENT_ENTITY_TYPE_DIFFERS_FROM_CATALOG",
+          "detail": "event=event_source catalog=field",
+          "scope": "canonical",
+          "subject": "evt_276e496e_000128_8ef8c56b"
+        }
+      ]
+    },
+    {
+      "decision_counts": {
+        "block": 2,
+        "collapse": 2,
+        "observe": 2,
+        "prove": 1
+      },
+      "entity_catalog": "reports/pnva-native-entity-catalog-demo-2026-05-05.json",
+      "entity_count": 6,
+      "entity_summary": {
+        "declared_entity_count": 6,
+        "entity_count": 6,
+        "entity_state_counts": {
+          "active": 1,
+          "blocked": 2,
+          "observing": 3
+        },
+        "entity_type_counts": {
+          "field": 1,
+          "guard": 2,
+          "proof": 1,
+          "worker": 2
+        },
+        "unique_entity_ids": 6
+      },
+      "error_count": 0,
+      "errors": [],
+      "event_count": 7,
+      "event_file": "reports/pnva-native-events-demo-2026-05-05.jsonl",
+      "heuristic_rule_counts": {
+        "adaptive_threshold": 2,
+        "etev_guard": 2,
+        "field_scheduler": 2,
+        "legacy_observer": 1,
+        "memory4d": 1,
+        "native_event_emitter": 7,
+        "power_orchestrator": 1
+      },
+      "observed_entity_count": 6,
+      "relation_counts": {
+        "guards": 2
+      },
+      "scope": "native",
+      "unique_event_ids": 7,
+      "unused_entity_count": 0,
+      "warning_count": 0,
+      "warnings": []
+    }
+  ],
+  "summary": {
+    "contract_ready": true,
+    "heuristic_rules": [
+      "adaptive_threshold",
+      "affinity_router",
+      "etev_guard",
+      "field_scheduler",
+      "legacy_observer",
+      "memory4d",
+      "native_event_emitter",
+      "power_orchestrator",
+      "veonic_layer"
+    ],
+    "total_entity_count": 12,
+    "total_event_count": 519,
+    "total_heuristic_rule_count": 9,
+    "total_relation_count": 70,
+    "validated_scopes": [
+      "canonical",
+      "native"
+    ]
+  },
+  "warning_count": 341
+}

@@ -28,6 +28,7 @@ no-tick invariants
 policy
 proof chain
 causal graph
+schema contract validation
 adversarial validation
 entity and heuristic maturity
 evidence attestation
@@ -53,7 +54,7 @@ SEMANTIC_CONSISTENCY_READY
 Current result:
 
 ```text
-check_count: 67
+check_count: 74
 error_count: 0
 warning_count: 0
 ```
@@ -66,6 +67,7 @@ The guard compares:
 Manifest summary vs source reports
 canonical bridge vs replay/no-tick/policy/graph/proof-chain
 native emitter vs native no-tick/policy/graph/proof-chain
+schema contract report vs Manifest and attestation
 maturity aggregate math vs canonical + native reports
 attestation artifact count vs artifact list
 audit summary vs attestation and maturity report

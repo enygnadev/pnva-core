@@ -1,5 +1,5 @@
 {
-  "artifact_count": 19,
+  "artifact_count": 20,
   "artifacts": [
     {
       "entry_count": 9,
@@ -112,6 +112,19 @@
       "required": true,
       "sha256": "9530328b7b11c5a3c66fcd47abfce2a4d3a323bccfb82e779e34436a6fc4fa08",
       "size_bytes": 17017
+    },
+    {
+      "classification": "SCHEMA_CONTRACT_READY_WITH_LEGACY_WARNINGS",
+      "expected": "SCHEMA_CONTRACT_READY_WITH_LEGACY_WARNINGS",
+      "id": "schema_contract_validation",
+      "kind": "json_classification",
+      "pass": true,
+      "path": "reports/pnva-schema-contract-validation-2026-05-05.json",
+      "present": true,
+      "reported_pass": true,
+      "required": true,
+      "sha256": "ed2c8df0e3d653f4e3833b3c4eea3263d4028b6251760ed7b7d6f51b62adb462",
+      "size_bytes": 78513
     },
     {
       "classification": "NATIVE_EMITTER_READY",
@@ -253,13 +266,14 @@
     "sovereign policy validation",
     "proof-chain sealing",
     "causal graph audit",
+    "schema contract validation",
     "adversarial negative controls",
     "entity and heuristic maturity",
     "sovereign audit consumes this attestation without being part of its hash seed"
   ],
-  "evidence_hash": "sha256:a622b1aa24661c9d76344de08d00823ad9b4f4e4271b9a953c918263b13e23b3",
+  "evidence_hash": "sha256:5b0ec810a219f8328ed6d400468fe79fec92a8d6ad9917e88c5ee5fb45fc9e9d",
   "failure_count": 0,
-  "generated_at": "2026-05-05T05:36:32Z",
+  "generated_at": "2026-05-05T06:13:55Z",
   "interpretation": {
     "boundary": "This attests repository evidence integrity; it is not a universal proof of all possible PNVA deployments.",
     "hash_policy": "The evidence_hash changes when any tracked artifact hash, classification or pass flag changes.",
@@ -272,7 +286,8 @@
     "Use evidence_hash as the public anchor when citing a PNVA evidence package.",
     "Keep legacy warnings visible while requiring native clean policy for new runtime events.",
     "Run adversarial negative controls so bad evidence is rejected or exposed before publication.",
-    "Use entity and heuristic maturity scores to guide the next no-tick runtime hardening step."
+    "Use entity and heuristic maturity scores to guide the next no-tick runtime hardening step.",
+    "Run schema contract validation before attestation so event/entity shape defects become release blockers."
   ],
   "schema_version": "pnva.evidence_attestation.v1"
 }

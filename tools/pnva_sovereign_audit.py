@@ -47,6 +47,7 @@ PUBLIC_DOCS = [
     "docs/PNVA_SOVEREIGN_POLICY_VALIDATION.md",
     "docs/PNVA_PROOF_CHAIN_SEALING.md",
     "docs/PNVA_CAUSAL_GRAPH_AUDIT.md",
+    "docs/PNVA_SCHEMA_CONTRACT_VALIDATION.md",
     "docs/PNVA_SOVEREIGN_EVIDENCE_ATTESTATION.md",
     "docs/PNVA_ADVERSARIAL_VALIDATION.md",
     "docs/PNVA_ENTITY_HEURISTIC_MATURITY.md",
@@ -108,6 +109,12 @@ CAUSAL_GRAPH_FILES = [
     "docs/PNVA_CAUSAL_GRAPH_AUDIT.md",
     "reports/pnva-causal-graph-2026-05-05.json",
     "reports/pnva-native-causal-graph-2026-05-05.json",
+]
+
+SCHEMA_CONTRACT_FILES = [
+    "tools/pnva_schema_contract_validator.py",
+    "docs/PNVA_SCHEMA_CONTRACT_VALIDATION.md",
+    "reports/pnva-schema-contract-validation-2026-05-05.json",
 ]
 
 EVIDENCE_ATTESTATION_FILES = [
@@ -671,6 +678,36 @@ def audit_semantic_consistency(repo: Path) -> dict[str, Any]:
     }
 
 
+def audit_schema_contract_validation(repo: Path) -> dict[str, Any]:
+    missing = [rel for rel in SCHEMA_CONTRACT_FILES if not (repo / rel).exists()]
+    report_path = repo / "reports" / "pnva-schema-contract-validation-2026-05-05.json"
+    if not report_path.exists():
+        return {
+            "contract_validation_ok": False,
+            "missing": missing,
+            "classification": "SCHEMA_CONTRACT_MISSING",
+            "errors": ["missing schema contract validation report"],
+        }
+    data = _read_json(report_path)
+    return {
+        "contract_validation_ok": (
+            not missing
+            and data.get("pass") is True
+            and str(data.get("classification", "")).startswith("SCHEMA_CONTRACT_READY")
+            and int(data.get("error_count", 0)) == 0
+        ),
+        "missing": missing,
+        "classification": data.get("classification"),
+        "event_count": int(data.get("event_count", 0)),
+        "entity_count": int(data.get("entity_count", 0)),
+        "relation_count": int(data.get("relation_count", 0)),
+        "heuristic_rule_count": int(data.get("heuristic_rule_count", 0)),
+        "error_count": int(data.get("error_count", 0)),
+        "warning_count": int(data.get("warning_count", 0)),
+        "errors": [] if isinstance(data, dict) and data.get("pass") is True else ["schema contract validation failed"],
+    }
+
+
 def audit_reproducibility(repo: Path) -> dict[str, Any]:
     missing = [rel for rel in REPRODUCIBILITY_FILES if not (repo / rel).exists()]
     report_path = repo / "reports" / "pnva-reproducibility-2026-05-05.json"
@@ -885,13 +922,15 @@ def score_report(report: dict[str, Any]) -> dict[str, Any]:
     if report["sovereignty"].get("docs_ok"):
         scores["log_contract"] += 5
     if report.get("canonical_bridge", {}).get("bridge_ok"):
-        scores["actionability"] += 3
+        scores["actionability"] += 2
     if report.get("replay_validation", {}).get("replay_ok"):
-        scores["actionability"] += 3
+        scores["actionability"] += 2
     if report.get("no_tick_invariants", {}).get("invariants_ok"):
         scores["actionability"] += 2
     if report.get("native_emitter", {}).get("native_ok"):
-        scores["actionability"] += 0
+        scores["actionability"] += 1
+    if report.get("schema_contract_validation", {}).get("contract_validation_ok"):
+        scores["actionability"] += 1
     if report.get("sovereign_policy", {}).get("policy_ok"):
         scores["actionability"] += 0
     if report.get("proof_chain", {}).get("chain_ok"):
@@ -959,6 +998,7 @@ def build_report(repo: Path, *, strict_public: bool = False) -> dict[str, Any]:
         "sovereign_policy": audit_sovereign_policy(repo),
         "proof_chain": audit_proof_chain(repo),
         "causal_graph": audit_causal_graph(repo),
+        "schema_contract_validation": audit_schema_contract_validation(repo),
         "evidence_attestation": audit_evidence_attestation(repo),
         "adversarial_validation": audit_adversarial_validation(repo),
         "entity_heuristic_maturity": audit_entity_heuristic_maturity(repo),
@@ -974,6 +1014,7 @@ def build_report(repo: Path, *, strict_public: bool = False) -> dict[str, Any]:
             "Run sovereign policy validation to separate production-grade authority from legacy-tolerated authority.",
             "Seal canonical and native event sequences with proof-chain hashes before public release.",
             "Audit causal graphs so entity topology is visible, not implicit.",
+            "Run schema contract validation so event and entity envelopes are checked before attestation.",
             "Publish one sovereign evidence attestation hash with every evidence release.",
             "Run adversarial validation so validators prove tamper detection, not only green-path acceptance.",
             "Track entity and heuristic maturity so no-tick suppression stays attributable to actors and authority.",

@@ -1,6 +1,6 @@
 {
   "author": "Gustavo de Aguiar Martins",
-  "check_count": 67,
+  "check_count": 74,
   "checks": [
     {
       "group": "classification",
@@ -204,6 +204,26 @@
     },
     {
       "group": "classification",
+      "left": "SCHEMA_CONTRACT_READY_WITH_LEGACY_WARNINGS",
+      "left_ref": "reports/pnva-schema-contract-validation-2026-05-05.json:classification",
+      "name": "schema_contract_classification",
+      "pass": true,
+      "right": "SCHEMA_CONTRACT_READY_WITH_LEGACY_WARNINGS",
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "classification",
+      "left": true,
+      "left_ref": "reports/pnva-schema-contract-validation-2026-05-05.json:pass",
+      "name": "schema_contract_pass_flag",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "classification",
       "left": "ADVERSARIAL_VALIDATION_PASS",
       "left_ref": "reports/pnva-adversarial-validation-2026-05-05.json:classification",
       "name": "adversarial_classification",
@@ -375,22 +395,52 @@
     },
     {
       "group": "manifest",
-      "left": 19,
+      "left": 20,
       "left_ref": "MANIFEST:sovereign_evidence_attestation.artifact_count",
       "name": "manifest_attestation_artifact_count",
       "pass": true,
-      "right": 19,
+      "right": 20,
       "right_ref": "attestation:artifact_count",
       "severity": "error"
     },
     {
       "group": "manifest",
-      "left": "sha256:a622b1aa24661c9d76344de08d00823ad9b4f4e4271b9a953c918263b13e23b3",
+      "left": "sha256:5b0ec810a219f8328ed6d400468fe79fec92a8d6ad9917e88c5ee5fb45fc9e9d",
       "left_ref": "MANIFEST:sovereign_evidence_attestation.evidence_hash",
       "name": "manifest_attestation_hash",
       "pass": true,
-      "right": "sha256:a622b1aa24661c9d76344de08d00823ad9b4f4e4271b9a953c918263b13e23b3",
+      "right": "sha256:5b0ec810a219f8328ed6d400468fe79fec92a8d6ad9917e88c5ee5fb45fc9e9d",
       "right_ref": "attestation:evidence_hash",
+      "severity": "error"
+    },
+    {
+      "group": "manifest",
+      "left": 519,
+      "left_ref": "MANIFEST:schema_contract_validation.event_count",
+      "name": "manifest_schema_contract_event_count",
+      "pass": true,
+      "right": 519,
+      "right_ref": "schema_contract:event_count",
+      "severity": "error"
+    },
+    {
+      "group": "manifest",
+      "left": 12,
+      "left_ref": "MANIFEST:schema_contract_validation.entity_count",
+      "name": "manifest_schema_contract_entity_count",
+      "pass": true,
+      "right": 12,
+      "right_ref": "schema_contract:entity_count",
+      "severity": "error"
+    },
+    {
+      "group": "manifest",
+      "left": 341,
+      "left_ref": "MANIFEST:schema_contract_validation.warning_count",
+      "name": "manifest_schema_contract_warning_count",
+      "pass": true,
+      "right": 341,
+      "right_ref": "schema_contract:warning_count",
       "severity": "error"
     },
     {
@@ -587,11 +637,11 @@
     },
     {
       "group": "attestation",
-      "left": 19,
+      "left": 20,
       "left_ref": "attestation:artifact_count",
       "name": "artifact_count_matches_list",
       "pass": true,
-      "right": 19,
+      "right": 20,
       "right_ref": "len(attestation.artifacts)",
       "severity": "error"
     },
@@ -602,6 +652,16 @@
       "name": "failure_count_zero",
       "pass": true,
       "right": 0,
+      "right_ref": "expected",
+      "severity": "error"
+    },
+    {
+      "group": "attestation",
+      "left": true,
+      "left_ref": "attestation:artifact_ids",
+      "name": "attestation_contains_schema_contract_validation",
+      "pass": true,
+      "right": true,
       "right_ref": "expected",
       "severity": "error"
     },
@@ -637,11 +697,11 @@
     },
     {
       "group": "audit",
-      "left": "sha256:a622b1aa24661c9d76344de08d00823ad9b4f4e4271b9a953c918263b13e23b3",
+      "left": "sha256:5b0ec810a219f8328ed6d400468fe79fec92a8d6ad9917e88c5ee5fb45fc9e9d",
       "left_ref": "audit:evidence_attestation.evidence_hash",
       "name": "audit_attestation_hash_matches",
       "pass": true,
-      "right": "sha256:a622b1aa24661c9d76344de08d00823ad9b4f4e4271b9a953c918263b13e23b3",
+      "right": "sha256:5b0ec810a219f8328ed6d400468fe79fec92a8d6ad9917e88c5ee5fb45fc9e9d",
       "right_ref": "attestation:evidence_hash",
       "severity": "error"
     },
@@ -655,6 +715,16 @@
       "right_ref": "maturity:maturity_score",
       "severity": "error",
       "tolerance": 1e-06
+    },
+    {
+      "group": "audit",
+      "left": "SCHEMA_CONTRACT_READY_WITH_LEGACY_WARNINGS",
+      "left_ref": "audit:schema_contract.classification",
+      "name": "audit_schema_contract_matches",
+      "pass": true,
+      "right": "SCHEMA_CONTRACT_READY_WITH_LEGACY_WARNINGS",
+      "right_ref": "schema_contract:classification",
+      "severity": "error"
     },
     {
       "group": "manifest_hygiene",
@@ -680,7 +750,7 @@
   "classification": "SEMANTIC_CONSISTENCY_READY",
   "error_count": 0,
   "errors": [],
-  "generated_at": "2026-05-05T05:59:56Z",
+  "generated_at": "2026-05-05T06:15:40Z",
   "interpretation": {
     "boundary": "This guard checks semantic consistency of the public evidence package; it does not replace runtime execution tests.",
     "purpose": "Detect drift between PNVA public evidence reports, manifest metadata, attestation and audit summaries.",
@@ -709,16 +779,19 @@
     "no_tick": "reports/pnva-no-tick-invariants-2026-05-05.json",
     "policy": "reports/pnva-sovereign-policy-2026-05-05.json",
     "proof_chain": "reports/pnva-proof-chain-2026-05-05.json",
-    "replay": "reports/pnva-replay-validation-2026-05-05.json"
+    "replay": "reports/pnva-replay-validation-2026-05-05.json",
+    "schema_contract": "reports/pnva-schema-contract-validation-2026-05-05.json"
   },
   "schema_version": "pnva.semantic_consistency.v1",
   "summary": {
-    "attestation_artifact_count": 19,
+    "attestation_artifact_count": 20,
     "audit_score": 100,
     "canonical_event_count": 512,
     "canonical_suppressed_count": 246,
     "native_event_count": 7,
     "native_suppressed_count": 4,
+    "schema_contract_event_count": 519,
+    "schema_contract_warning_count": 341,
     "total_event_count": 519,
     "total_strong_decision_count": 304,
     "total_strong_with_hard_authority": 269,

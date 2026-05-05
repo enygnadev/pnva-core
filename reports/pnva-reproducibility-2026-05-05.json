@@ -1,7 +1,7 @@
 {
   "author": "Gustavo de Aguiar Martins",
   "classification": "REPRODUCIBILITY_READY",
-  "command_count": 15,
+  "command_count": 16,
   "command_failure_count": 0,
   "command_failures": [],
   "commands": {
@@ -103,6 +103,13 @@
       "parse_error": "",
       "pass": true
     },
+    "schema_contract": {
+      "classification": "SCHEMA_CONTRACT_READY_WITH_LEGACY_WARNINGS",
+      "command": "tools/pnva_schema_contract_validator.py --write <TEMP>/schema-contract.json",
+      "exit_code": 0,
+      "parse_error": "",
+      "pass": true
+    },
     "semantic": {
       "classification": "SEMANTIC_CONSISTENCY_READY",
       "command": "tools/pnva_semantic_consistency_guard.py --write <TEMP>/semantic.json",
@@ -111,7 +118,7 @@
       "pass": true
     }
   },
-  "comparison_count": 119,
+  "comparison_count": 128,
   "comparison_failure_count": 0,
   "comparison_failures": [],
   "comparisons": [
@@ -755,6 +762,69 @@
     {
       "field": "classification",
       "pass": true,
+      "published": "SCHEMA_CONTRACT_READY_WITH_LEGACY_WARNINGS",
+      "report": "schema_contract",
+      "reproduced": "SCHEMA_CONTRACT_READY_WITH_LEGACY_WARNINGS"
+    },
+    {
+      "field": "pass",
+      "pass": true,
+      "published": true,
+      "report": "schema_contract",
+      "reproduced": true
+    },
+    {
+      "field": "scope_count",
+      "pass": true,
+      "published": 2,
+      "report": "schema_contract",
+      "reproduced": 2
+    },
+    {
+      "field": "event_count",
+      "pass": true,
+      "published": 519,
+      "report": "schema_contract",
+      "reproduced": 519
+    },
+    {
+      "field": "entity_count",
+      "pass": true,
+      "published": 12,
+      "report": "schema_contract",
+      "reproduced": 12
+    },
+    {
+      "field": "relation_count",
+      "pass": true,
+      "published": 70,
+      "report": "schema_contract",
+      "reproduced": 70
+    },
+    {
+      "field": "heuristic_rule_count",
+      "pass": true,
+      "published": 9,
+      "report": "schema_contract",
+      "reproduced": 9
+    },
+    {
+      "field": "error_count",
+      "pass": true,
+      "published": 0,
+      "report": "schema_contract",
+      "reproduced": 0
+    },
+    {
+      "field": "warning_count",
+      "pass": true,
+      "published": 341,
+      "report": "schema_contract",
+      "reproduced": 341
+    },
+    {
+      "field": "classification",
+      "pass": true,
       "published": "ADVERSARIAL_VALIDATION_PASS",
       "report": "adversarial",
       "reproduced": "ADVERSARIAL_VALIDATION_PASS"
@@ -881,9 +951,9 @@
     {
       "field": "artifact_count",
       "pass": true,
-      "published": 19,
+      "published": 20,
       "report": "attestation",
-      "reproduced": 19
+      "reproduced": 20
     },
     {
       "field": "failure_count",
@@ -895,9 +965,9 @@
     {
       "field": "evidence_hash",
       "pass": true,
-      "published": "sha256:a622b1aa24661c9d76344de08d00823ad9b4f4e4271b9a953c918263b13e23b3",
+      "published": "sha256:5b0ec810a219f8328ed6d400468fe79fec92a8d6ad9917e88c5ee5fb45fc9e9d",
       "report": "attestation",
-      "reproduced": "sha256:a622b1aa24661c9d76344de08d00823ad9b4f4e4271b9a953c918263b13e23b3"
+      "reproduced": "sha256:5b0ec810a219f8328ed6d400468fe79fec92a8d6ad9917e88c5ee5fb45fc9e9d"
     },
     {
       "field": "classification",
@@ -916,9 +986,9 @@
     {
       "field": "check_count",
       "pass": true,
-      "published": 67,
+      "published": 74,
       "report": "semantic",
-      "reproduced": 67
+      "reproduced": 74
     },
     {
       "field": "error_count",
@@ -950,7 +1020,7 @@
     }
   ],
   "failure_count": 0,
-  "generated_at": "2026-05-05T05:59:59Z",
+  "generated_at": "2026-05-05T06:15:42Z",
   "interpretation": {
     "boundary": "Generated timestamps, temporary paths and non-semantic ordering are intentionally excluded from comparison.",
     "purpose": "Regenerate PNVA evidence reports with current tools and compare stable fields against the published evidence package.",
@@ -965,7 +1035,7 @@
   ],
   "schema_version": "pnva.reproducibility_guard.v1",
   "summary": {
-    "published_attestation_hash": "sha256:a622b1aa24661c9d76344de08d00823ad9b4f4e4271b9a953c918263b13e23b3",
+    "published_attestation_hash": "sha256:5b0ec810a219f8328ed6d400468fe79fec92a8d6ad9917e88c5ee5fb45fc9e9d",
     "reports_reproduced": [
       "adversarial",
       "attestation",
@@ -981,9 +1051,10 @@
       "policy",
       "proof_chain",
       "replay",
+      "schema_contract",
       "semantic"
     ],
-    "reproduced_attestation_hash": "sha256:a622b1aa24661c9d76344de08d00823ad9b4f4e4271b9a953c918263b13e23b3",
-    "stable_fields_compared": 119
+    "reproduced_attestation_hash": "sha256:5b0ec810a219f8328ed6d400468fe79fec92a8d6ad9917e88c5ee5fb45fc9e9d",
+    "stable_fields_compared": 128
   }
 }

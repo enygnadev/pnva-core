@@ -30,6 +30,7 @@ PUBLISHED_REPORTS = {
     "native_proof_chain": "reports/pnva-native-proof-chain-2026-05-05.json",
     "causal_graph": "reports/pnva-causal-graph-2026-05-05.json",
     "native_causal_graph": "reports/pnva-native-causal-graph-2026-05-05.json",
+    "schema_contract": "reports/pnva-schema-contract-validation-2026-05-05.json",
     "adversarial": "reports/pnva-adversarial-validation-2026-05-05.json",
     "maturity": "reports/pnva-entity-heuristic-maturity-2026-05-05.json",
     "attestation": "reports/pnva-sovereign-evidence-attestation-2026-05-05.json",
@@ -150,6 +151,17 @@ STABLE_PATHS = {
         ["summary", "relation_edge_count"],
         ["summary", "chain_edge_count"],
         ["summary", "graph_hash"],
+    ],
+    "schema_contract": [
+        ["classification"],
+        ["pass"],
+        ["scope_count"],
+        ["event_count"],
+        ["entity_count"],
+        ["relation_count"],
+        ["heuristic_rule_count"],
+        ["error_count"],
+        ["warning_count"],
     ],
     "adversarial": [
         ["classification"],
@@ -284,6 +296,7 @@ def build_report(repo: Path) -> dict[str, Any]:
             "native_proof_chain": tmp / "native-proof-chain.json",
             "causal_graph": tmp / "causal-graph.json",
             "native_causal_graph": tmp / "native-causal-graph.json",
+            "schema_contract": tmp / "schema-contract.json",
             "adversarial": tmp / "adversarial.json",
             "maturity": tmp / "maturity.json",
             "attestation": tmp / "attestation.json",
@@ -314,6 +327,7 @@ def build_report(repo: Path) -> dict[str, Any]:
         commands["native_proof_chain"] = _run(repo, ["tools/pnva_proof_chain_sealer.py", "--events", NATIVE_EVENTS], outputs["native_proof_chain"])
         commands["causal_graph"] = _run(repo, ["tools/pnva_causal_graph_auditor.py", "--events", CANONICAL_EVENTS, "--entity-catalog", CANONICAL_ENTITIES], outputs["causal_graph"])
         commands["native_causal_graph"] = _run(repo, ["tools/pnva_causal_graph_auditor.py", "--events", NATIVE_EVENTS, "--entity-catalog", NATIVE_ENTITIES], outputs["native_causal_graph"])
+        commands["schema_contract"] = _run(repo, ["tools/pnva_schema_contract_validator.py"], outputs["schema_contract"])
         commands["adversarial"] = _run(repo, ["tools/pnva_adversarial_validator.py"], outputs["adversarial"])
         commands["maturity"] = _run(repo, ["tools/pnva_entity_heuristic_maturity.py"], outputs["maturity"])
         commands["attestation"] = _run(repo, ["tools/pnva_evidence_attestor.py"], outputs["attestation"])
