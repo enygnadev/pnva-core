@@ -32,6 +32,7 @@ RULE_AUTHORITY = {
 }
 AUTHORITY_ORDER = {"H0": 0, "H1": 1, "H2": 2, "H3": 3, "H4": 4}
 HARD_AUTHORITIES = {"H2", "H3", "H4"}
+LEGACY_HEURISTIC_RULES = {"legacy_observer"}
 STRONG_DECISIONS = {"collapse", "block", "prove", "reclassify"}
 PRECHECK_DECISIONS = {"observe", "block"}
 PRECHECK_REASON = "native_authority_precheck_no_tick"
@@ -282,6 +283,8 @@ def _heuristic_rule_codes(event: dict[str, Any]) -> list[str]:
         codes.append("HEURISTIC_RULE_DUPLICATE")
     if any(rule not in RULE_AUTHORITY for rule in rules):
         codes.append("HEURISTIC_RULE_UNKNOWN")
+    if any(rule in LEGACY_HEURISTIC_RULES for rule in rules):
+        codes.append("LEGACY_HEURISTIC_RULE_FORBIDDEN")
     return codes
 
 
@@ -828,6 +831,7 @@ def _negative_controls(matrix: dict[str, Any]) -> dict[str, Any]:
     run_control("reject_proof_ref_role_mismatch", "commit", lambda event: event["proof"].update({"proof_ref": f"runtime:{slot.get('slot_id')}:precheck"}), "PROOF_REF_ROLE_MISMATCH")
     run_control("reject_low_authority_commit", "commit", lambda event: event["heuristics"].update({"rules": ["legacy_observer"]}), "COMMIT_AUTHORITY_BELOW_H2")
     run_control("reject_missing_target_rules", "commit", lambda event: event["heuristics"].update({"rules": ["native_event_emitter"]}), "COMMIT_TARGET_RULES_MISSING")
+    run_control("reject_legacy_observer_mixed_rule", "commit", lambda event: (event["heuristics"].update({"rules": list(slot.get("target_rules") or []) + ["legacy_observer"]}), rebind_proof_hash(event)), "LEGACY_HEURISTIC_RULE_FORBIDDEN")
     run_control("reject_unknown_heuristic_rule", "commit", lambda event: event["heuristics"].update({"rules": list(slot.get("target_rules") or []) + ["unknown_rule"]}), "HEURISTIC_RULE_UNKNOWN")
     run_control("reject_duplicate_heuristic_rule", "commit", lambda event: event["heuristics"].update({"rules": list(slot.get("target_rules") or []) + [str((slot.get("target_rules") or ["native_event_emitter"])[0])]}), "HEURISTIC_RULE_DUPLICATE")
     run_control("reject_invalid_risk_flags", "commit", lambda event: event["heuristics"].update({"risk_flags": "not-a-list"}), "RISK_FLAGS_INVALID")
@@ -1118,6 +1122,7 @@ def build_report(repo: Path, runtime_events_path: Path | None = None) -> dict[st
             "runtime_event_count_exact_required": True,
             "commit_must_match_slot_action": True,
             "target_rules_required_on_commit": True,
+            "legacy_heuristic_rule_forbidden": True,
             "heuristic_rules_known_required": True,
             "heuristic_rules_unique_required": True,
             "risk_flags_list_required": True,
@@ -1164,7 +1169,7 @@ def build_report(repo: Path, runtime_events_path: Path | None = None) -> dict[st
         },
         "interpretation": {
             "purpose": "Protect the R3 runtime intake boundary before fresh events are accepted as legacy-free evidence.",
-            "sovereignty": "PNVA becomes harder to fake when projected proofs, malformed, duplicated or content-unbound proof hashes, wrong proof-ref slot roles, wrong event types, wrong decision reasons, wrong role state transitions, malformed or inconsistent tension values, invalid gate signs, duplicate events, duplicated source locations, reused causal chains across different slots, unsafe source file names, regressed source lines, entity or slot mismatches, missing, equal or reversed pair timestamps, missing or reversed log/source location order, unsanitized sources, unknown heuristic rules, invalid risk flags, weak authority, missing target rules, missing precheck or commit target risk flags, extra runtime events and causally broken no-tick pairs are rejected before cutover.",
+            "sovereignty": "PNVA becomes harder to fake when projected proofs, malformed, duplicated or content-unbound proof hashes, wrong proof-ref slot roles, wrong event types, wrong decision reasons, wrong role state transitions, malformed or inconsistent tension values, invalid gate signs, duplicate events, duplicated source locations, reused causal chains across different slots, unsafe source file names, regressed source lines, entity or slot mismatches, missing, equal or reversed pair timestamps, missing or reversed log/source location order, unsanitized sources, legacy heuristic rules, unknown heuristic rules, invalid risk flags, weak authority, missing target rules, missing precheck or commit target risk flags, extra runtime events and causally broken no-tick pairs are rejected before cutover.",
             "boundary": "Without a runtime-events file this guard certifies the intake contract only; it does not claim final runtime completion.",
         },
         "recommendations": [
@@ -1187,6 +1192,7 @@ def build_report(repo: Path, runtime_events_path: Path | None = None) -> dict[st
             "Reject no-tick pairs whose commit source.line does not follow the precheck source.line.",
             "Require proof_ref to match runtime:<slot-id>:precheck or runtime:<slot-id>:commit.",
             "Require gate_delta to equal score minus threshold, with nonpositive prechecks and nonnegative commits.",
+            "Reject legacy heuristic rules such as legacy_observer in final R3 runtime evidence.",
             "Reject unknown or duplicated heuristic rules before accepting runtime coverage.",
             "Reject malformed, unknown, duplicated or missing target risk flags on no-tick prechecks and commits before accepting runtime coverage.",
             "Keep entity_id, causal_chain_id, source.file_name, source.line, source.sanitized and proof_hash mandatory for every runtime event.",

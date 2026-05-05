@@ -95,11 +95,11 @@
     },
     {
       "group": "controls",
-      "left": 57,
+      "left": 58,
       "left_ref": "negative_controls_complete",
       "name": "negative_controls_complete",
       "pass": true,
-      "right": 57,
+      "right": 58,
       "right_ref": "expected"
     },
     {
@@ -633,6 +633,15 @@
       "left": true,
       "left_ref": "enforced_target_rules_required_on_commit",
       "name": "enforced_target_rules_required_on_commit",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "enforced_controls",
+      "left": true,
+      "left_ref": "enforced_legacy_heuristic_rule_forbidden",
+      "name": "enforced_legacy_heuristic_rule_forbidden",
       "pass": true,
       "right": true,
       "right_ref": "expected"
@@ -1326,6 +1335,15 @@
     {
       "group": "heuristic_policy",
       "left": true,
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_legacy_observer_forbidden",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_legacy_observer_forbidden",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "heuristic_policy",
+      "left": true,
       "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_duplicate_rules_forbidden",
       "name": "r3-runtime-instrument-entity_4c3ade60ea78-resize_batch_duplicate_rules_forbidden",
       "pass": true,
@@ -1988,6 +2006,15 @@
       "left": true,
       "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_known_rules_only",
       "name": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_known_rules_only",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "heuristic_policy",
+      "left": true,
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_legacy_observer_forbidden",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-cooldown_gpu_legacy_observer_forbidden",
       "pass": true,
       "right": true,
       "right_ref": "expected"
@@ -2664,6 +2691,15 @@
     {
       "group": "heuristic_policy",
       "left": true,
+      "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-execute_legacy_observer_forbidden",
+      "name": "r3-runtime-instrument-entity_4c3ade60ea78-execute_legacy_observer_forbidden",
+      "pass": true,
+      "right": true,
+      "right_ref": "expected"
+    },
+    {
+      "group": "heuristic_policy",
+      "left": true,
       "left_ref": "r3-runtime-instrument-entity_4c3ade60ea78-execute_duplicate_rules_forbidden",
       "name": "r3-runtime-instrument-entity_4c3ade60ea78-execute_duplicate_rules_forbidden",
       "pass": true,
@@ -2906,21 +2942,21 @@
     }
   ],
   "classification": "R3_RUNTIME_CONTRACT_VALIDATED_READY",
-  "contract_check_count": 295,
+  "contract_check_count": 299,
   "contract_validation_ready": true,
-  "enforced_control_count": 54,
+  "enforced_control_count": 55,
   "event_template_count": 6,
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-05-05T14:48:46Z",
+  "generated_at": "2026-05-05T14:59:08Z",
   "interpretation": {
     "boundary": "This is a contract validator, not runtime evidence and not final R3 cutover approval.",
     "purpose": "Validate that the R3 runtime capture matrix, evidence guard and instrumentation plan form one coherent runtime contract.",
     "sovereignty": "The final runtime path becomes harder to mislabel because the contract itself is checked before fresh runtime evidence is accepted."
   },
   "mandatory_field_count": 28,
-  "negative_control_count": 57,
-  "negative_control_detected_count": 57,
+  "negative_control_count": 58,
+  "negative_control_detected_count": 58,
   "pass": true,
   "positive_control_count": 6,
   "positive_control_passed_count": 6,
@@ -2948,11 +2984,11 @@
   "summary": {
     "action_contract_count": 3,
     "capture_slot_count": 35,
-    "contract_check_count": 295,
+    "contract_check_count": 299,
     "contract_validation_ready": true,
     "failure_count": 0,
     "mandatory_field_count": 28,
-    "negative_control_detected_count": 57,
+    "negative_control_detected_count": 58,
     "positive_control_passed_count": 6,
     "required_runtime_event_count": 70
   }

@@ -144,6 +144,7 @@ def _action_contracts(slots: list[dict[str, Any]]) -> list[dict[str, Any]]:
                 },
                 "heuristic_policy": {
                     "known_rules_only": True,
+                    "legacy_observer_forbidden": True,
                     "duplicate_rules_forbidden": True,
                     "risk_flags_list_required": True,
                     "known_risk_flags_only": True,
@@ -331,6 +332,7 @@ def build_report(repo: Path) -> dict[str, Any]:
             "Never reuse a causal_chain_id across different original_event_id or r3_runtime_slot_id values.",
             "Emit source.file_name as a public basename only, never as a local path.",
             "Emit commit.timestamp strictly after the no-tick precheck timestamp; equal timestamps are rejected.",
+            "Do not emit legacy_observer in final R3 runtime heuristics.",
             "Write the fresh runtime JSONL in causal pair order so each commit record appears after its precheck record.",
             "Emit source.line as a monotonic runtime sequence so each commit follows its no-tick precheck physically in the log.",
             "Keep each source.file_name plus source.line pair unique across the final runtime JSONL.",

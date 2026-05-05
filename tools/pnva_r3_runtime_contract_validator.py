@@ -103,6 +103,7 @@ REQUIRED_ENFORCED_CONTROLS = {
     "runtime_event_count_exact_required": True,
     "commit_must_match_slot_action": True,
     "target_rules_required_on_commit": True,
+    "legacy_heuristic_rule_forbidden": True,
     "heuristic_rules_known_required": True,
     "heuristic_rules_unique_required": True,
     "risk_flags_list_required": True,
@@ -229,6 +230,7 @@ def _template_checks(checks: list[dict[str, Any]], contract: dict[str, Any]) -> 
     _add_check(checks, "proof_policy", f"{contract_id}_proof_ref_unique_required", proof_policy.get("proof_ref_unique_required"), True)
     _add_check(checks, "proof_policy", f"{contract_id}_proof_ref_runtime_slot_role_required", proof_policy.get("proof_ref_runtime_slot_role_required"), True)
     _add_check(checks, "heuristic_policy", f"{contract_id}_known_rules_only", heuristic_policy.get("known_rules_only"), True)
+    _add_check(checks, "heuristic_policy", f"{contract_id}_legacy_observer_forbidden", heuristic_policy.get("legacy_observer_forbidden"), True)
     _add_check(checks, "heuristic_policy", f"{contract_id}_duplicate_rules_forbidden", heuristic_policy.get("duplicate_rules_forbidden"), True)
     _add_check(checks, "heuristic_policy", f"{contract_id}_risk_flags_list_required", heuristic_policy.get("risk_flags_list_required"), True)
     _add_check(checks, "heuristic_policy", f"{contract_id}_known_risk_flags_only", heuristic_policy.get("known_risk_flags_only"), True)

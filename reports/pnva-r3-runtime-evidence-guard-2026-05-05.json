@@ -25,6 +25,7 @@
     "field_state_required": true,
     "heuristic_rules_known_required": true,
     "heuristic_rules_unique_required": true,
+    "legacy_heuristic_rule_forbidden": true,
     "no_tick_pair_causal_chain_required": true,
     "no_tick_pair_commit_after_precheck_required": true,
     "no_tick_pair_commit_strictly_after_precheck_required": true,
@@ -65,16 +66,16 @@
     "timestamp_iso8601_required": true,
     "timestamp_required": true
   },
-  "generated_at": "2026-05-05T14:48:46Z",
+  "generated_at": "2026-05-05T14:59:08Z",
   "intake_guard_ready": true,
   "interpretation": {
     "boundary": "Without a runtime-events file this guard certifies the intake contract only; it does not claim final runtime completion.",
     "purpose": "Protect the R3 runtime intake boundary before fresh events are accepted as legacy-free evidence.",
-    "sovereignty": "PNVA becomes harder to fake when projected proofs, malformed, duplicated or content-unbound proof hashes, wrong proof-ref slot roles, wrong event types, wrong decision reasons, wrong role state transitions, malformed or inconsistent tension values, invalid gate signs, duplicate events, duplicated source locations, reused causal chains across different slots, unsafe source file names, regressed source lines, entity or slot mismatches, missing, equal or reversed pair timestamps, missing or reversed log/source location order, unsanitized sources, unknown heuristic rules, invalid risk flags, weak authority, missing target rules, missing precheck or commit target risk flags, extra runtime events and causally broken no-tick pairs are rejected before cutover."
+    "sovereignty": "PNVA becomes harder to fake when projected proofs, malformed, duplicated or content-unbound proof hashes, wrong proof-ref slot roles, wrong event types, wrong decision reasons, wrong role state transitions, malformed or inconsistent tension values, invalid gate signs, duplicate events, duplicated source locations, reused causal chains across different slots, unsafe source file names, regressed source lines, entity or slot mismatches, missing, equal or reversed pair timestamps, missing or reversed log/source location order, unsanitized sources, legacy heuristic rules, unknown heuristic rules, invalid risk flags, weak authority, missing target rules, missing precheck or commit target risk flags, extra runtime events and causally broken no-tick pairs are rejected before cutover."
   },
   "matrix_classification": "R3_RUNTIME_CAPTURE_MATRIX_READY_PENDING_RUNTIME",
-  "negative_control_count": 57,
-  "negative_control_detected_count": 57,
+  "negative_control_count": 58,
+  "negative_control_detected_count": 58,
   "negative_controls": [
     {
       "codes": [
@@ -238,6 +239,7 @@
     {
       "codes": [
         "PROOF_HASH_BINDING_INVALID",
+        "LEGACY_HEURISTIC_RULE_FORBIDDEN",
         "COMMIT_AUTHORITY_BELOW_H2",
         "COMMIT_TARGET_RULES_MISSING"
       ],
@@ -253,6 +255,14 @@
       "detected": true,
       "expected_detection": "COMMIT_TARGET_RULES_MISSING",
       "name": "reject_missing_target_rules"
+    },
+    {
+      "codes": [
+        "LEGACY_HEURISTIC_RULE_FORBIDDEN"
+      ],
+      "detected": true,
+      "expected_detection": "LEGACY_HEURISTIC_RULE_FORBIDDEN",
+      "name": "reject_legacy_observer_mixed_rule"
     },
     {
       "codes": [
@@ -672,6 +682,7 @@
     "Reject no-tick pairs whose commit source.line does not follow the precheck source.line.",
     "Require proof_ref to match runtime:<slot-id>:precheck or runtime:<slot-id>:commit.",
     "Require gate_delta to equal score minus threshold, with nonpositive prechecks and nonnegative commits.",
+    "Reject legacy heuristic rules such as legacy_observer in final R3 runtime evidence.",
     "Reject unknown or duplicated heuristic rules before accepting runtime coverage.",
     "Reject malformed, unknown, duplicated or missing target risk flags on no-tick prechecks and commits before accepting runtime coverage.",
     "Keep entity_id, causal_chain_id, source.file_name, source.line, source.sanitized and proof_hash mandatory for every runtime event."
@@ -1444,8 +1455,8 @@
     "duplicate_proof_ref_rejection_count": 0,
     "duplicate_source_location_rejection_count": 0,
     "intake_guard_ready": true,
-    "negative_control_count": 57,
-    "negative_control_detected_count": 57,
+    "negative_control_count": 58,
+    "negative_control_detected_count": 58,
     "no_tick_pair_failure_count": 0,
     "no_tick_pair_integrity_count": 0,
     "pending_slot_count": 35,

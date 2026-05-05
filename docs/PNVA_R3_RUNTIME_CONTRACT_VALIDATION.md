@@ -41,10 +41,10 @@ action_contract_count: 3
 required_runtime_event_count: 70
 event_template_count: 6
 mandatory_field_count: 28
-negative_control_detected_count: 57
+negative_control_detected_count: 58
 positive_control_passed_count: 6
-enforced_control_count: 54
-contract_check_count: 295
+enforced_control_count: 55
+contract_check_count: 299
 failure_count: 0
 ```
 
@@ -61,7 +61,7 @@ runtime approval remains false
 70 required runtime events remain paired
 6 templates remain two per action contract
 28 mandatory runtime fields are present
-57 negative controls are detected
+58 negative controls are detected
 6 positive controls are accepted as fixture-only guard controls
 guard enforced controls match the runtime contract
 contract slot IDs cover the matrix
@@ -96,7 +96,7 @@ proof_hash must bind to the event identity and source-location payload
 proof_hash and proof_ref values must be unique in the runtime stream
 proof_ref must match runtime:<slot-id>:<role>
 entity_type must be present and match the capture slot
-heuristic rules must be known and unique
+heuristic rules must be known, non-legacy and unique
 risk_flags must be lists, known, unique and present on prechecks and commits when the slot declares target risk
 precheck and commit must share causal_chain_id
 causal_chain_id must not be reused across different slots
