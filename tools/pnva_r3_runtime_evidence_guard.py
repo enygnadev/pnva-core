@@ -440,11 +440,13 @@ def _event_codes(event: dict[str, Any], slot: dict[str, Any]) -> list[str]:
 def _pair_evidence(prechecks: list[dict[str, Any]], commits: list[dict[str, Any]]) -> dict[str, Any]:
     matching_chain_count = 0
     ordered_pair_count = 0
+    source_line_ordered_pair_count = 0
     shared_chains: set[str] = set()
     exact_cardinality = len(prechecks) == 1 and len(commits) == 1
     for precheck in prechecks:
         precheck_chain = str(precheck.get("causal_chain_id") or "")
         precheck_time = _timestamp_epoch(precheck)
+        precheck_source_line = _source(precheck).get("line")
         for commit in commits:
             commit_chain = str(commit.get("causal_chain_id") or "")
             if not precheck_chain or precheck_chain != commit_chain:
@@ -454,23 +456,35 @@ def _pair_evidence(prechecks: list[dict[str, Any]], commits: list[dict[str, Any]
             commit_time = _timestamp_epoch(commit)
             if precheck_time is not None and commit_time is not None and commit_time >= precheck_time:
                 ordered_pair_count += 1
+            commit_source_line = _source(commit).get("line")
+            if (
+                isinstance(precheck_source_line, int)
+                and not isinstance(precheck_source_line, bool)
+                and isinstance(commit_source_line, int)
+                and not isinstance(commit_source_line, bool)
+                and commit_source_line > precheck_source_line
+            ):
+                source_line_ordered_pair_count += 1
 
     if not exact_cardinality and prechecks and commits:
         reason = "NO_TICK_PAIR_CARDINALITY_INVALID"
-    elif ordered_pair_count > 0:
+    elif ordered_pair_count > 0 and source_line_ordered_pair_count > 0:
         reason = ""
     elif prechecks and commits and not shared_chains:
         reason = "NO_TICK_PAIR_CAUSAL_CHAIN_MISMATCH"
+    elif ordered_pair_count > 0 and source_line_ordered_pair_count == 0:
+        reason = "NO_TICK_PAIR_SOURCE_LINE_ORDER_INVALID"
     elif prechecks and commits:
         reason = "NO_TICK_PAIR_ORDER_INVALID"
     else:
         reason = "NO_TICK_PAIR_INCOMPLETE"
 
     return {
-        "valid": exact_cardinality and ordered_pair_count > 0,
+        "valid": exact_cardinality and ordered_pair_count > 0 and source_line_ordered_pair_count > 0,
         "exact_cardinality": exact_cardinality,
         "matching_chain_count": matching_chain_count,
         "ordered_pair_count": ordered_pair_count,
+        "source_line_ordered_pair_count": source_line_ordered_pair_count,
         "shared_causal_chain_count": len(shared_chains),
         "failure_reason": reason,
     }
@@ -576,6 +590,7 @@ def _validate_runtime_events(matrix: dict[str, Any], events: list[dict[str, Any]
                 "exact_no_tick_pair_cardinality": pair["exact_cardinality"],
                 "matching_causal_chain_pair_count": pair["matching_chain_count"],
                 "ordered_no_tick_pair_count": pair["ordered_pair_count"],
+                "source_line_ordered_no_tick_pair_count": pair["source_line_ordered_pair_count"],
                 "shared_causal_chain_count": pair["shared_causal_chain_count"],
                 "pair_failure_reason": pair["failure_reason"],
             }
@@ -788,6 +803,14 @@ def _negative_controls(matrix: dict[str, Any]) -> dict[str, Any]:
     rebind_proof_hash(order_commit)
     run_stream_control("reject_commit_before_precheck", [order_precheck, order_commit], "NO_TICK_PAIR_ORDER_INVALID")
 
+    line_precheck = _sample_event(slot, role="precheck", control="source_line_order")
+    line_commit = _sample_event(slot, role="commit", control="source_line_order")
+    line_precheck["source"]["line"] = 20
+    line_commit["source"]["line"] = 10
+    rebind_proof_hash(line_precheck)
+    rebind_proof_hash(line_commit)
+    run_stream_control("reject_commit_source_line_before_precheck", [line_precheck, line_commit], "NO_TICK_PAIR_SOURCE_LINE_ORDER_INVALID")
+
     detected_count = sum(1 for item in controls if item["detected"])
     return {
         "negative_control_count": len(controls),
@@ -941,6 +964,7 @@ def build_report(repo: Path, runtime_events_path: Path | None = None) -> dict[st
             "commit_state_after_required": COMMIT_STATE_AFTER,
             "no_tick_pair_causal_chain_required": True,
             "no_tick_pair_commit_after_precheck_required": True,
+            "no_tick_pair_source_line_order_required": True,
             "no_tick_pair_exactly_one_precheck_commit_required": True,
             "runtime_event_count_exact_required": True,
             "commit_must_match_slot_action": True,
@@ -988,20 +1012,21 @@ def build_report(repo: Path, runtime_events_path: Path | None = None) -> dict[st
         },
         "interpretation": {
             "purpose": "Protect the R3 runtime intake boundary before fresh events are accepted as legacy-free evidence.",
-            "sovereignty": "PNVA becomes harder to fake when projected proofs, malformed, duplicated or content-unbound proof hashes, wrong proof-ref slot roles, wrong event types, wrong decision reasons, wrong role state transitions, malformed or inconsistent tension values, invalid gate signs, duplicate events, entity or slot mismatches, missing source location, unsanitized sources, unknown heuristic rules, invalid risk flags, weak authority, missing target rules, missing precheck or commit target risk flags, extra runtime events and causally broken no-tick pairs are rejected before cutover.",
+            "sovereignty": "PNVA becomes harder to fake when projected proofs, malformed, duplicated or content-unbound proof hashes, wrong proof-ref slot roles, wrong event types, wrong decision reasons, wrong role state transitions, malformed or inconsistent tension values, invalid gate signs, duplicate events, entity or slot mismatches, missing or reversed source location order, unsanitized sources, unknown heuristic rules, invalid risk flags, weak authority, missing target rules, missing precheck or commit target risk flags, extra runtime events and causally broken no-tick pairs are rejected before cutover.",
             "boundary": "Without a runtime-events file this guard certifies the intake contract only; it does not claim final runtime completion.",
         },
         "recommendations": [
             "Feed fresh runtime JSONL through this guard before rerunning R3 cutover approval.",
             "Reject any event with proof.projection=true in final runtime evidence.",
             "Reject any event with non-finite tension values, entity mismatch, slot mismatch or original-event mismatch.",
-            "Require every slot to contain exactly one native no-tick precheck and exactly one H2+ commit in the same causal_chain_id, with commit timestamp at or after precheck timestamp.",
+            "Require every slot to contain exactly one native no-tick precheck and exactly one H2+ commit in the same causal_chain_id, with commit timestamp and source.line after the precheck.",
             "Require the runtime event count to equal the declared R3 requirement instead of allowing extra events.",
             "Require precheck and commit event_type values to match the capture slot contract.",
             "Require decision.reason to distinguish native no-tick prechecks from native runtime commits.",
             "Require field.state_after to prove no-tick precheck suppression and commit completion.",
             "Reject duplicate event_id, proof_hash and proof_ref values before accepting runtime coverage.",
             "Reject runtime events whose proof_hash does not bind to the canonical event identity and source-location payload.",
+            "Reject no-tick pairs whose commit source.line does not follow the precheck source.line.",
             "Require proof_ref to match runtime:<slot-id>:precheck or runtime:<slot-id>:commit.",
             "Require gate_delta to equal score minus threshold, with nonpositive prechecks and nonnegative commits.",
             "Reject unknown or duplicated heuristic rules before accepting runtime coverage.",

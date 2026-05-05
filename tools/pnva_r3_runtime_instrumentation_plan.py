@@ -106,6 +106,7 @@ def _action_contracts(slots: list[dict[str, Any]]) -> list[dict[str, Any]]:
                     "duplicate_event_id_forbidden": True,
                     "same_causal_chain_id_required": True,
                     "commit_timestamp_after_precheck_required": True,
+                    "commit_source_line_after_precheck_required": True,
                     "exactly_one_precheck_per_slot_required": True,
                     "exactly_one_commit_per_slot_required": True,
                     "runtime_event_count_must_equal_required": True,
@@ -321,6 +322,7 @@ def build_report(repo: Path) -> dict[str, Any]:
             "Emit original_event_id in tension.components so each runtime event maps back to a capture slot.",
             "Emit fixed decision.reason values so no-tick prechecks and runtime commits remain semantically distinct.",
             "Emit fixed field.state_after values so prechecks prove suppression and commits prove completion.",
+            "Emit source.line as a monotonic runtime sequence so each commit follows its no-tick precheck physically in the log.",
             "Run the runtime evidence guard before replay, policy, no-tick and proof-chain validators.",
         ],
     }

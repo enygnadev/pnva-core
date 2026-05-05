@@ -49,8 +49,8 @@ duplicate_proof_hash_rejection_count: 0
 duplicate_proof_ref_rejection_count: 0
 no_tick_pair_integrity_count: 0
 no_tick_pair_failure_count: 0
-negative_control_detected_count: 50
-negative_control_count: 50
+negative_control_detected_count: 51
+negative_control_count: 51
 positive_control_passed_count: 6
 positive_control_count: 6
 positive_controls_fixture_only: true
@@ -92,6 +92,7 @@ R3 runtime slot mismatch
 entity mismatch
 precheck and commit without shared causal_chain_id
 commit timestamp before precheck timestamp
+commit source.line before or equal to precheck source.line
 commit authority below H2
 commit action mismatch
 precheck decision.reason mismatch
@@ -113,6 +114,7 @@ Every R3 slot must contain:
 1 native collapse commit event
 same causal_chain_id
 commit timestamp >= precheck timestamp
+commit source.line > precheck source.line
 unique event_id values
 unique proof_hash values
 unique proof_ref values
@@ -188,6 +190,7 @@ reject_duplicate_proof_hash
 reject_duplicate_proof_ref
 reject_no_tick_pair_chain_mismatch
 reject_commit_before_precheck
+reject_commit_source_line_before_precheck
 reject_invalid_risk_flags
 reject_duplicate_risk_flag
 reject_unknown_risk_flag
@@ -198,7 +201,7 @@ reject_precheck_missing_target_risk_flags
 Current result:
 
 ```text
-50/50 detected
+51/51 detected
 ```
 
 ## Positive Controls
@@ -240,7 +243,7 @@ R3_RUNTIME_INSTRUMENTATION_PLAN_READY
 6 event templates
 70 required runtime events
 28 mandatory event fields
-50 negative controls
+51 negative controls
 6 positive controls
 ```
 

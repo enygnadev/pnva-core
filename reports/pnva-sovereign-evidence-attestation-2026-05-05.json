@@ -355,8 +355,8 @@
       "present": true,
       "reported_pass": true,
       "required": true,
-      "sha256": "9d35c8bb819cacb42fa0439b4a82920bbd4e470830055dfd751f987420676446",
-      "size_bytes": 41740
+      "sha256": "dfdb922639c8b9a0e98c274f7a9985a8a9615576534fda5b1380a5995e71ab48",
+      "size_bytes": 43970
     },
     {
       "classification": "R3_RUNTIME_INSTRUMENTATION_PLAN_READY",
@@ -368,8 +368,8 @@
       "present": true,
       "reported_pass": true,
       "required": true,
-      "sha256": "f32e70f85de0ac5bd89db8d8ebcb35df3532f8f1ffb86ccd3558fd326423b274",
-      "size_bytes": 21853
+      "sha256": "057ad788c02b030d115857629db28c05dec77b54cc8f9baf1eb091a72a3d4abb",
+      "size_bytes": 22156
     },
     {
       "classification": "R3_RUNTIME_CONTRACT_VALIDATED_READY",
@@ -381,8 +381,8 @@
       "present": true,
       "reported_pass": true,
       "required": true,
-      "sha256": "ebafa4c15c11cab8f0879f1c1e9059c23cb7ef5d8e81000840f6da329fea11c3",
-      "size_bytes": 93751
+      "sha256": "34ba208e8ad2ab51a1a871a6e8741618b4800666697eaa17ff8169cd8fa1194f",
+      "size_bytes": 95109
     },
     {
       "classification": "PNVA_SOVEREIGN_EVOLUTION_LEDGER_READY_R3_RUNTIME_REQUIRED",
@@ -394,7 +394,7 @@
       "present": true,
       "reported_pass": true,
       "required": true,
-      "sha256": "52b3cbc9668ede0de3b756e18345bc7f7c9e1e03e2914f59a285d6c11d4f9c46",
+      "sha256": "4ca8a0aabeff5c3cb3541c2b5bececfaf39de74641393192341e330ce2c6bcfa",
       "size_bytes": 9641
     },
     {
@@ -558,9 +558,9 @@
     "entity and heuristic maturity",
     "sovereign audit consumes this attestation without being part of its hash seed"
   ],
-  "evidence_hash": "sha256:8319e7ae5eba4e3dcc546f2c92684ec75580a213564ee8bbbedf7d30fbfe31f6",
+  "evidence_hash": "sha256:fb20233e0d62b835c5023dad3dc0d1586319e479fcbe526f1df3cea8533d570d",
   "failure_count": 0,
-  "generated_at": "2026-05-05T13:09:09Z",
+  "generated_at": "2026-05-05T13:19:21Z",
   "interpretation": {
     "boundary": "This attests repository evidence integrity; it is not a universal proof of all possible PNVA deployments.",
     "hash_policy": "The evidence_hash changes when any tracked artifact hash, classification or pass flag changes.",

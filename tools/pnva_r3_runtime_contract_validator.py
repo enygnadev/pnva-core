@@ -92,6 +92,7 @@ REQUIRED_ENFORCED_CONTROLS = {
     "commit_state_after_required": COMMIT_STATE_AFTER,
     "no_tick_pair_causal_chain_required": True,
     "no_tick_pair_commit_after_precheck_required": True,
+    "no_tick_pair_source_line_order_required": True,
     "no_tick_pair_exactly_one_precheck_commit_required": True,
     "runtime_event_count_exact_required": True,
     "commit_must_match_slot_action": True,
@@ -196,6 +197,7 @@ def _template_checks(checks: list[dict[str, Any]], contract: dict[str, Any]) -> 
     _add_check(checks, "pairing", f"{contract_id}_duplicate_event_id_forbidden", pairing.get("duplicate_event_id_forbidden"), True)
     _add_check(checks, "pairing", f"{contract_id}_same_causal_chain_id_required", pairing.get("same_causal_chain_id_required"), True)
     _add_check(checks, "pairing", f"{contract_id}_commit_timestamp_after_precheck_required", pairing.get("commit_timestamp_after_precheck_required"), True)
+    _add_check(checks, "pairing", f"{contract_id}_commit_source_line_after_precheck_required", pairing.get("commit_source_line_after_precheck_required"), True)
     _add_check(checks, "pairing", f"{contract_id}_exactly_one_precheck_per_slot", pairing.get("exactly_one_precheck_per_slot_required"), True)
     _add_check(checks, "pairing", f"{contract_id}_exactly_one_commit_per_slot", pairing.get("exactly_one_commit_per_slot_required"), True)
     _add_check(checks, "pairing", f"{contract_id}_runtime_event_count_exact", pairing.get("runtime_event_count_must_equal_required"), True)
