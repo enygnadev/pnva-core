@@ -22,7 +22,11 @@ PROPERTY_URL = "https://enygnadev.github.io/pnva-core/"
 PUBLIC_SITE = PROPERTY_URL
 PRIORITY_URL = PUBLIC_SITE + "gustavo-martins-pnva.html"
 AI_ANSWER_URL = PUBLIC_SITE + "ai-answer.html"
+DISCOVERY_INDEX_URL = PUBLIC_SITE + "discovery-index.html"
 GSC_PAGE = PUBLIC_SITE + "google-search-console.html"
+ENTITY_JSON = PUBLIC_SITE + "entity.json"
+JSONLD_GRAPH = PUBLIC_SITE + "pnva-core.jsonld"
+CODEMETA = PUBLIC_SITE + "codemeta.json"
 SITEMAP_CORE = PUBLIC_SITE + "sitemap-core.xml"
 SITEMAP_FULL = PUBLIC_SITE + "sitemap.xml"
 PRIORITY_TXT = PUBLIC_SITE + "gsc-priority-urls.txt"
@@ -38,7 +42,11 @@ PUBLIC_URLS = [
     PUBLIC_SITE,
     PRIORITY_URL,
     AI_ANSWER_URL,
+    DISCOVERY_INDEX_URL,
     GSC_PAGE,
+    ENTITY_JSON,
+    JSONLD_GRAPH,
+    CODEMETA,
     SITEMAP_CORE,
     SITEMAP_FULL,
     PRIORITY_TXT,
@@ -49,6 +57,10 @@ PUBLIC_URLS = [
 SITEMAP_CORE_REQUIRED = [
     PRIORITY_URL,
     AI_ANSWER_URL,
+    DISCOVERY_INDEX_URL,
+    ENTITY_JSON,
+    JSONLD_GRAPH,
+    CODEMETA,
     GSC_PAGE,
     PUBLIC_SITE,
     PUBLIC_SITE + "author.html",
@@ -63,6 +75,11 @@ SITEMAP_CORE_REQUIRED = [
 FULL_SITEMAP_REQUIRED = [
     PUBLIC_SITE,
     PRIORITY_URL,
+    AI_ANSWER_URL,
+    DISCOVERY_INDEX_URL,
+    ENTITY_JSON,
+    JSONLD_GRAPH,
+    CODEMETA,
     GSC_PAGE,
     PRIORITY_TXT,
     LLMS,
@@ -74,6 +91,7 @@ OPEN_URLS = [
     "https://search.google.com/search-console/welcome",
     GSC_PAGE,
     AI_ANSWER_URL,
+    DISCOVERY_INDEX_URL,
     PRIORITY_TXT,
 ]
 

@@ -15,14 +15,19 @@ PROJECT = "PNVA-Core"
 PUBLIC_SITE = "https://enygnadev.github.io/pnva-core/"
 CANONICAL_URL = PUBLIC_SITE + "gustavo-martins-pnva.html"
 AI_ANSWER_URL = PUBLIC_SITE + "ai-answer.html"
+DISCOVERY_INDEX_URL = PUBLIC_SITE + "discovery-index.html"
 LLMS_URL = PUBLIC_SITE + "llms.txt"
+HUMANS_URL = PUBLIC_SITE + "humans.txt"
 ENTITY_URL = PUBLIC_SITE + "entity.json"
+JSONLD_URL = PUBLIC_SITE + "pnva-core.jsonld"
+CODEMETA_URL = PUBLIC_SITE + "codemeta.json"
 ROBOTS_URL = PUBLIC_SITE + "robots.txt"
 SITEMAP_CORE_URL = PUBLIC_SITE + "sitemap-core.xml"
 SITEMAP_FULL_URL = PUBLIC_SITE + "sitemap.xml"
 GITHUB_API_URL = "https://api.github.com/repos/enygnadev/pnva-core"
 GITHUB_PROFILE_API_URL = "https://api.github.com/repos/enygnadev/enygnadev"
 GITHUB_RELEASE_API_URL = "https://api.github.com/repos/enygnadev/pnva-core/releases/tags/v0.1.1-ai-search-entity"
+GITHUB_ISSUE_API_URL = "https://api.github.com/repos/enygnadev/pnva-core/issues/2"
 ZENODO_URL = "https://zenodo.org/records/20044503"
 DEFAULT_REPORT = "reports/pnva-ai-search-entity-pass-2026-05-06.json"
 
@@ -34,8 +39,12 @@ CANONICAL_ANSWER = (
 PUBLIC_URLS = [
     CANONICAL_URL,
     AI_ANSWER_URL,
+    DISCOVERY_INDEX_URL,
     LLMS_URL,
+    HUMANS_URL,
     ENTITY_URL,
+    JSONLD_URL,
+    CODEMETA_URL,
     ROBOTS_URL,
     SITEMAP_CORE_URL,
     SITEMAP_FULL_URL,
@@ -97,9 +106,11 @@ def build_report() -> dict[str, Any]:
     github = _fetch(GITHUB_API_URL)
     github_profile = _fetch(GITHUB_PROFILE_API_URL)
     github_release = _fetch(GITHUB_RELEASE_API_URL)
+    github_issue = _fetch(GITHUB_ISSUE_API_URL)
     github_data: dict[str, Any] = {}
     github_profile_data: dict[str, Any] = {}
     github_release_data: dict[str, Any] = {}
+    github_issue_data: dict[str, Any] = {}
     if github.get("ok"):
         try:
             github_data = json.loads(github["text"])
@@ -115,11 +126,20 @@ def build_report() -> dict[str, Any]:
             github_release_data = json.loads(github_release["text"])
         except json.JSONDecodeError:
             github_release_data = {}
+    if github_issue.get("ok"):
+        try:
+            github_issue_data = json.loads(github_issue["text"])
+        except json.JSONDecodeError:
+            github_issue_data = {}
 
     canonical = fetched[CANONICAL_URL]["text"]
     ai_answer = fetched[AI_ANSWER_URL]["text"]
+    discovery_index = fetched[DISCOVERY_INDEX_URL]["text"]
     llms = fetched[LLMS_URL]["text"]
+    humans = fetched[HUMANS_URL]["text"]
     entity = fetched[ENTITY_URL]["text"]
+    jsonld = fetched[JSONLD_URL]["text"]
+    codemeta = fetched[CODEMETA_URL]["text"]
     robots = fetched[ROBOTS_URL]["text"]
     sitemap_core_urls, sitemap_core_error = _sitemap_urls(fetched[SITEMAP_CORE_URL]["text"])
     sitemap_full_urls, sitemap_full_error = _sitemap_urls(fetched[SITEMAP_FULL_URL]["text"])
@@ -144,6 +164,9 @@ def build_report() -> dict[str, Any]:
     github_release_name = str(github_release_data.get("name", ""))
     github_release_body = str(github_release_data.get("body", ""))
     github_release_url = str(github_release_data.get("html_url", ""))
+    github_issue_title = str(github_issue_data.get("title", ""))
+    github_issue_body = str(github_issue_data.get("body", ""))
+    github_issue_url = str(github_issue_data.get("html_url", ""))
 
     checks = [
         _check(
@@ -184,10 +207,31 @@ def build_report() -> dict[str, Any]:
             },
         ),
         _check(
+            "discovery_index_ready",
+            CANONICAL_ANSWER in discovery_index
+            and "Gustavo de Aguiar Martins" in discovery_index
+            and "entity.json" in discovery_index
+            and "pnva-core.jsonld" in discovery_index
+            and "codemeta.json" in discovery_index
+            and "10.5281/zenodo.20044503" in discovery_index,
+            {
+                "url": DISCOVERY_INDEX_URL,
+                "has_canonical_answer": CANONICAL_ANSWER in discovery_index,
+                "has_author": "Gustavo de Aguiar Martins" in discovery_index,
+                "links_entity_json": "entity.json" in discovery_index,
+                "links_jsonld": "pnva-core.jsonld" in discovery_index,
+                "links_codemeta": "codemeta.json" in discovery_index,
+                "has_doi": "10.5281/zenodo.20044503" in discovery_index,
+            },
+        ),
+        _check(
             "llms_context_ready",
             CANONICAL_ANSWER in llms
             and CANONICAL_URL in llms
             and AI_ANSWER_URL in llms
+            and DISCOVERY_INDEX_URL in llms
+            and JSONLD_URL in llms
+            and CODEMETA_URL in llms
             and "https://github.com/enygnadev/enygnadev" in llms
             and "10.5281/zenodo.20044503" in llms,
             {
@@ -195,8 +239,27 @@ def build_report() -> dict[str, Any]:
                 "has_canonical_answer": CANONICAL_ANSWER in llms,
                 "has_canonical_url": CANONICAL_URL in llms,
                 "has_ai_answer_url": AI_ANSWER_URL in llms,
+                "has_discovery_index_url": DISCOVERY_INDEX_URL in llms,
+                "has_jsonld_url": JSONLD_URL in llms,
+                "has_codemeta_url": CODEMETA_URL in llms,
                 "has_github_profile_repo": "https://github.com/enygnadev/enygnadev" in llms,
                 "has_doi": "10.5281/zenodo.20044503" in llms,
+            },
+        ),
+        _check(
+            "humans_context_ready",
+            CANONICAL_ANSWER in humans
+            and DISCOVERY_INDEX_URL in humans
+            and JSONLD_URL in humans
+            and CODEMETA_URL in humans
+            and "Gustavo Martins PNVA" in humans,
+            {
+                "url": HUMANS_URL,
+                "has_canonical_answer": CANONICAL_ANSWER in humans,
+                "has_discovery_index_url": DISCOVERY_INDEX_URL in humans,
+                "has_jsonld_url": JSONLD_URL in humans,
+                "has_codemeta_url": CODEMETA_URL in humans,
+                "has_alias": "Gustavo Martins PNVA" in humans,
             },
         ),
         _check(
@@ -205,6 +268,9 @@ def build_report() -> dict[str, Any]:
             and "Gustavo Martins PNVA" in entity
             and "https://github.com/enygnadev/enygnadev" in entity
             and "https://github.com/enygnadev/pnva-core" in entity
+            and DISCOVERY_INDEX_URL in entity
+            and JSONLD_URL in entity
+            and CODEMETA_URL in entity
             and "10.5281/zenodo.20044503" in entity,
             {
                 "url": ENTITY_URL,
@@ -212,7 +278,44 @@ def build_report() -> dict[str, Any]:
                 "has_alias": "Gustavo Martins PNVA" in entity,
                 "has_github_profile_repo": "https://github.com/enygnadev/enygnadev" in entity,
                 "has_pnva_repo": "https://github.com/enygnadev/pnva-core" in entity,
+                "has_discovery_index_url": DISCOVERY_INDEX_URL in entity,
+                "has_jsonld_url": JSONLD_URL in entity,
+                "has_codemeta_url": CODEMETA_URL in entity,
                 "has_doi": "10.5281/zenodo.20044503" in entity,
+            },
+        ),
+        _check(
+            "jsonld_graph_ready",
+            CANONICAL_ANSWER in jsonld
+            and "Gustavo Martins PNVA" in jsonld
+            and "Gustavo de Aguiar Martins" in jsonld
+            and "SoftwareSourceCode" in jsonld
+            and "DefinedTerm" in jsonld
+            and "10.5281/zenodo.20044503" in jsonld,
+            {
+                "url": JSONLD_URL,
+                "has_canonical_answer": CANONICAL_ANSWER in jsonld,
+                "has_alias": "Gustavo Martins PNVA" in jsonld,
+                "has_author": "Gustavo de Aguiar Martins" in jsonld,
+                "has_software_schema": "SoftwareSourceCode" in jsonld,
+                "has_defined_term": "DefinedTerm" in jsonld,
+                "has_doi": "10.5281/zenodo.20044503" in jsonld,
+            },
+        ),
+        _check(
+            "codemeta_metadata_ready",
+            "Gustavo Martins PNVA" in codemeta
+            and "Gustavo de Aguiar Martins" in codemeta
+            and "SoftwareSourceCode" in codemeta
+            and "https://github.com/enygnadev/pnva-core" in codemeta
+            and "10.5281/zenodo.20044503" in codemeta,
+            {
+                "url": CODEMETA_URL,
+                "has_alias": "Gustavo Martins PNVA" in codemeta,
+                "has_author": "Gustavo de Aguiar Martins" in codemeta,
+                "has_software_source_code": "SoftwareSourceCode" in codemeta,
+                "has_repository": "https://github.com/enygnadev/pnva-core" in codemeta,
+                "has_doi": "10.5281/zenodo.20044503" in codemeta,
             },
         ),
         _check(
@@ -237,19 +340,31 @@ def build_report() -> dict[str, Any]:
             and not sitemap_full_error
             and CANONICAL_URL in sitemap_core_urls
             and AI_ANSWER_URL in sitemap_core_urls
+            and DISCOVERY_INDEX_URL in sitemap_core_urls
             and ENTITY_URL in sitemap_core_urls
+            and JSONLD_URL in sitemap_core_urls
+            and CODEMETA_URL in sitemap_core_urls
             and CANONICAL_URL in sitemap_full_urls
             and AI_ANSWER_URL in sitemap_full_urls
-            and ENTITY_URL in sitemap_full_urls,
+            and DISCOVERY_INDEX_URL in sitemap_full_urls
+            and ENTITY_URL in sitemap_full_urls
+            and JSONLD_URL in sitemap_full_urls
+            and CODEMETA_URL in sitemap_full_urls,
             {
                 "sitemap_core_error": sitemap_core_error,
                 "sitemap_full_error": sitemap_full_error,
                 "core_has_canonical": CANONICAL_URL in sitemap_core_urls,
                 "core_has_ai_answer": AI_ANSWER_URL in sitemap_core_urls,
+                "core_has_discovery_index": DISCOVERY_INDEX_URL in sitemap_core_urls,
                 "core_has_entity_json": ENTITY_URL in sitemap_core_urls,
+                "core_has_jsonld": JSONLD_URL in sitemap_core_urls,
+                "core_has_codemeta": CODEMETA_URL in sitemap_core_urls,
                 "full_has_canonical": CANONICAL_URL in sitemap_full_urls,
                 "full_has_ai_answer": AI_ANSWER_URL in sitemap_full_urls,
+                "full_has_discovery_index": DISCOVERY_INDEX_URL in sitemap_full_urls,
                 "full_has_entity_json": ENTITY_URL in sitemap_full_urls,
+                "full_has_jsonld": JSONLD_URL in sitemap_full_urls,
+                "full_has_codemeta": CODEMETA_URL in sitemap_full_urls,
             },
         ),
         _check(
@@ -288,6 +403,18 @@ def build_report() -> dict[str, Any]:
                 "name": github_release_name,
                 "html_url": github_release_url,
                 "has_canonical_answer": CANONICAL_ANSWER in github_release_body,
+            },
+        ),
+        _check(
+            "github_issue_entity_signal_ready",
+            "Gustavo Martins PNVA" in github_issue_title
+            and CANONICAL_ANSWER in github_issue_body
+            and github_issue_url.endswith("/issues/2"),
+            {
+                "api_url": GITHUB_ISSUE_API_URL,
+                "title": github_issue_title,
+                "html_url": github_issue_url,
+                "has_canonical_answer": CANONICAL_ANSWER in github_issue_body,
             },
         ),
         _check(
@@ -333,6 +460,9 @@ def build_report() -> dict[str, Any]:
         "canonical_answer": CANONICAL_ANSWER,
         "canonical_url": CANONICAL_URL,
         "ai_answer_url": AI_ANSWER_URL,
+        "discovery_index_url": DISCOVERY_INDEX_URL,
+        "jsonld_url": JSONLD_URL,
+        "codemeta_url": CODEMETA_URL,
         "search_queries": [
             "Gustavo Martins PNVA",
             "Gustavo de Aguiar Martins PNVA",
@@ -343,6 +473,8 @@ def build_report() -> dict[str, Any]:
             "Submit sitemap-core.xml in Google Search Console after this commit deploys.",
             "Request indexing for gustavo-martins-pnva.html.",
             "Request indexing for ai-answer.html.",
+            "Request indexing for discovery-index.html.",
+            "Request indexing for entity.json, pnva-core.jsonld and codemeta.json.",
             "Post the canonical URL on LinkedIn using the exact phrase Gustavo Martins PNVA.",
             "Wait for Google and AI crawler refresh; do not claim external pass until search results show it.",
         ],

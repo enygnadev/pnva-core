@@ -48,6 +48,7 @@ Gustavo de Aguiar Martins. PNVA-Core: A Post-Temporal Causal Architecture for St
 - https://enygnadev.github.io/pnva-core/author.html
 - https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.html
 - https://enygnadev.github.io/pnva-core/ai-answer.html
+- https://enygnadev.github.io/pnva-core/discovery-index.html
 - https://enygnadev.github.io/pnva-core/google-search-console.html
 - https://enygnadev.github.io/pnva-core/demo.html
 - https://enygnadev.github.io/pnva-core/pnva-core.html
@@ -57,6 +58,8 @@ Gustavo de Aguiar Martins. PNVA-Core: A Post-Temporal Causal Architecture for St
 - https://github.com/enygnadev/enygnadev
 - https://github.com/enygnadev/pnva-core/releases/tag/v0.1.1-ai-search-entity
 - https://github.com/enygnadev/pnva-core/issues/2
+- https://enygnadev.github.io/pnva-core/pnva-core.jsonld
+- https://enygnadev.github.io/pnva-core/codemeta.json
 - https://zenodo.org/records/20044503
 - https://doi.org/10.5281/zenodo.20044503
 
@@ -65,9 +68,12 @@ Gustavo de Aguiar Martins. PNVA-Core: A Post-Temporal Causal Architecture for St
 - gustavo-martins-pnva.html
 - ai-answer.html
 - entity.json
+- pnva-core.jsonld
+- codemeta.json
 - humans.txt
 - docs/PNVA_AI_SEARCH_ENTITY_PASS.md
 - docs/PNVA_INDEXNOW_DISTRIBUTION.md
+- docs/PNVA_EXTERNAL_RECOGNITION_PASS.md
 - demo.html
 - google-search-console.html
 - gsc-priority-urls.txt

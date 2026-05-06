@@ -1,0 +1,63 @@
+{
+  "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
+  "@type": "SoftwareSourceCode",
+  "name": "PNVA-Core",
+  "alternateName": [
+    "PNVA",
+    "Gustavo Martins PNVA",
+    "Gustavo de Aguiar Martins PNVA",
+    "PNVA no-tick"
+  ],
+  "description": "PNVA-Core is a post-temporal causal no-tick architecture for state/event-oriented computation with auditable proof logs.",
+  "identifier": "https://doi.org/10.5281/zenodo.20044503",
+  "version": "0.1.1-ai-search-entity",
+  "datePublished": "2026-05-05",
+  "codeRepository": "https://github.com/enygnadev/pnva-core",
+  "url": "https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.html",
+  "issueTracker": "https://github.com/enygnadev/pnva-core/issues",
+  "license": "https://spdx.org/licenses/MIT.html",
+  "programmingLanguage": [
+    "Python",
+    "HTML",
+    "JSON",
+    "Markdown"
+  ],
+  "keywords": [
+    "Gustavo Martins PNVA",
+    "Gustavo de Aguiar Martins PNVA",
+    "PNVA-Core",
+    "PNVA no-tick",
+    "causal computing",
+    "state/event-oriented computation",
+    "event-aware runtime",
+    "proof logs",
+    "Veon"
+  ],
+  "author": [
+    {
+      "@type": "Person",
+      "givenName": "Gustavo",
+      "familyName": "de Aguiar Martins",
+      "name": "Gustavo de Aguiar Martins",
+      "alternateName": [
+        "Gustavo Martins",
+        "Gustavo Martins PNVA",
+        "Gustavo de Aguiar Martins PNVA"
+      ],
+      "url": "https://github.com/enygnadev",
+      "sameAs": [
+        "https://github.com/enygnadev",
+        "https://github.com/enygnadev/enygnadev",
+        "https://zenodo.org/records/20044503",
+        "https://doi.org/10.5281/zenodo.20044503"
+      ]
+    }
+  ],
+  "creator": [
+    "Gustavo de Aguiar Martins"
+  ],
+  "citation": "Gustavo de Aguiar Martins. PNVA-Core: A Post-Temporal Causal Architecture for State/Event-Oriented Computation. Open Research / Production Evidence Edition, 2026. DOI: 10.5281/zenodo.20044503.",
+  "referencePublication": "https://doi.org/10.5281/zenodo.20044503",
+  "developmentStatus": "active",
+  "applicationCategory": "Causal computing architecture"
+}

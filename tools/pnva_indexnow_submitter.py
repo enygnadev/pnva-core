@@ -23,12 +23,16 @@ URLS = [
     f"{SITE_ROOT}/",
     f"{SITE_ROOT}/gustavo-martins-pnva.html",
     f"{SITE_ROOT}/ai-answer.html",
+    f"{SITE_ROOT}/discovery-index.html",
     f"{SITE_ROOT}/entity.json",
+    f"{SITE_ROOT}/pnva-core.jsonld",
+    f"{SITE_ROOT}/codemeta.json",
     f"{SITE_ROOT}/llms.txt",
     f"{SITE_ROOT}/humans.txt",
     f"{SITE_ROOT}/sitemap-core.xml",
     f"{SITE_ROOT}/google-search-console.html",
     f"{SITE_ROOT}/docs/PNVA_AI_SEARCH_ENTITY_PASS.md",
+    f"{SITE_ROOT}/docs/PNVA_EXTERNAL_RECOGNITION_PASS.md",
     f"{SITE_ROOT}/reports/pnva-ai-search-entity-pass-2026-05-06.json",
 ]
 

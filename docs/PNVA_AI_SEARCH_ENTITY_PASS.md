@@ -25,6 +25,9 @@ Site: https://enygnadev.github.io/pnva-core/
 Canonical entity page: https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.html
 AI answer card: https://enygnadev.github.io/pnva-core/ai-answer.html
 Entity JSON: https://enygnadev.github.io/pnva-core/entity.json
+Discovery index: https://enygnadev.github.io/pnva-core/discovery-index.html
+Schema.org JSON-LD graph: https://enygnadev.github.io/pnva-core/pnva-core.jsonld
+CodeMeta metadata: https://enygnadev.github.io/pnva-core/codemeta.json
 DOI: 10.5281/zenodo.20044503
 Zenodo: https://zenodo.org/records/20044503
 GitHub profile README: https://github.com/enygnadev/enygnadev
@@ -54,10 +57,16 @@ canonical_page_has_entity_answer
 ai_answer_card_ready
 llms_context_ready
 entity_json_ready
+jsonld_graph_ready
+codemeta_metadata_ready
+discovery_index_ready
+humans_context_ready
 crawler_policy_ready
 sitemaps_expose_entity_pages
 github_entity_signal_ready
 github_profile_entity_signal_ready
+github_release_entity_signal_ready
+github_issue_entity_signal_ready
 zenodo_entity_signal_ready
 external_index_boundary_honest
 ```
@@ -88,9 +97,13 @@ Request indexing in this order:
 ```text
 https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.html
 https://enygnadev.github.io/pnva-core/ai-answer.html
+https://enygnadev.github.io/pnva-core/discovery-index.html
 https://enygnadev.github.io/pnva-core/google-search-console.html
 https://enygnadev.github.io/pnva-core/
 https://enygnadev.github.io/pnva-core/llms.txt
+https://enygnadev.github.io/pnva-core/entity.json
+https://enygnadev.github.io/pnva-core/pnva-core.jsonld
+https://enygnadev.github.io/pnva-core/codemeta.json
 ```
 
 ## GPT / AI Crawler Signals
@@ -100,8 +113,12 @@ The repository exposes:
 ```text
 robots.txt with OAI-SearchBot, GPTBot, ChatGPT-User and Googlebot allowed
 llms.txt with canonical answer
+humans.txt with human-readable identity
 ai-answer.html with FAQPage, Person and SoftwareSourceCode JSON-LD
 entity.json with the canonical Person and SoftwareSourceCode graph
+pnva-core.jsonld with a Schema.org graph
+codemeta.json with academic software metadata
+discovery-index.html with all public entity links
 sitemap-core.xml with the canonical entity pages
 GitHub repository description with Gustavo Martins PNVA
 GitHub profile README with Gustavo Martins PNVA

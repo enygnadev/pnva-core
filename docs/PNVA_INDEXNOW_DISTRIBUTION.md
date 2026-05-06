@@ -50,12 +50,16 @@ reports/pnva-indexnow-submission-2026-05-06.json
 https://enygnadev.github.io/pnva-core/
 https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.html
 https://enygnadev.github.io/pnva-core/ai-answer.html
+https://enygnadev.github.io/pnva-core/discovery-index.html
 https://enygnadev.github.io/pnva-core/entity.json
+https://enygnadev.github.io/pnva-core/pnva-core.jsonld
+https://enygnadev.github.io/pnva-core/codemeta.json
 https://enygnadev.github.io/pnva-core/llms.txt
 https://enygnadev.github.io/pnva-core/humans.txt
 https://enygnadev.github.io/pnva-core/sitemap-core.xml
 https://enygnadev.github.io/pnva-core/google-search-console.html
 https://enygnadev.github.io/pnva-core/docs/PNVA_AI_SEARCH_ENTITY_PASS.md
+https://enygnadev.github.io/pnva-core/docs/PNVA_EXTERNAL_RECOGNITION_PASS.md
 https://enygnadev.github.io/pnva-core/reports/pnva-ai-search-entity-pass-2026-05-06.json
 ```
 

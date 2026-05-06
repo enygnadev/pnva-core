@@ -57,6 +57,15 @@ Machine-readable context:
 
 ```text
 https://enygnadev.github.io/pnva-core/llms.txt
+https://enygnadev.github.io/pnva-core/entity.json
+https://enygnadev.github.io/pnva-core/pnva-core.jsonld
+https://enygnadev.github.io/pnva-core/codemeta.json
+```
+
+Discovery index:
+
+```text
+https://enygnadev.github.io/pnva-core/discovery-index.html
 ```
 
 ## Pass Criteria
@@ -67,6 +76,8 @@ The discovery chain is considered publication-ready when:
 exact_match_page_present=true
 sitemap_contains_exact_match_page=true
 robots_allows_search_crawlers=true
+jsonld_graph_ready=true
+codemeta_ready=true
 doi_active=true
 github_pages_published_from_main=true
 search_index_seen=true

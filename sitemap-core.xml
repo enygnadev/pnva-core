@@ -9,6 +9,10 @@
     <lastmod>2026-05-06</lastmod>
   </url>
   <url>
+    <loc>https://enygnadev.github.io/pnva-core/discovery-index.html</loc>
+    <lastmod>2026-05-06</lastmod>
+  </url>
+  <url>
     <loc>https://enygnadev.github.io/pnva-core/google-search-console.html</loc>
     <lastmod>2026-05-06</lastmod>
   </url>
@@ -41,7 +45,19 @@
     <lastmod>2026-05-06</lastmod>
   </url>
   <url>
+    <loc>https://enygnadev.github.io/pnva-core/pnva-core.jsonld</loc>
+    <lastmod>2026-05-06</lastmod>
+  </url>
+  <url>
+    <loc>https://enygnadev.github.io/pnva-core/codemeta.json</loc>
+    <lastmod>2026-05-06</lastmod>
+  </url>
+  <url>
     <loc>https://enygnadev.github.io/pnva-core/humans.txt</loc>
+    <lastmod>2026-05-06</lastmod>
+  </url>
+  <url>
+    <loc>https://enygnadev.github.io/pnva-core/docs/PNVA_EXTERNAL_RECOGNITION_PASS.md</loc>
     <lastmod>2026-05-06</lastmod>
   </url>
   <url>

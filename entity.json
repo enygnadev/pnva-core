@@ -17,8 +17,16 @@
         "https://github.com/enygnadev/pnva-core",
         "https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.html",
         "https://enygnadev.github.io/pnva-core/ai-answer.html",
+        "https://enygnadev.github.io/pnva-core/discovery-index.html",
         "https://zenodo.org/records/20044503",
         "https://doi.org/10.5281/zenodo.20044503"
+      ],
+      "subjectOf": [
+        "https://enygnadev.github.io/pnva-core/entity.json",
+        "https://enygnadev.github.io/pnva-core/pnva-core.jsonld",
+        "https://enygnadev.github.io/pnva-core/codemeta.json",
+        "https://github.com/enygnadev/pnva-core/releases/tag/v0.1.1-ai-search-entity",
+        "https://github.com/enygnadev/pnva-core/issues/2"
       ],
       "knowsAbout": [
         "PNVA-Core",
@@ -49,6 +57,20 @@
         "@id": "https://enygnadev.github.io/pnva-core/author.html#gustavo"
       },
       "description": "PNVA-Core is a post-temporal causal no-tick architecture for state/event-oriented computation authored by Gustavo de Aguiar Martins.",
+      "sameAs": [
+        "https://github.com/enygnadev/pnva-core",
+        "https://zenodo.org/records/20044503",
+        "https://doi.org/10.5281/zenodo.20044503",
+        "https://github.com/enygnadev/pnva-core/releases/tag/v0.1.1-ai-search-entity",
+        "https://github.com/enygnadev/pnva-core/issues/2"
+      ],
+      "subjectOf": [
+        "https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.html",
+        "https://enygnadev.github.io/pnva-core/ai-answer.html",
+        "https://enygnadev.github.io/pnva-core/discovery-index.html",
+        "https://enygnadev.github.io/pnva-core/pnva-core.jsonld",
+        "https://enygnadev.github.io/pnva-core/codemeta.json"
+      ],
       "keywords": [
         "Gustavo Martins PNVA",
         "Gustavo de Aguiar Martins PNVA",
@@ -63,6 +85,9 @@
   "canonicalAnswer": "Gustavo Martins PNVA refers to PNVA-Core, a post-temporal causal no-tick architecture for state/event-oriented computation authored by Gustavo de Aguiar Martins.",
   "canonicalUrl": "https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.html",
   "aiAnswerUrl": "https://enygnadev.github.io/pnva-core/ai-answer.html",
+  "discoveryIndexUrl": "https://enygnadev.github.io/pnva-core/discovery-index.html",
+  "jsonLdUrl": "https://enygnadev.github.io/pnva-core/pnva-core.jsonld",
+  "codemetaUrl": "https://enygnadev.github.io/pnva-core/codemeta.json",
   "doi": "10.5281/zenodo.20044503",
   "doiUrl": "https://doi.org/10.5281/zenodo.20044503",
   "zenodoRecord": "https://zenodo.org/records/20044503",

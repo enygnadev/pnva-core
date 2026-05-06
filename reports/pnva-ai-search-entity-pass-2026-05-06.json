@@ -162,7 +162,7 @@
   "classification": "PNVA_AI_SEARCH_ENTITY_PUBLICATION_READY",
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-05-06T23:34:48Z",
+  "generated_at": "2026-05-06T23:47:19Z",
   "next_external_actions": [
     "Submit sitemap-core.xml in Google Search Console after this commit deploys.",
     "Request indexing for gustavo-martins-pnva.html.",
