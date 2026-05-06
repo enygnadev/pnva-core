@@ -1,0 +1,141 @@
+{
+  "ai_answer_url": "https://enygnadev.github.io/pnva-core/ai-answer.html",
+  "author": "Gustavo de Aguiar Martins",
+  "canonical_answer": "Gustavo Martins PNVA refers to PNVA-Core, a post-temporal causal no-tick architecture for state/event-oriented computation authored by Gustavo de Aguiar Martins.",
+  "canonical_url": "https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.html",
+  "check_count": 9,
+  "checks": [
+    {
+      "evidence": {
+        "checked_url_count": 7,
+        "failures": []
+      },
+      "name": "public_entity_urls_http_200",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "has_author": true,
+        "has_canonical_answer": true,
+        "has_json_ld": true,
+        "has_query_alias": true,
+        "links_ai_answer": true,
+        "url": "https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.html"
+      },
+      "name": "canonical_page_has_entity_answer",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "has_canonical_answer": true,
+        "has_doi": true,
+        "has_faq_schema": true,
+        "has_person_schema": true,
+        "has_software_schema": true,
+        "url": "https://enygnadev.github.io/pnva-core/ai-answer.html"
+      },
+      "name": "ai_answer_card_ready",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "has_ai_answer_url": true,
+        "has_canonical_answer": true,
+        "has_canonical_url": true,
+        "has_doi": true,
+        "url": "https://enygnadev.github.io/pnva-core/llms.txt"
+      },
+      "name": "llms_context_ready",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "has_chatgpt_user": true,
+        "has_googlebot": true,
+        "has_gptbot": true,
+        "has_oai_searchbot": true,
+        "has_sitemap_core": true,
+        "url": "https://enygnadev.github.io/pnva-core/robots.txt"
+      },
+      "name": "crawler_policy_ready",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "core_has_ai_answer": true,
+        "core_has_canonical": true,
+        "full_has_ai_answer": true,
+        "full_has_canonical": true,
+        "sitemap_core_error": "",
+        "sitemap_full_error": ""
+      },
+      "name": "sitemaps_expose_entity_pages",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "api_url": "https://api.github.com/repos/enygnadev/pnva-core",
+        "description": "PNVA-Core by Gustavo de Aguiar Martins (Gustavo Martins PNVA): post-temporal causal no-tick architecture with auditable proof logs.",
+        "homepage": "https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.html",
+        "topics": [
+          "causal-computing",
+          "enygnalab",
+          "enyos",
+          "event-driven",
+          "gustavo-martins-pnva",
+          "no-tick",
+          "pnva",
+          "pnva-core",
+          "proof-logs"
+        ]
+      },
+      "name": "github_entity_signal_ready",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "has_author": true,
+        "has_doi": true,
+        "has_pnva_core": true,
+        "url": "https://zenodo.org/records/20044503"
+      },
+      "name": "zenodo_entity_signal_ready",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "google_indexed_claim": "NOT_CLAIMED_BY_THIS_GATE",
+        "gpt_answer_adoption_claim": "NOT_CLAIMED_BY_THIS_GATE",
+        "manual_queries": [
+          "Gustavo Martins PNVA",
+          "Gustavo de Aguiar Martins PNVA",
+          "PNVA-Core Gustavo Martins",
+          "site:enygnadev.github.io/pnva-core \"Gustavo Martins PNVA\""
+        ],
+        "why": "Google and GPT crawler/index refresh are external systems. This gate proves public readiness and entity consistency only."
+      },
+      "name": "external_index_boundary_honest",
+      "pass": true
+    }
+  ],
+  "classification": "PNVA_AI_SEARCH_ENTITY_PUBLICATION_READY",
+  "failure_count": 0,
+  "failures": [],
+  "generated_at": "2026-05-06T23:21:28Z",
+  "next_external_actions": [
+    "Submit sitemap-core.xml in Google Search Console after this commit deploys.",
+    "Request indexing for gustavo-martins-pnva.html.",
+    "Request indexing for ai-answer.html.",
+    "Post the canonical URL on LinkedIn using the exact phrase Gustavo Martins PNVA.",
+    "Wait for Google and AI crawler refresh; do not claim external pass until search results show it."
+  ],
+  "pass": true,
+  "project": "PNVA-Core",
+  "schema_version": "pnva.ai_search_entity_pass.v1",
+  "search_queries": [
+    "Gustavo Martins PNVA",
+    "Gustavo de Aguiar Martins PNVA",
+    "PNVA-Core Gustavo Martins",
+    "PNVA no-tick Gustavo"
+  ]
+}
