@@ -1404,7 +1404,8 @@
       "canonical_answer": "Gustavo Martins PNVA refers to PNVA-Core, a post-temporal causal no-tick architecture for state/event-oriented computation authored by Gustavo de Aguiar Martins.",
       "external_boundary": "Google ranking and GPT answer adoption are external crawler/index outcomes and are not claimed until observed.",
       "entity_json": "entity.json",
-      "github_profile_repository": "https://github.com/enygnadev/enygnadev"
+      "github_profile_repository": "https://github.com/enygnadev/enygnadev",
+      "github_release_post": "release/POST_03_GUSTAVO_MARTINS_PNVA_ENTITY_PASS.md"
     }
   },
   "files": [
@@ -1687,6 +1688,7 @@
     "paper/PNVA_CORE_OPEN_RESEARCH_PAPER_2026-05-05.html",
     "paper/PNVA_CORE_OPEN_RESEARCH_PAPER_2026-05-05.pdf",
     "release/POST_02_LINKEDIN_PNVA_CORE_DOI.md",
+    "release/POST_03_GUSTAVO_MARTINS_PNVA_ENTITY_PASS.md",
     "tools/pnva_quick_verify.py",
     "tools/pnva_google_search_console_operator.py",
     "tools/pnva_ai_search_entity_pass.py"
