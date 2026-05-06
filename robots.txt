@@ -24,3 +24,5 @@ Allow: /
 
 Sitemap: https://enygnadev.github.io/pnva-core/sitemap.xml
 Sitemap: https://enygnadev.github.io/pnva-core/sitemap-core.xml
+
+IndexNow-Key: https://enygnadev.github.io/pnva-core/pnva-core-gustavo-martins-pnva-20260506.txt
