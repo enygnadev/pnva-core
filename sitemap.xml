@@ -53,6 +53,10 @@
     <lastmod>2026-05-06</lastmod>
   </url>
   <url>
+    <loc>https://enygnadev.github.io/pnva-core/docs/PNVA_GOOGLE_SEARCH_CONSOLE_AUTOMATION.md</loc>
+    <lastmod>2026-05-06</lastmod>
+  </url>
+  <url>
     <loc>https://enygnadev.github.io/pnva-core/docs/REPRODUCIBILITY_QUICKSTART.md</loc>
     <lastmod>2026-05-05</lastmod>
   </url>
@@ -363,5 +367,9 @@
   <url>
     <loc>https://enygnadev.github.io/pnva-core/reports/pnva-sovereign-evidence-attestation-2026-05-05.json</loc>
     <lastmod>2026-05-05</lastmod>
+  </url>
+  <url>
+    <loc>https://enygnadev.github.io/pnva-core/reports/pnva-google-search-console-operator-2026-05-06.json</loc>
+    <lastmod>2026-05-06</lastmod>
   </url>
 </urlset>

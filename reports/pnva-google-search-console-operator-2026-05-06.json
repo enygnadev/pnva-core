@@ -1,0 +1,145 @@
+{
+  "author": "Gustavo de Aguiar Martins",
+  "browser": {
+    "browser": "/usr/bin/google-chrome",
+    "opened": true,
+    "urls": [
+      "https://search.google.com/search-console/welcome",
+      "https://enygnadev.github.io/pnva-core/google-search-console.html",
+      "https://enygnadev.github.io/pnva-core/gsc-priority-urls.txt"
+    ]
+  },
+  "check_count": 8,
+  "checks": [
+    {
+      "evidence": {
+        "checked_url_count": 8,
+        "failures": [],
+        "statuses": {
+          "https://enygnadev.github.io/pnva-core/": 200,
+          "https://enygnadev.github.io/pnva-core/google-search-console.html": 200,
+          "https://enygnadev.github.io/pnva-core/gsc-priority-urls.txt": 200,
+          "https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.html": 200,
+          "https://enygnadev.github.io/pnva-core/llms.txt": 200,
+          "https://enygnadev.github.io/pnva-core/robots.txt": 200,
+          "https://enygnadev.github.io/pnva-core/sitemap-core.xml": 200,
+          "https://enygnadev.github.io/pnva-core/sitemap.xml": 200
+        }
+      },
+      "name": "public_urls_http_200",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "has_googlebot": true,
+        "has_sitemap_core": true,
+        "has_sitemap_full": true
+      },
+      "name": "robots_exposes_google_and_sitemaps",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "bad_lastmods": [],
+        "lastmod_error": "",
+        "missing": [],
+        "sitemap": "https://enygnadev.github.io/pnva-core/sitemap-core.xml",
+        "url_count": 10,
+        "xml_error": ""
+      },
+      "name": "sitemap_core_priority_closed",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "missing": [],
+        "sitemap": "https://enygnadev.github.io/pnva-core/sitemap.xml",
+        "url_count": 91,
+        "xml_error": ""
+      },
+      "name": "sitemap_full_contains_distribution_urls",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "has_canonical_answer": true,
+        "has_doi": true,
+        "has_json_ld": true,
+        "has_rel_canonical": true,
+        "links_gsc_page": true,
+        "url": "https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.html"
+      },
+      "name": "canonical_exact_page_ready",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "has_request_indexing": true,
+        "has_sitemap_core": true,
+        "has_sitemap_full": true,
+        "has_truth_boundary": true,
+        "property": "https://enygnadev.github.io/pnva-core/",
+        "url": "https://enygnadev.github.io/pnva-core/google-search-console.html"
+      },
+      "name": "gsc_distribution_page_ready",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "has_canonical_answer": true,
+        "has_doi": true,
+        "has_gsc_page": true,
+        "has_sitemap_core": true,
+        "url": "https://enygnadev.github.io/pnva-core/llms.txt"
+      },
+      "name": "llms_discovery_ready",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "indexing_api_for_this_documentation": "NOT_APPLICABLE_GENERIC_DOCS",
+        "manual_required": [
+          "verify_property",
+          "url_inspection_live_test",
+          "request_indexing_click"
+        ],
+        "official_references": {
+          "indexing_api_scope": "https://developers.google.com/search/apis/indexing-api/v3/using-api",
+          "sitemap_ping_deprecated": "https://developers.google.com/search/blog/2023/06/sitemaps-lastmod-ping",
+          "sitemaps_api_submit": "https://developers.google.com/webmaster-tools/v1/sitemaps/submit",
+          "url_inspection": "https://support.google.com/webmasters/answer/9012289",
+          "url_prefix_property": "https://support.google.com/webmasters/answer/10432366"
+        },
+        "request_indexing_api_for_generic_docs": false,
+        "sitemaps_api_submit_available_with_verified_property_and_oauth": true
+      },
+      "name": "google_api_boundary_honest",
+      "pass": true
+    }
+  ],
+  "classification": "PNVA_GOOGLE_SEARCH_CONSOLE_OPERATOR_READY",
+  "failure_count": 0,
+  "failures": [],
+  "generated_at": "2026-05-06T23:04:46Z",
+  "next_actions": [
+    "Open Google Search Console.",
+    "Add URL-prefix property https://enygnadev.github.io/pnva-core/ if it is not already verified.",
+    "Submit sitemap-core.xml and sitemap.xml.",
+    "Inspect the priority URL, run Live Test, then click Request Indexing if indexable.",
+    "Monitor site:enygnadev.github.io/pnva-core \"Gustavo Martins PNVA\" and Search Console Page indexing."
+  ],
+  "pass": true,
+  "priority_url": "https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.html",
+  "project": "PNVA-Core",
+  "property_url": "https://enygnadev.github.io/pnva-core/",
+  "schema_version": "pnva.google_search_console_operator.v1",
+  "sitemap_core": "https://enygnadev.github.io/pnva-core/sitemap-core.xml",
+  "sitemap_full": "https://enygnadev.github.io/pnva-core/sitemap.xml",
+  "sitemap_submission": {
+    "attempted": false,
+    "requires_oauth": true,
+    "results": [],
+    "status": "SKIPPED_AUTH_REQUIRED"
+  },
+  "truth_boundary": "This operator automates public crawl-readiness checks and optional sitemap API submission. Google still requires account ownership for Search Console actions and does not guarantee instant indexing or ranking."
+}

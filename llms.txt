@@ -66,6 +66,7 @@ Gustavo de Aguiar Martins. PNVA-Core: A Post-Temporal Causal Architecture for St
 - README.md
 - docs/INDEXING_SUBMISSION_PACK.md
 - docs/GOOGLE_SEARCH_CONSOLE_DISTRIBUTION.md
+- docs/PNVA_GOOGLE_SEARCH_CONSOLE_AUTOMATION.md
 - docs/REPRODUCIBILITY_QUICKSTART.md
 - docs/PNVA_ARCHITECTURE.md
 - docs/VALIDATION_PROTOCOL.md
@@ -182,6 +183,8 @@ Gustavo de Aguiar Martins. PNVA-Core: A Post-Temporal Causal Architecture for St
 - tools/pnva_root_observability_index.py
 - tools/pnva_root_invariant_firewall.py
 - tools/pnva_root_regression_sentinel.py
+- tools/pnva_google_search_console_operator.py
+- reports/pnva-google-search-console-operator-2026-05-06.json
 - reports/pnva-sovereign-audit-2026-05-05.json
 - reports/pnva-canonical-events-sample-2026-05-05.jsonl
 - reports/pnva-entity-catalog-2026-05-05.json

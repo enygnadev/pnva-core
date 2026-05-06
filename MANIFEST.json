@@ -1374,7 +1374,22 @@
       "core_sitemap": "sitemap-core.xml",
       "full_sitemap": "sitemap.xml",
       "priority_inspection_url": "https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.html",
-      "truth_boundary": "Search Console can request crawling and expose diagnostics, but cannot guarantee instant indexing, ranking, or AI answer adoption."
+      "truth_boundary": "Search Console can request crawling and expose diagnostics, but cannot guarantee instant indexing, ranking, or AI answer adoption.",
+      "automation_tool": "tools/pnva_google_search_console_operator.py",
+      "automation_doc": "docs/PNVA_GOOGLE_SEARCH_CONSOLE_AUTOMATION.md",
+      "operator_report": "reports/pnva-google-search-console-operator-2026-05-06.json"
+    },
+    "google_search_console_operator": {
+      "status": "ADDED",
+      "tool": "tools/pnva_google_search_console_operator.py",
+      "doc": "docs/PNVA_GOOGLE_SEARCH_CONSOLE_AUTOMATION.md",
+      "report": "reports/pnva-google-search-console-operator-2026-05-06.json",
+      "classification": "PNVA_GOOGLE_SEARCH_CONSOLE_OPERATOR_READY",
+      "property": "https://enygnadev.github.io/pnva-core/",
+      "priority_url": "https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.html",
+      "sitemap_core": "https://enygnadev.github.io/pnva-core/sitemap-core.xml",
+      "sitemap_full": "https://enygnadev.github.io/pnva-core/sitemap.xml",
+      "manual_boundary": "Search Console ownership, URL Inspection live test and Request Indexing click require a verified Google account session."
     }
   },
   "files": [
@@ -1569,6 +1584,7 @@
     "reports/pnva-semantic-consistency-2026-05-05.json",
     "reports/pnva-sovereign-audit-2026-05-05.json",
     "reports/pnva-sovereign-evidence-attestation-2026-05-05.json",
+    "reports/pnva-google-search-console-operator-2026-05-06.json",
     "reports/pnva-sovereign-policy-2026-05-05.json",
     "reports/pnva-sovereign-robustness-gate-2026-05-05.json",
     "reports/pnva-suppression-ledger-2026-05-05.json",
@@ -1646,12 +1662,14 @@
     "demo.html",
     "docs/INDEXING_SUBMISSION_PACK.md",
     "docs/GOOGLE_SEARCH_CONSOLE_DISTRIBUTION.md",
+    "docs/PNVA_GOOGLE_SEARCH_CONSOLE_AUTOMATION.md",
     "docs/REPRODUCIBILITY_QUICKSTART.md",
     "paper/PREPRINT_SUBMISSION_PACK.md",
     "paper/PNVA_CORE_OPEN_RESEARCH_PAPER_2026-05-05.html",
     "paper/PNVA_CORE_OPEN_RESEARCH_PAPER_2026-05-05.pdf",
     "release/POST_02_LINKEDIN_PNVA_CORE_DOI.md",
-    "tools/pnva_quick_verify.py"
+    "tools/pnva_quick_verify.py",
+    "tools/pnva_google_search_console_operator.py"
   ],
   "checksums": "SHA256SUMS.txt",
   "public_data_policy": {

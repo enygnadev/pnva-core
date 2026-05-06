@@ -69,6 +69,7 @@ PNVA_QUICK_VERIFY_PASS
 - Paper PDF: `paper/PNVA_CORE_OPEN_RESEARCH_PAPER_2026-05-05.pdf`
 - LinkedIn post text and image: `release/POST_02_LINKEDIN_PNVA_CORE_DOI.md`, `assets/pnva-linkedin-launch.png`
 - Indexing pack: `docs/INDEXING_SUBMISSION_PACK.md`
+- Google Search Console automation: `tools/pnva_google_search_console_operator.py`, `docs/PNVA_GOOGLE_SEARCH_CONSOLE_AUTOMATION.md`
 
 ## Google Search Console Distribution
 
@@ -92,6 +93,18 @@ https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.html
 ```
 
 Google can crawl and index after inspection and sitemap submission, but it does not guarantee instant inclusion or ranking. The Search Console workflow is documented in `docs/GOOGLE_SEARCH_CONSOLE_DISTRIBUTION.md`.
+
+Automated crawl-readiness check:
+
+```bash
+python3 tools/pnva_google_search_console_operator.py --open-browser
+```
+
+Expected:
+
+```text
+PNVA_GOOGLE_SEARCH_CONSOLE_OPERATOR_READY
+```
 
 ## Production Evidence
 

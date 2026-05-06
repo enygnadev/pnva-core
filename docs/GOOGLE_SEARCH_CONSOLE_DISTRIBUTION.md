@@ -77,7 +77,7 @@ Use this loop after each important public update:
 2. Keep sitemap-core.xml focused on the highest-priority URLs.
 3. Set <lastmod> to the real update date.
 4. Push to GitHub Pages.
-5. Confirm HTTP 200 on the priority URLs.
+5. Run pnva_google_search_console_operator.py.
 6. Submit sitemap-core.xml in Search Console.
 7. Use URL Inspection on the priority URL.
 8. Run Live Test.
@@ -86,6 +86,18 @@ Use this loop after each important public update:
 ```
 
 This is the fastest legitimate workflow for ordinary documentation pages. It is not a guarantee of instant indexing or ranking.
+
+Automated operator:
+
+```bash
+python3 tools/pnva_google_search_console_operator.py --open-browser
+```
+
+Expected:
+
+```text
+PNVA_GOOGLE_SEARCH_CONSOLE_OPERATOR_READY
+```
 
 ## External Authority URLs
 
