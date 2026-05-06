@@ -29,6 +29,7 @@ DOI: 10.5281/zenodo.20044503
 Zenodo: https://zenodo.org/records/20044503
 GitHub profile README: https://github.com/enygnadev/enygnadev
 GitHub entity release: https://github.com/enygnadev/pnva-core/releases/tag/v0.1.1-ai-search-entity
+GitHub entity issue: https://github.com/enygnadev/pnva-core/issues/2
 ```
 
 ## Gate
@@ -105,6 +106,7 @@ sitemap-core.xml with the canonical entity pages
 GitHub repository description with Gustavo Martins PNVA
 GitHub profile README with Gustavo Martins PNVA
 GitHub Release with Gustavo Martins PNVA in the title
+GitHub Issue with Gustavo Martins PNVA in the title
 Zenodo DOI metadata with Gustavo de Aguiar Martins and PNVA-Core
 ```
 

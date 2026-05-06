@@ -1406,7 +1406,8 @@
       "entity_json": "entity.json",
       "github_profile_repository": "https://github.com/enygnadev/enygnadev",
       "github_release_post": "release/POST_03_GUSTAVO_MARTINS_PNVA_ENTITY_PASS.md",
-      "github_entity_release": "https://github.com/enygnadev/pnva-core/releases/tag/v0.1.1-ai-search-entity"
+      "github_entity_release": "https://github.com/enygnadev/pnva-core/releases/tag/v0.1.1-ai-search-entity",
+      "github_entity_issue": "https://github.com/enygnadev/pnva-core/issues/2"
     },
     "indexnow_distribution": {
       "status": "ADDED",

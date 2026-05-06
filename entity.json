@@ -69,6 +69,7 @@
   "githubRepository": "https://github.com/enygnadev/pnva-core",
   "githubProfileRepository": "https://github.com/enygnadev/enygnadev",
   "githubEntityRelease": "https://github.com/enygnadev/pnva-core/releases/tag/v0.1.1-ai-search-entity",
+  "githubEntityIssue": "https://github.com/enygnadev/pnva-core/issues/2",
   "searchAliases": [
     "Gustavo Martins PNVA",
     "Gustavo de Aguiar Martins PNVA",
