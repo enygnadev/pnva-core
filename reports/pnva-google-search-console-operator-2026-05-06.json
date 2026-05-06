@@ -1,5 +1,16 @@
 {
   "author": "Gustavo de Aguiar Martins",
+  "browser": {
+    "browser": "/usr/bin/google-chrome",
+    "opened": true,
+    "urls": [
+      "https://search.google.com/search-console/welcome",
+      "https://enygnadev.github.io/pnva-core/google-search-console.html",
+      "https://enygnadev.github.io/pnva-core/ai-answer.html",
+      "https://enygnadev.github.io/pnva-core/discovery-index.html",
+      "https://enygnadev.github.io/pnva-core/gsc-priority-urls.txt"
+    ]
+  },
   "check_count": 8,
   "checks": [
     {
@@ -116,7 +127,7 @@
   "classification": "PNVA_GOOGLE_SEARCH_CONSOLE_OPERATOR_READY",
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-05-06T23:57:17Z",
+  "generated_at": "2026-05-06T23:59:26Z",
   "next_actions": [
     "Open Google Search Console.",
     "Add URL-prefix property https://enygnadev.github.io/pnva-core/ if it is not already verified.",
