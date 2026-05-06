@@ -1412,11 +1412,13 @@
       "status": "ADDED",
       "tool": "tools/pnva_indexnow_submitter.py",
       "doc": "docs/PNVA_INDEXNOW_DISTRIBUTION.md",
-      "report": "generated after public deploy: reports/pnva-indexnow-submission-2026-05-06.json",
+      "report": "reports/pnva-indexnow-submission-2026-05-06.json",
       "key_file": "pnva-core-gustavo-martins-pnva-20260506.txt",
       "key_location": "https://enygnadev.github.io/pnva-core/pnva-core-gustavo-martins-pnva-20260506.txt",
       "endpoint": "https://api.indexnow.org/indexnow",
-      "truth_boundary": "IndexNow notifies participating search engines; Google indexing still requires Search Console."
+      "truth_boundary": "IndexNow notifies participating search engines; Google indexing still requires Search Console.",
+      "classification": "PNVA_INDEXNOW_SUBMISSION_READY",
+      "http_status": 202
     }
   },
   "files": [
@@ -1616,6 +1618,7 @@
     "reports/pnva-sovereign-evidence-attestation-2026-05-05.json",
     "reports/pnva-google-search-console-operator-2026-05-06.json",
     "reports/pnva-ai-search-entity-pass-2026-05-06.json",
+    "reports/pnva-indexnow-submission-2026-05-06.json",
     "reports/pnva-sovereign-policy-2026-05-05.json",
     "reports/pnva-sovereign-robustness-gate-2026-05-05.json",
     "reports/pnva-suppression-ledger-2026-05-05.json",
