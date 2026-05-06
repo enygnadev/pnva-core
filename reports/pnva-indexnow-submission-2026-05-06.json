@@ -16,7 +16,7 @@
         "host": "enygnadev.github.io",
         "key": "pnva-core-gustavo-martins-pnva-20260506",
         "key_location": "https://enygnadev.github.io/pnva-core/pnva-core-gustavo-martins-pnva-20260506.txt",
-        "url_count": 10
+        "url_count": 14
       },
       "name": "indexnow_payload_ready",
       "pass": true
@@ -27,7 +27,7 @@
         "body_preview": "",
         "endpoint": "https://api.indexnow.org/indexnow",
         "error": "",
-        "http_status": 202,
+        "http_status": 200,
         "status": "SUBMITTED"
       },
       "name": "indexnow_submission_accepted_or_deferred",
@@ -37,7 +37,7 @@
   "classification": "PNVA_INDEXNOW_SUBMISSION_READY",
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-05-06T23:42:20Z",
+  "generated_at": "2026-05-06T23:57:26Z",
   "official_reference": "https://www.indexnow.org/documentation.html",
   "pass": true,
   "payload": {
@@ -48,12 +48,16 @@
       "https://enygnadev.github.io/pnva-core/",
       "https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.html",
       "https://enygnadev.github.io/pnva-core/ai-answer.html",
+      "https://enygnadev.github.io/pnva-core/discovery-index.html",
       "https://enygnadev.github.io/pnva-core/entity.json",
+      "https://enygnadev.github.io/pnva-core/pnva-core.jsonld",
+      "https://enygnadev.github.io/pnva-core/codemeta.json",
       "https://enygnadev.github.io/pnva-core/llms.txt",
       "https://enygnadev.github.io/pnva-core/humans.txt",
       "https://enygnadev.github.io/pnva-core/sitemap-core.xml",
       "https://enygnadev.github.io/pnva-core/google-search-console.html",
       "https://enygnadev.github.io/pnva-core/docs/PNVA_AI_SEARCH_ENTITY_PASS.md",
+      "https://enygnadev.github.io/pnva-core/docs/PNVA_EXTERNAL_RECOGNITION_PASS.md",
       "https://enygnadev.github.io/pnva-core/reports/pnva-ai-search-entity-pass-2026-05-06.json"
     ]
   },
@@ -64,7 +68,7 @@
     "body_preview": "",
     "endpoint": "https://api.indexnow.org/indexnow",
     "error": "",
-    "http_status": 202,
+    "http_status": 200,
     "status": "SUBMITTED"
   },
   "truth_boundary": "IndexNow notifies participating search engines. It does not submit URLs to Google and does not guarantee ranking or indexing."
