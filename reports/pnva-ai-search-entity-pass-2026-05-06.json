@@ -3,11 +3,11 @@
   "author": "Gustavo de Aguiar Martins",
   "canonical_answer": "Gustavo Martins PNVA refers to PNVA-Core, a post-temporal causal no-tick architecture for state/event-oriented computation authored by Gustavo de Aguiar Martins.",
   "canonical_url": "https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.html",
-  "check_count": 9,
+  "check_count": 11,
   "checks": [
     {
       "evidence": {
-        "checked_url_count": 7,
+        "checked_url_count": 8,
         "failures": []
       },
       "name": "public_entity_urls_http_200",
@@ -43,9 +43,22 @@
         "has_canonical_answer": true,
         "has_canonical_url": true,
         "has_doi": true,
+        "has_github_profile_repo": true,
         "url": "https://enygnadev.github.io/pnva-core/llms.txt"
       },
       "name": "llms_context_ready",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "has_alias": true,
+        "has_canonical_answer": true,
+        "has_doi": true,
+        "has_github_profile_repo": true,
+        "has_pnva_repo": true,
+        "url": "https://enygnadev.github.io/pnva-core/entity.json"
+      },
+      "name": "entity_json_ready",
       "pass": true
     },
     {
@@ -64,8 +77,10 @@
       "evidence": {
         "core_has_ai_answer": true,
         "core_has_canonical": true,
+        "core_has_entity_json": true,
         "full_has_ai_answer": true,
         "full_has_canonical": true,
+        "full_has_entity_json": true,
         "sitemap_core_error": "",
         "sitemap_full_error": ""
       },
@@ -90,6 +105,22 @@
         ]
       },
       "name": "github_entity_signal_ready",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "api_url": "https://api.github.com/repos/enygnadev/enygnadev",
+        "description": "Gustavo de Aguiar Martins - author of PNVA-Core (Gustavo Martins PNVA).",
+        "homepage": "https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.html",
+        "topics": [
+          "causal-computing",
+          "enyos",
+          "gustavo-martins-pnva",
+          "pnva",
+          "pnva-core"
+        ]
+      },
+      "name": "github_profile_entity_signal_ready",
       "pass": true
     },
     {
@@ -121,7 +152,7 @@
   "classification": "PNVA_AI_SEARCH_ENTITY_PUBLICATION_READY",
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-05-06T23:21:28Z",
+  "generated_at": "2026-05-06T23:30:40Z",
   "next_external_actions": [
     "Submit sitemap-core.xml in Google Search Console after this commit deploys.",
     "Request indexing for gustavo-martins-pnva.html.",
