@@ -22,6 +22,7 @@ SITEMAP_CORE_URL = PUBLIC_SITE + "sitemap-core.xml"
 SITEMAP_FULL_URL = PUBLIC_SITE + "sitemap.xml"
 GITHUB_API_URL = "https://api.github.com/repos/enygnadev/pnva-core"
 GITHUB_PROFILE_API_URL = "https://api.github.com/repos/enygnadev/enygnadev"
+GITHUB_RELEASE_API_URL = "https://api.github.com/repos/enygnadev/pnva-core/releases/tags/v0.1.1-ai-search-entity"
 ZENODO_URL = "https://zenodo.org/records/20044503"
 DEFAULT_REPORT = "reports/pnva-ai-search-entity-pass-2026-05-06.json"
 
@@ -95,8 +96,10 @@ def build_report() -> dict[str, Any]:
     fetched = {url: _fetch(url) for url in PUBLIC_URLS}
     github = _fetch(GITHUB_API_URL)
     github_profile = _fetch(GITHUB_PROFILE_API_URL)
+    github_release = _fetch(GITHUB_RELEASE_API_URL)
     github_data: dict[str, Any] = {}
     github_profile_data: dict[str, Any] = {}
+    github_release_data: dict[str, Any] = {}
     if github.get("ok"):
         try:
             github_data = json.loads(github["text"])
@@ -107,6 +110,11 @@ def build_report() -> dict[str, Any]:
             github_profile_data = json.loads(github_profile["text"])
         except json.JSONDecodeError:
             github_profile_data = {}
+    if github_release.get("ok"):
+        try:
+            github_release_data = json.loads(github_release["text"])
+        except json.JSONDecodeError:
+            github_release_data = {}
 
     canonical = fetched[CANONICAL_URL]["text"]
     ai_answer = fetched[AI_ANSWER_URL]["text"]
@@ -133,6 +141,9 @@ def build_report() -> dict[str, Any]:
     github_profile_topics = github_profile_data.get("topics", [])
     if not isinstance(github_profile_topics, list):
         github_profile_topics = []
+    github_release_name = str(github_release_data.get("name", ""))
+    github_release_body = str(github_release_data.get("body", ""))
+    github_release_url = str(github_release_data.get("html_url", ""))
 
     checks = [
         _check(
@@ -265,6 +276,18 @@ def build_report() -> dict[str, Any]:
                 "description": github_profile_description,
                 "homepage": github_profile_homepage,
                 "topics": github_profile_topics,
+            },
+        ),
+        _check(
+            "github_release_entity_signal_ready",
+            "Gustavo Martins PNVA" in github_release_name
+            and CANONICAL_ANSWER in github_release_body
+            and github_release_url.endswith("/v0.1.1-ai-search-entity"),
+            {
+                "api_url": GITHUB_RELEASE_API_URL,
+                "name": github_release_name,
+                "html_url": github_release_url,
+                "has_canonical_answer": CANONICAL_ANSWER in github_release_body,
             },
         ),
         _check(

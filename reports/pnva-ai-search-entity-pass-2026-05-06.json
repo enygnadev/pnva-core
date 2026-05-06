@@ -3,7 +3,7 @@
   "author": "Gustavo de Aguiar Martins",
   "canonical_answer": "Gustavo Martins PNVA refers to PNVA-Core, a post-temporal causal no-tick architecture for state/event-oriented computation authored by Gustavo de Aguiar Martins.",
   "canonical_url": "https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.html",
-  "check_count": 11,
+  "check_count": 12,
   "checks": [
     {
       "evidence": {
@@ -125,6 +125,16 @@
     },
     {
       "evidence": {
+        "api_url": "https://api.github.com/repos/enygnadev/pnva-core/releases/tags/v0.1.1-ai-search-entity",
+        "has_canonical_answer": true,
+        "html_url": "https://github.com/enygnadev/pnva-core/releases/tag/v0.1.1-ai-search-entity",
+        "name": "Gustavo Martins PNVA - PNVA-Core AI/Search Entity Pass"
+      },
+      "name": "github_release_entity_signal_ready",
+      "pass": true
+    },
+    {
+      "evidence": {
         "has_author": true,
         "has_doi": true,
         "has_pnva_core": true,
@@ -152,7 +162,7 @@
   "classification": "PNVA_AI_SEARCH_ENTITY_PUBLICATION_READY",
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-05-06T23:30:40Z",
+  "generated_at": "2026-05-06T23:34:48Z",
   "next_external_actions": [
     "Submit sitemap-core.xml in Google Search Console after this commit deploys.",
     "Request indexing for gustavo-martins-pnva.html.",
