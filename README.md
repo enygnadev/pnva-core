@@ -71,6 +71,7 @@ PNVA_QUICK_VERIFY_PASS
 - Indexing pack: `docs/INDEXING_SUBMISSION_PACK.md`
 - Google Search Console automation: `tools/pnva_google_search_console_operator.py`, `docs/PNVA_GOOGLE_SEARCH_CONSOLE_AUTOMATION.md`
 - AI/search entity pass: `ai-answer.html`, `tools/pnva_ai_search_entity_pass.py`, `docs/PNVA_AI_SEARCH_ENTITY_PASS.md`
+- Machine-readable entity graph: `entity.json`
 
 ## Google Search Console Distribution
 

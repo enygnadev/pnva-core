@@ -24,8 +24,10 @@ Repository: https://github.com/enygnadev/pnva-core
 Site: https://enygnadev.github.io/pnva-core/
 Canonical entity page: https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.html
 AI answer card: https://enygnadev.github.io/pnva-core/ai-answer.html
+Entity JSON: https://enygnadev.github.io/pnva-core/entity.json
 DOI: 10.5281/zenodo.20044503
 Zenodo: https://zenodo.org/records/20044503
+GitHub profile README: https://github.com/enygnadev/enygnadev
 ```
 
 ## Gate
@@ -49,9 +51,11 @@ public_entity_urls_http_200
 canonical_page_has_entity_answer
 ai_answer_card_ready
 llms_context_ready
+entity_json_ready
 crawler_policy_ready
 sitemaps_expose_entity_pages
 github_entity_signal_ready
+github_profile_entity_signal_ready
 zenodo_entity_signal_ready
 external_index_boundary_honest
 ```
@@ -95,8 +99,10 @@ The repository exposes:
 robots.txt with OAI-SearchBot, GPTBot, ChatGPT-User and Googlebot allowed
 llms.txt with canonical answer
 ai-answer.html with FAQPage, Person and SoftwareSourceCode JSON-LD
+entity.json with the canonical Person and SoftwareSourceCode graph
 sitemap-core.xml with the canonical entity pages
 GitHub repository description with Gustavo Martins PNVA
+GitHub profile README with Gustavo Martins PNVA
 Zenodo DOI metadata with Gustavo de Aguiar Martins and PNVA-Core
 ```
 

@@ -16,10 +16,12 @@ PUBLIC_SITE = "https://enygnadev.github.io/pnva-core/"
 CANONICAL_URL = PUBLIC_SITE + "gustavo-martins-pnva.html"
 AI_ANSWER_URL = PUBLIC_SITE + "ai-answer.html"
 LLMS_URL = PUBLIC_SITE + "llms.txt"
+ENTITY_URL = PUBLIC_SITE + "entity.json"
 ROBOTS_URL = PUBLIC_SITE + "robots.txt"
 SITEMAP_CORE_URL = PUBLIC_SITE + "sitemap-core.xml"
 SITEMAP_FULL_URL = PUBLIC_SITE + "sitemap.xml"
 GITHUB_API_URL = "https://api.github.com/repos/enygnadev/pnva-core"
+GITHUB_PROFILE_API_URL = "https://api.github.com/repos/enygnadev/enygnadev"
 ZENODO_URL = "https://zenodo.org/records/20044503"
 DEFAULT_REPORT = "reports/pnva-ai-search-entity-pass-2026-05-06.json"
 
@@ -32,6 +34,7 @@ PUBLIC_URLS = [
     CANONICAL_URL,
     AI_ANSWER_URL,
     LLMS_URL,
+    ENTITY_URL,
     ROBOTS_URL,
     SITEMAP_CORE_URL,
     SITEMAP_FULL_URL,
@@ -91,16 +94,24 @@ def _sitemap_urls(xml_text: str) -> tuple[list[str], str]:
 def build_report() -> dict[str, Any]:
     fetched = {url: _fetch(url) for url in PUBLIC_URLS}
     github = _fetch(GITHUB_API_URL)
+    github_profile = _fetch(GITHUB_PROFILE_API_URL)
     github_data: dict[str, Any] = {}
+    github_profile_data: dict[str, Any] = {}
     if github.get("ok"):
         try:
             github_data = json.loads(github["text"])
         except json.JSONDecodeError:
             github_data = {}
+    if github_profile.get("ok"):
+        try:
+            github_profile_data = json.loads(github_profile["text"])
+        except json.JSONDecodeError:
+            github_profile_data = {}
 
     canonical = fetched[CANONICAL_URL]["text"]
     ai_answer = fetched[AI_ANSWER_URL]["text"]
     llms = fetched[LLMS_URL]["text"]
+    entity = fetched[ENTITY_URL]["text"]
     robots = fetched[ROBOTS_URL]["text"]
     sitemap_core_urls, sitemap_core_error = _sitemap_urls(fetched[SITEMAP_CORE_URL]["text"])
     sitemap_full_urls, sitemap_full_error = _sitemap_urls(fetched[SITEMAP_FULL_URL]["text"])
@@ -117,6 +128,11 @@ def build_report() -> dict[str, Any]:
     github_topics = github_data.get("topics", [])
     if not isinstance(github_topics, list):
         github_topics = []
+    github_profile_description = str(github_profile_data.get("description", ""))
+    github_profile_homepage = str(github_profile_data.get("homepage", ""))
+    github_profile_topics = github_profile_data.get("topics", [])
+    if not isinstance(github_profile_topics, list):
+        github_profile_topics = []
 
     checks = [
         _check(
@@ -161,13 +177,31 @@ def build_report() -> dict[str, Any]:
             CANONICAL_ANSWER in llms
             and CANONICAL_URL in llms
             and AI_ANSWER_URL in llms
+            and "https://github.com/enygnadev/enygnadev" in llms
             and "10.5281/zenodo.20044503" in llms,
             {
                 "url": LLMS_URL,
                 "has_canonical_answer": CANONICAL_ANSWER in llms,
                 "has_canonical_url": CANONICAL_URL in llms,
                 "has_ai_answer_url": AI_ANSWER_URL in llms,
+                "has_github_profile_repo": "https://github.com/enygnadev/enygnadev" in llms,
                 "has_doi": "10.5281/zenodo.20044503" in llms,
+            },
+        ),
+        _check(
+            "entity_json_ready",
+            CANONICAL_ANSWER in entity
+            and "Gustavo Martins PNVA" in entity
+            and "https://github.com/enygnadev/enygnadev" in entity
+            and "https://github.com/enygnadev/pnva-core" in entity
+            and "10.5281/zenodo.20044503" in entity,
+            {
+                "url": ENTITY_URL,
+                "has_canonical_answer": CANONICAL_ANSWER in entity,
+                "has_alias": "Gustavo Martins PNVA" in entity,
+                "has_github_profile_repo": "https://github.com/enygnadev/enygnadev" in entity,
+                "has_pnva_repo": "https://github.com/enygnadev/pnva-core" in entity,
+                "has_doi": "10.5281/zenodo.20044503" in entity,
             },
         ),
         _check(
@@ -192,15 +226,19 @@ def build_report() -> dict[str, Any]:
             and not sitemap_full_error
             and CANONICAL_URL in sitemap_core_urls
             and AI_ANSWER_URL in sitemap_core_urls
+            and ENTITY_URL in sitemap_core_urls
             and CANONICAL_URL in sitemap_full_urls
-            and AI_ANSWER_URL in sitemap_full_urls,
+            and AI_ANSWER_URL in sitemap_full_urls
+            and ENTITY_URL in sitemap_full_urls,
             {
                 "sitemap_core_error": sitemap_core_error,
                 "sitemap_full_error": sitemap_full_error,
                 "core_has_canonical": CANONICAL_URL in sitemap_core_urls,
                 "core_has_ai_answer": AI_ANSWER_URL in sitemap_core_urls,
+                "core_has_entity_json": ENTITY_URL in sitemap_core_urls,
                 "full_has_canonical": CANONICAL_URL in sitemap_full_urls,
                 "full_has_ai_answer": AI_ANSWER_URL in sitemap_full_urls,
+                "full_has_entity_json": ENTITY_URL in sitemap_full_urls,
             },
         ),
         _check(
@@ -214,6 +252,19 @@ def build_report() -> dict[str, Any]:
                 "description": github_description,
                 "homepage": github_homepage,
                 "topics": github_topics,
+            },
+        ),
+        _check(
+            "github_profile_entity_signal_ready",
+            "Gustavo Martins PNVA" in github_profile_description
+            and github_profile_homepage == CANONICAL_URL
+            and "gustavo-martins-pnva" in github_profile_topics
+            and "pnva-core" in github_profile_topics,
+            {
+                "api_url": GITHUB_PROFILE_API_URL,
+                "description": github_profile_description,
+                "homepage": github_profile_homepage,
+                "topics": github_profile_topics,
             },
         ),
         _check(
