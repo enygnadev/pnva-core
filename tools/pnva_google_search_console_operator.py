@@ -21,6 +21,7 @@ PROJECT = "PNVA-Core"
 PROPERTY_URL = "https://enygnadev.github.io/pnva-core/"
 PUBLIC_SITE = PROPERTY_URL
 PRIORITY_URL = PUBLIC_SITE + "gustavo-martins-pnva.html"
+AI_ANSWER_URL = PUBLIC_SITE + "ai-answer.html"
 GSC_PAGE = PUBLIC_SITE + "google-search-console.html"
 SITEMAP_CORE = PUBLIC_SITE + "sitemap-core.xml"
 SITEMAP_FULL = PUBLIC_SITE + "sitemap.xml"
@@ -36,6 +37,7 @@ CANONICAL_ANSWER = (
 PUBLIC_URLS = [
     PUBLIC_SITE,
     PRIORITY_URL,
+    AI_ANSWER_URL,
     GSC_PAGE,
     SITEMAP_CORE,
     SITEMAP_FULL,
@@ -46,6 +48,7 @@ PUBLIC_URLS = [
 
 SITEMAP_CORE_REQUIRED = [
     PRIORITY_URL,
+    AI_ANSWER_URL,
     GSC_PAGE,
     PUBLIC_SITE,
     PUBLIC_SITE + "author.html",
@@ -70,6 +73,7 @@ FULL_SITEMAP_REQUIRED = [
 OPEN_URLS = [
     "https://search.google.com/search-console/welcome",
     GSC_PAGE,
+    AI_ANSWER_URL,
     PRIORITY_TXT,
 ]
 

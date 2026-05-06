@@ -76,7 +76,8 @@
       ],
       "sitemap_core": "sitemap-core.xml",
       "google_search_console_pack": "google-search-console.html",
-      "priority_urls": "gsc-priority-urls.txt"
+      "priority_urls": "gsc-priority-urls.txt",
+      "ai_answer_card": "ai-answer.html"
     },
     "sovereign_robustness_layer": {
       "status": "ADDED",
@@ -1390,6 +1391,17 @@
       "sitemap_core": "https://enygnadev.github.io/pnva-core/sitemap-core.xml",
       "sitemap_full": "https://enygnadev.github.io/pnva-core/sitemap.xml",
       "manual_boundary": "Search Console ownership, URL Inspection live test and Request Indexing click require a verified Google account session."
+    },
+    "ai_search_entity_pass": {
+      "status": "ADDED",
+      "tool": "tools/pnva_ai_search_entity_pass.py",
+      "doc": "docs/PNVA_AI_SEARCH_ENTITY_PASS.md",
+      "report": "generated after public deploy: reports/pnva-ai-search-entity-pass-2026-05-06.json",
+      "classification": "PNVA_AI_SEARCH_ENTITY_PUBLICATION_READY",
+      "canonical_url": "https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.html",
+      "ai_answer_url": "https://enygnadev.github.io/pnva-core/ai-answer.html",
+      "canonical_answer": "Gustavo Martins PNVA refers to PNVA-Core, a post-temporal causal no-tick architecture for state/event-oriented computation authored by Gustavo de Aguiar Martins.",
+      "external_boundary": "Google ranking and GPT answer adoption are external crawler/index outcomes and are not claimed until observed."
     }
   },
   "files": [
@@ -1414,6 +1426,7 @@
     "assets/pnva-core-mark.svg",
     "author.html",
     "gustavo-martins-pnva.html",
+    "ai-answer.html",
     "google-search-console.html",
     "docs/LIMITATIONS.md",
     "docs/GUSTAVO_MARTINS_PNVA_DISCOVERY_PASS.md",
@@ -1663,13 +1676,15 @@
     "docs/INDEXING_SUBMISSION_PACK.md",
     "docs/GOOGLE_SEARCH_CONSOLE_DISTRIBUTION.md",
     "docs/PNVA_GOOGLE_SEARCH_CONSOLE_AUTOMATION.md",
+    "docs/PNVA_AI_SEARCH_ENTITY_PASS.md",
     "docs/REPRODUCIBILITY_QUICKSTART.md",
     "paper/PREPRINT_SUBMISSION_PACK.md",
     "paper/PNVA_CORE_OPEN_RESEARCH_PAPER_2026-05-05.html",
     "paper/PNVA_CORE_OPEN_RESEARCH_PAPER_2026-05-05.pdf",
     "release/POST_02_LINKEDIN_PNVA_CORE_DOI.md",
     "tools/pnva_quick_verify.py",
-    "tools/pnva_google_search_console_operator.py"
+    "tools/pnva_google_search_console_operator.py",
+    "tools/pnva_ai_search_entity_pass.py"
   ],
   "checksums": "SHA256SUMS.txt",
   "public_data_policy": {

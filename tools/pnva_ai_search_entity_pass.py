@@ -1,0 +1,295 @@
+#!/usr/bin/env python3
+from __future__ import annotations
+
+import argparse
+import json
+import time
+import urllib.request
+import xml.etree.ElementTree as ET
+from pathlib import Path
+from typing import Any
+
+
+AUTHOR = "Gustavo de Aguiar Martins"
+PROJECT = "PNVA-Core"
+PUBLIC_SITE = "https://enygnadev.github.io/pnva-core/"
+CANONICAL_URL = PUBLIC_SITE + "gustavo-martins-pnva.html"
+AI_ANSWER_URL = PUBLIC_SITE + "ai-answer.html"
+LLMS_URL = PUBLIC_SITE + "llms.txt"
+ROBOTS_URL = PUBLIC_SITE + "robots.txt"
+SITEMAP_CORE_URL = PUBLIC_SITE + "sitemap-core.xml"
+SITEMAP_FULL_URL = PUBLIC_SITE + "sitemap.xml"
+GITHUB_API_URL = "https://api.github.com/repos/enygnadev/pnva-core"
+ZENODO_URL = "https://zenodo.org/records/20044503"
+DEFAULT_REPORT = "reports/pnva-ai-search-entity-pass-2026-05-06.json"
+
+CANONICAL_ANSWER = (
+    "Gustavo Martins PNVA refers to PNVA-Core, a post-temporal causal no-tick architecture "
+    "for state/event-oriented computation authored by Gustavo de Aguiar Martins."
+)
+
+PUBLIC_URLS = [
+    CANONICAL_URL,
+    AI_ANSWER_URL,
+    LLMS_URL,
+    ROBOTS_URL,
+    SITEMAP_CORE_URL,
+    SITEMAP_FULL_URL,
+    ZENODO_URL,
+]
+
+
+def _fetch(url: str) -> dict[str, Any]:
+    req = urllib.request.Request(
+        url,
+        headers={
+            "User-Agent": "PNVA-AI-Search-Entity-Pass/1.0",
+            "Accept": "*/*",
+        },
+    )
+    try:
+        with urllib.request.urlopen(req, timeout=25) as response:
+            body = response.read()
+            return {
+                "ok": 200 <= int(response.status) < 300,
+                "status": int(response.status),
+                "url": url,
+                "final_url": response.geturl(),
+                "text": body.decode("utf-8", errors="replace"),
+                "bytes": len(body),
+                "content_type": response.headers.get("content-type", ""),
+            }
+    except Exception as exc:
+        return {
+            "ok": False,
+            "status": 0,
+            "url": url,
+            "final_url": "",
+            "text": "",
+            "bytes": 0,
+            "content_type": "",
+            "error": str(exc),
+        }
+
+
+def _check(name: str, passed: bool, evidence: dict[str, Any]) -> dict[str, Any]:
+    return {"name": name, "pass": bool(passed), "evidence": evidence}
+
+
+def _sitemap_urls(xml_text: str) -> tuple[list[str], str]:
+    try:
+        root = ET.fromstring(xml_text)
+    except Exception as exc:
+        return [], str(exc)
+    urls: list[str] = []
+    for elem in root.iter():
+        if elem.tag.endswith("loc") and elem.text:
+            urls.append(elem.text.strip())
+    return urls, ""
+
+
+def build_report() -> dict[str, Any]:
+    fetched = {url: _fetch(url) for url in PUBLIC_URLS}
+    github = _fetch(GITHUB_API_URL)
+    github_data: dict[str, Any] = {}
+    if github.get("ok"):
+        try:
+            github_data = json.loads(github["text"])
+        except json.JSONDecodeError:
+            github_data = {}
+
+    canonical = fetched[CANONICAL_URL]["text"]
+    ai_answer = fetched[AI_ANSWER_URL]["text"]
+    llms = fetched[LLMS_URL]["text"]
+    robots = fetched[ROBOTS_URL]["text"]
+    sitemap_core_urls, sitemap_core_error = _sitemap_urls(fetched[SITEMAP_CORE_URL]["text"])
+    sitemap_full_urls, sitemap_full_error = _sitemap_urls(fetched[SITEMAP_FULL_URL]["text"])
+    zenodo = fetched[ZENODO_URL]["text"]
+
+    http_failures = [
+        {"url": url, "status": item.get("status"), "error": item.get("error", "")}
+        for url, item in fetched.items()
+        if not item.get("ok")
+    ]
+
+    github_description = str(github_data.get("description", ""))
+    github_homepage = str(github_data.get("homepage", ""))
+    github_topics = github_data.get("topics", [])
+    if not isinstance(github_topics, list):
+        github_topics = []
+
+    checks = [
+        _check(
+            "public_entity_urls_http_200",
+            not http_failures,
+            {"checked_url_count": len(PUBLIC_URLS), "failures": http_failures},
+        ),
+        _check(
+            "canonical_page_has_entity_answer",
+            CANONICAL_ANSWER in canonical
+            and "Gustavo Martins PNVA" in canonical
+            and "Gustavo de Aguiar Martins" in canonical
+            and "application/ld+json" in canonical
+            and AI_ANSWER_URL.removeprefix(PUBLIC_SITE) in canonical,
+            {
+                "url": CANONICAL_URL,
+                "has_canonical_answer": CANONICAL_ANSWER in canonical,
+                "has_query_alias": "Gustavo Martins PNVA" in canonical,
+                "has_author": "Gustavo de Aguiar Martins" in canonical,
+                "has_json_ld": "application/ld+json" in canonical,
+                "links_ai_answer": AI_ANSWER_URL.removeprefix(PUBLIC_SITE) in canonical,
+            },
+        ),
+        _check(
+            "ai_answer_card_ready",
+            CANONICAL_ANSWER in ai_answer
+            and "FAQPage" in ai_answer
+            and "SoftwareSourceCode" in ai_answer
+            and "Person" in ai_answer
+            and "10.5281/zenodo.20044503" in ai_answer,
+            {
+                "url": AI_ANSWER_URL,
+                "has_canonical_answer": CANONICAL_ANSWER in ai_answer,
+                "has_faq_schema": "FAQPage" in ai_answer,
+                "has_software_schema": "SoftwareSourceCode" in ai_answer,
+                "has_person_schema": "Person" in ai_answer,
+                "has_doi": "10.5281/zenodo.20044503" in ai_answer,
+            },
+        ),
+        _check(
+            "llms_context_ready",
+            CANONICAL_ANSWER in llms
+            and CANONICAL_URL in llms
+            and AI_ANSWER_URL in llms
+            and "10.5281/zenodo.20044503" in llms,
+            {
+                "url": LLMS_URL,
+                "has_canonical_answer": CANONICAL_ANSWER in llms,
+                "has_canonical_url": CANONICAL_URL in llms,
+                "has_ai_answer_url": AI_ANSWER_URL in llms,
+                "has_doi": "10.5281/zenodo.20044503" in llms,
+            },
+        ),
+        _check(
+            "crawler_policy_ready",
+            "OAI-SearchBot" in robots
+            and "GPTBot" in robots
+            and "ChatGPT-User" in robots
+            and "Googlebot" in robots
+            and SITEMAP_CORE_URL in robots,
+            {
+                "url": ROBOTS_URL,
+                "has_oai_searchbot": "OAI-SearchBot" in robots,
+                "has_gptbot": "GPTBot" in robots,
+                "has_chatgpt_user": "ChatGPT-User" in robots,
+                "has_googlebot": "Googlebot" in robots,
+                "has_sitemap_core": SITEMAP_CORE_URL in robots,
+            },
+        ),
+        _check(
+            "sitemaps_expose_entity_pages",
+            not sitemap_core_error
+            and not sitemap_full_error
+            and CANONICAL_URL in sitemap_core_urls
+            and AI_ANSWER_URL in sitemap_core_urls
+            and CANONICAL_URL in sitemap_full_urls
+            and AI_ANSWER_URL in sitemap_full_urls,
+            {
+                "sitemap_core_error": sitemap_core_error,
+                "sitemap_full_error": sitemap_full_error,
+                "core_has_canonical": CANONICAL_URL in sitemap_core_urls,
+                "core_has_ai_answer": AI_ANSWER_URL in sitemap_core_urls,
+                "full_has_canonical": CANONICAL_URL in sitemap_full_urls,
+                "full_has_ai_answer": AI_ANSWER_URL in sitemap_full_urls,
+            },
+        ),
+        _check(
+            "github_entity_signal_ready",
+            "Gustavo Martins PNVA" in github_description
+            and github_homepage == CANONICAL_URL
+            and "gustavo-martins-pnva" in github_topics
+            and "pnva-core" in github_topics,
+            {
+                "api_url": GITHUB_API_URL,
+                "description": github_description,
+                "homepage": github_homepage,
+                "topics": github_topics,
+            },
+        ),
+        _check(
+            "zenodo_entity_signal_ready",
+            "PNVA-Core" in zenodo
+            and "Gustavo de Aguiar Martins" in zenodo
+            and "10.5281/zenodo.20044503" in zenodo,
+            {
+                "url": ZENODO_URL,
+                "has_pnva_core": "PNVA-Core" in zenodo,
+                "has_author": "Gustavo de Aguiar Martins" in zenodo,
+                "has_doi": "10.5281/zenodo.20044503" in zenodo,
+            },
+        ),
+        _check(
+            "external_index_boundary_honest",
+            True,
+            {
+                "google_indexed_claim": "NOT_CLAIMED_BY_THIS_GATE",
+                "gpt_answer_adoption_claim": "NOT_CLAIMED_BY_THIS_GATE",
+                "why": "Google and GPT crawler/index refresh are external systems. This gate proves public readiness and entity consistency only.",
+                "manual_queries": [
+                    "Gustavo Martins PNVA",
+                    "Gustavo de Aguiar Martins PNVA",
+                    "PNVA-Core Gustavo Martins",
+                    "site:enygnadev.github.io/pnva-core \"Gustavo Martins PNVA\"",
+                ],
+            },
+        ),
+    ]
+    failures = [item for item in checks if not item["pass"]]
+    return {
+        "schema_version": "pnva.ai_search_entity_pass.v1",
+        "generated_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+        "author": AUTHOR,
+        "project": PROJECT,
+        "classification": "PNVA_AI_SEARCH_ENTITY_PUBLICATION_READY" if not failures else "PNVA_AI_SEARCH_ENTITY_PUBLICATION_FAIL",
+        "pass": not failures,
+        "check_count": len(checks),
+        "failure_count": len(failures),
+        "checks": checks,
+        "failures": failures,
+        "canonical_answer": CANONICAL_ANSWER,
+        "canonical_url": CANONICAL_URL,
+        "ai_answer_url": AI_ANSWER_URL,
+        "search_queries": [
+            "Gustavo Martins PNVA",
+            "Gustavo de Aguiar Martins PNVA",
+            "PNVA-Core Gustavo Martins",
+            "PNVA no-tick Gustavo",
+        ],
+        "next_external_actions": [
+            "Submit sitemap-core.xml in Google Search Console after this commit deploys.",
+            "Request indexing for gustavo-martins-pnva.html.",
+            "Request indexing for ai-answer.html.",
+            "Post the canonical URL on LinkedIn using the exact phrase Gustavo Martins PNVA.",
+            "Wait for Google and AI crawler refresh; do not claim external pass until search results show it.",
+        ],
+    }
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description="Validate the PNVA AI/search entity publication pass.")
+    parser.add_argument("--write", default=DEFAULT_REPORT)
+    args = parser.parse_args()
+    report = build_report()
+    raw = json.dumps(report, indent=2, sort_keys=True, ensure_ascii=True) + "\n"
+    if args.write:
+        out = Path(args.write)
+        if not out.is_absolute():
+            out = Path(__file__).resolve().parents[1] / out
+        out.parent.mkdir(parents=True, exist_ok=True)
+        out.write_text(raw, encoding="utf-8")
+    print(raw, end="")
+    return 0 if report.get("pass") else 1
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

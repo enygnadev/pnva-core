@@ -70,6 +70,7 @@ PNVA_QUICK_VERIFY_PASS
 - LinkedIn post text and image: `release/POST_02_LINKEDIN_PNVA_CORE_DOI.md`, `assets/pnva-linkedin-launch.png`
 - Indexing pack: `docs/INDEXING_SUBMISSION_PACK.md`
 - Google Search Console automation: `tools/pnva_google_search_console_operator.py`, `docs/PNVA_GOOGLE_SEARCH_CONSOLE_AUTOMATION.md`
+- AI/search entity pass: `ai-answer.html`, `tools/pnva_ai_search_entity_pass.py`, `docs/PNVA_AI_SEARCH_ENTITY_PASS.md`
 
 ## Google Search Console Distribution
 
