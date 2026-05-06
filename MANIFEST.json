@@ -73,7 +73,10 @@
         "Bingbot",
         "PerplexityBot",
         "ClaudeBot"
-      ]
+      ],
+      "sitemap_core": "sitemap-core.xml",
+      "google_search_console_pack": "google-search-console.html",
+      "priority_urls": "gsc-priority-urls.txt"
     },
     "sovereign_robustness_layer": {
       "status": "ADDED",
@@ -1360,6 +1363,18 @@
       "paper_pdf": "paper/PNVA_CORE_OPEN_RESEARCH_PAPER_2026-05-05.pdf",
       "interactive_demo": "demo.html",
       "social_image": "assets/pnva-linkedin-launch.png"
+    },
+    "google_search_console_layer": {
+      "status": "ADDED",
+      "property_type": "URL_PREFIX_WITH_PATH",
+      "property": "https://enygnadev.github.io/pnva-core/",
+      "distribution_page": "google-search-console.html",
+      "distribution_doc": "docs/GOOGLE_SEARCH_CONSOLE_DISTRIBUTION.md",
+      "priority_urls": "gsc-priority-urls.txt",
+      "core_sitemap": "sitemap-core.xml",
+      "full_sitemap": "sitemap.xml",
+      "priority_inspection_url": "https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.html",
+      "truth_boundary": "Search Console can request crawling and expose diagnostics, but cannot guarantee instant indexing, ranking, or AI answer adoption."
     }
   },
   "files": [
@@ -1384,6 +1399,7 @@
     "assets/pnva-core-mark.svg",
     "author.html",
     "gustavo-martins-pnva.html",
+    "google-search-console.html",
     "docs/LIMITATIONS.md",
     "docs/GUSTAVO_MARTINS_PNVA_DISCOVERY_PASS.md",
     "docs/ONLINE_PUBLICATION.md",
@@ -1459,6 +1475,7 @@
     "docs/VEON_MODEL_VALIDATION.md",
     "index.html",
     "llms.txt",
+    "gsc-priority-urls.txt",
     "paper/PNVA_CORE_OPEN_RESEARCH_PAPER.md",
     "pnva-core.html",
     "proofs.html",
@@ -1560,6 +1577,7 @@
     "schemas/pnva-entity.schema.json",
     "schemas/pnva-event.schema.json",
     "sitemap.xml",
+    "sitemap-core.xml",
     "styles.css",
     "tools/pnva_canonical_bridge.py",
     "tools/pnva_adversarial_validator.py",
@@ -1627,6 +1645,7 @@
     "assets/pnva-linkedin-launch.png",
     "demo.html",
     "docs/INDEXING_SUBMISSION_PACK.md",
+    "docs/GOOGLE_SEARCH_CONSOLE_DISTRIBUTION.md",
     "docs/REPRODUCIBILITY_QUICKSTART.md",
     "paper/PREPRINT_SUBMISSION_PACK.md",
     "paper/PNVA_CORE_OPEN_RESEARCH_PAPER_2026-05-05.html",

@@ -20,8 +20,10 @@ Submit these URLs to Google Search Console and Bing Webmaster Tools:
 
 ```text
 https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.html
+https://enygnadev.github.io/pnva-core/google-search-console.html
 https://enygnadev.github.io/pnva-core/
 https://enygnadev.github.io/pnva-core/llms.txt
+https://enygnadev.github.io/pnva-core/sitemap-core.xml
 https://enygnadev.github.io/pnva-core/sitemap.xml
 https://github.com/enygnadev/pnva-core
 https://zenodo.org/records/20044503
@@ -33,12 +35,13 @@ https://doi.org/10.5281/zenodo.20044503
 Property:
 
 ```text
-https://enygnadev.github.io/
+https://enygnadev.github.io/pnva-core/
 ```
 
-Sitemap:
+Sitemaps:
 
 ```text
+https://enygnadev.github.io/pnva-core/sitemap-core.xml
 https://enygnadev.github.io/pnva-core/sitemap.xml
 ```
 
@@ -55,7 +58,7 @@ Request indexing after inspection.
 Site:
 
 ```text
-https://enygnadev.github.io/
+https://enygnadev.github.io/pnva-core/
 ```
 
 Submit sitemap:

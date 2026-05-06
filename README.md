@@ -65,9 +65,33 @@ PNVA_QUICK_VERIFY_PASS
 
 - Search identity: https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.html
 - Interactive demo: https://enygnadev.github.io/pnva-core/demo.html
+- Google Search Console pack: https://enygnadev.github.io/pnva-core/google-search-console.html
 - Paper PDF: `paper/PNVA_CORE_OPEN_RESEARCH_PAPER_2026-05-05.pdf`
 - LinkedIn post text and image: `release/POST_02_LINKEDIN_PNVA_CORE_DOI.md`, `assets/pnva-linkedin-launch.png`
 - Indexing pack: `docs/INDEXING_SUBMISSION_PACK.md`
+
+## Google Search Console Distribution
+
+Recommended URL-prefix property:
+
+```text
+https://enygnadev.github.io/pnva-core/
+```
+
+Submit these sitemaps in Search Console:
+
+```text
+https://enygnadev.github.io/pnva-core/sitemap-core.xml
+https://enygnadev.github.io/pnva-core/sitemap.xml
+```
+
+First URL to inspect and request indexing:
+
+```text
+https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.html
+```
+
+Google can crawl and index after inspection and sitemap submission, but it does not guarantee instant inclusion or ranking. The Search Console workflow is documented in `docs/GOOGLE_SEARCH_CONSOLE_DISTRIBUTION.md`.
 
 ## Production Evidence
 
