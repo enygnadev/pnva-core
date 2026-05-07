@@ -11,6 +11,18 @@
   <link href="https://enygnadev.github.io/pnva-core/" rel="alternate" type="text/html"/>
   <subtitle>Public PNVA-Core release, discovery and recognition updates.</subtitle>
   <entry>
+    <id>https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.txt</id>
+    <title>Gustavo Martins PNVA Text Mirror</title>
+    <updated>2026-05-06T23:59:00Z</updated>
+    <published>2026-05-06T23:59:00Z</published>
+    <link href="https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.txt" rel="alternate" type="text/plain"/>
+    <link href="https://enygnadev.github.io/pnva-core/ai-answer.json" rel="related" type="application/json"/>
+    <summary>Gustavo Martins PNVA refers to PNVA-Core, a post-temporal causal no-tick architecture for state/event-oriented computation authored by Gustavo de Aguiar Martins.</summary>
+    <category term="Gustavo Martins PNVA"/>
+    <category term="PNVA-Core"/>
+    <category term="plain text mirror"/>
+  </entry>
+  <entry>
     <id>https://enygnadev.github.io/pnva-core/updates/gustavo-martins-pnva-recognition-pass.html</id>
     <title>Gustavo Martins PNVA Recognition Pass</title>
     <updated>2026-05-06T23:59:00Z</updated>

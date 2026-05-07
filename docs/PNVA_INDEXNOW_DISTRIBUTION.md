@@ -50,6 +50,9 @@ reports/pnva-indexnow-submission-2026-05-06.json
 https://enygnadev.github.io/pnva-core/
 https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.html
 https://enygnadev.github.io/pnva-core/ai-answer.html
+https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.txt
+https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.md
+https://enygnadev.github.io/pnva-core/ai-answer.json
 https://enygnadev.github.io/pnva-core/discovery-index.html
 https://enygnadev.github.io/pnva-core/updates/gustavo-martins-pnva-recognition-pass.html
 https://enygnadev.github.io/pnva-core/feed.xml

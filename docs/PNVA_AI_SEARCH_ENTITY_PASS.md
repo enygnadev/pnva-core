@@ -24,6 +24,9 @@ Repository: https://github.com/enygnadev/pnva-core
 Site: https://enygnadev.github.io/pnva-core/
 Canonical entity page: https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.html
 AI answer card: https://enygnadev.github.io/pnva-core/ai-answer.html
+Text answer mirror: https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.txt
+Markdown answer mirror: https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.md
+AI JSON answer: https://enygnadev.github.io/pnva-core/ai-answer.json
 Entity JSON: https://enygnadev.github.io/pnva-core/entity.json
 Discovery index: https://enygnadev.github.io/pnva-core/discovery-index.html
 Schema.org JSON-LD graph: https://enygnadev.github.io/pnva-core/pnva-core.jsonld
@@ -59,6 +62,7 @@ This proves:
 public_entity_urls_http_200
 canonical_page_has_entity_answer
 ai_answer_card_ready
+plain_text_and_json_answer_mirrors_ready
 llms_context_ready
 entity_json_ready
 jsonld_graph_ready
@@ -71,6 +75,7 @@ crawler_policy_ready
 sitemaps_expose_entity_pages
 github_entity_signal_ready
 github_profile_entity_signal_ready
+github_profile_files_entity_signal_ready
 github_release_entity_signal_ready
 github_recognition_feed_release_signal_ready
 github_issue_entity_signal_ready
@@ -105,6 +110,9 @@ Request indexing in this order:
 ```text
 https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.html
 https://enygnadev.github.io/pnva-core/ai-answer.html
+https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.txt
+https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.md
+https://enygnadev.github.io/pnva-core/ai-answer.json
 https://enygnadev.github.io/pnva-core/discovery-index.html
 https://enygnadev.github.io/pnva-core/updates/gustavo-martins-pnva-recognition-pass.html
 https://enygnadev.github.io/pnva-core/feed.xml

@@ -23,6 +23,9 @@ It cannot honestly prove that Google, GPT or other AI systems have already refre
 ```text
 https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.html
 https://enygnadev.github.io/pnva-core/ai-answer.html
+https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.txt
+https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.md
+https://enygnadev.github.io/pnva-core/ai-answer.json
 https://enygnadev.github.io/pnva-core/discovery-index.html
 https://enygnadev.github.io/pnva-core/entity.json
 https://enygnadev.github.io/pnva-core/pnva-core.jsonld
@@ -78,6 +81,8 @@ Use Google Search Console URL Inspection and request indexing for:
 ```text
 https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.html
 https://enygnadev.github.io/pnva-core/ai-answer.html
+https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.txt
+https://enygnadev.github.io/pnva-core/ai-answer.json
 https://enygnadev.github.io/pnva-core/discovery-index.html
 https://enygnadev.github.io/pnva-core/entity.json
 https://enygnadev.github.io/pnva-core/pnva-core.jsonld

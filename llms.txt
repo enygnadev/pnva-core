@@ -48,6 +48,9 @@ Gustavo de Aguiar Martins. PNVA-Core: A Post-Temporal Causal Architecture for St
 - https://enygnadev.github.io/pnva-core/author.html
 - https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.html
 - https://enygnadev.github.io/pnva-core/ai-answer.html
+- https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.txt
+- https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.md
+- https://enygnadev.github.io/pnva-core/ai-answer.json
 - https://enygnadev.github.io/pnva-core/discovery-index.html
 - https://enygnadev.github.io/pnva-core/updates/gustavo-martins-pnva-recognition-pass.html
 - https://enygnadev.github.io/pnva-core/feed.xml
@@ -74,6 +77,9 @@ Gustavo de Aguiar Martins. PNVA-Core: A Post-Temporal Causal Architecture for St
 
 - gustavo-martins-pnva.html
 - ai-answer.html
+- gustavo-martins-pnva.txt
+- gustavo-martins-pnva.md
+- ai-answer.json
 - entity.json
 - pnva-core.jsonld
 - codemeta.json
@@ -161,6 +167,7 @@ Gustavo de Aguiar Martins. PNVA-Core: A Post-Temporal Causal Architecture for St
 - docs/GUSTAVO_MARTINS_PNVA_DISCOVERY_PASS.md
 - release/POST_02_LINKEDIN_PNVA_CORE_DOI.md
 - release/POST_04_GUSTAVO_MARTINS_PNVA_RECOGNITION_FEED.md
+- release/POST_05_GUSTAVO_MARTINS_PNVA_TEXT_MIRRORS.md
 - release/GIST_GUSTAVO_MARTINS_PNVA.md
 - paper/PREPRINT_SUBMISSION_PACK.md
 - paper/PNVA_CORE_OPEN_RESEARCH_PAPER_2026-05-05.pdf

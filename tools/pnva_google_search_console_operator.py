@@ -22,6 +22,9 @@ PROPERTY_URL = "https://enygnadev.github.io/pnva-core/"
 PUBLIC_SITE = PROPERTY_URL
 PRIORITY_URL = PUBLIC_SITE + "gustavo-martins-pnva.html"
 AI_ANSWER_URL = PUBLIC_SITE + "ai-answer.html"
+TEXT_MIRROR_URL = PUBLIC_SITE + "gustavo-martins-pnva.txt"
+MARKDOWN_MIRROR_URL = PUBLIC_SITE + "gustavo-martins-pnva.md"
+AI_ANSWER_JSON_URL = PUBLIC_SITE + "ai-answer.json"
 DISCOVERY_INDEX_URL = PUBLIC_SITE + "discovery-index.html"
 RECOGNITION_UPDATE_URL = PUBLIC_SITE + "updates/gustavo-martins-pnva-recognition-pass.html"
 FEED_URL = PUBLIC_SITE + "feed.xml"
@@ -44,6 +47,9 @@ PUBLIC_URLS = [
     PUBLIC_SITE,
     PRIORITY_URL,
     AI_ANSWER_URL,
+    TEXT_MIRROR_URL,
+    MARKDOWN_MIRROR_URL,
+    AI_ANSWER_JSON_URL,
     DISCOVERY_INDEX_URL,
     RECOGNITION_UPDATE_URL,
     FEED_URL,
@@ -61,6 +67,9 @@ PUBLIC_URLS = [
 SITEMAP_CORE_REQUIRED = [
     PRIORITY_URL,
     AI_ANSWER_URL,
+    TEXT_MIRROR_URL,
+    MARKDOWN_MIRROR_URL,
+    AI_ANSWER_JSON_URL,
     DISCOVERY_INDEX_URL,
     RECOGNITION_UPDATE_URL,
     FEED_URL,
@@ -82,6 +91,9 @@ FULL_SITEMAP_REQUIRED = [
     PUBLIC_SITE,
     PRIORITY_URL,
     AI_ANSWER_URL,
+    TEXT_MIRROR_URL,
+    MARKDOWN_MIRROR_URL,
+    AI_ANSWER_JSON_URL,
     DISCOVERY_INDEX_URL,
     RECOGNITION_UPDATE_URL,
     FEED_URL,
@@ -99,6 +111,8 @@ OPEN_URLS = [
     "https://search.google.com/search-console/welcome",
     GSC_PAGE,
     AI_ANSWER_URL,
+    TEXT_MIRROR_URL,
+    AI_ANSWER_JSON_URL,
     DISCOVERY_INDEX_URL,
     RECOGNITION_UPDATE_URL,
     PRIORITY_TXT,
@@ -304,6 +318,8 @@ def build_report(submit_sitemaps: bool = False, token: str = "") -> dict[str, An
             and "application/ld+json" in exact
             and "rel=\"canonical\"" in exact
             and "10.5281/zenodo.20044503" in exact
+            and "gustavo-martins-pnva.txt" in exact
+            and "ai-answer.json" in exact
             and "google-search-console.html" in exact,
             {
                 "url": PRIORITY_URL,
@@ -311,6 +327,8 @@ def build_report(submit_sitemaps: bool = False, token: str = "") -> dict[str, An
                 "has_json_ld": "application/ld+json" in exact,
                 "has_rel_canonical": "rel=\"canonical\"" in exact,
                 "has_doi": "10.5281/zenodo.20044503" in exact,
+                "links_text_mirror": "gustavo-martins-pnva.txt" in exact,
+                "links_ai_answer_json": "ai-answer.json" in exact,
                 "links_gsc_page": "google-search-console.html" in exact,
             },
         ),

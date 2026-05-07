@@ -62,6 +62,8 @@ Inspect first:
 
 ```text
 https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.html
+https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.txt
+https://enygnadev.github.io/pnva-core/ai-answer.json
 ```
 
 Then:

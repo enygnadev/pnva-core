@@ -21,6 +21,9 @@ Submit these URLs to Google Search Console and Bing Webmaster Tools:
 ```text
 https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.html
 https://enygnadev.github.io/pnva-core/ai-answer.html
+https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.txt
+https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.md
+https://enygnadev.github.io/pnva-core/ai-answer.json
 https://enygnadev.github.io/pnva-core/google-search-console.html
 https://enygnadev.github.io/pnva-core/
 https://enygnadev.github.io/pnva-core/llms.txt

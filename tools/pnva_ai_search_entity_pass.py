@@ -15,6 +15,9 @@ PROJECT = "PNVA-Core"
 PUBLIC_SITE = "https://enygnadev.github.io/pnva-core/"
 CANONICAL_URL = PUBLIC_SITE + "gustavo-martins-pnva.html"
 AI_ANSWER_URL = PUBLIC_SITE + "ai-answer.html"
+TEXT_MIRROR_URL = PUBLIC_SITE + "gustavo-martins-pnva.txt"
+MARKDOWN_MIRROR_URL = PUBLIC_SITE + "gustavo-martins-pnva.md"
+AI_ANSWER_JSON_URL = PUBLIC_SITE + "ai-answer.json"
 DISCOVERY_INDEX_URL = PUBLIC_SITE + "discovery-index.html"
 RECOGNITION_UPDATE_URL = PUBLIC_SITE + "updates/gustavo-martins-pnva-recognition-pass.html"
 FEED_URL = PUBLIC_SITE + "feed.xml"
@@ -47,6 +50,9 @@ CANONICAL_ANSWER = (
 PUBLIC_URLS = [
     CANONICAL_URL,
     AI_ANSWER_URL,
+    TEXT_MIRROR_URL,
+    MARKDOWN_MIRROR_URL,
+    AI_ANSWER_JSON_URL,
     DISCOVERY_INDEX_URL,
     RECOGNITION_UPDATE_URL,
     FEED_URL,
@@ -167,6 +173,9 @@ def build_report() -> dict[str, Any]:
 
     canonical = fetched[CANONICAL_URL]["text"]
     ai_answer = fetched[AI_ANSWER_URL]["text"]
+    text_mirror = fetched[TEXT_MIRROR_URL]["text"]
+    markdown_mirror = fetched[MARKDOWN_MIRROR_URL]["text"]
+    ai_answer_json = fetched[AI_ANSWER_JSON_URL]["text"]
     discovery_index = fetched[DISCOVERY_INDEX_URL]["text"]
     recognition_update = fetched[RECOGNITION_UPDATE_URL]["text"]
     feed = fetched[FEED_URL]["text"]
@@ -261,9 +270,42 @@ def build_report() -> dict[str, Any]:
             },
         ),
         _check(
+            "plain_text_and_json_answer_mirrors_ready",
+            CANONICAL_ANSWER in text_mirror
+            and CANONICAL_URL in text_mirror
+            and GITHUB_GIST_URL in text_mirror
+            and "10.5281/zenodo.20044503" in text_mirror
+            and CANONICAL_ANSWER in markdown_mirror
+            and TEXT_MIRROR_URL in markdown_mirror
+            and AI_ANSWER_JSON_URL in markdown_mirror
+            and CANONICAL_ANSWER in ai_answer_json
+            and TEXT_MIRROR_URL in ai_answer_json
+            and MARKDOWN_MIRROR_URL in ai_answer_json
+            and GITHUB_GIST_URL in ai_answer_json,
+            {
+                "text_mirror_url": TEXT_MIRROR_URL,
+                "markdown_mirror_url": MARKDOWN_MIRROR_URL,
+                "ai_answer_json_url": AI_ANSWER_JSON_URL,
+                "text_has_canonical_answer": CANONICAL_ANSWER in text_mirror,
+                "text_has_canonical_url": CANONICAL_URL in text_mirror,
+                "text_has_gist_url": GITHUB_GIST_URL in text_mirror,
+                "text_has_doi": "10.5281/zenodo.20044503" in text_mirror,
+                "markdown_has_canonical_answer": CANONICAL_ANSWER in markdown_mirror,
+                "markdown_links_text": TEXT_MIRROR_URL in markdown_mirror,
+                "markdown_links_ai_json": AI_ANSWER_JSON_URL in markdown_mirror,
+                "json_has_canonical_answer": CANONICAL_ANSWER in ai_answer_json,
+                "json_links_text": TEXT_MIRROR_URL in ai_answer_json,
+                "json_links_markdown": MARKDOWN_MIRROR_URL in ai_answer_json,
+                "json_has_gist_url": GITHUB_GIST_URL in ai_answer_json,
+            },
+        ),
+        _check(
             "discovery_index_ready",
             CANONICAL_ANSWER in discovery_index
             and "Gustavo de Aguiar Martins" in discovery_index
+            and "gustavo-martins-pnva.txt" in discovery_index
+            and "gustavo-martins-pnva.md" in discovery_index
+            and "ai-answer.json" in discovery_index
             and "entity.json" in discovery_index
             and "pnva-core.jsonld" in discovery_index
             and "codemeta.json" in discovery_index
@@ -274,6 +316,9 @@ def build_report() -> dict[str, Any]:
                 "url": DISCOVERY_INDEX_URL,
                 "has_canonical_answer": CANONICAL_ANSWER in discovery_index,
                 "has_author": "Gustavo de Aguiar Martins" in discovery_index,
+                "links_text_mirror": "gustavo-martins-pnva.txt" in discovery_index,
+                "links_markdown_mirror": "gustavo-martins-pnva.md" in discovery_index,
+                "links_ai_answer_json": "ai-answer.json" in discovery_index,
                 "links_entity_json": "entity.json" in discovery_index,
                 "links_jsonld": "pnva-core.jsonld" in discovery_index,
                 "links_codemeta": "codemeta.json" in discovery_index,
@@ -300,12 +345,14 @@ def build_report() -> dict[str, Any]:
             "atom_feed_ready",
             CANONICAL_ANSWER in feed
             and RECOGNITION_UPDATE_URL in feed
+            and TEXT_MIRROR_URL in feed
             and "Gustavo Martins PNVA" in feed
             and "PNVA-Core Public Updates" in feed,
             {
                 "url": FEED_URL,
                 "has_canonical_answer": CANONICAL_ANSWER in feed,
                 "has_recognition_update_url": RECOGNITION_UPDATE_URL in feed,
+                "has_text_mirror_url": TEXT_MIRROR_URL in feed,
                 "has_alias": "Gustavo Martins PNVA" in feed,
                 "has_feed_title": "PNVA-Core Public Updates" in feed,
             },
@@ -315,6 +362,9 @@ def build_report() -> dict[str, Any]:
             CANONICAL_ANSWER in llms
             and CANONICAL_URL in llms
             and AI_ANSWER_URL in llms
+            and TEXT_MIRROR_URL in llms
+            and MARKDOWN_MIRROR_URL in llms
+            and AI_ANSWER_JSON_URL in llms
             and DISCOVERY_INDEX_URL in llms
             and RECOGNITION_UPDATE_URL in llms
             and FEED_URL in llms
@@ -328,6 +378,9 @@ def build_report() -> dict[str, Any]:
                 "has_canonical_answer": CANONICAL_ANSWER in llms,
                 "has_canonical_url": CANONICAL_URL in llms,
                 "has_ai_answer_url": AI_ANSWER_URL in llms,
+                "has_text_mirror_url": TEXT_MIRROR_URL in llms,
+                "has_markdown_mirror_url": MARKDOWN_MIRROR_URL in llms,
+                "has_ai_answer_json_url": AI_ANSWER_JSON_URL in llms,
                 "has_discovery_index_url": DISCOVERY_INDEX_URL in llms,
                 "has_recognition_update_url": RECOGNITION_UPDATE_URL in llms,
                 "has_feed_url": FEED_URL in llms,
@@ -342,6 +395,8 @@ def build_report() -> dict[str, Any]:
             "humans_context_ready",
             CANONICAL_ANSWER in humans
             and DISCOVERY_INDEX_URL in humans
+            and TEXT_MIRROR_URL in humans
+            and AI_ANSWER_JSON_URL in humans
             and RECOGNITION_UPDATE_URL in humans
             and FEED_URL in humans
             and JSONLD_URL in humans
@@ -352,6 +407,8 @@ def build_report() -> dict[str, Any]:
                 "url": HUMANS_URL,
                 "has_canonical_answer": CANONICAL_ANSWER in humans,
                 "has_discovery_index_url": DISCOVERY_INDEX_URL in humans,
+                "has_text_mirror_url": TEXT_MIRROR_URL in humans,
+                "has_ai_answer_json_url": AI_ANSWER_JSON_URL in humans,
                 "has_recognition_update_url": RECOGNITION_UPDATE_URL in humans,
                 "has_feed_url": FEED_URL in humans,
                 "has_jsonld_url": JSONLD_URL in humans,
@@ -364,6 +421,8 @@ def build_report() -> dict[str, Any]:
             "entity_json_ready",
             CANONICAL_ANSWER in entity
             and "Gustavo Martins PNVA" in entity
+            and TEXT_MIRROR_URL in entity
+            and AI_ANSWER_JSON_URL in entity
             and "https://github.com/enygnadev/enygnadev" in entity
             and "https://github.com/enygnadev/pnva-core" in entity
             and DISCOVERY_INDEX_URL in entity
@@ -377,6 +436,8 @@ def build_report() -> dict[str, Any]:
                 "url": ENTITY_URL,
                 "has_canonical_answer": CANONICAL_ANSWER in entity,
                 "has_alias": "Gustavo Martins PNVA" in entity,
+                "has_text_mirror_url": TEXT_MIRROR_URL in entity,
+                "has_ai_answer_json_url": AI_ANSWER_JSON_URL in entity,
                 "has_github_profile_repo": "https://github.com/enygnadev/enygnadev" in entity,
                 "has_pnva_repo": "https://github.com/enygnadev/pnva-core" in entity,
                 "has_discovery_index_url": DISCOVERY_INDEX_URL in entity,
@@ -393,6 +454,8 @@ def build_report() -> dict[str, Any]:
             CANONICAL_ANSWER in jsonld
             and "Gustavo Martins PNVA" in jsonld
             and "Gustavo de Aguiar Martins" in jsonld
+            and TEXT_MIRROR_URL in jsonld
+            and AI_ANSWER_JSON_URL in jsonld
             and "SoftwareSourceCode" in jsonld
             and "DefinedTerm" in jsonld
             and "DataFeed" in jsonld
@@ -403,6 +466,8 @@ def build_report() -> dict[str, Any]:
                 "has_canonical_answer": CANONICAL_ANSWER in jsonld,
                 "has_alias": "Gustavo Martins PNVA" in jsonld,
                 "has_author": "Gustavo de Aguiar Martins" in jsonld,
+                "has_text_mirror_url": TEXT_MIRROR_URL in jsonld,
+                "has_ai_answer_json_url": AI_ANSWER_JSON_URL in jsonld,
                 "has_software_schema": "SoftwareSourceCode" in jsonld,
                 "has_defined_term": "DefinedTerm" in jsonld,
                 "has_data_feed": "DataFeed" in jsonld,
@@ -416,6 +481,8 @@ def build_report() -> dict[str, Any]:
             and "Gustavo de Aguiar Martins" in codemeta
             and "SoftwareSourceCode" in codemeta
             and "https://github.com/enygnadev/pnva-core" in codemeta
+            and TEXT_MIRROR_URL in codemeta
+            and AI_ANSWER_JSON_URL in codemeta
             and GITHUB_GIST_URL in codemeta
             and "10.5281/zenodo.20044503" in codemeta,
             {
@@ -424,6 +491,8 @@ def build_report() -> dict[str, Any]:
                 "has_author": "Gustavo de Aguiar Martins" in codemeta,
                 "has_software_source_code": "SoftwareSourceCode" in codemeta,
                 "has_repository": "https://github.com/enygnadev/pnva-core" in codemeta,
+                "has_text_mirror_url": TEXT_MIRROR_URL in codemeta,
+                "has_ai_answer_json_url": AI_ANSWER_JSON_URL in codemeta,
                 "has_gist_url": GITHUB_GIST_URL in codemeta,
                 "has_doi": "10.5281/zenodo.20044503" in codemeta,
             },
@@ -450,6 +519,9 @@ def build_report() -> dict[str, Any]:
             and not sitemap_full_error
             and CANONICAL_URL in sitemap_core_urls
             and AI_ANSWER_URL in sitemap_core_urls
+            and TEXT_MIRROR_URL in sitemap_core_urls
+            and MARKDOWN_MIRROR_URL in sitemap_core_urls
+            and AI_ANSWER_JSON_URL in sitemap_core_urls
             and DISCOVERY_INDEX_URL in sitemap_core_urls
             and RECOGNITION_UPDATE_URL in sitemap_core_urls
             and FEED_URL in sitemap_core_urls
@@ -458,6 +530,9 @@ def build_report() -> dict[str, Any]:
             and CODEMETA_URL in sitemap_core_urls
             and CANONICAL_URL in sitemap_full_urls
             and AI_ANSWER_URL in sitemap_full_urls
+            and TEXT_MIRROR_URL in sitemap_full_urls
+            and MARKDOWN_MIRROR_URL in sitemap_full_urls
+            and AI_ANSWER_JSON_URL in sitemap_full_urls
             and DISCOVERY_INDEX_URL in sitemap_full_urls
             and RECOGNITION_UPDATE_URL in sitemap_full_urls
             and FEED_URL in sitemap_full_urls
@@ -469,6 +544,9 @@ def build_report() -> dict[str, Any]:
                 "sitemap_full_error": sitemap_full_error,
                 "core_has_canonical": CANONICAL_URL in sitemap_core_urls,
                 "core_has_ai_answer": AI_ANSWER_URL in sitemap_core_urls,
+                "core_has_text_mirror": TEXT_MIRROR_URL in sitemap_core_urls,
+                "core_has_markdown_mirror": MARKDOWN_MIRROR_URL in sitemap_core_urls,
+                "core_has_ai_answer_json": AI_ANSWER_JSON_URL in sitemap_core_urls,
                 "core_has_discovery_index": DISCOVERY_INDEX_URL in sitemap_core_urls,
                 "core_has_recognition_update": RECOGNITION_UPDATE_URL in sitemap_core_urls,
                 "core_has_feed": FEED_URL in sitemap_core_urls,
@@ -477,6 +555,9 @@ def build_report() -> dict[str, Any]:
                 "core_has_codemeta": CODEMETA_URL in sitemap_core_urls,
                 "full_has_canonical": CANONICAL_URL in sitemap_full_urls,
                 "full_has_ai_answer": AI_ANSWER_URL in sitemap_full_urls,
+                "full_has_text_mirror": TEXT_MIRROR_URL in sitemap_full_urls,
+                "full_has_markdown_mirror": MARKDOWN_MIRROR_URL in sitemap_full_urls,
+                "full_has_ai_answer_json": AI_ANSWER_JSON_URL in sitemap_full_urls,
                 "full_has_discovery_index": DISCOVERY_INDEX_URL in sitemap_full_urls,
                 "full_has_recognition_update": RECOGNITION_UPDATE_URL in sitemap_full_urls,
                 "full_has_feed": FEED_URL in sitemap_full_urls,
@@ -642,6 +723,9 @@ def build_report() -> dict[str, Any]:
         "canonical_answer": CANONICAL_ANSWER,
         "canonical_url": CANONICAL_URL,
         "ai_answer_url": AI_ANSWER_URL,
+        "text_mirror_url": TEXT_MIRROR_URL,
+        "markdown_mirror_url": MARKDOWN_MIRROR_URL,
+        "ai_answer_json_url": AI_ANSWER_JSON_URL,
         "discovery_index_url": DISCOVERY_INDEX_URL,
         "recognition_update_url": RECOGNITION_UPDATE_URL,
         "feed_url": FEED_URL,

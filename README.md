@@ -64,6 +64,9 @@ PNVA_QUICK_VERIFY_PASS
 ## Public Entry Points
 
 - Search identity: https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.html
+- Text answer mirror: https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.txt
+- Markdown answer mirror: https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.md
+- AI JSON answer: https://enygnadev.github.io/pnva-core/ai-answer.json
 - Discovery index: https://enygnadev.github.io/pnva-core/discovery-index.html
 - Recognition pass update: https://enygnadev.github.io/pnva-core/updates/gustavo-martins-pnva-recognition-pass.html
 - Public update feed: https://enygnadev.github.io/pnva-core/feed.xml
@@ -74,6 +77,7 @@ PNVA_QUICK_VERIFY_PASS
 - Indexing pack: `docs/INDEXING_SUBMISSION_PACK.md`
 - Google Search Console automation: `tools/pnva_google_search_console_operator.py`, `docs/PNVA_GOOGLE_SEARCH_CONSOLE_AUTOMATION.md`
 - AI/search entity pass: `ai-answer.html`, `tools/pnva_ai_search_entity_pass.py`, `docs/PNVA_AI_SEARCH_ENTITY_PASS.md`
+- AI/search text mirrors: `gustavo-martins-pnva.txt`, `gustavo-martins-pnva.md`, `ai-answer.json`
 - Machine-readable entity graph: `entity.json`
 - Schema.org graph: `pnva-core.jsonld`
 - Academic software metadata: `codemeta.json`
@@ -86,6 +90,7 @@ PNVA_QUICK_VERIFY_PASS
 - Profile recognition JSON: https://github.com/enygnadev/enygnadev/blob/main/recognition.json
 - GitHub Gist identity mirror: https://gist.github.com/enygnadev/ca6cdad84bbdc52a0edb690c9b2a6672
 - Recognition feed release: https://github.com/enygnadev/pnva-core/releases/tag/v0.1.2-recognition-feed
+- Text mirror release post: `release/POST_05_GUSTAVO_MARTINS_PNVA_TEXT_MIRRORS.md`
 
 ## Google Search Console Distribution
 
