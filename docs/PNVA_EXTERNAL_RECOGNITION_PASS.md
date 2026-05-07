@@ -124,3 +124,52 @@ indexnow_http_status=200
 public_google_query_status=pending
 truth_boundary=Do not claim public Google/GPT recognition until public results or AI answers return the canonical PNVA entity.
 ```
+
+## Safe External Recognition Observer - 2026-05-07
+
+This observer was created to avoid false PASS inflation.
+
+Observed public artifact PASS:
+
+```text
+https://enygnadev.github.io/pnva-core/pnva-processo-neural-virtual-autonomo.html             HTTP 200, entity=true, author=true
+https://enygnadev.github.io/pnva-core/pnva-processo-neural-virtual-autonomo.txt              HTTP 200, entity=true, author=true
+https://enygnadev.github.io/pnva-core/pnva-processo-neural-virtual-autonomo.json             HTTP 200, entity=true, author=true
+https://enygnadev.github.io/pnva-processo-neural-virtual-autonomo.html                       HTTP 200, entity=true, author=true
+https://enygnadev.github.io/gustavo-martins-pnva/pnva-processo-neural-virtual-autonomo.html  HTTP 200, entity=true, author=true
+```
+
+Repository evidence:
+
+```text
+pnva_core_commit=a398fe5 Add PNVA Portuguese academic entity
+root_site_commit=994dc42 Refine PNVA Portuguese entity text
+exact_mirror_commit=70db834 Refine PNVA Portuguese identity text
+release=https://github.com/enygnadev/pnva-core/releases/tag/v0.1.6-pnva-portuguese-academic-entity
+PNVA_QUICK_VERIFY_PASS=true
+PNVA_ROOT_PUBLICATION_GATE_READY=true
+publication_score=100.0
+```
+
+External recognition status:
+
+```text
+assistant_public_web_search_performed=true
+exact_public_search_result_observed_by_assistant=false
+user_reported_google_or_gpt_observation=true
+user_report_status=UNVERIFIED_BY_ASSISTANT_UNTIL_SCREENSHOT_OR_PUBLIC_RESULT_IS_AVAILABLE
+external_recognition_final_pass=false
+```
+
+Safe classification:
+
+```text
+PNVA_PUBLIC_ARTIFACT_RECOGNITION_READY_PASS
+EXTERNAL_INDEX_PENDING_OR_USER_OBSERVED_UNVERIFIED
+```
+
+Full observer report:
+
+```text
+reports/pnva-external-recognition-observer-2026-05-07.json
+```

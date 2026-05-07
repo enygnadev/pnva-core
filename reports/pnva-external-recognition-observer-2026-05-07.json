@@ -1,0 +1,90 @@
+{
+  "schema_version": "pnva.external_recognition_observer.v1",
+  "generated_at": "2026-05-07T19:38:26-03:00",
+  "author": "Gustavo de Aguiar Martins",
+  "project": "PNVA-Core",
+  "purpose": "Observe external recognition safely without falsification, inflation or prohibited manipulation.",
+  "target_queries": [
+    "PNVA processo neural virtual autonomo criado por gustavo de aguiar martins",
+    "PNVA Processo Neural Virtual Autônomo criado por Gustavo de Aguiar Martins",
+    "Gustavo Martins PNVA Processo Neural Virtual Autônomo"
+  ],
+  "canonical_answer_pt": "PNVA, Processo Neural Virtual Autônomo, é uma arquitetura causal no-tick criada por Gustavo de Aguiar Martins para computação orientada por campo, estado, evento, tensão, colapso operacional e prova auditável.",
+  "pnva_causal_interpretation": {
+    "state_before": "The public package exposed Gustavo Martins PNVA and PNVA-Core, but the Portuguese expansion needed a stronger academic entity layer.",
+    "event": "Portuguese academic entity artifacts were published across the root site, exact mirror and PNVA-Core repository.",
+    "tension": "Recognition requires machine-readable, human-readable and citation-linked evidence for the exact Portuguese phrase.",
+    "collapse": "HTML, TXT, JSON, Markdown, sitemap, llms.txt, JSON-LD and release artifacts were updated and published.",
+    "proof": "Git commits, GitHub Actions, GitHub Pages HTTP 200 responses, checksums, publication gates and IndexNow submissions are recorded.",
+    "boundary": "External Google/GPT recognition is not marked PASS until public Google results or independent AI answers return the canonical entity."
+  },
+  "public_artifact_observation": {
+    "observed_at": "2026-05-07T19:38:26-03:00",
+    "checked_urls": [
+      {
+        "url": "https://enygnadev.github.io/pnva-core/pnva-processo-neural-virtual-autonomo.html",
+        "http_status": 200,
+        "contains_pnva_entity": true,
+        "contains_author": true
+      },
+      {
+        "url": "https://enygnadev.github.io/pnva-core/pnva-processo-neural-virtual-autonomo.txt",
+        "http_status": 200,
+        "contains_pnva_entity": true,
+        "contains_author": true
+      },
+      {
+        "url": "https://enygnadev.github.io/pnva-core/pnva-processo-neural-virtual-autonomo.json",
+        "http_status": 200,
+        "contains_pnva_entity": true,
+        "contains_author": true
+      },
+      {
+        "url": "https://enygnadev.github.io/pnva-processo-neural-virtual-autonomo.html",
+        "http_status": 200,
+        "contains_pnva_entity": true,
+        "contains_author": true
+      },
+      {
+        "url": "https://enygnadev.github.io/gustavo-martins-pnva/pnva-processo-neural-virtual-autonomo.html",
+        "http_status": 200,
+        "contains_pnva_entity": true,
+        "contains_author": true
+      }
+    ],
+    "public_artifacts_pass": true
+  },
+  "repository_evidence": {
+    "pnva_core_commit": "a398fe5 Add PNVA Portuguese academic entity",
+    "root_site_commit": "994dc42 Refine PNVA Portuguese entity text",
+    "exact_mirror_commit": "70db834 Refine PNVA Portuguese identity text",
+    "release": "https://github.com/enygnadev/pnva-core/releases/tag/v0.1.6-pnva-portuguese-academic-entity",
+    "github_actions_main": "success",
+    "github_actions_release_tag": "success",
+    "github_pages": "success",
+    "pnva_quick_verify": "PASS",
+    "pnva_root_publication_gate": "PNVA_ROOT_PUBLICATION_GATE_READY",
+    "publication_score": 100.0
+  },
+  "external_search_observation": {
+    "assistant_public_web_search_performed": true,
+    "exact_public_search_result_observed_by_assistant": false,
+    "observed_public_result_urls": [],
+    "user_reported_google_or_gpt_observation": true,
+    "user_report_status": "UNVERIFIED_BY_ASSISTANT_UNTIL_SCREENSHOT_OR_PUBLIC_RESULT_IS_AVAILABLE",
+    "safe_status": "EXTERNAL_INDEX_PENDING_OR_USER_OBSERVED_UNVERIFIED"
+  },
+  "pass_matrix": {
+    "publication_pass": true,
+    "github_pages_pass": true,
+    "metadata_pass": true,
+    "sitemap_pass": true,
+    "indexnow_submission_pass": true,
+    "google_search_console_ready": true,
+    "external_google_public_result_pass": false,
+    "external_gpt_independent_answer_pass": false,
+    "external_recognition_final_pass": false
+  },
+  "honest_rule": "Never convert user belief or private observation into final external PASS without public search evidence, Search Console evidence screenshot, or independent AI answer capture.",
+  "next_validation_step": "Capture a screenshot or exported evidence of Google/GPT returning the canonical entity, then record it as EXTERNAL_RECOGNITION_OBSERVED_PASS with date, query, system and answer."
+}
