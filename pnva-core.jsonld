@@ -15,6 +15,7 @@
         "https://github.com/enygnadev",
         "https://github.com/enygnadev/enygnadev",
         "https://github.com/enygnadev/pnva-core",
+        "https://gist.github.com/enygnadev/ca6cdad84bbdc52a0edb690c9b2a6672",
         "https://zenodo.org/records/20044503",
         "https://doi.org/10.5281/zenodo.20044503"
       ],
@@ -61,7 +62,8 @@
         "https://zenodo.org/records/20044503",
         "https://doi.org/10.5281/zenodo.20044503",
         "https://github.com/enygnadev/pnva-core/releases/tag/v0.1.1-ai-search-entity",
-        "https://github.com/enygnadev/pnva-core/issues/2"
+        "https://github.com/enygnadev/pnva-core/issues/2",
+        "https://gist.github.com/enygnadev/ca6cdad84bbdc52a0edb690c9b2a6672"
       ]
     },
     {
@@ -70,6 +72,15 @@
       "name": "Gustavo Martins PNVA",
       "description": "Gustavo Martins PNVA refers to PNVA-Core, a post-temporal causal no-tick architecture for state/event-oriented computation authored by Gustavo de Aguiar Martins.",
       "inDefinedTermSet": "PNVA-Core public identity graph"
+    },
+    {
+      "@type": "DataFeed",
+      "@id": "https://enygnadev.github.io/pnva-core/feed.xml#feed",
+      "name": "PNVA-Core Public Updates",
+      "url": "https://enygnadev.github.io/pnva-core/feed.xml",
+      "about": {
+        "@id": "https://enygnadev.github.io/pnva-core/#pnva-core"
+      }
     }
   ],
   "canonicalAnswer": "Gustavo Martins PNVA refers to PNVA-Core, a post-temporal causal no-tick architecture for state/event-oriented computation authored by Gustavo de Aguiar Martins."

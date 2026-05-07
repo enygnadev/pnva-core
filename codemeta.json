@@ -48,6 +48,7 @@
       "sameAs": [
         "https://github.com/enygnadev",
         "https://github.com/enygnadev/enygnadev",
+        "https://gist.github.com/enygnadev/ca6cdad84bbdc52a0edb690c9b2a6672",
         "https://zenodo.org/records/20044503",
         "https://doi.org/10.5281/zenodo.20044503"
       ]
@@ -58,6 +59,7 @@
   ],
   "citation": "Gustavo de Aguiar Martins. PNVA-Core: A Post-Temporal Causal Architecture for State/Event-Oriented Computation. Open Research / Production Evidence Edition, 2026. DOI: 10.5281/zenodo.20044503.",
   "referencePublication": "https://doi.org/10.5281/zenodo.20044503",
+  "readme": "https://enygnadev.github.io/pnva-core/updates/gustavo-martins-pnva-recognition-pass.html",
   "developmentStatus": "active",
   "applicationCategory": "Causal computing architecture"
 }

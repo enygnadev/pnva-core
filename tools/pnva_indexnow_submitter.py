@@ -24,6 +24,8 @@ URLS = [
     f"{SITE_ROOT}/gustavo-martins-pnva.html",
     f"{SITE_ROOT}/ai-answer.html",
     f"{SITE_ROOT}/discovery-index.html",
+    f"{SITE_ROOT}/updates/gustavo-martins-pnva-recognition-pass.html",
+    f"{SITE_ROOT}/feed.xml",
     f"{SITE_ROOT}/entity.json",
     f"{SITE_ROOT}/pnva-core.jsonld",
     f"{SITE_ROOT}/codemeta.json",

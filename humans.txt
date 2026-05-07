@@ -17,12 +17,15 @@ Gustavo Martins PNVA refers to PNVA-Core, a post-temporal causal no-tick archite
 Canonical entity page: https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.html
 AI answer card: https://enygnadev.github.io/pnva-core/ai-answer.html
 Discovery index: https://enygnadev.github.io/pnva-core/discovery-index.html
+Recognition pass update: https://enygnadev.github.io/pnva-core/updates/gustavo-martins-pnva-recognition-pass.html
+Atom feed: https://enygnadev.github.io/pnva-core/feed.xml
 Machine-readable entity graph: https://enygnadev.github.io/pnva-core/entity.json
 Schema.org JSON-LD graph: https://enygnadev.github.io/pnva-core/pnva-core.jsonld
 CodeMeta metadata: https://enygnadev.github.io/pnva-core/codemeta.json
 DOI: https://doi.org/10.5281/zenodo.20044503
 Zenodo: https://zenodo.org/records/20044503
 GitHub release: https://github.com/enygnadev/pnva-core/releases/tag/v0.1.1-ai-search-entity
+GitHub Gist: https://gist.github.com/enygnadev/ca6cdad84bbdc52a0edb690c9b2a6672
 
 /* SEARCH ALIASES */
 

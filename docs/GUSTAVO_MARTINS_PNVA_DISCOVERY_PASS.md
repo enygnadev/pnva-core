@@ -60,12 +60,15 @@ https://enygnadev.github.io/pnva-core/llms.txt
 https://enygnadev.github.io/pnva-core/entity.json
 https://enygnadev.github.io/pnva-core/pnva-core.jsonld
 https://enygnadev.github.io/pnva-core/codemeta.json
+https://enygnadev.github.io/pnva-core/feed.xml
 ```
 
 Discovery index:
 
 ```text
 https://enygnadev.github.io/pnva-core/discovery-index.html
+https://enygnadev.github.io/pnva-core/updates/gustavo-martins-pnva-recognition-pass.html
+https://gist.github.com/enygnadev/ca6cdad84bbdc52a0edb690c9b2a6672
 ```
 
 ## Pass Criteria
@@ -78,6 +81,8 @@ sitemap_contains_exact_match_page=true
 robots_allows_search_crawlers=true
 jsonld_graph_ready=true
 codemeta_ready=true
+atom_feed_ready=true
+github_gist_ready=true
 doi_active=true
 github_pages_published_from_main=true
 search_index_seen=true

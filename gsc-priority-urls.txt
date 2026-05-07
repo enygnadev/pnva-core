@@ -9,6 +9,8 @@ Request indexing order:
 https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.html
 https://enygnadev.github.io/pnva-core/ai-answer.html
 https://enygnadev.github.io/pnva-core/discovery-index.html
+https://enygnadev.github.io/pnva-core/updates/gustavo-martins-pnva-recognition-pass.html
+https://enygnadev.github.io/pnva-core/feed.xml
 https://enygnadev.github.io/pnva-core/google-search-console.html
 https://enygnadev.github.io/pnva-core/
 https://enygnadev.github.io/pnva-core/entity.json
@@ -22,5 +24,6 @@ https://enygnadev.github.io/pnva-core/llms.txt
 
 Authority URLs:
 https://github.com/enygnadev/pnva-core
+https://gist.github.com/enygnadev/ca6cdad84bbdc52a0edb690c9b2a6672
 https://zenodo.org/records/20044503
 https://doi.org/10.5281/zenodo.20044503

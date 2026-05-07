@@ -65,6 +65,8 @@ PNVA_QUICK_VERIFY_PASS
 
 - Search identity: https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.html
 - Discovery index: https://enygnadev.github.io/pnva-core/discovery-index.html
+- Recognition pass update: https://enygnadev.github.io/pnva-core/updates/gustavo-martins-pnva-recognition-pass.html
+- Public update feed: https://enygnadev.github.io/pnva-core/feed.xml
 - Interactive demo: https://enygnadev.github.io/pnva-core/demo.html
 - Google Search Console pack: https://enygnadev.github.io/pnva-core/google-search-console.html
 - Paper PDF: `paper/PNVA_CORE_OPEN_RESEARCH_PAPER_2026-05-05.pdf`
@@ -76,8 +78,11 @@ PNVA_QUICK_VERIFY_PASS
 - Schema.org graph: `pnva-core.jsonld`
 - Academic software metadata: `codemeta.json`
 - Human-readable identity file: `humans.txt`
+- Recognition update page: `updates/gustavo-martins-pnva-recognition-pass.html`
+- Atom update feed: `feed.xml`
 - External recognition pass boundary: `docs/PNVA_EXTERNAL_RECOGNITION_PASS.md`
 - IndexNow distribution: `tools/pnva_indexnow_submitter.py`, `docs/PNVA_INDEXNOW_DISTRIBUTION.md`
+- GitHub Gist identity mirror: https://gist.github.com/enygnadev/ca6cdad84bbdc52a0edb690c9b2a6672
 
 ## Google Search Console Distribution
 

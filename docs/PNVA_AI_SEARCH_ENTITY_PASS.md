@@ -28,6 +28,9 @@ Entity JSON: https://enygnadev.github.io/pnva-core/entity.json
 Discovery index: https://enygnadev.github.io/pnva-core/discovery-index.html
 Schema.org JSON-LD graph: https://enygnadev.github.io/pnva-core/pnva-core.jsonld
 CodeMeta metadata: https://enygnadev.github.io/pnva-core/codemeta.json
+Recognition update: https://enygnadev.github.io/pnva-core/updates/gustavo-martins-pnva-recognition-pass.html
+Atom feed: https://enygnadev.github.io/pnva-core/feed.xml
+GitHub Gist identity mirror: https://gist.github.com/enygnadev/ca6cdad84bbdc52a0edb690c9b2a6672
 DOI: 10.5281/zenodo.20044503
 Zenodo: https://zenodo.org/records/20044503
 GitHub profile README: https://github.com/enygnadev/enygnadev
@@ -60,6 +63,8 @@ entity_json_ready
 jsonld_graph_ready
 codemeta_metadata_ready
 discovery_index_ready
+recognition_update_ready
+atom_feed_ready
 humans_context_ready
 crawler_policy_ready
 sitemaps_expose_entity_pages
@@ -67,6 +72,7 @@ github_entity_signal_ready
 github_profile_entity_signal_ready
 github_release_entity_signal_ready
 github_issue_entity_signal_ready
+github_gist_entity_signal_ready
 zenodo_entity_signal_ready
 external_index_boundary_honest
 ```
@@ -98,6 +104,8 @@ Request indexing in this order:
 https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.html
 https://enygnadev.github.io/pnva-core/ai-answer.html
 https://enygnadev.github.io/pnva-core/discovery-index.html
+https://enygnadev.github.io/pnva-core/updates/gustavo-martins-pnva-recognition-pass.html
+https://enygnadev.github.io/pnva-core/feed.xml
 https://enygnadev.github.io/pnva-core/google-search-console.html
 https://enygnadev.github.io/pnva-core/
 https://enygnadev.github.io/pnva-core/llms.txt
@@ -119,6 +127,9 @@ entity.json with the canonical Person and SoftwareSourceCode graph
 pnva-core.jsonld with a Schema.org graph
 codemeta.json with academic software metadata
 discovery-index.html with all public entity links
+updates/gustavo-martins-pnva-recognition-pass.html with a dated recognition update
+feed.xml with the public update entry
+GitHub Gist with a canonical identity mirror
 sitemap-core.xml with the canonical entity pages
 GitHub repository description with Gustavo Martins PNVA
 GitHub profile README with Gustavo Martins PNVA

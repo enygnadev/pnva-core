@@ -27,6 +27,9 @@ https://enygnadev.github.io/pnva-core/discovery-index.html
 https://enygnadev.github.io/pnva-core/entity.json
 https://enygnadev.github.io/pnva-core/pnva-core.jsonld
 https://enygnadev.github.io/pnva-core/codemeta.json
+https://enygnadev.github.io/pnva-core/updates/gustavo-martins-pnva-recognition-pass.html
+https://enygnadev.github.io/pnva-core/feed.xml
+https://gist.github.com/enygnadev/ca6cdad84bbdc52a0edb690c9b2a6672
 https://enygnadev.github.io/pnva-core/llms.txt
 https://enygnadev.github.io/pnva-core/humans.txt
 https://doi.org/10.5281/zenodo.20044503
@@ -51,6 +54,9 @@ github_repo_signal_ready=true
 github_profile_signal_ready=true
 github_release_signal_ready=true
 github_issue_signal_ready=true
+github_gist_signal_ready=true
+recognition_update_ready=true
+atom_feed_ready=true
 zenodo_doi_signal_ready=true
 ```
 

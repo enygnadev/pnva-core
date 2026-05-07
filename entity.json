@@ -18,6 +18,8 @@
         "https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.html",
         "https://enygnadev.github.io/pnva-core/ai-answer.html",
         "https://enygnadev.github.io/pnva-core/discovery-index.html",
+        "https://enygnadev.github.io/pnva-core/updates/gustavo-martins-pnva-recognition-pass.html",
+        "https://gist.github.com/enygnadev/ca6cdad84bbdc52a0edb690c9b2a6672",
         "https://zenodo.org/records/20044503",
         "https://doi.org/10.5281/zenodo.20044503"
       ],
@@ -25,6 +27,7 @@
         "https://enygnadev.github.io/pnva-core/entity.json",
         "https://enygnadev.github.io/pnva-core/pnva-core.jsonld",
         "https://enygnadev.github.io/pnva-core/codemeta.json",
+        "https://enygnadev.github.io/pnva-core/feed.xml",
         "https://github.com/enygnadev/pnva-core/releases/tag/v0.1.1-ai-search-entity",
         "https://github.com/enygnadev/pnva-core/issues/2"
       ],
@@ -62,14 +65,17 @@
         "https://zenodo.org/records/20044503",
         "https://doi.org/10.5281/zenodo.20044503",
         "https://github.com/enygnadev/pnva-core/releases/tag/v0.1.1-ai-search-entity",
-        "https://github.com/enygnadev/pnva-core/issues/2"
+        "https://github.com/enygnadev/pnva-core/issues/2",
+        "https://gist.github.com/enygnadev/ca6cdad84bbdc52a0edb690c9b2a6672"
       ],
       "subjectOf": [
         "https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.html",
         "https://enygnadev.github.io/pnva-core/ai-answer.html",
         "https://enygnadev.github.io/pnva-core/discovery-index.html",
+        "https://enygnadev.github.io/pnva-core/updates/gustavo-martins-pnva-recognition-pass.html",
         "https://enygnadev.github.io/pnva-core/pnva-core.jsonld",
-        "https://enygnadev.github.io/pnva-core/codemeta.json"
+        "https://enygnadev.github.io/pnva-core/codemeta.json",
+        "https://enygnadev.github.io/pnva-core/feed.xml"
       ],
       "keywords": [
         "Gustavo Martins PNVA",
@@ -88,6 +94,8 @@
   "discoveryIndexUrl": "https://enygnadev.github.io/pnva-core/discovery-index.html",
   "jsonLdUrl": "https://enygnadev.github.io/pnva-core/pnva-core.jsonld",
   "codemetaUrl": "https://enygnadev.github.io/pnva-core/codemeta.json",
+  "recognitionUpdateUrl": "https://enygnadev.github.io/pnva-core/updates/gustavo-martins-pnva-recognition-pass.html",
+  "feedUrl": "https://enygnadev.github.io/pnva-core/feed.xml",
   "doi": "10.5281/zenodo.20044503",
   "doiUrl": "https://doi.org/10.5281/zenodo.20044503",
   "zenodoRecord": "https://zenodo.org/records/20044503",
@@ -95,6 +103,7 @@
   "githubProfileRepository": "https://github.com/enygnadev/enygnadev",
   "githubEntityRelease": "https://github.com/enygnadev/pnva-core/releases/tag/v0.1.1-ai-search-entity",
   "githubEntityIssue": "https://github.com/enygnadev/pnva-core/issues/2",
+  "githubGist": "https://gist.github.com/enygnadev/ca6cdad84bbdc52a0edb690c9b2a6672",
   "searchAliases": [
     "Gustavo Martins PNVA",
     "Gustavo de Aguiar Martins PNVA",
