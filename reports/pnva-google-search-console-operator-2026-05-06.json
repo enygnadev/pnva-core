@@ -1,21 +1,10 @@
 {
   "author": "Gustavo de Aguiar Martins",
-  "browser": {
-    "browser": "/usr/bin/google-chrome",
-    "opened": true,
-    "urls": [
-      "https://search.google.com/search-console/welcome",
-      "https://enygnadev.github.io/pnva-core/google-search-console.html",
-      "https://enygnadev.github.io/pnva-core/ai-answer.html",
-      "https://enygnadev.github.io/pnva-core/discovery-index.html",
-      "https://enygnadev.github.io/pnva-core/gsc-priority-urls.txt"
-    ]
-  },
   "check_count": 8,
   "checks": [
     {
       "evidence": {
-        "checked_url_count": 13,
+        "checked_url_count": 15,
         "failures": [],
         "statuses": {
           "https://enygnadev.github.io/pnva-core/": 200,
@@ -23,6 +12,7 @@
           "https://enygnadev.github.io/pnva-core/codemeta.json": 200,
           "https://enygnadev.github.io/pnva-core/discovery-index.html": 200,
           "https://enygnadev.github.io/pnva-core/entity.json": 200,
+          "https://enygnadev.github.io/pnva-core/feed.xml": 200,
           "https://enygnadev.github.io/pnva-core/google-search-console.html": 200,
           "https://enygnadev.github.io/pnva-core/gsc-priority-urls.txt": 200,
           "https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.html": 200,
@@ -30,7 +20,8 @@
           "https://enygnadev.github.io/pnva-core/pnva-core.jsonld": 200,
           "https://enygnadev.github.io/pnva-core/robots.txt": 200,
           "https://enygnadev.github.io/pnva-core/sitemap-core.xml": 200,
-          "https://enygnadev.github.io/pnva-core/sitemap.xml": 200
+          "https://enygnadev.github.io/pnva-core/sitemap.xml": 200,
+          "https://enygnadev.github.io/pnva-core/updates/gustavo-martins-pnva-recognition-pass.html": 200
         }
       },
       "name": "public_urls_http_200",
@@ -51,7 +42,7 @@
         "lastmod_error": "",
         "missing": [],
         "sitemap": "https://enygnadev.github.io/pnva-core/sitemap-core.xml",
-        "url_count": 20,
+        "url_count": 22,
         "xml_error": ""
       },
       "name": "sitemap_core_priority_closed",
@@ -61,7 +52,7 @@
       "evidence": {
         "missing": [],
         "sitemap": "https://enygnadev.github.io/pnva-core/sitemap.xml",
-        "url_count": 102,
+        "url_count": 104,
         "xml_error": ""
       },
       "name": "sitemap_full_contains_distribution_urls",
@@ -127,7 +118,7 @@
   "classification": "PNVA_GOOGLE_SEARCH_CONSOLE_OPERATOR_READY",
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-05-06T23:59:26Z",
+  "generated_at": "2026-05-07T00:11:07Z",
   "next_actions": [
     "Open Google Search Console.",
     "Add URL-prefix property https://enygnadev.github.io/pnva-core/ if it is not already verified.",

@@ -3,11 +3,11 @@
   "author": "Gustavo de Aguiar Martins",
   "canonical_answer": "Gustavo Martins PNVA refers to PNVA-Core, a post-temporal causal no-tick architecture for state/event-oriented computation authored by Gustavo de Aguiar Martins.",
   "canonical_url": "https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.html",
-  "check_count": 17,
+  "check_count": 20,
   "checks": [
     {
       "evidence": {
-        "checked_url_count": 12,
+        "checked_url_count": 14,
         "failures": []
       },
       "name": "public_entity_urls_http_200",
@@ -44,10 +44,34 @@
         "has_doi": true,
         "links_codemeta": true,
         "links_entity_json": true,
+        "links_feed": true,
+        "links_gist": true,
         "links_jsonld": true,
         "url": "https://enygnadev.github.io/pnva-core/discovery-index.html"
       },
       "name": "discovery_index_ready",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "has_author": true,
+        "has_canonical_answer": true,
+        "has_doi": true,
+        "links_gist": true,
+        "url": "https://enygnadev.github.io/pnva-core/updates/gustavo-martins-pnva-recognition-pass.html"
+      },
+      "name": "recognition_update_ready",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "has_alias": true,
+        "has_canonical_answer": true,
+        "has_feed_title": true,
+        "has_recognition_update_url": true,
+        "url": "https://enygnadev.github.io/pnva-core/feed.xml"
+      },
+      "name": "atom_feed_ready",
       "pass": true
     },
     {
@@ -58,8 +82,11 @@
         "has_codemeta_url": true,
         "has_discovery_index_url": true,
         "has_doi": true,
+        "has_feed_url": true,
+        "has_gist_url": true,
         "has_github_profile_repo": true,
         "has_jsonld_url": true,
+        "has_recognition_update_url": true,
         "url": "https://enygnadev.github.io/pnva-core/llms.txt"
       },
       "name": "llms_context_ready",
@@ -71,7 +98,10 @@
         "has_canonical_answer": true,
         "has_codemeta_url": true,
         "has_discovery_index_url": true,
+        "has_feed_url": true,
+        "has_gist_url": true,
         "has_jsonld_url": true,
+        "has_recognition_update_url": true,
         "url": "https://enygnadev.github.io/pnva-core/humans.txt"
       },
       "name": "humans_context_ready",
@@ -84,9 +114,12 @@
         "has_codemeta_url": true,
         "has_discovery_index_url": true,
         "has_doi": true,
+        "has_feed_url": true,
+        "has_gist_url": true,
         "has_github_profile_repo": true,
         "has_jsonld_url": true,
         "has_pnva_repo": true,
+        "has_recognition_update_url": true,
         "url": "https://enygnadev.github.io/pnva-core/entity.json"
       },
       "name": "entity_json_ready",
@@ -97,8 +130,10 @@
         "has_alias": true,
         "has_author": true,
         "has_canonical_answer": true,
+        "has_data_feed": true,
         "has_defined_term": true,
         "has_doi": true,
+        "has_gist_url": true,
         "has_software_schema": true,
         "url": "https://enygnadev.github.io/pnva-core/pnva-core.jsonld"
       },
@@ -110,6 +145,7 @@
         "has_alias": true,
         "has_author": true,
         "has_doi": true,
+        "has_gist_url": true,
         "has_repository": true,
         "has_software_source_code": true,
         "url": "https://enygnadev.github.io/pnva-core/codemeta.json"
@@ -136,13 +172,17 @@
         "core_has_codemeta": true,
         "core_has_discovery_index": true,
         "core_has_entity_json": true,
+        "core_has_feed": true,
         "core_has_jsonld": true,
+        "core_has_recognition_update": true,
         "full_has_ai_answer": true,
         "full_has_canonical": true,
         "full_has_codemeta": true,
         "full_has_discovery_index": true,
         "full_has_entity_json": true,
+        "full_has_feed": true,
         "full_has_jsonld": true,
+        "full_has_recognition_update": true,
         "sitemap_core_error": "",
         "sitemap_full_error": ""
       },
@@ -207,6 +247,16 @@
     },
     {
       "evidence": {
+        "api_url": "https://api.github.com/gists/ca6cdad84bbdc52a0edb690c9b2a6672",
+        "description": "Gustavo Martins PNVA - PNVA-Core canonical identity",
+        "has_canonical_answer": true,
+        "html_url": "https://gist.github.com/enygnadev/ca6cdad84bbdc52a0edb690c9b2a6672"
+      },
+      "name": "github_gist_entity_signal_ready",
+      "pass": true
+    },
+    {
+      "evidence": {
         "has_author": true,
         "has_doi": true,
         "has_pnva_core": true,
@@ -236,19 +286,23 @@
   "discovery_index_url": "https://enygnadev.github.io/pnva-core/discovery-index.html",
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-05-06T23:57:19Z",
+  "feed_url": "https://enygnadev.github.io/pnva-core/feed.xml",
+  "generated_at": "2026-05-07T00:11:10Z",
+  "github_gist_url": "https://gist.github.com/enygnadev/ca6cdad84bbdc52a0edb690c9b2a6672",
   "jsonld_url": "https://enygnadev.github.io/pnva-core/pnva-core.jsonld",
   "next_external_actions": [
     "Submit sitemap-core.xml in Google Search Console after this commit deploys.",
     "Request indexing for gustavo-martins-pnva.html.",
     "Request indexing for ai-answer.html.",
     "Request indexing for discovery-index.html.",
+    "Request indexing for updates/gustavo-martins-pnva-recognition-pass.html and feed.xml.",
     "Request indexing for entity.json, pnva-core.jsonld and codemeta.json.",
     "Post the canonical URL on LinkedIn using the exact phrase Gustavo Martins PNVA.",
     "Wait for Google and AI crawler refresh; do not claim external pass until search results show it."
   ],
   "pass": true,
   "project": "PNVA-Core",
+  "recognition_update_url": "https://enygnadev.github.io/pnva-core/updates/gustavo-martins-pnva-recognition-pass.html",
   "schema_version": "pnva.ai_search_entity_pass.v1",
   "search_queries": [
     "Gustavo Martins PNVA",
