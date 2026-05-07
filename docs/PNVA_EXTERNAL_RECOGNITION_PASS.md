@@ -32,6 +32,8 @@ https://enygnadev.github.io/pnva-core/pnva-core.jsonld
 https://enygnadev.github.io/pnva-core/codemeta.json
 https://enygnadev.github.io/pnva-core/updates/gustavo-martins-pnva-recognition-pass.html
 https://enygnadev.github.io/pnva-core/feed.xml
+https://enygnadev.github.io/gustavo-martins-pnva/
+https://enygnadev.github.io/gustavo-martins-pnva/llms.txt
 https://gist.github.com/enygnadev/ca6cdad84bbdc52a0edb690c9b2a6672
 https://github.com/enygnadev/pnva-core/releases/tag/v0.1.2-recognition-feed
 https://enygnadev.github.io/pnva-core/llms.txt
@@ -63,6 +65,12 @@ github_gist_signal_ready=true
 recognition_update_ready=true
 atom_feed_ready=true
 zenodo_doi_signal_ready=true
+exact_match_mirror_repo_ready=true
+exact_match_mirror_pages_ready=true
+exact_match_mirror_search_console_verified=true
+exact_match_mirror_indexing_requested=true
+exact_match_mirror_sitemap_submitted=true
+indexnow_submission_http_200=true
 ```
 
 External Google/GPT PASS:
@@ -96,5 +104,23 @@ Do not claim external recognition until public Google results or AI answers show
 ```text
 PNVA_AI_SEARCH_ENTITY_PUBLICATION_READY
 PNVA_INDEXNOW_SUBMISSION_READY
+PNVA_GOOGLE_SEARCH_CONSOLE_REQUEST_INDEXING_READY
 EXTERNAL_INDEX_PENDING
+```
+
+## Latest Recognition Gate - 2026-05-07
+
+```text
+query_target=Gustavo Martins PNVA
+canonical_page=https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.html
+exact_match_mirror=https://enygnadev.github.io/gustavo-martins-pnva/
+google_search_console_canonical_page_status=URL is on Google
+google_search_console_ai_answer_request_indexing=requested
+google_search_console_exact_match_mirror_property=verified
+google_search_console_exact_match_mirror_request_indexing=requested
+google_search_console_exact_match_mirror_sitemap=submitted
+indexnow_submission=SUBMITTED
+indexnow_http_status=200
+public_google_query_status=pending
+truth_boundary=Do not claim public Google/GPT recognition until public results or AI answers return the canonical PNVA entity.
 ```

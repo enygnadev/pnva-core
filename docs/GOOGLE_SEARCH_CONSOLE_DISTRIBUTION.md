@@ -46,6 +46,12 @@ Property:
 https://enygnadev.github.io/pnva-core/
 ```
 
+Exact-match mirror property:
+
+```text
+https://enygnadev.github.io/gustavo-martins-pnva/
+```
+
 Submit sitemaps:
 
 ```text
@@ -53,6 +59,7 @@ https://enygnadev.github.io/pnva-core/google-sitemap.txt
 https://enygnadev.github.io/pnva-core/google-sitemap.xml
 https://enygnadev.github.io/pnva-core/sitemap-core.xml
 https://enygnadev.github.io/pnva-core/sitemap.xml
+https://enygnadev.github.io/gustavo-martins-pnva/sitemap.xml
 ```
 
 ## URL Inspection Priority
@@ -161,12 +168,32 @@ site:enygnadev.github.io/pnva-core "PNVA-Core"
 
 ```text
 gsc_property_verified=true
+gsc_exact_match_mirror_property_verified=true
 sitemap_core_submitted=true
 sitemap_full_submitted=true
+exact_match_mirror_sitemap_submitted=true
 priority_url_inspected=true
 priority_url_request_indexing_clicked=true
+exact_match_mirror_url_request_indexing_clicked=true
 priority_url_live_test_indexable=true
 site_query_returns_priority_url=true
+```
+
+## Execution Record - 2026-05-07
+
+```text
+pnva_core_property_verified=true
+pnva_core_canonical_url_indexed=true
+pnva_core_ai_answer_request_indexing_clicked=true
+exact_match_mirror_property_verified=true
+exact_match_mirror_verification_method=html_file
+exact_match_mirror_verification_file=https://enygnadev.github.io/gustavo-martins-pnva/googled42066d8a21c5d35.html
+exact_match_mirror_verification_file_http_200=true
+exact_match_mirror_url_inspected=true
+exact_match_mirror_request_indexing_clicked=true
+exact_match_mirror_sitemap_submitted=true
+exact_match_mirror_sitemap_http_200=true
+external_public_serp_status=pending_google_refresh
 ```
 
 ## If Google Shows "Discovered - Currently Not Indexed"
