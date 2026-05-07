@@ -63,6 +63,8 @@ PNVA_QUICK_VERIFY_PASS
 
 ## Public Entry Points
 
+- Exact phrase mirror repository: https://github.com/enygnadev/gustavo-martins-pnva
+- Exact phrase mirror page: https://enygnadev.github.io/gustavo-martins-pnva/
 - Search identity: https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.html
 - Text answer mirror: https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.txt
 - Markdown answer mirror: https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.md
