@@ -37,7 +37,7 @@
   "classification": "PNVA_INDEXNOW_SUBMISSION_READY",
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-05-07T00:11:20Z",
+  "generated_at": "2026-05-07T00:21:28Z",
   "official_reference": "https://www.indexnow.org/documentation.html",
   "pass": true,
   "payload": {

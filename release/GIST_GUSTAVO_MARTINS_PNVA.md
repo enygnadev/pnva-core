@@ -29,6 +29,7 @@ https://enygnadev.github.io/pnva-core/pnva-core.jsonld
 https://enygnadev.github.io/pnva-core/codemeta.json
 https://github.com/enygnadev/pnva-core
 https://github.com/enygnadev/enygnadev
+https://github.com/enygnadev/pnva-core/releases/tag/v0.1.2-recognition-feed
 https://doi.org/10.5281/zenodo.20044503
 https://zenodo.org/records/20044503
 ```

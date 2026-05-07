@@ -118,7 +118,7 @@
   "classification": "PNVA_GOOGLE_SEARCH_CONSOLE_OPERATOR_READY",
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-05-07T00:11:07Z",
+  "generated_at": "2026-05-07T00:21:27Z",
   "next_actions": [
     "Open Google Search Console.",
     "Add URL-prefix property https://enygnadev.github.io/pnva-core/ if it is not already verified.",
