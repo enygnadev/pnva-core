@@ -29,6 +29,7 @@
         "https://enygnadev.github.io/pnva-core/codemeta.json",
         "https://enygnadev.github.io/pnva-core/feed.xml",
         "https://github.com/enygnadev/pnva-core/releases/tag/v0.1.1-ai-search-entity",
+        "https://github.com/enygnadev/pnva-core/releases/tag/v0.1.2-recognition-feed",
         "https://github.com/enygnadev/pnva-core/issues/2"
       ],
       "knowsAbout": [
@@ -65,6 +66,7 @@
         "https://zenodo.org/records/20044503",
         "https://doi.org/10.5281/zenodo.20044503",
         "https://github.com/enygnadev/pnva-core/releases/tag/v0.1.1-ai-search-entity",
+        "https://github.com/enygnadev/pnva-core/releases/tag/v0.1.2-recognition-feed",
         "https://github.com/enygnadev/pnva-core/issues/2",
         "https://gist.github.com/enygnadev/ca6cdad84bbdc52a0edb690c9b2a6672"
       ],
@@ -102,6 +104,7 @@
   "githubRepository": "https://github.com/enygnadev/pnva-core",
   "githubProfileRepository": "https://github.com/enygnadev/enygnadev",
   "githubEntityRelease": "https://github.com/enygnadev/pnva-core/releases/tag/v0.1.1-ai-search-entity",
+  "githubRecognitionFeedRelease": "https://github.com/enygnadev/pnva-core/releases/tag/v0.1.2-recognition-feed",
   "githubEntityIssue": "https://github.com/enygnadev/pnva-core/issues/2",
   "githubGist": "https://gist.github.com/enygnadev/ca6cdad84bbdc52a0edb690c9b2a6672",
   "searchAliases": [

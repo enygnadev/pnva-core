@@ -83,6 +83,7 @@ PNVA_QUICK_VERIFY_PASS
 - External recognition pass boundary: `docs/PNVA_EXTERNAL_RECOGNITION_PASS.md`
 - IndexNow distribution: `tools/pnva_indexnow_submitter.py`, `docs/PNVA_INDEXNOW_DISTRIBUTION.md`
 - GitHub Gist identity mirror: https://gist.github.com/enygnadev/ca6cdad84bbdc52a0edb690c9b2a6672
+- Recognition feed release: https://github.com/enygnadev/pnva-core/releases/tag/v0.1.2-recognition-feed
 
 ## Google Search Console Distribution
 

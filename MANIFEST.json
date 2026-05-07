@@ -1418,7 +1418,9 @@
       "external_recognition_pass_doc": "docs/PNVA_EXTERNAL_RECOGNITION_PASS.md",
       "github_profile_repository": "https://github.com/enygnadev/enygnadev",
       "github_release_post": "release/POST_03_GUSTAVO_MARTINS_PNVA_ENTITY_PASS.md",
+      "github_recognition_feed_post": "release/POST_04_GUSTAVO_MARTINS_PNVA_RECOGNITION_FEED.md",
       "github_entity_release": "https://github.com/enygnadev/pnva-core/releases/tag/v0.1.1-ai-search-entity",
+      "github_recognition_feed_release": "https://github.com/enygnadev/pnva-core/releases/tag/v0.1.2-recognition-feed",
       "github_entity_issue": "https://github.com/enygnadev/pnva-core/issues/2",
       "github_gist": "https://gist.github.com/enygnadev/ca6cdad84bbdc52a0edb690c9b2a6672"
     },
@@ -1726,6 +1728,7 @@
     "paper/PNVA_CORE_OPEN_RESEARCH_PAPER_2026-05-05.pdf",
     "release/POST_02_LINKEDIN_PNVA_CORE_DOI.md",
     "release/POST_03_GUSTAVO_MARTINS_PNVA_ENTITY_PASS.md",
+    "release/POST_04_GUSTAVO_MARTINS_PNVA_RECOGNITION_FEED.md",
     "release/GIST_GUSTAVO_MARTINS_PNVA.md",
     "tools/pnva_quick_verify.py",
     "tools/pnva_google_search_console_operator.py",

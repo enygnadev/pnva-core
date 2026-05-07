@@ -29,6 +29,7 @@ SITEMAP_FULL_URL = PUBLIC_SITE + "sitemap.xml"
 GITHUB_API_URL = "https://api.github.com/repos/enygnadev/pnva-core"
 GITHUB_PROFILE_API_URL = "https://api.github.com/repos/enygnadev/enygnadev"
 GITHUB_RELEASE_API_URL = "https://api.github.com/repos/enygnadev/pnva-core/releases/tags/v0.1.1-ai-search-entity"
+GITHUB_RECOGNITION_RELEASE_API_URL = "https://api.github.com/repos/enygnadev/pnva-core/releases/tags/v0.1.2-recognition-feed"
 GITHUB_ISSUE_API_URL = "https://api.github.com/repos/enygnadev/pnva-core/issues/2"
 GITHUB_GIST_URL = "https://gist.github.com/enygnadev/ca6cdad84bbdc52a0edb690c9b2a6672"
 GITHUB_GIST_API_URL = "https://api.github.com/gists/ca6cdad84bbdc52a0edb690c9b2a6672"
@@ -112,11 +113,13 @@ def build_report() -> dict[str, Any]:
     github = _fetch(GITHUB_API_URL)
     github_profile = _fetch(GITHUB_PROFILE_API_URL)
     github_release = _fetch(GITHUB_RELEASE_API_URL)
+    github_recognition_release = _fetch(GITHUB_RECOGNITION_RELEASE_API_URL)
     github_issue = _fetch(GITHUB_ISSUE_API_URL)
     github_gist = _fetch(GITHUB_GIST_API_URL)
     github_data: dict[str, Any] = {}
     github_profile_data: dict[str, Any] = {}
     github_release_data: dict[str, Any] = {}
+    github_recognition_release_data: dict[str, Any] = {}
     github_issue_data: dict[str, Any] = {}
     github_gist_data: dict[str, Any] = {}
     if github.get("ok"):
@@ -134,6 +137,11 @@ def build_report() -> dict[str, Any]:
             github_release_data = json.loads(github_release["text"])
         except json.JSONDecodeError:
             github_release_data = {}
+    if github_recognition_release.get("ok"):
+        try:
+            github_recognition_release_data = json.loads(github_recognition_release["text"])
+        except json.JSONDecodeError:
+            github_recognition_release_data = {}
     if github_issue.get("ok"):
         try:
             github_issue_data = json.loads(github_issue["text"])
@@ -179,6 +187,9 @@ def build_report() -> dict[str, Any]:
     github_release_name = str(github_release_data.get("name", ""))
     github_release_body = str(github_release_data.get("body", ""))
     github_release_url = str(github_release_data.get("html_url", ""))
+    github_recognition_release_name = str(github_recognition_release_data.get("name", ""))
+    github_recognition_release_body = str(github_recognition_release_data.get("body", ""))
+    github_recognition_release_url = str(github_recognition_release_data.get("html_url", ""))
     github_issue_title = str(github_issue_data.get("title", ""))
     github_issue_body = str(github_issue_data.get("body", ""))
     github_issue_url = str(github_issue_data.get("html_url", ""))
@@ -492,6 +503,22 @@ def build_report() -> dict[str, Any]:
                 "name": github_release_name,
                 "html_url": github_release_url,
                 "has_canonical_answer": CANONICAL_ANSWER in github_release_body,
+            },
+        ),
+        _check(
+            "github_recognition_feed_release_signal_ready",
+            "Gustavo Martins PNVA" in github_recognition_release_name
+            and CANONICAL_ANSWER in github_recognition_release_body
+            and github_recognition_release_url.endswith("/v0.1.2-recognition-feed")
+            and FEED_URL in github_recognition_release_body
+            and GITHUB_GIST_URL in github_recognition_release_body,
+            {
+                "api_url": GITHUB_RECOGNITION_RELEASE_API_URL,
+                "name": github_recognition_release_name,
+                "html_url": github_recognition_release_url,
+                "has_canonical_answer": CANONICAL_ANSWER in github_recognition_release_body,
+                "has_feed_url": FEED_URL in github_recognition_release_body,
+                "has_gist_url": GITHUB_GIST_URL in github_recognition_release_body,
             },
         ),
         _check(

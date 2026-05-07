@@ -35,6 +35,7 @@ DOI: 10.5281/zenodo.20044503
 Zenodo: https://zenodo.org/records/20044503
 GitHub profile README: https://github.com/enygnadev/enygnadev
 GitHub entity release: https://github.com/enygnadev/pnva-core/releases/tag/v0.1.1-ai-search-entity
+GitHub recognition feed release: https://github.com/enygnadev/pnva-core/releases/tag/v0.1.2-recognition-feed
 GitHub entity issue: https://github.com/enygnadev/pnva-core/issues/2
 ```
 
@@ -71,6 +72,7 @@ sitemaps_expose_entity_pages
 github_entity_signal_ready
 github_profile_entity_signal_ready
 github_release_entity_signal_ready
+github_recognition_feed_release_signal_ready
 github_issue_entity_signal_ready
 github_gist_entity_signal_ready
 zenodo_entity_signal_ready

@@ -30,6 +30,7 @@ https://enygnadev.github.io/pnva-core/codemeta.json
 https://enygnadev.github.io/pnva-core/updates/gustavo-martins-pnva-recognition-pass.html
 https://enygnadev.github.io/pnva-core/feed.xml
 https://gist.github.com/enygnadev/ca6cdad84bbdc52a0edb690c9b2a6672
+https://github.com/enygnadev/pnva-core/releases/tag/v0.1.2-recognition-feed
 https://enygnadev.github.io/pnva-core/llms.txt
 https://enygnadev.github.io/pnva-core/humans.txt
 https://doi.org/10.5281/zenodo.20044503
@@ -53,6 +54,7 @@ robots_allows_ai_and_search_crawlers=true
 github_repo_signal_ready=true
 github_profile_signal_ready=true
 github_release_signal_ready=true
+github_recognition_feed_release_signal_ready=true
 github_issue_signal_ready=true
 github_gist_signal_ready=true
 recognition_update_ready=true

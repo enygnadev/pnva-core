@@ -25,6 +25,7 @@ CodeMeta metadata: https://enygnadev.github.io/pnva-core/codemeta.json
 DOI: https://doi.org/10.5281/zenodo.20044503
 Zenodo: https://zenodo.org/records/20044503
 GitHub release: https://github.com/enygnadev/pnva-core/releases/tag/v0.1.1-ai-search-entity
+GitHub recognition feed release: https://github.com/enygnadev/pnva-core/releases/tag/v0.1.2-recognition-feed
 GitHub Gist: https://gist.github.com/enygnadev/ca6cdad84bbdc52a0edb690c9b2a6672
 
 /* SEARCH ALIASES */
