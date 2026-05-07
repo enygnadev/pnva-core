@@ -4,11 +4,12 @@
   "checks": [
     {
       "evidence": {
-        "checked_url_count": 15,
+        "checked_url_count": 18,
         "failures": [],
         "statuses": {
           "https://enygnadev.github.io/pnva-core/": 200,
           "https://enygnadev.github.io/pnva-core/ai-answer.html": 200,
+          "https://enygnadev.github.io/pnva-core/ai-answer.json": 200,
           "https://enygnadev.github.io/pnva-core/codemeta.json": 200,
           "https://enygnadev.github.io/pnva-core/discovery-index.html": 200,
           "https://enygnadev.github.io/pnva-core/entity.json": 200,
@@ -16,6 +17,8 @@
           "https://enygnadev.github.io/pnva-core/google-search-console.html": 200,
           "https://enygnadev.github.io/pnva-core/gsc-priority-urls.txt": 200,
           "https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.html": 200,
+          "https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.md": 200,
+          "https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.txt": 200,
           "https://enygnadev.github.io/pnva-core/llms.txt": 200,
           "https://enygnadev.github.io/pnva-core/pnva-core.jsonld": 200,
           "https://enygnadev.github.io/pnva-core/robots.txt": 200,
@@ -42,7 +45,7 @@
         "lastmod_error": "",
         "missing": [],
         "sitemap": "https://enygnadev.github.io/pnva-core/sitemap-core.xml",
-        "url_count": 22,
+        "url_count": 25,
         "xml_error": ""
       },
       "name": "sitemap_core_priority_closed",
@@ -52,7 +55,7 @@
       "evidence": {
         "missing": [],
         "sitemap": "https://enygnadev.github.io/pnva-core/sitemap.xml",
-        "url_count": 104,
+        "url_count": 107,
         "xml_error": ""
       },
       "name": "sitemap_full_contains_distribution_urls",
@@ -64,7 +67,9 @@
         "has_doi": true,
         "has_json_ld": true,
         "has_rel_canonical": true,
+        "links_ai_answer_json": true,
         "links_gsc_page": true,
+        "links_text_mirror": true,
         "url": "https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.html"
       },
       "name": "canonical_exact_page_ready",
@@ -118,7 +123,7 @@
   "classification": "PNVA_GOOGLE_SEARCH_CONSOLE_OPERATOR_READY",
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-05-07T00:21:27Z",
+  "generated_at": "2026-05-07T00:54:08Z",
   "next_actions": [
     "Open Google Search Console.",
     "Add URL-prefix property https://enygnadev.github.io/pnva-core/ if it is not already verified.",

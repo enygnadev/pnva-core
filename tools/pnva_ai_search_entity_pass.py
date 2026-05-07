@@ -599,14 +599,20 @@ def build_report() -> dict[str, Any]:
             and github_profile_llms.get("ok")
             and CANONICAL_ANSWER in github_profile_md_text
             and CANONICAL_URL in github_profile_md_text
+            and TEXT_MIRROR_URL in github_profile_md_text
+            and AI_ANSWER_JSON_URL in github_profile_md_text
             and GITHUB_GIST_URL in github_profile_md_text
             and "10.5281/zenodo.20044503" in github_profile_md_text
             and CANONICAL_ANSWER in github_profile_json_text
             and CANONICAL_URL in github_profile_same_as
+            and TEXT_MIRROR_URL in github_profile_same_as
+            and AI_ANSWER_JSON_URL in github_profile_same_as
             and GITHUB_GIST_URL in github_profile_same_as
             and "https://doi.org/10.5281/zenodo.20044503" in github_profile_same_as
             and CANONICAL_ANSWER in github_profile_llms_text
             and CANONICAL_URL in github_profile_llms_text
+            and TEXT_MIRROR_URL in github_profile_llms_text
+            and AI_ANSWER_JSON_URL in github_profile_llms_text
             and GITHUB_GIST_URL in github_profile_llms_text,
             {
                 "profile_markdown_url": GITHUB_PROFILE_MD_RAW_URL,
@@ -617,14 +623,20 @@ def build_report() -> dict[str, Any]:
                 "profile_llms_http_ok": github_profile_llms.get("ok"),
                 "profile_markdown_has_canonical_answer": CANONICAL_ANSWER in github_profile_md_text,
                 "profile_markdown_has_canonical_url": CANONICAL_URL in github_profile_md_text,
+                "profile_markdown_has_text_mirror_url": TEXT_MIRROR_URL in github_profile_md_text,
+                "profile_markdown_has_ai_answer_json_url": AI_ANSWER_JSON_URL in github_profile_md_text,
                 "profile_markdown_has_gist_url": GITHUB_GIST_URL in github_profile_md_text,
                 "profile_markdown_has_doi": "10.5281/zenodo.20044503" in github_profile_md_text,
                 "profile_json_has_canonical_answer": CANONICAL_ANSWER in github_profile_json_text,
                 "profile_json_has_canonical_url": CANONICAL_URL in github_profile_same_as,
+                "profile_json_has_text_mirror_url": TEXT_MIRROR_URL in github_profile_same_as,
+                "profile_json_has_ai_answer_json_url": AI_ANSWER_JSON_URL in github_profile_same_as,
                 "profile_json_has_gist_url": GITHUB_GIST_URL in github_profile_same_as,
                 "profile_json_has_doi": "https://doi.org/10.5281/zenodo.20044503" in github_profile_same_as,
                 "profile_llms_has_canonical_answer": CANONICAL_ANSWER in github_profile_llms_text,
                 "profile_llms_has_canonical_url": CANONICAL_URL in github_profile_llms_text,
+                "profile_llms_has_text_mirror_url": TEXT_MIRROR_URL in github_profile_llms_text,
+                "profile_llms_has_ai_answer_json_url": AI_ANSWER_JSON_URL in github_profile_llms_text,
                 "profile_llms_has_gist_url": GITHUB_GIST_URL in github_profile_llms_text,
             },
         ),

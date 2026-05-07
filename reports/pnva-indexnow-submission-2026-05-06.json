@@ -16,7 +16,7 @@
         "host": "enygnadev.github.io",
         "key": "pnva-core-gustavo-martins-pnva-20260506",
         "key_location": "https://enygnadev.github.io/pnva-core/pnva-core-gustavo-martins-pnva-20260506.txt",
-        "url_count": 16
+        "url_count": 19
       },
       "name": "indexnow_payload_ready",
       "pass": true
@@ -37,7 +37,7 @@
   "classification": "PNVA_INDEXNOW_SUBMISSION_READY",
   "failure_count": 0,
   "failures": [],
-  "generated_at": "2026-05-07T00:21:28Z",
+  "generated_at": "2026-05-07T00:54:10Z",
   "official_reference": "https://www.indexnow.org/documentation.html",
   "pass": true,
   "payload": {
@@ -48,6 +48,9 @@
       "https://enygnadev.github.io/pnva-core/",
       "https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.html",
       "https://enygnadev.github.io/pnva-core/ai-answer.html",
+      "https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.txt",
+      "https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.md",
+      "https://enygnadev.github.io/pnva-core/ai-answer.json",
       "https://enygnadev.github.io/pnva-core/discovery-index.html",
       "https://enygnadev.github.io/pnva-core/updates/gustavo-martins-pnva-recognition-pass.html",
       "https://enygnadev.github.io/pnva-core/feed.xml",

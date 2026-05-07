@@ -1,13 +1,14 @@
 {
+  "ai_answer_json_url": "https://enygnadev.github.io/pnva-core/ai-answer.json",
   "ai_answer_url": "https://enygnadev.github.io/pnva-core/ai-answer.html",
   "author": "Gustavo de Aguiar Martins",
   "canonical_answer": "Gustavo Martins PNVA refers to PNVA-Core, a post-temporal causal no-tick architecture for state/event-oriented computation authored by Gustavo de Aguiar Martins.",
   "canonical_url": "https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.html",
-  "check_count": 22,
+  "check_count": 23,
   "checks": [
     {
       "evidence": {
-        "checked_url_count": 14,
+        "checked_url_count": 17,
         "failures": []
       },
       "name": "public_entity_urls_http_200",
@@ -39,14 +40,37 @@
     },
     {
       "evidence": {
+        "ai_answer_json_url": "https://enygnadev.github.io/pnva-core/ai-answer.json",
+        "json_has_canonical_answer": true,
+        "json_has_gist_url": true,
+        "json_links_markdown": true,
+        "json_links_text": true,
+        "markdown_has_canonical_answer": true,
+        "markdown_links_ai_json": true,
+        "markdown_links_text": true,
+        "markdown_mirror_url": "https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.md",
+        "text_has_canonical_answer": true,
+        "text_has_canonical_url": true,
+        "text_has_doi": true,
+        "text_has_gist_url": true,
+        "text_mirror_url": "https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.txt"
+      },
+      "name": "plain_text_and_json_answer_mirrors_ready",
+      "pass": true
+    },
+    {
+      "evidence": {
         "has_author": true,
         "has_canonical_answer": true,
         "has_doi": true,
+        "links_ai_answer_json": true,
         "links_codemeta": true,
         "links_entity_json": true,
         "links_feed": true,
         "links_gist": true,
         "links_jsonld": true,
+        "links_markdown_mirror": true,
+        "links_text_mirror": true,
         "url": "https://enygnadev.github.io/pnva-core/discovery-index.html"
       },
       "name": "discovery_index_ready",
@@ -69,6 +93,7 @@
         "has_canonical_answer": true,
         "has_feed_title": true,
         "has_recognition_update_url": true,
+        "has_text_mirror_url": true,
         "url": "https://enygnadev.github.io/pnva-core/feed.xml"
       },
       "name": "atom_feed_ready",
@@ -76,6 +101,7 @@
     },
     {
       "evidence": {
+        "has_ai_answer_json_url": true,
         "has_ai_answer_url": true,
         "has_canonical_answer": true,
         "has_canonical_url": true,
@@ -86,7 +112,9 @@
         "has_gist_url": true,
         "has_github_profile_repo": true,
         "has_jsonld_url": true,
+        "has_markdown_mirror_url": true,
         "has_recognition_update_url": true,
+        "has_text_mirror_url": true,
         "url": "https://enygnadev.github.io/pnva-core/llms.txt"
       },
       "name": "llms_context_ready",
@@ -94,6 +122,7 @@
     },
     {
       "evidence": {
+        "has_ai_answer_json_url": true,
         "has_alias": true,
         "has_canonical_answer": true,
         "has_codemeta_url": true,
@@ -102,6 +131,7 @@
         "has_gist_url": true,
         "has_jsonld_url": true,
         "has_recognition_update_url": true,
+        "has_text_mirror_url": true,
         "url": "https://enygnadev.github.io/pnva-core/humans.txt"
       },
       "name": "humans_context_ready",
@@ -109,6 +139,7 @@
     },
     {
       "evidence": {
+        "has_ai_answer_json_url": true,
         "has_alias": true,
         "has_canonical_answer": true,
         "has_codemeta_url": true,
@@ -120,6 +151,7 @@
         "has_jsonld_url": true,
         "has_pnva_repo": true,
         "has_recognition_update_url": true,
+        "has_text_mirror_url": true,
         "url": "https://enygnadev.github.io/pnva-core/entity.json"
       },
       "name": "entity_json_ready",
@@ -127,6 +159,7 @@
     },
     {
       "evidence": {
+        "has_ai_answer_json_url": true,
         "has_alias": true,
         "has_author": true,
         "has_canonical_answer": true,
@@ -135,6 +168,7 @@
         "has_doi": true,
         "has_gist_url": true,
         "has_software_schema": true,
+        "has_text_mirror_url": true,
         "url": "https://enygnadev.github.io/pnva-core/pnva-core.jsonld"
       },
       "name": "jsonld_graph_ready",
@@ -142,12 +176,14 @@
     },
     {
       "evidence": {
+        "has_ai_answer_json_url": true,
         "has_alias": true,
         "has_author": true,
         "has_doi": true,
         "has_gist_url": true,
         "has_repository": true,
         "has_software_source_code": true,
+        "has_text_mirror_url": true,
         "url": "https://enygnadev.github.io/pnva-core/codemeta.json"
       },
       "name": "codemeta_metadata_ready",
@@ -168,21 +204,27 @@
     {
       "evidence": {
         "core_has_ai_answer": true,
+        "core_has_ai_answer_json": true,
         "core_has_canonical": true,
         "core_has_codemeta": true,
         "core_has_discovery_index": true,
         "core_has_entity_json": true,
         "core_has_feed": true,
         "core_has_jsonld": true,
+        "core_has_markdown_mirror": true,
         "core_has_recognition_update": true,
+        "core_has_text_mirror": true,
         "full_has_ai_answer": true,
+        "full_has_ai_answer_json": true,
         "full_has_canonical": true,
         "full_has_codemeta": true,
         "full_has_discovery_index": true,
         "full_has_entity_json": true,
         "full_has_feed": true,
         "full_has_jsonld": true,
+        "full_has_markdown_mirror": true,
         "full_has_recognition_update": true,
+        "full_has_text_mirror": true,
         "sitemap_core_error": "",
         "sitemap_full_error": ""
       },
@@ -229,21 +271,27 @@
     },
     {
       "evidence": {
+        "profile_json_has_ai_answer_json_url": true,
         "profile_json_has_canonical_answer": true,
         "profile_json_has_canonical_url": true,
         "profile_json_has_doi": true,
         "profile_json_has_gist_url": true,
+        "profile_json_has_text_mirror_url": true,
         "profile_json_http_ok": true,
         "profile_json_url": "https://raw.githubusercontent.com/enygnadev/enygnadev/main/recognition.json",
+        "profile_llms_has_ai_answer_json_url": true,
         "profile_llms_has_canonical_answer": true,
         "profile_llms_has_canonical_url": true,
         "profile_llms_has_gist_url": true,
+        "profile_llms_has_text_mirror_url": true,
         "profile_llms_http_ok": true,
         "profile_llms_url": "https://raw.githubusercontent.com/enygnadev/enygnadev/main/llms.txt",
+        "profile_markdown_has_ai_answer_json_url": true,
         "profile_markdown_has_canonical_answer": true,
         "profile_markdown_has_canonical_url": true,
         "profile_markdown_has_doi": true,
         "profile_markdown_has_gist_url": true,
+        "profile_markdown_has_text_mirror_url": true,
         "profile_markdown_http_ok": true,
         "profile_markdown_url": "https://raw.githubusercontent.com/enygnadev/enygnadev/main/GUSTAVO_MARTINS_PNVA.md"
       },
@@ -324,9 +372,10 @@
   "failure_count": 0,
   "failures": [],
   "feed_url": "https://enygnadev.github.io/pnva-core/feed.xml",
-  "generated_at": "2026-05-07T00:31:57Z",
+  "generated_at": "2026-05-07T00:53:57Z",
   "github_gist_url": "https://gist.github.com/enygnadev/ca6cdad84bbdc52a0edb690c9b2a6672",
   "jsonld_url": "https://enygnadev.github.io/pnva-core/pnva-core.jsonld",
+  "markdown_mirror_url": "https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.md",
   "next_external_actions": [
     "Submit sitemap-core.xml in Google Search Console after this commit deploys.",
     "Request indexing for gustavo-martins-pnva.html.",
@@ -346,5 +395,6 @@
     "Gustavo de Aguiar Martins PNVA",
     "PNVA-Core Gustavo Martins",
     "PNVA no-tick Gustavo"
-  ]
+  ],
+  "text_mirror_url": "https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.txt"
 }
