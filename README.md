@@ -90,6 +90,7 @@ PNVA_QUICK_VERIFY_PASS
 - Profile recognition JSON: https://github.com/enygnadev/enygnadev/blob/main/recognition.json
 - GitHub Gist identity mirror: https://gist.github.com/enygnadev/ca6cdad84bbdc52a0edb690c9b2a6672
 - Recognition feed release: https://github.com/enygnadev/pnva-core/releases/tag/v0.1.2-recognition-feed
+- Text mirror release: https://github.com/enygnadev/pnva-core/releases/tag/v0.1.3-text-answer-mirrors
 - Text mirror release post: `release/POST_05_GUSTAVO_MARTINS_PNVA_TEXT_MIRRORS.md`
 
 ## Google Search Console Distribution

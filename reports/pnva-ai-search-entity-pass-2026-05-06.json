@@ -4,7 +4,7 @@
   "author": "Gustavo de Aguiar Martins",
   "canonical_answer": "Gustavo Martins PNVA refers to PNVA-Core, a post-temporal causal no-tick architecture for state/event-oriented computation authored by Gustavo de Aguiar Martins.",
   "canonical_url": "https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.html",
-  "check_count": 23,
+  "check_count": 24,
   "checks": [
     {
       "evidence": {
@@ -322,6 +322,19 @@
     },
     {
       "evidence": {
+        "api_url": "https://api.github.com/repos/enygnadev/pnva-core/releases/tags/v0.1.3-text-answer-mirrors",
+        "has_ai_answer_json_url": true,
+        "has_canonical_answer": true,
+        "has_markdown_mirror_url": true,
+        "has_text_mirror_url": true,
+        "html_url": "https://github.com/enygnadev/pnva-core/releases/tag/v0.1.3-text-answer-mirrors",
+        "name": "Gustavo Martins PNVA - Text Answer Mirrors"
+      },
+      "name": "github_text_mirror_release_signal_ready",
+      "pass": true
+    },
+    {
+      "evidence": {
         "api_url": "https://api.github.com/repos/enygnadev/pnva-core/issues/2",
         "has_canonical_answer": true,
         "html_url": "https://github.com/enygnadev/pnva-core/issues/2",
@@ -372,7 +385,7 @@
   "failure_count": 0,
   "failures": [],
   "feed_url": "https://enygnadev.github.io/pnva-core/feed.xml",
-  "generated_at": "2026-05-07T00:53:57Z",
+  "generated_at": "2026-05-07T00:57:52Z",
   "github_gist_url": "https://gist.github.com/enygnadev/ca6cdad84bbdc52a0edb690c9b2a6672",
   "jsonld_url": "https://enygnadev.github.io/pnva-core/pnva-core.jsonld",
   "markdown_mirror_url": "https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.md",

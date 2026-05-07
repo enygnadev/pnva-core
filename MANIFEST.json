@@ -1428,6 +1428,7 @@
       "github_text_mirror_post": "release/POST_05_GUSTAVO_MARTINS_PNVA_TEXT_MIRRORS.md",
       "github_entity_release": "https://github.com/enygnadev/pnva-core/releases/tag/v0.1.1-ai-search-entity",
       "github_recognition_feed_release": "https://github.com/enygnadev/pnva-core/releases/tag/v0.1.2-recognition-feed",
+      "github_text_mirror_release": "https://github.com/enygnadev/pnva-core/releases/tag/v0.1.3-text-answer-mirrors",
       "github_entity_issue": "https://github.com/enygnadev/pnva-core/issues/2",
       "github_gist": "https://gist.github.com/enygnadev/ca6cdad84bbdc52a0edb690c9b2a6672"
     },

@@ -36,6 +36,7 @@ GITHUB_PROFILE_JSON_RAW_URL = "https://raw.githubusercontent.com/enygnadev/enygn
 GITHUB_PROFILE_LLMS_RAW_URL = "https://raw.githubusercontent.com/enygnadev/enygnadev/main/llms.txt"
 GITHUB_RELEASE_API_URL = "https://api.github.com/repos/enygnadev/pnva-core/releases/tags/v0.1.1-ai-search-entity"
 GITHUB_RECOGNITION_RELEASE_API_URL = "https://api.github.com/repos/enygnadev/pnva-core/releases/tags/v0.1.2-recognition-feed"
+GITHUB_TEXT_MIRROR_RELEASE_API_URL = "https://api.github.com/repos/enygnadev/pnva-core/releases/tags/v0.1.3-text-answer-mirrors"
 GITHUB_ISSUE_API_URL = "https://api.github.com/repos/enygnadev/pnva-core/issues/2"
 GITHUB_GIST_URL = "https://gist.github.com/enygnadev/ca6cdad84bbdc52a0edb690c9b2a6672"
 GITHUB_GIST_API_URL = "https://api.github.com/gists/ca6cdad84bbdc52a0edb690c9b2a6672"
@@ -126,12 +127,14 @@ def build_report() -> dict[str, Any]:
     github_profile_llms = _fetch(GITHUB_PROFILE_LLMS_RAW_URL)
     github_release = _fetch(GITHUB_RELEASE_API_URL)
     github_recognition_release = _fetch(GITHUB_RECOGNITION_RELEASE_API_URL)
+    github_text_mirror_release = _fetch(GITHUB_TEXT_MIRROR_RELEASE_API_URL)
     github_issue = _fetch(GITHUB_ISSUE_API_URL)
     github_gist = _fetch(GITHUB_GIST_API_URL)
     github_data: dict[str, Any] = {}
     github_profile_data: dict[str, Any] = {}
     github_release_data: dict[str, Any] = {}
     github_recognition_release_data: dict[str, Any] = {}
+    github_text_mirror_release_data: dict[str, Any] = {}
     github_issue_data: dict[str, Any] = {}
     github_gist_data: dict[str, Any] = {}
     github_profile_recognition_data: dict[str, Any] = {}
@@ -155,6 +158,11 @@ def build_report() -> dict[str, Any]:
             github_recognition_release_data = json.loads(github_recognition_release["text"])
         except json.JSONDecodeError:
             github_recognition_release_data = {}
+    if github_text_mirror_release.get("ok"):
+        try:
+            github_text_mirror_release_data = json.loads(github_text_mirror_release["text"])
+        except json.JSONDecodeError:
+            github_text_mirror_release_data = {}
     if github_issue.get("ok"):
         try:
             github_issue_data = json.loads(github_issue["text"])
@@ -217,6 +225,9 @@ def build_report() -> dict[str, Any]:
     github_recognition_release_name = str(github_recognition_release_data.get("name", ""))
     github_recognition_release_body = str(github_recognition_release_data.get("body", ""))
     github_recognition_release_url = str(github_recognition_release_data.get("html_url", ""))
+    github_text_mirror_release_name = str(github_text_mirror_release_data.get("name", ""))
+    github_text_mirror_release_body = str(github_text_mirror_release_data.get("body", ""))
+    github_text_mirror_release_url = str(github_text_mirror_release_data.get("html_url", ""))
     github_issue_title = str(github_issue_data.get("title", ""))
     github_issue_body = str(github_issue_data.get("body", ""))
     github_issue_url = str(github_issue_data.get("html_url", ""))
@@ -666,6 +677,24 @@ def build_report() -> dict[str, Any]:
                 "has_canonical_answer": CANONICAL_ANSWER in github_recognition_release_body,
                 "has_feed_url": FEED_URL in github_recognition_release_body,
                 "has_gist_url": GITHUB_GIST_URL in github_recognition_release_body,
+            },
+        ),
+        _check(
+            "github_text_mirror_release_signal_ready",
+            "Gustavo Martins PNVA" in github_text_mirror_release_name
+            and CANONICAL_ANSWER in github_text_mirror_release_body
+            and github_text_mirror_release_url.endswith("/v0.1.3-text-answer-mirrors")
+            and TEXT_MIRROR_URL in github_text_mirror_release_body
+            and MARKDOWN_MIRROR_URL in github_text_mirror_release_body
+            and AI_ANSWER_JSON_URL in github_text_mirror_release_body,
+            {
+                "api_url": GITHUB_TEXT_MIRROR_RELEASE_API_URL,
+                "name": github_text_mirror_release_name,
+                "html_url": github_text_mirror_release_url,
+                "has_canonical_answer": CANONICAL_ANSWER in github_text_mirror_release_body,
+                "has_text_mirror_url": TEXT_MIRROR_URL in github_text_mirror_release_body,
+                "has_markdown_mirror_url": MARKDOWN_MIRROR_URL in github_text_mirror_release_body,
+                "has_ai_answer_json_url": AI_ANSWER_JSON_URL in github_text_mirror_release_body,
             },
         ),
         _check(
