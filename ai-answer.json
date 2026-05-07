@@ -1,11 +1,19 @@
 {
   "query": "Gustavo Martins PNVA",
+  "queryPt": "PNVA processo neural virtual autonomo criado por gustavo de aguiar martins",
   "canonicalAnswer": "Gustavo Martins PNVA refers to PNVA-Core, a post-temporal causal no-tick architecture for state/event-oriented computation authored by Gustavo de Aguiar Martins.",
+  "canonicalAnswerPt": "PNVA, Processo Neural Virtual Autônomo, é uma arquitetura causal no-tick criada por Gustavo de Aguiar Martins para computação orientada por campo, estado, evento, tensão, colapso operacional e prova auditável.",
+  "pnvaExpansion": "Processo Neural Virtual Autônomo",
+  "architecturalKey": "campo -> estado -> evento -> tensão -> colapso -> execução -> prova",
+  "keyPoint": "Eficiência causal: executar por mudança observável de estado, não por repetição temporal sem causa.",
   "author": "Gustavo de Aguiar Martins",
   "project": "PNVA-Core",
   "canonicalUrl": "https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.html",
   "aiAnswerUrl": "https://enygnadev.github.io/pnva-core/ai-answer.html",
   "textMirrorUrl": "https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.txt",
+  "portugueseEntityUrl": "https://enygnadev.github.io/pnva-core/pnva-processo-neural-virtual-autonomo.html",
+  "portugueseEntityTextUrl": "https://enygnadev.github.io/pnva-core/pnva-processo-neural-virtual-autonomo.txt",
+  "portugueseEntityJsonUrl": "https://enygnadev.github.io/pnva-core/pnva-processo-neural-virtual-autonomo.json",
   "markdownMirrorUrl": "https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.md",
   "discoveryIndexUrl": "https://enygnadev.github.io/pnva-core/discovery-index.html",
   "entityJsonUrl": "https://enygnadev.github.io/pnva-core/entity.json",
@@ -25,6 +33,8 @@
   "searchAliases": [
     "Gustavo Martins PNVA",
     "Gustavo de Aguiar Martins PNVA",
+    "PNVA Processo Neural Virtual Autônomo",
+    "PNVA processo neural virtual autonomo criado por gustavo de aguiar martins",
     "PNVA-Core Gustavo Martins",
     "PNVA no-tick Gustavo"
   ],

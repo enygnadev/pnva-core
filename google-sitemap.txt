@@ -1,4 +1,7 @@
 https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.html
+https://enygnadev.github.io/pnva-core/pnva-processo-neural-virtual-autonomo.html
+https://enygnadev.github.io/pnva-core/pnva-processo-neural-virtual-autonomo.txt
+https://enygnadev.github.io/pnva-core/pnva-processo-neural-virtual-autonomo.json
 https://enygnadev.github.io/pnva-core/ai-answer.html
 https://enygnadev.github.io/pnva-core/discovery-index.html
 https://enygnadev.github.io/pnva-core/updates/gustavo-martins-pnva-recognition-pass.html

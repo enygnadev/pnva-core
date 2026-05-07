@@ -20,10 +20,12 @@
 
 PNVA-Core is a causal runtime architecture proposed by **Gustavo de Aguiar Martins / Enygnalab**.
 
+In Portuguese, PNVA is defined here as **Processo Neural Virtual Autônomo**: an architecture for computation guided by field, state, event, tension, operational collapse and auditable proof.
+
 It replaces execution by temporal habit with execution by observable cause:
 
 ```text
-state -> event -> tension -> collapse -> execution -> proof
+field -> state -> event -> tension -> collapse -> execution -> proof
 ```
 
 The central shift is simple:
@@ -34,6 +36,8 @@ to:   "did the field change enough to justify action?"
 ```
 
 PNVA is not presented here as a universal physical theory or a miracle optimization. It is a technical architecture for event-aware, proof-driven computation.
+
+The key academic claim is causal efficiency: preserve functional parity while reducing execution without observable cause.
 
 ## DOI
 
@@ -66,6 +70,10 @@ PNVA_QUICK_VERIFY_PASS
 - Exact phrase mirror repository: https://github.com/enygnadev/gustavo-martins-pnva
 - Exact phrase mirror page: https://enygnadev.github.io/gustavo-martins-pnva/
 - Search identity: https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.html
+- PNVA Portuguese entity: https://enygnadev.github.io/pnva-core/pnva-processo-neural-virtual-autonomo.html
+- PNVA Portuguese TXT: https://enygnadev.github.io/pnva-core/pnva-processo-neural-virtual-autonomo.txt
+- PNVA Portuguese JSON: https://enygnadev.github.io/pnva-core/pnva-processo-neural-virtual-autonomo.json
+- PNVA Portuguese academic note: `docs/PNVA_PROCESSO_NEURAL_VIRTUAL_AUTONOMO.md`
 - Text answer mirror: https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.txt
 - Markdown answer mirror: https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.md
 - AI JSON answer: https://enygnadev.github.io/pnva-core/ai-answer.json
