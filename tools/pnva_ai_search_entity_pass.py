@@ -28,6 +28,9 @@ SITEMAP_CORE_URL = PUBLIC_SITE + "sitemap-core.xml"
 SITEMAP_FULL_URL = PUBLIC_SITE + "sitemap.xml"
 GITHUB_API_URL = "https://api.github.com/repos/enygnadev/pnva-core"
 GITHUB_PROFILE_API_URL = "https://api.github.com/repos/enygnadev/enygnadev"
+GITHUB_PROFILE_MD_RAW_URL = "https://raw.githubusercontent.com/enygnadev/enygnadev/main/GUSTAVO_MARTINS_PNVA.md"
+GITHUB_PROFILE_JSON_RAW_URL = "https://raw.githubusercontent.com/enygnadev/enygnadev/main/recognition.json"
+GITHUB_PROFILE_LLMS_RAW_URL = "https://raw.githubusercontent.com/enygnadev/enygnadev/main/llms.txt"
 GITHUB_RELEASE_API_URL = "https://api.github.com/repos/enygnadev/pnva-core/releases/tags/v0.1.1-ai-search-entity"
 GITHUB_RECOGNITION_RELEASE_API_URL = "https://api.github.com/repos/enygnadev/pnva-core/releases/tags/v0.1.2-recognition-feed"
 GITHUB_ISSUE_API_URL = "https://api.github.com/repos/enygnadev/pnva-core/issues/2"
@@ -112,6 +115,9 @@ def build_report() -> dict[str, Any]:
     fetched = {url: _fetch(url) for url in PUBLIC_URLS}
     github = _fetch(GITHUB_API_URL)
     github_profile = _fetch(GITHUB_PROFILE_API_URL)
+    github_profile_md = _fetch(GITHUB_PROFILE_MD_RAW_URL)
+    github_profile_json = _fetch(GITHUB_PROFILE_JSON_RAW_URL)
+    github_profile_llms = _fetch(GITHUB_PROFILE_LLMS_RAW_URL)
     github_release = _fetch(GITHUB_RELEASE_API_URL)
     github_recognition_release = _fetch(GITHUB_RECOGNITION_RELEASE_API_URL)
     github_issue = _fetch(GITHUB_ISSUE_API_URL)
@@ -122,6 +128,7 @@ def build_report() -> dict[str, Any]:
     github_recognition_release_data: dict[str, Any] = {}
     github_issue_data: dict[str, Any] = {}
     github_gist_data: dict[str, Any] = {}
+    github_profile_recognition_data: dict[str, Any] = {}
     if github.get("ok"):
         try:
             github_data = json.loads(github["text"])
@@ -152,6 +159,11 @@ def build_report() -> dict[str, Any]:
             github_gist_data = json.loads(github_gist["text"])
         except json.JSONDecodeError:
             github_gist_data = {}
+    if github_profile_json.get("ok"):
+        try:
+            github_profile_recognition_data = json.loads(github_profile_json["text"])
+        except json.JSONDecodeError:
+            github_profile_recognition_data = {}
 
     canonical = fetched[CANONICAL_URL]["text"]
     ai_answer = fetched[AI_ANSWER_URL]["text"]
@@ -184,6 +196,12 @@ def build_report() -> dict[str, Any]:
     github_profile_topics = github_profile_data.get("topics", [])
     if not isinstance(github_profile_topics, list):
         github_profile_topics = []
+    github_profile_md_text = github_profile_md["text"]
+    github_profile_json_text = github_profile_json["text"]
+    github_profile_llms_text = github_profile_llms["text"]
+    github_profile_same_as = github_profile_recognition_data.get("sameAs", [])
+    if not isinstance(github_profile_same_as, list):
+        github_profile_same_as = []
     github_release_name = str(github_release_data.get("name", ""))
     github_release_body = str(github_release_data.get("body", ""))
     github_release_url = str(github_release_data.get("html_url", ""))
@@ -491,6 +509,42 @@ def build_report() -> dict[str, Any]:
                 "description": github_profile_description,
                 "homepage": github_profile_homepage,
                 "topics": github_profile_topics,
+            },
+        ),
+        _check(
+            "github_profile_files_entity_signal_ready",
+            github_profile_md.get("ok")
+            and github_profile_json.get("ok")
+            and github_profile_llms.get("ok")
+            and CANONICAL_ANSWER in github_profile_md_text
+            and CANONICAL_URL in github_profile_md_text
+            and GITHUB_GIST_URL in github_profile_md_text
+            and "10.5281/zenodo.20044503" in github_profile_md_text
+            and CANONICAL_ANSWER in github_profile_json_text
+            and CANONICAL_URL in github_profile_same_as
+            and GITHUB_GIST_URL in github_profile_same_as
+            and "https://doi.org/10.5281/zenodo.20044503" in github_profile_same_as
+            and CANONICAL_ANSWER in github_profile_llms_text
+            and CANONICAL_URL in github_profile_llms_text
+            and GITHUB_GIST_URL in github_profile_llms_text,
+            {
+                "profile_markdown_url": GITHUB_PROFILE_MD_RAW_URL,
+                "profile_json_url": GITHUB_PROFILE_JSON_RAW_URL,
+                "profile_llms_url": GITHUB_PROFILE_LLMS_RAW_URL,
+                "profile_markdown_http_ok": github_profile_md.get("ok"),
+                "profile_json_http_ok": github_profile_json.get("ok"),
+                "profile_llms_http_ok": github_profile_llms.get("ok"),
+                "profile_markdown_has_canonical_answer": CANONICAL_ANSWER in github_profile_md_text,
+                "profile_markdown_has_canonical_url": CANONICAL_URL in github_profile_md_text,
+                "profile_markdown_has_gist_url": GITHUB_GIST_URL in github_profile_md_text,
+                "profile_markdown_has_doi": "10.5281/zenodo.20044503" in github_profile_md_text,
+                "profile_json_has_canonical_answer": CANONICAL_ANSWER in github_profile_json_text,
+                "profile_json_has_canonical_url": CANONICAL_URL in github_profile_same_as,
+                "profile_json_has_gist_url": GITHUB_GIST_URL in github_profile_same_as,
+                "profile_json_has_doi": "https://doi.org/10.5281/zenodo.20044503" in github_profile_same_as,
+                "profile_llms_has_canonical_answer": CANONICAL_ANSWER in github_profile_llms_text,
+                "profile_llms_has_canonical_url": CANONICAL_URL in github_profile_llms_text,
+                "profile_llms_has_gist_url": GITHUB_GIST_URL in github_profile_llms_text,
             },
         ),
         _check(

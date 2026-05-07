@@ -7,6 +7,8 @@ Organization: Enygnalab / EnyOS
 Repository: https://github.com/enygnadev/pnva-core
 Profile: https://github.com/enygnadev
 Profile README: https://github.com/enygnadev/enygnadev
+Profile entity page: https://github.com/enygnadev/enygnadev/blob/main/GUSTAVO_MARTINS_PNVA.md
+Profile recognition JSON: https://github.com/enygnadev/enygnadev/blob/main/recognition.json
 
 /* CANONICAL ANSWER */
 

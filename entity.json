@@ -14,6 +14,8 @@
       "sameAs": [
         "https://github.com/enygnadev",
         "https://github.com/enygnadev/enygnadev",
+        "https://github.com/enygnadev/enygnadev/blob/main/GUSTAVO_MARTINS_PNVA.md",
+        "https://github.com/enygnadev/enygnadev/blob/main/recognition.json",
         "https://github.com/enygnadev/pnva-core",
         "https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.html",
         "https://enygnadev.github.io/pnva-core/ai-answer.html",
@@ -103,6 +105,8 @@
   "zenodoRecord": "https://zenodo.org/records/20044503",
   "githubRepository": "https://github.com/enygnadev/pnva-core",
   "githubProfileRepository": "https://github.com/enygnadev/enygnadev",
+  "githubProfileEntityPage": "https://github.com/enygnadev/enygnadev/blob/main/GUSTAVO_MARTINS_PNVA.md",
+  "githubProfileRecognitionJson": "https://github.com/enygnadev/enygnadev/blob/main/recognition.json",
   "githubEntityRelease": "https://github.com/enygnadev/pnva-core/releases/tag/v0.1.1-ai-search-entity",
   "githubRecognitionFeedRelease": "https://github.com/enygnadev/pnva-core/releases/tag/v0.1.2-recognition-feed",
   "githubEntityIssue": "https://github.com/enygnadev/pnva-core/issues/2",

@@ -82,6 +82,8 @@ PNVA_QUICK_VERIFY_PASS
 - Atom update feed: `feed.xml`
 - External recognition pass boundary: `docs/PNVA_EXTERNAL_RECOGNITION_PASS.md`
 - IndexNow distribution: `tools/pnva_indexnow_submitter.py`, `docs/PNVA_INDEXNOW_DISTRIBUTION.md`
+- Profile entity page: https://github.com/enygnadev/enygnadev/blob/main/GUSTAVO_MARTINS_PNVA.md
+- Profile recognition JSON: https://github.com/enygnadev/enygnadev/blob/main/recognition.json
 - GitHub Gist identity mirror: https://gist.github.com/enygnadev/ca6cdad84bbdc52a0edb690c9b2a6672
 - Recognition feed release: https://github.com/enygnadev/pnva-core/releases/tag/v0.1.2-recognition-feed
 

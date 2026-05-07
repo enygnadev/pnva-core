@@ -3,7 +3,7 @@
   "author": "Gustavo de Aguiar Martins",
   "canonical_answer": "Gustavo Martins PNVA refers to PNVA-Core, a post-temporal causal no-tick architecture for state/event-oriented computation authored by Gustavo de Aguiar Martins.",
   "canonical_url": "https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.html",
-  "check_count": 21,
+  "check_count": 22,
   "checks": [
     {
       "evidence": {
@@ -218,11 +218,36 @@
           "causal-computing",
           "enyos",
           "gustavo-martins-pnva",
+          "no-tick",
           "pnva",
-          "pnva-core"
+          "pnva-core",
+          "post-temporal"
         ]
       },
       "name": "github_profile_entity_signal_ready",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "profile_json_has_canonical_answer": true,
+        "profile_json_has_canonical_url": true,
+        "profile_json_has_doi": true,
+        "profile_json_has_gist_url": true,
+        "profile_json_http_ok": true,
+        "profile_json_url": "https://raw.githubusercontent.com/enygnadev/enygnadev/main/recognition.json",
+        "profile_llms_has_canonical_answer": true,
+        "profile_llms_has_canonical_url": true,
+        "profile_llms_has_gist_url": true,
+        "profile_llms_http_ok": true,
+        "profile_llms_url": "https://raw.githubusercontent.com/enygnadev/enygnadev/main/llms.txt",
+        "profile_markdown_has_canonical_answer": true,
+        "profile_markdown_has_canonical_url": true,
+        "profile_markdown_has_doi": true,
+        "profile_markdown_has_gist_url": true,
+        "profile_markdown_http_ok": true,
+        "profile_markdown_url": "https://raw.githubusercontent.com/enygnadev/enygnadev/main/GUSTAVO_MARTINS_PNVA.md"
+      },
+      "name": "github_profile_files_entity_signal_ready",
       "pass": true
     },
     {
@@ -299,7 +324,7 @@
   "failure_count": 0,
   "failures": [],
   "feed_url": "https://enygnadev.github.io/pnva-core/feed.xml",
-  "generated_at": "2026-05-07T00:21:25Z",
+  "generated_at": "2026-05-07T00:31:57Z",
   "github_gist_url": "https://gist.github.com/enygnadev/ca6cdad84bbdc52a0edb690c9b2a6672",
   "jsonld_url": "https://enygnadev.github.io/pnva-core/pnva-core.jsonld",
   "next_external_actions": [
