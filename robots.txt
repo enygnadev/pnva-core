@@ -23,6 +23,7 @@ User-agent: *
 Allow: /
 
 Sitemap: https://enygnadev.github.io/pnva-core/sitemap.xml
+Sitemap: https://enygnadev.github.io/pnva-core/google-sitemap.xml
 Sitemap: https://enygnadev.github.io/pnva-core/sitemap-core.xml
 Sitemap: https://enygnadev.github.io/pnva-core/feed.xml
 

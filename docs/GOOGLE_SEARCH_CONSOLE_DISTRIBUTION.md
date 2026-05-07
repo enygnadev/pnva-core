@@ -49,6 +49,7 @@ https://enygnadev.github.io/pnva-core/
 Submit sitemaps:
 
 ```text
+https://enygnadev.github.io/pnva-core/google-sitemap.xml
 https://enygnadev.github.io/pnva-core/sitemap-core.xml
 https://enygnadev.github.io/pnva-core/sitemap.xml
 ```
@@ -84,15 +85,17 @@ Use this loop after each important public update:
 
 ```text
 1. Update the canonical page and related documentation.
-2. Keep sitemap-core.xml focused on the highest-priority URLs.
-3. Set <lastmod> to the real update date.
-4. Push to GitHub Pages.
-5. Run pnva_google_search_console_operator.py.
-6. Submit sitemap-core.xml in Search Console.
-7. Use URL Inspection on the priority URL.
-8. Run Live Test.
-9. Click Request Indexing if the page is indexable.
-10. Monitor site: queries and Search Console coverage.
+2. Keep google-sitemap.xml focused on HTML pages only.
+3. Keep sitemap-core.xml focused on the highest-priority URLs.
+4. Set <lastmod> to the real update date.
+5. Push to GitHub Pages.
+6. Run pnva_google_search_console_operator.py.
+7. Submit google-sitemap.xml in Search Console.
+8. Submit sitemap-core.xml in Search Console.
+9. Use URL Inspection on the priority URL.
+10. Run Live Test.
+11. Click Request Indexing if the page is indexable.
+12. Monitor site: queries and Search Console coverage.
 ```
 
 This is the fastest legitimate workflow for ordinary documentation pages. It is not a guarantee of instant indexing or ranking.
