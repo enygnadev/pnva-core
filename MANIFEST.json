@@ -74,6 +74,7 @@
         "PerplexityBot",
         "ClaudeBot"
       ],
+      "google_sitemap": "google-sitemap.xml",
       "sitemap_core": "sitemap-core.xml",
       "google_search_console_pack": "google-search-console.html",
       "priority_urls": "gsc-priority-urls.txt",
@@ -1383,6 +1384,7 @@
       "distribution_page": "google-search-console.html",
       "distribution_doc": "docs/GOOGLE_SEARCH_CONSOLE_DISTRIBUTION.md",
       "priority_urls": "gsc-priority-urls.txt",
+      "google_sitemap": "google-sitemap.xml",
       "core_sitemap": "sitemap-core.xml",
       "full_sitemap": "sitemap.xml",
       "priority_inspection_url": "https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.html",
@@ -1399,6 +1401,7 @@
       "classification": "PNVA_GOOGLE_SEARCH_CONSOLE_OPERATOR_READY",
       "property": "https://enygnadev.github.io/pnva-core/",
       "priority_url": "https://enygnadev.github.io/pnva-core/gustavo-martins-pnva.html",
+      "sitemap_google": "https://enygnadev.github.io/pnva-core/google-sitemap.xml",
       "sitemap_core": "https://enygnadev.github.io/pnva-core/sitemap-core.xml",
       "sitemap_full": "https://enygnadev.github.io/pnva-core/sitemap.xml",
       "manual_boundary": "Search Console ownership, URL Inspection live test and Request Indexing click require a verified Google account session."
@@ -1480,6 +1483,7 @@
     "codemeta.json",
     "googled42066d8a21c5d35.html",
     "google-search-console.html",
+    "google-sitemap.xml",
     "docs/LIMITATIONS.md",
     "docs/GUSTAVO_MARTINS_PNVA_DISCOVERY_PASS.md",
     "docs/ONLINE_PUBLICATION.md",
