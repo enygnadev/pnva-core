@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ENY-OS v33.4 — PNVA-Core No-Tick | Certificação P0–P6</title>
+<meta name="description" content="ENY-OS v33.4 com PNVA-Core No-Tick: arquitetura kernel→Substrate→KBUS→pnva-core→event_fifo→pnva-intelligence, identidade causal por ktime_get_ns, latências medidas sem ptrace e certificação P0–P6 com evidências rastreáveis.">
+<meta name="author" content="Gustavo de Aguiar Martins">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<link rel="canonical" href="https://enygnadev.github.io/pnva-core/enyos-v33-4.html">
+<link rel="stylesheet" href="styles.css">
+<meta property="og:title" content="ENY-OS v33.4 — PNVA-Core No-Tick">
+<meta property="og:description" content="Certificação P0–P6 com identidade causal por evento e latências medidas sem ptrace.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://enygnadev.github.io/pnva-core/enyos-v33-4.html">
+<style>
+  .kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:18px 0}
+  .kpi .box{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px}
+  .kpi .n{font-size:1.5rem;font-weight:700;color:var(--gold);line-height:1.2}
+  .kpi .l{font-size:.76rem;color:var(--muted);margin-top:4px}
+  .chain{display:flex;flex-wrap:wrap;gap:8px;align-items:stretch;margin:16px 0}
+  .node{flex:1 1 128px;min-width:128px;background:var(--panel);border:1px solid var(--line);border-radius:10px;
+        padding:11px 10px;cursor:pointer;text-align:left;color:var(--text);font:inherit;transition:.15s}
+  .node:hover,.node:focus-visible{border-color:var(--gold);transform:translateY(-2px);outline:none}
+  .node[aria-pressed="true"]{border-color:var(--gold);background:#141c33}
+  .node .t{font-weight:600;font-size:.86rem}
+  .node .s{font-size:.7rem;color:var(--muted);margin-top:3px}
+  .node .k{font-size:.68rem;color:var(--blue);margin-top:5px;font-family:ui-monospace,monospace}
+  .arrow{align-self:center;color:var(--gold);opacity:.65;font-size:1.1rem}
+  .detail{background:#0a1020;border:1px solid var(--line);border-left:3px solid var(--gold);
+          border-radius:8px;padding:14px;margin-top:10px;min-height:76px}
+  .detail h4{margin:0 0 6px;font-size:.95rem;color:var(--gold)}
+  .detail p{margin:0;color:var(--muted);font-size:.88rem;line-height:1.55}
+  .obs{background:#0a1020;border:1px dashed var(--line);border-radius:8px;padding:11px 13px;margin-top:12px;
+       font-size:.83rem;color:var(--muted)}
+  table.data{width:100%;border-collapse:collapse;margin:12px 0;font-size:.87rem}
+  table.data th,table.data td{border-bottom:1px solid var(--line);padding:8px 9px;text-align:left}
+  table.data th{color:var(--gold);font-weight:600;font-size:.8rem;text-transform:uppercase;letter-spacing:.04em}
+  table.data td.num{text-align:right;font-family:ui-monospace,monospace;white-space:nowrap}
+  .bar-row{display:grid;grid-template-columns:minmax(118px,1.1fr) 3fr minmax(74px,auto);gap:9px;align-items:center;margin:7px 0}
+  .bar-label{font-size:.8rem;color:var(--muted)}
+  .bar-track{background:#0a1020;border:1px solid var(--line);border-radius:5px;height:21px;position:relative;overflow:hidden}
+  .bar-p50{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,#1d4e8f,var(--blue));border-radius:4px 0 0 4px}
+  .bar-p99{position:absolute;top:0;bottom:0;width:2px;background:var(--gold)}
+  .bar-val{font-family:ui-monospace,monospace;font-size:.78rem;color:var(--text);text-align:right}
+  .legend{font-size:.76rem;color:var(--muted);margin-top:8px}
+  .legend .sw{display:inline-block;width:11px;height:11px;border-radius:2px;vertical-align:-1px;margin-right:4px}
+  .gates{display:grid;grid-template-columns:repeat(auto-fit,minmax(248px,1fr));gap:11px;margin:14px 0}
+  .gate{background:var(--panel);border:1px solid var(--line);border-radius:9px;padding:12px}
+  .gate .id{font-weight:700;color:var(--gold);font-size:.92rem}
+  .gate .st{display:inline-block;font-size:.7rem;padding:2px 7px;border-radius:4px;margin-left:7px;
+            background:rgba(88,166,255,.15);color:var(--blue);border:1px solid rgba(88,166,255,.35)}
+  .gate .st.scope{background:rgba(214,183,91,.13);color:var(--gold);border-color:var(--line)}
+  .gate p{margin:7px 0 0;font-size:.82rem;color:var(--muted);line-height:1.5}
+  .hashbox{background:#0a1020;border:1px solid var(--line);border-radius:8px;padding:12px;margin:11px 0;
+           font-family:ui-monospace,monospace;font-size:.76rem;word-break:break-all;color:var(--text);line-height:1.7}
+  .hashbox .k{color:var(--gold)}
+  .warn{background:rgba(214,183,91,.08);border:1px solid var(--line);border-left:3px solid var(--gold);
+        border-radius:8px;padding:13px;margin:14px 0;font-size:.86rem;color:var(--muted);line-height:1.6}
+  .warn strong{color:var(--text)}
+  @media(max-width:640px){
+    .chain{flex-direction:column}.arrow{transform:rotate(90deg);align-self:flex-start;margin-left:14px}
+    .bar-row{grid-template-columns:1fr;gap:3px}.bar-val{text-align:left}
+    table.data{font-size:.8rem}table.data th,table.data td{padding:6px 5px}
+  }
+</style>
+</head>
+<body>
+<div class="shell">
+
+<header class="topbar">
+  <div class="brand">ENY-OS v33.4 · PNVA-Core No-Tick</div>
+  <nav class="nav">
+    <a href="index.html">Início</a>
+    <a href="pnva-core.html">Arquitetura</a>
+    <a href="proofs.html">Provas</a>
+    <a href="demo.html">Demo PNVA</a>
+    <a href="https://github.com/enygnadev/pnva-core">GitHub</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <p class="eyebrow">Campanha de certificação — 15 a 17 de novembro de 2026</p>
+  <h1>ENY-OS v33.4</h1>
+  <p class="lead">
+    Sistema operacional live-persistente sobre Ubuntu 24.04 com o <strong>PNVA Substrate 3.3.0</strong>
+    carregado no kernel 6.8.0-94. Esta página apresenta a cadeia causal real do sistema, as latências
+    medidas <strong>sem ptrace</strong> e o resultado dos gates P0–P6, cada número ligado ao arquivo
+    de evidência que o produziu.
+  </p>
+  <div class="kpi">
+    <div class="box"><div class="n">980/980</div><div class="l">eventos admitidos correlacionados por ID único</div></div>
+    <div class="box"><div class="n">69 µs</div><div class="l">kernel → Core (p50)</div></div>
+    <div class="box"><div class="n">8,50 ms</div><div class="l">fim a fim (p50)</div></div>
+    <div class="box"><div class="n">3/3</div><div class="l">ciclos de falha induzida recuperados</div></div>
+  </div>
+</section>
+
+<div class="warn">
+  <strong>Natureza dos dados.</strong> Todos os números desta página são <strong>resultados históricos</strong>
+  de uma campanha de certificação executada em máquina virtual descartável nos dias 15–17/11/2026.
+  Não há telemetria ao vivo, nem medição feita no seu navegador. A página não executa comando algum
+  no seu computador — é conteúdo estático.
+</div>
+
+<!-- A -->
+<section class="section" id="visao-geral">
+  <h2>A. Visão geral</h2>
+  <p>
+    O PNVA opera por <strong>eventos, não por relógio</strong>. O módulo de kernel mantém um barramento
+    (KBUS) em anel; quando o kernel sinaliza algo relevante — a subida ou queda de uma interface de rede,
+    por exemplo — o evento é carimbado e empilhado. Nenhuma tarefa periódica varre o sistema à procura
+    de trabalho.
+  </p>
+  <p>
+    Isso é mensurável: em repouso, com o Substrate carregado e os seis serviços ativos, os contadores do
+    módulo permanecem em <code class="code">notick=1 tick_loop=0 timer_armed=0 wakeups=0</code>. Esse
+    estado foi verificado no host de produção ao longo de 17 horas e em todas as topologias testadas.
+  </p>
+  <p>
+    Um efeito colateral do desenho apareceu durante a campanha e vale como ilustração: depois de uma
+    rajada de 900 eventos, o contador de orçamento ficou <em>congelado</em> em vez de decair. Não é defeito
+    — sem eventos novos, não há o que processar. Bastaram seis eventos para o estado se atualizar sozinho.
+  </p>
+</section>
+
+<!-- B -->
+<section class="section" id="arquitetura">
+  <h2>B. Arquitetura — a cadeia que foi certificada</h2>
+  <p>Selecione um componente para ver o seu papel e como ele foi observado na medição.</p>
+
+  <div class="chain" id="chain">
+    <button class="node" data-k="kernel" aria-pressed="false">
+      <div class="t">Linux Kernel</div><div class="s">6.8.0-94-generic</div><div class="k">T0</div></button>
+    <span class="arrow">→</span>
+    <button class="node" data-k="substrate" aria-pressed="false">
+      <div class="t">PNVA Substrate</div><div class="s">módulo 3.3.0</div><div class="k">T1</div></button>
+    <span class="arrow">→</span>
+    <button class="node" data-k="kbus" aria-pressed="false">
+      <div class="t">KBUS</div><div class="s">anel, 4096 slots</div><div class="k">ring</div></button>
+    <span class="arrow">→</span>
+    <button class="node" data-k="core" aria-pressed="false">
+      <div class="t">pnva-core</div><div class="s">consumidor do anel</div><div class="k">T2 · T3</div></button>
+    <span class="arrow">→</span>
+    <button class="node" data-k="fifo" aria-pressed="false">
+      <div class="t">event_fifo</div><div class="s">pipe nomeado</div><div class="k">T4</div></button>
+    <span class="arrow">→</span>
+    <button class="node" data-k="intel" aria-pressed="false">
+      <div class="t">pnva-intelligence</div><div class="s">consumidor final</div><div class="k">T5</div></button>
+  </div>
+
+  <div class="detail" id="detail" role="status" aria-live="polite">
+    <h4>Selecione um componente</h4>
+    <p>Cada etapa foi observada por um ponto de instrumentação próprio — kprobe no kernel, fprobe no retorno do ioctl e contabilidade de bytes no pipe.</p>
+  </div>
+
+  <div class="obs">
+    <strong>pnva-eventd — observador paralelo.</strong> O Eventd <em>não</em> está no caminho do KBUS.
+    Ele observa o kernel por uevent (netlink próprio) e por <code class="code">/proc</code>, e escreve em
+    <code class="code">events</code>, <code class="code">event_fifo</code> e <code class="code">event_fabric</code>
+    em paralelo. Seus registros de CPUFREQ, PSI e CYCLE são <strong>amostragem a cada 30,000 s</strong>, não
+    entrega de evento. Confundir os dois custou três rodadas de teste nesta campanha até a arquitetura real
+    ficar demonstrada.
+  </div>
+</section>
+
+<!-- C -->
+<section class="section" id="medicoes">
+  <h2>C. Medições — latência por trecho</h2>
+  <p>
+    Método: <strong>ftrace</strong> com kprobe, fprobe e tracepoints, relógio <code class="code">mono</code>.
+    Nenhum processo foi rastreado por ptrace, nenhum binário alterado. O overhead da instrumentação foi medido
+    contra uma fase de controle sem probes: <strong>+0,032 ms na média</strong>.
+    Amostra: <strong>N = 780</strong> eventos válidos (120 de aquecimento descartados), VM de 8 vCPU.
+  </p>
+
+  <div id="bars"></div>
+  <p class="legend">
+    <span class="sw" style="background:var(--blue)"></span>mediana (p50)
+    &nbsp;&nbsp;<span class="sw" style="background:var(--gold);width:3px;height:13px"></span>p99
+    &nbsp;&nbsp;· escala logarítmica, 10 µs a 20 ms
+  </p>
+
+  <table class="data">
+    <thead><tr><th>Trecho</th><th style="text-align:right">p50</th><th style="text-align:right">p95</th><th style="text-align:right">p99</th><th style="text-align:right">máx</th></tr></thead>
+    <tbody>
+      <tr><td>Ring → Core <span style="color:var(--muted)">(T2−T1)</span></td><td class="num">69 µs</td><td class="num">88 µs</td><td class="num">98 µs</td><td class="num">106 µs</td></tr>
+      <tr><td>Core → Fabric <span style="color:var(--muted)">(T3−T2)</span></td><td class="num">34 µs</td><td class="num">47 µs</td><td class="num">59 µs</td><td class="num">89 µs</td></tr>
+      <tr><td>Fabric → FIFO <span style="color:var(--muted)">(T4−T3)</span></td><td class="num">275 µs</td><td class="num">310 µs</td><td class="num">321 µs</td><td class="num">432 µs</td></tr>
+      <tr><td>FIFO → Intelligence <span style="color:var(--muted)">(T5−T4)</span></td><td class="num">448 µs</td><td class="num">496 µs</td><td class="num">523 µs</td><td class="num">721 µs</td></tr>
+      <tr><td>Estímulo → push <span style="color:var(--muted)">(T1−T0)</span></td><td class="num">7,74 ms</td><td class="num">10,53 ms</td><td class="num">13,81 ms</td><td class="num">16,53 ms</td></tr>
+      <tr><td><strong>Fim a fim</strong> <span style="color:var(--muted)">(T5−T0)</span></td><td class="num"><strong>8,50 ms</strong></td><td class="num">11,38 ms</td><td class="num"><strong>14,61 ms</strong></td><td class="num">17,32 ms</td></tr>
+    </tbody>
+  </table>
+
+  <p>
+    O trecho dominante é <strong>T1−T0</strong>: o próprio <code class="code">ip link set</code> e a cadeia de
+    notificadores de rede do kernel. Tudo o que o PNVA acrescenta depois disso — do anel até o consumidor final —
+    soma <strong>760 µs na mediana</strong>.
+  </p>
+
+  <div class="obs">
+    <strong>Por que isto não foi medido com ptrace.</strong> Uma medição anterior da mesma cadeia, feita com
+    <code class="code">strace</code>, deu valores de 8,7× a 33× maiores. As duas campanhas estão preservadas;
+    a comparação está na certificação. O ptrace infla o que mede — por isso os números acima, obtidos por
+    ftrace com overhead quantificado, substituem aqueles.
+  </div>
+</section>
+
+<!-- D -->
+<section class="section" id="identidade">
+  <h2>D. Identidade causal por evento</h2>
+  <p>
+    Cada evento recebe no kernel um carimbo de 64 bits, <code class="code">evt.ts = ktime_get_ns()</code>,
+    gravado em <code class="code">struct pnva_kevent</code>. Esse valor atravessa o anel intacto e reaparece
+    no consumidor. Lendo o struct nas duas pontas por kprobe:
+  </p>
+
+  <div class="hashbox">
+<span class="k">push</span>  ts=20329866943592  type=257  a=17179869187  tag="pnva-f…"   <span style="color:var(--muted)">← kernel, kbus_ring_push</span>
+<span class="k">pop</span>   ts=20329866943592  type=257  a=17179869187  tag="pnva-…"    <span style="color:var(--muted)">← pnva-core, retorno do ioctl</span>
+  </div>
+
+  <p>
+    Não é correlação por conteúdo nem por ordem de chegada: é o mesmo inteiro de 64 bits. A prova disso está
+    em distinguir eventos <em>idênticos</em> em todo o resto — 450 <code class="code">NET_LINKUP</code> e
+    450 <code class="code">NET_LINKDOWN</code> com o mesmo tipo, interface e nome, separados apenas pelo carimbo.
+  </p>
+
+  <table class="data">
+    <thead><tr><th>Verificação</th><th style="text-align:right">Resultado</th></tr></thead>
+    <tbody>
+      <tr><td>Eventos admitidos no anel</td><td class="num">980</td></tr>
+      <tr><td>Carimbos únicos no push</td><td class="num">980</td></tr>
+      <tr><td>Casados push ↔ pop pelo carimbo</td><td class="num">980 / 980</td></tr>
+      <tr><td>Pop sem push correspondente</td><td class="num">0</td></tr>
+      <tr><td>Carimbos duplicados</td><td class="num">0</td></tr>
+      <tr><td>Perda em transporte</td><td class="num">0</td></tr>
+      <tr><td>Ordem preservada (push e pop)</td><td class="num">sim</td></tr>
+    </tbody>
+  </table>
+
+  <div class="obs">
+    <strong>Os 68 eventos barrados — contabilizados à parte.</strong> Além dos 980 admitidos, 68 eventos foram
+    recusados <em>na entrada</em> por <code class="code">kbus_token_consume()</code>, um limitador de taxa
+    deliberado: o estímulo do teste (≈440 eventos/min) ficou muito acima do orçamento configurado (20/min).
+    O anel nunca encheu (<code class="code">ring_used=0</code>) e não houve desativação automática.
+    A aritmética fecha: <strong>1048 observações = 980 admitidos + 68 barrados</strong>.
+    Isso é descarte por política, não perda de transporte — e a distinção está mantida em toda a certificação.
+  </div>
+
+  <p>
+    No trecho final, entre o Core e a Intelligence, a correlação não pôde usar o carimbo: o FIFO é um fluxo de
+    bytes e o lote não carrega o identificador. Em vez de presumir identidade, usou-se
+    <strong>contabilidade de bytes</strong> — somando os retornos de 86.347 leituras de 1 byte até cobrir cada
+    escrita, com a restrição de que nenhuma leitura pode consumir bytes de uma escrita futura.
+    Resultado: <strong>901 de 901 lotes</strong> com leitura completa, ordem crescente, T5 ≥ T4 em todos.
+    O resíduo de 165 bytes (0,2%) corresponde ao segundo escritor do pipe e está declarado.
+  </p>
+</section>
+
+<!-- E -->
+<section class="section" id="certificacao">
+  <h2>E. Certificação P0–P6</h2>
+  <div class="gates">
+    <div class="gate"><span class="id">P0</span><span class="st">PASS</span>
+      <p>Instalação e boot: desktop ativo, autologin, <code class="code">apt</code> funcional. Verificado em boot limpo da ISO assinada com disco de persistência virgem.</p></div>
+    <div class="gate"><span class="id">P1</span><span class="st">PASS</span>
+      <p>Identidade causal do kernel ao consumidor: 980/980 correlacionados pelo carimbo de 64 bits, sem órfãos, duplicados ou violação de ordem.</p></div>
+    <div class="gate"><span class="id">P2</span><span class="st">PASS</span>
+      <p>Repouso No-Tick do Substrate: <code class="code">1/0/0/0</code> no host por 17 h e durante todos os testes. Escopo: o módulo, não o Linux inteiro.</p></div>
+    <div class="gate"><span class="id">P3</span><span class="st">PASS</span>
+      <p>Latência T0–T5 por evento, sem ptrace, overhead medido em +0,032 ms. Fim a fim p50 8,50 ms / p99 14,61 ms.</p></div>
+    <div class="gate"><span class="id">P4</span><span class="st">PASS</span>
+      <p>Contratos entre componentes: <code class="code">pnva-proof</code> 20/20 no host e em todas as VMs. Inclui rejeição correta de limiares fora de faixa.</p></div>
+    <div class="gate"><span class="id">P5</span><span class="st">PASS</span>
+      <p>Entrega: ordem FIFO preservada, zero duplicação, zero perda em transporte, 901/901 lotes entregues. Recuperação do orçamento demonstrada.</p></div>
+    <div class="gate"><span class="id">P6</span><span class="st">PASS</span>
+      <p>Persistência: nove critérios retrospectivos no host e três ciclos de falha induzida recuperados em VM.</p></div>
+    <div class="gate"><span class="id">Topologia</span><span class="st scope">≥ 8 CPUs</span>
+      <p>O desenho reserva CPUs (<code class="code">HOUSEKEEPING_LIST=0-3</code>, serviços de campo em <code class="code">CPUAffinity=7</code>). Em 4 vCPU dois serviços falham com <code class="code">215/CPUAFFINITY</code>. Requisito declarado, não defeito.</p></div>
+  </div>
+
+  <div class="warn">
+    <strong>Limites de escopo, declarados.</strong> As medições de P1, P3, P5 e da falha induzida de P6 foram
+    feitas em <strong>máquina virtual</strong>, pela regra de não executar teste ativo em produção — o host
+    corrobora apenas o trecho kernel→Substrate. Topologias abaixo de 8 CPUs não são suportadas.
+    Esta é uma <strong>release operacional</strong> com os gates acima verificados no escopo descrito,
+    não uma certificação global No-Tick do sistema operacional inteiro.
+  </div>
+</section>
+
+<!-- F -->
+<section class="section" id="persistencia">
+  <h2>F. Persistência e estabilidade</h2>
+  <p>
+    A imagem é live-persistente (Casper): raiz em overlay sobre <code class="code">squashfs</code>, camada
+    gravável em partição rotulada <code class="code">writable</code>. O teste de falha induzida simulou queda
+    de energia com <code class="code">kill -9</code> no processo da VM, três vezes, cada uma com um marcador
+    único gravado em <code class="code">/home</code> e <code class="code">/etc</code> antes do corte.
+  </p>
+  <table class="data">
+    <thead><tr><th>Ciclo</th><th>Marcadores</th><th>Sistema de arquivos</th><th>Módulo</th><th>Serviços</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>sobreviveram nos dois</td><td><code class="code">recovery complete</code> (1,68 s)</td><td>live</td><td>ativos</td></tr>
+      <tr><td>2</td><td>sobreviveram nos dois</td><td><code class="code">recovery complete</code> (1,54 s)</td><td>live</td><td>ativos</td></tr>
+      <tr><td>3</td><td>sobreviveram nos dois</td><td><code class="code">recovery complete</code> (2,56 s)</td><td>live</td><td>ativos</td></tr>
+    </tbody>
+  </table>
+  <p>
+    Em todos os ciclos: <code class="code">fs_errors=0</code>, módulo recarregado, seis serviços PNVA ativos,
+    contadores No-Tick em <code class="code">1/0/0/0</code>.
+  </p>
+  <div class="obs">
+    <strong>Preservação do host.</strong> Toda a campanha de testes ativos ocorreu em VM descartável.
+    Ao final, o host de produção permaneceu com <code class="code">tuning_changes=0</code>, seis serviços
+    ativos, nenhuma interface de teste, nenhum módulo <code class="code">dummy</code> carregado e
+    <code class="code">strace</code> nunca instalado.
+  </div>
+</section>
+
+<!-- G -->
+<section class="section" id="evidencias">
+  <h2>G. Evidências e verificação</h2>
+
+  <h3>Imagem certificada</h3>
+  <div class="hashbox">
+<span class="k">arquivo</span>   enyos-pnva-v33.4-20261116.iso
+<span class="k">tamanho</span>   3.509.452.800 bytes (3,27 GiB)
+<span class="k">SHA-256</span>   ac0e7c6cb929f2a84b0405c8edc0d5fb6279b89b2bb20ce46fabd67dd67cb40d
+<span class="k">assinatura</span> RSA-4096 destacada, SHA-256
+  </div>
+
+  <div class="warn">
+    <strong>A imagem não é distribuída por esta página.</strong> Com 3,27 GiB ela excede o limite de
+    2 GiB por arquivo das Releases do GitHub, e não foi dividida nem recomprimida — isso invalidaria a
+    assinatura e o hash acima. O que está publicado são os <strong>artefatos de verificação</strong>:
+    somas SHA-256 e SHA-512, a assinatura destacada e a chave pública. Com eles, qualquer cópia da imagem
+    obtida por outro meio pode ser conferida integralmente.
+  </div>
+
+  <h3>Como verificar uma cópia da imagem</h3>
+  <div class="hashbox">
+sha256sum -c SHA256SUMS
+openssl dgst -sha256 -verify enyos-pnva.pubkey.pem \
+  -signature enyos-pnva-v33.4-20261116.iso.sig \
+  enyos-pnva-v33.4-20261116.iso
+<span style="color:var(--muted)"># deve imprimir: Verified OK</span>
+  </div>
+
+  <h3>Evidência por gate</h3>
+  <table class="data">
+    <thead><tr><th>Gate</th><th>Arquivo autoritativo</th></tr></thead>
+    <tbody>
+      <tr><td>P1 identidade</td><td><code class="code">P1_P3_ftrace_CLEAN_N900_8vcpu_20261116-203545.json</code></td></tr>
+      <tr><td>P3 T0–T2</td><td><code class="code">P1_P3_ftrace_CLEAN_N900_8vcpu_20261116-203545.json</code></td></tr>
+      <tr><td>P3 T3–T5</td><td><code class="code">P3_T3T5_FINAL_v334_20261116-214553.json</code></td></tr>
+      <tr><td>P5 ordem e entrega</td><td><code class="code">P3_T3T5_FINAL_v334_20261116-214553.json</code></td></tr>
+      <tr><td>P1 no host</td><td><code class="code">P1_P5_A2_20261116-085524.json</code></td></tr>
+      <tr><td>Comparação sob ptrace</td><td><code class="code">P1_P3_P5_chain_VM_20261116-134643.json</code></td></tr>
+    </tbody>
+  </table>
+  <p>
+    Além destes quatro autoritativos, doze execuções superadas foram preservadas como histórico de método:
+    estímulo inválido, leitura prematura do <code class="code">sysfs</code>, filtro de ioctl solto,
+    identificação errada da escrita no FIFO. Cada uma está no índice com o motivo do descarte — elas tornam
+    a conclusão auditável em vez de apenas afirmada.
+  </p>
+
+  <h3>Documentos</h3>
+  <ul class="links">
+    <li><a href="docs/ENYOS_V33_4_CERTIFICACAO.md">Certificação completa — Fases 1 a 7</a></li>
+    <li><a href="docs/ENYOS_V33_4_INDICE_EVIDENCIAS.md">Índice de evidências e manifesto</a></li>
+    <li><a href="https://github.com/enygnadev/pnva-core/releases/tag/enyos-v33.4">Release v33.4 com os artefatos de verificação</a></li>
+    <li><a href="pnva-core.html">Arquitetura PNVA-Core</a> · <a href="proofs.html">Provas</a></li>
+  </ul>
+</section>
+
+<footer class="footer">
+  <p>ENY-OS v33.4 · PNVA Substrate 3.3.0 · kernel 6.8.0-94-generic · Ubuntu 24.04 LTS</p>
+  <p>Campanha de certificação de 15 a 17 de novembro de 2026. Gustavo de Aguiar Martins.</p>
+</footer>
+
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var info = {
+    kernel:{t:"Linux Kernel 6.8.0-94-generic",
+      d:"Origem do evento. No teste, o estímulo foi a subida e queda de uma interface de rede virtual, que percorre a cadeia de notificadores de rede do kernel. T0 é o instante em que a chamada de sistema começa."},
+    substrate:{t:"PNVA Substrate — módulo de kernel 3.3.0",
+      d:"Registra notificadores de rede, cpufreq, campo e PSI. Ao receber um evento, chama ktime_get_ns() e grava o carimbo de 64 bits no struct pnva_kevent, junto do tipo, do índice da interface e do nome. T1 é esse instante, observado por kprobe em kbus_ring_push."},
+    kbus:{t:"KBUS — barramento em anel",
+      d:"Anel de 4096 posições protegido por spinlock, com limitador de taxa na entrada. Eventos acima do orçamento são recusados antes de entrar e contabilizados separadamente. Durante a medição o anel nunca encheu: ring_used permaneceu em 0."},
+    core:{t:"pnva-core — consumidor do anel",
+      d:"Retira cada evento por ioctl PNVA_IOC_KBUS_READ em /dev/pnva (T2, observado por fprobe no retorno) e grava a linha correspondente em event_fabric (T3). A linha tem tamanho determinístico, o que permitiu identificá-la sem inspecionar conteúdo: 66 bytes para LINKUP e 68 para LINKDOWN."},
+    fifo:{t:"event_fifo — pipe nomeado",
+      d:"O Core agrupa o estado e escreve um lote KBUS_BATCH (T4). O pipe tem dois escritores: o Core e o Eventd. A contabilidade de bytes isolou a contribuição de cada um — o segundo escritor respondeu por 165 bytes, 0,2% do fluxo."},
+    intel:{t:"pnva-intelligence — consumidor final",
+      d:"Lê o pipe byte a byte. T5 é o instante em que o lote termina de ser lido, determinado por contabilidade de bytes com restrição causal: nenhuma leitura pode consumir bytes de uma escrita futura. 901 de 901 lotes fecharam."}
+  };
+  var box = document.getElementById("detail");
+  var nodes = Array.prototype.slice.call(document.querySelectorAll(".node"));
+  function show(k, el){
+    var o = info[k]; if(!o) return;
+    nodes.forEach(function(n){ n.setAttribute("aria-pressed", n === el ? "true" : "false"); });
+    box.innerHTML = "<h4></h4><p></p>";
+    box.querySelector("h4").textContent = o.t;
+    box.querySelector("p").textContent = o.d;
+  }
+  nodes.forEach(function(n){
+    n.addEventListener("click", function(){ show(n.getAttribute("data-k"), n); });
+  });
+
+  var rows = [
+    {l:"Ring → Core",         p50:69,    p99:98},
+    {l:"Core → Fabric",       p50:34,    p99:59},
+    {l:"Fabric → FIFO",       p50:275,   p99:321},
+    {l:"FIFO → Intelligence", p50:448,   p99:523},
+    {l:"Fim a fim",           p50:8495,  p99:14615}
+  ];
+  var LO = 1, HI = 4.3;
+  function pos(us){ return Math.max(0, Math.min(100, (Math.log(us)/Math.LN10 - LO) / (HI - LO) * 100)); }
+  function fmt(us){ return us >= 1000 ? (us/1000).toFixed(2).replace(".", ",") + " ms" : us + " µs"; }
+  var html = rows.map(function(r){
+    return '<div class="bar-row">' +
+      '<div class="bar-label">' + r.l + '</div>' +
+      '<div class="bar-track"><div class="bar-p50" style="width:' + pos(r.p50).toFixed(1) + '%"></div>' +
+      '<div class="bar-p99" style="left:' + pos(r.p99).toFixed(1) + '%"></div></div>' +
+      '<div class="bar-val">' + fmt(r.p50) + '</div></div>';
+  }).join("");
+  document.getElementById("bars").innerHTML = html;
+})();
+</script>
+</body>
+</html>
