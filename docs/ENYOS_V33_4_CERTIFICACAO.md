@@ -48,6 +48,18 @@ Documental: o `RELATORIO_MESTRE_ENYOS_PNVA_2026-10-28.md` citado pelo panorama
 "11 criterios" de P6 e o "protocolo P5 homologado em laboratorio" nao estao no
 projeto. Esta auditoria nao herda esses numeros; re-deriva o que e verificavel.
 
+> **Revisao 2 — 17/11/2026 (sanitizada).** Esta versao remove detalhes de ABI do modulo
+> proprietario: os deslocamentos de campo do `struct pnva_kevent` e o valor numerico do
+> comando ioctl, substituidos por marcadores. **Nada mais foi alterado** — metodo, pontos de
+> instrumentacao, amostras, percentis, hashes da ISO, criterios P0–P6 e autoria permanecem
+> integrais e verificaveis.
+>
+> A revisao 1 (commit `0721eda`, 17/11/2026) continua acessivel no historico publico do
+> repositorio. O historico **nao foi reescrito**, por decisao deliberada: reescreve-lo
+> invalidaria referencias ja distribuidas e apagaria registro de auditoria. Quem precisar
+> dos valores de ABI para reproduzir a medicao os obtem do cabecalho do proprio modulo.
+
+
 ---
 
 ## P2 — No-Tick do Substrate: PASS (re-medido)
@@ -373,8 +385,8 @@ Metodo: **ftrace/kprobe/fprobe**, nenhum processo rastreado por ptrace, nenhum b
 servico ou configuracao alterado. `trace_clock=mono` (mesmo dominio do `ktime_get_ns()` do
 kernel). Probes (removidos ao fim, verificado):
 ```
-p:pnva/push kbus_ring_push.isra.0 ts=+0($arg1):u64 type=+8($arg1):u16 a=+16($arg1):u64 tag=+36($arg1):string
-f:pnva/pop  pnva_ioctl%return cmd=$arg2:u32 ret=$retval:s32 ts=+u0($arg3):u64 ...  filtro: comm=="pnva-core" && ret==0 && cmd==2150912021
+p:pnva/push kbus_ring_push.isra.0 ts=<campo ts> type=<campo type> a=<campo a> tag=<campo tag>
+f:pnva/pop  pnva_ioctl%return cmd=$arg2:u32 ret=$retval:s32 ts=<campo ts> ...  filtro: comm=="pnva-core" && ret==0 && cmd == <PNVA_IOC_KBUS_READ>
 ```
 Evidencia: `reports/P1_P3_ftrace_CLEAN_N900_8vcpu_20261116-203545.json` · artefatos em `reports/vm-fase2/`.
 
@@ -574,10 +586,16 @@ Fecha a ultima pendencia. Metodo: **ftrace/kprobe/fprobe**, nenhum processo sob 
 nenhum binario ou servico alterado, `trace_clock=mono`. ISO `release/enyos-pnva-v33.4-20261116.iso`
 (assinada), disco virgem. Evidencia: `reports/P3_T3T5_FINAL_v334_20261116-214553.json`.
 
+> **Nota de divulgacao.** Os deslocamentos de campo do `struct pnva_kevent` e o valor
+> numerico do comando ioctl foram substituidos por marcadores (`<campo ...>`,
+> `<PNVA_IOC_KBUS_READ>`). Sao detalhe de ABI do modulo proprietario e nao alteram a
+> verificabilidade: quem reproduzir a medicao obtem os valores do proprio cabecalho do
+> modulo. O metodo, os pontos de instrumentacao e todos os resultados seguem integrais.
+
 ### Probes (todos inteiros, zero deref de string — foi o deref que perturbou a 1a tentativa)
 ```
-p:pnva/push kbus_ring_push.isra.0 ts=+0($arg1):u64 type=+8($arg1):u16 a=+16($arg1):u64
-f:pnva/pop  pnva_ioctl%return cmd=$arg2:u32 ret=$retval:s32 ts=+u0($arg3):u64 type=+u8($arg3):u16
+p:pnva/push kbus_ring_push.isra.0 ts=<campo ts> type=<campo type> a=<campo a>
+f:pnva/pop  pnva_ioctl%return cmd=$arg2:u32 ret=$retval:s32 ts=<campo ts> type=<campo type>
 p:pnva/vw   vfs_write n=$arg3:u64          filtro comm=="pnva-core"
 p:pnva/fw   pipe_write                     filtro comm=="pnva-core"
 r:pnva/frr  pipe_read ret=$retval:s64      filtro comm=="pnva-intelligen"
