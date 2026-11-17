@@ -9,3 +9,36 @@ proofs/raw/
 .env.*
 !.env.example
 
+
+# Imagens de sistema e midia de VM (nunca versionar: tamanho e integridade
+# dependem de assinatura destacada, nao do git)
+*.iso
+*.img
+*.raw
+*.qcow2
+*.vmdk
+*.squashfs
+
+# Material criptografico privado. A chave PUBLICA (.pubkey.pem) e versionada
+# de proposito; qualquer outra forma de chave nao.
+*.key
+*private*.pem
+id_rsa*
+id_ed25519*
+*.p12
+*.pfx
+*.jks
+
+# Credenciais e configuracao de ambiente
+.netrc
+.npmrc
+credentials*
+*credentials.json
+service-account*.json
+
+# Caches e artefatos de execucao
+__pycache__/
+*.pyc
+.pytest_cache/
+*.ppm
+*.strace
